@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>APIs</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <div class="container">
+        <header>
+            <a href="/"> 
+                <img src="/img/logo.svg" alt="Molecula Logo" class="logo">
+            </a>
+        </header>
+        <main class="container__main">
+            <!-- Left sidebar -->
+            <aside class="container__left">
+                <ul>
+    
+      
+        <li><a href="/index.html">Home</a></li>
+        
+  
+      
+    
+       
+        <li><p>Tutorials</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/tutorials/getting-started.html">Getting Started</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>Explanation</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/explanations/architecture.html">Architecture</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>How-Tos</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/how-tos/install-featurebase.html">Install FeatureBase</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>Reference</a></li>
+        
+  
+      
+        <ul>
+    
+       
+        <li><p>Interfaces</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/reference/apis.html">APIs</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>Query Languages</a></li>
+        
+  
+      
+    
+       
+        <li><p>Operations</a></li>
+        
+  
+      
+    
+       
+        <li><p>Configuration</a></li>
+        
+  
+      
+    
+      
+        <li><a href="/reference/glossary.html">Glossary</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+  </ul>
+
+            </aside>
+    
+            <article class="container__middle">
+                <h1>APIs</h1>
+                <section>
+                  <p>Molecula provides three APIs built in: HTTP, gRPC, and the PostgreSQL wire protocol. Currently they are not all functionally equivalent. Notably, SQL is only supported through gRPC and the Postgres wire protocol, while most administrative functions and data ingest are only available through the HTTP interface.</p>
+
+<p>When authentication is enabled, HTTP and gRPC are supported, but PostgreSQL wire protocol will be disabled.</p>
+
+<h2 id="grpc">gRPC</h2>
+
+<p>The gRPC interface is described in detail in <a href="/reference/grpc-api">gRPC API</a>.</p>
+
+<p>Molecula ships with a Python client and CLI which can be used to interact with FeatureBase via gRPC. See the <a href="/how-tos/use-python-client">client usage</a> for API examples.</p>
+
+<h2 id="postgres-wire-protocol">Postgres Wire Protocol</h2>
+
+<p>You can connect to Molecula using the standard Postgres client (psql - PostgreSQL interactive terminal) by connecting to the host and port specified in the configuration (default: disabled).</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>psql <span class="nt">-h</span> localhost <span class="nt">-p</span> 55432
+</code></pre></div></div>
+
+<p>Supported SQL is detailed <a href="/reference/sql">here</a>. <a href="/reference/pql">PQL</a> is also supported over the postgres wire protocol. Prefix your PQL query with the table name in square brackets. For example, if you wanted to count the number of records in the “stargazers” index, you would issue a query like:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">molecula</span><span class="o">=&gt;</span> <span class="o">[</span>stargazers]Count<span class="o">(</span>All<span class="o">())</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="http">HTTP</h2>
+
+<p>The HTTP interface is described in some detail in <a href="/reference/http-api">HTTP API</a>. Generally, most HTTP endpoints are not needed for normal operations, with the exception of the transaction interface which is used to pause ingestion to take backups. This is documented below.</p>
+
+<h3 id="transactions">Transactions</h3>
+<p>As of v2.0.0-alpha.17, FeatureBase supports simple transactions.</p>
+
+<p>This is not full-featured transaction support with commit and rollback
+for now; this is a placeholder intended to allow us to solve shorter-term
+problems.</p>
+
+<p>The primary purpose of this is to allow an exclusive transaction to
+block new ingest activity from starting, while permitting existing ingest
+operations to complete, even if a single ingest requires multiple operations.
+This allows users with cooperating ingest operations to ensure a stable state
+for the data on disk before triggering snapshots or other writes.</p>
+
+<p>Concisely:</p>
+<ul>
+  <li>No more than one exclusive transaction can exist at one time</li>
+  <li>If an exclusive transaction is active, there should be no other transactions</li>
+</ul>
+
+<h5 id="overview-what-transactions-are">Overview: What transactions are</h5>
+
+<p>A transaction reflects an ongoing set of related operations that may be
+occurring in multiple or distinct messages. There is no support for
+rolling back a failed transaction. Transactions can coexist, and there’s
+nothing controlling simultaneous access to fields.</p>
+
+<p>However, a transaction can be exclusive. An exclusive transaction cannot
+start until other transactions complete, but no non-exclusive transaction
+can start while an exclusive transaction is waiting.</p>
+
+<p>Transactions are holder-wide, not index-specific. Transactions are also
+presumably cluster-wide.</p>
+
+<h5 id="api-details">API Details</h5>
+
+<p>The base transaction endpoints are <code class="language-plaintext highlighter-rouge">/transactions</code>, for listing transactions,
+and <code class="language-plaintext highlighter-rouge">/transaction/{id}</code>, for listing (GET) or creating (POST)
+a transaction, and <code class="language-plaintext highlighter-rouge">transaction/{id}/finish</code> to finish a transaction.
+Additionally, the <code class="language-plaintext highlighter-rouge">/transaction</code> endpoint (without an <code class="language-plaintext highlighter-rouge">{id}</code>) will return a
+list (GET) of all transactions ordered by their creation date: <code class="language-plaintext highlighter-rouge">createdAt</code>.</p>
+
+<p>A POST to <code class="language-plaintext highlighter-rouge">/transaction</code> attempts to create a transaction, assigning it an
+arbitrary ID that is not the ID of any existing transaction. A <code class="language-plaintext highlighter-rouge">GET</code> from
+<code class="language-plaintext highlighter-rouge">/transactions</code> lists existing transactions.</p>
+
+<p>A POST to <code class="language-plaintext highlighter-rouge">/transaction/{id}</code> tries to create a transaction with the given
+ID, failing if it can’t for any reason, including the reason “this ID is
+already in use”. A GET from <code class="language-plaintext highlighter-rouge">/transaction/{id}</code> retrieves information about
+the transaction.</p>
+
+<p>When creating a transaction, an options object may be supplied as the request body:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"exclusive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">default</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="nl">"timeout"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="w">     </span><span class="err">//</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">seconds</span><span class="p">,</span><span class="w"> </span><span class="err">default</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="mi">300</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>For an exclusive transaction, the optional boolean parameter
+“pause-snapshots” may be specified. A <code class="language-plaintext highlighter-rouge">true</code> value indicates that the snapshot
+queue should be paused once this transaction becomes active. <em>Note that pausing
+the snapshot queue can cause some write operations to block indefinitely.</em>
+If a transaction requests that the snapshot queue be paused, it will not
+report itself “active” until the snapshot queue has completed any outstanding
+snapshots and paused itself. The full sequence of events, then, is:</p>
+
+<ul>
+  <li>Stop allowing new transactions to start.</li>
+  <li>Wait for transactions to complete.</li>
+  <li>Pause snapshot queue.</li>
+  <li>Wait for snapshot queue to report that it’s successfully paused.</li>
+  <li>Transition to active state.</li>
+</ul>
+
+<p>Exclusive transactions which pause the snapshot queue should not write to
+the database; this is used as a way to block activity so backups can be made.</p>
+
+<p>When requesting information about a transaction, an object is returned:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"exclusive"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"timeout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5m0s"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-10T22:08:51.645678Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"deadline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-10T22:13:51.645678Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>To mark a transaction as complete, POST to <code class="language-plaintext highlighter-rouge">/transaction/{id}/finish</code>, and
+get back the same information you’d have gotten from a GET for that transaction.
+The finish request may block if any existing queries are running as part of
+that transaction, but immediately prevents any new queries from starting for
+that transaction.</p>
+
+<p>Queries can be associated with a transaction by including
+<code class="language-plaintext highlighter-rouge">X-Pilosa-Transaction: {id}</code> in their request headers. A transaction’s idle
+timer may be reset by any query against it, even a query which doesn’t write
+anything.</p>
+
+<p>When an exclusive transaction is created, it does not necessarily start out
+in the <code class="language-plaintext highlighter-rouge">active</code> state. It immediately blocks the starting of new non-exclusive
+transactions, but does not transition to an <code class="language-plaintext highlighter-rouge">active</code> state until existing
+transactions complete. During this time, a GET to it should return:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>If multiple exclusive transactions are requested, they become active
+sequentially in the order the requests came in, and the snapshot queue and
+other transactions are not permitted to resume until the exclusive transactions
+all complete.</p>
+
+<h5 id="using-transactions-with-backups">Using Transactions with Backups</h5>
+
+<p>Before performing a backup, you must request an exclusive “transaction” with the cluster. This is done via an HTTP POST request to the primary node at path <code class="language-plaintext highlighter-rouge">/transaction</code>, in which case a UUID will be generated and used as the transaction ID. To use a custom ID, POST to <code class="language-plaintext highlighter-rouge">/transaction/{id}</code>. Allowed characters include alphanumeric, hyphen, and underscore.</p>
+
+<p>Use headers:</p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">Accept: application/json
+Content-Type: application/json
+</span></code></pre></div></div>
+
+<p>The body should follow this format:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"timeout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10m"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"exclusive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>A timeout MUST be specified, as an integer number of seconds, or a string of the format “1h2m3s”, where at least one of the time components is present. Any duration value is allowed, though it’s better to err on the longer side of the expected duration of the backup. The transaction must be explicitly finished; the timeout exists solely for cleanup in the case of failures.</p>
+
+<p>This will return a JSON “transaction response” object.</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+</span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"5e572d95-4204-40cd-804c-92976b68dc9b"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"active"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"exclusive"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"timeout"</span><span class="p">:</span><span class="s2">"1m0s"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="s2">"2020-04-17T21:53:18.69359-05:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"deadline"</span><span class="p">:</span><span class="s2">"2020-04-17T21:54:18.69359-05:00"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+</span><span class="nl">"error"</span><span class="p">:</span><span class="s2">"some message"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">error</code> field MAY not be present if there is no error.</p>
+
+<p>You MUST check whether <code class="language-plaintext highlighter-rouge">active</code> is true. If not, you must poll the transaction endpoint with a GET request and your ID until it is true. For example:</p>
+
+<p>GET <code class="language-plaintext highlighter-rouge">/transaction/5e572d95-4204-40cd-804c-92976b68dc9b</code></p>
+
+<p>with headers:</p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">Accept: application/json
+</span></code></pre></div></div>
+
+<p>This also returns a “transaction response” object.</p>
+
+<p>Once an <code class="language-plaintext highlighter-rouge">active</code>, <code class="language-plaintext highlighter-rouge">exclusive</code> transaction is returned, proceed with your backup.</p>
+
+<p>Once the backup is complete, finish the transaction with</p>
+
+<p>POST <code class="language-plaintext highlighter-rouge">/transaction/{id}/finish</code></p>
+
+<p>with headers:</p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">Accept: application/json
+</span></code></pre></div></div>
+
+<p>Finishing the transaction removes it from the transaction store
+completely. A 200 response indicates that this was completed
+successfully. The “finish” request will also return a transaction
+response object which contains the transaction as it looked at the
+time of its removal. Notably, if the transaction was active, it will
+contain <code class="language-plaintext highlighter-rouge">active: true</code> though it does not exist any more and cannot be
+used.</p>
+
+<h5 id="implementation-notes">Implementation Notes</h5>
+
+<p>All requests should be made to the primary FeatureBase node.</p>
+
+<p>When creating a new transaction, it is created on every node in the
+cluster and persisted to disk.</p>
+
+<p>Timeouts only expire when there has been <em>no activity</em> on a transaction for the timeout duration.
+Any activity on the transaction may extend the deadline (unimplemented).</p>
+
+<p>When finishing a transaction, it is first finished on the primary node and
+then the finish is broadcast to the cluster before returning to the
+client.</p>
+
+<p>When getting an exclusive transaction, if the transaction is active,
+it will be returned only if and when all nodes agree.</p>
+
+<p>The primary node forwards all requests to every other node so they can stay
+in sync. If the primary node doesn’t hear back from a node, the request
+fails. The primary node only reaches out to active nodes, so if the
+cluster is in state <code class="language-plaintext highlighter-rouge">DEGRADED</code>, things can still continue.</p>
+
+<p>If a node is down and comes back up, it needs to synchronize its state
+with the primary node (unimplemented).</p>
+
+<p>There is a separate transaction manager and transaction store.</p>
+
+<p>The transaction store is responsible for persisting info about
+transactions, while the transaction manager handles all the logic (at the node level).</p>
+
+<h2 id="ingest-interfaces">Ingest Interfaces</h2>
+
+<p>See <a href="/explanations/ingesters">Ingesters</a> for information on data ingestion.</p>
+
+                </section>
+            </article>
+    
+            <!-- Right sidebar -->
+            <nav class="container__right">
+                <div>Applies to</div>
+
+                <span>Please <a href="https://github.com/molecula/documentation/edit/gh-pages/reference/apis.md">help improve this article</a>.</span>
+
+                <div>
+                    <span>
+                        Modified: 
+                    </span>
+                </div>
+
+                <div>Feedback?</div>
+            </nav>
+        </main>
+        <footer>
+            <p> &copy; 2022 Molecula Corp.</p>
+        </footer>
+    </div>
+  </body>
+</html>
