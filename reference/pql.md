@@ -1,0 +1,1635 @@
+---
+id: pql
+title: PQL
+sidebar_label: PQL
+---
+
+## Overview
+
+This section will provide a detailed reference and examples for the Pilosa Query Language (PQL). Every PQL query has a primary index that it operates on. How this index is specified is protocol dependent (e.g in HTTP it is specified in the query path, over postgres wire protocol it is prepended to the query in square brackets).
+
+A [basic introduction to PQL](/explanations/pql-intro) is also available.
+
+### Conventions
+
+* Angle Brackets `<>` denote required arguments
+* Square Brackets `[]` denote optional arguments
+* UPPER_CASE denotes a descriptor that will need to be filled in with a concrete value (e.g. `STRING`)
+
+#### Examples
+
+Before running any of the example queries below, follow the instructions in the [Getting Started](/tutorials/getting-started) section of the FeatureBase docs to set up an index and fields, and to populate them with some data.
+
+The examples just show the PQL quer(ies) needed - to run the query `Set(10, stargazer=1)` against a server using curl, you would:
+```shell
+curl localhost:10101/index/repository/query \
+     -X POST \
+     -d 'Set(10, stargazer=1)'
+```
+```json
+{"results":[true]}
+```
+
+### Arguments and Types
+
+* `field` The field specifies on which FeatureBase field the query will operate. Valid field names are lower case strings; they start with a lowercase letter, and contain only alphanumeric characters and `_-`. They must be 230 characters or less in length.
+* `TIMESTAMP` This is a timestamp in the following format `YYYY-MM-DDTHH:MM` (e.g. 2006-01-02T15:04).
+* `UINT` An unsigned integer (e.g. 42839).
+* `BOOL` A boolean value, `true` or `false`.
+* `CALL` Any query.
+* `ROW_CALL` Any query which returns a row, such as `Row`, `Union`, `Difference`, `Xor`, `Intersect`, `Not`.
+* `ROWS_CALL` A query that returns a `Rows` result (i.e. a list of row IDs). Currently only the `Rows` query.
+
+
+## Row Calls (Read)
+
+### Row
+
+**Spec:**
+
+```pql
+Row(<FIELD>=<ROW>)
+```
+
+**Description:**
+
+`Row` is a `ROW_QUERY` that retrieves the indices of all the columns in a row.
+
+**Result Type:** object with columns.
+
+e.g. `{"columns":[10, 20]}`
+
+**Examples:**
+
+Query all columns with a bit set in row 1 of the field `stargazer` (repositories that are starred by user 1):
+```pql
+Row(stargazer=1)
+```
+```json
+{"columns":[10, 20]}
+```
+
+* columns are the repositories which user 1 has starred.
+
+:::note
+Prior to Molecula v4.3, the response of a `Row` query would also include an "attrs" field.
+:::
+
+### Row (Range)
+
+**Spec:**
+
+```pql
+Row(<FIELD>=<ROW>, from=<TIMESTAMP>, to=<TIMESTAMP>)
+```
+
+**Description:**
+
+Similar to `Row`, but only returns bits which were set with time quantums between the given `from` (inclusive) and `to` (exclusive) times. Both `from` and `to` parameters are optional. The default for `to` time is current time + 1 day. If a later end time is required, specify it explicitly.
+
+**Result Type:** object with columns
+
+
+**Examples:**
+
+Query all columns with a bit set in row 1 of a field (repositories that a user has starred), within a date range:
+```pql
+Row(stargazer=1, from='2010-01-01T00:00', to='2017-03-02T03:00')
+```
+```json
+{"columns":[10]}
+```
+
+This example assumes time quantums have been set on some bits.
+
+* columns are repositories which were starred by user 1 in the time range 2010-01-01 to 2017-03-02.
+
+
+### Row (BSI)
+
+**Spec:**
+
+```pql
+Row([<COMPARISON_VALUE> <COMPARISON_OPERATOR>] <FIELD> <COMPARISON_OPERATOR> <COMPARISON_VALUE>)
+```
+
+**Description:**
+
+The `Row` query is overloaded to work on `integer` values as well as `timestamp` values.
+Returns bits that are true for the comparison operator.
+
+**Result Type:** object with columns
+
+**Examples:**
+
+In our source data, `commitactivity` was counted over the last year.
+The following greater-than `Row` query returns all columns with a field value greater than 100 (repositories having more than 100 commits):
+
+```pql
+Row(commitactivity > 100)
+```
+```json
+{"columns":[10]}
+```
+
+* columns are repositories which had at least 100 commits in the last year.
+
+BSI range queries support the following operators:
+
+ Operator | Name                          | Value
+----------|-------------------------------|--------------------
+ `>`      | greater-than, GT              | integer
+ `<`      | less-than, LT                 | integer
+ `<=`     | less-than-or-equal-to, LTE    | integer
+ `>=`     | greater-than-or-equal-to, GTE | integer
+ `==`     | equal-to, EQ                  | integer
+ `!=`     | not-equal-to, NEQ             | integer or `null`
+
+A bounded interval can be specified by chaining the `<` and `<=` operators (but not others). For example:
+
+```pql
+Row(50 < commitactivity < 150)
+```
+```json
+{"columns":[10]}
+```
+
+As of Pilosa 1.0, the "between" syntax `Row(frame=stats, commitactivity >< [50, 150])` is no longer supported.
+
+
+### Row (Timestamp)
+
+**Spec:**
+
+```pql
+Row([<COMPARISON_TIMESTAMP> <COMPARISON_OPERATOR>] <FIELD> <COMPARISON_OPERATOR> <COMPARISON_TIMESTAMP>)
+```
+
+**Description:**
+
+The `Row` query is overloaded to work on `timestamp` values.
+Returns bits that are true for the comparison operator.
+
+**Result Type:** object with columns
+
+**Examples:**
+
+In our source data, commitactivity was counted over the last year.
+The following greater-than `Row` query returns all columns with a field timestamp value greater after Jan 1, 2020:
+
+```pql
+Row(createdat > '2020-01-01T00:00:00Z')
+```
+```json
+{"columns":[10]}
+```
+
+Timestamp range queries support the following operators:
+
+ Operator | Name                          | Value
+----------|-------------------------------|--------------------
+ `>`      | greater-than, GT              | timestamp
+ `<`      | less-than, LT                 | timestamp
+ `<=`     | less-than-or-equal-to, LTE    | timestamp
+ `>=`     | greater-than-or-equal-to, GTE | timestamp
+ `==`     | equal-to, EQ                  | timestamp
+ `!=`     | not-equal-to, NEQ             | timestamp or `null`
+
+A bounded interval can be specified by chaining the `<` and `<=` operators (but not others). For example:
+
+```pql
+Row(50 < createdat < 150)
+```
+```json
+{"columns":[10]}
+```
+
+
+### ConstRow
+
+**Spec:**
+
+```pql
+ConstRow(columns=<[]COLUMN>)
+```
+
+**Description:**
+
+`ConstRow` provides a constant bitmap value that can be used in place of a `Row` call.
+The columns can be specified as integer IDs or strings.
+
+**Result Type:** row value columns.
+
+e.g. `{"columns":[10, 20]}`
+
+**Examples:**
+
+Filter specified columns to only those with a bit set in row 1 of the field `stargazer` (repositories that are starred by user 1):
+```pql
+Intersect(ConstRow(columns=[10, 20, 30]), Row(stargazer=1))
+```
+```json
+{"columns":[10, 20]}
+```
+
+
+### All
+**Spec:**
+
+```pql
+All()
+```
+
+**Description:**
+
+All is a `ROW_QUERY` that returns the set of all columns in an index that contain any data.
+
+All supports optional `limit` and `offset` parameters. These are deprecated in favor of the `Limit` query.
+
+**Result Type:** object with columns
+
+
+**Examples:**
+
+```pql
+All()
+```
+```json
+{"columns":[0,1,2,3,361,362,363,364,365,366,367,368,369,370,371,372,373,374,375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,416,417,418,419,420,421,422,423,424,425,426,427,428,429,430,431,432,433,434,435,436,437,438,439,440,441,442,443,444,445,446,447,448,449,450,451,452,453,454,455,456,457,458,459,460,461,462,463,464,465,466,467,468,469,470,471,472,473,474,475,476,477,478,479,480,481,482,483,484,485,486,487,488,489,490,491,492,493,494,495,496,497,498,499,500,501,502,503,504,505,506,507,508,509,510,511,512,513,514,515,516]}
+```
+
+### Limit
+
+**Spec:**
+
+```pql
+Limit(<ROW_CALL>, [limit=<UINT>], [offset=<UINT>])
+```
+
+**Description:**
+
+Limit executes a `ROW_CALL` and returns a subset of the results.
+If a limit of `n` is specified, then this query will return the first `n` results of the row call.
+If an offset of `m` is specified, then this query will skip the first `m` results of the row call.
+If both a limit and offset are specified, the offset is applied before the limit.
+This can be used to implement pagination.
+
+:::note
+An offset of 0 returns everything, and a limit of 0 returns nothing.
+:::
+
+**Result Type:** object with columns
+
+**Examples:**
+
+Find the first column that has a bit set in the given row.
+```pql
+Limit(Row(stargazer=1), limit=1)
+```
+```json
+{"results":[{"columns":[20]}]}
+```
+
+Find the second column that has a bit set in the given row.
+```pql
+Limit(Row(stargazer=1), limit=1, offset=1)
+```
+```json
+{"results":[{"columns":[30]}]}
+```
+
+* columns are repositories that were starred by user 1
+
+
+### Union
+
+**Spec:**
+
+```pql
+Union([ROW_CALL ...])
+```
+
+**Description:**
+
+Union is a `ROW_CALL` that performs a set union on the column indexes in the results of all `ROW_CALL` queries passed to it. In comparison to a relational query, this is similar to combining clauses in the "OR" sense.
+
+**Result Type:** object with columns
+
+**Examples:**
+
+Query columns with a bit set in either of two rows (repositories that are starred by either of two users):
+```pql
+Union(Row(stargazer=1), Row(stargazer=2))
+```
+```json
+{"columns":[10, 20, 30]}
+```
+
+* columns are repositories that were starred by user 1 OR user 2
+
+### Intersect
+
+**Spec:**
+
+```pql
+Intersect(<ROW_CALL>, [ROW_CALL ...])
+```
+
+**Description:**
+
+Intersect is a `ROW_CALL` that performs a set intersection on the column indexes in the results of all `ROW_CALL` queries passed to it. In comparison to a relational query, this is similar to combining clauses in the "AND" sense.
+
+**Result Type:** object with columns
+
+**Examples:**
+
+Query columns with a bit set in both of two rows (repositories that are starred by both of two users):
+
+```pql
+Intersect(Row(stargazer=1), Row(stargazer=2))
+```
+```json
+{"columns":[10]}
+```
+
+* columns are repositories that were starred by user 1 AND user 2
+
+### Difference
+
+**Spec:**
+
+```pql
+Difference(<ROW_CALL>, [ROW_CALL ...])
+```
+
+**Description:**
+
+Difference is a `ROW_CALL` that performs a set difference on the column indexes in the results of the `ROW_CALL` queries passed to it. It returns all column indexes that are present in the first `ROW_CALL` argument passed to it, and not present in any of the subsequent `ROW_CALL` arguments.
+
+**Result Type:** object with columns
+
+**Examples:**
+
+Query columns with a bit set in one row and not another (repositories that are starred by one user and not another):
+```pql
+Difference(Row(stargazer=1), Row(stargazer=2))
+```
+```json
+{"columns":[20]}
+```
+
+* columns are repositories that were starred by user 1 BUT NOT user 2
+
+Query for the opposite difference:
+```pql
+Difference(Row(stargazer=2), Row(stargazer=1))
+```
+```json
+{"columns":[30]}
+```
+
+* columns are repositories that were starred by user 2 BUT NOT user 1
+
+### Xor
+
+**Spec:**
+
+```pql
+Xor(<ROW_CALL>, [ROW_CALL ...])
+```
+
+**Description:**
+
+Xor is a `ROW_CALL` that performs a [symmetric difference](https://en.wikipedia.org/wiki/Symmetric_difference) on the column indexes in the results of all `ROW_CALL` queries passed to it. For example, with two arguments, it returns all column indexes that are present in the results of *either* of its arguments, but not *both* of them.
+
+**Result Type:** object with columns
+
+**Examples:**
+
+Query columns with a bit set in exactly one of two rows (repositories that are starred by only one of two users):
+
+```pql
+Xor(Row(stargazer=2), Row(stargazer=1))
+```
+```json
+{"columns":[20,30]}
+```
+
+* columns are repositories that were starred by user 1 XOR user 2 (user 1 or user 2, but not both)
+
+### Not
+
+**Spec:**
+
+```pql
+Not(<ROW_CALL>)
+```
+
+**Description:**
+
+Not is a `ROW_CALL` that performs a set complement on the results from its single `ROW_CALL` argument. This is conceptually equivalent to a difference between the [universal set](https://mathworld.wolfram.com/UniversalSet.html) and the argument.
+
+**Result Type:** object with columns
+
+**Examples:**
+
+Query existing columns that do not have a bit set in the given row.
+```pql
+Not(Row(stargazer=1))
+```
+```json
+{"columns":[30]}
+```
+
+* columns are repositories that were not starred by user 1
+
+
+### UnionRows
+
+**Spec:**
+
+```pql
+UnionRows([ROWS_CALL ...])
+```
+
+**Description:**
+
+UnionRows is a `ROW_CALL` that performs a set union on the rows matched by the results of all `ROWS_CALL` queries passed to it.
+
+**Result Type:** object with columns
+
+**Examples:**
+
+Query columns with a bit set in any row (repositories that are starred by any user):
+```pql
+UnionRows(Rows(stargazer))
+```
+```json
+{"columns":[10, 20, 30]}
+```
+
+* columns are repositories that were starred by any user
+
+
+## Row-like Calls (Read)
+
+### Distinct
+
+**Spec:**
+
+```pql
+Distinct([ROW_CALL], field=<INT_FIELD>, [index=<INDEX_NAME>])
+```
+
+**Description:**
+
+Distinct returns the set of distinct integers in the specified integer field from the set of records specified by the `ROW_CALL`. Distinct may operate on a separate index from the one which is being queried, and its result can be used like a `ROW_CALL` on the index from the outer query, in this case, Distinct can act like a SQL JOIN.
+
+For example, if you had an index for "Customers", and one for "Orders", each order would have an integer customer ID. You could query for orders of a certain type, get the distinct set of customer IDs associated, and then filter down those customers by attributes from the "Customers" index.
+
+**Result Type:** The contents of the Distinct result are similar to the result from a `ROW_CALL`, including an array of columns. These results are separated into two groups, one for negative values and one for positive. This structure is necessary to accomodate signed values that are represented with bitsets.
+
+**Examples:**
+
+Simple Distinct call:
+
+```pql
+Distinct(field=int)
+```
+```json
+{
+  "neg": {
+    "columns": [
+       431,
+       844,
+      1032,
+      1249,
+      1409,
+      8888,
+      8970,
+      9100,
+      9207
+    ]
+  },
+  "pos": {
+    "columns": [
+        307,
+        938,
+       4015,
+       7045,
+      86799,
+      87587,
+      88117
+    ]
+  }
+}
+```
+
+Distinct call with a `ROW_CALL` argument for more specific results:
+
+```pql
+Distinct(Row(int>0), field=int)
+```
+```json
+    {
+      "neg": {
+        "columns": []
+      },
+      "pos": {
+        "columns": [
+          6664,
+          9520,
+          49400,
+          16700,
+          42700,
+          213800,
+        ]
+      }
+    }
+```
+
+Distinct can be composed much like a `ROW_CALL`. The following query returns the set of customers in the "east" region who have at least one "domestic" type order:
+```pql
+Intersect(Row(customer_region=east), Distinct(Row(order_type=domestic), field=customer_id, index=orders))
+```
+```json
+{"columns":[104, 115, 127, 257, 265, 386, 728, 783, 803, 814, 952]}
+```
+
+
+
+## Rows Calls (Read)
+
+### Rows
+
+**Spec:**
+
+```pql
+Rows(<FIELD>, previous=<UINT|STRING>, limit=<UINT>, column=<UINT|STRING>, from=<TIMESTAMP>, to=<TIMESTAMP>, like=<STRING>)
+```
+
+**Description:**
+
+Rows returns a list of row IDs in the given field which have at least one bit
+set. The field argument is mandatory, the others are optional.
+
+Rows is only supported on `set`, `time`, and `mutex` fields.
+
+If `previous` is given, rows prior to and including the specified row ID or
+key will not be returned. If `column` is given, only rows which have a set bit
+in the given column will be returned. `previous` or `column` must be strings if
+and only if the field or index respectively is using key translation. If `limit`
+is given, the number of rowIDs returned will be less than or equal to
+`limit`. The combination of `limit` and `previous` allows for paging over large
+result sets. Results are always ordered, so setting `previous` as the last
+result of the previous request will start from the next available row.
+
+If the field is of type `time`, the `from` and `to` arguments can be provided
+to restrict the result to a specific time span. If `from` and `to` are
+not provided, the full range of existing data will be queried.
+
+If `like` is given, only keys matching a pattern will be selected.
+A `like` pattern may use `_` as a placeholder to match a single UTF-8 codepoint, and `%` to match 0 or more codepoints.
+All other characters will be matched exactly.
+For example:
+- `%` - match everything
+- `_` - match all single-codepoint keys
+- `_%_`, `__%`, or `%__` - match all keys with at least two unicode codepoints
+- `%a%` - match all keys containing at least one instance of the letter `a` (when using NFD-format unicode, this will also match `á`)
+- `a_c` - match any 3-letter key starting with `a` and ending with `c`
+- `yes` - match the key `yes` exactly
+
+**Result Type:** Object with "rows" or "keys" and an array of integers or strings respectively.
+
+**Examples:**
+
+Without keys:
+```pql
+Rows(age)
+```
+```json
+{"rows":[18,22,29]}
+```
+
+With keys:
+```pql
+Rows(job)
+```
+```json
+{"rows":null,"keys":["engineer","management","student"]}
+```
+
+With `like`:
+```pql
+Rows(job, like="%t")
+```
+```json
+{"rows":null,"keys":["management","student"]}
+```
+
+## Membership Calls (Read)
+
+### IncludesColumn
+
+**Spec:**
+
+```pql
+IncludesColumn(<ROW_CALL>, column=<UINT|STRING>)
+```
+
+**Description:**
+
+IncludesColumn returns a boolean indicating whether `column` is a member of the result set determined by `ROW_CALL`. A more appropriate name might be `IncludesRecord`; column is old (and confusing!) terminology for a record in FeatureBase and will be renamed in the future.
+
+**Result Type:** boolean
+
+**Examples:**
+
+```pql
+IncludesColumn(Row(language=1), column=1)
+```
+```json
+true
+```
+
+
+## Count Calls (Read)
+
+### Count
+**Spec:**
+
+```pql
+Count(<ROW_CALL>)
+```
+
+**Description:**
+
+Returns the number of set bits in the `ROW_CALL` passed in.
+
+**Result Type:** int
+
+**Examples:**
+
+Query the number of bits set in a row (the number of repositories a user has starred):
+```pql
+Count(Row(stargazer=1))
+```
+```json
+{"results":[1]}
+```
+
+* Result is the number of repositories that user 1 has starred.
+
+### GroupBy
+
+**Spec:**
+
+```pql
+GroupBy(<ROWS_CALL>, [<ROWS_CALL>...] , filter=<ROW_CALL>, having=Condition([<COMPARISON_VALUE> <COMPARISON_OPERATOR>] <count|sum> <COMPARISON_OPERATOR> <COMPARISON_VALUE>), aggregate=<CALL>, sort=<SORT_DIRECTIVE_LIST> , limit=<UINT> , offset=<UINT>)
+```
+
+**Description:**
+
+GroupBy returns the count of the intersection of every combination of rows
+taking one row each from the specified `Rows` calls. It returns only those
+combinations for which the count is greater than 0.
+
+The optional `filter` argument takes any type of `Row` query (e.g. Row, Union,
+Intersect, etc.) which will be intersected with each result prior to returning
+the count. This is analagous to a WHERE clause applied to a relational GROUP BY
+query.
+
+Paging through results is supported by passing the `previous` argument to each
+of the `Rows` calls in the GroupBy. Take the last result from your previous
+`GroupBy` query, and pass each row ID in that result as the `previous` argument
+to each of the respective `Rows` queries in your next `GroupBy` query.
+
+The optional `aggregate` argument can take either a `Sum()` or a
+`Count(Distinct())` query.  `Sum(field=<INTFIELD>)` calculates the
+sum and count of each group on the named field. This is similar functionality to using a `SUM()` in the
+SELECT clause of a SQL GROUP BY query. Different counts might be observed than without the aggregate because this implies only records which have some value on the aggregated field (they cannot be null). 
+
+If `Count(Distinct(field=<INTFIELD>))` is passed as an aggregate, the
+number of unique values on the aggregated field for each group will be
+reported in the aggregate column of the results.
+
+The optional `having` argument takes a `Condition` to apply to the results. This can be used to filter by the count within the group or the sum within the group.
+
+The optional `sort` argument accepts a string specifying the sort order. This string is a comma-separated list of sort directives, each one optionally followed by `asc` or `desc` to specify the sort direction. `desc`, for "descending", is the default. Valid sort directives are `count`, to sort by the groups' counts, `sum` to sort by the sum of the groups' values, or `aggregate`, to sort by the groups' values as determined by the `aggregate` argument to `GroupBy`. For example, `sort="count asc, aggregate desc"` sorts first by the groups' counts ascending, then by the aggregate value descending.
+
+Sort directive details:
+
+- `count` can be used to sort by the always-present count values for each group.
+- `sum` or `aggregate` can be used to sort by the optional aggregate values when `Sum()` is specified as the aggregate call.
+- `aggregate` can also be used to sort by the optional aggregate values when `Count(Distinct())` is specified as the aggregate call.
+
+Contrary to the standard definition of `Rows`, GroupBy also supports bool and int fields.
+It does not support decimal fields.
+
+
+The optional `limit` argument limits the number of results returned. The results
+are ordered, so as long as the data isn't changing, the same query will return
+the same result set.
+
+The optional `offset` argument of value `n` skips the first `n` results of the call.
+The results are ordered, so as long as the data isn't changing, the same query will
+return the same result set.
+
+**Result Type:** Array of "groups". Each group is an object with a group key and
+a count key. The count is an integer, and the group is an array of objects which
+specify the field and row for each row that was intersected to get that result.
+
+**Examples:**
+
+A single `Rows` query.
+```pql
+GroupBy(Rows(age))
+```
+```json
+[{"group":[{"field":"age","rowID":18}],"count":14},
+{"group":[{"field":"age","rowID":22}],"count":22},
+{"group":[{"field":"age","rowID":29}],"count":6}]
+```
+
+With two `Rows` queries - one with IDs and one with keys.
+```pql
+GroupBy(Rows(age), Rows(job), limit=7)
+```
+```json
+[{"group":[{"field":"age","rowID":18},{"field":"job","rowKey":"engineer"}],"count":3},
+ {"group":[{"field":"age","rowID":18},{"field":"job","rowKey":"management"}],"count":1},
+ {"group":[{"field":"age","rowID":18},{"field":"job","rowKey":"student"}],"count":11},
+ {"group":[{"field":"age","rowID":22},{"field":"job","rowKey":"engineer"}],"count":6},
+ {"group":[{"field":"age","rowID":22},{"field":"job","rowKey":"management"}],"count":2},
+ {"group":[{"field":"age","rowID":22},{"field":"job","rowKey":"student"}],"count":4},
+ {"group":[{"field":"age","rowID":29},{"field":"job","rowKey":"engineer"}],"count":9}]
+```
+
+Getting the rest of the results from the previous example (paging).
+```pql
+GroupBy(Rows(age, previous=29), Rows(job, previous="management"), limit=7)
+```
+
+```json
+ {"group":[{"field":"age","rowID":29},{"field":"job","rowKey":"engineer"}],"count":9}]
+[{"group":[{"field":"age","rowID":29},{"field":"job","rowKey":"management"}],"count":3},
+ {"group":[{"field":"age","rowID":29},{"field":"job","rowKey":"student"}],"count":1}]
+```
+
+Matching groups with a minimum count of 5:
+```pql
+GroupBy(Rows(age), Rows(job), having=Condition(count >= 5))
+```
+```json
+ {"group":[{"field":"age","rowID":18},{"field":"job","rowKey":"student"}],"count":11},
+ {"group":[{"field":"age","rowID":22},{"field":"job","rowKey":"engineer"}],"count":6},
+ {"group":[{"field":"age","rowID":29},{"field":"job","rowKey":"engineer"}],"count":9}]
+```
+
+Using the filter argument.
+```pql
+GroupBy(Rows(age), Rows(job), limit=7, filter=Row(country=USA))
+```
+
+```json
+[{"group":[{"field":"age","rowID":18},{"field":"job","rowKey":"engineer"}],"count":1},
+ {"group":[{"field":"age","rowID":18},{"field":"job","rowKey":"student"}],"count":6},
+ {"group":[{"field":"age","rowID":22},{"field":"job","rowKey":"engineer"}],"count":3},
+ {"group":[{"field":"age","rowID":22},{"field":"job","rowKey":"management"}],"count":1},
+ {"group":[{"field":"age","rowID":22},{"field":"job","rowKey":"student"}],"count":3},
+ {"group":[{"field":"age","rowID":29},{"field":"job","rowKey":"management"}],"count":7}]
+```
+
+Using the Sum aggregate.
+```pql
+GroupBy(Rows(job), aggregate=Sum(field=age))
+```
+
+```json
+[{"group":[{"field":"job","rowKey":"engineer"}],"count":1, "sum": 37},
+ {"group":[{"field":"job","rowKey":"student"}],"count":6, "sum": 129},
+ {"group":[{"field":"job","rowKey":"management"}],"count":7, "sum": 311}]
+
+```
+
+Using the Count(Distinct) aggregate. This returns the number of people in each job, and how many unique ages are represented in that group of people. And yes, unfortunately the result field is still named "sum" for now.
+```pql
+GroupBy(Rows(job), aggregate=Count(Distinct(field=age)))
+```
+
+```json
+[{"group":[{"field":"job","rowKey":"engineer"}],"count":1, "sum": 1},
+ {"group":[{"field":"job","rowKey":"student"}],"count":6, "sum": 5},
+ {"group":[{"field":"job","rowKey":"management"}],"count":7, "sum": 5}]
+```
+
+Sorting by count:
+```pql
+GroupBy(Rows(job), sort="count")
+```
+
+```json
+[{"group":[{"field":"job","rowKey":"management"}],"count":7},
+ {"group":[{"field":"job","rowKey":"student"}],"count":6},
+ {"group":[{"field":"job","rowKey":"engineer"}],"count":1}]
+```
+
+Sorting by count and `Count(Distinct())` of another field:
+```pql
+GroupBy(Rows(job), aggregate=Count(Distinct(field=projects)), sort="count, aggregate")
+```
+
+```json
+[{"group":[{"field":"job","rowKey":"student"}],"count":7, "aggregate": 5},
+ {"group":[{"field":"job","rowKey":"management"}],"count":7, "aggregate": 3},
+ {"group":[{"field":"job","rowKey":"engineer"}],"count":1, "aggregate": 1}]
+```
+
+### TopN
+
+**Spec:**
+
+```pql
+TopN(<FIELD>, [ROW_CALL], [n=UINT])
+```
+
+**Description:**
+
+Return the id and count of the top `n` rows (by count of bits) in the field.
+
+**Result Type:** array of (key,count) pairs sorted in descending order
+
+**Caveats:**
+
+In general, the order of the resulting row keys is not guaranteed to reflect the true order of bit counts across an index. The exact solution to the problem of computing the TopN counts is prohibitively expensive, so TopN is instead implemented as a heuristic. This provides a significant performance improvement, at the cost of uncertainty in the result order.
+
+For guaranteed exact results, use [TopK](#topk), though be advised that it may be significantly slower, particularly for high cardinality fields. It can also be faster in some cases, especially when n is large, so experiment with your particular data set to see what works best.
+
+The implementation is based on a per-shard cache. The accuracy of the results depends on how well the counts for the overall index are reflected in the individual shards (so TopN queries on a single-shard index are exact). If the distribution of bits across shards is uniform, shard counts are representative. This is often a reasonable assumption, especially for the top results for large data sets, in which counts might follow Zipfian, exponential, or other long-tail distributions. However, this assumption may not hold for some applications.
+
+Additional implementation details:
+
+* The field's cache size determines the number of sorted rows to maintain in the cache for purposes of TopN queries. There is a tradeoff between performance and accuracy; increasing the cache size will improve accuracy of results at the cost of performance. Note that this per-shard tradeoff is independent of the per-index performance/accuracy tradeoff mentioned above.
+* Fields with cache type `ranked` will return the top rows sorted by count in descending order.
+* Fields with cache type `lru` will maintain an LRU (Least Recently Used replacement policy) cache, thus a TopN query on this type of field will return rows sorted in order of most recently set bit.
+* Once full, the cache will truncate the set of rows according to the field option CacheSize. Rows that straddle the limit and have the same count will be truncated in no particular order.
+
+See [field creation](/reference/http-api#create-field) for more information about the cache.
+
+**Examples:**
+
+Basic TopN query:
+```pql
+TopN(stargazer)
+```
+```json
+[
+    {
+        "id": 1240,
+        "count": 102
+    },
+    {
+        "id": 4734,
+        "count": 100
+    },
+    {
+        "id": 12709,
+        "count": 93
+    },
+    ...
+]
+```
+
+* `id` is a row ID (user ID)
+* `count` is a count of columns (repositories)
+* Results are the number of bits set in the corresponding row (repositories that each user starred) in descending order for all rows (users) in the stargazer field. For example user 1240 starred 102 repositories, user 4734 starred 100 repositories, user 12709 starred 93 repository.
+
+Limit the number of results:
+```pql
+TopN(stargazer, n=2)
+```
+```json
+[
+    {
+        "id": 1240,
+        "count": 102
+    },
+    {
+        "id": 4734,
+        "count": 100
+    }
+]
+```
+
+* Results are the top two rows (users) sorted by number of bits set (repositories they've starred) in descending order.
+
+Filter based on an existing row:
+```pql
+TopN(stargazer, Row(language=1), n=2)
+```
+```json
+[
+    {
+        "id": 1240,
+        "count": 35
+    },
+    {
+        "id": 7508,
+        "count": 32
+    }
+]
+```
+
+* Results are the top two users (rows) sorted by the number of bits set in the intersection with row 1 of the language field (repositories that they've starred which are written in language 1).
+
+### TopK
+
+**Spec:**
+
+```pql
+TopK(<FIELD>, [k=UINT], [filter=ROW_CALL], [from=TIMESTAMP], [to=TIMESTAMP])
+```
+
+**Description:**
+
+Return the id and count of the top `k` rows (by count of bits) in the set/time field.
+If `k` is omitted, this will return a complete list including all rows with set bits.
+If a `filter` is provided, then this will only count bits that intersect it.
+
+When operating on a time field, the `from` and `to` arguments can be used to perform counts over a time range.
+If the standard view of the time field has been disabled, the `from` and `to` arguments are required.
+
+**Differences from TopN:**
+
+* TopN returns approximate results, and TopK returns exact results
+* TopK supports time ranges, and TopN does not
+* TopN requires a cache (ranked/lru) and TopK does not
+* TopK computes total counts for all rows, and TopN does not
+* TopK is deterministic, and TopN is not
+* TopK does not currently support Tanimoto
+
+Usage notes:
+* TopK may take a second or longer to run on high-cardinality set fields
+* TopK is fast when a sparse filter is applied, as this allows a large portion of work to be skipped
+* When applying a filter which is correlated with row values, TopN and TopK may return dramatically different results
+
+**Result Type:** array of (key,count) pairs sorted in descending order
+
+**Examples:**
+
+Basic TopK query:
+```pql
+TopK(stargazer)
+```
+```json
+[
+    {
+        "id": 1240,
+        "count": 102
+    },
+    {
+        "id": 4734,
+        "count": 100
+    },
+    {
+        "id": 12709,
+        "count": 93
+    },
+    ...
+]
+```
+
+* `id` is a row ID (user ID)
+* `count` is a count of columns (repositories)
+* Results are the number of bits set in the corresponding row (repositories that each user starred) in descending order for all rows (users) in the stargazer field. For example user 1240 starred 102 repositories, user 4734 starred 100 repositories, user 12709 starred 93 repository.
+
+Limit the number of results:
+```pql
+TopK(stargazer, k=2)
+```
+```json
+[
+    {
+        "id": 1240,
+        "count": 102
+    },
+    {
+        "id": 4734,
+        "count": 100
+    }
+]
+```
+
+Filter by a time range:
+```pql
+TopK(stargazer, from=2020-11-10T12:00, to=2020-11-10T23:59)
+```
+```json
+[
+    {
+        "id": 1240,
+        "count": 2
+    },
+    {
+        "id": 4734,
+        "count": 1
+    }
+]
+```
+
+* Results are the top two users (rows) sorted by the number of bits set within in the time range (repositories that they starred during the afternoon of November 10).
+
+Filter based on an existing row:
+```pql
+TopK(stargazer, k=2, filter=Row(language=1))
+```
+```json
+[
+    {
+        "id": 1240,
+        "count": 35
+    },
+    {
+        "id": 7508,
+        "count": 32
+    }
+]
+```
+
+* Results are the top two users (rows) sorted by the number of bits set in the intersection with row 1 of the language field (repositories that they've starred which are written in language 1).
+
+Filter based on an existing row over time:
+```pql
+TopK(stargazer, k=2, from=2019-01-01T00:00, to=2019-12-31T23:59, filter=Row(stargazer=1240, from=2019-01-01T00:00, to=2019-12-31T23:59))
+```
+```json
+[
+    {
+        "id": 1240,
+        "count": 102
+    },
+    {
+        "id": 4734,
+        "count": 51
+    }
+]
+```
+
+* Results are the top two users (rows) sorted by the number of bits set in the intersection with row 1 of the same field over a time range (starred repositories in common with user 1, limited to stars in 2019).
+
+## Aggregation Calls (Read)
+
+### Min
+
+**Spec:**
+
+```pql
+Min([ROW_CALL], field=<FIELD>)
+```
+
+**Description:**
+
+Returns the minimum value of all BSI integer values in this `field`. If the optional `Row` call is supplied, only columns with set bits are considered, otherwise all columns are considered.
+
+**Result Type:** object with the min and count of columns containing the min value.
+
+**Examples:**
+
+Query the minimum value of a field (minimum size of all repositories):
+```pql
+Min(field="diskusage")
+```
+```json
+{"value":4,"count":2}
+```
+
+* Result is the smallest value (repository size in kilobytes, here), plus the count of columns with that value.
+
+### Max
+
+**Spec:**
+
+```pql
+Max([ROW_CALL], field=<FIELD>)
+```
+
+**Description:**
+
+Returns the maximum value of all BSI integer values in this `field`. If the optional `Row` call is supplied, only columns with set bits are considered, otherwise all columns are considered.
+
+**Result Type:** object with the max and count of columns containing the max value.
+
+**Examples:**
+
+Query the maximum value of a field (maximum size of all repositories):
+```pql
+Max(field="diskusage")
+```
+```json
+{"value":88,"count":13}
+```
+
+* Result is the largest value (repository size in kilobytes, here), plus the count of columns with that value.
+
+### Percentile
+
+**Spec:**
+
+```pql
+Percentile(field=<FIELD>, nth=<FLOAT>, filter=[ROW_CALL])
+```
+
+**Description:**
+`Percentile` computes the percentile score at or below which `nth` percent of values fall in the frequency distribution of the field's values.
+
+Unlike the mean or median, the calculation of percentiles has no standard definition, but rather a variety of possible implementations. For large data sets following a continuous probability distribution, the results of different implementations should be very similar. The algorithm used by FeatureBase is *interpolated* and *inclusive*.
+
+*Interpolated* means that the returned result value does not necessarily exist within the dataset. For example, for a field with two values, 1 and 5, the 50th percentile returned by FeatureBase is 3. In contrast, a *nearest-rank* implementation would return 1 or 5.
+
+*Inclusive* means that the returned result value represents the value *at or below which* `nth` percent of values fall (the percentile *includes* the specified value), rather than just the value *at which* `nth` percent of values fall. For example, for a field with the values [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], the 50th percentile *includes* the value 5, which is exactly at the 50th percentile level, so the value returned by FeatureBase is 5. In contrast, an *exclusive* implementation would return 4.
+
+The `field` argument takes in the integer field on which the percentile will be
+calculated. `Decimal` and `DateInt` fields are not supported.
+
+The `nth` argument takes in either a whole number (such as 25) or a float 
+(such as 99.999). This value should be within 0 and 100.0, both inclusive.
+When `nth` is 0, `Percentile` returns the minimum value.
+When `nth` is 100, `Percentile` returns the maximum value.
+When `nth` is 50, `Percentile` returns a value that is close to, but not necessarily exactly equal to, the median value.
+
+The optional `filter` argument takes any type of `Row` query, which is
+intersected with the int field prior to computing the percentile.
+
+Returns the computed Percentile and a count that is set to 1.
+
+**Result Type:** object with the computed percentile and count that is set to 1.
+
+**Examples:**
+
+Given only people with graduate degrees, get the 99th percentile age in the dataset.
+```pql
+Percentile(field="age", nth=99.0, filter=Row(education="Doctorate and/or Professional degree"))
+```
+```json
+{"value":90,"count":1}
+```
+
+* Result is the age below which 99% of all people with graduate degrees fall, i.e. the 99th percentile.
+
+### Sum
+
+**Spec:**
+
+```pql
+Sum([ROW_CALL], field=<FIELD>)
+```
+
+**Description:**
+
+Returns the count and computed sum of all BSI integer values in the `field`. If the optional `Row` call is supplied, columns with set bits are summed, otherwise the sum is across all columns.
+
+**Result Type:** object with the computed sum and count of the values in the integer field.
+
+**Examples:**
+
+Query the size of all repositories.
+```pql
+Sum(field="diskusage")
+```
+```json
+{"value":10,"count":3}
+```
+
+* Result is the sum of all values (total size of all repositories in kilobytes, here), plus the count of columns.
+
+## Exploratory Calls (Read)
+
+### Extract
+
+**Spec:**
+
+```pql
+Extract(<ROW_CALL>, [<ROWS_CALL>...])
+```
+
+**Description:**
+
+Extract intersects a set of columns with a set of rows in order to extract a subset of the index.
+The result is a table consisting of the matched columns and the rows which they intersect.
+This is similar to a select query in a SQL database.
+
+Contrary to the standard definition of Rows, Extract works on all field types.
+
+:::note
+Extract does not currently support filters on the backing `ROWS_CALL`s.
+:::
+
+**Result Type:** Object with an array of the selected fields and an array of the selected columns.
+The column array contains objects containing a column identifier and an array of field values.
+Field values are typed as such:
+
+|Field Type             |`type`      |JSON Value Type                    |
+|-----------------------|------------|-----------------------------------|
+|Bool                   |`"bool"`    |boolean                            |
+|Mutex (unkeyed)        |`"uint64"`  |positive integer ID or `null`      |
+|Mutex (keyed)          |`"string"`  |string or `null`                   |
+|Integer                |`"int64"`   |integer or `null`                  |
+|Integer (foreign-index)|`"string"`  |string or `null`                   |
+|Decimal                |`"decimal"` |FeatureBase decimal value or `null`|
+|Set (unkeyed)          |`"[]uint64"`|array of positive integer IDs      |
+|Set (keyed)            |`"[]string"`|array of strings                   |
+|Time (unkeyed)         |`"[]uint64"`|array of positive integer IDs      |
+|Time (keyed)           |`"[]string"`|array of strings                   |
+
+:::note
+Time fields are treated as sets, and include all values that are set at any time.
+:::
+
+**Examples:**
+
+List all languages associated used in each specified repository:
+```pql
+Extract(ConstRow(columns=[1,2,3]), Rows(language))
+```
+```json
+{
+  "fields": [
+    {
+      "name": "language",
+      "type": "[]string"
+    }
+  ],
+  "columns": [
+    {
+      "column": 1,
+      "rows": [
+        [
+          "C",
+          "Java",
+          "Python"
+        ]
+      ]
+    },
+    {
+      "column": 2,
+      "rows": [
+        [
+          "Go"
+        ]
+      ]
+    },
+    {
+      "column": 1,
+      "rows": [
+        [
+          "Python",
+          "JavaScript"
+        ]
+      ]
+    }
+  ]
+}
+```
+
+## Write Operations
+
+### Store
+
+**Spec:**
+
+```pql
+Store(<ROW_CALL>, <FIELD>=<ROW>)
+```
+
+- `ROW_CALL` - The query which will have its results cached. Must be a `ROW_CALL`, that is, any query that returns a Row. Allowed queries are: `Row`, `Intersect`, `Union`, `Difference`, `Xor`, `Not`, `ConstRow`.
+- `FIELD` - The name of a field of type `Set`, typically with `cacheType` set to `none` to avoid unnecessary overhead. If the specified field does not exist, it is created with `cacheType` set to `none`.
+- `ROW` - The value which will be set in `field_name` for each result returned in the query. This flag value will typically be used in a future query which uses this `Store` result, in order to filter the future query. Note that row keys can be used here.
+
+**Description:**
+
+`Store` writes the results of `<ROW_CALL>` to the specified row. If the row already exists, it will be replaced. The destination field must be of field type `set`.
+
+The `Store()` query allows a user to execute a query and store the result set as an additional row in a field. This result set can then be used in future queries. Note that the query must return a "Row" result, e.g. Row, Intersect, Union, etc.
+
+If the result set from the `Store` becomes stale and needs an update, executing the `Store` function again on the same query will refresh the result set, replacing the complete result set from a previous store operation.
+
+Multiple named `Store` results sets can be maintained in the same index, representing different query results.
+
+**Result Type:** boolean
+
+Upon success, this method always returns `true`. A future version of FeatureBase may use this boolean result to indicate whether or not the data in the destination row was changed by the `Store` call.
+
+**Examples:**
+
+Store the contents of stargazer row 1 into stargazer row 2:
+```pql
+Store(Row(stargazer=1), stargazer=2)
+```
+```json
+{"results":[true]}
+```
+
+Store the results of the intersection of stargazer rows 10 and 11 into stargazer row 20.
+```pql
+Store(Intersect(Row(stargazer=10), Row(stargazer=11)), stargazer=20)
+```
+```json
+{"results":[true]}
+```
+
+**Detailed Example:**
+```pql
+Store(
+    Intersect(
+        Not(Row(bools="has_season_pass")),
+        Row(bools="all_fans"))
+    ),
+    ticket_buyers=1
+)
+```
+
+Note: if `ticket_buyers` does not exist before `Store` is called, it will be created automatically and set to:
+
+```json
+ "cacheType": "none"
+```
+
+This will prevent unnecessary overhead in Molecula, calculating TopN caches, etc.
+
+**Example Application:**
+
+Original Query:
+
+```pql
+Intersect(
+    Row(age_range="18-24"),
+    Row(education="college"),
+    Row(zip_code="78750"),
+    Not(Row(bools="has_season_pass")),
+    Row(bools="all_fans")
+)
+Intersect(
+    Row(age_range="25-34"),
+    Row(education="college"),
+    Row(zip_code="78750"),
+    Not(Row(bools="has_season_pass")),
+    Row(bools="all_fans")
+)
+[...]
+```
+
+Because this series of `Intersect` queries has a common subquery, it can be separated and cached:
+
+```pql
+Store(
+    Intersect(
+        Not(Row(bools="has_season_pass")),
+        Row(bools="all_fans")
+    ),
+    ticket_buyers=1
+)
+```
+
+The final query:
+
+```pql
+Intersect(
+    Row(age_range="18-24"),
+    Row(education="college"),
+    Row(zip_code="78750"),
+    Row(ticket_buyers=1)
+)
+Intersect(
+    Row(age_range="25-34"),
+    Row(education="college"),
+    Row(zip_code="78750"),
+    Row(ticket_buyers=1)
+)
+```
+
+This can significantly improve performance for larger batches of queries.
+
+`Store` results can be used within other `Store` calls. For instance, having created a row representing "all fans without season passes", a successive `Store` call can be used to create a list of fans without season passes, and with a specific age range and education level:
+
+```pql
+Store(
+    Intersect(
+        ticket_buyers=1,
+        Row(age_range="18-24"),
+        Row(education="college"),
+        ticket_buyers=2
+    )
+)
+```
+
+Then this row of the `ticket_buyers` field could be used for queries against that particular age_range/education combination, replacing four reads and three intersection computations with a single read in all the following queries.
+
+It is safe to read from and write to the same row in a single `Store` call. For example, `Store(Union(Row(scratch=0),Row(newData=1)), scratch=0)` will perform a union including the `scratch=0` row, and then write the result to that same row.
+
+### ClearRow
+
+**Spec:**
+
+```pql
+ClearRow(<FIELD>=<ROW>)
+```
+
+**Description:**
+
+`ClearRow` sets all bits to 0 in a given row of the binary matrix, thus disassociating the given row in the given field from all columns.
+
+**Result Type:** boolean
+
+A return value of `true` indicates that at least one column was toggled from 1 to 0.
+
+A return value of `false` indicates that all bits in the row were already 0 and nothing changed.
+
+**Examples:**
+
+Clear all bit in row 1 in the stargazer field:
+```pql
+ClearRow(stargazer=1)
+```
+```json
+{"results":[true]}
+```
+
+This represents removing the relationship between the user with id=1 and all repositories.
+
+
+### Set
+
+**Spec:**
+
+```pql
+Set(<COLUMN>, <FIELD>=<ROW>, [TIMESTAMP])
+```
+
+**Description:**
+
+`Set` assigns a value of 1 to a bit in the binary matrix, thus associating the given row (the `<ROW>` value) in the given field with the given column.
+
+:::note
+While using "Set" in PQL is a convenient way to get familiar with FeatureBase, it's almost always better to use a dedicated ingest tool. See [ingesters](/explanations/ingesters) for details.
+:::
+
+**Result Type:** boolean
+
+A return value of `true` indicates that the bit was changed to 1.
+
+A return value of `false` indicates that the bit was already set to 1 and nothing changed.
+
+**Examples:**
+
+Set the bit at row 1, column 10:
+```pql
+Set(10, stargazer=1)
+```
+```json
+{"results":[true]}
+```
+
+This sets a bit in the stargazer field, representing that the user with id=1 has starred the repository with id=10.
+
+Set also supports providing a timestamp. To write the date that a user starred a repository:
+```pql
+Set(10, stargazer=1, 2016-01-01T00:00)
+```
+```json
+{"results":[true]}
+```
+
+Set multiple bits in a single request:
+```pql
+Set(10, stargazer=1) Set(20, stargazer=1) Set(10, stargazer=2) Set(30, stargazer=2)
+```
+```json
+{"results":[false,true,true,true]}
+```
+
+Set the field "pullrequests" to integer value 2 at column 10:
+```pql
+Set(10, pullrequests=2)
+```
+```json
+{"results":[true]}
+```
+
+
+### Clear
+
+**Spec:**
+
+```pql
+Clear(<COLUMN>, <FIELD>=<ROW>)
+```
+
+**Description:**
+
+`Clear` assigns a value of 0 to a bit in the binary matrix, thus disassociating the given row in the given field from the given column. The bit to be cleared is specified by the intersection of `<COLUMN>` and `<FIELD>=<ROW>`.  `<COLUMN>` and `<ROW>` can each be specified as an integer ID, or for string-keyed Columns and Rows, as the keyed string value.
+
+To clear a value from an int field, you can pass any int value as the `<ROW>` value, and the field will be set to null. You do not need to know the particular value of the int field in order to clear it.
+
+e.g. To clear the int field myint from column 10, regardless of current value:
+```pql
+Clear(10, myint=0)
+```
+```json
+{"results":[true]}
+```
+
+
+Note that clearing a column on a time field will remove all data for that column.
+
+**Result Type:** boolean
+
+A return value of `true` indicates that the bit was toggled from 1 to 0.
+
+A return value of `false` indicates that the bit was already set to 0 and nothing changed.
+
+**Examples:**
+
+Clear the bit at row 1 and column 10 in the stargazer field:
+```pql
+Clear(10, stargazer=1)
+```
+```json
+{"results":[true]}
+```
+
+This represents removing the relationship between the user with id=1 and the repository with id=10.
+
+To clear the String field `language` for the value `Java` from the keyed column `ABC`:
+```pql
+Clear("ABC", language="Java")
+```
+This removes the relationship between the record `ABC` and the value `Java` in the `language` field.
+
+### Delete
+
+**Spec:**
+
+```pql
+Delete(<ROW_CALL>)
+```
+
+**Description:**
+
+`Delete` deletes the set of columns from an index specified by a `ROW_CALL`. It is potentially a very heavy operation. It iterates over all fields and views in a set of provided columns, removing the columns. It also removes all data from fields, existence bits, and key translation for the provided columns for all replicas in the cluster. 
+
+`Delete` does not support deleting specific fields, only full records based on a `ROW_CALL`. It doesn't support deletes from Kafka Delete Consumer or two separate clusters. 
+
+**Result Type:**  boolean
+
+A return value of `true` indicates that the columns to delete were found AND deleted.
+
+A return value of `false` indicates that the columns to delete were NOT found OR that they WERE found but not deleted.
+
+**Examples:**
+
+Delete a specific set of records identified by column ID.
+```pql
+Delete(ConstRow(columns=[1,2,3]))
+```
+```json
+{"results":[true]}
+```
+
+Delete a calculated set of records
+```pql
+Delete(Intersect(Row(setfield=20),Row(gender="m")))
+```
+```json
+{"columns":[30]}
+```
+
+Note: while you could delete all records in an index using `Delete(All())`, this is not recommended, as [dropping an index](/reference/grpc-api#deleteindex) would be a much more performant way of deleting all records in an index.
+
+
+## Other Operations
+
+### Options
+
+**Spec:**
+
+```pql
+Options(<CALL>, shards=[UINT ...])
+```
+
+**Description:**
+
+Modifies the given query as follows:
+
+* `shards`: Run the query using only the data from the given shards. By default, the entire data set (i.e. data from all shards) is used.
+
+**Result Type:** Same result type as `<CALL>`.
+
+**Examples:**
+
+Run the query against shards 0 and 2 only:
+```pql
+Options(Row(f1=10), shards=[0, 2])
+```
+```json
+{"columns":[100, 2097152]}
+```

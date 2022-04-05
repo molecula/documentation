@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>How to Install FeatureBase</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <div class="container">
+        <header>
+            <a href="/"> 
+                <img src="/img/logo.svg" alt="Molecula Logo" class="logo">
+            </a>
+        </header>
+        <main class="container__main">
+            <!-- Left sidebar -->
+            <aside class="container__left">
+                <ul>
+    
+      
+        <li><a href="/index.html">Home</a></li>
+        
+  
+      
+    
+       
+        <li><p>Tutorials</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/tutorials/getting-started.html">Getting Started</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>Explanation</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/explanations/architecture.html">Architecture</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>How-Tos</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/how-tos/install-featurebase.html">Install FeatureBase</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>Reference</a></li>
+        
+  
+      
+        <ul>
+    
+       
+        <li><p>Interfaces</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/reference/apis.html">APIs</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>Query Languages</a></li>
+        
+  
+      
+    
+       
+        <li><p>Operations</a></li>
+        
+  
+      
+    
+       
+        <li><p>Configuration</a></li>
+        
+  
+      
+    
+      
+        <li><a href="/reference/glossary.html">Glossary</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+  </ul>
+
+            </aside>
+    
+            <article class="container__middle">
+                <h1>How to Install FeatureBase</h1>
+                <section>
+                  <p>This document contains instructions for manually installing FeatureBase on a single node.</p>
+
+<h2 id="linux-with-systemd">Linux with systemd</h2>
+
+<p>:::note
+For FeatureBase 4.4.0 or later
+:::</p>
+
+<h3 id="install-featurebase-and-consumers">Install FeatureBase and Consumers</h3>
+
+<p>Extract the Molecula tarball.</p>
+
+<p>Copy binaries to <code class="language-plaintext highlighter-rouge">/usr/local/bin/</code>, being sure to choose the correct binaries for your OS
+ and CPU architecture, typically linux-amd64 for Linux:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">featurebase</code></li>
+  <li><code class="language-plaintext highlighter-rouge">molecula-consumer/*</code></li>
+</ul>
+
+<p>Copy files, and confirm settings are correct:</p>
+<ul>
+  <li>configuration file <code class="language-plaintext highlighter-rouge">featurebase.conf</code> to <code class="language-plaintext highlighter-rouge">/etc/</code></li>
+  <li>service file <code class="language-plaintext highlighter-rouge">featurebase.service</code> to <code class="language-plaintext highlighter-rouge">/etc/systemd/system/</code></li>
+</ul>
+
+<p>Sample setup files are provided <a href="#sample-files">below</a>.</p>
+
+<p>Create user <code class="language-plaintext highlighter-rouge">molecula</code> using a secure password:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>adduser molecula
+</code></pre></div></div>
+
+<p>Create a log folder:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo mkdir</span> /var/log/molecula
+</code></pre></div></div>
+
+<p>Change the ownership of the log folder to <code class="language-plaintext highlighter-rouge">molecula</code>:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo chown </span>molecula /var/log/molecula
+</code></pre></div></div>
+
+<p>Create a data folder:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo mkdir</span> <span class="nt">-p</span> /opt/molecula/featurebase
+</code></pre></div></div>
+
+<p>Change the ownership of the data folder to <code class="language-plaintext highlighter-rouge">molecula</code>:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo chown </span>molecula /opt/molecula/featurebase
+</code></pre></div></div>
+
+<p>Refresh systemd so the services will load:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl daemon-reload
+</code></pre></div></div>
+
+<p>Start Molecula services:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">sudo systemctl start featurebase</code></li>
+  <li><code class="language-plaintext highlighter-rouge">sudo systemctl enable featurebase</code></li>
+</ul>
+
+<p>Verify startup:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">sudo systemctl status featurebase</code></li>
+</ul>
+
+<p>Inspect Logs:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">journalctl -u featurebase -r</code></li>
+</ul>
+
+<p>Install the postgres client for psql:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>postgresql-client
+</code></pre></div></div>
+
+<p>or</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>yum <span class="nb">install </span>postgresql
+</code></pre></div></div>
+
+<h3 id="test-the-installation-via-http">Test the Installation via HTTP</h3>
+
+<p>Running this command:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl localhost:10101
+</code></pre></div></div>
+
+<p>Should result in output similar to this:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Welcome. FeatureBase is running. Visit https://docs.molecula.cloud for more information.
+</code></pre></div></div>
+
+<p>Running this command:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl localhost:10101/status
+</code></pre></div></div>
+
+<p>Should result in output similar to this:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="nl">"state"</span><span class="p">:</span><span class="s2">"NORMAL"</span><span class="p">,</span><span class="nl">"nodes"</span><span class="p">:[{</span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"fbd5bdca-b741-4e2d-ad1d-e033fe0d91a2"</span><span class="p">,</span><span class="nl">"uri"</span><span class="p">:{</span><span class="nl">"scheme"</span><span class="p">:</span><span class="s2">"http"</span><span class="p">,</span><span class="nl">"host"</span><span class="p">:</span><span class="s2">"10.0.0.3"</span><span class="p">,</span><span class="nl">"port"</span><span class="p">:</span><span class="mi">10101</span><span class="p">},</span><span class="nl">"grpc-uri"</span><span class="p">:{</span><span class="nl">"scheme"</span><span class="p">:</span><span class="s2">"grpc"</span><span class="p">,</span><span class="nl">"host"</span><span class="p">:</span><span class="s2">"10.0.0.3"</span><span class="p">,</span><span class="nl">"port"</span><span class="p">:</span><span class="mi">20101</span><span class="p">},</span><span class="nl">"isCoordinator"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nl">"state"</span><span class="p">:</span><span class="s2">"READY"</span><span class="p">}],</span><span class="nl">"localID"</span><span class="p">:</span><span class="s2">"fbd5bdca-b741-4e2d-ad1d-e033fe0d91a2"</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="test-the-installation-via-postgres">Test the Installation via Postgres</h4>
+
+<p>Running this command:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>psql <span class="nt">-h</span> localhost <span class="nt">-p</span> 55432 <span class="nt">-c</span> <span class="s2">"show tables;"</span>
+</code></pre></div></div>
+
+<p>Should result in output similar to this:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Table
+-------
+ user
+(1 row)
+</code></pre></div></div>
+
+<h3 id="install-python-library">Install Python Library</h3>
+
+<p>With Python3 available, install dependencies.</p>
+
+<p>For Red Hat:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yum <span class="nb">install </span>python-devel
+yum <span class="nb">install </span>gcc-c++
+</code></pre></div></div>
+
+<p>For Debian:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get update
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>python-dev-is-python3
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>build-essential
+<span class="nb">sudo </span>apt <span class="nb">install </span>python3-pip
+</code></pre></div></div>
+
+<p>Install the python-molecula whl file:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 <span class="nb">install </span>molecula-1.5.2-py3-none-any.whl
+</code></pre></div></div>
+
+<h4 id="test-the-python-installation">Test the Python installation</h4>
+
+<p>In a python3 script or REPL, this line should succeed if the installation completed:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">molecula</span>
+</code></pre></div></div>
+
+<p>To verify the connection to the VDSM, try to retrieve the VDS list:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">client</span> <span class="o">=</span> <span class="n">molecula</span><span class="p">.</span><span class="n">Client</span><span class="p">(</span><span class="s">'localhost:20101'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">vds</span> <span class="ow">in</span> <span class="n">client</span><span class="p">.</span><span class="n">get_vds_list</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">vds</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="macos">MacOS</h2>
+
+<p>:::note
+For Molecula 2.1.1
+:::</p>
+
+<p>:::important
+As with many data stores, FeatureBase requires open file limits to be increased from their defaults. Managing open file limits changes frequently with MacOS versions. Here are a few resources to consult:</p>
+
+<ul>
+  <li><a href="/reference/featurebase-configuration#max-file-count">max-file-count configuration option</a></li>
+  <li>https://gist.github.com/tombigel/d503800a282fcadbee14b537735d202c</li>
+  <li>https://docs.riak.com/riak/kv/latest/using/performance/open-files-limit/index.html#mac-os-x-el-capitan
+:::</li>
+</ul>
+
+<p>Extract the Molecula tarball.</p>
+
+<p>Copy binaries to <code class="language-plaintext highlighter-rouge">/usr/local/bin/</code>, being sure to choose the correct binaries for your OS
+ and CPU architecture, typically darwin-amd64 for MacOS.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">featurebase</code></li>
+  <li><code class="language-plaintext highlighter-rouge">molecula-consumer/*</code></li>
+</ul>
+
+<p>Copy file, and confirm settings are correct:</p>
+
+<ul>
+  <li>configuration file <code class="language-plaintext highlighter-rouge">featurebase.conf</code> to <code class="language-plaintext highlighter-rouge">/etc/</code>:</li>
+</ul>
+
+<p>Sample setup files are provided <a href="#sample-files">below</a>.</p>
+
+<p>Create a log folder:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo mkdir</span> /var/log/molecula
+</code></pre></div></div>
+
+<p>Change the ownership of the log folder to your username:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo chown</span> <span class="nv">$USER</span> /var/log/molecula
+</code></pre></div></div>
+
+<p>Create a data folder:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo mkdir</span> <span class="nt">-p</span> /opt/molecula/featurebase
+</code></pre></div></div>
+
+<p>Start Molecula apps as background processes:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">featurebase server -c /etc/featurebase.conf &amp;</code></li>
+</ul>
+
+<p>Install a postgres client for psql. We recommend installing via Homebrew:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>postgresql
+</code></pre></div></div>
+
+<h3 id="test-the-installation-via-http-1">Test the Installation via HTTP</h3>
+
+<p>Running this command:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl localhost:10101
+</code></pre></div></div>
+
+<p>Should result in output similar to this:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Welcome. FeatureBase is running. Visit https://docs.molecula.cloud for more information.
+</code></pre></div></div>
+
+<p>Running this command:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl localhost:10101/status
+</code></pre></div></div>
+
+<p>Should result in output similar to this:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="nl">"state"</span><span class="p">:</span><span class="s2">"NORMAL"</span><span class="p">,</span><span class="nl">"nodes"</span><span class="p">:[{</span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"fbd5bdca-b741-4e2d-ad1d-e033fe0d91a2"</span><span class="p">,</span><span class="nl">"uri"</span><span class="p">:{</span><span class="nl">"scheme"</span><span class="p">:</span><span class="s2">"http"</span><span class="p">,</span><span class="nl">"host"</span><span class="p">:</span><span class="s2">"10.0.0.3"</span><span class="p">,</span><span class="nl">"port"</span><span class="p">:</span><span class="mi">10101</span><span class="p">},</span><span class="nl">"grpc-uri"</span><span class="p">:{</span><span class="nl">"scheme"</span><span class="p">:</span><span class="s2">"grpc"</span><span class="p">,</span><span class="nl">"host"</span><span class="p">:</span><span class="s2">"10.0.0.3"</span><span class="p">,</span><span class="nl">"port"</span><span class="p">:</span><span class="mi">20101</span><span class="p">},</span><span class="nl">"isCoordinator"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nl">"state"</span><span class="p">:</span><span class="s2">"READY"</span><span class="p">}],</span><span class="nl">"localID"</span><span class="p">:</span><span class="s2">"fbd5bdca-b741-4e2d-ad1d-e033fe0d91a2"</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="test-the-installation-via-postgres-1">Test the Installation via Postgres</h4>
+
+<p>Running this command:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>psql <span class="nt">-h</span> localhost <span class="nt">-p</span> 55432 <span class="nt">-c</span> <span class="s2">"show tables;"</span>
+</code></pre></div></div>
+
+<p>Should result in output similar to this:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Table
+-------
+ user
+(1 row)
+</code></pre></div></div>
+
+<h3 id="install-python-library-1">Install Python Library</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unzip python-molecula-1.7.0.zip
+<span class="nb">cd </span>python-molecula-1.7.0
+python3 setup.py <span class="nb">install</span>
+</code></pre></div></div>
+
+<h4 id="test-the-python-installation-1">Test the Python installation</h4>
+
+<p>In a python3 script or REPL, this line should succeed if the installation completed:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">molecula</span>
+</code></pre></div></div>
+
+<p>To verify the connection to the VDSM, try to retrieve the VDS list:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">client</span> <span class="o">=</span> <span class="n">molecula</span><span class="p">.</span><span class="n">Client</span><span class="p">(</span><span class="s">'localhost:20101'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">vds</span> <span class="ow">in</span> <span class="n">client</span><span class="p">.</span><span class="n">get_vds_list</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">vds</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="software-configuration">Software Configuration</h2>
+
+<p>Refer <a href="/reference/hostsystem">Host System</a> for commonly encountered issues and operations checklist.</p>
+
+<h2 id="sample-files">Sample Files</h2>
+
+<h3 id="for-amazon-linux-version-2">for Amazon Linux version 2</h3>
+<p>In an AMI on EC2, in region us-east-2</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Unit]
+After=network.target
+Description=Service for FeatureBase
+Documentation=https://docs.molecula.cloud/
+DefaultDependencies=no
+
+[Service]
+EnvironmentFile=
+ExecStart=/usr/local/bin/featurebase server -c /etc/featurebase.conf
+Restart=on-failure
+RestartSec=30
+User=molecula
+
+[Install]
+WantedBy=multi-user.target
+</code></pre></div></div>
+
+<h3 id="existing">existing</h3>
+
+<p>featurebase.conf:</p>
+<div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">name</span> <span class="p">=</span> <span class="s">"pilosa1"</span>
+<span class="py">bind</span> <span class="p">=</span> <span class="s">"0.0.0.0:10101"</span>
+<span class="py">bind-grpc</span> <span class="p">=</span> <span class="s">"0.0.0.0:20101"</span>
+
+<span class="py">data-dir</span> <span class="p">=</span> <span class="s">"/opt/molecula/featurebase"</span>
+<span class="py">log-path</span> <span class="p">=</span> <span class="s">"/var/log/molecula/featurebase.log"</span>
+
+<span class="py">max-file-count</span><span class="p">=</span><span class="mi">900000</span>
+<span class="py">max-map-count</span><span class="p">=</span><span class="mi">900000</span>
+
+<span class="py">long-query-time</span> <span class="p">=</span> <span class="s">"10s"</span>
+
+<span class="nn">[postgres]</span>
+
+    <span class="py">bind</span> <span class="p">=</span> <span class="s">"localhost:55432"</span>
+
+<span class="nn">[cluster]</span>
+
+    <span class="py">name</span> <span class="p">=</span> <span class="s">"cluster1"</span>
+    <span class="py">replicas</span> <span class="p">=</span> <span class="mi">1</span>
+
+<span class="nn">[etcd]</span>
+
+    <span class="py">listen-client-address</span> <span class="p">=</span> <span class="s">"http://localhost:10401"</span>
+    <span class="py">listen-peer-address</span> <span class="p">=</span> <span class="s">"http://localhost:10301"</span>
+    <span class="py">initial-cluster</span> <span class="p">=</span> <span class="s">"pilosa1=http://localhost:10301"</span>
+
+<span class="nn">[metric]</span>
+
+    <span class="py">service</span> <span class="p">=</span> <span class="s">"prometheus"</span>
+</code></pre></div></div>
+
+<p>featurebase.service:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Not Ansible managed
+
+[Unit]
+Description="Service for FeatureBase"
+
+[Service]
+RestartSec=30
+Restart=on-failure
+EnvironmentFile=
+User=molecula
+ExecStart=/usr/local/bin/featurebase server -c /etc/featurebase.conf
+
+[Install]
+</code></pre></div></div>
+
+                </section>
+            </article>
+    
+            <!-- Right sidebar -->
+            <nav class="container__right">
+                <div>Applies to</div>
+
+                <span>Please <a href="https://github.com/molecula/documentation/edit/gh-pages/how-tos/install-featurebase.md">help improve this article</a>.</span>
+
+                <div>
+                    <span>
+                        Modified: 
+                    </span>
+                </div>
+
+                <div>Feedback?</div>
+            </nav>
+        </main>
+        <footer>
+            <p> &copy; 2022 Molecula Corp.</p>
+        </footer>
+    </div>
+  </body>
+</html>

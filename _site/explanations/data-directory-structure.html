@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Data Directory Structure</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <div class="container">
+        <header>
+            <a href="/"> 
+                <img src="/img/logo.svg" alt="Molecula Logo" class="logo">
+            </a>
+        </header>
+        <main class="container__main">
+            <!-- Left sidebar -->
+            <aside class="container__left">
+                <ul>
+    
+      
+        <li><a href="/index.html">Home</a></li>
+        
+  
+      
+    
+       
+        <li><p>Tutorials</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/tutorials/getting-started.html">Getting Started</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>Explanation</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/explanations/architecture.html">Architecture</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>How-Tos</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/how-tos/install-featurebase.html">Install FeatureBase</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>Reference</a></li>
+        
+  
+      
+        <ul>
+    
+       
+        <li><p>Interfaces</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/reference/apis.html">APIs</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>Query Languages</a></li>
+        
+  
+      
+    
+       
+        <li><p>Operations</a></li>
+        
+  
+      
+    
+       
+        <li><p>Configuration</a></li>
+        
+  
+      
+    
+      
+        <li><a href="/reference/glossary.html">Glossary</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+  </ul>
+
+            </aside>
+    
+            <article class="container__middle">
+                <h1>Data Directory Structure</h1>
+                <section>
+                  <p>In FeatureBase version 3.x, the data directory structure was updated to account for the new implementation of roaring B-tree format and etcd being used to manage key/value store.</p>
+
+<p>In general, the Molecula team would like to discourage reliance on any particular details of the directory structure.</p>
+
+<p>FeatureBase v3.x:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ tree -d -L 3 .pilosa/
+./
+├── disco
+│   └── member
+│       ├── snap
+│       └── wal
+└── indexes
+    ├── bank
+    │   ├── _keys
+    │   ├── backends
+    │   └── fields
+    ├── dell
+    │   ├── backends
+    │   └── fields
+    └── dell2
+        ├── backends
+        └── fields
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">disco</code> directory is used to store etcd data.</li>
+  <li><code class="language-plaintext highlighter-rouge">idalloc.db</code> stores tracking information for any indexes that are using the ID auto-generation functionality provided in some ingesters.</li>
+  <li><code class="language-plaintext highlighter-rouge">indexes</code> is the main data directory containing a subdirectory for each table in FeatureBase.
+    <ul>
+      <li>If index is using string keys, then there will be a <code class="language-plaintext highlighter-rouge">_keys</code> directory, which contains a translation file for each partition this node is responsible for.</li>
+      <li>The <code class="language-plaintext highlighter-rouge">fields</code> subdirectory encodes some metadata about the fields which exist. It also contains key translation files for the fields using key translation.</li>
+      <li>The <code class="language-plaintext highlighter-rouge">backends</code> subdirectory contains the actual bitmap data.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">startup.log</code> contains the FeatureBase versions that has been run for this data directory.</li>
+</ul>
+
+
+                </section>
+            </article>
+    
+            <!-- Right sidebar -->
+            <nav class="container__right">
+                <div>Applies to</div>
+
+                <span>Please <a href="https://github.com/molecula/documentation/edit/gh-pages/explanations/data-directory-structure.md">help improve this article</a>.</span>
+
+                <div>
+                    <span>
+                        Modified: 
+                    </span>
+                </div>
+
+                <div>Feedback?</div>
+            </nav>
+        </main>
+        <footer>
+            <p> &copy; 2022 Molecula Corp.</p>
+        </footer>
+    </div>
+  </body>
+</html>

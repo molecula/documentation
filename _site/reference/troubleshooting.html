@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Troubleshooting and Support</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <div class="container">
+        <header>
+            <a href="/"> 
+                <img src="/img/logo.svg" alt="Molecula Logo" class="logo">
+            </a>
+        </header>
+        <main class="container__main">
+            <!-- Left sidebar -->
+            <aside class="container__left">
+                <ul>
+    
+      
+        <li><a href="/index.html">Home</a></li>
+        
+  
+      
+    
+       
+        <li><p>Tutorials</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/tutorials/getting-started.html">Getting Started</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>Explanation</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/explanations/architecture.html">Architecture</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>How-Tos</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/how-tos/install-featurebase.html">Install FeatureBase</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>Reference</a></li>
+        
+  
+      
+        <ul>
+    
+       
+        <li><p>Interfaces</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/reference/apis.html">APIs</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>Query Languages</a></li>
+        
+  
+      
+    
+       
+        <li><p>Operations</a></li>
+        
+  
+      
+    
+       
+        <li><p>Configuration</a></li>
+        
+  
+      
+    
+      
+        <li><a href="/reference/glossary.html">Glossary</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+  </ul>
+
+            </aside>
+    
+            <article class="container__middle">
+                <h1>Troubleshooting and Support</h1>
+                <section>
+                  <h2 id="support-channels">Support Channels</h2>
+
+<ul>
+  <li>Please contact Molecula Support at <a href="mailto:support@molecula.com">support@molecula.com</a> for help!</li>
+  <li>We’re happy to share a Slack channel, and are available for in-person meetings and calls as needed.</li>
+</ul>
+
+<h2 id="things-to-have-handy">Things to Have Handy</h2>
+
+<ul>
+  <li>Logs</li>
+  <li>Metrics</li>
+  <li>Host Metrics (memory, disk)</li>
+  <li>Traces</li>
+</ul>
+
+<p>It may be necessary to restart FeatureBase with verbose logging or more granular tracing enabled.</p>
+
+<h2 id="profiling">Profiling</h2>
+
+<p>If you are experiencing performance issues, we’ll likely ask you to profile various components. All components written in Golang have profiling support enabled, this is described in detail here: <a href="https://golang.org/pkg/net/http/pprof/">https://golang.org/pkg/net/http/pprof/</a>. As a quick reference example:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget host:port/debug/pprof/profile?seconds<span class="o">=</span>10
+</code></pre></div></div>
+
+<p>which will download a file that you can send over for analysis, or</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>go tool pprof host:port/debug/pprof/profile?seconds<span class="o">=</span>10
+</code></pre></div></div>
+
+<p>which will directly bring up Go’s command line tool for viewing and analyzing profiling information.</p>
+
+                </section>
+            </article>
+    
+            <!-- Right sidebar -->
+            <nav class="container__right">
+                <div>Applies to</div>
+
+                <span>Please <a href="https://github.com/molecula/documentation/edit/gh-pages/reference/troubleshooting.md">help improve this article</a>.</span>
+
+                <div>
+                    <span>
+                        Modified: 
+                    </span>
+                </div>
+
+                <div>Feedback?</div>
+            </nav>
+        </main>
+        <footer>
+            <p> &copy; 2022 Molecula Corp.</p>
+        </footer>
+    </div>
+  </body>
+</html>

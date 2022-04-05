@@ -1,0 +1,13 @@
+<ul>
+    {% for item in include.nav %}
+      {% if item.url %}
+        <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+      {% else %} 
+        <li><p>{{ item.title }}</a></li>
+      {% endif %}  
+  
+      {% if item.subnav %}
+        {% include nav.html nav=item.subnav %}
+      {% endif %}
+    {% endfor %}
+  </ul>

@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>How To Enable Authentication and Authorization</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <div class="container">
+        <header>
+            <a href="/"> 
+                <img src="/img/logo.svg" alt="Molecula Logo" class="logo">
+            </a>
+        </header>
+        <main class="container__main">
+            <!-- Left sidebar -->
+            <aside class="container__left">
+                <ul>
+    
+      
+        <li><a href="/index.html">Home</a></li>
+        
+  
+      
+    
+       
+        <li><p>Tutorials</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/tutorials/getting-started.html">Getting Started</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>Explanation</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/explanations/architecture.html">Architecture</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>How-Tos</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/how-tos/install-featurebase.html">Install FeatureBase</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>Reference</a></li>
+        
+  
+      
+        <ul>
+    
+       
+        <li><p>Interfaces</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/reference/apis.html">APIs</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>Query Languages</a></li>
+        
+  
+      
+    
+       
+        <li><p>Operations</a></li>
+        
+  
+      
+    
+       
+        <li><p>Configuration</a></li>
+        
+  
+      
+    
+      
+        <li><a href="/reference/glossary.html">Glossary</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+  </ul>
+
+            </aside>
+    
+            <article class="container__middle">
+                <h1>How To Enable Authentication and Authorization</h1>
+                <section>
+                  <p>FeatureBase supports authentication and authorization with OAuth2.0 via a configurable identity provider (IdP). Azure Active Directory is supported.</p>
+
+<h2 id="authentication">Authentication</h2>
+<p>Authentication is the process of confirming a user’s identity.</p>
+
+<p>FeatureBase directs unauthenticated users to the “Sign In” page. When the user clicks the sign-in button, they are redirected to the configured IdP’s login page. Once the user successfully logs in, the identity provider gives FeatureBase a token to retrieve the user’s groups from the configured groups endpoint. Once FeatureBase has retrieved the user’s groups, it will return the JWT back to the user in the form of a cookie (called <code class="language-plaintext highlighter-rouge">molecula-chip</code>). The JWT in this cookie will be used to authorize the user in subsequent requests.</p>
+
+<h2 id="authorization">Authorization</h2>
+<p>Authorization is the process of validating access to protected resources for a given user.</p>
+
+<p>In the IdP, a user may be assigned to one or more groups. When FeatureBase is configured for auth, a permissions file must be provided. The permissions file maps group IDs to indices and permission levels, and has one group ID for cluster-level admin access. There are two permissions at the index level: read and write.</p>
+
+<p>When a user logs in to FeatureBase, their groups are retrieved from the IdP. These group(s) are then mapped to index-level permissions from the configured permissions file to validate the user’s access to a protected resource.</p>
+
+<ul>
+  <li>If no permissions are provided in the permissions file, no access is allowed to FeatureBase.</li>
+  <li>Access at the group level can be granted, revoked or changed by updating the permissions file. Changes to the permissions file require a FeatureBase restart.
+:::warning
+The <code class="language-plaintext highlighter-rouge">featurebase.conf</code> and associated <code class="language-plaintext highlighter-rouge">permissions.yml</code> files <em>MUST</em> be <em>identical</em> across all nodes in a cluster. Failure to do so may result in an insecure cluster.
+:::</li>
+  <li>Access at the user level can be granted, revoked or changed in the identity provider by changing the user’s group memberships. Note that group membership changes may take a moment to propagate to FeatureBase.</li>
+</ul>
+
+<h2 id="audit-log">Audit Log</h2>
+<p>The audit log is a record of requests made to the FeatureBase server. When the FeatureBase server is started, permissions information from the permissions file is logged. Every time a request is made to FeatureBase server, the requested index, user id, user name, query string and IP are logged.</p>
+
+<h2 id="configuring-azure-active-directory">Configuring Azure Active Directory</h2>
+<p>The links below reference the API documentation for configuring Azure Active Directory as an identity provider for a third party application.
+To configure Azure Active Directory as an IdP:</p>
+<ul>
+  <li>Register FeatureBase as an application using <a href="https://docs.microsoft.com/en-us/powerapps/developer/data-platform/walkthrough-register-app-azure-active-directory#create-an-application-registration">Create an application registration documentation</a>
+    <ul>
+      <li>In step 4, the redirect URL is the fully qualified domain or public IP address for a FeatureBase node with the path <code class="language-plaintext highlighter-rouge">/redirect</code>, e.g. <code class="language-plaintext highlighter-rouge">https://YOUR-DOMAIN-HERE:10101/redirect</code>.</li>
+      <li>In step 6, FeatureBase application must have these permissions:
+        <ul>
+          <li>Microsoft Graph : Delegated : GroupMember.ReadAll.</li>
+          <li>Microsoft Graph : Delegated : User.Read.All.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#option-2-create-a-new-application-secret">Create a new application secret key</a> and add the secret key to the <code class="language-plaintext highlighter-rouge">client-secret</code> configuration item in <code class="language-plaintext highlighter-rouge">featurebase.conf</code>.</li>
+  <li><a href="https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal#create-a-basic-group-and-add-members">Create groups</a> by following steps 1 through 10.</li>
+  <li><a href="https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal#create-a-basic-group-and-add-members">Add users to groups</a> by following steps 11 through 12.</li>
+</ul>
+
+<h2 id="configuring-featurebase">Configuring FeatureBase</h2>
+
+<p>:::warning
+The <code class="language-plaintext highlighter-rouge">featurebase.conf</code> and associated <code class="language-plaintext highlighter-rouge">permissions.yml</code> files <em>MUST</em> be <em>identical</em> across all nodes in a cluster. Failure to do so may result in an insecure cluster.
+:::</p>
+
+<p>To enable authentication and authorization in FeatureBase, add the following lines to your <code class="language-plaintext highlighter-rouge">featurebase.conf</code>. More information on these parameters and their values can be found at <a href="/reference/featurebase-configuration.md">this link</a></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[auth]
+ enable = true
+ client-id = ""
+ client-secret = ""
+ authorize-url = ""
+ token-url = ""
+ group-endpoint-url = ""
+ redirect-base-url = ""
+ logout-url = ""
+ scopes = []
+ secret-key = ""
+ permissions = ""
+ query-log-path = ""
+</code></pre></div></div>
+
+<p>Additionally, TLS must be enabled. Refer to <a href="/how-tos/enable-mutual-tls">How To Enable TLS</a> for more details.</p>
+
+<ul>
+  <li>Create a permissions file: <code class="language-plaintext highlighter-rouge">permissions.yaml</code>.
+    <ul>
+      <li>Copy the example below and update with group ids, index names and permissions.
+        <ul>
+          <li>Note that the permission (read or write) must be lower case.</li>
+          <li>Only 1 group is allowed for admin level access. Admin has access to all indexes in FeatureBase.
+            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  user-groups:
+  "&lt;group-id1&gt;":
+  "&lt;index1&gt;": "&lt;write&gt;"
+  "&lt;index2&gt;": "&lt;read&gt;"
+  "&lt;group-id2&gt;":
+  "&lt;index1&gt;": "&lt;read&gt;"
+  admin: "&lt;groupd-id3&gt;"
+</code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">client-id</code> can be obtained from the IdP.
+    <ul>
+      <li>In Azure Active Directory, it can be found under the Applications Overview Page.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">client-secret</code> can be obtained from the IdP.</li>
+  <li><code class="language-plaintext highlighter-rouge">authorize-url</code>, <code class="language-plaintext highlighter-rouge">token-url</code> can be obtained from the IdP.
+    <ul>
+      <li>In Azure Active Directory, they can be found under the Applications Overview Page under endpoints tab. If there are two versions available (v1 and v2), use the v2 links.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">redirect-base-url</code> uses the same url configured in the IdP without the path <code class="language-plaintext highlighter-rouge">/redirect</code>. This is usually the URI of your primary featurebase node, e.g. “https://your-ip-here:10101”</li>
+  <li><code class="language-plaintext highlighter-rouge">group-endpoint-url</code>, <code class="language-plaintext highlighter-rouge">logout-url</code> and <code class="language-plaintext highlighter-rouge">scopes</code> can be found in the IdP API documentation.
+    <ul>
+      <li>For Azure Active Directory, use this configuration:
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  group-endpoint-url = "https://graph.microsoft.com/v1.0/me/transitiveMemberOf/"
+  logout-url = "https://login.microsoftonline.com/common/oauth2/v2.0/logout"
+  scopes = ["https://graph.microsoft.com/.default", "offline_access"]
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">secret-key</code>: secret key used to secure inter-node communication in a FeatureBase cluster. Run <code class="language-plaintext highlighter-rouge">featurebase keygen</code> command to generate a key to use.</li>
+  <li><code class="language-plaintext highlighter-rouge">query-log-path</code>: path for <a href="#audit-log">query audit log</a>.</li>
+  <li><code class="language-plaintext highlighter-rouge">permissions</code>: path for group permissions file that maps group IDs to index-level access.</li>
+</ul>
+
+<h3 id="configure-audit-logs-in-featurebase">Configure audit logs in FeatureBase</h3>
+<ul>
+  <li>Create a log file:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  sudo mkdir -p /var/log/molecula/ &amp;&amp; touch /var/log/molecula/query.log
+</code></pre></div>    </div>
+    <p>If this looks unfamiliar, or this directory has not been set up, refer to <a href="/how-tos/install-featurebase">How To Install FeatureBase</a>.</p>
+  </li>
+  <li>Add the path to the <code class="language-plaintext highlighter-rouge">query-log-path</code> parameter in <code class="language-plaintext highlighter-rouge">featurebase.conf</code>.</li>
+</ul>
+
+<h2 id="tls-configuration">TLS Configuration</h2>
+<p>TLS <em>must</em> be enabled when authentication is enabled.  To configure basic TLS, refer to <a href="/how-tos/enable-mutual-tls">How To Enable TLS</a>.</p>
+
+<p>When TLS is enabled, the scheme must be explicitly defined as <code class="language-plaintext highlighter-rouge">https</code> in <code class="language-plaintext highlighter-rouge">featurebase.conf</code> and in the command-line.</p>
+
+<p>For example, <code class="language-plaintext highlighter-rouge">bind = "localhost:10101"</code> must be <code class="language-plaintext highlighter-rouge">bind = "https://localhost:10101"</code>.</p>
+
+<h2 id="faqs">FAQs</h2>
+<h3 id="how-can-i-get-an-auth-token">How can I get an auth token?</h3>
+<p>An auth token is a valid JWT provided by FeatureBase after the user is authenticated.
+To obtain an auth token:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">token</code> can be obtained by logging into FeatureBase from a browser</li>
+  <li>Once you have logged in, right click on the browser, and click on Inspect
+<img src="/img/auth_inspect.png" alt="&quot;Inspect&quot;" /></li>
+  <li>Click on Application
+<img src="/img/auth_inspect_result.png" alt="&quot;Cookie&quot;" /></li>
+  <li>Click on Cookies on the left-side tabs, then click on <code class="language-plaintext highlighter-rouge">molecula-chip</code>. Copy the Cookie Value, this is the auth token.
+<img src="/img/auth_token.png" alt="&quot;Molecula-Token&quot;" /></li>
+</ul>
+
+<h3 id="how-can-i-use-an-auth-token">How can I use an auth token?</h3>
+<p>To access FeatureBase outside of the UI, an auth token is required. Refer to the <a href="/reference/http-api#http-api-with-authentication">HTTP API</a>, <a href="/reference/grpc-api#grpc-api-with-authentication">gRPC API</a>, <a href="/reference/backups#backups-with-authentication">backup/restore</a> or <a href="/how-tos/use-grafana-plugin#grafana-with-authentication">grafana</a> documentation for details on how to use an auth token to access FeatureBase.</p>
+
+                </section>
+            </article>
+    
+            <!-- Right sidebar -->
+            <nav class="container__right">
+                <div>Applies to</div>
+
+                <span>Please <a href="https://github.com/molecula/documentation/edit/gh-pages/how-tos/enable-auth.md">help improve this article</a>.</span>
+
+                <div>
+                    <span>
+                        Modified: 
+                    </span>
+                </div>
+
+                <div>Feedback?</div>
+            </nav>
+        </main>
+        <footer>
+            <p> &copy; 2022 Molecula Corp.</p>
+        </footer>
+    </div>
+  </body>
+</html>

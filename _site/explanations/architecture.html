@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Architecture</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <div class="container">
+        <header>
+            <a href="/"> 
+                <img src="/img/logo.svg" alt="Molecula Logo" class="logo">
+            </a>
+        </header>
+        <main class="container__main">
+            <!-- Left sidebar -->
+            <aside class="container__left">
+                <ul>
+    
+      
+        <li><a href="/index.html">Home</a></li>
+        
+  
+      
+    
+       
+        <li><p>Tutorials</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/tutorials/getting-started.html">Getting Started</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>Explanation</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/explanations/architecture.html">Architecture</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>How-Tos</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/how-tos/install-featurebase.html">Install FeatureBase</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>Reference</a></li>
+        
+  
+      
+        <ul>
+    
+       
+        <li><p>Interfaces</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/reference/apis.html">APIs</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>Query Languages</a></li>
+        
+  
+      
+    
+       
+        <li><p>Operations</a></li>
+        
+  
+      
+    
+       
+        <li><p>Configuration</a></li>
+        
+  
+      
+    
+      
+        <li><a href="/reference/glossary.html">Glossary</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+  </ul>
+
+            </aside>
+    
+            <article class="container__middle">
+                <h1>Architecture</h1>
+                <section>
+                  <p><img src="/img/molecula-architecture-diagram.png" alt="FeatureBase Network Architecture Diagram" title="FeatureBase Network Architecture Diagram" /></p>
+
+<h2 id="components">Components</h2>
+
+<h3 id="featurebase">FeatureBase</h3>
+
+<p>FeatureBase  is a masterless multi-node system with a single node type. Like other common distributed data stores, it supports high availability (via shard replication), cluster resizing, and distributed query processing.</p>
+
+<p>FeatureBase is similar to a columnar store, but breaks each column into each of its unique values so that they can be represented as a single bit. This data representation is excellent for a variety of analytical workloads.</p>
+
+<h3 id="ingesters">Ingester(s)</h3>
+
+<p>Ingesters are responsible for retrieving data from an upstream data source, transforming it into a FeatureBase-compatible format, and writing that data to FeatureBase. Ingesters are specific to the upstream data source, so in the case where the data source is a Kafka pipeline, a Kafka-specific ingester is used to read messages from a Kafka topic and transform the messages into FeatureBases’s bit-columnar format. In that example, the Kafka-specific ingester can interact with a Confluent Schema Registry in order to determine message schema and to inform the specific field types used in FeatureBase.</p>
+
+<p>The ingester takes configuration options which tell it how to interact with the upstream data source. For the Kafka ingester, those options include the address of the Kafka service as well as any authentication parameters, the topic from which to read, and the address of the schema registry.</p>
+
+<h2 id="interfaces">Interfaces</h2>
+
+<h3 id="ports-and-protocols">Ports and Protocols</h3>
+
+<p>By default, FeatureBase listens for HTTP(S) on port 10101 and gRPC on port 20101. Both of these protocols are required for FeatureBase to function properly.</p>
+
+<p>Optionally, FeatureBase listens on port 55342 for the PostgreSQL wire protocol. It can accept <a href="/reference/pql#overview">PQL</a> queries, or a <a href="/reference/sql">subset of SQL</a> over this protocol.</p>
+
+<p>Internally, FeatureBase uses <a href="https://pkg.go.dev/github.com/coreos/etcd/embed">embedded etcd</a> for consistently managing things like cluster membership and schema, using ports 10301 and 10401 by default.</p>
+
+
+                </section>
+            </article>
+    
+            <!-- Right sidebar -->
+            <nav class="container__right">
+                <div>Applies to</div>
+
+                <span>Please <a href="https://github.com/molecula/documentation/edit/gh-pages/explanations/architecture.md">help improve this article</a>.</span>
+
+                <div>
+                    <span>
+                        Modified: 
+                    </span>
+                </div>
+
+                <div>Feedback?</div>
+            </nav>
+        </main>
+        <footer>
+            <p> &copy; 2022 Molecula Corp.</p>
+        </footer>
+    </div>
+  </body>
+</html>

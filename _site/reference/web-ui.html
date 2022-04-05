@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Web Interface</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <div class="container">
+        <header>
+            <a href="/"> 
+                <img src="/img/logo.svg" alt="Molecula Logo" class="logo">
+            </a>
+        </header>
+        <main class="container__main">
+            <!-- Left sidebar -->
+            <aside class="container__left">
+                <ul>
+    
+      
+        <li><a href="/index.html">Home</a></li>
+        
+  
+      
+    
+       
+        <li><p>Tutorials</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/tutorials/getting-started.html">Getting Started</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>Explanation</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/explanations/architecture.html">Architecture</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>How-Tos</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/how-tos/install-featurebase.html">Install FeatureBase</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>Reference</a></li>
+        
+  
+      
+        <ul>
+    
+       
+        <li><p>Interfaces</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/reference/apis.html">APIs</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>Query Languages</a></li>
+        
+  
+      
+    
+       
+        <li><p>Operations</a></li>
+        
+  
+      
+    
+       
+        <li><p>Configuration</a></li>
+        
+  
+      
+    
+      
+        <li><a href="/reference/glossary.html">Glossary</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+  </ul>
+
+            </aside>
+    
+            <article class="container__middle">
+                <h1>Web Interface</h1>
+                <section>
+                  <p>FeatureBase may be built with a web UI embedded. If so, this is indicated at startup with a log line resembling the following:</p>
+
+<p><code class="language-plaintext highlighter-rouge">enabled Web UI (g290830e) at http://localhost:10101</code></p>
+
+<p>To access the UI, visit the address <code class="language-plaintext highlighter-rouge">:10101</code> in a web browser. For example when running a FeatureBase instance locally with default settings, visit <a href="http://localhost:10101">http://localhost:10101</a>.</p>
+
+<p>When authentication is enabled, TLS must also be enabled. To access the UI, visit <a href="https://localhost:10101">https://localhost:10101</a>. The user will be prompted to login through the identity provider’s website, and will be redirected to FeatureBase home page once authentication is complete. The information available in the web interface may be restricted, depending on the user’s permissions.</p>
+
+<p>Using the user interface you can check the global status of your FeatureBase cluster.
+It contains information about the cluster nodes, data, and has an interface for querying the cluster with both <a href="/reference/pql">PQL</a> and <a href="/reference/sql">SQL</a>. Note that the UI uses the <a href="/reference/apis#postgres-wire-protocol">Postgres Wire Protocol</a>, which requires PQL queries to be prefixed with the table name in square brackets, e.g.:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>stargazers]Count<span class="o">(</span>All<span class="o">())</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="home">Home</h2>
+
+<p><img src="/img/ui-home.png" alt="introduction" /></p>
+
+<h3 id="cluster-health">Cluster Health</h3>
+
+<p><img src="/img/ui-cluster-health-problem.png" alt="cluster health problem" /></p>
+
+<p>Cluster Health shows the global status of the cluster, 
+and it contains an expanded view for each node.</p>
+
+<p>The cluster state display has five possible values:</p>
+
+<ul>
+  <li>
+    <Status color="#57a852" />
+    <p>NORMAL: All nodes are working ok and all data is available.</p>
+  </li>
+  <li>
+    <Status color="#ffa427" />
+    <p>DEGRADED: Some nodes are not reachable, but all data is still available.</p>
+  </li>
+  <li>
+    <Status color="#cd6048" />
+    <p>STARTING: Some nodes are not reachable and the cluster is not ready to answer queries.</p>
+  </li>
+  <li>
+    <Status color="#48b5cd" />
+    <p>RESIZING: Cluster is resizing. Most endpoints are unavailable until the resize completes.</p>
+  </li>
+  <li>
+    <Status color="#a9a9a9" />
+    <p>OFFLINE: Cluster cannot be reached from the UI.</p>
+  </li>
+</ul>
+
+<h4 id="node-health">Node Health</h4>
+
+<p><img src="/img/ui-node-status.png" alt="cluster health" /></p>
+
+<p>Each node’s individual state is indicated by the colored icon:</p>
+<ul>
+  <li>
+    <Status color="#57a852" />
+    <p>NORMAL: Node is working ok and all data is available.</p>
+  </li>
+  <li>
+    <Status color="#a9a9a9" />
+    <p>UNKNOWN: Node is not reachable.</p>
+  </li>
+</ul>
+
+<h4 id="metrics">Metrics</h4>
+
+<p><img src="/img/ui-metrics.png" alt="metrics" /></p>
+
+<p>Metrics provide useful information about nodes.
+More information about them can be found <a href="/reference/monitoring#metrics">here</a>.</p>
+
+<h3 id="transactions">Transactions</h3>
+
+<p>Here you can check and finish actual transactions.
+Clicking <code class="language-plaintext highlighter-rouge">Force Finish</code> will close an open transaction.
+More info about them can be found <a href="/reference/apis#transactions">here</a>.</p>
+
+<p><img src="/img/ui-transactions.png" alt="transaction" /></p>
+
+<h2 id="tables">Tables</h2>
+<p><img src="/img/ui-tables.png" alt="tables ui" /></p>
+
+<p>All Tables are shown here.
+We can explore their fields and metadata,
+like types, cache type and size,
+and also if there are keys associated with a particular field.</p>
+
+<p><img src="/img/ui-fields.png" alt="fields" /></p>
+
+                </section>
+            </article>
+    
+            <!-- Right sidebar -->
+            <nav class="container__right">
+                <div>Applies to</div>
+
+                <span>Please <a href="https://github.com/molecula/documentation/edit/gh-pages/reference/web-ui.md">help improve this article</a>.</span>
+
+                <div>
+                    <span>
+                        Modified: 
+                    </span>
+                </div>
+
+                <div>Feedback?</div>
+            </nav>
+        </main>
+        <footer>
+            <p> &copy; 2022 Molecula Corp.</p>
+        </footer>
+    </div>
+  </body>
+</html>

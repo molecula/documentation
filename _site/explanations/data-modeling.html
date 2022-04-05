@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Data Modeling</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <div class="container">
+        <header>
+            <a href="/"> 
+                <img src="/img/logo.svg" alt="Molecula Logo" class="logo">
+            </a>
+        </header>
+        <main class="container__main">
+            <!-- Left sidebar -->
+            <aside class="container__left">
+                <ul>
+    
+      
+        <li><a href="/index.html">Home</a></li>
+        
+  
+      
+    
+       
+        <li><p>Tutorials</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/tutorials/getting-started.html">Getting Started</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>Explanation</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/explanations/architecture.html">Architecture</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>How-Tos</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/how-tos/install-featurebase.html">Install FeatureBase</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>Reference</a></li>
+        
+  
+      
+        <ul>
+    
+       
+        <li><p>Interfaces</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/reference/apis.html">APIs</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>Query Languages</a></li>
+        
+  
+      
+    
+       
+        <li><p>Operations</a></li>
+        
+  
+      
+    
+       
+        <li><p>Configuration</a></li>
+        
+  
+      
+    
+      
+        <li><a href="/reference/glossary.html">Glossary</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+  </ul>
+
+            </aside>
+    
+            <article class="container__middle">
+                <h1>Data Modeling</h1>
+                <section>
+                  <!--
+TODO: add explanatory content
+we have other existing data-model articles/gdocs/etc that would fit here and make it more useful
+- https://github.com/molecula/featurebase/blob/0fbdbc7ccbbb09504c9b37c22db6879dd7f5632b/docs/data-model.md
+- pilosa.com/docs
+- seebs 2021/06: https://docs.google.com/document/d/1Gj-2BjTGWfdLcu16_l0Ghguc7N9jEESVdUQuhZrrAoY/edit
+- seebs data model outline: https://github.com/molecula/docs/pull/68/files
+- jaffee "value oriented" https://docs.google.com/document/d/12LlV9U_Zf8Hn_5hCfmuYBZ9MGW3LLfy7Bs2HE9r8LuE/edit
+- jaffee "the fourth dimension" https://docs.google.com/document/d/1vm-UsA2ZMRN_0c95fas-c0cYPk-kc24TA1j---HzMzo/edit
+- travis 2018: https://docs.google.com/document/d/1LKlqvtd9f9nSKNTKormDdLvjHOXOKd6luh_AuEkpw_w/edit#heading=h.d2nbbdlqfudo
+-->
+
+<h2 id="concepts">Concepts</h2>
+
+<p>When importing data into FeatureBase, you have a number of choices about how to represent that data. Choices about data representation mean tradeoffs in both storage and runtime performance, and there are no best answers for all circumstances. This section offers guidance on likely ways to make these decisions, and a bit of theory describing what’s happening under the hood to help you make better choices. If you’re not sure, it’s always a good idea to try things out and compare results.</p>
+
+<h3 id="facts-and-dimensions">Facts and Dimensions</h3>
+
+<p>In a standard relational model, one often hears about “fact” tables vs “dimensions”. Each record in a fact table typically represents an immutable event (e.g. someone clicked a link or made a purchase, a temperature reading was recorded, etc). Dimensions on the other hand usually represent slower changing “metadata”. If your fact is that a user performed a certain action, one of your dimensions might be a “users” table that records things like date of birth, gender, address. Recording this information along with every fact would lead to a huge amount of duplication so it is typically split out.</p>
+
+<p>In FeatureBase, you can model things as you typically would in a relational database with facts and dimensions split apart, but FeatureBase has some unique capabilities that give you more options. Usually when you’re doing queries that involve facts, you’re not interested in the events themselves, but one of the dimensions that they affect. For example, you might want to know how many users visited a certain blog post as opposed to how many times that blog post was visited. They sound similar, but the first query is typically much more difficult because you’re counting the distinct number of users rather than the number of events. In FeatureBase, you could add a “pages_visited” set type field directly to your users dimension and get the distinct functionality essentially for free. The power of the set field is that it can track multiple pages visited per user without additional overhead.</p>
+
+<p>But wait! There’s more. What if you only wanted to get the set of users who visited a page within the past month? You’d have to go back to joining the facts with the dimension right? Nope. FeatureBase also has “time” fields which are just like set fields except you have the option to associate a coarse-grained timestamp with every user-page association (in fact you can have multiple timestamps associated with a single user-page pair). Currently the timestamps can be at yearly, monthly, daily, or hourly granularity, and FeatureBase lets you query across arbitrary time ranges.</p>
+
+<p>It takes up more space to store things like this, but if you have a workload that demands low latency for these types of queries it can be a very worthwhile tradeoff over storing the facts separately and joining across the dimensions at query time.</p>
+
+<h2 id="fields">Fields</h2>
+
+<p>Fields are used to segment rows within an index, for example to define different functional groups. A FeatureBase field might correspond to a single field in a relational table, where each row in a standard FeatureBase field represents a single possible value of the relational field. Similarly, an integer field could represent all possible integer values of a relational field.</p>
+
+<h3 id="field-options">Field Options</h3>
+
+<!-- TODO this section is a placeholder, to provide minimal information about field options that are still exposed in the API, and linked from the http-api page -->
+
+<h4 id="ranked">Ranked</h4>
+
+<p>Ranked Fields maintain a sorted cache of column counts by Row ID (yielding the top rows by columns with a bit set in each). This cache facilitates the TopN query. The cache size defaults to 50,000 and can be set at Field creation.</p>
+
+<!-- TODO diagram? -->
+
+<h4 id="lru">LRU</h4>
+
+<p>The LRU cache maintains the most recently accessed Rows.</p>
+
+<!-- TODO diagram? -->
+
+<h4 id="time-quantum">Time Quantum</h4>
+
+<p>Setting a time quantum on a field creates extra views which allow ranged Row queries down to the time interval specified. For example, if the time quantum is set to <code class="language-plaintext highlighter-rouge">YMD</code>, ranged Row queries down to the granularity of a day are supported.</p>
+
+<h3 id="numeric-types">Numeric Types</h3>
+
+<p>FeatureBase has three ways to represent numeric data; sets, mutexes, and integer fields. Each of these field types uses a set of bitmaps under the hood where each bitmap represents a particular value for the field, and each position in a bitmap represents whether a record has that value. In a set field, each record can have any number of different values. Each value is logically independent. In general, sets are a good way to represent data where multiple traits or parameters are logically independent.  A mutex is like a set, but each record can only have one value at a time; setting one value will clear the others. Int fields represent arbitrary values within a range, using multiple bitmaps to store binary digits of the values. Like a mutex, an int field has only one value per record at any given time.</p>
+
+<p>Even in the case where only one value is likely to be set for a given record, you may prefer set fields. If you always know the previous value, clearing that value directly will be more efficient than relying on the mutex logic to clear the other possible values. Integer fields support range queries, but any query will generally have to access all the bitmaps in the field since each one represents a binary digit. Set and mutex fields don’t support range queries, but can query only the values they care about.</p>
+
+<h3 id="integer-field-implementation">Integer Field Implementation</h3>
+
+<p>In FeatureBase’s current architecture, integer fields are implemented using bitplanes. The values in the field are decomposed into bits, and corresponding bits from integer field become bitmaps in the storage. So, one of the bitmaps represents the lowest-order bit (value 1) of every record’s value. An integer field has existence and sign bits, and represents values around a given base value. Thus, the total number of rows used will be 2 + log<sub>2</sub>(N), where N is the distance from the base to the highest or lowest value. (The exact size might vary depending on how you set the field up; a range from 0 to 100,000 which never uses negative values has a sign bit which is never set, a range from -50,000 to +50,000 with an offset of 50,000 has the same range but needs one less row for data values.)</p>
+
+<p>The following table gives approximate estimated storage density for about a million records, assuming every record has values. A “weighted” distribution implies one with a significant variance in distribution, such as power-law or zipfian distributions, where some rows are very populated and some lightly populated.</p>
+
+<p>Storage requirements for data</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Integer</th>
+      <th> </th>
+      <th> </th>
+      <th>Mutex</th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Range, Distribution</strong></td>
+      <td>Rows</td>
+      <td>Storage/Row</td>
+      <td>Total Storage</td>
+      <td>Rows</td>
+      <td>Storage/Row</td>
+      <td>Total Storage</td>
+    </tr>
+    <tr>
+      <td>0-15, even</td>
+      <td>4</td>
+      <td>128KiB*</td>
+      <td>513KiB</td>
+      <td>16</td>
+      <td>128KiB</td>
+      <td>2040KiB</td>
+    </tr>
+    <tr>
+      <td>0-15, weighted</td>
+      <td>4</td>
+      <td>60-128KiB*</td>
+      <td>445KiB</td>
+      <td>16</td>
+      <td>4KiB-128KiB</td>
+      <td>638KiB</td>
+    </tr>
+    <tr>
+      <td>0-63, even</td>
+      <td>6</td>
+      <td>128KiB*</td>
+      <td>769KiB</td>
+      <td>64</td>
+      <td>33KiB</td>
+      <td>2064KiB</td>
+    </tr>
+    <tr>
+      <td>0-63, weighted</td>
+      <td>6</td>
+      <td>14-128KiB</td>
+      <td>506KiB</td>
+      <td>64</td>
+      <td>0.5-128KiB</td>
+      <td>687KiB</td>
+    </tr>
+    <tr>
+      <td>0-1023, even</td>
+      <td>10</td>
+      <td>128KiB</td>
+      <td>1282KiB</td>
+      <td>1024</td>
+      <td>2KiB</td>
+      <td>2304KiB</td>
+    </tr>
+    <tr>
+      <td>0-1023, weighted</td>
+      <td>10</td>
+      <td>1-128KiB</td>
+      <td>536KiB</td>
+      <td>1024</td>
+      <td>0-128KiB</td>
+      <td>743KiB</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>[*] Existence bitmaps are 352 bytes, and sign bitmaps are 0, in this data set; the table only shows sizes for the value bitmaps. In sparser data, the existence and sign bitmaps might be non-trivial.</p>
+
+<p>Integer fields with evenly distributed values will tend to have fairly high cardinality – every value will probably set every bit in its range about half the time, so if you have values for most records, the individual bitmaps will tend to be fairly full, and will approach the maximum storage requirements, slightly over one bit per record per bitmap. With weighted values, the top bits may well have low enough cardinality to produce some space savings. The differences are much more significant with set/mutex type fields; most of the higher values in the 1024-value mutex field were empty (no file created on disk at all), and most of them were under 50 bytes.</p>
+
+<h3 id="timestamp-field-implementation">Timestamp Field Implementation</h3>
+
+<p>Timestamp fields are implemented internally the same way as integer fields and store the number of time units (e.g. seconds) since an epoch.
+By default, the <code class="language-plaintext highlighter-rouge">timeUnit</code> is in seconds (<code class="language-plaintext highlighter-rouge">s</code>) and the epoch is midnight, January 1, 1970 UTC. Other <code class="language-plaintext highlighter-rouge">timeUnit</code> values are <code class="language-plaintext highlighter-rouge">ms</code>, <code class="language-plaintext highlighter-rouge">us</code>, <code class="language-plaintext highlighter-rouge">ns</code>.
+Adjusting the <code class="language-plaintext highlighter-rouge">timeUnit</code> and epoch can limit the range of integer value and reduce the storage requirements and computation time when processing records.</p>
+
+<p>The following table gives approximate estimated storage density for about a million records, assuming every record has values.
+Storage requirements for timestamp data when using a “seconds” time unit</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Integer</th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Range, Distribution</strong></td>
+      <td>Rows</td>
+      <td>Storage/Row</td>
+      <td>Total Storage</td>
+    </tr>
+    <tr>
+      <td>1 day</td>
+      <td>17</td>
+      <td>128KiB*</td>
+      <td>2176KiB</td>
+    </tr>
+    <tr>
+      <td>1 week</td>
+      <td>20</td>
+      <td>128KiB*</td>
+      <td>2560KiB</td>
+    </tr>
+    <tr>
+      <td>1 month</td>
+      <td>22</td>
+      <td>128KiB*</td>
+      <td>2816KiB</td>
+    </tr>
+    <tr>
+      <td>1 year</td>
+      <td>25</td>
+      <td>128KiB*</td>
+      <td>3200KiB</td>
+    </tr>
+    <tr>
+      <td>10 years</td>
+      <td>29</td>
+      <td>128KiB*</td>
+      <td>3712KiB</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Bottom line: If you’re storing timestamps at second granularity, you can expect it to use about 3.7MB per million records.
+At millisecond granularity, it would use 4.9MB per million records.</p>
+
+                </section>
+            </article>
+    
+            <!-- Right sidebar -->
+            <nav class="container__right">
+                <div>Applies to</div>
+
+                <span>Please <a href="https://github.com/molecula/documentation/edit/gh-pages/explanations/data-modeling.md">help improve this article</a>.</span>
+
+                <div>
+                    <span>
+                        Modified: 
+                    </span>
+                </div>
+
+                <div>Feedback?</div>
+            </nav>
+        </main>
+        <footer>
+            <p> &copy; 2022 Molecula Corp.</p>
+        </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>How To Set Up Log Rotation</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <div class="container">
+        <header>
+            <a href="/"> 
+                <img src="/img/logo.svg" alt="Molecula Logo" class="logo">
+            </a>
+        </header>
+        <main class="container__main">
+            <!-- Left sidebar -->
+            <aside class="container__left">
+                <ul>
+    
+      
+        <li><a href="/index.html">Home</a></li>
+        
+  
+      
+    
+       
+        <li><p>Tutorials</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/tutorials/getting-started.html">Getting Started</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>Explanation</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/explanations/architecture.html">Architecture</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>How-Tos</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/how-tos/install-featurebase.html">Install FeatureBase</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>Reference</a></li>
+        
+  
+      
+        <ul>
+    
+       
+        <li><p>Interfaces</a></li>
+        
+  
+      
+        <ul>
+    
+      
+        <li><a href="/reference/apis.html">APIs</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+       
+        <li><p>Query Languages</a></li>
+        
+  
+      
+    
+       
+        <li><p>Operations</a></li>
+        
+  
+      
+    
+       
+        <li><p>Configuration</a></li>
+        
+  
+      
+    
+      
+        <li><a href="/reference/glossary.html">Glossary</a></li>
+        
+  
+      
+    
+  </ul>
+
+      
+    
+  </ul>
+
+            </aside>
+    
+            <article class="container__middle">
+                <h1>How To Set Up Log Rotation</h1>
+                <section>
+                  <p>When logging to a file, Molecula components will re-open the log file on receipt of the HUP signal. This allows for seamless log rotation. As an example, to configure log rotation with FeatureBase:</p>
+
+<ol>
+  <li>
+    <p>First create a log directory owned by the system user that runs the FeatureBase process; we recommend <code class="language-plaintext highlighter-rouge">/var/log/molecula</code>.</p>
+  </li>
+  <li>
+    <p>Next, configure FeatureBase to write to a file in that new directory. Edit your featurebase.conf and add <code class="language-plaintext highlighter-rouge">log-path = "/var/log/molecula/featurebase.log"</code>.</p>
+  </li>
+  <li>
+    <p>Restart FeatureBase for the new logging configuration to take effect.</p>
+  </li>
+  <li>
+    <p>Ensure that <a href="https://linux.die.net/man/8/logrotate">logrotate</a> is installed and configured to run daily with cron. This should be the default after installation on most Linux systems. Check <code class="language-plaintext highlighter-rouge">/etc/cron.daily/logrotate</code> to make sure.</p>
+  </li>
+  <li>
+    <p>Add a new logrotate configuration file at <code class="language-plaintext highlighter-rouge">/etc/logrotate.d/featurebase</code> with the following contents:</p>
+  </li>
+</ol>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/var/log/molecula/featurebase.log {
+    missingok
+    notifempty
+    rotate 7
+    daily
+    compress
+    postrotate
+        pkill -HUP featurebase
+    endscript
+}
+</code></pre></div></div>
+
+<ol>
+  <li>Repeat steps 2-5 for the Ingesters, replacing references to FeatureBase where appropriate.</li>
+</ol>
+
+<p>Note that <code class="language-plaintext highlighter-rouge">pkill -HUP featurebase</code> may not be reliable and that you should use <code class="language-plaintext highlighter-rouge">kill -HUP $(cat /path/to/pidfile)</code> if you are using a PID file.</p>
+
+                </section>
+            </article>
+    
+            <!-- Right sidebar -->
+            <nav class="container__right">
+                <div>Applies to</div>
+
+                <span>Please <a href="https://github.com/molecula/documentation/edit/gh-pages/how-tos/set-up-log-rotation.md">help improve this article</a>.</span>
+
+                <div>
+                    <span>
+                        Modified: 
+                    </span>
+                </div>
+
+                <div>Feedback?</div>
+            </nav>
+        </main>
+        <footer>
+            <p> &copy; 2022 Molecula Corp.</p>
+        </footer>
+    </div>
+  </body>
+</html>
