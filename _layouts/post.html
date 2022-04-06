@@ -1,0 +1,33 @@
+---
+layout: default
+---
+<!-- BEGIN _layouts/post.html -->
+<!-- show tags -->
+<div>
+  {% for tag in page.tags %}
+  <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-semibold bg-gray-100 text-gray-800"> {{ tag }} </span>
+  {% endfor %}
+</div>
+
+{{ content }}
+
+
+
+
+<div class="space-y-100 grid lg:grid-cols-2 gap-4 md:grid-cols-1 border-t border-gray-200 py-10">
+  <div class="sm:text-center md:text-left">
+    <div class="italic text-sm">
+      Last modified on <time class="font-semibold">{% last_modified_at %}</time>
+    </div>
+  </div>
+
+
+  <div class="sm:text-center md:text-right">
+    <h5 class="text-sm font-bold">Something missing or incorrect?</h5>
+    <a href="{% github_edit_link %}" class="text-sm font-medium">
+      Help us improve this article
+    </a>
+  </div>
+</div>
+
+<!-- END _layouts/post.html -->
