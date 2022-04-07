@@ -33,6 +33,14 @@ github_username:  jekyll
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-default-layout
+  - jekyll-last-modified-at
+
+permalink: /:categories/:title
+
+# Optional. The default date format, used if none is specified in the tag.
+last-modified-at:
+  date-format: '%B %d %Y'
 
 # Exclude from processing.
 # The following items will not be processed, by default.

@@ -1,29 +1,16 @@
+
 nav:
-  - title: Home
-    url: /index.html
   - title: Tutorials
-    subnav:
-      - title: Getting Started
-        url: /tutorials/getting-started.html
-  - title: Explanation
-    subnav:
-      - title: Architecture
-        url: /explanations/architecture.html
+    category: tutorials
+
+  - title: Explanations
+    category: explanations
+
   - title: How-Tos
-    subnav:
-      - title: Install FeatureBase
-        url: /how-tos/install-featurebase.html
+    category: how-tos
+
   - title: Reference
+    category: reference
     subnav:
       - title: Interfaces
-        subnav:
-        - title: APIs
-          url: /reference/apis.html
-      - title: Query Languages
-      - title: Operations
-      - title: Configuration
-      - title: Glossary
-        url: /reference/glossary.html
-
-
-
+        category: interfaces
