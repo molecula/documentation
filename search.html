@@ -3,10 +3,6 @@ title: Search
 layout: default
 ---
 
-<!-- https://github.com/nextapps-de/flexsearch -->
-<script src="https://cdn.jsdelivr.net/gh/nextapps-de/flexsearch@0.7.2/dist/flexsearch.bundle.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/nextapps-de/flexsearch@0.7.2/dist/lang/en.min.js"></script>
-
 <script src="https://cdn.rawgit.com/nextapps-de/bulksearch/master/bulksearch.min.js"></script>
 <script src="/data/documents.js"></script>
 <script defer type="text/javascript">
@@ -73,7 +69,7 @@ function showResultCount(count) {
 }
 
 function createPreview(query, text) {
-  const idx = new FlexSearch.Index();
+  const idx = new BulkSearch();
   const chunks = splitByWordCount(text, 16, 64)
 
   chunks.forEach((chunk, i) => idx.add(i, chunk))
