@@ -1,0 +1,137 @@
+---
+title: Search
+layout: default
+---
+
+<!-- https://github.com/nextapps-de/flexsearch -->
+<script src="https://cdn.jsdelivr.net/gh/nextapps-de/flexsearch@0.7.2/dist/flexsearch.bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/nextapps-de/flexsearch@0.7.2/dist/lang/en.min.js"></script>
+
+<script src="https://cdn.rawgit.com/nextapps-de/bulksearch/master/bulksearch.min.js"></script>
+<script src="/data/documents.js"></script>
+<script defer type="text/javascript">
+const options = {
+  depth: 50,
+  limit: 25,
+  language: "en",
+  context: { 
+    resolution: 5,
+    depth: 3,
+    bidirectional: true
+  }
+};
+
+
+const index = new BulkSearch();
+documents.forEach((doc, i) => index.add(i, doc.body))
+
+window.onload = function() {
+  let pos   = window.location.hash.indexOf('q=')
+  let query = window.location.hash.substring(pos + 2)
+  query = decodeURI(query)
+  document.getElementById('search_input').value = query
+  if (query.length) {
+    search(query)
+  }
+}
+
+function search(query) {
+  window.location.hash = '#q=' + encodeURI(query)
+
+  const element = document.getElementById('search_results')
+  const results = index.search(query, { suggest: true })
+
+  showResultCount(results.length)
+  
+  element.innerHTML = ''
+  results
+    .slice(0, 20)
+    .map(i => documents[i])
+    .forEach(doc => {
+      doc.preview = createPreview(query, doc.body)
+      let html = ''
+      html += '<article class="mt-10 mb-16">'
+      html += '<header>'
+      html += '<a href="' + doc.url + '">' + doc.title + '</a>'
+      html += '</header>'
+      html += '<body class="font-normal block">' + doc.preview + '</body>'
+      if (doc.tags) {
+        html += '<div class="mt-1">'
+        doc.tags.split(',').forEach(tag => {
+          html += '<span class="mr-3 inline-flex items-center px-3 py-1 rounded-md border-gray-300 text-gray-400 border font-medium uppercase text-xs tracking-wider">' + tag + '</span>' 
+        })
+        html += '</div>'
+      }
+      html += '</article>'
+      element.innerHTML += html
+    })
+}
+
+function showResultCount(count) {
+  const element = document.getElementById('search_count')
+  element.innerHTML = count + ' matching results'
+}
+
+function createPreview(query, text) {
+  const idx = new FlexSearch.Index();
+  const chunks = splitByWordCount(text, 16, 64)
+
+  chunks.forEach((chunk, i) => idx.add(i, chunk))
+
+  const result = idx.search(query)
+    .slice(0, 1)
+    .map(i => {
+
+      const prefix = []
+      const suffix = []
+
+      for (let k = i - 1; k >= 0 && prefix.reduce((p, c) => p + c.replace(/\s+/g, '').length, 0) < 64; k--) {
+        prefix.push(chunks[k])
+      }
+
+      for (let k = i + 1; k < chunks.length && suffix.reduce((p, c) => p + c.replace(/\s+/g, '').length, 0) < 64; k++) {
+        suffix.push(chunks[k])
+      }
+
+      const result = [ prefix.join('|'), chunks[i], suffix.join('|') ]
+      return result.join(' ')
+    })
+    .pop()
+
+    return result || chunks.slice(0, 2).join(' ')
+}
+
+// https://stackoverflow.com/questions/40817167/splitting-a-string-into-an-array-of-n-words
+function splitByWordCount(str, count, min) {
+  var arr = str.split(' ')
+  var r = [];
+  while (arr.length) {
+    r.push(arr.splice(0, count).join(' '))
+  }
+  return r;
+}
+
+</script>
+
+
+
+<form x-data="{ $query : '' }" @submit.prevent="search($query)" > 
+  <!--<label for="email" class="block text-sm font-medium text-gray-700">Search candidates</label>-->
+  <div class="mt-1 flex shadow-md">
+    <div class="relative flex items-stretch flex-grow focus-within:z-10">
+      <!-- <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+        <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+        </svg>
+      </div> -->
+      <input type="text" id="search_input" x-model="$query" autofocus class="focus:outline-none focus:border-gray-300 focus:ring-0 block w-full p-3 sm:text-base border-gray-300" placeholder="What are you looking for?">
+    </div>
+    <button type="submit" class="-ml-px relative inline-flex items-center space-x-2 px-4 py-2 border border-gray-300 text-sm font-medium text-gray-700 bg-gray-50 hover:bg-gray-100 ">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      </svg>
+    </button>
+  </div>
+</form>
+<div class="font-medium uppercase text-sm tracking-wider mt-3 text-mol-aqua" id="search_count"></div>
+<div id="search_results" class="font-normal"></div>
