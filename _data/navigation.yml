@@ -1,4 +1,3 @@
-
 nav:
   - title: Tutorials
     category: tutorials
@@ -14,3 +13,25 @@ nav:
     subnav:
       - title: Interfaces
         category: interfaces
+
+  - title: SaaS
+    category: saas
+    subnav:
+      - title: Tutorials
+        category: saas-tutorials
+      - title: Explanations
+        category: saas-explanations
+      - title: Create a Deployment
+        category: createdeployment
+      - title: Ingest Data
+        subnav:
+        - title: Introduction
+          category: ingestdata
+        - title: Streaming (HTTPS)
+          category: streaming
+      - title: Consume Data
+        category: consumedata
+      - title: Manage Data
+        category: managedata
+      - title: Reference
+        category: saas-reference
