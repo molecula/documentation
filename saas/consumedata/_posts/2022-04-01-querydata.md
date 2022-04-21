@@ -27,7 +27,7 @@ curl --location --request POST 'https://data.molecula.cloud/v1/<deployment id>/q
 --data-raw '{ 
     "language": "sql", 
     "statement": "<SQL>"
-}
+}'
 ```
 
 **cURL PQL API Reference:**
@@ -38,7 +38,7 @@ curl --location --request POST 'https://data.molecula.cloud/v1/<deployment id>/q
 --data-raw '{ 
     "language": "pql", 
     "statement": "<PQL>"
-}
+}'
 ```
 
 Queries in the user interface have an automatic limit of 100 records applied but can be adjusted up to a 10k maximum. This limit is to protect users from accidentally running taxing queries against their deployments and impacting production performance. After running a query, you will see data populated in a tabular format below the text editor. You are free to explore your data and sort it by the columns returned. If you’d like to hide some of the returned columns, you can click “Columns” directly above the tabular results. You can also export this data to your local machine by clicking “Export” and either downloading a CSV or printing the results.

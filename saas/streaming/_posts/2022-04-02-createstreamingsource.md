@@ -60,6 +60,8 @@ curl --location --request POST 'https://api.molecula.cloud/v1/sinks' \
         "id_field": "<field-name>",
         "allow_missing_fields": false,
         "definition": <schema-definition-json like example above>
+    }
+}'
 ```
 
 You will be returned to the “Data Sources” page and see a new entry with your source name with the status of “CREATING”. After a few moments, this will update to have a status of “ACTIVE”, which means your streaming source is ready to use. Clicking on the source you just created will reveal a details page that contains your schema, all of your selections from the creation phase, as well as the “Streaming Endpoint”. This is the endpoint you will stream records to in order to get data into your tables. All of your Streaming Sources statuses can also be queried programmatically.

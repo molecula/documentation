@@ -383,7 +383,7 @@ curl --location --request POST 'https://data.molecula.cloud/v1/<deployment id>/q
 --data-raw '{ 
     "language": "sql", 
     "statement": "select * from iris_table limit 10"
-}
+}'
 ```
 
 PQL
@@ -394,7 +394,7 @@ curl --location --request POST 'https://data.molecula.cloud/v1/<deployment id>/q
 --data-raw '{ 
     "language": "pql", 
     "statement": "[iris_table]GroupBy(Rows(species))"
-}
+}'
 ```
 
 Queries will yield JSON responses containing the requested data. Now is a good time to explore running other queries if you would like. This marks the end of the quick start. While this guide doesn't show the massive scale FeatureBase can perform against, it does show how fast and simple it is to get started. Please feel free to reach out with any questions or feedback you have for this guide.
