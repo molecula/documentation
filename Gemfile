@@ -35,7 +35,3 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 gem "webrick", "~> 1.7"
 
 gem 'jekyll-default-layout'
-
-group :jekyll_plugins do
-  gem "jekyll-last-modified-at"
-end
