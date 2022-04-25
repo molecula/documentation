@@ -20,22 +20,11 @@ layout: default
 
 
 
-<div class="space-y-100 grid lg:grid-cols-2 gap-4 md:grid-cols-1 border-t border-gray-200 mt-10 py-10 text-mol-slate">
-  
-  <div class="sm:text-center md:text-left">
-    <div class="italic text-sm">
-      Last modified on <time class="font-semibold">{% last_modified_at %}</time>
-    </div>
-  </div>
-
-
-  <div class="sm:text-center md:text-right">
-    <h5 class="text-sm font-bold">Something missing or incorrect?</h5>
-    <a href="{% github_edit_link %}" class="text-sm font-medium">
-      Help us improve this article
-    </a>
-  </div>
-
+<div class="space-y-100 border-t border-gray-200 mt-10 py-10 text-mol-slate sm:text-center">
+  <h5 class="text-sm font-bold">Something missing or incorrect?</h5>
+  <a href="{% github_edit_link %}" class="text-sm font-medium">
+    Help us improve this article
+  </a>
 </div>
 
 <!-- END _layouts/post.html -->
