@@ -40,7 +40,7 @@
         {% if page.url == post.url %}
         <a class="group w-full flex items-center pl-11 pr-2 py-2 text-sm active font-light"> {{ text }} </a>
         {% else %}
-        <a href="{{ post.url }}" class="group w-full flex items-center pl-11 pr-2 py-2 text-sm hover:bg-gray-50 font-light not-active"> {{ text }} </a>
+        <a href="{{ site.baseurl }}{{ post.url }}" class="group w-full flex items-center pl-11 pr-2 py-2 text-sm hover:bg-gray-50 font-light not-active"> {{ text }} </a>
         {% endif %}
       {% endif %}
     {% endfor %}

@@ -4,13 +4,13 @@
     {% if page.url == '/' %}
     <a class="group w-full flex items-center pl-11 pr-2 py-2 text-sm font-light active">Home</a>
     {% else %}
-    <a href="/" class="group w-full flex items-center pl-11 pr-2 py-2 text-sm font-light hover:bg-gray-50 not-active">Home</a>
+    <a href="{{ site.baseurl}}/" class="group w-full flex items-center pl-11 pr-2 py-2 text-sm font-light hover:bg-gray-50 not-active">Home</a>
     {% endif %}
 
     {% if page.url == '/search' %}
     <a class="group w-full flex items-center pl-11 pr-2 py-2 text-sm font-light active">Search</a>
     {% else %}
-    <a href="/search.html" class="group w-full flex items-center pl-11 pr-2 py-2 text-sm font-light hover:bg-gray-50 not-active">Search</a>
+    <a href="{{ site.baseurl}}/search.html" class="group w-full flex items-center pl-11 pr-2 py-2 text-sm font-light hover:bg-gray-50 not-active">Search</a>
     {% endif %}
 
     {% include nav_recursive.html nav=include.nav %}
