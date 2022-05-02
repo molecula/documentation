@@ -90,23 +90,11 @@ Note that nav is the top level element in the YAML file, and all directories are
 For larger content edits or for changes to the theme, you'll likely need to clone the repository and edit it locally. To do so:
 
 
-
-```
-git clone https://github.com/molecula/documentation
-```
-
-
-
-1. Clone the repository
-   
-   
+1. Clone the repository   
    ```
    git clone https://github.com/molecula/documentation
    ```
    
-   
-   
-
 2. Go to the directory and install dependencies
    
    ```
@@ -121,7 +109,5 @@ git clone https://github.com/molecula/documentation
    ```
    bundle exec jekyll serve --watch
    ```
-
-
 
 4. Edit files at your leisure. The site will auto-rebuild and deploy on changes so no need to repeat step 3.
