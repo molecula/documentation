@@ -1,0 +1,30 @@
+---
+layout: default
+---
+<!-- BEGIN _layouts/post.html -->
+<!-- show tags -->
+{% if page.tags != empty %}
+<div class="-mt-10">
+  <span class="text-gray-500 font-medium uppercase text-xs tracking-wider mr-5">Tags:</span>
+  {% assign tags = page.tags | sort %}
+  {% for tag in tags %}
+  <span class="inline-flex items-center px-3 py-1 rounded-md border-gray-300 text-gray-400 border font-medium uppercase text-xs tracking-wider"> {{ tag }} </span>
+  <span class="text-white">,</span> 
+  {% endfor %}
+</div>
+{% endif %}
+
+{% include anchor_headings.html html=content anchorBody='<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>' anchorClass="anchor text-gray-200 font-lighter ml-2 lg:hidden no-underline text-mol-maya" %}
+
+
+
+
+
+<div class="space-y-100 border-t border-gray-200 mt-10 py-10 text-mol-slate sm:text-center">
+  <h5 class="text-sm font-bold">Something missing or incorrect?</h5>
+  <a href="{% github_edit_link %}" class="text-sm font-medium">
+    Help us improve this article
+  </a>
+</div>
+
+<!-- END _layouts/post.html -->

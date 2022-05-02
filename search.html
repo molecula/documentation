@@ -4,7 +4,7 @@ layout: default
 ---
 
 <script src="https://cdn.rawgit.com/nextapps-de/bulksearch/master/bulksearch.min.js"></script>
-<script src="{{ site.baseurl}}/data/documents.js"></script>
+<script src="/data/documents.js"></script>
 <script defer type="text/javascript">
 
 //
@@ -12,7 +12,7 @@ layout: default
 //
 const SEARCH_RESULT_TEMPLATE = '\
   <article class="mt-10 mb-16">\
-    <header><a href="{{ site.baseurl }}$DOC_URL">$DOC_TITLE</a></header>\
+    <header><a href="$DOC_URL">$DOC_TITLE</a></header>\
     <body class="font-normal block">$DOC_PREVIEW</body>\
     <div class="mt-1">$TAGS</div>\
   </article>'
