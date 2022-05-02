@@ -187,7 +187,7 @@ Grab your source's id. This is a unique id for your source. Once your source is 
 
 #### Ingest Data
 
-We now have an endpoint we can stream data to. This guide will only send one micro-batched payload of records, but data can be continually pushed to this endpoint. For more information, please see the [Streaming (HTTPS)](/saas/ingestdata/streamingoverview).
+We now have an endpoint we can stream data to. This guide will only send one micro-batched payload of records, but data can be continually pushed to this endpoint. For more information, please see the [Streaming (HTTPS)](/saas/streaming/streamingoverview).
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
