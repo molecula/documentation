@@ -17,6 +17,12 @@ The best way to edit a page is to first go to the documentation site, and at the
 **NOTE:** Your changes require review and approval before going live. 
 
 
+### Adding a New Page
+
+
+**[TODO]**
+
+
 
 ### Adding New Images
 
