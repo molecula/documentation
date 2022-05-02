@@ -81,9 +81,9 @@ nav:
   
 ```
 
-Note that nav is the top level element in the YAML file, and all directories are children of it. Also note that YAML is a space-sensitive format and each level of indent is 2 spaces.
+**NOTE:** that nav is the top level element in the YAML file, and all directories are children of it. Also note that YAML is a space-sensitive format and each level of indent is 2 spaces.
 
-
+**NOTE:** that the location of the new folder needs to be `/hello/world/_posts/`. The `_posts` directory is very important and must be added to any directory containing markdown files. The markdown files MUST be in the `_posts` directory.
 
 
 
