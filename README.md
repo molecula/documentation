@@ -1,9 +1,11 @@
-# documentation
+# Molecula Documentation
 
+This repository is hosted with GitHub pages with the live site found at: https://help-staging.molecula.cloud.
 
 
 ## How Tos
 
+Here is some documentation (meta documentation?) that explains how to do common actions to update the website.
 
 
 ### Editing a Page
