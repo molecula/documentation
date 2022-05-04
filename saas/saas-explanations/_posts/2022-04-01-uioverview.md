@@ -22,7 +22,7 @@ Once a deployment is running, you will want to start loading data into it. “So
 
 
 ## Tables
-The “Tables” section allows you to create new table objects and inspect the schema of existing tables. Today, FeatureBase schemas are created during data ingest when data is loaded, so metadata around tables will not be populated until data is loaded. Clicking into a table will allow users to see table metadata like the deployment its in, fields and types, and more.
+The “Tables” section allows you to create new table objects and inspect the schema of existing tables. Today, FeatureBase schemas are created during data ingest when data is loaded, so metadata around tables will not be populated until data is loaded. Clicking into a table will allow users to see table metadata like the deployment it's in, fields and types, and more.
 
 ## Query
 The “Query” section allows you to explore data using PQL and SQL statements. The text editor allows for multiple queries to exist in the same pane. Individual queries are separated by newlines with only whitespace. You should first pick a deployment to query against in the top right corner. This will default to the oldest deployment created. Queries have an automatic limit of 100 records applied but can be adjusted up to a 10k maximum. This is to protect users from bogging down FeatureBase accidentally or trying to bring back too much data. The query page also allows you to browse tables and schemas, as well as see your historical queries.
