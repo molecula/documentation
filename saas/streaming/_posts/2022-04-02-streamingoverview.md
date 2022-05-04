@@ -42,7 +42,7 @@ This source's configuration requires a JSON schema for the data that streams thr
 
 **Name**: The name is what you want the field name in your table to be. 
 
-**Path***: The path option is an array of JSON object keys which are applied in order. For example, `["a","b","c"]` would select 1 within `{"a":{"b":{"c":1}}}`. This path must only consist of strings.
+**Path**: The path option is an array of JSON object keys which are applied in order. For example, `["a","b","c"]` would select 1 within `{"a":{"b":{"c":1}}}`. This path must only consist of strings.
 
 **Type**: This is the FeatureBase type you are storing the value as. A list of types is below:
 
