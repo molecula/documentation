@@ -14,7 +14,7 @@ The “Streaming (HTTPS)” source configuration will yield a persistent endpoin
 |Data Limit           |  1MB/sec |
 |Record Limit         | 1000/sec |
 
-There are a couple of states associated with These sources that are important to understand. You will see these states as a “status” through the UI and API. The list of states can be seen below:
+There are a couple of states associated with these sources that are important to understand. You will see these states as a “status” through the UI and API. The list of states can be seen below:
 
 |Status | Description  |
 | --- | ----------- |
@@ -42,7 +42,7 @@ This source's configuration requires a JSON schema for the data that streams thr
 
 **Name**: The name is what you want the field name in your table to be. 
 
-**Path***: The path option is an array of JSON object keys which are applied in order. For example, `["a","b","c"]` would select 1 within `{"a":{"b":{"c":1}}}`. This path must only consist of strings.
+**Path**: The path option is an array of JSON object keys which are applied in order. For example, `["a","b","c"]` would select 1 within `{"a":{"b":{"c":1}}}`. This path must only consist of strings.
 
 **Type**: This is the FeatureBase type you are storing the value as. A list of types is below:
 
@@ -84,7 +84,7 @@ Finally, there are a couple parameters that provide information about your schem
 |primary key fields  |  The primary-key-fields option should be used when the data has no fields that could be used for id-field. This option uses one or more fields (any type) and concatenates them to create unique record IDs for your table. | Yes if id field not provided |
 |allow_missing_fields  |  A boolean field that allows one or more of the fields defined in the schema to be missing from the JSON records streamed in. If a field is missing and this parameter is true, that field is left null with no bits set.. If this parameter is False and a field is missing from the JSON records, an error will return and data will not be loaded into your table. | Yes |
 
-Once a streaming source is configured, data can be streamed to it. Each record should be composed of a JSON blob. One to many records can be sent in a single HTTPS request and should have the following syntax:
+Once a streaming source is configured, data can be streamed to it. Each record should be composed of a JSON blob. One or many records can be sent in a single HTTPS request and should have the following syntax:
 
 ```json
 {

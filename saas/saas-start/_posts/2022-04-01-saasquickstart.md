@@ -44,7 +44,7 @@ curl --location --request POST 'https://id.molecula.cloud' \
 
 ### Create A Deployment
 
-Deployments are instances of FeatureBase. All of your data will live in tables within FeatureBase. You can think of a deployment as a database. Molecula offers t-shirt size deployment choices to choose from. For this guide, we will be using the "8GB" option. For more information on deployments, see [Deployments Overview](/saas/createdeployment/deploymentoverview). The below command will start creating your deployment
+Deployments are clusters of FeatureBase nodes. All of your data will live in tables within FeatureBase. You can think of a deployment as a database. Molecula offers t-shirt (?) size deployment choices to choose from. For this guide, we will be using the "8GB" option. For more information on deployments, see [Deployments Overview](/saas/createdeployment/deploymentoverview). The below command will start creating your deployment
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
@@ -401,7 +401,7 @@ Queries will yield JSON responses containing the requested data. Now is a good t
 
 ### Environment Cleanup
 
- Lastly, it is important to delete these resources to avoid creating costs for your organization. You'll find commands to do so below. Please note the order to deleting resources is important, and resources do take time to fully shutdown. All Successful delete requests should result in a `202` response.
+ Lastly, it is important to delete these resources to avoid creating costs for your organization. You'll find commands to do so below. Please note the order to deleting resources is important, and resources do take time to fully shutdown. All Successful delete requests should result in a 202 response.
 
 #### Delete Source
 
