@@ -96,4 +96,4 @@ Once a streaming source is configured, data can be streamed to it. Each record s
 }
 ```
 
-It is recommended to “microbatch” records before sending them to maximize ingest rates. The maximum amount of records that can be sent in a single request is capped at 1000 today. The JSON blob does support nested structures, so it is up to your schema to define the “path” for each field’s value.
+It is recommended to “microbatch” records before sending them to maximize ingest rates. The maximum amount of records that can be sent in a single request is constrained by the limits above. The JSON blob does support nested structures, so it is up to your schema to define the “path” for each field’s value.

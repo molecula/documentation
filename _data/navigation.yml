@@ -46,8 +46,8 @@ nav:
           - title: Streaming (HTTPS)
             category: streaming
 
-      - title: Consume Data
-        category: consumedata
+      - title: Query Data
+        category: querydata
 
       - title: Manage Data
         category: managedata
