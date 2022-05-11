@@ -1,0 +1,554 @@
+---
+id: http-api
+title: HTTP API
+sidebar_label: HTTP API
+---
+
+## HTTP API with Authentication
+When authentication is enabled, all HTTP api endpoints and are secured using TLS. All requests must include a valid `Authorization` header containing a valid access token. This token may be obtained by following these [instructions](/how-tos/enable-auth#how-to-get-auth-token).
+
+```
+curl -XGET https://localhost:10101/schema -H "Authorization: Bearer <token>"
+```
+
+
+## Endpoint summary
+
+- `/cluster/resize/abort` (POST)
+- `/cluster/resize/remove-node` (POST)
+- `/debug/pprof/` (GET)
+- `/debug/vars` (GET)
+- `/metrics` (GET), handled by prometheus library
+- `/metrics.json` (GET)
+- `/export` (GET)
+- `/import-atomic-record` (POST)
+- `/index` (GET, POST)
+- `/index/{index}` (GET, POST, DELETE)
+- `/index/{index}/field` (POST)
+- `/index/{index}/field/{field}` (POST, DELETE)
+- `/index/{index}/field/{field}/import` (POST)
+- `/index/{index}/field/{field}/mutex-check` (GET)
+- `/index/{index}/field/{field}/import-roaring/{shard}` (POST)
+- `/index/{index}/query` (POST)
+- `/info` (GET)
+- `/inspect` (GET)
+- `/recalculate-caches` (POST)
+- `/schema` (GET, POST)
+- `/schema/details` (GET)
+- `/status` (GET)
+- `/transaction` (POST)
+- `/transaction/{id}` (GET, POST)
+- `/transaction/{id}/finish` (POST)
+- `/transactions` (GET)
+- `/queries` (GET)
+- `/query-history` (GET)
+- `/version` (GET)
+
+`/ui` endpoints are for UI use and are not necessarily stable:
+
+- `/ui/usage` (GET)
+- `/ui/transaction` (GET)
+- `/ui/transaction/` (GET)
+- `/ui/shard-distribution` (GET)
+
+
+## Endpoint details
+
+### List all index schemas
+
+`GET /index`
+
+Is equivalent to `GET /schema` and returns the same response.
+
+### List index schema
+
+`GET /index/{index-name}`
+
+Returns the schema of the specified index in JSON.
+
+``` request
+curl -XGET localhost:10101/index/user
+```
+``` response
+{
+  "name": "user",
+  "createdAt": 1591178953061239000,
+  "options": {
+    "keys": false,
+    "trackExistence": true
+  },
+  "fields": [
+    {
+      "name": "event",
+      "createdAt": 1591178962332452000,
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 50000,
+        "keys": false
+      }
+    }
+  ],
+  "shardWidth": 1048576
+}
+```
+
+### Create index
+
+`POST /index/{index-name}`
+
+Creates an index with the given name.
+
+The request payload is in JSON, and may contain the `options` field. The `options` field is a JSON object with the following options:
+
+* `keys` (bool): Enables using column keys instead of column IDs.
+* `trackExistence` (bool): Enables or disables existence tracking on the index. Required for [Not](/reference/pql#not) queries. It is `true` by default.
+
+``` request
+curl -XPOST localhost:10101/index/user -d '{"options":{"keys":true}}'
+```
+``` response
+{"success":true,"name":"user","createdAt":1591179042178854000}
+```
+
+### Remove index
+
+`DELETE /index/index-name`
+
+Removes the given index.
+
+``` request
+curl -XDELETE localhost:10101/index/user
+```
+``` response
+{"success":true}
+```
+
+### Query index
+
+`POST /index/{index-name}/query`
+
+Sends a [query](/reference/pql) to the FeatureBase server with the given index. The request body is UTF-8 encoded text and response body is in JSON by default.
+
+``` request
+curl localhost:10101/index/user/query \
+     -X POST \
+     -d 'Row(language=5)'
+```
+``` response
+{
+    "results": [
+        {
+            "columns": [
+                100
+            ]
+        }
+    ]
+}
+```
+
+:::note
+Prior to Molecula v4.3, the response of a `Row` query would also include an "attrs" field.
+:::
+
+In order to send protobuf binaries in the request and response, set `Content-Type` and `Accept` headers to: `application/x-protobuf`.
+
+The query is executed for all [shards](/reference/glossary#shard) by default. To use specified shards only, set the `shards` query argument to a comma-separated list of slice indices.
+
+``` request
+curl "localhost:10101/index/user/query?shards=0,1" \
+     -X POST \
+     -d 'Row(language=5)'
+```
+``` response
+{
+    "results": [
+        {
+            "columns": [
+                100
+            ]
+        }
+    ]
+}
+```
+
+### Import Data
+
+`POST /index/{index-name}/field/{field-name}/import`
+
+Supports high-rate data ingest to a particular shard of a particular field. Import endpoints are used by ingesters; it is not usually necessary to use this endpoint directly.
+
+The request payload is protobuf encoded with the following schema. The RowKeys
+and/or ColumnKeys fields are used if the FeatureBase field or index are configured
+for keys respectively. Otherwise, the RowIDs and ColumnIDs fields are used. They
+must have the same number of items, and each index into those two lists
+represents a particular bit to be set. Timestamps are optional, but if they
+exist must also contain the same number of items as rows and columns. The
+column IDs must all be in the shard specified in the request.
+
+Some endpoints and data structures include a `CreatedAt` fields.
+This is typically stored as a timestamp, but it's purpose is not to inform of the creation date of a particular index or field,
+but to serve as a unique identifier for use in cache invalidation.
+
+The problem is that users of FeatureBase (such as [ingesters](/explanations/ingesters))
+can usually assume that translation keys for records and field values never change - they are only appended to, and can therefore be trivially cached.
+This is true except in cases where an index or field gets deleted and then recreated,
+or if FeatureBase is restored from a backup.
+So the ingesters must send their current `CreatedAt` value which will have changed if either of those two conditions has occured (or if FeatureBase was just restarted),
+and the ingester will know that it needs to drop its cache.
+
+```protobuf
+message ImportRequest {
+    string Index = 1;
+    string Field = 2;
+    uint64 Shard = 3;
+    repeated uint64 RowIDs = 4;
+    repeated uint64 ColumnIDs = 5;
+    repeated int64 Timestamps = 6;
+    repeated string RowKeys = 7;
+    repeated string ColumnKeys = 8;
+    int64 IndexCreatedAt = 9;
+    int64 FieldCreatedAt = 10;
+}
+```
+
+### Check Mutex State
+
+`GET /index/{index-name}/field/{field-name}/mutex-check`
+
+Checks the given field for mutex violations, specifically records with more than
+one value set. Accepts two optional query parameters:
+
+* `details` (bool): Report the specific values set, not just the record IDs.
+* `limit` (integer): Limit reporting to the given number of items.
+
+The response is a JSON object. If `details` is false, the object will be an array
+of string values when the index is keyed, or integer values for unkeyed indexes.
+If `details` is true, it will be an object mapping the string/integer record IDs
+to string values for a keyed field, and integer values for an unkeyed field.
+
+``` request
+curl localhost:10101/index/user/field/example/mutex-check \
+     -X GET
+```
+``` response
+[
+    "record-key1",
+    "record-key2"
+]
+```
+
+``` request
+curl localhost:10101/index/user/field/example/mutex-check?details=true \
+     -X GET
+```
+``` response
+{
+    "record-key1": [
+        "value-key1",
+        "value-key2"
+    ],
+    "record-key2": [
+        "value-key1",
+        "value-key2"
+    ]
+}
+```
+
+#### Limitations
+
+When a limit is specified, if different nodes in a cluster have different
+conflicting values for a record, not all of those values will be reported;
+the accumulation of known conflicts stops once enough conflicting records have
+been seen, even though results from other nodes might conceivably add conflicts
+to those records.
+
+If no node has multiple values for a record, but two nodes have differing
+values for the records, this endpoint does not detect that.
+
+### Create field
+
+`POST /index/{index-name}/field/{field-name}`
+
+Creates a field in the given index with the given name.
+
+The request payload is in JSON, and may contain the `options` field. The `options` field is a JSON object which must contain a `type`:
+
+* `type` (string): Sets the field type and type options.
+* `keys` (bool): Enables using column keys instead of column IDs (optional).
+
+Valid `type`s and correspondonding options are listed below:
+
+* `set`
+    * `cacheType` (string): [ranked](/explanations/data-modeling#ranked) or [LRU](/explanations/data-modeling#lru) caching on this field. Default is `ranked`.
+    * `cacheSize` (int): Number of rows to keep in the cache. Default is 50,000.
+* `int`
+    * `min` (int): Minimum integer value allowed for the field.
+    * `max` (int): Maximum integer value allowed for the field.
+* `timestamp`
+    * `timeUnit` (string): [Granularity](/explanations/data-modeling#timestamp-field-implementation). Allowed values are `s`, `ms`, `us`, `ns`. `s` is the default.
+* `bool`
+    * (boolean fields take no arguments)
+* `time`
+    * `timeQuantum` (string): [Time Quantum](/explanations/data-modeling#time-quantum) for this field.
+* `mutex`
+    * `cacheType` (string): [ranked](/explanations/data-modeling#ranked) or [LRU](/explanations/data-modeling#lru) caching on this field. Default is `ranked`.
+    * `cacheSize` (int): Number of rows to keep in the cache. Default is 50,000.
+
+The following example creates an `int` field called "quantity" capable of storing values from -1000 to 2000:
+
+``` request
+curl localhost:10101/index/user/field/quantity \
+     -X POST \
+     -d '{"options": {"type": "int", "min": -1000, "max":2000}}'
+```
+``` response
+{"success":true,"name":"quantity","createdAt":1591180110914425000}
+```
+
+Integer fields are stored as n-bit range-encoded values. FeatureBase supports 63-bit, signed integers with values between `min` and `max`.
+
+``` request
+curl localhost:10101/index/user/field/language -X POST
+```
+``` response
+{"success":true,"name":"language","createdAt":1591180128294321000}
+```
+
+``` request
+curl localhost:10101/index/repository/field/stats \
+    -X POST \
+    -d '{"options":{"type": "int", "min": 0, "max": 1000000}}'
+```
+``` response
+{"success":true,"name":"stats","createdAt":1591180737881627000}
+```
+
+### Remove field
+
+`DELETE /index/{index-name}/field/{field-name}`
+
+Removes the given field.
+
+``` request
+curl -XDELETE localhost:10101/index/user/field/language
+```
+``` response
+{"success":true}
+```
+
+### List all index schemas
+
+`GET /schema`
+
+Returns the schema of all indexes in JSON.
+
+``` request
+curl -XGET localhost:10101/schema
+```
+``` response
+{
+  "indexes": [
+    {
+      "name": "user",
+      "createdAt": 1591178953061239000,
+      "options": {
+        "keys": false,
+        "trackExistence": true
+      },
+      "fields": [
+        {
+          "name": "event",
+          "createdAt": 1591178962332452000,
+          "options": {
+            "type": "set",
+            "cacheType": "ranked",
+            "cacheSize": 50000,
+            "keys": false
+          }
+        },
+        {
+          "name": "language",
+          "createdAt": 1591180128294321000,
+          "options": {
+            "type": "set",
+            "cacheType": "ranked",
+            "cacheSize": 50000,
+            "keys": false
+          }
+        },
+        {
+          "name": "quantity",
+          "createdAt": 1591180110914425000,
+          "options": {
+            "type": "int",
+            "base": 0,
+            "bitDepth": 0,
+            "min": -1000,
+            "max": 2000,
+            "keys": false,
+            "foreignIndex": ""
+          }
+        }
+      ],
+      "shardWidth": 1048576
+    }
+  ]
+}
+```
+
+<!--
+### Duplicate schema into empty Pilosa cluster
+
+`POST /schema`
+
+To duplicate one Pilosa cluster's schema to another, it's possible to
+pass the output of `GET /schema` as the request body of `POST /schema`
+and all the indexes and fields in the schema will be created in
+Pilosa.
+
+Note that the `/schema` endpoint is not aware of foreign key relationships
+between indexes, so this may not succeed when the schema includes an
+index with a foreign key associated with an index that is defined
+later in the schema.
+
+The behavior of POSTing a schema to a non-empty Pilosa cluster
+is undefined.
+
+
+``` request
+# after (e.g.) curl -XGET localhost:10101/schema > schema.json
+curl -XPOST localhost:10101/schema --data-binary @schema.json
+```
+
+Response: `204 No Content`
+-->
+
+### Get version
+
+`GET /version`
+
+Returns the version of the FeatureBase server.
+
+``` request
+curl -XGET localhost:10101/version
+```
+``` response
+{"version":"2.0.0-alpha.20-6-gb9d8d6b4"}
+```
+
+### Get status
+
+`GET /status`
+
+Returns the status of the cluster.
+
+```request
+curl -XGET localhost:10101/status
+```
+```response
+{
+  "state": "NORMAL",
+  "nodes": [
+    {
+      "id": "1b018ce0-5de5-4da9-9285-6c4c0d8106f9",
+      "uri": {
+        "scheme": "http",
+        "host": "localhost",
+        "port": 10101
+      },
+      "grpc-uri": {
+        "scheme": "http",
+        "host": "localhost",
+        "port": 20101
+      },
+      "isCoordinator": true,
+      "state": "READY"
+    }
+  ],
+  "localID": "1b018ce0-5de5-4da9-9285-6c4c0d8106f9"
+}
+```
+
+### Get active queries
+
+`GET /queries`
+
+Returns the set of active queries. Supports pretty printing in `text/plain` format or JSON output in `application/json` format.
+Also includes the amount of time that the query has been running (in nanoseconds when using JSON).
+
+```request
+curl -XGET localhost:10101/queries
+```
+```response
+182.412µs  All()
+```
+
+```request
+curl -XGET -H "Accept: application/json" localhost:10101/queries
+```
+```response
+[{"query":"All()","age":135123}]
+```
+
+### Get query history
+`GET /query-history`
+
+Returns a list of objects representing historical queries.
+
+This endpoint supports the query history display in the UI.
+
+Each node maintains a separate list of queries that it served,
+of length configured with `--query-history-length` (default 100).
+
+The response combines the query history from all nodes, which
+results in some duplication of the PQL values, but distinguishable
+via the nodeID.
+
+Some entries in the history may result from translated or generated
+queries created during the execution process of explicit query requests.
+
+`runtimeNanoseconds` is the query's execution time in nanoseconds. Note
+that this execution time may not exactly match the `duration` value
+reported in other contexts.
+
+``` request
+curl -XPOST localhost:10101/query-history
+```
+
+```json
+[
+  {
+    "PQL": "Count(All())",
+    "nodeID": "32ce5e768b0d8ca5",
+    "index": "i",
+    "start": "2021-04-14T10:42:34.167919-05:00",
+    "runtimeNanoseconds": 344834
+  },
+  {
+    "PQL": "Count(Row(f<\"2021-04-14T15:40:02Z\"))",
+    "nodeID": "32ce5e768b0d8ca5",
+    "index": "j",
+    "start": "2021-04-14T10:42:34.167793-05:00",
+    "runtimeNanoseconds": 573245
+  },
+]
+```
+
+
+### Recalculate Caches
+
+`POST /recalculate-caches`
+
+Recalculates the caches for TopN queries on demand. The cache is recalculated every 10
+seconds by default. This endpoint can be used to recalculate the cache
+before the 10 second interval. This should probably only be used in
+integration tests and not in a typical production workflow. Note that
+in a multi-node cluster, the cache is only recalculated on the node
+that receives the request.
+
+``` request
+curl -XPOST localhost:10101/recalculate-caches
+```
+
+Response: `204 No Content`

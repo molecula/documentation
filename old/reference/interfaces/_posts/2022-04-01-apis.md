@@ -1,0 +1,257 @@
+---
+id: apis
+title: APIs
+sidebar_label: APIs
+---
+
+Molecula provides three APIs built in: HTTP, gRPC, and the PostgreSQL wire protocol. Currently they are not all functionally equivalent. Notably, SQL is only supported through gRPC and the Postgres wire protocol, while most administrative functions and data ingest are only available through the HTTP interface.
+
+When authentication is enabled, HTTP and gRPC are supported, but PostgreSQL wire protocol will be disabled.
+
+## gRPC
+
+The gRPC interface is described in detail in [gRPC API](/reference/grpc-api).
+
+Molecula ships with a Python client and CLI which can be used to interact with FeatureBase via gRPC. See the [client usage](/how-tos/use-python-client) for API examples.
+
+
+## Postgres Wire Protocol
+
+You can connect to Molecula using the standard Postgres client (psql - PostgreSQL interactive terminal) by connecting to the host and port specified in the configuration (default: disabled).
+
+
+```shell
+psql -h localhost -p 55432
+```
+
+Supported SQL is detailed [here](/reference/sql). [PQL](/reference/pql) is also supported over the postgres wire protocol. Prefix your PQL query with the table name in square brackets. For example, if you wanted to count the number of records in the "stargazers" index, you would issue a query like:
+
+```shell
+molecula=> [stargazers]Count(All());
+```
+
+## HTTP
+
+The HTTP interface is described in some detail in [HTTP API](/reference/http-api). Generally, most HTTP endpoints are not needed for normal operations, with the exception of the transaction interface which is used to pause ingestion to take backups. This is documented below.
+
+### Transactions
+As of v2.0.0-alpha.17, FeatureBase supports simple transactions.
+
+This is not full-featured transaction support with commit and rollback
+for now; this is a placeholder intended to allow us to solve shorter-term
+problems.
+
+The primary purpose of this is to allow an exclusive transaction to
+block new ingest activity from starting, while permitting existing ingest
+operations to complete, even if a single ingest requires multiple operations.
+This allows users with cooperating ingest operations to ensure a stable state
+for the data on disk before triggering snapshots or other writes.
+
+Concisely:
+- No more than one exclusive transaction can exist at one time
+- If an exclusive transaction is active, there should be no other transactions
+
+##### Overview: What transactions are
+
+A transaction reflects an ongoing set of related operations that may be
+occurring in multiple or distinct messages. There is no support for
+rolling back a failed transaction. Transactions can coexist, and there's
+nothing controlling simultaneous access to fields.
+
+However, a transaction can be exclusive. An exclusive transaction cannot
+start until other transactions complete, but no non-exclusive transaction
+can start while an exclusive transaction is waiting.
+
+Transactions are holder-wide, not index-specific. Transactions are also
+presumably cluster-wide.
+
+##### API Details
+
+The base transaction endpoints are `/transactions`, for listing transactions,
+and `/transaction/{id}`, for listing (GET) or creating (POST)
+a transaction, and `transaction/{id}/finish` to finish a transaction.
+Additionally, the `/transaction` endpoint (without an `{id}`) will return a
+list (GET) of all transactions ordered by their creation date: `createdAt`.
+
+A POST to `/transaction` attempts to create a transaction, assigning it an
+arbitrary ID that is not the ID of any existing transaction. A `GET` from
+`/transactions` lists existing transactions.
+
+A POST to `/transaction/{id}` tries to create a transaction with the given
+ID, failing if it can't for any reason, including the reason "this ID is
+already in use". A GET from `/transaction/{id}` retrieves information about
+the transaction.
+
+When creating a transaction, an options object may be supplied as the request body:
+
+```json
+{
+    "exclusive": true, // default is false
+    "timeout": 300     // in seconds, default is 300
+}
+```
+
+For an exclusive transaction, the optional boolean parameter
+"pause-snapshots" may be specified. A `true` value indicates that the snapshot
+queue should be paused once this transaction becomes active. *Note that pausing
+the snapshot queue can cause some write operations to block indefinitely.*
+If a transaction requests that the snapshot queue be paused, it will not
+report itself "active" until the snapshot queue has completed any outstanding
+snapshots and paused itself. The full sequence of events, then, is:
+
+* Stop allowing new transactions to start.
+* Wait for transactions to complete.
+* Pause snapshot queue.
+* Wait for snapshot queue to report that it's successfully paused.
+* Transition to active state.
+
+Exclusive transactions which pause the snapshot queue should not write to
+the database; this is used as a way to block activity so backups can be made.
+
+When requesting information about a transaction, an object is returned:
+
+```json
+{
+    "id": "abc",
+    "active": true,
+    "exclusive": false,
+    "timeout": "5m0s",
+    "createdAt": "2020-07-10T22:08:51.645678Z",
+    "deadline": "2020-07-10T22:13:51.645678Z"
+}
+```
+
+To mark a transaction as complete, POST to `/transaction/{id}/finish`, and
+get back the same information you'd have gotten from a GET for that transaction.
+The finish request may block if any existing queries are running as part of
+that transaction, but immediately prevents any new queries from starting for
+that transaction.
+
+Queries can be associated with a transaction by including
+`X-Pilosa-Transaction: {id}` in their request headers. A transaction's idle
+timer may be reset by any query against it, even a query which doesn't write
+anything.
+
+When an exclusive transaction is created, it does not necessarily start out
+in the `active` state. It immediately blocks the starting of new non-exclusive
+transactions, but does not transition to an `active` state until existing
+transactions complete. During this time, a GET to it should return:
+
+```json
+{
+    "active": false,
+}
+```
+
+If multiple exclusive transactions are requested, they become active
+sequentially in the order the requests came in, and the snapshot queue and
+other transactions are not permitted to resume until the exclusive transactions
+all complete.
+
+
+##### Using Transactions with Backups
+
+Before performing a backup, you must request an exclusive "transaction" with the cluster. This is done via an HTTP POST request to the primary node at path `/transaction`, in which case a UUID will be generated and used as the transaction ID. To use a custom ID, POST to `/transaction/{id}`. Allowed characters include alphanumeric, hyphen, and underscore.
+
+Use headers:
+
+```http
+Accept: application/json
+Content-Type: application/json
+```
+
+The body should follow this format:
+
+```json
+{
+  "timeout": "10m",
+  "exclusive": true
+}
+```
+
+A timeout MUST be specified, as an integer number of seconds, or a string of the format "1h2m3s", where at least one of the time components is present. Any duration value is allowed, though it's better to err on the longer side of the expected duration of the backup. The transaction must be explicitly finished; the timeout exists solely for cleanup in the case of failures.
+
+This will return a JSON "transaction response" object.
+```json
+{
+"transaction": {
+  "id":"5e572d95-4204-40cd-804c-92976b68dc9b",
+  "active":true,
+  "exclusive":false,
+  "timeout":"1m0s",
+  "createdAt":"2020-04-17T21:53:18.69359-05:00",
+  "deadline":"2020-04-17T21:54:18.69359-05:00"
+  },
+"error":"some message"
+}
+```
+
+The `error` field MAY not be present if there is no error.
+
+You MUST check whether `active` is true. If not, you must poll the transaction endpoint with a GET request and your ID until it is true. For example:
+
+GET `/transaction/5e572d95-4204-40cd-804c-92976b68dc9b`
+
+with headers:
+
+```http
+Accept: application/json
+```
+
+This also returns a "transaction response" object.
+
+Once an `active`, `exclusive` transaction is returned, proceed with your backup.
+
+Once the backup is complete, finish the transaction with
+
+POST `/transaction/{id}/finish`
+
+with headers:
+
+```http
+Accept: application/json
+```
+
+Finishing the transaction removes it from the transaction store
+completely. A 200 response indicates that this was completed
+successfully. The "finish" request will also return a transaction
+response object which contains the transaction as it looked at the
+time of its removal. Notably, if the transaction was active, it will
+contain `active: true` though it does not exist any more and cannot be
+used.
+
+##### Implementation Notes
+
+All requests should be made to the primary FeatureBase node.
+
+When creating a new transaction, it is created on every node in the
+cluster and persisted to disk.
+
+Timeouts only expire when there has been *no activity* on a transaction for the timeout duration.
+Any activity on the transaction may extend the deadline (unimplemented).
+
+When finishing a transaction, it is first finished on the primary node and
+then the finish is broadcast to the cluster before returning to the
+client.
+
+When getting an exclusive transaction, if the transaction is active,
+it will be returned only if and when all nodes agree.
+
+The primary node forwards all requests to every other node so they can stay
+in sync. If the primary node doesn't hear back from a node, the request
+fails. The primary node only reaches out to active nodes, so if the
+cluster is in state `DEGRADED`, things can still continue.
+
+If a node is down and comes back up, it needs to synchronize its state
+with the primary node (unimplemented).
+
+There is a separate transaction manager and transaction store.
+
+The transaction store is responsible for persisting info about
+transactions, while the transaction manager handles all the logic (at the node level).
+
+
+
+## Ingest Interfaces
+
+See [Ingesters](/explanations/ingesters) for information on data ingestion.

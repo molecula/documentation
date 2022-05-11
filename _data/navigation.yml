@@ -1,59 +1,147 @@
 nav:
-  - title: Tutorials
-    category: tutorials
+  - title: Introduction
+    category: introduction
 
-  - title: Explanations
-    category: explanations
-
-  - title: How-Tos
-    category: how-tos
-
-  - title: Reference
-    category: reference
+  - title: Quick Start Guide
+    category: quick-start-guide
+  
+  - title: Setting up FeatureBase
+    category: setting-up-featurebase
     subnav:
-      - title: Interfaces
-        category: interfaces
-
-      - title: Query Languages
-        category: query-languages
-
-      - title: Operations
-        category: operations
-
-      - title: Configuration
-        category: configuration
-
-  - title: SaaS
-    category: saas
+      - title: Enterprise
+        category: enterprise
+      - title: SaaS
+        category: saas
+  
+  - title: Data Modeling Guide
+    category: data-modeling-guide
+ 
+  - title: Data Ingestion
+    category: data-ingestion
     subnav:
-      - title: Getting Started
-        category: saas-start
-
-      - title: Tutorials
-        category: saas-tutorials
-
-      - title: Explanations
-        category: saas-explanations
-
-      - title: Create a Deployment
-        category: createdeployment
-
-      - title: Ingest Data
+      - title: Enterprise
+        category: enterprise
         subnav:
-          - title: Introduction
-            category: ingestdata
+          - title: Connectors
+            category: connectors
 
+      - title: SaaS
+        category: saas
+        subnav:
           - title: Streaming (HTTPS)
             category: streaming
 
-      - title: Consume Data
-        category: consumedata
+  - title: Data Querying
+    category: data-querying
+    subnav:
+      - title: Enterprise
+        category: enterprise
+        subnav:
+          - title: Connectors
+            category: connectors
+          - title: Libraries
+            category: libraries
 
-      - title: Manage Data
-        category: managedata
+      - title: SaaS
+        category: saas
+
+  - title: Administration
+    category: administration
+    subnav:
+      - title: Enterprise
+        category: enterprise
+        subnav:
+          - title: Security
+            category: security
+          - title: Data Management
+            category: data-management
+
+      - title: SaaS
+        category: saas
+        subnav:
+          - title: Security
+            category: security
+          - title: Data Management
+            category: data-management
+          - title: Organization Configuration
+            category: org-configuration
+  
+  - title: Reference
+    category: reference
+    subnav:
+      - title: Data Ingestion
+        category: data-ingestion
+      - title: Data Querying
+        category: data-querying
+      - title: APIs
+        category: api
+        subnav:
+          - title: Enterprise
+            category: enterprise
+          - title: SaaS
+            category: saas
+      - title: Glossary
+        category: glossary
+
+
+  - title: Old Docs
+    category: old
+    subnav:
+      - title: Tutorials
+        category: tutorials
+
+      - title: Explanations
+        category: explanations
+
+      - title: How-Tos
+        category: how-tos
 
       - title: Reference
-        category: saas-reference
+        category: reference
         subnav:
-          - title: Organization Management
-            category: saas-reference-orgmanagement
+          - title: Interfaces
+            category: interfaces
+
+          - title: Query Languages
+            category: query-languages
+
+          - title: Operations
+            category: operations
+
+          - title: Configuration
+            category: configuration
+
+      - title: SaaS
+        category: saas
+        subnav:
+          - title: Getting Started
+            category: saas-start
+
+          - title: Tutorials
+            category: saas-tutorials
+
+          - title: Explanations
+            category: saas-explanations
+
+          - title: Create a Deployment
+            category: createdeployment
+
+          - title: Ingest Data
+            subnav:
+              - title: Introduction
+                category: ingestdata
+
+              - title: Streaming (HTTPS)
+                category: streaming
+
+          - title: Consume Data
+            category: consumedata
+
+          - title: Manage Data
+            category: managedata
+
+          - title: Reference
+            category: saas-reference
+            subnav:
+              - title: Organization Management
+                category: saas-reference-orgmanagement
