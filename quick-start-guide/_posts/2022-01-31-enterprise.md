@@ -79,19 +79,17 @@ In order to use our application, you’ll need data. In a real-life situation, t
 9. The script is now configuring your environment which will take approximately 30 minutes.
   
 
-[Figure 4. SaaS Homepage | IMAGE GOES HERE ]
+![Figure 5. FeatureBase SaaS Homepage ](/img/quick-start-guide/enterprise/fig5.png "Figure 5. FeatureBase SaaS Homepage")
 
 **This is a great time to grab a cup of coffee or reply to all those waiting Slack messages! A new deployment is spinning up and over 1B records are loading.**
 
 While the deployment is spinning up, you will see messages in Terminal and in Cloud Manager as the status progresses. The status will show as ‘CREATING’ while the deployment is spinning up and  ‘RUNNING’ when the process is done.
 
-[Figure 5. Deployment Status CREATING | IMAGE GOES HERE ]
-
-[ Figure 6. Deployment status RUNNING | IMAGE GOES HERE ]
+![Figure 6. Creating a new deployment ](/img/quick-start-guide/enterprise/fig6.png "Figure 5. Creating a new deployment")
 
 Once the deployment is ‘RUNNING’ data will start loading into the deployment. After about 30 minutes, check the “Tables” section of the application to see the two tables that have been restored into the deployment. One table is called ‘cseg’, short for customer segmentation, and the other is called ‘skills’. A description of each table is also listed. In the next section, we will perform a variety of common analytical queries on both datasets.
 
-[ Figure 7. Tables Restored | IMAGE GOES HERE ]
+![Figure 7. Table data ingested ](/img/quick-start-guide/enterprise/fig7.png "Figure 7. Table data ingested")
 
 ## Introduction to SaaS Environment and Test Dataset
 
