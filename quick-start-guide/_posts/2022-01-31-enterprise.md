@@ -99,11 +99,11 @@ In a real-world situation, a Molecula expert will work with your organization to
 
 It’s always a good idea to understand what the dataset you’re working with contains before you get started. To do this, click on the ‘Tables’ section in the application to display the names of the tables in your deployment.
 
-[ Figure 8. Tables | IMAGE GOES HERE ]
+![Figure 8. List of Tables ](/img/quick-start-guide/enterprise/fig8.png "Figure 8. List of Tables")
 
 Click on a table to show its contents. FeatureBase can ingest and represent a wide range of field types. One that may not be familiar is the **SET** field. **SET** fields are multi-valued and allow FeatureBase to collapse traditional data models, like the star schema, by efficiently storing multiple values for a single field.
 
-[ Figure 9. Table Summary - CSEG | IMAGE GOES HERE ]
+![Figure 9. Customer segmentation (cseg) table](/img/quick-start-guide/enterprise/fig9.png "Figure 9. Customer segmentation (cseg) table")
 
 To understand the shape of the data contained in the customer dataset that was preloaded into this environment. First, navigate to the Query page by clicking “Query” on the left navigation bar. 
 
