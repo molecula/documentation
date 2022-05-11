@@ -182,7 +182,8 @@ WHERE t2.bools = 'available_for_hire' and t1.hobbies = 'Teaching';
 
 ![Figure 15. inner join query](/img/quick-start-guide/enterprise/fig16.png "Figure 15. inner join query")
 
-### Grouping with Complex Conditions and Aggregating
+
+### Grouping with Complex Conditions and Aggregating
 
 Another query commonly seen in aggregation-related use cases is the **GROUP BY**. For example, let’s group by the hobbies counting only those with ultimate count above 200,000,000.
 
