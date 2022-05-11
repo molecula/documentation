@@ -1,0 +1,13 @@
+---
+id: scaling
+title: Scaling
+sidebar_label: Scaling
+---
+
+## FeatureBase
+
+Resizing a FeatureBase cluster is currently not supported.
+
+## Ingester
+
+Generally, scaling is handled by starting or stopping Ingester instances. Other options may be available for specific Ingesters; see [ingest tuning](/explanations/ingesters#ingest-tuning)
