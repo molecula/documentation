@@ -19,19 +19,19 @@ If you run into any roadblocks or have questions throughout the demonstration, p
 
 Please click on the sign up link in your invitation email. You’ll be taken to the sign-up page. You will see your email pre-filled in the application:
 
-[ Figure 1. Invitation | IMAGE GOES HERE ]
+![Figure 1. Invitation ](/img/quick-start-guide/enterprise/fig1.png "Figure 1. Invitation takes you to the FeatureBase SaaS Login")
 
 You will be instructed to create a password with instant feedback based on password requirements:
 
-[ Figure 2. Create Password | IMAGE GOES HERE ]
+![Figure 2. Create your account password ](/img/quick-start-guide/enterprise/fig2.png "Figure 2. Create your account password")
 
 After creating a password, a verify email screen will appear. A confirmation code will be sent to your email. Please enter that code to complete sign up. If you don’t complete this step, this screen will also be shown again the next time you attempt to log in.
 
-[ Figure 3. Verify Email | IMAGE GOES HERE ]
+![Figure 3. Verify your email address ](/img/quick-start-guide/enterprise/fig3.png "Figure 3. Verify your email address.")
 
 Now that you are signed up, you will have access to FeatureBase for seven days. After seven days, you will no longer be able to log in with your credentials. If you encounter any problems during this process or would like to reactivate your account contact [support@molecula.com](support@molecula.com).
 
-[ Figure 4. SaaS Welcome | IMAGE GOES HERE ]
+![Figure 4. FeatureBase SaaS Homepage ](/img/quick-start-guide/enterprise/fig4.png "Figure 4. FeatureBase SaaS Homepage")
 
 ## Configuring your environment
 
