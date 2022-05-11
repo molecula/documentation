@@ -103,7 +103,7 @@ It’s always a good idea to understand what the dataset you’re working with c
 
 Click on a table to show its contents. FeatureBase can ingest and represent a wide range of field types. One that may not be familiar is the **SET** field. **SET** fields are multi-valued and allow FeatureBase to collapse traditional data models, like the star schema, by efficiently storing multiple values for a single field.
 
-![Figure 9. Customer segmentation (cseg) table](/img/quick-start-guide/enterprise/fig9.png "Figure 9. Customer segmentation (cseg) table")
+![Figure 9. Customer segmentation (cseg) table](/img/quick-start-guide/enterprise/fig10.png "Figure 9. Customer segmentation (cseg) table")
 
 To understand the shape of the data contained in the customer dataset that was preloaded into this environment. First, navigate to the Query page by clicking “Query” on the left navigation bar. 
 
@@ -115,7 +115,7 @@ SELECT * FROM cseg LIMIT 10;
 
 Viewing this tabular output we can see each record contains several fields (attributes) and data types. Scroll left and right in the application to explore the full list of fields. For example, **names** and **cities** are captured in **STRING** fields. Income is captured in an **INT** field that will allow for range queries. You can also see that “education” is a SET field with multiple values in a single field.
 
-[ Figure 10. Query select 10 | IMAGE GOES HERE ]
+![Figure 10. Select 10 items from table](/img/quick-start-guide/enterprise/fig11.png "Figure 10. Select 10 items from table")
 
 Next, let’s check the full scale of this dataset by using another familiar SQL statement, the **COUNT**.
 
@@ -125,7 +125,7 @@ SELECT COUNT(*) FROM cseg;
 
 This query will return the **COUNT** of records in the entire table and demonstrates we are working with a dataset of 1 billion records. Each record in the cseg table has 16 attributes.
 
-[ Figure 11. Query count | IMAGE GOES HERE ]
+![Figure 11. Select count from table](/img/quick-start-guide/enterprise/fig12.png "Figure 11. Select count from table")
 
 ### Performing Large Aggregations
 
@@ -135,7 +135,7 @@ Aggregation workflows often require the ability to **SUM** large amounts of indi
 SELECT SUM(income) FROM cseg;
 ```
 
-[ Figure 12. Query sum | IMAGE GOES HERE ]
+![Figure 12. SUM query](/img/quick-start-guide/enterprise/fig13.png "Figure 12. SUM query")
 
 It is unlikely to need to SUM in this manner across all records. It is much more common to introduce complex conditions to SUM a segment of records that meets specified criteria.
 
@@ -149,7 +149,7 @@ WHERE income > 5000 AND age = 45 AND skills='Ms Office' OR skills='Excel';
 
 As you can see, the latency is in the sub-second time frame even when using complex searching criteria through 1 billion records.
 
-[ Figure 13. query sum complex | IMAGE GOES HERE ]
+![Figure 13. Complex sum query](/img/quick-start-guide/enterprise/fig14.png "Figure 13. Complex sum query")
 
 **NOTE:**
 
@@ -163,7 +163,7 @@ Additionally, aggregations may include the AVERAGE argument.
 SELECT AVG(income) FROM cseg;
 ```
 
-[ Figure 14. QUERY average | IMAGE GOES HERE ]
+![Figure 14. average query](/img/quick-start-guide/enterprise/fig15.png "Figure 14. average query")
 
 ### INNER JOINs at Scale
 
@@ -180,7 +180,7 @@ WHERE t2.bools = 'available_for_hire' and t1.hobbies = 'Teaching';
 
 **NOTE:** Included in the stock dataset is a table known as skills, please use the discovery queries to take a look at it!
 
-[ Figure 15. QUERY INNER JOIN | IMAGE GOES HERE ]
+![Figure 15. inner join query](/img/quick-start-guide/enterprise/fig16.png "Figure 15. inner join query")
 
 ### Grouping with Complex Conditions and Aggregating
 
@@ -192,7 +192,7 @@ FROM cseg
 GROUP BY hobbies HAVING count > 200000000;
 ```
 
-[ Figure 16. QUERY GROUP BY | IMAGE GOES HERE ]
+![Figure 16. group by query](/img/quick-start-guide/enterprise/fig17.png "Figure 16. group by query")
 
 Another useful facet of **GROUP BY** is the ability to add an aggregate argument and utilize the low latency aggregation in another capacity.
 
@@ -203,7 +203,7 @@ WHERE age=18
 GROUP BY education; 
 ```
 
-[ Figure 17. QUERY group by 2 | IMAGE GOES HERE ]
+![Figure 17. group by query filterd](/img/quick-start-guide/enterprise/fig18.png "Figure 17. group by query filtered")
 
 ### TopK - A FeatureBase Superpower
 
