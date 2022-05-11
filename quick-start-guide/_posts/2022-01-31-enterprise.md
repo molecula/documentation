@@ -216,7 +216,7 @@ This query returns the top five hobbies across all customers from the cseg table
 [cseg]TopK(hobbies, k=5)
 ```
 
-[ Figure 18. QUERY TOPK | IMAGE GOES HERE ]
+![Figure 18. Top K query](/img/quick-start-guide/enterprise/fig19.png "Figure 18. Top K query")
 
 More complex, the next query returns the top ten hobbies among females who also like scuba diving from the cseg table in milliseconds. Even when adding complex filtering, the **TopK** queries can be run for exact results at scale without impacting query latency.
 
@@ -224,7 +224,7 @@ More complex, the next query returns the top ten hobbies among females who also 
 [cseg]TopK(hobbies, k=10, filter=Intersect(Row(sex=Female),Row(hobbies='Scuba Diving')))
 ```
 
-[ Figure 19. QUERY TOPK2 | IMAGE GOES HERE ]
+![Figure 19. Top K query with filtering](/img/quick-start-guide/enterprise/fig20.png "Figure 19. Top K query with filtering")
 
 **NOTE:** At this point, we encourage you to mix and match segmentation criteria to experience low-latency queries even as complex conditions are added.
 
@@ -302,14 +302,14 @@ When you have completed the trial, please take a few minutes to spin down your d
 
 First, delete the tables in the deployment in the ‘Tables’ tab. Click the three dots and select ‘Delete’
 
-[ Figure 20. Delete table | IMAGE GOES HERE ]
+![Figure 20. Delete table](/img/quick-start-guide/enterprise/fig21.png "Figure 20. Delete table")
 
 Confirm the deletion by typing ‘DELETE’ into the interface. Repeat for each table in the deployment.
 
-[ Figure 21. Delete table confirm | IMAGE GOES HERE ]
+![Figure 21. Delete table confirm](/img/quick-start-guide/enterprise/fig22.png "Figure 21. Delete table confirm")
 
 Repeat the process in the Cloud Manager for each deployment that you want to spin down. It takes a few minutes longer to delete a deployment than it does for a typical table.
 
-[ Figure 22. Delete deployment | IMAGE GOES HERE ]
+![Figure 22. Delete deployment](/img/quick-start-guide/enterprise/fig23.png "Figure 22. Delete deployment")
 
-[ Figure 23. Delete deployment confirm | IMAGE GOES HERE ]
+![Figure 23. Delete deployment confirm](/img/quick-start-guide/enterprise/fig24.png "Figure 23. Delete deployment confirm")
