@@ -6,7 +6,7 @@ sidebar_label: Deployments Overview
 
  **⚠ WARNING:** This page contains information that only applies to Molecula's SaaS offering. Additionally, this page represents a work in progress that is subject to frequent changes. 
 
-Deployments are clusters of FeatureBase nodes. All of your data will live in tables within FeatureBase. You can think of a deployment as a database. It is dedicated hardware for your data that you can load to and query against, and like databases, you can only join tables that exist in the same deployment. Below is a list of t-shirt size deployment choices Molecula offers: 
+Deployments are clusters of FeatureBase nodes. All of your data will live in tables within FeatureBase. You can think of a deployment as a database. It is dedicated hardware for your data that you can load to and query against, and like databases, you can only join tables that exist in the same deployment. Below is a list of deployment sizes Molecula offers: 
 
 ### Sizes
 
