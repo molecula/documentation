@@ -6,7 +6,7 @@ sidebar_label: Programmatic Access
 
  **⚠ WARNING:** This page contains information that only applies to Molecula's SaaS offering. Additionally, this page represents a work in progress that is subject to frequent changes. 
 
-Everything that can be done in the user interface can be accomplished via REST api calls. Furthermore, APIs allow you to perform additional actions as well as gather more metadata about your organization and data. You will likely interact with the APIs in a production setting. Full Documentation for the APIs can be found here <!-- TODO add link to api docs> --.
+Everything that can be done in the user interface can be accomplished via REST api calls. Furthermore, APIs allow you to perform additional actions as well as gather more metadata about your organization and data. You will likely interact with the APIs in a production setting. Full Documentation for the APIs can be found [here](/saas/saas-reference/controlplaneapi).
 
 Molecula uses Oauth2.0 for all authorization, so every API call must be accompanied with a valid token. You can get tokens by passing your credentials to https://id.molecula.cloud . The below cURL command can be run on any linux-based system:
 

@@ -10,7 +10,7 @@ sidebar_label: Create A Deployment
 In the user interface, clicking “Get Started” or “Cloud Manager” from the home page will direct you to the Cloud Manager page where you can create a deployment by clicking “New Deployment”. Today, the tool has [t-shirt choices](/saas/createdeployment/deploymentoverview#sizes) based on memory, so all you need to provide is a deployment memory from a drop down and a deployment name. Note the UI will only display the choices your organization has access to, which is determined when you purchase the product. These choices can be queried for programmatically as well and are referred to as “deployment shapes”:
 
 
-**cURL API Reference:**
+**HTTP API Reference:**
 ```shell
 curl --location --request GET 'https://api.molecula.cloud/v1/service-properties/deployment:shapes' \
 --header 'Authorization: <IdToken>' 
@@ -18,7 +18,7 @@ curl --location --request GET 'https://api.molecula.cloud/v1/service-properties/
 
 The deployment name must be unique within the organization and only contain lower case alphanumeric, hyphen and underscore characters. You can have multiple deployments, so it’s important to name these something meaningful to you and your organization. For example, if you have a customer segmentation deployment and know you’ll have a full staging environment, you might want to name your production deployment as cust_seg_production and your staging deployment as cust_seg_staging. Clicking “Start” will start creating your deployment. This can also be accomplished programmatically:
 
-**cURL API Reference:**
+**HTTP API Reference:**
 ```shell
 curl --location --request POST 'https://api.molecula.cloud/v1/deployments' \
 --header 'Authorization: <IdToken>' \
@@ -33,7 +33,7 @@ curl --location --request POST 'https://api.molecula.cloud/v1/deployments' \
 
 After clicking “Start”, you will see a new entry populate in the Cloud Manager page with the name you provided. You will also see a status of “CREATING”. This is the state shown as the underlying hardware is provisioned. After a minute or two, the status will update to “RUNNING”, which indicates your deployment is ready to use. The other states you might encounter can be seen [here](/saas/createdeployment/deploymentoverview#states). All of your deployments' statuses can also be queried programmatically.
 
-**cURL API Reference:**
+**HTTP API Reference:**
 ```shell
 curl --location --request GET 'https://api.molecula.cloud/v1/deployments' \
 --header 'Authorization: <IdToken>' \
