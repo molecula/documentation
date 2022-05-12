@@ -28,6 +28,7 @@ Inputs:
 1. USERNAME - your email
 2. PASSWORD - your password
 
+**HTTP API Reference:**
 ```shell
 curl --location --request POST 'https://id.molecula.cloud' \
 --data-raw '{
@@ -38,19 +39,21 @@ curl --location --request POST 'https://id.molecula.cloud' \
 
 3 tokens are returned: Access, ID, and Refresh. Use the ID token for all of your API calls as the Authorization header:
 
+**HTTP API Reference:**
 ```shell
 --header 'Authorization: <IdToken>' \
 ```
 
 ### Create A Deployment
 
-Deployments are clusters of FeatureBase nodes. All of your data will live in tables within FeatureBase. You can think of a deployment as a database. Molecula offers t-shirt (?) size deployment choices to choose from. For this guide, we will be using the "8GB" option. For more information on deployments, see [Deployments Overview](/saas/createdeployment/deploymentoverview). The below command will start creating your deployment
+Deployments are clusters of FeatureBase nodes. All of your data will live in tables within FeatureBase. You can think of a deployment as a database. Molecula offers deployment sizes to choose from. For this guide, we will be using the "8GB" option. For more information on deployments, see [Deployments Overview](/saas/createdeployment/deploymentoverview). The below command will start creating your deployment
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
 2. deployment_name - the name you want to give your deployment i.e iris_demo_deployment
 3. deployment_shape - deployment shape/memory you are choosing i.e. 8GB
 
+**HTTP API Reference:**
 ```shell
 curl --location --request POST 'https://api.molecula.cloud/v1/deployments' \
 --header 'Authorization: <IdToken>' \
@@ -65,6 +68,7 @@ curl --location --request POST 'https://api.molecula.cloud/v1/deployments' \
 
 A deployment takes some time to create. You can look at all of your deployments and their statuses. You should be able to see the "iris_demo_deployment" as "Creating".
 
+**HTTP API Reference:**
 ```shell
 curl --location --request GET 'https://api.molecula.cloud/v1/deployments' \
 --header 'Authorization: <IdToken>' \
@@ -87,6 +91,7 @@ Inputs:
 3. table_description - The description of the table i.e. "table holding flower data"
 4. deployment id - The ID returned from running a get on the /deployments endpoint above
 
+**HTTP API Reference:**
 ```shell
 curl --location --request POST 'https://api.molecula.cloud/v1/tables/<deployment_id>' \
 --header 'Authorization: <IdToken>' \
@@ -108,7 +113,7 @@ Inputs:
 4. deployment id - The unique ID of your deployment
 5. schema - a JSON blob that contains information about the data streaming into the source.
 
-
+**HTTP API Reference:**
 ```shell
 curl --location --request POST 'https://api.molecula.cloud/v1/sinks' \
 --header 'Authorization: <IdToken>' \
@@ -177,6 +182,7 @@ curl --location --request POST 'https://api.molecula.cloud/v1/sinks' \
 
 Like deployments, sources takes some time to create. You can look at all of your sources and their statuses. You should be able to see the "iris_streaming_source" as "Creating".
 
+**HTTP API Reference:**
 ```shell
 curl --location --request GET 'https://api.molecula.cloud/v1/sinks' \
 --header 'Authorization: <IdToken>' \
@@ -187,13 +193,14 @@ Grab your source's id. This is a unique id for your source. Once your source is 
 
 #### Ingest Data
 
-We now have an endpoint we can stream data to. This guide will only send one micro-batched payload of records, but data can be continually pushed to this endpoint. For more information, please see the [Streaming (HTTPS)](/saas/ingestdata/streamingoverview).
+We now have an endpoint we can stream data to. This guide will only send one micro-batched payload of records, but data can be continually pushed to this endpoint. For more information, please see the [Streaming (HTTPS)](/saas/streaming/streamingoverview).
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
 2. source id - The unique ID of your source
 3. records - JSON blobs that each represent an individual record
 
+**HTTP API Reference:**
 ```shell
 curl --location --request POST 'https://data.molecula.cloud/v1/sinks/<sink_id>' \
 --header 'Authorization: <IdToken>' \
@@ -366,7 +373,7 @@ This will yield a response that details the number of successes and errors from 
 
 ### Consume Data
 
-Now that data is loaded into your table, you are able to query it. Data is queried using either PQL (Pilosa Query Language), our native query language, or the limited set of SQL we support today. An example of both can be seen below:
+Now that data is loaded into your table, you are able to query it. Data is queried using either PQL (Pilosa Query Language), our native query language, or the limited set of SQL we support. An example of both can be seen below:
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
@@ -375,7 +382,7 @@ Inputs:
 4. statement - the query to run i.e. "select * from iris_table"
 
 
-SQL
+**HTTP API Reference (SQL):**
 ```shell
 curl --location --request POST 'https://data.molecula.cloud/v1/<deployment id>/query \
 --header 'Authorization: <IdToken>' \
@@ -386,6 +393,7 @@ curl --location --request POST 'https://data.molecula.cloud/v1/<deployment id>/q
 }'
 ```
 
+**HTTP API Reference (PQL):**
 PQL
 ```shell
 curl --location --request POST 'https://data.molecula.cloud/v1/<deployment id>/query \
@@ -409,6 +417,7 @@ Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
 2. source id - The unique ID of your source
 
+**HTTP API Reference:**
 ```shell
 curl --location --request DELETE 'https://api.molecula.cloud/v1/sinks/<sink_id>' \
 --header 'Authorization: <IdToken>'  
@@ -416,6 +425,7 @@ curl --location --request DELETE 'https://api.molecula.cloud/v1/sinks/<sink_id>'
 
 This will take some time to delete. You can check the status of the delete with the command below until the resource is no longer found.
 
+**HTTP API Reference:**
 ```shell
 curl --location --request GET 'https://api.molecula.cloud/v1/sinks/<sink_id>' \
 --header 'Authorization: <IdToken>'  
@@ -428,6 +438,7 @@ Inputs:
 2. deployment id - The unique ID of your deployment
 2. table_name - The name you want to give your table i.e. iris_table
 
+**HTTP API Reference:**
 ```shell
 curl --location --request DELETE 'https://api.molecula.cloud/v1/tables/<deployment id>/iris_table' \
 --header 'Authorization: <IdToken>'  
@@ -439,6 +450,7 @@ Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
 2. deployment id - The unique ID of your deployment
 
+**HTTP API Reference:**
 ```shell
 curl --location --request DELETE 'https://api.molecula.cloud/v1/deployments/<deployment id>' \
 --header 'Authorization: <IdToken>' 
@@ -446,6 +458,7 @@ curl --location --request DELETE 'https://api.molecula.cloud/v1/deployments/<dep
 
 This will take some time to delete. You can check the status of the delete with the command below until the resource is no longer found.
 
+**HTTP API Reference:**
 ```shell
 curl --location --request GET 'https://api.molecula.cloud/v1/deployments/<deployment id>' \
 --header 'Authorization: <IdToken>' 
