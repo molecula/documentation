@@ -65,7 +65,9 @@ nav:
             category: data-management
           - title: Organization Configuration
             category: org-configuration
-  
+  - title: How-Tos
+    category: how-tos 
+ 
   - title: Reference
     category: reference
     subnav:
