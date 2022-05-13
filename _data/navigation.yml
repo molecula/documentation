@@ -75,6 +75,11 @@ nav:
         category: data-ingestion
       - title: Data Querying
         category: data-querying
+      - title: Operations
+        category: operations
+        subnav:
+          - title: Enterprise
+            category: enterprise
       - title: APIs
         category: api
         subnav:
