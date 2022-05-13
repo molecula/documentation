@@ -28,6 +28,7 @@ FeatureBase can be configured through command line flags, environment variables,
 | cluster.name                   | PILOSA_CLUSTER_NAME                   | FEATUREBASE_CLUSTER_NAME                          | str   |      |
 | cluster.long-query-time        | PILOSA_CLUSTER_LONG_QUERY_TIME        | FEATUREBASE_CLUSTER_LONG_QUERY_TIME               | str   |      |
 | cluster.replicas               | PILOSA_CLUSTER_REPLICAS               | FEATUREBASE_CLUSTER_REPLICAS                      | int   |      |
+| cluster.partition-to-node-assignment               | PILOSA_CLUSTER_PARTITION_TO_NODE_ASSIGNMENT               | CLUSTER_PARTITION_TO_NODE_ASSIGNMENT                      | str   |      |
 | etcd.advertise-client-address  | PILOSA_ETCD_ADVERTISE_CLIENT_ADDRESS  | FEATUREBASE_ETCD_ADVERTISE_CLIENT_ADDRESS         | str   |      |
 | etcd.advertise-peer-address    | PILOSA_ETCD_ADVERTISE_PEER_ADDRESS    | FEATUREBASE_ETCD_ADVERTISE_PEER_ADDRESS           | str   |      |
 | etcd.cluster-url               | PILOSA_ETCD_CLUSTER_URL               | FEATUREBASE_ETCD_CLUSTER_URL                      | str   |      |
@@ -232,6 +233,16 @@ Number of hosts each piece of data should be stored on. Must be greater than or 
       replicas = 1
 ```
 
+
+#### Cluster Partition To Node Assignment
+
+ *CAUTION*: This controls how partitions are assigned to cluster nodes. Default is "jmp-hash". Larger clusters will experience more equal data distribution using "modulus". This *must* not be changed once a cluster has data, only set this option to something different on a brand new cluster. To change from the default to modulus, take a backup, start up a new empty cluster with the setting set to "modulus", then restore your backup into the new cluster.
+
+
+ ```toml
+     [cluster]
+       partition-to-node-assignment = jmp-hash
+ ```
 
 
 #### Etcd Advertise Client Address

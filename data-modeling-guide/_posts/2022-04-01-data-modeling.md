@@ -55,6 +55,26 @@ The LRU cache maintains the most recently accessed Rows.
 
 Setting a time quantum on a field creates extra views which allow ranged Row queries down to the time interval specified. For example, if the time quantum is set to `YMD`, ranged Row queries down to the granularity of a day are supported.
 
+#### TTL (Time To Live)
+
+ TTL is an option for fields with the type of time. Time quantum is required for TTL to function.
+ Allowed time units for TTL are `h`, `m`, `s`, `ms`, `us`, `ns`. Time unit is required. Default value is `0s`.
+
+ Example:
+ - "ttl":"1s" is equal to 1 second.
+ - "ttl":"72h" is equal to 72 hours.
+ - "ttl":"72second" will return error `error: unknown unit "second" in duration "72second"`.
+
+ TTL holds the duration for the views created by FeatureBase based on the time quantum. Once the TTL duration exprires, those views will be deleted.
+ If TTL's value is `0s` (default value), the views created based on time quantum will not be deleted.
+
+ TTL removal is set to run on server start and every hour thereafter.
+
+ To create a new field with TTL:
+ > curl -XPOST http://localhost:10101/index/**test_ttl_index**/field/**data_ttl** -d'{ "options": {"type":"time", "timeQuantum":"YMDH", **"ttl":"24h"**}}'
+
+ To update an existing field with TTL:
+ > curl -XPATCH http://localhost:10101/index/**test_ttl_index**/field/**data_ttl** -d'{ **"option": "ttl", "value": "24h"**}'
 
 ### Numeric Types
 

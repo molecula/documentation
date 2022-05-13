@@ -87,10 +87,10 @@ The available values for `type` are:
 
 | `"type":`            | JSON Input Type                         | FeatureBase Field Type                       | Config Options                                   |
 |----------------------|-----------------------------------------|----------------------------------------------|--------------------------------------------------|
-| `"id"`               | `10`                                    | set/mutex/time                               | `"Mutex"`, `"Quantum"`, `"CacheConfig"`          |
-| `"ids"`              | `[1, 2, 3]`                             | set/time                                     | `"Quantum"`, `"CacheConfig"`                     |
-| `"string"`           | `"example"`                             | keyed set/mutex/time                         | `"Mutex"`, `"Quantum"`, `"CacheConfig"`          |
-| `"strings"`          | `["a", "b", "c"]`                       | keyed set/time                               | `"Mutex"`, `"Quantum"`, `"CacheConfig"`          |
+| `"id"`               | `10`                                    | set/mutex/time                               | `"Mutex"`, `"Quantum"`, `"TTL"`, `"CacheConfig"` |
+| `"ids"`              | `[1, 2, 3]`                             | set/time                                     | `"Quantum"`, `"TTL"`, `"CacheConfig"`            |
+| `"string"`           | `"example"`                             | keyed set/mutex/time                         | `"Mutex"`, `"Quantum"`, `"TTL"`, `"CacheConfig"` |
+| `"strings"`          | `["a", "b", "c"]`                       | keyed set/time                               | `"Mutex"`, `"Quantum"`, `"TTL"`, `"CacheConfig"` |
 | `"bool"`             | `true`/`false`                          | packed bool field (row in keyed set fields)  | None                                             |
 | `"int"`              | `10`/`-12`/`"example"`                  | integer (possibly a foreign-index reference) | `"Min"`, `"Max"`, `"ForeignIndex"`               |
 | `"decimal"`          | `10.9`/`"10.9"`                         | decimal                                      | `"Scale"`                                        |
@@ -105,6 +105,7 @@ When all config options are left as default, the `"Config"` field may be omitted
 * `"Mutex"`: if set to `true`, the data will be ingested into a mutex field instead of a set field
 * `"Quantum"`: the time quantum selection (e.g. `"YM"`/`"YMD"`) to use when ingesting into a time field using the time value from a `"recordTime"`
 * `"CacheConfig"`: the configuration when using a `TopN` cache; does not affect time fields
+* `"TTL"`: Time To Live duration for views specifies when views will deleted. Allowed time units are `h`, `m`, `s`, `ms`, `us`, `ns`. Time quantum is required in order to use TTL.
 * `"Layout"`: the format in which to parse time strings (defaults to RFC3339) - specified in [Go's format](https://golang.org/pkg/time/#pkg-constants)
 * `"Min"`: the minimum possible value for an acceptable integer (defaults to -2^63)
 * `"Max"`: the maximum possible value for an acceptable integer (defaults to 2^63 - 1)
