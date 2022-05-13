@@ -7,7 +7,7 @@ sidebar_label: Getting Started
 FeatureBase supports multiple interfaces for querying and [ingestion](/explanations/ingesters). For this tutorial, we shall use the `csv-ingester` to insert data and both the web-UI and Postgres interface (via psql) to get familiar with querying FeatureBase. Ultimately you'll probably want to interact with Molecula through a [client library](/how-tos/use-python-client).
 
 :::note
-Note that FeatureBase server requires a high limit for open files. Check the documentation of your system to see how to increase it in case you hit that limit. As a workaround, you can also cap FeatureBase's [max-file-count](/reference/featurebase-configuration#max-file-count).
+Note that FeatureBase server requires a high limit for open files. Check the documentation of your system to see how to increase it in case you hit that limit. As a workaround, you can also cap FeatureBase's [max-file-count](/setting-up-featurebase/enterprise/featurebase-configuration#max-file-count).
 :::
 
 

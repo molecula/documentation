@@ -29,7 +29,7 @@ After creating a password, a verify email screen will appear. A confirmation cod
 
 ![Figure 3. Verify your email address ](/img/quick-start-guide/enterprise/fig3.png "Figure 3. Verify your email address.")
 
-Now that you are signed up, you will have access to FeatureBase for seven days. After seven days, you will no longer be able to log in with your credentials. If you encounter any problems during this process or would like to reactivate your account contact [support@molecula.com](support@molecula.com).
+Now that you are signed up, you will have access to FeatureBase for seven days. After seven days, you will no longer be able to log in with your credentials. If you encounter any problems during this process or would like to reactivate your account contact [support@molecula.com](mailto:support@molecula.com).
 
 ![Figure 4. FeatureBase SaaS Homepage ](/img/quick-start-guide/enterprise/fig4.png "Figure 4. FeatureBase SaaS Homepage")
 
