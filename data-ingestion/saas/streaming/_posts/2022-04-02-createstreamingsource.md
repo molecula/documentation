@@ -41,11 +41,11 @@ Next, you will need to pick a table using a dropdown. This is populated by all t
 ]
 ```
 
-Once a schema is uploaded, you must indicate what field or combination of fields make up a unique record. This can be thought of as a traditional RDMBS primary key. There are two options today: ID Field and Primary Key Fields. The id-field option should be used when there is an existing field in the data which uniquely identifies each record in the table and consists of nearly-contiguous positive integers. The primary-key-fields option should be used when the data has no fields that could be used for id-field. This option uses one or more fields (any type) and concatenates them to create unique record IDs for your table. Selecting either option will yield a dropdown of fields to choose from that is populated based on the schema you uploaded. Finally, an “Allow missing fields” checkbox can be checked or unchecked. Having this box checked means that one or more of the fields defined in the schema can be missing from the JSON records streamed in. If a field is missing, that field is left null with no bits set. If this box isn’t checked and a field is missing from the JSON records, an error will return and data will not be loaded into your table. 
+Once a schema is uploaded, you must indicate what field or combination of fields make up a unique record. This can be thought of as a traditional RDMBS primary key. There are two options: ID Field and Primary Key Fields. The id-field option should be used when there is an existing field in the data which uniquely identifies each record in the table and consists of nearly-contiguous positive integers. The primary-key-fields option should be used when the data has no fields that could be used for id-field. This option uses one or more fields (any type) and concatenates them to create unique record IDs for your table. Selecting either option will yield a dropdown of fields to choose from that is populated based on the schema you uploaded. Finally, an “Allow missing fields” checkbox can be checked or unchecked. Having this box checked means that one or more of the fields defined in the schema can be missing from the JSON records streamed in. If a field is missing, that field is left null with no bits set. If this box isn’t checked and a field is missing from the JSON records, an error will return and data will not be loaded into your table. 
 
 Clicking “create source” will start the process of creating your streaming source. This entire process can also be accomplished programmatically.
 
-**cURL API Reference:**
+**HTTP API Reference:**
 ```shell
 curl --location --request POST 'https://api.molecula.cloud/v1/sinks' \
 --header 'Authorization: <IdToken>' \
@@ -66,7 +66,7 @@ curl --location --request POST 'https://api.molecula.cloud/v1/sinks' \
 
 You will be returned to the “Data Sources” page and see a new entry with your source name with the status of “CREATING”. After a few moments, this will update to have a status of “ACTIVE”, which means your streaming source is ready to use. Clicking on the source you just created will reveal a details page that contains your schema, all of your selections from the creation phase, as well as the “Streaming Endpoint”. This is the endpoint you will stream records to in order to get data into your tables. All of your Streaming Sources statuses can also be queried programmatically.
 
-**cURL API Reference:**
+**HTTP API Reference:**
 ```shell
 curl --location --request GET 'https://api.molecula.cloud/v1/deployments' \
 --header 'Authorization: <IdToken>' \
