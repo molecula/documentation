@@ -6,7 +6,7 @@ sidebar_label: Query Data
 
  **⚠ WARNING:** This page contains information that only applies to Molecula's SaaS offering. Additionally, this page represents a work in progress that is subject to frequent changes. 
  
- All data querying within the product is performed over HTTPS. Data is queried using either PQL (Pilosa Query Language), our native query language, or the limited set of SQL we support. To learn more about PQL, please visit the [introduction page](/explanations/pql-intro) and the [reference](/reference/query-languages/pql) page. To learn more about the SQL we support, please visit the [reference](/reference/query-languages/sql) page. As long as an application can issue HTTPS requests, it will be able to query and retrieve data.
+ All data querying within the product is performed over HTTPS. Data is queried using either PQL (Pilosa Query Language), our native query language, or the limited set of SQL we support. To learn more about PQL, please visit the [introduction page](/data-querying/pql-intro) and the [reference](/reference/data-querying/pql) page. To learn more about the SQL we support, please visit the [reference](/reference/data-querying/sql) page. As long as an application can issue HTTPS requests, it will be able to query and retrieve data.
 
 The current query endpoint is a synchronous call that waits for your data to return. There are current limitations to the amount of data that can be returned and the amount of time the query can run. Those limits are shown below:
 
@@ -20,13 +20,13 @@ You will receive an error if either limit is exceeded.
 In order to query data, the following prerequisites must be met:
 
 1. A deployment exists that is in the “Running” state
-- Click [here](/saas/createdeployment/createdeployment) to learn how to create a deployment
-- Click [here](/saas/saas-reference/controlplaneapi) to see the deployment API docs
+- Click [here](/setting-up-featurebase/saas/creating-deployment) to learn how to create a deployment
+- Click [here](/reference/api/saas/controlplaneapi) to see the deployment API docs
 2. A table exists in that deployment
-- Click [here](/saas/ingestdata/tables) to learn how to create a table
-- Click [here](/saas/saas-reference/controlplaneapi) to see the table API docs
+- Click [here](/data-ingestion/saas/tables) to learn how to create a table
+- Click [here](/reference/api/saas/controlplaneapi) to see the table API docs
 3. Data has been loaded into the table
-- Click [here](/saas/ingestdata/ingestoverview) to learn how to ingest data
+- Click [here](/data-ingestion/saas/ingestoverview) to learn how to ingest data
 
 In the User interface, clicking the “Query” section on the left hand navigation bar will take you to a page where you can explore data using PQL & SQL statements. The text editor allows for multiple queries to exist in the same pane. Individual queries are separated by newlines with only whitespace. You should first pick a deployment to query against in the top right corner. This will default to the oldest deployment created. You can redirect any query to a particular deployment by aliasing/prepending it with `“{<deployment name>}”`. Queries can be run by either clicking the run button or with a key combination of `“ctrl + enter"`. This can also be accomplished programmatically <link to query in references> for both SQL and PQL by changing the “language” parameter to sql and pql respectively. Put these in tabs
 
