@@ -9,12 +9,12 @@ sidebar_label: Create A Streaming (HTTPS) Source
 In order to create a streaming source, the following pre-requisites must be met:
 
 1. A deployment exists that is in the “Running” state
-- Click [here](/saas/createdeployment/createdeployment) to learn how to create a deployment
-- Click [here](/saas/saas-reference/controlplaneapi) to see the deployment API docs
+- Click [here](/setting-up-featurebase/saas/creating-deployment) to learn how to create a deployment
+- Click [here](/reference/api/saas/controlplaneapi) to see the deployment API docs
 
 If both prerequisites have been met, you can navigate to “Data Sources” on the left hand navigation bar. Here you will see all of the sources in your organization. Click “New Source” to create a Streaming (HTTPS) Source. You will need to pick a deployment using a dropdown. This is populated by all the deployments in your organization. The source name must be unique within the deployment and only contain lower case alphanumeric, hyphen and underscore characters. This should be descriptive for your organization to understand what data is streaming from this source as well as what environment this source is loading. For example, web clickstream data loading to production might be named web_clicks_production. 
 
-Next, you will need to pick a table using a dropdown. This is populated by all the tables in your organization. If you don’t have a table, you may create one here by clicking “+ Create New Table”. To learn more about table creation, please navigate [here](/saas/ingestdata/tables). Clicking “Next” will take you to the field definition section where you will define the schema of records being streamed into this source. This schema is appended into the table the source is loading. For more information on schemas, go [here](/saas/ingestdata/streamingoverview). This source requires a JSON schema that can either pasted or uploaded. A small example schema is below:
+Next, you will need to pick a table using a dropdown. This is populated by all the tables in your organization. If you don’t have a table, you may create one here by clicking “+ Create New Table”. To learn more about table creation, please navigate [here](/data-ingestion/saas/tables). Clicking “Next” will take you to the field definition section where you will define the schema of records being streamed into this source. This schema is appended into the table the source is loading. For more information on schemas, go [here](/data-ingestion/saas/streaming/streamingoverview). This source requires a JSON schema that can either pasted or uploaded. A small example schema is below:
 
 ```json
 [
