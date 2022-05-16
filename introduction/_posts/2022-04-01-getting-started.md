@@ -23,7 +23,7 @@ FeatureBase runs well on Linux and MacOS. It will not run on Windows.
 
 You can place it somewhere on your `PATH`, or run the binary directly.
 
-Execute the following in a terminal to run FeatureBase with the default configuration (FeatureBase will be available at [localhost:10101](http://localhost:10101)). The `--handler.allowed-origins` argument enables you to query FeatureBase from the [web-UI](/reference/web-ui) via the given port and address. The `--postgres.bind` argument enables you to query FeatureBase from its Postgres-wire compatible endpoint, also via the given address and port.
+Execute the following in a terminal to run FeatureBase with the default configuration (FeatureBase will be available at [localhost:10101](http://localhost:10101)). The `--handler.allowed-origins` argument enables you to query FeatureBase from the [web-UI](/reference/api/enterprise/web-ui) via the given port and address. The `--postgres.bind` argument enables you to query FeatureBase from its Postgres-wire compatible endpoint, also via the given address and port.
 
 ```shell
 featurebase server \
