@@ -23,7 +23,7 @@ FeatureBase runs well on Linux and MacOS. It will not run on Windows.
 
 You can place it somewhere on your `PATH`, or run the binary directly.
 
-Execute the following in a terminal to run FeatureBase with the default configuration (FeatureBase will be available at [localhost:10101](http://localhost:10101)). The `--handler.allowed-origins` argument enables you to query FeatureBase from the [web-UI](/reference/web-ui) via the given port and address. The `--postgres.bind` argument enables you to query FeatureBase from its Postgres-wire compatible endpoint, also via the given address and port.
+Execute the following in a terminal to run FeatureBase with the default configuration (FeatureBase will be available at [localhost:10101](http://localhost:10101)). The `--handler.allowed-origins` argument enables you to query FeatureBase from the [web-UI](/reference/api/enterprise/web-ui) via the given port and address. The `--postgres.bind` argument enables you to query FeatureBase from its Postgres-wire compatible endpoint, also via the given address and port.
 
 ```shell
 featurebase server \
@@ -72,7 +72,7 @@ curl localhost:10101/status
 
 In order to better understand FeatureBase's capabilities, we will create a sample project called "Star Trace" containing information about 1,000 popular Github repositories which have "go" in their name. The Star Trace index will include data points such as programming language and stargazers—people who have starred a project.
 
-Although FeatureBase doesn't keep the data in a tabular format, we still use the terms "columns" and "rows" when describing the data model. We put the primary objects in columns, and the properties of those objects in rows. For example, the Star Trace project will contain an index called "repository" which contains columns representing Github repositories, and rows representing properties like programming languages and stargazers. We can better organize the rows by grouping them into sets called Fields. So the "repository" index might have a "languages" field as well as a "stargazers" field. You can learn more about indexes and fields in the [Data Model](../data-model/) section of the documentation.
+Although FeatureBase doesn't keep the data in a tabular format, we still use the terms "columns" and "rows" when describing the data model. We put the primary objects in columns, and the properties of those objects in rows. For example, the Star Trace project will contain an index called "repository" which contains columns representing Github repositories, and rows representing properties like programming languages and stargazers. We can better organize the rows by grouping them into sets called Fields. So the "repository" index might have a "languages" field as well as a "stargazers" field. You can learn more about indexes and fields in the [Data Model](/data-modeling-guide/data-modeling) section of the documentation.
 
 :::note
 If at any time you want to verify the data structure, you can request the schema as follows:
@@ -116,7 +116,7 @@ curl localhost:10101/schema
 }
 ```
 :::note
-This is the response you should receive once completing this project. It has also been formatted using [`jq`](https://stedolan.github.io/jq/").
+This is the response you should receive once completing this project. It has also been formatted using [`jq`](https://stedolan.github.io/jq) (external link).
 :::
 
 
@@ -147,7 +147,7 @@ molecula-consumer-csv \
 
 There are a couple of things to note about the above command, particularly the flags and arguments used: 
 * `--index`: set the index that shall be used. If this index does not exist, it shall be created automatically. 
-* `--header`: set the header to be used if the original csv file does not have a header. Each column name also specifies the type that FeatureBase shall use to represent the data (after the two underscores). For more details on all the data-types that Molecula avails, be sure to check out the [Field Types](reference/ingester-configuration) section later on. For now, it suffices to say that the `ID` type is a simple integer representation of a particular property that an object has. For example, if an object has `project_id` set to 10 and `language` set to 6, 8 and 18, it means that the object was assigned the project ID 10 and uses Go, C and Python. 
+* `--header`: set the header to be used if the original csv file does not have a header. Each column name also specifies the type that FeatureBase shall use to represent the data (after the two underscores). For more details on all the data-types that Molecula avails, be sure to check out the [Field Types](reference/data-ingestion/ingester-configuration) section later on. For now, it suffices to say that the `ID` type is a simple integer representation of a particular property that an object has. For example, if an object has `project_id` set to 10 and `language` set to 6, 8 and 18, it means that the object was assigned the project ID 10 and uses Go, C and Python. 
 * `--id-field`: specify which column contains the primary key for the object. 
 * `--batch-size`: by default `molecula-consumer-csv` ingests rows one at a time which is quite slow. To speed up ingestion, set the batch size to a higher number such as 1000. The exact batch-size to be used though depends on the domain, setting and tradeoffs. 
 * `--files`: provide the path to the file to ingest data from.
