@@ -46,7 +46,7 @@ To configure Azure Active Directory as an IdP:
 The `featurebase.conf` and associated `permissions.yml` files _MUST_ be _identical_ across all nodes in a cluster. Failure to do so may result in an insecure cluster.
 :::
 
-To enable authentication and authorization in FeatureBase, add the following lines to your `featurebase.conf`. More information on these parameters and their values can be found at [this link](/reference/featurebase-configuration.md)
+To enable authentication and authorization in FeatureBase, add the following lines to your `featurebase.conf`. More information on these parameters and their values can be found at [this link](/setting-up-featurebase/enterprise/featurebase-configuration)
 ```
 [auth]
  enable = true

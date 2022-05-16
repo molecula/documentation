@@ -313,3 +313,4 @@ Repeat the process in the Cloud Manager for each deployment that you want to spi
 ![Figure 22. Delete deployment](/img/quick-start-guide/enterprise/fig23.png "Figure 22. Delete deployment")
 
 ![Figure 23. Delete deployment confirm](/img/quick-start-guide/enterprise/fig24.png "Figure 23. Delete deployment confirm")
+
