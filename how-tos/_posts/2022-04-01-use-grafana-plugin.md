@@ -4,7 +4,7 @@ title: How To Use the Grafana Plugin
 sidebar_label: Use the Grafana Plugin
 ---
 
-Molecula provides a Grafana plugin, which can be used to interact with FeatureBase (4.0 or higher <!-- TODO is this correct? -->) to run queries and view visualizations of results. Note that this is unrelated to using Grafana for operational monitoring of the FeatureBase cluster. For details on that, see the [monitoring reference page](/reference/monitoring)
+Molecula provides a Grafana plugin, which can be used to interact with FeatureBase (4.0 or higher <!-- TODO is this correct? -->) to run queries and view visualizations of results. Note that this is unrelated to using Grafana for operational monitoring of the FeatureBase cluster. For details on that, see the [monitoring reference page](/reference/operations/enterprise/monitoring)
 
 ## Setup
 
@@ -109,7 +109,7 @@ If your environment requires a different installation method, please refer to th
 
 
 ### Querying
-The plugin supports any [SQL](/reference/sql) and [PQL](/reference/pql) queries that FeatureBase supports. When using PQL, the index must be selected from the respective drop down.
+The plugin supports any [SQL](/reference/data-querying/sql) and [PQL](/reference/data-querying/pql) queries that FeatureBase supports. When using PQL, the index must be selected from the respective drop down.
 
 ![Query FeatureBase through Grafana](/img/grafana-query.png "Query FeatureBase through Grafana")  
 *Enter your SQL or PQL query*
