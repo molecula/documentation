@@ -4,7 +4,7 @@ title: Ingester Configuration
 sidebar_label: Ingester Configuration
 ---
 
-Also see the [consumer examples](/how-tos/consumer-usage-examples) page for usage examples with corresponding data and configuration files <!-- TODO and queries -->.
+Also see the [consumer examples](/how-tos/consumer-examples) page for usage examples with corresponding data and configuration files <!-- TODO and queries -->.
 
 ## Authentication
 When authentication is enabled, a valid JWT must be passed to the `auth-token` flag for any ingester. The token may be obtained by following these [instructions](/how-tos/enable-auth#how-to-get-auth-token). Only users with admin permissions will be able to perform ingest.
@@ -44,7 +44,7 @@ Note: In order for TLS to be used, the various TLS options need to be set, but e
 
 ## Kafka Delete Ingester
 
-The Kafka delete ingester configuration is the same as the Kafka ingester with the addition of `pilosa-grpc-hosts` (or `featurebase-grpc-hosts` with the [`--future.rename` configuration flag](/reference/featurebase-rename)) which is the endpoint on which FeatureBase is listening for GRPC connections. This is necessary as the delete ingester uses an `Inspect` call to figure out what values need to be deleted and that call is only available over this interface. By default it's `localhost:20101`.
+The Kafka delete ingester configuration is the same as the Kafka ingester with the addition of `pilosa-grpc-hosts` (or `featurebase-grpc-hosts` with the [`--future.rename` configuration flag](/reference/operations/enterprise/featurebase-rename)) which is the endpoint on which FeatureBase is listening for GRPC connections. This is necessary as the delete ingester uses an `Inspect` call to figure out what values need to be deleted and that call is only available over this interface. By default it's `localhost:20101`.
 
 
 ## Kafka Static Ingester
@@ -131,13 +131,13 @@ Assuming that the cache is full (the field has more than `"CacheSize"` rows with
 
 This cache can also be disabled by setting the type to `"none"`.
 Disabling the `TopN` cache will prevent `TopN` from working.
-When operating on a field without a cache, a slower [`TopK`](/reference/pql#topk) or sorted [`GroupBy`](/reference/pql#groupby) query may be used instead.
+When operating on a field without a cache, a slower [`TopK`](/reference/data-querying/pql#topk) or sorted [`GroupBy`](/reference/data-querying/pql#groupby) query may be used instead.
 
 For `"recordTime"` fields, there are essentially two modes. If `"Epoch"` or `"Unit"` are set, then the incoming data is interpreted as a number. Otherwise it's assumed that the incoming data is interpreted as a date/timestamp and the `"Layout"` is used to parse that value.
 
 ## CSV Ingester
 
-The CSV ingester can read CSV files (optionally gzipped) and ingest them to FeatureBase. It uses a naming convention in the header of the CSV file to [specify how each field](/reference/ingester-configuration#header-descriptions) should be ingested. The header can either be included in the file or passed in separately if editing the file is not desirable. If passed in separately one should use the `--ignore-header` option if the CSV file has a header so that it is not interpreted as data.
+The CSV ingester can read CSV files (optionally gzipped) and ingest them to FeatureBase. It uses a naming convention in the header of the CSV file to [specify how each field](/reference/data-ingestion/ingester-configuration#header-descriptions) should be ingested. The header can either be included in the file or passed in separately if editing the file is not desirable. If passed in separately one should use the `--ignore-header` option if the CSV file has a header so that it is not interpreted as data.
 
 Use `molecula-consumer-csv -h` to list all available flags. Each flag is also available as an environment variable by prefixing it with "CONSUMER_".
 
@@ -168,7 +168,7 @@ Missing values and empty string values (`""`) are handled identically.
 
 ## SQL Ingester
 
-The SQL ingester uses a sql connection (via MSSQL, MySQL, or Postgres) to select data from a sql endpoint, and ingests the data into Molecula. It uses the SQL table column names as [header descriptions to specify how each field](/reference/ingester-configuration#header-descriptions) should be ingested, similar to the CSV Ingester.
+The SQL ingester uses a sql connection (via MSSQL, MySQL, or Postgres) to select data from a sql endpoint, and ingests the data into Molecula. It uses the SQL table column names as [header descriptions to specify how each field](/reference/data-ingestion/ingester-configuration#header-descriptions) should be ingested, similar to the CSV Ingester.
 
 Use `molecula-consumer-sql -h` to list all available flags (or see table below). A few sample configurations are noted below:
 
@@ -183,7 +183,7 @@ molecula-consumer-sql \
 	--row-expr 'SELECT tableID as id__ID, zipcode as zipcode__String limit 10'
 ```
 
-Or, equivalently, with the [`--future.rename` configuration flag](/reference/featurebase-rename) configuration flag:
+Or, equivalently, with the [`--future.rename` configuration flag](/reference/operations/enterprise/featurebase-rename) configuration flag:
 
 ```shell
 molecula-consumer-sql \
@@ -255,7 +255,7 @@ postgres:	https://godoc.org/github.com/lib/pq
 
 ## Header Descriptions
 
-The [CSV](/reference/ingester-configuration#csv-ingester) and [SQL](/reference/ingester-configuration#sql-ingester) ingesters use the same syntax for describing how you want the fields in your source data to be ingested into Molecula. The basic structure is
+The [CSV](/reference/data-ingestion/ingester-configuration#csv-ingester) and [SQL](/reference/data-ingestion/ingester-configuration#sql-ingester) ingesters use the same syntax for describing how you want the fields in your source data to be ingested into Molecula. The basic structure is
 
 `field_name__FieldType_Arg1_Arg2`
 
@@ -275,7 +275,7 @@ String is for arbitrary string data. The data will be stored in a 'set', 'mutex'
 
 Argument 1 — Mutex: Either 'T' or 'F'. Specifies whether a "mutex" type field should be used  in FeatureBase. If 'T', a "mutex" field is used, and any particular record may only have a single value. If 'F', a "set" field is used, and a particular record may have multiple values for this field.
 
-Argument 2 — Time Quantum: If this argument is provided, the field will be a "time" field rather than "set" or "mutex". "time" fields work similarly to "set" fields but each value can have a coarse grained timestamp associated with it. The granularity is controlled by this argument and can be anything from yearly down to hourly. See the [FeatureBase Data Model docs](/explanations/data-modeling) for more information about time fields.
+Argument 2 — Time Quantum: If this argument is provided, the field will be a "time" field rather than "set" or "mutex". "time" fields work similarly to "set" fields but each value can have a coarse grained timestamp associated with it. The granularity is controlled by this argument and can be anything from yearly down to hourly. See the [FeatureBase Data Model docs](/data-modeling-guide/data-modeling) for more information about time fields.
 
 ### ID
 Example:
@@ -366,7 +366,7 @@ Example:
 
 StringArray is similar to the `String` type, but expects multiple values in a single record. Each value will be set in the corresponding row of the FeatureBase 'set' or 'time' field. To retrieve Array values from a CSV file, the data within the CSV column should be a comma separated list of array values enclosed in double quotes, e.g. `"Georgia,Texas,Oregon"`.
 
-Argument 1 — Time Quantum: If this argument is provided, the field will be a "time" field rather than "set". "time" fields work similarly to "set" fields but each value can have a coarse grained timestamp associated with it. The granularity is controlled by this argument and can be anything from yearly down to hourly. See the [FeatureBase Data Model docs](/explanations/data-modeling) for more information about time fields.
+Argument 1 — Time Quantum: If this argument is provided, the field will be a "time" field rather than "set". "time" fields work similarly to "set" fields but each value can have a coarse grained timestamp associated with it. The granularity is controlled by this argument and can be anything from yearly down to hourly. See the [FeatureBase Data Model docs](/data-modeling-guide/data-modeling) for more information about time fields.
 
 ### IDArray
 Example:
@@ -374,7 +374,7 @@ Example:
 
 IDArray is similar to the `ID` type, but expects multiple values in a single record. Each value will be set in the corresponding row of the FeatureBase 'set' or 'time'  field. To retrieve Array values from a CSV file, the data within the CSV column should be a comma separated list of values enclosed in double quotes, e.g. `"10,23,18"`.
 
-Argument 1 — Time Quantum: If this argument is provided, the field will be a "time" field rather than "set". "time" fields work similarly to "set" fields but each value can have a coarse grained timestamp associated with it. The granularity is controlled by this argument and can be anything from yearly down to hourly. See the [FeatureBase Data Model docs](/explanations/data-modeling) for more information about time fields.
+Argument 1 — Time Quantum: If this argument is provided, the field will be a "time" field rather than "set". "time" fields work similarly to "set" fields but each value can have a coarse grained timestamp associated with it. The granularity is controlled by this argument and can be anything from yearly down to hourly. See the [FeatureBase Data Model docs](/data-modeling-guide/data-modeling) for more information about time fields.
 
 ### Ignore
 Example:
