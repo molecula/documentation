@@ -46,7 +46,7 @@ curl --location --request POST 'https://id.molecula.cloud' \
 
 ### Create A Deployment
 
-Deployments are clusters of FeatureBase nodes. All of your data will live in tables within FeatureBase. You can think of a deployment as a database. Molecula offers deployment sizes to choose from. For this guide, we will be using the "8GB" option. For more information on deployments, see [Deployments Overview](/saas/createdeployment/deploymentoverview). The below command will start creating your deployment
+Deployments are clusters of FeatureBase nodes. All of your data will live in tables within FeatureBase. You can think of a deployment as a database. Molecula offers deployment sizes to choose from. For this guide, we will be using the "8GB" option. For more information on deployments, see [Deployments Overview](/setting-up-featurebase/saas/deployments-overview). The below command will start creating your deployment
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
@@ -79,7 +79,7 @@ Grab your deployment’s id. This is a unique id for your deployment. Once your 
 
 ### Ingest Data
 
-Once a deployment is running, you will want to start loading data into it. Sources are configurable resources that load data into deployments. This section will help you creating a "Streaming (HTTPS)" Source, which will yield a persistent endpoint that allows you to push data into your deployment over HTTPS. For more information on ingesting data, see [Ingest Data](/saas/ingestdata/ingestoverview).
+Once a deployment is running, you will want to start loading data into it. Sources are configurable resources that load data into deployments. This section will help you creating a "Streaming (HTTPS)" Source, which will yield a persistent endpoint that allows you to push data into your deployment over HTTPS. For more information on ingesting data, see [Ingest Data](/data-ingestion/saas/ingestoverview).
 
 #### Create A Table
 
@@ -193,7 +193,7 @@ Grab your source's id. This is a unique id for your source. Once your source is 
 
 #### Ingest Data
 
-We now have an endpoint we can stream data to. This guide will only send one micro-batched payload of records, but data can be continually pushed to this endpoint. For more information, please see the [Streaming (HTTPS)](/saas/streaming/streamingoverview).
+We now have an endpoint we can stream data to. This guide will only send one micro-batched payload of records, but data can be continually pushed to this endpoint. For more information, please see the [Streaming (HTTPS)](/data-ingestion/saas/streaming/streamingoverview).
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
