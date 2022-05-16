@@ -116,7 +116,7 @@ curl localhost:10101/schema
 }
 ```
 :::note
-This is the response you should receive once completing this project. It has also been formatted using [`jq`](https://stedolan.github.io/jq/").
+This is the response you should receive once completing this project. It has also been formatted using [`jq`](https://stedolan.github.io/jq) (external link).
 :::
 
 
