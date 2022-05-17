@@ -125,4 +125,4 @@ To obtain an auth token:
 !["Molecula-Token"](/img/auth_token.png)
 
 ### How can I use an auth token?
-To access FeatureBase outside of the UI, an auth token is required. Refer to the [HTTP API](/reference/http-api#http-api-with-authentication), [gRPC API](/reference/grpc-api#grpc-api-with-authentication), [backup/restore](/reference/backups#backups-with-authentication) or [grafana](/how-tos/use-grafana-plugin#grafana-with-authentication) documentation for details on how to use an auth token to access FeatureBase.
+To access FeatureBase outside of the UI, an auth token is required. Refer to the [HTTP API](/reference/api/enterprise/http-api#http-api-with-authentication), [gRPC API](/reference/api/enterprise/grpc-api#grpc-api-with-authentication), [backup/restore](/reference/operations/enterprise/backups#backups-with-authentication) or [grafana](/how-tos/use-grafana-plugin#grafana-with-authentication) documentation for details on how to use an auth token to access FeatureBase.
