@@ -31,7 +31,7 @@ featurebase server \
   --postgres.bind "localhost:55432"
 ```
 
-From there, start the [web UI](/reference/web-ui). It will indicate whether FeatureBase is running successfuly on the homepage.  
+From there, start the [web UI](/reference/api/enterprise/web-ui). It will indicate whether FeatureBase is running successfuly on the homepage.  
 If you prefer using the CLI, you can connect to and query FeatureBase using `psql`
 
 ```shell
