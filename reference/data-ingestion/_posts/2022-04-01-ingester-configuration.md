@@ -116,7 +116,7 @@ When all config options are left as default, the `"Config"` field may be omitted
 * `"CustomUnit"`: a 'duration' value which specifies a custom time unit; accepts values like "6h" for 6 hours, "1m30s" for 1 minute and 30 seconds; valid units can be described using "ns", "us", "ms", "s", "m", or "h"
 * `"Granularity"`: the resolution at which the incoming values will be stored. Allowed values are `s`, `ms`, `us`, `ns`. Defaults to `"s"`.
 
-The `"CacheConfig"` option specifies the size and type of a [`TopN`](/reference/pql#topn) cache for a set or mutex field.
+The `"CacheConfig"` option specifies the size and type of a [`TopN`](/reference/data-querying/pql#topn) cache for a set or mutex field.
 This "cache" is used for the `TopN` approximation.
 The default setting is:
 ```json
