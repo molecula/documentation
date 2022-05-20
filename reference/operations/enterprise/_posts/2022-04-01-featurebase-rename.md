@@ -20,7 +20,7 @@ Starting with the 4.4 release the binary will be named `featurebase` rather than
 
 Some configuration parameters previously included the word "pilosa". For 5.0 releases, these previous parameters will continue to work, as aliases for the new names, replacing "pilosa" with "featurebase". Starting with version 6.0, the "pilosa" aliases will no longer be available.
 
-For future 4.x releases, FeatureBase [metrics](/reference/monitoring#metrics) will continue to use the "pilosa" namespace. Optionally, the "featurebase" namespace can be used, by using the `--future.rename` configuration parameter. Starting with version 5.0, the "featurebase" namespace will be used by default.
+For future 4.x releases, FeatureBase [metrics](/reference/operations/enterprise/monitoring#metrics) will continue to use the "pilosa" namespace. Optionally, the "featurebase" namespace can be used, by using the `--future.rename` configuration parameter. Starting with version 5.0, the "featurebase" namespace will be used by default.
 
 The default data directory will switch from `~/.pilosa` to `/opt/molecula/featurebase`, and the default node name will switch from `pilosa0` to `featurebase0`.
 
