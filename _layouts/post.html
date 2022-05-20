@@ -22,7 +22,8 @@ layout: default
 
 <div class="space-y-100 border-t border-gray-200 mt-10 py-10 text-mol-slate sm:text-center">
   <h5 class="text-sm font-bold">Something missing or incorrect?</h5>
-  <a href="{% github_edit_link %}" class="text-sm font-medium">
+  {% assign branch = "main" %}
+  <a href="https://github.com/{{ site.github.repository_nwo }}/edit/{{ branch }}/{{ page.path }}" class="text-sm font-medium">
     Help us improve this article
   </a>
 </div>

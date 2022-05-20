@@ -35,3 +35,9 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 gem "webrick", "~> 1.7"
 
 gem 'jekyll-default-layout'
+
+# Addon needed to make 'Help us improve this article' link at
+# bottom of posts.
+#
+# For more info see: http://jekyll.github.io/github-metadata/
+gem "jekyll-github-metadata"

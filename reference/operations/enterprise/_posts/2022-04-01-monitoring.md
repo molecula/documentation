@@ -81,7 +81,7 @@ where in the case of Ingesters, `[namespaceprefix]` is one of:
 | `[featurebaseprefix]_antientropy_total`                               | count of times the AntiEntropy process runs |
 | `[featurebaseprefix]_antientropy_duration_seconds`                    | histogram of duration of AntiEntropy process |
 
-where `[featurebaseprefix]` is either `featurebase` if the [`--future.rename` configuration flag](/reference/featurebase-rename) is set, or `pilosa`.
+where `[featurebaseprefix]` is either `featurebase` if the [`--future.rename` configuration flag](/reference/operations/enterprise/featurebase-rename) is set, or `pilosa`.
 
 In addition, metrics are generated for counts of individual query calls. These are identified by the `query` prefix, for example `query_topn_total`. For PQL calls, these include the following queries: `Sum`, `Min`, `Max`, `MinRow`, `MaxRow`, `Count`, `TopN`, `Rows`, `GroupBy`. Note that the query name is represented as lower-case in the metric name. SQL calls may also affect these metrics, depending on SQL->PQL mapping of the particular query.
 

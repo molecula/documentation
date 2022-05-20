@@ -10,7 +10,7 @@ sidebar_label: Key Concepts
 
 **Deployment:** A FeatureBase cluster. Deployments are the underlying hardware used to both store and query your data. Clusters can consist of one or more nodes. Deployments are managed with the “Cloud Manager” in the UI.
 
-**Table:** An object within a deployment that stores related data. While [data modeling](/explanations/data-modeling) within FeatureBase is different than other databases, a table is analogous to a table found in a traditional RDBMS. A table is created and must be uniquely named within a deployment. A table’s name is immutable once created.
+**Table:** An object within a deployment that stores related data. While [data modeling](/data-modeling-guide/data-modeling) within FeatureBase is different than other databases, a table is analogous to a table found in a traditional RDBMS. A table is created and must be uniquely named within a deployment. A table’s name is immutable once created.
 
 **Sources:** Resources that load data into tables within deployments. Today, the only source is an HTTPS endpoint that allows you to stream data into your deployment. Each endpoint has an associated schema and maps to one table within one deployment.
 

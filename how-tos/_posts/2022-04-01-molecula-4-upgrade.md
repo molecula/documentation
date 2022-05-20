@@ -67,7 +67,7 @@ The entire `gossip` section has been removed as that functionality has been repl
 `--long-query-time`: Used to be nested under cluster, but it is now top level.
 
 ### Data Directory Structure    
-Changes to the data directory structure in FeatureBase were made to account for RBF and etcd changes. For details, refer to the [Data Directory Structure](/explanations/data-directory-structure). In general, the Molecula team would like to discourage reliance on any particular details of the directory structure. 
+Changes to the data directory structure in FeatureBase were made to account for RBF and etcd changes. For details, refer to the [Data Directory Structure](/reference/operations/enterprise/data-directory-structure). In general, the Molecula team would like to discourage reliance on any particular details of the directory structure. 
 
 Pilosa v2.x:
 ```
