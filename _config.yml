@@ -29,12 +29,18 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
 github_username:  jekyll
 
-# Build settings
-remote_theme: dcoded/verbose-guacamole
+# Addon needed to make 'Help us improve this article' link at
+# bottom of posts. Also needed to add 'jekyll-github-metadata'
+# as a plugin below.
+#
+# For more info see: http://jekyll.github.io/github-metadata/
+repository: molecula/documentation
+
 plugins:
   - jekyll-feed
   - jekyll-default-layout
   - jekyll-last-modified-at
+  - jekyll-github-metadata
 
 permalink: /:categories/:title
 
