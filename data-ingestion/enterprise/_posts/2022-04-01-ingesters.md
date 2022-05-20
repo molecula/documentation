@@ -167,7 +167,7 @@ The Kafka Static ingester reads JSON-encoded records from a Kafka topic, uses a 
 
 ## CSV Ingester
 
-The CSV ingester can read CSV files (optionally gzipped) and ingest them to FeatureBase. It uses a naming convention in the header of the CSV file to [specify how each field](/explanations/ingesters#field-types) should be ingested. The header can either be included in the file or passed in separately if editing the file is not desirable. If passed in separately one should use the `--ignore-header` option if the CSV file has a header so that it is not interpreted as data.
+The CSV ingester can read CSV files (optionally gzipped) and ingest them to FeatureBase. It uses a naming convention in the header of the CSV file to [specify how each field](/data-ingestion/enterprise/ingesters#field-types) should be ingested. The header can either be included in the file or passed in separately if editing the file is not desirable. If passed in separately one should use the `--ignore-header` option if the CSV file has a header so that it is not interpreted as data.
 
 [Full CSV Ingester Configuration Reference](/reference/data-ingestion/ingester-configuration#csv-ingester)
 
