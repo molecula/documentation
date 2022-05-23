@@ -22,9 +22,8 @@ The entirety of a single batch is copied into FeatureBase at the same time.
 Large batches mean that the per-batch overhead is less significant.
 A batch is created once a specified number of records have been pulled.
 
-:::note
+**NOTE:** 
 When using the Kafka ingester, a smaller batch will be created if Kafka stops supplying records for at least a second.
-:::
 
 In Molecula `v2.2` and newer, the ingester has a `--track-progress` CLI option which periodically logs the number of records which have been pulled from a source, as well as the lifetime average record sourcing rate.
 
