@@ -8,9 +8,8 @@ This document contains instructions for manually installing FeatureBase on a sin
 
 ## Linux with systemd
 
-:::note
+**NOTE:** 
 For FeatureBase 4.4.0 or later
-:::
 
 ### Install FeatureBase and Consumers
 
@@ -177,11 +176,10 @@ for vds in client.get_vds_list():
 
 ## MacOS
 
-:::note
+**NOTE:** 
 For Molecula 2.1.1
-:::
 
-:::important
+**IMPORTANT:**
 As with many data stores, FeatureBase requires open file limits to be increased from their defaults. Managing open file limits changes frequently with MacOS versions. Here are a few resources to consult:
 
 - [max-file-count configuration option](/setting-up-featurebase/enterprise/featurebase-configuration#max-file-count)

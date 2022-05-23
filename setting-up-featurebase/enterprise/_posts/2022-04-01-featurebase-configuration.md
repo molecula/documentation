@@ -62,17 +62,18 @@ FeatureBase can be configured through command line flags, environment variables,
 | translation.map-size           | PILOSA_TRANSLATION_MAP_SIZE           | FEATUREBASE_TRANSLATION_MAP_SIZE                  | int   |      |
 | translation.primary-url        | PILOSA_TRANSLATION_PRIMARY_URL        | FEATUREBASE_TRANSLATION_PRIMARY_URL               | str   |      |
 | auth.enable                    | PILOSA_AUTH_ENABLE                    | FEATUREBASE_AUTH_ENABLE                           | bool  |      |
-| auth.client-id                 | PILOSA_AUTH_CLIENT_ID                 | FEATUREBASE_AUTH_CLIENT_ID                        | str  |      |
-| auth.client-secret             | PILOSA_AUTH_CLIENT_SECRET             | FEATUREBASE_AUTH_CLIENT_SECRET                    | str  |      |
-| auth.authorize-url             | PILOSA_AUTH_AUTHORIZE_URL             | FEATUREBASE_AUTH_AUTHORIZE_URL                    | str  |      |
-| auth.token-url                 | PILOSA_AUTH_TOKEN_URL                 | FEATUREBASE_AUTH_TOKEN_URL                        | str  |      |
-| auth.group-endpoint-url        | PILOSA_AUTH_GROUP_ENDPOINT_URL        | FEATUREBASE_AUTH_GROUP_ENDPOINT_URL               | str  |      |
-| auth.redirect-base-url         | PILOSA_AUTH_REDIRECT_BASE_URL         | FEATUREBASE_AUTH_REDIRECT_BASE_URL                | str  |      |
-| auth.logout-url                | PILOSA_AUTH_LOGOUT_URL                | FEATUREBASE_AUTH_LOGOUT_URL                       | str  |      |
-| auth.scopes                    | PILOSA_AUTH_SCOPES                    | FEATUREBASE_AUTH_SCOPES                           | list |      |
-| auth.secret-key                | PILOSA_AUTH_SECRET_KEY                | FEATUREBASE_AUTH_SECRET_KEY                       | str  |      |
-| auth.permissions               | PILOSA_AUTH_PERMISSIONS               | FEATUREBASE_AUTH_PERMISSIONS                      | str  |      |
-| auth.query-log-path            | PILOSA_AUTH_QUERY_LOG_PATH            | FEATUREBASE_AUTH_QUERY_LOG_PATH                   | str  |      |
+| auth.client-id                 | PILOSA_AUTH_CLIENT_ID                 | FEATUREBASE_AUTH_CLIENT_ID                        | str   |      |
+| auth.client-secret             | PILOSA_AUTH_CLIENT_SECRET             | FEATUREBASE_AUTH_CLIENT_SECRET                    | str   |      |
+| auth.authorize-url             | PILOSA_AUTH_AUTHORIZE_URL             | FEATUREBASE_AUTH_AUTHORIZE_URL                    | str   |      |
+| auth.token-url                 | PILOSA_AUTH_TOKEN_URL                 | FEATUREBASE_AUTH_TOKEN_URL                        | str   |      |
+| auth.group-endpoint-url        | PILOSA_AUTH_GROUP_ENDPOINT_URL        | FEATUREBASE_AUTH_GROUP_ENDPOINT_URL               | str   |      |
+| auth.redirect-base-url         | PILOSA_AUTH_REDIRECT_BASE_URL         | FEATUREBASE_AUTH_REDIRECT_BASE_URL                | str   |      |
+| auth.logout-url                | PILOSA_AUTH_LOGOUT_URL                | FEATUREBASE_AUTH_LOGOUT_URL                       | str   |      |
+| auth.scopes                    | PILOSA_AUTH_SCOPES                    | FEATUREBASE_AUTH_SCOPES                           | list  |      |
+| auth.secret-key                | PILOSA_AUTH_SECRET_KEY                | FEATUREBASE_AUTH_SECRET_KEY                       | str   |      |
+| auth.permissions               | PILOSA_AUTH_PERMISSIONS               | FEATUREBASE_AUTH_PERMISSIONS                      | str   |      |
+| auth.query-log-path            | PILOSA_AUTH_QUERY_LOG_PATH            | FEATUREBASE_AUTH_QUERY_LOG_PATH                   | str   |      |
+| auth.configured-ips            | PILOSA_AUTH_CONFIGURED_IPS            | FEATUREBASE_AUTH_CONFIGURED_IPS                   | str   |      |
 
 Options are listed in the table by their CLI and Environment names. Further details are given below with the TOML configuration file variables. Note that there is a direct correlation between the CLI name and the TOML name. For example, the CLI flag `etcd.initial-cluster` is identified in TOML as:
 
@@ -612,4 +613,5 @@ Identity provider specific parameters should be obtained from the identity provi
 - `group-endpoint-url`: HTTP endpoint that returns groups for a user's valid JWT
 - `logout-url`: identity provider's logout URL
 - `scopes`: a list of scopes required for an access token to request groups from the identity provider.
+- `configured-ips`: list of whitelisted IPs/subnets, admin permissions are granted for any request originating from an IP in this list. Domain names and `0.0.0.0` are not allowed options. If list is empty or if option is not set, no IPs are whitelisted. 
 

@@ -19,9 +19,10 @@ When a user logs in to FeatureBase, their groups are retrieved from the IdP. The
 
 - If no permissions are provided in the permissions file, no access is allowed to FeatureBase.
 - Access at the group level can be granted, revoked or changed by updating the permissions file. Changes to the permissions file require a FeatureBase restart.
-:::warning
-The `featurebase.conf` and associated `permissions.yml` files _MUST_ be _identical_ across all nodes in a cluster. Failure to do so may result in an insecure cluster.
-:::
+
+    **⚠ WARNING:** 
+    The `featurebase.conf` and associated `permissions.yml` files _MUST_ be _identical_ across all nodes in a cluster. Failure to do so may result in an insecure cluster.
+
 - Access at the user level can be granted, revoked or changed in the identity provider by changing the user's group memberships. Note that group membership changes may take a moment to propagate to FeatureBase.
 
 ## Audit Log
@@ -42,9 +43,9 @@ To configure Azure Active Directory as an IdP:
 
 ## Configuring FeatureBase
 
-:::warning
+ **⚠ WARNING:** 
 The `featurebase.conf` and associated `permissions.yml` files _MUST_ be _identical_ across all nodes in a cluster. Failure to do so may result in an insecure cluster.
-:::
+
 
 To enable authentication and authorization in FeatureBase, add the following lines to your `featurebase.conf`. More information on these parameters and their values can be found at [this link](/setting-up-featurebase/enterprise/featurebase-configuration)
 ```
@@ -61,6 +62,7 @@ To enable authentication and authorization in FeatureBase, add the following lin
  secret-key = ""
  permissions = ""
  query-log-path = ""
+ configured-ips = []
 ```
 
 Additionally, TLS must be enabled. Refer to [How To Enable TLS](/how-tos/enable-mutual-tls) for more details.
@@ -95,6 +97,7 @@ Additionally, TLS must be enabled. Refer to [How To Enable TLS](/how-tos/enable-
 - `secret-key`: secret key used to secure inter-node communication in a FeatureBase cluster. Run `featurebase keygen` command to generate a key to use.
 - `query-log-path`: path for [query audit log](#audit-log).
 - `permissions`: path for group permissions file that maps group IDs to index-level access.
+- `configured-ips`: list of whitelisted IPs/subnets, admin permissions are granted for any request originating from an IP in this list. Domain names and `0.0.0.0` are not allowed options. If list is empty or if option is not set, no IPs are whitelisted. 
 
 ### Configure audit logs in FeatureBase
 - Create a log file:

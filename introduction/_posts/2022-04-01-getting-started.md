@@ -6,10 +6,8 @@ sidebar_label: Getting Started
 
 FeatureBase supports multiple interfaces for querying and [ingestion](/data-ingestion/enterprise/ingesters). For this tutorial, we shall use the `csv-ingester` to insert data and both the web-UI and Postgres interface (via psql) to get familiar with querying FeatureBase. Ultimately you'll probably want to interact with Molecula through a [client library](/how-tos/use-python-client).
 
-:::note
+**NOTE:** 
 Note that FeatureBase server requires a high limit for open files. Check the documentation of your system to see how to increase it in case you hit that limit. As a workaround, you can also cap FeatureBase's [max-file-count](/setting-up-featurebase/enterprise/featurebase-configuration#max-file-count).
-:::
-
 
 ### Starting FeatureBase
 
@@ -17,9 +15,8 @@ Grab the appropriate FeatureBase binary for your system from the release you wer
 
 The FeatureBase binary can be run directly, with no setup and minimal configuration. For a production installation, some additional setup may be appropriate; see the [installation guide](/how-tos/install-featurebase).
 
-:::note
+**NOTE:** 
 FeatureBase runs well on Linux and MacOS. It will not run on Windows.
-:::
 
 You can place it somewhere on your `PATH`, or run the binary directly.
 
@@ -74,9 +71,8 @@ In order to better understand FeatureBase's capabilities, we will create a sampl
 
 Although FeatureBase doesn't keep the data in a tabular format, we still use the terms "columns" and "rows" when describing the data model. We put the primary objects in columns, and the properties of those objects in rows. For example, the Star Trace project will contain an index called "repository" which contains columns representing Github repositories, and rows representing properties like programming languages and stargazers. We can better organize the rows by grouping them into sets called Fields. So the "repository" index might have a "languages" field as well as a "stargazers" field. You can learn more about indexes and fields in the [Data Model](/data-modeling-guide/data-modeling) section of the documentation.
 
-:::note
+**NOTE:** 
 If at any time you want to verify the data structure, you can request the schema as follows:
-:::
 
 ```shell
 curl localhost:10101/schema
@@ -115,9 +111,8 @@ curl localhost:10101/schema
   ]
 }
 ```
-:::note
+**NOTE:** 
 This is the response you should receive once completing this project. It has also been formatted using [`jq`](https://stedolan.github.io/jq) (external link).
-:::
 
 
 ### Ingesting the data
