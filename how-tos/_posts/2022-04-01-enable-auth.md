@@ -97,7 +97,7 @@ Additionally, TLS must be enabled. Refer to [How To Enable TLS](/how-tos/enable-
 - `secret-key`: secret key used to secure inter-node communication in a FeatureBase cluster. Run `featurebase keygen` command to generate a key to use.
 - `query-log-path`: path for [query audit log](#audit-log).
 - `permissions`: path for group permissions file that maps group IDs to index-level access.
-- `configured-ips`: list of whitelisted IPs/subnets, admin permissions are granted for any request originating from an IP in this list. Domain names and `0.0.0.0` are not allowed options. If list is empty or if option is not set, no IPs are whitelisted. 
+- `configured-ips`: list of whitelisted IPs/subnets, admin permissions are granted for any request originating from an IP in this list. Domain names and `0.0.0.0/0` are not allowed options. If list is empty or if option is not set, no IPs are whitelisted. 
 
 ### Configure audit logs in FeatureBase
 - Create a log file:

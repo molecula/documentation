@@ -613,5 +613,5 @@ Identity provider specific parameters should be obtained from the identity provi
 - `group-endpoint-url`: HTTP endpoint that returns groups for a user's valid JWT
 - `logout-url`: identity provider's logout URL
 - `scopes`: a list of scopes required for an access token to request groups from the identity provider.
-- `configured-ips`: list of whitelisted IPs/subnets, admin permissions are granted for any request originating from an IP in this list. Domain names and `0.0.0.0` are not allowed options. If list is empty or if option is not set, no IPs are whitelisted. 
+- `configured-ips`: list of whitelisted IPs/subnets, admin permissions are granted for any request originating from an IP in this list. Domain names and `0.0.0.0/0` are not allowed options. If list is empty or if option is not set, no IPs are whitelisted. 
 
