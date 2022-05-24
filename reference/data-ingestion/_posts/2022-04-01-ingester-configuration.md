@@ -7,7 +7,15 @@ sidebar_label: Ingester Configuration
 Also see the [consumer examples](/how-tos/consumer-examples) page for usage examples with corresponding data and configuration files <!-- TODO and queries -->.
 
 ## Authentication
-When authentication is enabled, a valid JWT must be passed to the `auth-token` flag for any ingester. The token may be obtained by following these [instructions](/how-tos/enable-auth#how-to-get-auth-token). Only users with admin permissions will be able to perform ingest.
+When authentication is enabled, only users with admin permissions or whitelisted IPs will be allowed to perform ingest. 
+
+There are 2 methods for authentication for ingest: 
+
+### 1. Whitelisted IPs
+A valid IP must be included in `configured-ips`. Whitelisted IPs will be granted admin permissions. To configure this option, follow these [instructions](/how-tos/enable-auth#configuring-featurebase).
+### 2. auth-token flag 
+A valid JWT must be passed to the `auth-token` flag for any ingester. The user must have admin permissions. The token may be obtained by following these [instructions](/how-tos/enable-auth#how-to-get-auth-token). 
+
 
 ## Kafka Ingester
 

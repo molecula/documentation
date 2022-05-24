@@ -186,12 +186,11 @@ Variables can be used in the following calls. Interpolation of the variable diff
 - User input: `GroupBy(Rows($var2))`
 - Interpolated query: `GroupBy(Rows("customer"), Rows("region"))`
 
-:::note
+**NOTE:** 
 Considering how multi-valued variables are interpolated in `Rows` calls, you will not want to use it standalone like this:
 Rows($var) since you'll get:
 Rows(value1), Rows(value2),...
 which is not a valid query. Instead, you'll want to use it as a child of another call like GroupBy.
-:::
 
   
 #### ConstRow
