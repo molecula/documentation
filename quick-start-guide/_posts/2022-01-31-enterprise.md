@@ -19,8 +19,9 @@ In this demonstration you will:
 Sign up on the Molecula website by entering your First Name, Last Name, Business Email, and Company Name. Next, click ```Start Free``` to navigate to the downloads page where you can choose to download a tarball with a single-node FeatureBase binary onto a single, local machine. 
 
 >Please note that by clicking ```Start Free``` you agree to the [Terms of Service](https://www.molecula.com/) and to receive occasional marketing emails from Molecula. You also understand that we will process your personal information in accordance with our [Privacy Policy](https://www.molecula.com/privacy/).
-  
-Click ```Download``` to download the tarball containing the latest single-node FeatureBase binary.
+
+
+Click ```Download``` on the option that best meets your needs to download the tarball containing the latest single-node FeatureBase binary.
  
 
 ## Configuring FeatureBase - MacOS
@@ -38,14 +39,128 @@ sudo cp -r molecula-v4.7.1/featurebase/featurebase_darwin_amd64 /usr/local/bin/f
 Ensure this folder is in your path variable by, running ```echo $PATH``` in the command line and confirming ```/usr/local/bin/``` is there. 
 If it's not, run ```export PATH=$PATH:/usr/local/bin``` to append it to your path variable.
   
+## Configuring FeatureBase - Linux
 
+>The tutorial below goes over the installation steps required to run the FeatureBase server on a single Linux machine using ```systemd```. 
 
-In order to use our application, you’ll need data. In a real-life situation, the Molecula team will provide guided onboarding and data modeling for our organization’s data. In this exercise, we’ll be working with curated demo data to showcase the low-latency capabilities of FeatureBase. Instructions to load the demo data are laid out below.
+>If you aren't running Linux, there are two other options. You can install and run FeatureBase on macOS or a Docker container. Note that FeatureBase executable is built for x86_64 and ARM64 CPU architectures.
+
+After you download FeatureBase, run the code below to ensure it is executable and move it to ```/usr/local/bin```.
+
+>Note: The copy or cp command above moves the ```featurebase``` binary to ```/usr/local/bin/```. Ensure this folder is in your path variable by, running echo ```$PATH``` in the command line and confirming ```/usr/local/bin/``` is there. If it's not, run ```export PATH=$PATH:/usr/local/bin``` to append it to your path variable.
+
+Next, configure the FeatureBase server by creating and running the configuration file. 
+
+```
+sudo nano /etc/featurebase.conf
+```
+
+Copy and paste the contents below. Then save and exit. 
+
+```
+name = "featurebase"
+bind = "0.0.0.0:10101"
+bind-grpc = "0.0.0.0:20101"
+
+data-dir = "/var/lib/molecula"
+log-path = "/var/log/molecula/featurebase.log"
+
+[cluster]
+    name = "cluster"
+    replicas = 1
+
+[etcd]
+    listen-client-address = "http://localhost:10401"
+    listen-peer-address = "http://localhost:10301"
+    initial-cluster = "featurebase=http://localhost:10301"
+ ```
+
+In the code above, ```bind``` tells FeatureBase to listen for HTTP request on all IPv4 addresses on the local machine at port ```10101```. ```bind-grpc``` tells FeatureBase to listen for gRPC request on all IPv4 address on the local machine at port ```20101```. ```data-dir``` and ```log-path``` tell FeatureBase to write data and logs to their respective locations. 
+
+### Configure the FeatureBase Service Unit
+
+On Linux, we recommend running FeatureBase as a ```systemd``` service unit. To learn more about ```systemd``` and ```units```, go  [here](https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files). To configure the FeatureBase service unit's function, we'll create a ```.service``` file.
+
+```
+sudo nano /etc/systemd/system/featurebase.service
+```
+
+Copy and paste the contents below. Then save and exit. 
+
+```
+[Unit]
+    Description="Service for FeatureBase"
+
+[Service]
+    RestartSec=30
+    Restart=on-failure
+    User=molecula
+    ExecStart=/usr/local/bin/featurebase server -c /etc/featurebase.conf
+
+[Install]
+    WantedBy=multi-user.target
+   ```
+   
+The service file above tells ```systemd``` we want to run ```/usr/local/bin/featurebase server -c /etc/featurebase.conf``` as the molecula user. This starts a FeatureBase server and configures it based on ```/etc/featurebase.conf```. Additionally, in the event that process fails, it tells ```systemd``` to try and restart that process 30 seconds.
+
+### Setup Log and Data Folders
+```featurebase.conf``` defined the ```data-dir``` and the ```log-path```. Here we'll want to create those folders and set the ```molecula``` user as the owner. The data directory is where FeatureBase puts the startup log file and the actual data that comprises the FeatureBase indexes. 
+
+Create the molecula user:
+
+ ```
+ sudo adduser molecula
+ ```
+ 
+ Create a log and data folder and change the owner: 
+ ```
+sudo mkdir /var/log/molecula && sudo chown molecula:molecula /var/log/molecula
+sudo mkdir -p /var/lib/molecula && sudo chown molecula:molecula /var/lib/molecula
+```
+## Run FeatureBase
+
+Refresh ```systemd``` so the FeatureBase service unit will load. For more information on ```daemon-reload``` , go [here](https://serverfault.com/questions/700862/do-systemd-unit-files-have-to-be-reloaded-when-modified).
+
+```
+sudo systemctl daemon-reload
+```
+
+To automatically start FeatureBase after a reboot, you can run:
+```
+sudo systemctl enable featurebase.service
+```
+
+Verify it started successfully and is running: 
+```
+sudo systemctl status featurebase
+```
+
+You should get a response that looks like this: 
+```
+● featurebase.service - "Service for FeatureBase"
+     Loaded: loaded (/etc/systemd/system/featurebase.service; static; vendor preset: enabled)
+     Active: active (running) since Fri 2021-10-08 13:29:38 CDT; 12s ago
+   Main PID: 470112 (featurebase)
+      Tasks: 17 (limit: 18981)
+     Memory: 33.2M
+     CGroup: /system.slice/featurebase.service
+             └─470112 /usr/local/bin/featurebase server -c /etc/featurebase.conf
+
+Oct 08 13:29:38 user systemd[1]: Started "Service for FeatureBase".
+```
+
+The key here is ```Active: active (running)....``` If you see something else, the following command is a good place to start troubleshooting. Or reach out to SE@molecula.com for assistance. 
+```
+journalctl -u featurebase -r
+```
+
+## Restore 1B records of Demo Data from S3
+In order to use FeatureBase, you’ll need data! In a real-life situation, the Molecula team will provide guided onboarding and data modeling for our organization’s data. In this exercise, we’ll be working with curated demo data to showcase the low-latency capabilities of FeatureBase. Instructions to load the demo data are laid out below.
 
 ### Restore Demo Dataset from S3:
 
 
-**This is a great time to grab a cup of coffee or reply to all those waiting Slack messages! Over 1B records are loading into FeatureBase.**
+>**This is a great time to grab a cup of coffee or reply to all those waiting Slack messages! Over 1B records are loading into FeatureBase.**
 
 
 ## Introduction to the Demo Dataset
