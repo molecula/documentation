@@ -116,15 +116,18 @@ When TLS is enabled, the scheme must be explicitly defined as `https` in `featur
 For example, `bind = "localhost:10101"` must be `bind = "https://localhost:10101"`.
 
 ## FAQs
-### How can I get an auth token?
-An auth token is a valid JWT provided by FeatureBase after the user is authenticated.
-To obtain an auth token:
-- `token` can be obtained by logging into FeatureBase from a browser
-- Once you have logged in, right click on the browser, and click on Inspect
+<span id="how-to-get-auth-token"></span>
+### How can I get an auth and refresh token?
+An auth token is a valid JWT provided by FeatureBase after the user is
+authenticated. A refresh token is a token used to refresh an expired auth token.
+To obtain:
+- Log into FeatureBase from a browser
+- Right click on the browser, and click on Inspect
 !["Inspect"](/img/auth_inspect.png)
 - Click on Application
 !["Cookie"](/img/auth_inspect_result.png)
 - Click on Cookies on the left-side tabs, then click on `molecula-chip`. Copy the Cookie Value, this is the auth token.
+- While on the cookies tab, click on `refresh-molecula-chip`. Copy the Cookie Value, this is the refresh token.
 !["Molecula-Token"](/img/auth_token.png)
 
 ### How can I use an auth token?

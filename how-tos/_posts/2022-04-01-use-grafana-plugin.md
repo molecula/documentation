@@ -72,6 +72,7 @@ Point Grafana to a running FeatureBase server
 ### Configure Authentication
 If FeatureBase server has authentication enabled, select Auth Enabled Server in the Grafana configuration page for the FeatureBase data source. Two new fields will be displayed: Auth Token and Server CA Cert.
 - `Auth Token`: a JWT used for authentication and authorization obtained by following these [instructions](/how-tos/enable-auth#how-to-get-auth-token)
+- `Refresh Token`: a JWT used for refreshing the auth token, obtained by following these [instructions](/how-tos/enable-auth#how-to-get-auth-token)
 - `Server CA Cert`: the contents of the certificate used for TLS on the FeatureBase server
 
 ![Grafana Configure Authentication](/img/grafana-configure-auth.png "Grafana Configure Authentication")  
