@@ -40,6 +40,9 @@ To configure Azure Active Directory as an IdP:
 - [Create a new application secret key](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#option-2-create-a-new-application-secret) and add the secret key to the `client-secret` configuration item in `featurebase.conf`.
 - [Create groups](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal#create-a-basic-group-and-add-members) by following steps 1 through 10.
 - [Add users to groups](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal#create-a-basic-group-and-add-members) by following steps 11 through 12.
+- Finally, on the App configuration page, on the "Authentication" tab, scroll to
+  "Advanced Settings" and toggle "Allow public client flows" to "yes".
+!["Image of AzureAD app configuration page with Allow public client flows toggled to yes."](/img/public_client_flows.png)
 
 ## Configuring FeatureBase
 
