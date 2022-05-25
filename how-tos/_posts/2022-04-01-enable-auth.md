@@ -123,8 +123,18 @@ For example, `bind = "localhost:10101"` must be `bind = "https://localhost:10101
 ### How can I get an auth and refresh token?
 An auth token is a valid JWT provided by FeatureBase after the user is
 authenticated. A refresh token is a token used to refresh an expired auth token.
-To obtain:
-- Log into FeatureBase from a browser
+
+Keep these safe, since they are used to identify and authorize you as a
+user. You should _NEVER_ share your auth-token or refresh-token with anyone.
+
+There are two ways to get an auth token in FeatureBase.
+
+1. The first, and easiest method, is to use the `featurebase auth-token` subcommand. Run
+`featurebase auth-token` from the command line, and follow the prompts. Once
+authentication is complete, your auth-token and refresh-token will be printed to the
+screen.
+
+2. The second works if you're already logged in to the lattice UI:
 - Right click on the browser, and click on Inspect
 !["Inspect"](/img/auth_inspect.png)
 - Click on Application
@@ -132,6 +142,7 @@ To obtain:
 - Click on Cookies on the left-side tabs, then click on `molecula-chip`. Copy the Cookie Value, this is the auth token.
 - While on the cookies tab, click on `refresh-molecula-chip`. Copy the Cookie Value, this is the refresh token.
 !["Molecula-Token"](/img/auth_token.png)
+
 
 ### How can I use an auth token?
 To access FeatureBase outside of the UI, an auth token is required. Refer to the [HTTP API](/reference/api/enterprise/http-api#http-api-with-authentication), [gRPC API](/reference/api/enterprise/grpc-api#grpc-api-with-authentication), [backup/restore](/reference/operations/enterprise/backups#backups-with-authentication) or [grafana](/how-tos/use-grafana-plugin#grafana-with-authentication) documentation for details on how to use an auth token to access FeatureBase.
