@@ -8,94 +8,166 @@ Follow the guide outlined below for a hands-on demonstration of low-latency quer
 
 In this demonstration you will:
 
-1. Sign up to access FeatureBase
-2. Create a new FeatureBase deployment
+1. Download a single-node FeatureBase binary
+2. Configure FeatureBase
 3. Restore two large-scale datasets into the deployment
 4. Run a set of analytics queries
 
-If you run into any roadblocks or have questions throughout the demonstration, please reach out to your Molecula Representative.
+>If you run into any roadblocks or have questions throughout the demonstration, please reach out to your Molecula Representative or email SE@molecula.com.
 
-## Sign-Up Overview
+## Download Single-Node FeatureBase Binary
+Sign up on the Molecula website by entering your First Name, Last Name, Business Email, and Company Name. Next, click ```Start Free``` to navigate to the downloads page where you can choose to download a tarball with a single-node FeatureBase binary onto a single, local machine. 
 
-Please click on the sign up link in your invitation email. You’ll be taken to the sign-up page. You will see your email pre-filled in the application:
+>Please note that by clicking ```Start Free``` you agree to the [Terms of Service](https://www.molecula.com/) and to receive occasional marketing emails from Molecula. You also understand that we will process your personal information in accordance with our [Privacy Policy](https://www.molecula.com/privacy/).
 
-![Figure 1. Invitation ](/img/quick-start-guide/enterprise/fig1.png "Figure 1. Invitation takes you to the FeatureBase SaaS Login")
 
-You will be instructed to create a password with instant feedback based on password requirements:
+Click ```Download``` on the option that best meets your needs to download the tarball containing the latest single-node FeatureBase binary.
+ 
 
-![Figure 2. Create your account password ](/img/quick-start-guide/enterprise/fig2.png "Figure 2. Create your account password")
+## Configuring FeatureBase - MacOS
 
-After creating a password, a verify email screen will appear. A confirmation code will be sent to your email. Please enter that code to complete sign up. If you don’t complete this step, this screen will also be shown again the next time you attempt to log in.
+>Note: The FeatureBase executable are built for x86_64 and ARM64 CPU architectures. If you aren't running macOS, there are two other options. You can install and run FeatureBase on Linux or a Docker container. 
 
-![Figure 3. Verify your email address ](/img/quick-start-guide/enterprise/fig3.png "Figure 3. Verify your email address.")
 
-Now that you are signed up, you will have access to FeatureBase for seven days. After seven days, you will no longer be able to log in with your credentials. If you encounter any problems during this process or would like to reactivate your account contact [support@molecula.com](mailto:support@molecula.com).
-
-![Figure 4. FeatureBase SaaS Homepage ](/img/quick-start-guide/enterprise/fig4.png "Figure 4. FeatureBase SaaS Homepage")
-
-## Configuring your environment
-
-In order to use our application, you’ll need data. In a real-life situation, the Molecula team will provide guided onboarding and data modeling for our organization’s data. In this exercise, we’ll be working with curated demo data to showcase the low-latency capabilities of FeatureBase. Instructions to run the script that will deploy FeatureBase and load the demo data are laid out below.
-
-### Instructions for MacOS:
-
-1. Download the “Molecula_Sandbox.sh” script attached in your email or found here to the “Downloads” folder in your local environment.
+Next, extract the ```.tar.gz file``` and copy the featurebase binary to your ```/usr/local/bin folder```.
   
-2. Open the “Terminal” application that exists on your mac.
-  2.1. You can search for it by clicking the magnifying glass in the top right corner and typing “terminal” . It looks like this:
+```
+tar -zxvf molecula-v4.7.1.tar.gz
+sudo cp -r molecula-v4.7.1/featurebase/featurebase_darwin_amd64 /usr/local/bin/featurebase
+```
+>Note: The copy or cp command above moves the ```amd64/x86_64 featurebase``` binary to ```/usr/local/bin/```. 
+Ensure this folder is in your path variable by, running ```echo $PATH``` in the command line and confirming ```/usr/local/bin/``` is there. 
+If it's not, run ```export PATH=$PATH:/usr/local/bin``` to append it to your path variable.
   
-3. Complete steps 4- 7 by copying commands and pasting them into the terminal window.
-  
-4. Navigate to where the script was downloaded by typing or pasting this command in Terminal and pressing ‘ENTER’
-  
-  ```
-  cd Downloads
-  ```
-  
-5. Verify you can see the Molecula_Sandbox.sh file by typing the command below and pressing enter
-  
-  ```
-  ls -lrt
-  ```
-  
-6. In order to run the script, you must first type the command below in Terminal and press enter:
-  
-  ```
-  chmod +x Molecula_Sandbox.sh
-  ```
-  
-7. Run the script by typing the command below in Terminal and press enter:
-  
-  1. `zsh Molecula_Sandbox.sh`
-    
-  2. Enter Username (email)
-    
-  3. Enter Password (created during UI sign up).
-    
-    **NOTE:** this will not show up visibly in the terminal, but it’s there! This to protect your information.
-    
-8. Navigate back to the web application ([https://app.molecula.cloud](https://app.molecula.cloud/)) to check on your deployment.
-  
-9. The script is now configuring your environment which will take approximately 30 minutes.
-  
+## Configuring FeatureBase - Linux
 
-![Figure 5. FeatureBase SaaS Homepage ](/img/quick-start-guide/enterprise/fig5.png "Figure 5. FeatureBase SaaS Homepage")
+>The tutorial below goes over the installation steps required to run the FeatureBase server on a single Linux machine using ```systemd```. 
 
-**This is a great time to grab a cup of coffee or reply to all those waiting Slack messages! A new deployment is spinning up and over 1B records are loading.**
+>If you aren't running Linux, there are two other options. You can install and run FeatureBase on macOS or a Docker container. Note that FeatureBase executable is built for x86_64 and ARM64 CPU architectures.
 
-While the deployment is spinning up, you will see messages in Terminal and in Cloud Manager as the status progresses. The status will show as ‘CREATING’ while the deployment is spinning up and  ‘RUNNING’ when the process is done.
+After you download FeatureBase, run the code below to ensure it is executable and move it to ```/usr/local/bin```.
 
-![Figure 6. Creating a new deployment ](/img/quick-start-guide/enterprise/fig6.png "Figure 5. Creating a new deployment")
+>Note: The copy or cp command above moves the ```featurebase``` binary to ```/usr/local/bin/```. Ensure this folder is in your path variable by, running echo ```$PATH``` in the command line and confirming ```/usr/local/bin/``` is there. If it's not, run ```export PATH=$PATH:/usr/local/bin``` to append it to your path variable.
 
-Once the deployment is ‘RUNNING’ data will start loading into the deployment. After about 30 minutes, check the “Tables” section of the application to see the two tables that have been restored into the deployment. One table is called ‘cseg’, short for customer segmentation, and the other is called ‘skills’. A description of each table is also listed. In the next section, we will perform a variety of common analytical queries on both datasets.
+Next, configure the FeatureBase server by creating and running the configuration file. 
 
-![Figure 7. Table data ingested ](/img/quick-start-guide/enterprise/fig7.png "Figure 7. Table data ingested")
+```
+sudo nano /etc/featurebase.conf
+```
 
-## Introduction to SaaS Environment and Test Dataset
+Copy and paste the contents below. Then save and exit. 
+
+```
+name = "featurebase"
+bind = "0.0.0.0:10101"
+bind-grpc = "0.0.0.0:20101"
+
+data-dir = "/var/lib/molecula"
+log-path = "/var/log/molecula/featurebase.log"
+
+[cluster]
+    name = "cluster"
+    replicas = 1
+
+[etcd]
+    listen-client-address = "http://localhost:10401"
+    listen-peer-address = "http://localhost:10301"
+    initial-cluster = "featurebase=http://localhost:10301"
+ ```
+
+In the code above, ```bind``` tells FeatureBase to listen for HTTP request on all IPv4 addresses on the local machine at port ```10101```. ```bind-grpc``` tells FeatureBase to listen for gRPC request on all IPv4 address on the local machine at port ```20101```. ```data-dir``` and ```log-path``` tell FeatureBase to write data and logs to their respective locations. 
+
+### Configure the FeatureBase Service Unit
+
+On Linux, we recommend running FeatureBase as a ```systemd``` service unit. To learn more about ```systemd``` and ```units```, go  [here](https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files). To configure the FeatureBase service unit's function, we'll create a ```.service``` file.
+
+```
+sudo nano /etc/systemd/system/featurebase.service
+```
+
+Copy and paste the contents below. Then save and exit. 
+
+```
+[Unit]
+    Description="Service for FeatureBase"
+
+[Service]
+    RestartSec=30
+    Restart=on-failure
+    User=molecula
+    ExecStart=/usr/local/bin/featurebase server -c /etc/featurebase.conf
+
+[Install]
+    WantedBy=multi-user.target
+   ```
+   
+The service file above tells ```systemd``` we want to run ```/usr/local/bin/featurebase server -c /etc/featurebase.conf``` as the molecula user. This starts a FeatureBase server and configures it based on ```/etc/featurebase.conf```. Additionally, in the event that process fails, it tells ```systemd``` to try and restart that process 30 seconds.
+
+### Setup Log and Data Folders
+```featurebase.conf``` defined the ```data-dir``` and the ```log-path```. Here we'll want to create those folders and set the ```molecula``` user as the owner. The data directory is where FeatureBase puts the startup log file and the actual data that comprises the FeatureBase indexes. 
+
+Create the molecula user:
+
+ ```
+ sudo adduser molecula
+ ```
+ 
+ Create a log and data folder and change the owner: 
+ ```
+sudo mkdir /var/log/molecula && sudo chown molecula:molecula /var/log/molecula
+sudo mkdir -p /var/lib/molecula && sudo chown molecula:molecula /var/lib/molecula
+```
+## Run FeatureBase
+
+Refresh ```systemd``` so the FeatureBase service unit will load. For more information on ```daemon-reload``` , go [here](https://serverfault.com/questions/700862/do-systemd-unit-files-have-to-be-reloaded-when-modified).
+
+```
+sudo systemctl daemon-reload
+```
+
+To automatically start FeatureBase after a reboot, you can run:
+```
+sudo systemctl enable featurebase.service
+```
+
+Verify it started successfully and is running: 
+```
+sudo systemctl status featurebase
+```
+
+You should get a response that looks like this: 
+```
+● featurebase.service - "Service for FeatureBase"
+     Loaded: loaded (/etc/systemd/system/featurebase.service; static; vendor preset: enabled)
+     Active: active (running) since Fri 2021-10-08 13:29:38 CDT; 12s ago
+   Main PID: 470112 (featurebase)
+      Tasks: 17 (limit: 18981)
+     Memory: 33.2M
+     CGroup: /system.slice/featurebase.service
+             └─470112 /usr/local/bin/featurebase server -c /etc/featurebase.conf
+
+Oct 08 13:29:38 user systemd[1]: Started "Service for FeatureBase".
+```
+
+The key here is ```Active: active (running)....``` If you see something else, the following command is a good place to start troubleshooting. Or reach out to SE@molecula.com for assistance. 
+```
+journalctl -u featurebase -r
+```
+
+## Restore 1B records of Demo Data from S3
+In order to use FeatureBase, you’ll need data! In a real-life situation, the Molecula team will provide guided onboarding and data modeling for our organization’s data. In this exercise, we’ll be working with curated demo data to showcase the low-latency capabilities of FeatureBase. Instructions to load the demo data are laid out below.
+
+### Restore Demo Dataset from S3:
+
+
+>**This is a great time to grab a cup of coffee or reply to all those waiting Slack messages! Over 1B records are loading into FeatureBase.**
+
+
+## Introduction to the Demo Dataset
 
 In a real-world situation, a Molecula expert will work with your organization to appropriately model data for your use cases in FeatureBase. To give you an idea of the process, this tutorial will walk you through how to interact with complex data in FeatureBase using data from the Customer Segmentation (cseg) dataset.
 
-### Data Exploration of Customer Segmentation Feature Table
+### Data Exploration of Customer Segmentation Feature Table (NEED TO UPDATE FOR BINARY)
 
 It’s always a good idea to understand what the dataset you’re working with contains before you get started. To do this, click on the ‘Tables’ section in the application to display the names of the tables in your deployment.
 
@@ -178,7 +250,7 @@ INNER JOIN skills AS t2 ON t1._id = t2.id
 WHERE t2.bools = 'available_for_hire' and t1.hobbies = 'Teaching';
 ```
 
-**NOTE:** Included in the stock dataset is a table known as skills, please use the discovery queries to take a look at it!
+**NOTE:** Included in the demo dataset is a table known as skills, please use the discovery queries to take a look at it!
 
 ![Figure 15. inner join query](/img/quick-start-guide/enterprise/fig16.png "Figure 15. inner join query")
 
@@ -295,22 +367,4 @@ HAVING count > 200000000;
 ```
 [cseg]TopK(hobbies, k=10, filter=Intersect(Row(sex=Female),Row(hobbies='Scuba Diving')))
 ```
-
-## Spinning Down a Deployment
-
-When you have completed the trial, please take a few minutes to spin down your deployment. If you do not spin it down, it will be done after 7 days by the Molecula team.
-
-First, delete the tables in the deployment in the ‘Tables’ tab. Click the three dots and select ‘Delete’
-
-![Figure 20. Delete table](/img/quick-start-guide/enterprise/fig21.png "Figure 20. Delete table")
-
-Confirm the deletion by typing ‘DELETE’ into the interface. Repeat for each table in the deployment.
-
-![Figure 21. Delete table confirm](/img/quick-start-guide/enterprise/fig22.png "Figure 21. Delete table confirm")
-
-Repeat the process in the Cloud Manager for each deployment that you want to spin down. It takes a few minutes longer to delete a deployment than it does for a typical table.
-
-![Figure 22. Delete deployment](/img/quick-start-guide/enterprise/fig23.png "Figure 22. Delete deployment")
-
-![Figure 23. Delete deployment confirm](/img/quick-start-guide/enterprise/fig24.png "Figure 23. Delete deployment confirm")
 
