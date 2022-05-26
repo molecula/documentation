@@ -58,7 +58,7 @@ Inputs:
 curl --location --request POST 'https://api.molecula.cloud/v1/deployments' \
 --header 'Authorization: <IdToken>' \
 --header 'Content-Type: application/json' \
---data-raw '--data-raw '{
+--data-raw '{
     "name": "iris_demo_deployment",
     "deployment_options":{
         "shape": "8GB"
