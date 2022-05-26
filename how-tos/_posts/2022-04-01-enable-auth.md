@@ -124,7 +124,7 @@ For example, `bind = "localhost:10101"` must be `bind = "https://localhost:10101
 An auth token is a valid JWT provided by FeatureBase after the user is
 authenticated. A refresh token is a token used to refresh an expired auth token.
 
-Keep these safe, since they are used to identify and authorize you as a
+**⚠ WARNING:** Keep these safe, since they are used to identify and authorize you as a
 user. You should _NEVER_ share your auth-token or refresh-token with anyone.
 
 There are two ways to get an auth token in FeatureBase.
