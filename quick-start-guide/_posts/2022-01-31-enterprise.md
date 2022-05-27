@@ -297,7 +297,7 @@ featurebase restore --host localhost:10101 -s cseg0_backup/
 Once it's completed successfully, you'll see this message: 
 
 ```
-2022-05-26T22:19:21.455575Z INFO:  http: Server closed
+... INFO:  http: Server closed
 ```
 
 Now, you can run queries in the [FeatureBase web application](http://localhost:10101/)
