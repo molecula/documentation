@@ -244,7 +244,7 @@ def on_message(content, token):
     url     = FEATUREBASE_STREAMING_ENDPOINT, 
     data    = payload,
     headers = { 
-      'Authorization' : token, 
+      'Authorization' : f'Bearer {token}', 
       'Content-Type'  : 'application/json'
     })
 
@@ -395,7 +395,7 @@ def on_message(content, token):
     headers = { 
       # Need to pass the OAuth 2.0 IdToken we retrieved after authenticating 
       # with https://id.molecula.cloud.
-      'Authorization' : token, # 
+      'Authorization' : f'Bearer {token}', # 
       # The FeatureBase SaaS REST API requires the request body to be JSON.
       'Content-Type'  : 'application/json'
     })

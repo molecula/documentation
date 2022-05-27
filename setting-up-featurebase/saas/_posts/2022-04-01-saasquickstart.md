@@ -56,7 +56,7 @@ Inputs:
 **HTTP API Reference:**
 ```shell
 curl --location --request POST 'https://api.molecula.cloud/v1/deployments' \
---header 'Authorization: <IdToken>' \
+--header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "name": "iris_demo_deployment",
@@ -71,7 +71,7 @@ A deployment takes some time to create. You can look at all of your deployments 
 **HTTP API Reference:**
 ```shell
 curl --location --request GET 'https://api.molecula.cloud/v1/deployments' \
---header 'Authorization: <IdToken>' \
+--header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' 
 ```
 
@@ -94,7 +94,7 @@ Inputs:
 **HTTP API Reference:**
 ```shell
 curl --location --request POST 'https://api.molecula.cloud/v1/tables/<deployment_id>' \
---header 'Authorization: <IdToken>' \
+--header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "name": "iris_table",
@@ -116,7 +116,7 @@ Inputs:
 **HTTP API Reference:**
 ```shell
 curl --location --request POST 'https://api.molecula.cloud/v1/sinks' \
---header 'Authorization: <IdToken>' \
+--header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' \
 --data-raw '{    
     "name": "iris_streaming_source",    
@@ -185,7 +185,7 @@ Like deployments, sources takes some time to create. You can look at all of your
 **HTTP API Reference:**
 ```shell
 curl --location --request GET 'https://api.molecula.cloud/v1/sinks' \
---header 'Authorization: <IdToken>' \
+--header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' 
 ```
 
@@ -203,7 +203,7 @@ Inputs:
 **HTTP API Reference:**
 ```shell
 curl --location --request POST 'https://data.molecula.cloud/v1/sinks/<sink_id>' \
---header 'Authorization: <IdToken>' \
+--header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
   "records": [
@@ -384,8 +384,8 @@ Inputs:
 
 **HTTP API Reference (SQL):**
 ```shell
-curl --location --request POST 'https://data.molecula.cloud/v1/<deployment id>/query \
---header 'Authorization: <IdToken>' \
+curl --location --request POST 'https://data.molecula.cloud/v1/deployments/<deployment id>/query' \
+--header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: Content-Type: application/json' \
 --data-raw '{ 
     "language": "sql", 
@@ -396,8 +396,8 @@ curl --location --request POST 'https://data.molecula.cloud/v1/<deployment id>/q
 **HTTP API Reference (PQL):**
 PQL
 ```shell
-curl --location --request POST 'https://data.molecula.cloud/v1/<deployment id>/query \
---header 'Authorization: <IdToken>' \
+curl --location --request POST 'https://data.molecula.cloud/v1/deployments/<deployment id>/query' \
+--header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: Content-Type: application/json' \
 --data-raw '{ 
     "language": "pql", 
@@ -420,7 +420,7 @@ Inputs:
 **HTTP API Reference:**
 ```shell
 curl --location --request DELETE 'https://api.molecula.cloud/v1/sinks/<sink_id>' \
---header 'Authorization: <IdToken>'  
+--header 'Authorization: Bearer <IdToken>'  
 ```
 
 This will take some time to delete. You can check the status of the delete with the command below until the resource is no longer found.
@@ -428,7 +428,7 @@ This will take some time to delete. You can check the status of the delete with 
 **HTTP API Reference:**
 ```shell
 curl --location --request GET 'https://api.molecula.cloud/v1/sinks/<sink_id>' \
---header 'Authorization: <IdToken>'  
+--header 'Authorization: Bearer <IdToken>'  
 ```
 
 #### Delete Table
@@ -441,7 +441,7 @@ Inputs:
 **HTTP API Reference:**
 ```shell
 curl --location --request DELETE 'https://api.molecula.cloud/v1/tables/<deployment id>/iris_table' \
---header 'Authorization: <IdToken>'  
+--header 'Authorization: Bearer <IdToken>'  
 ```
 
 #### Delete Deployment
@@ -453,7 +453,7 @@ Inputs:
 **HTTP API Reference:**
 ```shell
 curl --location --request DELETE 'https://api.molecula.cloud/v1/deployments/<deployment id>' \
---header 'Authorization: <IdToken>' 
+--header 'Authorization: Bearer <IdToken>' 
 ```
 
 This will take some time to delete. You can check the status of the delete with the command below until the resource is no longer found.
@@ -461,6 +461,6 @@ This will take some time to delete. You can check the status of the delete with 
 **HTTP API Reference:**
 ```shell
 curl --location --request GET 'https://api.molecula.cloud/v1/deployments/<deployment id>' \
---header 'Authorization: <IdToken>' 
+--header 'Authorization: Bearer <IdToken>' 
 ```
 
