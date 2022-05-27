@@ -279,7 +279,7 @@ First, download the demo dataset from S3 using by clicking [this link](https://s
 
 >**Please note that this file is large (~14GB) and contains over 1B records. Make sure that you have sufficient local storage. On average, it takes about 30 minutes to download, but actual download time may depend on your connection speed.**
 
-Next, make a directory for the data: 
+Next, in a new terminal window, make a directory for the data: 
 ```
 mkdir Cseg0_backup
 ```
