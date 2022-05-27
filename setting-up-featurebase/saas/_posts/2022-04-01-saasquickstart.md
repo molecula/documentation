@@ -97,7 +97,7 @@ curl --location --request POST 'https://api.molecula.cloud/v1/tables/<deployment
 --header 'Authorization: <IdToken>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "name": "pushdemo",
+    "name": "iris_table",
     "description": "table holding flower data"    
 }'
 ```
