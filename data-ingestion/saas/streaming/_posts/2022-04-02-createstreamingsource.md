@@ -48,7 +48,7 @@ Clicking “create source” will start the process of creating your streaming s
 **HTTP API Reference:**
 ```shell
 curl --location --request POST 'https://api.molecula.cloud/v1/sinks' \
---header 'Authorization: <IdToken>' \
+--header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' \
 --data-raw '{    
     "name": "<sink name>",    
@@ -69,7 +69,7 @@ You will be returned to the “Data Sources” page and see a new entry with you
 **HTTP API Reference:**
 ```shell
 curl --location --request GET 'https://api.molecula.cloud/v1/deployments' \
---header 'Authorization: <IdToken>' \
+--header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' 
 ```
 

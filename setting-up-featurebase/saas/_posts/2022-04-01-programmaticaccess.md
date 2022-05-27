@@ -21,6 +21,6 @@ curl --location --request POST 'https://id.molecula.cloud' \
 
 3 tokens are returned: Access, ID, and Refresh. Use the ID token for all of your API calls as the Authorization header:
 
-`--header 'Authorization: <IdToken>'`
+`--header 'Authorization: Bearer <IdToken>'`
 
 It’s best practice to have tokens that expire frequently in order to protect customers in the unlikely event attackers are able to obtain a token. The ID token is valid for 60 minutes. After that, you’ll need to perform the same call above. Alternatively you can use the refresh token to retrieve new ID tokens for up to 30 days. This is an option if you don’t want to re-authenticate using your credentials every time. You will need to keep these tokens somewhere in order to re-use them.
