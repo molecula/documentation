@@ -17,7 +17,7 @@ In the user interface, clicking “Get Started” or “Cloud Manager” from th
 **HTTP API Reference:**
 ```shell
 curl --location --request GET 'https://api.molecula.cloud/v1/service-properties/deployment:shapes' \
---header 'Authorization: <IdToken>' 
+--header 'Authorization: Bearer <IdToken>' 
 ```
 
 The deployment name must be unique within the organization and only contain lower case alphanumeric, hyphen and underscore characters. You can have multiple deployments, so it’s important to name these something meaningful to you and your organization. For example, if you have a customer segmentation deployment and know you’ll have a full staging environment, you might want to name your production deployment as cust_seg_production and your staging deployment as cust_seg_staging. Clicking “Start” will start creating your deployment. This can also be accomplished programmatically:
@@ -25,7 +25,7 @@ The deployment name must be unique within the organization and only contain lowe
 **HTTP API Reference:**
 ```shell
 curl --location --request POST 'https://api.molecula.cloud/v1/deployments' \
---header 'Authorization: <IdToken>' \
+--header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' \
 --data-raw '--data-raw '{
     "name": "<deployment_name>",
@@ -40,7 +40,7 @@ After clicking “Start”, you will see a new entry populate in the Cloud Manag
 **HTTP API Reference:**
 ```shell
 curl --location --request GET 'https://api.molecula.cloud/v1/deployments' \
---header 'Authorization: <IdToken>' \
+--header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' 
 ```
 

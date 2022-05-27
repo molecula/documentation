@@ -82,7 +82,7 @@ Finally, there are a couple parameters that provide information about your schem
 | ------- | ------------ | --------- |
 |id field   |  The id-field option should be used when there is an existing field in the data which uniquely identifies each record in the table and consists of contiguous positive integers | Yes if primary key fields not provided |
 |primary key fields  |  The primary-key-fields option should be used when the data has no fields that could be used for id-field. This option uses one or more fields (any type) and concatenates them to create unique record IDs for your table. | Yes if id field not provided |
-|allow_missing_fields  |  A boolean field that allows one or more of the fields defined in the schema to be missing from the JSON records streamed in. If a field is missing and this parameter is true, that field is left null with no bits set.. If this parameter is False and a field is missing from the JSON records, an error will return and data will not be loaded into your table. | Yes |
+|allow_missing_fields  |  A boolean field that allows one or more of the fields defined in the schema to be missing from the JSON records streamed in. If a field is missing and this parameter is true, that field is left null with no bits set. If this parameter is False and a field is missing from the JSON records, an error will return and data will not be loaded into your table. | Yes |
 
 Once a streaming source is configured, data can be streamed to it. Each record should be composed of a JSON blob. One or many records can be sent in a single HTTPS request and should have the following syntax:
 

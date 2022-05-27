@@ -32,8 +32,8 @@ In the User interface, clicking the “Query” section on the left hand navigat
 
 **HTTP API Reference (SQL):**
 ```shell
-curl --location --request POST 'https://data.molecula.cloud/v1/<deployment id>/query \
---header 'Authorization: <IdToken>' \
+curl --location --request POST 'https://data.molecula.cloud/v1/deployments/<deployment id>/query' \
+--header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: Content-Type: application/json' \
 --data-raw '{ 
     "language": "sql", 
@@ -43,8 +43,8 @@ curl --location --request POST 'https://data.molecula.cloud/v1/<deployment id>/q
 
 **HTTP API Reference (PQL):**
 ```shell
-curl --location --request POST 'https://data.molecula.cloud/v1/<deployment id>/query \
---header 'Authorization: <IdToken>' \
+curl --location --request POST 'https://data.molecula.cloud/v1/deployments/<deployment id>/query' \
+--header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: Content-Type: application/json' \
 --data-raw '{ 
     "language": "pql", 

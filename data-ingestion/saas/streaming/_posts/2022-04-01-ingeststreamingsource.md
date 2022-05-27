@@ -12,7 +12,7 @@ Once an “ACTIVE” Streaming Source exists, data can be streamed to it over HT
 **HTTP API Reference:**
 ```shell
 curl --location --request POST 'https://data.molecula.cloud/v1/sinks/<sink_id>' \
---header 'Authorization: <IdToken>' \
+--header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
   "records": [
