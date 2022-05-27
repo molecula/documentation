@@ -389,7 +389,7 @@ curl --location --request POST 'https://data.molecula.cloud/v1/deployments/<depl
 --header 'Content-Type: application/json' \
 --data-raw '{ 
     "language": "sql", 
-    "statement": "select * from pushdemo limit 10"
+    "statement": "select * from iris_table limit 10"
 }'
 ```
 
@@ -401,7 +401,7 @@ curl --location --request POST 'https://data.molecula.cloud/v1/deployments/<depl
 --header 'Content-Type: application/json' \
 --data-raw '{ 
     "language": "pql", 
-    "statement": "[pushdemo]GroupBy(Rows(species))"
+    "statement": "[iris_table]GroupBy(Rows(species))"
 }'
 ```
 
