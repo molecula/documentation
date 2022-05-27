@@ -386,7 +386,7 @@ Inputs:
 ```shell
 curl --location --request POST 'https://data.molecula.cloud/v1/deployments/<deployment id>/query' \
 --header 'Authorization: Bearer <IdToken>' \
---header 'Content-Type: Content-Type: application/json' \
+--header 'Content-Type: application/json' \
 --data-raw '{ 
     "language": "sql", 
     "statement": "select * from iris_table limit 10"
@@ -398,7 +398,7 @@ PQL
 ```shell
 curl --location --request POST 'https://data.molecula.cloud/v1/deployments/<deployment id>/query' \
 --header 'Authorization: Bearer <IdToken>' \
---header 'Content-Type: Content-Type: application/json' \
+--header 'Content-Type: application/json' \
 --data-raw '{ 
     "language": "pql", 
     "statement": "[iris_table]GroupBy(Rows(species))"
