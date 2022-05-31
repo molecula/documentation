@@ -16,7 +16,7 @@ In this demonstration you will:
 >If you run into any roadblocks or have questions throughout the demonstration, please reach out to your Molecula Representative or email SE@molecula.com.
 
 ## Download Single-Node FeatureBase Binary
-Sign up on the [Molecula website](https://www.molecula.com/download-binary-trial/) by entering your First Name, Last Name, Business Email, and Company Name. Next, click ```Start Free``` to navigate to the downloads page where you can choose to download a tarball with a single-node FeatureBase binary onto a single, local machine. 
+First, sign up for your [Free Trial](https://www.molecula.com/start-free-trial/). 
 
 >Please note that by clicking ```Start Free``` you agree to the [Terms of Service](https://www.molecula.com/) and to receive occasional marketing emails from Molecula. You also understand that we will process your personal information in accordance with our [Privacy Policy](https://www.molecula.com/privacy/).
 
