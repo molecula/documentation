@@ -202,7 +202,7 @@ Inputs:
 
 **HTTP API Reference:**
 ```shell
-curl --location --request POST 'https://data.molecula.cloud/v1/sinks/<sink_id>' \
+curl --location --request POST 'https://data.molecula.cloud/v1/sinks/<sourceId>' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -419,7 +419,7 @@ Inputs:
 
 **HTTP API Reference:**
 ```shell
-curl --location --request DELETE 'https://api.molecula.cloud/v1/sinks/<sink_id>' \
+curl --location --request DELETE 'https://api.molecula.cloud/v1/sinks/<sourceid>' \
 --header 'Authorization: Bearer <IdToken>'  
 ```
 
@@ -427,7 +427,7 @@ This will take some time to delete. You can check the status of the delete with 
 
 **HTTP API Reference:**
 ```shell
-curl --location --request GET 'https://api.molecula.cloud/v1/sinks/<sink_id>' \
+curl --location --request GET 'https://api.molecula.cloud/v1/sinks/<sourceid>' \
 --header 'Authorization: Bearer <IdToken>'  
 ```
 
