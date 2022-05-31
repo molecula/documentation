@@ -27,6 +27,9 @@ Note: In order for TLS to be used, the various TLS options need to be set, but e
 
 | Flag                           | Type    | Description |
 | -                              | -       | - |
+| allow-decimal-out-of-range | bool    | Import out of range decimal values as nil in DecimalFields. (Default: false) |
+| allow-int-out-of-range | bool    | Import out of range integer values as nil in IntFields. (Default: false) |
+| allow-timestamp-out-of-range | bool    | Import out of range timestamp values as nil in TimestampFields. (Default: false) |
 | pilosa-hosts                   | strings | Alias for --featurebase-hosts. Will be deprecated in the next major release. |
 | featurebase-hosts              | strings | Comma separated list of host:port pairs for FeatureBase. (Default: localhost:10101) |
 | kafka-hosts                    | strings | Comma separated list of host:port pairs |
