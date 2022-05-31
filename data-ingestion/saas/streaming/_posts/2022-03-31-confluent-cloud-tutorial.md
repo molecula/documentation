@@ -395,7 +395,7 @@ def on_message(content, token):
     headers = { 
       # Need to pass the OAuth 2.0 IdToken we retrieved after authenticating 
       # with https://id.molecula.cloud.
-      'Authorization' : f'Bearer {token}', # 
+      'Authorization' : token, # 
       # The FeatureBase SaaS REST API requires the request body to be JSON.
       'Content-Type'  : 'application/json'
     })
