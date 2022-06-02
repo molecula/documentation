@@ -24,7 +24,7 @@ Before we begin it's always a good idea to make sure you have all the credential
 
 * FeatureBase SaaS credentials. If you don't have an account yet then [sign up for a free trial](https://app.molecula.cloud/signup) (no credit card needed).
 
-* An endpoint to an existing FeatureBase streaming sink.
+* The endpoint to an existing SaaS streaming source.
 
 
 
@@ -213,7 +213,7 @@ def on_message(content, token):
 
 
 
-Then we'll change it to the FeatureBase SaaS API schema which can be seen in more details in [Ingest Data from a Streaming (HTTPS) Source](http://localhost:4000/data-ingestion/saas/streaming/ingeststreamingsource).
+Then we'll transform it to match the FeatureBase SaaS schema syntax which can be seen in more details in [Ingest Data from a Streaming (HTTPS) Source](/data-ingestion/saas/streaming/streamingoverview).
 
 
 
@@ -333,14 +333,6 @@ def featurebase_authenticate(username, password):
   return token
 
 
-
-
-
-
-
-
-
-
 def on_message(content, token):
   """Callback function which takes content pull from a subscribed Kafka queue, 
      transforms it to the schema required by FeatureBase SaaS, and writes 
@@ -408,14 +400,6 @@ def on_message(content, token):
   response.raise_for_status()
 
 
-
-
-
-
-
-
-
-
 def error_cb(err):
     """ The error callback is used for generic client errors. These
         errors are generally to be considered informational as the client will
@@ -431,14 +415,6 @@ def error_cb(err):
         # Any exception raised from this callback will be re-raised from the
         # triggering flush() or poll() call.
         raise KafkaException(err)
-
-
-
-
-
-
-
-
 
 
 if __name__ == "__main__":
