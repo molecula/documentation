@@ -30,6 +30,9 @@ nav:
         subnav:
           - title: Streaming (HTTPS)
             category: streaming
+            subnav:
+            - title: Streaming Tutorials
+              category: tutorials
 
   - title: Data Querying
     category: data-querying

@@ -213,7 +213,7 @@ def on_message(content, token):
 
 
 
-Then we'll transform it to match the FeatureBase SaaS schema syntax which can be seen in more details in [Ingest Data from a Streaming (HTTPS) Source](/data-ingestion/saas/streaming/streamingoverview).
+Then we'll transform it to match the FeatureBase SaaS schema syntax which can be seen in more details in [here](/data-ingestion/saas/streaming/streamingoverview).
 
 
 
@@ -233,7 +233,7 @@ def on_message(content, token):
 
 ```
 
-FInally using the `requests` library, send an HTTP POST request making sure to define the content-type as JSON and passing an identity token. If an error occurs we'll throw an exception, however you may want to process errors differently.
+Finally using the `requests` library, send an HTTP POST request making sure to define the content-type as JSON and passing an identity token. If an error occurs we'll throw an exception, however you may want to process errors differently.
 
 ```python
 def on_message(content, token):

@@ -40,7 +40,7 @@ This source's configuration requires a JSON schema for the data that streams thr
 ]
 ```
 
-**Name**: The name is what you want the field name in your table to be. 
+**Name**: The name is what you want the field name in your table to be. Valid field names are lower case strings; they start with a lowercase letter, and contain only alphanumeric characters and _-. They must be 230 characters or less in length.
 
 **Path**: The path option is an array of JSON object keys which are applied in order. For example, `["a","b","c"]` would select 1 within `{"a":{"b":{"c":1}}}`. This path must only consist of strings.
 

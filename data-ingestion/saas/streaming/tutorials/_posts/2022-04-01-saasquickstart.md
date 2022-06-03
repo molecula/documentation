@@ -1,7 +1,7 @@
 ---
 id: saasquickstart
-title: Getting Started
-sidebar_label: Getting Started
+title: Getting Started With Streaming
+sidebar_label: Getting Started With Streaming
 ---
 
  **⚠ WARNING:** This page contains information that only applies to Molecula's SaaS offering. Additionally, this page represents a work in progress that is subject to frequent changes. 
