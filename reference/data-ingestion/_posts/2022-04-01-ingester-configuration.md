@@ -16,6 +16,10 @@ A valid IP must be included in `configured-ips`. Whitelisted IPs will be granted
 ### 2. auth-token flag 
 A valid JWT must be passed to the `auth-token` flag for any ingester. The user must have admin permissions. The token may be obtained by following these [instructions](/how-tos/enable-auth#how-to-get-auth-token). 
 
+## General Ingestion Rules
+
+## Fields
+Valid field names are lower case strings; they start with a lowercase letter, and contain only alphanumeric characters and _-. They must be 230 characters or less in length.
 
 ## Kafka Ingester
 
