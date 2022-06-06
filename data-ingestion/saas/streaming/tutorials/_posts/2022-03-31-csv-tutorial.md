@@ -144,7 +144,7 @@ def make_json(csvFilePath, jsonFilePath, fieldnames, delim=',', header=True):
 
 If you enter your username, password, and streaming endpoint, the below code snippets can be used stream the JSON records from the files created to your table in FeatureBase.
 
-### Autenticate and retrieve Identity Token
+### Authenticate and retrieve Identity Token
 
 Using the `requests` library, we'll send an HTTP POST request with your username and password. If successful, the API will return a JSON object containing your credentials. For the purpose of further API calls, the property of interest is the `IdToken`.
 
