@@ -5,29 +5,29 @@ title: Streaming in a CSV
 ---
 
 
-This tutorial will break down into steps how to load a CSV file into FeatureBase using a streaming source, but if you'd rather look at the finished tutorial then please see the full source code at the bottom of this article.
+This tutorial will break down into steps how to load a CSV file into FeatureBase using a streaming source, but if you'd rather look at the finished tutorial, please see the full source code at the bottom of this article.
 
 
 ## Configuring account credentials and files
 
-Before we begin it's always a good idea to make sure you have all the credentials and configuration parameters you need so that you aren't searching halfway through and lose train of thought. For this tutorial we'll need:
+Before we begin, it's always a good idea to make sure you have all the credentials and configuration parameters you need so that you aren't searching halfway through and lose train of thought. For this tutorial we'll need:
 
-* A CSV to use as well as the field names in that CSV file
+* A CSV file to use, as well as the field names in that CSV file
 
 * A working python3 environment to run this code and install required packages
 
-* FeatureBase SaaS credentials. 
+* FeatureBase SaaS credentials 
 
-* The endpoint to an existing SaaS streaming source.
+* The endpoint to an existing SaaS streaming source
 
 
 
 | **SECURITY WARNING**                                                                                                                                                                                                                                                                                                                  |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Note that for the sake of simplicity in this tutorial we're hardcoding passwords and other secrets. Please don't do this in any capacity other than as a personal learning exercise! It's very easy to accidently commit to code repositories or leave in a public place and invites data breaches for yourself or your organization. |
+| Note that for the sake of simplicity, in this tutorial, we're hardcoding passwords and other secrets. Please don't do this in any capacity other than as a personal learning exercise! It's very easy to accidentally commit to code repositories or leave in a public place which invites data breaches for yourself or your organization. |
 
 
-Below represents all of the inputs you must enter to use these code snippets. This offers limited flexibility but does allow you to specify a delimeter if not a **","** and if your CSV has a header as the first line or not. You will have to put all of the field (column) names in the order they appear in your CSV file and ensure they match the `path` names in your streaming source. For more information on streaming sources, go [here](/data-ingestion/saas/streaming/streamingoverview).
+Below represents all of the inputs you must enter to use these code snippets. This offers limited flexibility but does allow you to specify a delimiter, if not a **","** and if your CSV has a header as the first line or not. You will have to put all of the field (column) names in the order they appear in your CSV file and ensure they match the `path` names in your streaming source. For more information on streaming sources, go [here](/data-ingestion/saas/streaming/streamingoverview).
 
 ```python
 import csv
@@ -63,10 +63,10 @@ def make_json(csvFilePath, jsonFilePath, fieldnames, delim=',', header=True):
 
     Args:
         csvFilePath (path): Path of the target csv to convert to json
-        jsonFilePath (path): Path of the target json file to write to. 
+        jsonFilePath (path): Path of the target json file to write to
             Note batch sizes will append to this file name
         fieldnames (list): List of the ordered target field names to write to
-        delim (str, optional): Delimeter of the csv file Defaults to ','.
+        delim (str, optional): Delimeter of the csv file Defaults to ','
         header boolean: Indicator if the csv has a header as the first line
 
     Returns:
@@ -146,7 +146,7 @@ If you enter your username, password, and streaming endpoint, the below code sni
 
 ### Autenticate and retrieve Identity Token
 
-Using the `requests` library we'll send an HTTP POST request with your username and password. If successful, the API will return a JSON object containing your credentials. For the purpose of further API calls, the property of interest is the `IdToken`.
+Using the `requests` library, we'll send an HTTP POST request with your username and password. If successful, the API will return a JSON object containing your credentials. For the purpose of further API calls, the property of interest is the `IdToken`.
 
 ```python
 def featurebase_authenticate(username, password):
@@ -176,11 +176,11 @@ def featurebase_authenticate(username, password):
 
 ### Stream in records from the created JSON File
 
-Finally using the `requests` library, pass in a JSON file to an HTTP POST request making sure to define the content-type as JSON and passing an identity token. If any records fail to process, we will print out the posted records and exit, however you may want to process errors differently.
+Finally, using the `requests` library, pass in a JSON file to an HTTP POST request making sure to define the content-type as JSON and passing an identity token. If any records fail to process, we will print out the posted records and exit. However, you may want to process errors differently.
 
 ```python
 def post_records(token, json_file,datahost):
-    """ Load in a json file with 1:n records and post them to featurebase saas via a streaming endpoint (sink)
+    """ Load in a json file with 1:n records and post them to FeatureBase SaaS via a streaming endpoint (sink)
 
     Args:
         token string: IDtoken for auth
@@ -215,7 +215,7 @@ def post_records(token, json_file,datahost):
 
 
 ## Putting it all together
-The below snippet calls all the functions discussed above to convert your CSV file into JSON and optionally sends them to your streaming source if you enter your credentials and endpoint. This will send all of the JSON files created in the first step. 
+The below snippet calls all the functions discussed above to convert your CSV file into JSON. Optionally, it sends them to your streaming source if you enter your credentials and endpoint. This will send all of the JSON files created in the first step. 
 
 ```python
 def main():
@@ -238,7 +238,7 @@ if __name__ == "__main__":
 ```
 
 ## Full Code Sample
-Save the below to a file name of your choice, fill in all variables under "ENTER ALL VARIABLES HERE", and execute the ```python3 <your name>.py``` command.
+Save the code snippet below to a file name of your choice, fill in all variables under "ENTER ALL VARIABLES HERE", and execute the ```python3 <your name>.py``` command.
 
 ```python
 # Copyright 2022 Molecula Corp.
@@ -298,7 +298,7 @@ def make_json(csvFilePath, jsonFilePath, fieldnames, delim=',', header=True):
         jsonFilePath (path): Path of the target json file to write to. 
             Note batch sizes will append to this file name
         fieldnames (list): List of the ordered target field names to write to
-        delim (str, optional): Delimeter of the csv file Defaults to ','.
+        delim (str, optional): Delimiter of the csv file Defaults to ','.
         header boolean: Indicator if the csv has a header as the first line
 
     Returns:
