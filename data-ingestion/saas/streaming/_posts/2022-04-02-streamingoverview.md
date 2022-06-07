@@ -88,7 +88,7 @@ Once a streaming source is configured, data can be streamed to it. Each record s
 
 ```json
 {
-    "records": [ # 
+    "records": [ 
         { "value": { <JSON blob containing fields of first record> } },
         { "value": { <JSON blob containing fields of second record> } },
         ...
