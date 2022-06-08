@@ -356,18 +356,19 @@ Here we introduce comparative and logical operators including **GREATER THAN**, 
 ```sql
 SELECT SUM(income) 
 FROM cseg 
-WHERE income > 5000 AND age = 45 AND skills='Ms Office' OR skills='Excel';
+WHERE income > 5000 AND age = 45 AND (skills='Ms Office' OR skills='Excel');
 ```
 
 As you can see, the latency is in the sub-second time frame even when using complex searching criteria through 1 billion records.
 
-![Figure 6  Complex sum](https://user-images.githubusercontent.com/97700520/170796826-e4150d8b-729d-4057-848e-51530928251f.png)
+![Figure 6 Complex SUM](https://user-images.githubusercontent.com/97700520/172648422-2d20bd75-1805-4f99-822d-6825e90075d1.png)
+
 
 >**NOTE:**
->
->When aggregating over a SET field, values for a record will be included in multiple groups if not excluded in the query. For example, when SUM(income) is >used with a GROUP BY of “education”, income for a record with both ‘Bachelor’s degree’ and ‘High school diploma or GED’ will be included in both groups.
->
->It is common for a single person to have multiple values for a field that may seem contradictory or redundant, like “education”. This may be due to >differences in status over time as data are collected and aggregated. A person may be categorized as having “education” status of “Some college” and >later be categorized as having a “Bachelor’s degree”. When those two data sources are matched up, the person may have multiple values associated with >them.
+
+>When aggregating over a SET field, values for a record will be included in multiple groups if not excluded in the query. For example, when SUM(income) is used with a GROUP BY of “education”, income for a record with both ‘Bachelor’s degree’ and ‘High school diploma or GED’ will be included in both groups.
+
+>It is common for a single person to have multiple values for a field that may seem contradictory or redundant, like “education”. This may be due to differences in status over time as data are collected and aggregated. A person may be categorized as having “education” status of “Some college” and later be categorized as having a “Bachelor’s degree”. When those two data sources are matched up, the person may have multiple values associated with them.
 
 Additionally, aggregations may include the AVERAGE argument.
 
@@ -376,6 +377,9 @@ SELECT AVG(income) FROM cseg;
 ```
 ![Figure 7  average income](https://user-images.githubusercontent.com/97700520/170796927-e7fc7f66-258d-49d2-a47f-a192d237ea9d.png)
 
+>Note that we don’t currently support full SQL, but are working toward expanding SQL functionality. For example, the AVERAGE function is not currently supported in GROUP BY queries and will be added soon.
+
+>**If you have issues with your queries, please contact Molecula Representative. FeatureBase has a native language, called PQL, and we can help you translate your SQL queries to get the desired results.**
 
 ### INNER JOINs at Scale
 
@@ -445,9 +449,6 @@ More complex, the next query returns the top ten hobbies among females who also 
 ![Query builder](https://user-images.githubusercontent.com/97700520/170797492-89ace99d-6de5-4a6f-ba14-275f53462fb2.png)
 
 
-Note that we don’t currently support full SQL, but are working toward expanding SQL functionality. For example, the AVERAGE function is not currently supported in GROUP BY queries and will be added soon.
-
-If you have issues with your queries, please contact Molecula Representative. FeatureBase has a native language, called PQL, and we can help you translate your SQL queries to get the desired results.
 
 ## What’s Next?
 
@@ -468,7 +469,7 @@ SELECT COUNT(*) FROM cseg;
 ### Complex Segmentation 
 
 ```sql
-SELECT count(*) FROM cseg WHERE age = 45 AND income>50000 AND skills='Ms Office' OR skills='Excel';
+SELECT count(*) FROM cseg WHERE age = 45 AND income>50000 AND (skills='Ms Office' OR skills='Excel');
 ```
 
 ### Aggregations
