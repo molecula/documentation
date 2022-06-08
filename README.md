@@ -2,6 +2,14 @@
 
 This repository is hosted with GitHub pages with the live site found at: https://docs.molecula.cloud.
 
+- [How Tos](#how-tos)
+  * [Editing a Page](#editing-a-page)
+  * [Adding a New Page](#adding-a-new-page)
+  * [Adding New Images](#adding-new-images)
+  * [Create a new Folder in the Navigation](#create-a-new-folder-in-the-navigation)
+    + [Example Directory and Subdirectory](#example-directory-and-subdirectory)
+- [Building the Documentation Locally](#building-the-documentation-locally)
+- [Publishing to docs.molecula.cloud](#publishing-to-docsmoleculacloud)
 
 ## How Tos
 
@@ -119,3 +127,22 @@ For larger content edits or for changes to the theme, you'll likely need to clon
    ```
 
 4. Edit files at your leisure. The site will auto-rebuild and deploy on changes so no need to repeat step 3.
+
+
+
+
+## Publishing to docs.molecula.cloud
+You can think of the `main` branch as being a place to stage changes and the `gh-pages` branch as the publish copy found on https://docs.molecula.cloud.
+
+When ready to go live with updates, **do not use the UI!** Instead use the following instructions below via terminal:
+
+```bash
+git clone https://github.com/molecula/documentation
+cd documentation
+
+git checkout gh-pages
+git pull
+git merge --ff-only origin/main 
+git push
+```
+If you don't do this then some commits seem to be lost or overwritten and that'll make authors sad :(
