@@ -149,7 +149,11 @@ For `"recordTime"` fields, there are essentially two modes. If `"Epoch"` or `"Un
 
 ## CSV Ingester
 
-The CSV ingester can read CSV files (optionally gzipped) and ingest them to FeatureBase. It uses a naming convention in the header of the CSV file to [specify how each field](/reference/data-ingestion/ingester-configuration#header-descriptions) should be ingested. The header can either be included in the file or passed in separately if editing the file is not desirable. If passed in separately one should use the `--ignore-header` option if the CSV file has a header so that it is not interpreted as data.
+The CSV ingester can read CSV files (optionally gzipped) and ingest them to FeatureBase. It uses a naming convention in the header of the CSV file to [specify how each field](/reference/data-ingestion/ingester-configuration#header-descriptions) should be ingested. The header can either be included in the file or passed in separately if editing the file is not desirable. If passed in separately one should use the `--ignore-header` option if the CSV file has a header so that it is not interpreted as data. 
+
+The CSV ingester uses the CSV conventions outlined in [RFC-4180](https://datatracker.ietf.org/doc/html/rfc4180#section-2). CSV files following other conventions may result in undefined behavior. Few things to note from the specifications:
+- "Fields containing line breaks (CRLF), double quotes, and commas should be enclosed in double-quotes."
+- "If double-quotes are used to enclose fields, then a double-quote appearing inside a field must be escaped by preceding it with another double quote."
 
 Use `molecula-consumer-csv -h` to list all available flags. Each flag is also available as an environment variable by prefixing it with "CONSUMER_".
 
