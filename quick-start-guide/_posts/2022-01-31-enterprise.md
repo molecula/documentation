@@ -379,7 +379,7 @@ SELECT AVG(income) FROM cseg;
 
 >Note that we don’t currently support full SQL, but are working toward expanding SQL functionality. For example, the AVERAGE function is not currently supported in GROUP BY queries and will be added soon.
 
->**If you have issues with your queries, please contact Molecula Representative. FeatureBase has a native language, called PQL, and we can help you translate your SQL queries to get the desired results.**
+>**If you have issues with your queries, please contact a [Molecula Representative](mailto:se@molecula.com). FeatureBase has a native language, called PQL, and we can help you translate your SQL queries to get the desired results.**
 
 ### INNER JOINs at Scale
 
