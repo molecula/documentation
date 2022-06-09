@@ -83,6 +83,8 @@ nav:
         subnav:
           - title: Enterprise
             category: enterprise
+          - title: SaaS
+            category: saas
       - title: APIs
         category: api
         subnav:
