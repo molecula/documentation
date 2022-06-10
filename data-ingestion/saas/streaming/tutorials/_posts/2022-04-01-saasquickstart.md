@@ -9,20 +9,18 @@ sidebar_label: Getting Started With Streaming
 
 ## Prerequisites
 
-The following QuickStart guide requires the following:
+The following Quick Start Guide requires the following:
 
 1. You have signed up with Molecula and have a user account and your credentials
-2. You have a linux environment capable of running cURL commands
+2. You have a linux environment capable of communicating with the public internet and running cURL commands
 
 ## Getting Started
 
 The guide will take you from nothing in the product to having a small deployment with data to query. Its purpose is to get you up and running quickly, while simultaneously teaching you how to use the product. While this tutorial will populate most information for you, there will be inputs required from you in the code snippets (indicated by <> symbols)
 
-**⚠ WARNING:** This process creates resources that can create additional costs for you as a customer.
-
 ### Getting A Token
 
-Molecula uses Oauth2.0 for all authorization, so every API call must be accompanied with a valid token. You can get tokens by passing your credentials to https://id.molecula.cloud.
+Molecula uses Oauth2.0 for all authorization, so every API call must be accompanied with a valid token. You can get tokens by passing your credentials to [https://id.molecula.cloud](https://id.molecula.cloud).
 
 Inputs:
 1. USERNAME - your email
@@ -34,19 +32,32 @@ curl --location --request POST 'https://id.molecula.cloud' \
 --data-raw '{
     "USERNAME": "<username>",
     "PASSWORD": "<password>"
-}'
+}' 
 ```
+
 
 3 tokens are returned: Access, ID, and Refresh. Use the ID token for all of your API calls as the Authorization header:
 
 **HTTP API Reference:**
 ```shell
---header 'Authorization: <IdToken>' \
+--header 'Authorization: Bearer <IdToken>' \
 ```
+
+If you'd like the command to only return the ID token for easier copying, you can run the following:
+
+**HTTP API Reference:**
+```shell
+curl --location --request POST 'https://id.molecula.cloud' \
+--data-raw '{
+    "USERNAME": "<username>",
+    "PASSWORD": "<password>"
+}' | grep -Eo '"IdToken":.*?[^\\]",' | sed -e 's/[\"\,\: ]*//g' | sed -e 's/IdToken//'
+```
+
 
 ### Create A Deployment
 
-Deployments are clusters of FeatureBase nodes. All of your data will live in tables within FeatureBase. You can think of a deployment as a database. Molecula offers deployment sizes to choose from. For this guide, we will be using the "8GB" option. For more information on deployments, see [Deployments Overview](/setting-up-featurebase/saas/deployments-overview). The below command will start creating your deployment
+The first step is creating a deployment. We will be using the "8GB" option for this walkthrough. For more information on deployments, see [Deployments Overview](/setting-up-featurebase/saas/deployments-overview).  The command below will start creating your deployment. You can also do this in the UI on the "Deployments" page by clicking “New Deployment”, selecting "Standard", entering "iris_demo_deployment" for the name, and choosing the "8GB" option.
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
@@ -66,7 +77,7 @@ curl --location --request POST 'https://api.molecula.cloud/v1/deployments' \
 }'
 ```
 
-A deployment takes some time to create. You can look at all of your deployments and their statuses. You should be able to see the "iris_demo_deployment" as "Creating".
+A deployment takes a minute or so to create. You can see the status of the "iris_demo_deployment" as "Creating" in the UI or by running the command below.
 
 **HTTP API Reference:**
 ```shell
@@ -75,15 +86,15 @@ curl --location --request GET 'https://api.molecula.cloud/v1/deployments' \
 --header 'Content-Type: application/json' 
 ```
 
-Grab your deployment’s id. This is a unique id for your deployment. Once your deployment is "Running" (a minute or two), you can move to the next step.
+Grab your deployment’s "id" field returned from the command above. This is a unique id for your deployment. Once your deployment is "RUNNING", you can move to the next step.
 
 ### Ingest Data
 
-Once a deployment is running, you will want to start loading data into it. Sources are configurable resources that load data into deployments. This section will help you creating a "Streaming (HTTPS)" Source, which will yield a persistent endpoint that allows you to push data into your deployment over HTTPS. For more information on ingesting data, see [Ingest Data](/data-ingestion/saas/ingestoverview).
+Once a deployment is "RUNNING", you will want to start loading data into it. This section will help you create a Streaming Source, which will yield a persistent endpoint that allows you to push data into your deployment over HTTPS. For more information on ingesting data, see [Ingest Data](/data-ingestion/saas/ingestoverview).
 
 #### Create A Table
 
-A table is an object within a deployment that stores related data. You must create a table before you can ingest data.
+You must create a table before you can ingest data. For more information on tables, see [Tables](/data-ingestion/saas/tables). The command below will create your table. You can also do this in the UI on the "Tables" page by clicking “New Table", selecting your deployment, entering "iris_table" for the name, and entering "table holding flower data" as the description.
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
@@ -104,14 +115,14 @@ curl --location --request POST 'https://api.molecula.cloud/v1/tables/<deployment
 
 #### Create A Streaming Source
 
-After a table exists, you can configure a source to load data into it. The “Streaming (HTTPS)” source configuration will yield a persistent endpoint that allows you to stream data to. Here you can see our JSON schema that details the data being streamed to the source. The below schema contains various flower species and their measurements.
+After a table exists, you can configure a source to load data into it. The “Streaming (HTTPS)” source configuration will yield a persistent endpoint that allows you to stream data to. For more information on deployments, see [Deployments Overview](/setting-up-featurebase/saas/deployments-overview). Below you can see our JSON schema that details the data being streamed to the source. The below schema contains various flower species and their measurements. The command below will start creating your deployment. 
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
 2. table_name - The name you want to give your table i.e. iris_table
 3. source_name - The name you want to give your source i.e. iris_streaming_source
 4. deployment id - The unique ID of your deployment
-5. schema - a JSON blob that contains information about the data streaming into the source.
+5. schema - A JSON blob that contains information about the data streaming into the source.
 
 **HTTP API Reference:**
 ```shell
@@ -180,7 +191,11 @@ curl --location --request POST 'https://api.molecula.cloud/v1/sinks' \
 }'
 ```
 
-Like deployments, sources takes some time to create. You can look at all of your sources and their statuses. You should be able to see the "iris_streaming_source" as "Creating".
+You can also do this in the UI on the "Data Sources" page by clicking “New Source", choosing "iris_demo_deployment" as the deployment, "iris_streaming_source" as the source name, "iris_table" as the table, and defining the fields with the same information as the API call above, matching the image below:
+
+![Sreaming Source UI Configuration](/img/data-ingestion/saas/streaming/tutorials/saasquickstart/iris_source.png)
+
+Like deployments, sources takes some time to create. You should be able to see the "iris_streaming_source" status as "Creating" by running the command below or in the UI.
 
 **HTTP API Reference:**
 ```shell
@@ -189,11 +204,11 @@ curl --location --request GET 'https://api.molecula.cloud/v1/sinks' \
 --header 'Content-Type: application/json' 
 ```
 
-Grab your source's id. This is a unique id for your source. Once your source is "Running" (a minute or two), you can move to the next step.
+Grab your source's id. This is a unique id for your source. Once your source is "Running", you can move to the next step. You can find your source id in the UI by clicking on "iris_streaming_source" and looking at the "Streaming Endpoint" url.
 
 #### Ingest Data
 
-We now have an endpoint we can stream data to. This guide will only send one micro-batched payload of records, but data can be continually pushed to this endpoint. For more information, please see the [Streaming (HTTPS)](/data-ingestion/saas/streaming/streamingoverview).
+We now have an endpoint we can stream data to. This guide will only send one payload of 150 records, but data can be continually pushed to this endpoint. For more information, please see the [Streaming (HTTPS)](/data-ingestion/saas/streaming/streamingoverview). This action cannot be performed in the UI and must be done with the command below. 
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
@@ -373,13 +388,13 @@ This will yield a response that details the number of successes and errors from 
 
 ### Consume Data
 
-Now that data is loaded into your table, you are able to query it. Data is queried using either PQL (Pilosa Query Language), our native query language, or the limited set of SQL we support. An example of both can be seen below:
+Now that data is loaded into your table, you are able to query it. Data is queried using either [PQL (Pilosa Query Language)](/reference/data-querying/pql), our native query language, or the limited set of [SQL](/reference/data-querying/sql) we support. Example commands of both can be seen below. These queries can also be run in the UI on the "Query" page.
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
 2. deployment id - The unique ID of your deployment
-3. language - the query language being used i.e. "pql" or "sql"
-4. statement - the query to run i.e. "select * from iris_table"
+3. language - The query language being used i.e. "pql" or "sql"
+4. statement - The query to run i.e. "select * from iris_table limit 10"
 
 
 **HTTP API Reference (SQL):**
@@ -405,11 +420,13 @@ curl --location --request POST 'https://data.molecula.cloud/v1/deployments/<depl
 }'
 ```
 
-Queries will yield JSON responses containing the requested data. Now is a good time to explore running other queries if you would like. This marks the end of the quick start. While this guide doesn't show the massive scale FeatureBase can perform against, it does show how fast and simple it is to get started. Please feel free to reach out with any questions or feedback you have for this guide.
+Queries yield JSON responses containing the requested data. Now is a good time to explore running other queries if you would like. 
+
+This marks the end of the streaming Quick Start. While this guide doesn't show the massive scale FeatureBase can perform against, it does show you how to get started. Now is a great time to look at our other streaming tutorials and start loading your own data in. Please feel free to [reach out](/reference/operations/saas/support) with any questions or feedback you have for this guide.
 
 ### Environment Cleanup
 
- Lastly, it is important to delete these resources to avoid creating costs for your organization. You'll find commands to do so below. Please note the order to deleting resources is important, and resources do take time to fully shutdown. All Successful delete requests should result in a 202 response.
+ Lastly, it is important to delete these resources to avoid creating costs for your organization. You'll find commands to do so below. Please note the order of deleting resources is important, and resources do take time to delete. All Successful delete requests should result in a 202 response. These resources can be deleted in the UI as well.
 
 #### Delete Source
 

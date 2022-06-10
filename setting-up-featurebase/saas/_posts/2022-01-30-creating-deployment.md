@@ -11,7 +11,7 @@ sidebar_label: Create A Deployment
  **⚠ WARNING:** This page contains information that only applies to Molecula's SaaS offering. Additionally, this page represents a work in progress that is subject to frequent changes. 
 
 
-In the user interface, clicking “Get Started” or “Cloud Manager” from the home page will direct you to the Cloud Manager page where you can create a deployment by clicking “New Deployment”. Today, the tool has [sizes](/setting-up-featurebase/saas/deployments-overview#sizes) based on memory, so all you need to provide is a deployment memory from a drop down and a deployment name. Note the UI will only display the choices your organization has access to, which is determined when you purchase the product. These choices can be queried for programmatically as well and are referred to as “deployment shapes”:
+In the user interface, clicking "Deployments” from the left hand navigation bar will direct you to the deployments page. You can create a deployment by clicking “New Deployment” and selecting "Standard". Today, the tool has [sizes](/setting-up-featurebase/saas/deployments-overview#sizes) based on memory, so all you need to provide is a deployment memory from a drop down and a deployment name. Note the UI will only display the choices your organization has access to, which is determined when you purchase the product. These choices can be queried for programmatically as well and are referred to as “deployment shapes”:
 
 
 **HTTP API Reference:**
@@ -35,7 +35,7 @@ curl --location --request POST 'https://api.molecula.cloud/v1/deployments' \
 }'
 ```
 
-After clicking “Start”, you will see a new entry populate in the Cloud Manager page with the name you provided. You will also see a status of “CREATING”. This is the state shown as the underlying hardware is provisioned. After a minute or two, the status will update to “RUNNING”, which indicates your deployment is ready to use. The other states you might encounter can be seen [here](/setting-up-featurebase/saas/deployments-overview#states). All of your deployments' statuses can also be queried programmatically.
+After clicking "Create Deployment", you will see a new entry populate in the deployment page with the name you provided. You will also see a status of “CREATING”. This is the state shown as the underlying hardware is provisioned. After a minute or two, the status will update to “RUNNING”, which indicates your deployment is ready to use. The other states you might encounter can be seen [here](/setting-up-featurebase/saas/deployments-overview#states). All of your deployments' statuses can also be queried programmatically.
 
 **HTTP API Reference:**
 ```shell
