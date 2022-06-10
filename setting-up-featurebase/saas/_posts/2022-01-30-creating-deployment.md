@@ -35,7 +35,7 @@ curl --location --request POST 'https://api.molecula.cloud/v1/deployments' \
 }'
 ```
 
-After clicking "Create Deployment", you will see a new entry populate in the deployment page with the name you provided. You will also see a status of “CREATING”. This is the state shown as the underlying hardware is provisioned. After a minute or two, the status will update to “RUNNING”, which indicates your deployment is ready to use. The other states you might encounter can be seen [here](/setting-up-featurebase/saas/deployments-overview#states). All of your deployments' statuses can also be queried programmatically.
+After clicking "Create Deployment", you will see a new entry populate in the Deployment page with the name you provided. You will also see a status of “CREATING”. This is the state shown as the underlying hardware is provisioned. After a minute or two, the status will update to “RUNNING”, which indicates your deployment is ready to use. The other states you might encounter can be seen [here](/setting-up-featurebase/saas/deployments-overview#states). All of your deployments' statuses can also be queried programmatically.
 
 **HTTP API Reference:**
 ```shell
