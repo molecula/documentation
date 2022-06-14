@@ -41,3 +41,6 @@ gem 'jekyll-default-layout'
 #
 # For more info see: http://jekyll.github.io/github-metadata/
 gem "jekyll-github-metadata"
+
+# Addon to create a sitemaps.org compatible sitemap
+gem "jekyll-sitemap"

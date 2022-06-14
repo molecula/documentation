@@ -36,11 +36,17 @@ github_username:  jekyll
 # For more info see: http://jekyll.github.io/github-metadata/
 repository: molecula/documentation
 
+# the base hostname & protocol for your site required by
+# jekyll-sitemap
+url: "https://docs.molecula.cloud"
+
+
 plugins:
   - jekyll-feed
   - jekyll-default-layout
   - jekyll-last-modified-at
   - jekyll-github-metadata
+  - jekyll-sitemap
 
 permalink: /:categories/:title
 
