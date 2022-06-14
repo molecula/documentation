@@ -92,4 +92,6 @@ nav:
             category: enterprise
           - title: SaaS
             category: saas
+      - title: Release Notes
+        category: release-notes
 
