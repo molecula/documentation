@@ -28,7 +28,6 @@ molecula-consumer-csv \
     --auto-generate \
     --index=csv-ingest-test \
     --files=sample.csv,sample2.csv \
-    --concurrency=2
 ```
 
 sample.csv:
@@ -71,7 +70,6 @@ molecula-consumer-csv \
     --ignore-header
     --index=csv-ingest-test \
     --files=sample.csv,sample2.csv \
-    --concurrency=2
 ```
 
 sample.csv:
@@ -105,7 +103,6 @@ molecula-consumer-csv \
     --auto-generate \
     --index=csv-ingest-test \
     --files=sample.csv \
-    --concurrency=2
 ```
 
 Or, equivalently, with the [`--future.rename` configuration flag](/reference/operations/enterprise/featurebase-rename):
@@ -121,7 +118,6 @@ molecula-consumer-csv \
     --auto-generate \
     --index=csv-ingest-test \
     --files=sample.csv \
-    --concurrency=2
 ```
 
 Note that we provide tls configuration (`--tls.certificate` and `--tls.key`) to the command for securely

@@ -248,6 +248,7 @@ This may improve utilization on multi-core systems, or allow for redundancy.
 
 It is possible to run multiple identical ingesters in the same process with the `--concurrency` CLI flag.
 These ingesters are mostly independent, and roughly behave the same as two independent ingester processes would.
+`--concurrency` CLI flag is not supported for `molecula-consumer-csv` and `molecula-consumer-sql`.
 
 Alternatively, it is possible to launch multiple ingester processes, possibly on multiple machines.
 
