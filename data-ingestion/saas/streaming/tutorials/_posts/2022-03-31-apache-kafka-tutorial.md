@@ -56,7 +56,7 @@ FEATUREBASE_STREAMING_ENDPOINT = 'https://data.molecula.cloud/v1/sinks/{Sink UUI
 
 There's a neat library to generate fake data in python called [Faker](https://pypi.org/project/Faker/).
 
-In addition to the base Faker library let's also add a community addon that generates fake flights called [faker_airtravel](https://pypi.org/project/faker_airtravel/). It generates objects like the following Python objects (note the single quotes which denote a Python dict, not JSON).
+In addition to the base Faker library let's also add a community addon that generates fake flights called [faker_airtravel](https://pypi.org/project/faker_airtravel/). It generates objects like the following Python objects (note the single quotes which denote a Python dict, not JSON). We'll also generate a unique flight identifier (`flight_id`) and insert it into each object as well.
 
 ```python
 >>>fake.flight()
@@ -75,8 +75,11 @@ In addition to the base Faker library let's also add a community addon that gene
   'State': 'Canton of Geneva',
   'Country': 'Switzerland'},
  'stops': 'non-stop',
- 'price': 641}
+ 'price': 641,
+ 'flight_id': 123}
 ```
+
+
 
 To install let's run `pip install faker faker_airtravel` and add the following near the top of your python script:
 
@@ -611,7 +614,10 @@ def producer_thread():
       # 'price': 641}
       #
       flight  = fake.flight()
+      
+      # Add 'flight_id' property to object
       flight['flight_id'] = flight_id
+      
       message = json.dumps(flight)
       producer.produce(KAFKA_TOPICS[0], message)
 
