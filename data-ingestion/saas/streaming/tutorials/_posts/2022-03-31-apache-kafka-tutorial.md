@@ -589,9 +589,8 @@ def producer_thread():
       'sasl.username'    : KAFKA_SASL_USERNAME,
       'sasl.password'    : KAFKA_SASL_PASSWORD,
     })
-
-    RECORD_COUNT = 100
-    for i in range(RECORD_COUNT):
+    
+    for flight_id in range(1_000_000_000):
       #
       # >>>fake.flight()
       #
@@ -611,9 +610,10 @@ def producer_thread():
       # 'stops': 'non-stop',
       # 'price': 641}
       #
-      message = json.dumps(fake.flight())
+      flight  = fake.flight()
+      flight['flight_id'] = flight_id
+      message = json.dumps(flight)
       producer.produce(KAFKA_TOPICS[0], message)
-      time.sleep(0.01)
 
     # Ensure all messages are written to topic
     producer.flush()
