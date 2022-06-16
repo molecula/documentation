@@ -575,7 +575,7 @@ def error_cb(err):
 
 
 def producer_thread():
-    """Generates 1M fake airline flights using Faker and an addon provider 
+    """Generates 1 billion fake airline flights using Faker and an addon provider 
        called Airtravel. These fake flights are pushed into the Kafka topic.
     """
     print('Starting to produce messages.')
