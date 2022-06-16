@@ -26,7 +26,7 @@ Before we begin it’s always a good idea to make sure you have all the credenti
 
 - FeatureBase SaaS credentials. If you don’t have an account yet then [sign up for a free trial](https://app.molecula.cloud/signup) (no credit card needed).
 
-- The endpoint to an [existing SaaS streaming source](https://docs.molecula.cloud/data-ingestion/saas/streaming/createstreamingsource).
+- The endpoint to an [existing SaaS streaming source](https://docs.molecula.cloud/data-ingestion/saas/streaming/createstreamingsource). In this tutorial you'll find the [schema](#creating-a-featurebase-source-schema) needed to create a new one and follow along, but a source will need to be configured and a endpoint available for configuration before testing.
 
 | SECURITY WARNING                                                                                                                                                                                                                                                                                                                      |
 |:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
