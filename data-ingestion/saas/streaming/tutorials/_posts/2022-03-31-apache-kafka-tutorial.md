@@ -90,7 +90,7 @@ fake.add_provider(AirTravelProvider)
 
 ## Setting up the Kafka Client
 
-For more documentation on the Confluent python client, please check out their official documentation at [Kafka Python Client | Confluent Documentation](https://docs.confluent.io/kafka-clients/python/current/overview.html).
+For more documentation on the Confluent python client, please check out their official documentation at [Kafka Python Client - Confluent Documentation](https://docs.confluent.io/kafka-clients/python/current/overview.html).
 
 ### Create a Kafka Producer
 
