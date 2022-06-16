@@ -157,7 +157,7 @@ consumer = Consumer({
 We’ll then pass in a list of topics that we want to listen to. For this tutorial we only have a single topic however we still need to pass it as a list.
 
 ```python
-consumer.subscribe(CONFLUENT_TOPICS)
+consumer.subscribe(KAFKA_TOPICS)
 ```
 
 ### Start processing messages from topics
