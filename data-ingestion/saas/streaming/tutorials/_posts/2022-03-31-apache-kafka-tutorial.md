@@ -94,7 +94,7 @@ For more documentation on the Confluent python client, please check out their of
 
 ### Create a Kafka Producer
 
-Since we want to produce and consume data with this script we'll create a thread function to setup a Kafka producer and write infinite messages.
+Since we want to produce and consume data with this script we'll create a thread function to setup a Kafka producer and write 1 billion messages. We'll also append the fake data object by appending a unique ID field (`flight_id`).
 
 ```python
 def producer_thread():
@@ -108,9 +108,11 @@ def producer_thread():
       'sasl.username'    : KAFKA_SASL_USERNAME,
       'sasl.password'    : KAFKA_SASL_PASSWORD,
     })
-
-    while True:
-      message = json.dumps(fake.flight())
+    
+    for flight_id in range(1_000_000_000):
+      flight  = fake.flight()
+      flight['flight_id'] = flight_id
+      message = json.dumps(flight)
       producer.produce(KAFKA_TOPICS[0], message)
 ```
 
