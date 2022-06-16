@@ -246,7 +246,6 @@ postgres:	https://godoc.org/github.com/lib/pq
 | assume-empty-featurebase       | bool    | Setting this means that you're doing an initial bulk ingest which assumes that data does not need to be cleared/unset in FeatureBase. There are various performance enhancements that can be made in this case. For example, for booleans if a false value comes in, we'll just set the bit in the bools-exists field... we won't clear it in the bools field. |
 | auto-generate                  | bool    | Automatically generate IDs. |
 | batch-size                     | int     | Number of records to read before indexing all of them at once. Generally, larger means better throughput and more memory usage. 1,048,576 might be a good number. (default 1) |
-| concurrency                    | int     | Number of concurrent sources and indexing routines to launch. (default 1) |
 | connection-string              | string  | credentials for connecting to sql database (default "postgres://user:password@localhost:5432/defaultindex?sslmode=disable") |
 | driver                         | string  | key used for finding go sql database driver (default "postgres") |
 | exp-split-batch-mode           | bool    | Tell go-pilosa to build bitmaps locally over many batches and import them at the end. Experimental. Does not support int or mutex fields. Don't use this unless you know what you're doing. |
