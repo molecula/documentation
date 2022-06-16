@@ -345,6 +345,11 @@ When creating a streaming source in FeatureBase, we need to provide a JSON schem
     "name": "destination_loc_country",
     "path": ["destination","country"],
     "type": "string"
+  },
+  {
+    "name": "flight_id",
+    "path": ["flight_id"],
+    "type": "id"
   }
 ]
 ```
