@@ -112,9 +112,10 @@ def producer_thread():
       'sasl.password'    : KAFKA_SASL_PASSWORD,
     })
     
-    for flight_id in range(1_000_000_000):
+    #Can make this a higher range for more records
+    for flight_id in range(100):
       flight  = fake.flight()
-      flight['flight_id'] = flight_id
+      flight['flight_id'] = flight_id + 1
       message = json.dumps(flight)
       producer.produce(KAFKA_TOPICS[0], message)
 ```
@@ -198,9 +199,9 @@ Once the Kafka consumer is configured and topics have been subscribed, we’ll s
 
 ## Configure FeatureBase HTTP Client
 
-### Autenticate and retrieve Identity Token
+### Authenticate and retrieve Identity Token
 
-Using the `requests` library we’ll send an HTTP POST request with your username and password. If successful, the API will return a JSON object containing your credentials. For the purpose of further API calls the property of interest is the `IdToken`.
+Using the `requests` library, we'll send an HTTP POST request with your username and password. If successful, the API will return a JSON object containing your credentials. For the purpose of further API calls, the property of interest is the `IdToken`.
 
 ```python
 def featurebase_authenticate(username, password):
@@ -256,7 +257,8 @@ Remember that the schema for fake flights (when converted to JSON) looks like th
   "State": "Canton of Geneva",
   "Country": "Switzerland"},
  "stops": "non-stop",
- "price": 641}
+ "price": 641,
+ "flight_id": 1}
 ```
 
 #### Creating a FeatureBase Source Schema
@@ -555,7 +557,7 @@ def error_cb(err):
 
 
 def producer_thread():
-    """Generates 1 billion fake airline flights using Faker and an addon provider 
+    """Generates 100 (but change range to scale this up) fake airline flights using Faker and an addon provider 
        called Airtravel. These fake flights are pushed into the Kafka topic.
     """
     print('Starting to produce messages.')
@@ -570,7 +572,8 @@ def producer_thread():
       'sasl.password'    : KAFKA_SASL_PASSWORD,
     })
     
-    for flight_id in range(1_000_000_000):
+    #make this a higher number to see more records flow in
+    for flight_id in range(100):
       #
       # >>>fake.flight()
       #
@@ -588,12 +591,13 @@ def producer_thread():
       #   'state': 'Canton of Geneva',
       #   'country': 'Switzerland'},
       # 'stops': 'non-stop',
-      # 'price': 641}
+      #  "price": 641,
+      #  "flight_id": 1}
       #
       flight  = fake.flight()
       
       # Add 'flight_id' property to object
-      flight['flight_id'] = flight_id
+      flight['flight_id'] = flight_id + 1
       
       message = json.dumps(flight)
       producer.produce(KAFKA_TOPICS[0], message)
@@ -609,7 +613,7 @@ def consumer_thread(token):
   """Infinite event loop to listen for and process messages from
       subscribed Kafka topics.
   """
-  # Create a confluent consumer 
+  # Create a confluent consumer. Note this resets the offset to earliest each time the script is run
   consumer = Consumer({
       'bootstrap.servers': KAFKA_BROKER,
       'sasl.mechanism'   : KAFKA_SASL_MECHANISM,
@@ -668,9 +672,8 @@ def consumer_thread(token):
 
 
 if __name__ == "__main__":
-  # Login to FeatureBase Cloud and get identity token.
+  # Login to FeatureBase Cloud and get identity token. Then produce and consume messages until interupted.
   token = featurebase_authenticate(FEATUREBASE_USERNAME, FEATUREBASE_PASSWORD)
-  print(f'OAuth 2.0 Token:\n{token}\n---')
   produce_thread = Thread(target=producer_thread, args=())
   consume_thread = Thread(target=consumer_thread, args=(token,))
   produce_thread.start()
