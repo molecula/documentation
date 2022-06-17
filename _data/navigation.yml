@@ -10,8 +10,8 @@ nav:
     subnav:
       - title: Enterprise
         category: enterprise
-      - title: SaaS
-        category: saas
+      - title: Cloud
+        category: cloud
   
   - title: Data Modeling Guide
     category: data-modeling-guide
@@ -25,8 +25,8 @@ nav:
           - title: Connectors
             category: connectors
 
-      - title: SaaS
-        category: saas
+      - title: Cloud
+        category: cloud
         subnav:
           - title: Streaming (HTTPS)
             category: streaming
@@ -45,8 +45,8 @@ nav:
           - title: Libraries
             category: libraries
 
-      - title: SaaS
-        category: saas
+      - title: Cloud
+        category: cloud
 
   - title: Administration
     category: administration
@@ -59,8 +59,8 @@ nav:
           - title: Data Management
             category: data-management
 
-      - title: SaaS
-        category: saas
+      - title: Cloud
+        category: cloud
         subnav:
           - title: Security
             category: security
@@ -83,15 +83,15 @@ nav:
         subnav:
           - title: Enterprise
             category: enterprise
-          - title: SaaS
-            category: saas
+          - title: Cloud
+            category: cloud
       - title: APIs
         category: api
         subnav:
           - title: Enterprise
             category: enterprise
-          - title: SaaS
-            category: saas
+          - title: Cloud
+            category: cloud
       - title: Release Notes
         category: release-notes
 
