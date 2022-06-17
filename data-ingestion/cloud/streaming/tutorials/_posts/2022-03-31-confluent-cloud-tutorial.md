@@ -146,9 +146,9 @@ Once the Kafka consumer is configured and topics have been subscribed, we'll sta
 
 ## Configure FeatureBase HTTP Client
 
-### Autenticate and retrieve Identity Token
+### Authenticate and retrieve Identity Token
 
-Using the `requests` library we'll send an HTTP POST request with our username and password. If successful, the API will return a JSON object containing our credentials. For the purpose of further API calls the property of interest is the `IdToken`.
+Using the `requests` library, we'll send an HTTP POST request with your username and password. If successful, the API will return a JSON object containing your credentials. For the purpose of further API calls, the property of interest is the `IdToken`.
 
 ```python
 def featurebase_authenticate(username, password):
