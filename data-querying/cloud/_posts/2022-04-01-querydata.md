@@ -10,12 +10,14 @@ sidebar_label: Query Data
 
 The current query endpoint is a synchronous call that waits for your data to return. There are current limitations to the amount of data that can be returned and the amount of time the query can run. Those limits are shown below:
 
-|Category (Exclsuvie) | Current Limit  |
+|Category (Exclusive) | Current Limit  |
 | --- | ----------- |
 |Data Limit           |  6MB |
-|Execution Time Limit        | 29 sec|
+|Execution Time Limit        | <30 sec|
 
-You will receive an error if either limit is exceeded.
+You will receive an error ("Network Error") if either limit is exceeded.
+
+## Executing A Query
 
 In order to query data, the following prerequisites must be met:
 
