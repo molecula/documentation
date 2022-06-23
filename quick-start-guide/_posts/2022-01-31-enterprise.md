@@ -18,7 +18,7 @@ In this demonstration you will:
 ## Download Single-Node FeatureBase Binary
 First, sign up for your [Free Trial](https://www.molecula.com/start-free-trial/). 
 
->Please note that by clicking ```Start Free``` you agree to the [Terms of Service](https://www.molecula.com/) and to receive occasional marketing emails from Molecula. You also understand that we will process your personal information in accordance with our [Privacy Policy](https://www.molecula.com/privacy/).
+>Please note that by clicking ```Start Free``` you agree to the [Terms of Service](https://www.molecula.com/featurebase-end-user-license-agreement/) and to receive occasional marketing emails from Molecula. You also understand that we will process your personal information in accordance with our [Privacy Policy](https://www.molecula.com/privacy/).
 
 
 Click ```Download``` on the option that best meets your needs to download the tarball containing the latest single-node FeatureBase binary.
