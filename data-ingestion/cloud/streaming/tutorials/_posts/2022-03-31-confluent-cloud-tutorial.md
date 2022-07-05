@@ -24,7 +24,7 @@ Before we begin it's always a good idea to make sure you have all the credential
 
 * FeatureBase Cloud credentials. If you don't have an account yet then [sign up for a free trial](https://www.molecula.com/start-free-trial/) (no credit card needed).
 
-* The endpoint to an existing Cloud streaming source.
+* An existing Cloud ingest endpoint.
 
 
 
@@ -48,7 +48,7 @@ CONFLUENT_SECRET = ''
 FEATUREBASE_USERNAME = ''
 FEATUREBASE_PASSWORD = ''
 
-# FeatureBase Cloud > Data Sources > {Source} > "Streaming Endpoint"
+# FeatureBase Cloud > Data Sources > {Source} > "Ingest Endpoint"
 FEATUREBASE_STREAMING_ENDPOINT = ''
 ```
 
@@ -302,7 +302,7 @@ CONFLUENT_SECRET = ''
 FEATUREBASE_USERNAME = ''
 FEATUREBASE_PASSWORD = ''
 
-# FeatureBase Cloud > Data Sources > {Source} > "Streaming Endpoint"
+# FeatureBase Cloud > Data Sources > {Source} > "Ingest Endpoint"
 FEATUREBASE_STREAMING_ENDPOINT = ''
 
 ###########################################################

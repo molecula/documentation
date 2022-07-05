@@ -26,7 +26,7 @@ Before we begin it’s always a good idea to make sure you have all the credenti
 
 - FeatureBase Cloud credentials. If you don’t have an account yet then [sign up for a free trial](https://www.molecula.com/start-free-trial/) (no credit card needed).
 
-- The endpoint to an [existing Cloud streaming source](/data-ingestion/cloud/streaming/createstreamingsource). In this tutorial you'll find the [schema](#creating-a-featurebase-source-schema) needed to create a new one and follow along, but a source will need to be configured and an endpoint available for configuration before testing with your data.
+- The endpoint to an [existing Cloud ingest endpoint](/data-ingestion/cloud/streaming/createstreamingsource). In this tutorial you'll find the [schema](#creating-a-featurebase-source-schema) needed to create a new one and follow along, but a source will need to be configured and an endpoint available for configuration before testing with your data.
 
 | SECURITY WARNING                                                                                                                                                                                                                                                                                                                      |
 |:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -48,7 +48,7 @@ KAFKA_SASL_PASSWORD = None
 FEATUREBASE_USERNAME = '{Molecula Username}'
 FEATUREBASE_PASSWORD = '{Molecula Password}'
 
-# FeatureBase Cloud > Data Sources > {Source} > "Streaming Endpoint"
+# FeatureBase Cloud > Data Sources > {Source} > "Ingest Endpoint"
 FEATUREBASE_STREAMING_ENDPOINT = 'https://data.molecula.cloud/v1/sinks/{Sink UUID}'
 ```
 
@@ -261,9 +261,9 @@ Remember that the schema for fake flights (when converted to JSON) looks like th
  "flight_id": 1}
 ```
 
-#### Creating a FeatureBase Source Schema
+#### Creating a FeatureBase Ingest Schema
 
-When creating a streaming source in FeatureBase, we need to provide a JSON schema to make incoming records to table columns. For the fake flight dataset you can use the following:
+When creating an ignest endpoint in FeatureBase, we need to provide a JSON schema to make incoming records to table columns. For the fake flight dataset you can use the following:
 
 ```json
 [
@@ -466,7 +466,7 @@ KAFKA_SASL_PASSWORD = None
 FEATUREBASE_USERNAME = '{Username}'
 FEATUREBASE_PASSWORD = '{Password}'
 
-# FeatureBase Cloud > Data Sources > {Source} > "Streaming Endpoint"
+# FeatureBase Cloud > Data Sources > {Source} > "Ingest Endpoint"
 FEATUREBASE_STREAMING_ENDPOINT = 'https://data.molecula.cloud/v1/sinks/{Sink UUID}'
 
 ###########################################################

@@ -1,6 +1,6 @@
 ---
 id: size-molecula-deployment
-title: Sizing Your FeatureBase Deployment
+title: Sizing Your FeatureBase Database
 sidebar_label: Sizing FeatureBase
 ---
 
@@ -62,6 +62,6 @@ While network typically isn't a bottleneck, FeatureBase hosts should typically b
 #### Other Considerations
 
 *   All FeatureBase hosts should be the same size. FeatureBase doesn't currently have the ability to shard data unevenly, so adding hosts of different sizes limits utilization to the size of the smallest host.
-*   Typical deployments have fewer but larger hosts — 8+ cores and 16+GB of RAM are typical.
+*   Typical databases have fewer but larger hosts — 8+ cores and 16+GB of RAM are typical.
 *   OS: a recent version of Linux.
 *   Filesystem: Most options will work well. We have occasionally encountered [problems with file truncation on XFS](https://stackoverflow.com/questions/47077828/xfs-rhel7-3-cold-reboot-file-truncate), so we do not recommend it.
