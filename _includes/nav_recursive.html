@@ -18,13 +18,14 @@
 
     {% for post in site.categories[item.category] %}
 
-      {% assign child = true %}
-
+      {% assign child = false %}
+      <!-- DEBUG post = {{ post.title }} -->
       {% for p in include.path %}
+        <!-- DEBUG   path = {{ p }} -->
         {% if post.categories contains p %}
-        {% else %}
-          {% assign child = false %}
+          {% assign child = true %}
         {% endif %}
+        <!--     child = {{ child }} -->
       {% endfor %}
 
       {% if child %}
