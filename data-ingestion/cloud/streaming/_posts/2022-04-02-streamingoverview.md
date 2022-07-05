@@ -6,7 +6,7 @@ sidebar_label: Streaming (HTTPS) Overview
 
  **⚠ WARNING:** This page contains information that only applies to Molecula's Cloud offering. Additionally, this page represents a work in progress that is subject to frequent changes. 
 
-The “Streaming (HTTPS)” source configuration will yield a persistent endpoint that allows you to stream data into your deployment over HTTPS. Each endpoint maps to one table within one deployment. If you have multiple disparate data sources, you may create multiple endpoints that push data to the same table. Once this source is provisioned, you can stream (post) JSON records to it using any method or application that can perform HTTPS requests. The table below describes the current limits of streaming data in:
+The ingest endpoint configuration will yield a persistent endpoint that allows you to stream data into your database over HTTPS. Each endpoint maps to one table within one database. If you have multiple disparate data sources, you may create multiple endpoints that push data to the same table. Once this source is provisioned, you can stream (post) JSON records to it using any method or application that can perform HTTPS requests. The table below describes the current limits of streaming data in:
 
 
 |Category (Exclsuvie) | Current Limit  |
@@ -84,7 +84,7 @@ Finally, there are a couple parameters that provide information about your schem
 |primary key fields  |  The primary-key-fields option should be used when the data has no fields that could be used for id-field. This option uses one or more fields (any type) and concatenates them to create unique record IDs for your table. | Yes if id field not provided |
 |allow_missing_fields  |  A boolean field that allows one or more of the fields defined in the schema to be missing from the JSON records streamed in. If a field is missing and this parameter is true, that field is left null with no bits set. If this parameter is False and a field is missing from the JSON records, an error will return and data will not be loaded into your table. | Yes |
 
-Once a streaming source is configured, data can be streamed to it. Each record should be composed of a JSON blob. One or many records can be sent in a single HTTPS request and should have the following syntax:
+Once an ingest endpoint is configured, data can be streamed to it. Each record should be composed of a JSON blob. One or many records can be sent in a single HTTPS request and should have the following syntax:
 
 ```json
 {

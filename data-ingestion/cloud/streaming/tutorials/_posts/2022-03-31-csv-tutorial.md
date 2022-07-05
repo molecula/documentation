@@ -5,7 +5,7 @@ title: Streaming in a CSV
 ---
 
 
-This tutorial will break down into steps how to load a CSV file into FeatureBase using a streaming source, but if you'd rather look at the finished tutorial, please see the full source code at the bottom of this article.
+This tutorial will break down into steps how to load a CSV file into FeatureBase using an ingest endpoint, but if you'd rather look at the finished tutorial, please see the full source code at the bottom of this article.
 
 
 ## Configuring account credentials and files
@@ -18,7 +18,7 @@ Before we begin, it's always a good idea to make sure you have all the credentia
 
 * FeatureBase Cloud credentials 
 
-* The endpoint to an existing Cloud streaming source
+* An existing Cloud ingest endpoint
 
 
 
@@ -27,7 +27,7 @@ Before we begin, it's always a good idea to make sure you have all the credentia
 | Note that for the sake of simplicity, in this tutorial, we're hardcoding passwords and other secrets. Please don't do this in any capacity other than as a personal learning exercise! It's very easy to accidentally commit to code repositories or leave in a public place which invites data breaches for yourself or your organization. |
 
 
-Below represents all of the inputs you must enter to use these code snippets. This offers limited flexibility but does allow you to specify a delimiter, if not a **","** and if your CSV has a header as the first line or not. You will have to put all of the field (column) names in the order they appear in your CSV file and ensure they match the `path` names in your streaming source. For more information on streaming sources, go [here](/data-ingestion/cloud/streaming/streamingoverview).
+Below represents all of the inputs you must enter to use these code snippets. This offers limited flexibility but does allow you to specify a delimiter, if not a **","** and if your CSV has a header as the first line or not. You will have to put all of the field (column) names in the order they appear in your CSV file and ensure they match the `path` names in your ingest endpoint. For more information on ingest endpoints, go [here](/data-ingestion/cloud/streaming/streamingoverview).
 
 ```python
 import csv
@@ -45,11 +45,11 @@ JSON_FILE_PATH = '' # /path/to/file.json
 # e.g. ["id","sepallength","sepalwidth","petallength","petalwidth","species"]
 FIELD_NAMES = []
 
-# Leave these blank if don't want to send your records to your streaming source
+# Leave these blank if don't want to send your records to your in ingest endpoint
 # FeatureBase Cloud username/password
 FEATUREBASE_USERNAME = ''
 FEATUREBASE_PASSWORD = ''
-# FeatureBase Cloud > Data Sources > {Source} > "Streaming Endpoint" e.g. "https://data.molecula.cloud/v1/sinks/...
+# FeatureBase Cloud > Data Sources > {Source} > "Ingest Endpoint" e.g. "https://data.molecula.cloud/v1/sinks/...
 FEATUREBASE_STREAMING_ENDPOINT = ''
 ```
 
@@ -142,7 +142,7 @@ def make_json(csvFilePath, jsonFilePath, fieldnames, delim=',', header=True):
 
 ## Configure FeatureBase HTTP Client
 
-If you enter your username, password, and streaming endpoint, the below code snippets can be used stream the JSON records from the files created to your table in FeatureBase.
+If you enter your username, password, and ingest endpoint, the below code snippets can be used stream the JSON records from the files created to your table in FeatureBase.
 
 ### Authenticate and retrieve Identity Token
 
@@ -180,12 +180,12 @@ Finally, using the `requests` library, pass in a JSON file to an HTTP POST reque
 
 ```python
 def post_records(token, json_file,datahost):
-    """ Load in a json file with 1:n records and post them to FeatureBase Cloud via a streaming endpoint (sink)
+    """ Load in a json file with 1:n records and post them to FeatureBase Cloud via an ingest endpoint (sink)
 
     Args:
         token string: IDtoken for auth
         json_file (string): 1 to n json records in a file
-        datahost (string): Saas streaming endpoint e.g. "https://data.molecula.cloud/v1/sinks/..."
+        datahost (string): Cloud ingest endpoint e.g. "https://data.molecula.cloud/v1/sinks/..."
 
     Returns:
         int: Count of successful records if no errors
@@ -215,12 +215,12 @@ def post_records(token, json_file,datahost):
 
 
 ## Putting it all together
-The below snippet calls all the functions discussed above to convert your CSV file into JSON. Optionally, it sends them to your streaming source if you enter your credentials and endpoint. This will send all of the JSON files created in the first step. 
+The below snippet calls all the functions discussed above to convert your CSV file into JSON. Optionally, it sends them to your ingest endpoint if you enter your credentials and endpoint. This will send all of the JSON files created in the first step. 
 
 ```python
 def main():
     # 
-    # Convert CSV to JSON and optionally post records if you have a streaming endpoint
+    # Convert CSV to JSON and optionally post records if you have an ingest endpoint
     #
     print("Converting CSV Data "+CSV_FILE_PATH+" to Molecula JSON Data "+JSON_FILE_PATH)
     files = make_json(CSV_FILE_PATH, JSON_FILE_PATH, FIELD_NAMES, DELIMETER, HEADER)
@@ -283,11 +283,11 @@ JSON_FILE_PATH = '' # /path/to/file.json
 # e.g. ["id","sepallength","sepalwidth","petallength","petalwidth","species"]
 FIELD_NAMES = []
 
-# Leave these blank if don't want to send your records to your streaming source
+# Leave these blank if don't want to send your records to your ingest endpoint
 # FeatureBase Cloud username/password
 FEATUREBASE_USERNAME = ''
 FEATUREBASE_PASSWORD = ''
-# FeatureBase Cloud > Data Sources > {Source} > "Streaming Endpoint" e.g. "https://data.molecula.cloud/v1/sinks/...
+# FeatureBase Cloud > Data Sources > {Source} > "Ingest Endpoint" e.g. "https://data.molecula.cloud/v1/sinks/...
 FEATUREBASE_STREAMING_ENDPOINT = ''
 
 def make_json(csvFilePath, jsonFilePath, fieldnames, delim=',', header=True):
@@ -406,12 +406,12 @@ def featurebase_authenticate(username, password):
 
 
 def post_records(token, json_file,datahost):
-    """ Load in a json file with 1:n records and post them to FeatureBase Cloud via a streaming endpoint (sink)
+    """ Load in a json file with 1:n records and post them to FeatureBase Cloud via an ingest endpoint (sink)
 
     Args:
         token string: IDtoken for auth
         json_file (string): 1 to n json records in a file
-        datahost (string): Saas streaming endpoint e.g. "https://data.molecula.cloud/v1/sinks/..."
+        datahost (string): Cloud ingest endpoint e.g. "https://data.molecula.cloud/v1/sinks/..."
 
     Returns:
         int: Count of successful records if no errors
@@ -441,7 +441,7 @@ def post_records(token, json_file,datahost):
 
 def main():
     # 
-    # Convert CSV to JSON and optionally post records if you have a streaming endpoint
+    # Convert CSV to JSON and optionally post records if you have an ingest endpoint
     #
     print("Converting CSV Data "+CSV_FILE_PATH+" to Molecula JSON Data "+JSON_FILE_PATH)
     files = make_json(CSV_FILE_PATH, JSON_FILE_PATH, FIELD_NAMES, DELIMETER, HEADER)

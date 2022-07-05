@@ -1,12 +1,12 @@
 ---
-title: Creating a Deployment
+title: Creating a Database
 ---
 
 
  **⚠ WARNING:** This page contains information that only applies to Molecula's Cloud offering. Additionally, this page represents a work in progress that is subject to frequent changes. 
 
 
-In the user interface, clicking "Deployments” from the left hand navigation bar will direct you to the deployments page. You can create a deployment by clicking “New Deployment” and selecting "Standard". Today, the tool has [sizes](/setting-up-featurebase/cloud/deployments-overview#sizes) based on memory, so all you need to provide is a deployment memory from a drop down and a deployment name. Note the UI will only display the choices your organization has access to, which is determined when you purchase the product. These choices can be queried for programmatically as well and are referred to as “deployment shapes”:
+In the user interface, clicking "Databases" from the left hand navigation bar will direct you to the databases page. You can create a database by clicking “New Database". You will have the option to load sample data or start with an empty database. The tool has [sizes](/setting-up-featurebase/cloud/deployments-overview#sizes) based on memory, so all you need to provide is a database memory (unless you load sample data) from a drop down and a database name. Note the UI will only display the choices your organization has access to, which is determined when you purchase the product. These choices can be queried for programmatically as well and are referred to as “deployment shapes” in the API:
 
 
 **HTTP API Reference:**
@@ -15,7 +15,7 @@ curl --location --request GET 'https://api.molecula.cloud/v1/service-properties/
 --header 'Authorization: Bearer <IdToken>' 
 ```
 
-The deployment name must be unique within the organization and only contain lower case alphanumeric, hyphen and underscore characters. You can have multiple deployments, so it’s important to name these something meaningful to you and your organization. For example, if you have a customer segmentation deployment and know you’ll have a full staging environment, you might want to name your production deployment as cust_seg_production and your staging deployment as cust_seg_staging. Clicking “Start” will start creating your deployment. This can also be accomplished programmatically:
+The database name must be unique within the organization and only contain lower case alphanumeric, hyphen and underscore characters. You can have multiple databases, so it’s important to name these something meaningful to you and your organization. For example, if you have a customer segmentation database and know you’ll have a full staging environment, you might want to name your production database as cust_seg_production and your staging database as cust_seg_staging. Clicking “Start” will start creating your database. This can also be accomplished programmatically:
 
 **HTTP API Reference:**
 ```shell
@@ -23,14 +23,14 @@ curl --location --request POST 'https://api.molecula.cloud/v1/deployments' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' \
 --data-raw '--data-raw '{
-    "name": "<deployment_name>",
+    "name": "<database_name>",
     "deployment_options":{
-        "shape": "<deployment_choice>"
+        "shape": "<memory_choice>"
     }
 }'
 ```
 
-After clicking "Create Deployment", you will see a new entry populate in the Deployment page with the name you provided. You will also see a status of “CREATING”. This is the state shown as the underlying hardware is provisioned. After a minute or two, the status will update to “RUNNING”, which indicates your deployment is ready to use. The other states you might encounter can be seen [here](/setting-up-featurebase/cloud/deployments-overview#states). All of your deployments' statuses can also be queried programmatically.
+After clicking "Create Database", you will see a new entry populate in the Database page with the name you provided. You will also see a status of “CREATING”. This is the state shown as the underlying hardware is provisioned. After a minute or two, the status will update to “RUNNING”, which indicates your database is ready to use. The other states you might encounter can be seen [here](/setting-up-featurebase/cloud/deployments-overview#states). All of your databases' statuses can also be queried programmatically.
 
 **HTTP API Reference:**
 ```shell
@@ -39,4 +39,4 @@ curl --location --request GET 'https://api.molecula.cloud/v1/deployments' \
 --header 'Content-Type: application/json' 
 ```
 
-Once your deployment is in the “RUNNING” state, you are free to start creating tables and loading data.
+Once your database is in the “RUNNING” state, you are free to start creating tables and ingesting data.

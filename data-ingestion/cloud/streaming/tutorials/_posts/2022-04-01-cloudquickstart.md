@@ -16,7 +16,7 @@ The following Quick Start Guide requires the following:
 
 ## Getting Started
 
-The guide will take you from nothing in the product to having a small deployment with data to query. Its purpose is to get you up and running quickly, while simultaneously teaching you how to use the product. While this tutorial will populate most information for you, there will be inputs required from you in the code snippets (indicated by <> symbols)
+The guide will take you from nothing in the product to having a small database with data to query. Its purpose is to get you up and running quickly, while simultaneously teaching you how to use the product. While this tutorial will populate most information for you, there will be inputs required from you in the code snippets (indicated by <> symbols)
 
 ### Getting A Token
 
@@ -55,14 +55,14 @@ curl --location --request POST 'https://id.molecula.cloud' \
 ```
 
 
-### Create A Deployment
+### Create A Database
 
-The first step is creating a deployment. We will be using the "8GB" option for this walkthrough. For more information on deployments, see [Deployments Overview](/setting-up-featurebase/cloud/deployments-overview).  The command below will start creating your deployment. You can also do this in the UI on the "Deployments" page by clicking “New Deployment”, selecting "Standard", entering "iris_demo_deployment" for the name, and choosing the "8GB" option.
+The first step is creating a database. We will be using the "8GB" option for this walkthrough. For more information on databases, see [Database Overview](/setting-up-featurebase/cloud/deployments-overview).  The command below will start creating your database. You can also do this in the UI on the "Databases" page by clicking “New Database”, selecting "Standard", entering "iris_demo_database" for the name, and choosing the "8GB" option.
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
-2. deployment_name - the name you want to give your deployment i.e iris_demo_deployment
-3. deployment_shape - deployment shape/memory you are choosing i.e. 8GB
+2. database_name - the name you want to give your database i.e iris_demo_database
+3. database_shape - database shape/memory you are choosing i.e. 8GB
 
 **HTTP API Reference:**
 ```shell
@@ -70,14 +70,14 @@ curl --location --request POST 'https://api.molecula.cloud/v1/deployments' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "name": "iris_demo_deployment",
+    "name": "iris_demo_database",
     "deployment_options":{
         "shape": "8GB"
     }
 }'
 ```
 
-A deployment takes a minute or so to create. You can see the status of the "iris_demo_deployment" as "Creating" in the UI or by running the command below.
+A database takes a minute or so to create. You can see the status of the "iris_demo_database" as "Creating" in the UI or by running the command below.
 
 **HTTP API Reference:**
 ```shell
@@ -86,25 +86,25 @@ curl --location --request GET 'https://api.molecula.cloud/v1/deployments' \
 --header 'Content-Type: application/json' 
 ```
 
-Grab your deployment’s "id" field returned from the command above. This is a unique id for your deployment. Once your deployment is "RUNNING", you can move to the next step.
+Grab your database’s "id" field returned from the command above. This is a unique id for your database. Once your database is "RUNNING", you can move to the next step.
 
 ### Ingest Data
 
-Once a deployment is "RUNNING", you will want to start loading data into it. This section will help you create a Streaming Source, which will yield a persistent endpoint that allows you to push data into your deployment over HTTPS. For more information on ingesting data, see [Ingest Data](/data-ingestion/cloud/ingestoverview).
+Once a database is "RUNNING", you will want to start loading data into it. This section will help you create an ingest endpoint, which will yield a persistent endpoint that allows you to push data into your database over HTTPS. For more information on ingesting data, see [Ingest Data](/data-ingestion/cloud/ingestoverview).
 
 #### Create A Table
 
-You must create a table before you can ingest data. For more information on tables, see [Tables](/data-ingestion/cloud/tables). The command below will create your table. You can also do this in the UI on the "Tables" page by clicking “New Table", selecting your deployment, entering "iris_table" for the name, and entering "table holding flower data" as the description.
+You must create a table before you can ingest data. For more information on tables, see [Tables](/data-ingestion/cloud/tables). The command below will create your table. You can also do this in the UI on the "Tables" page by clicking “New Table", selecting your database, entering "iris_table" for the name, and entering "table holding flower data" as the description.
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
 2. table_name - The name you want to give your table i.e. iris_table
 3. table_description - The description of the table i.e. "table holding flower data"
-4. deployment id - The ID returned from running a get on the /deployments endpoint above
+4. database id - The ID returned from running a get on the /deployments endpoint above
 
 **HTTP API Reference:**
 ```shell
-curl --location --request POST 'https://api.molecula.cloud/v1/tables/<deployment_id>' \
+curl --location --request POST 'https://api.molecula.cloud/v1/tables/<database_id>' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -113,15 +113,15 @@ curl --location --request POST 'https://api.molecula.cloud/v1/tables/<deployment
 }'
 ```
 
-#### Create A Streaming Source
+#### Create An Ingest Endpoint
 
-After a table exists, you can configure a source to load data into it. The “Streaming (HTTPS)” source configuration will yield a persistent endpoint that allows you to stream data to. For more information on deployments, see [Deployments Overview](/setting-up-featurebase/cloud/deployments-overview). Below you can see our JSON schema that details the data being streamed to the source. The below schema contains various flower species and their measurements. The command below will start creating your deployment. 
+After a table exists, you can configure a source to load data into it. The ingest endpoint configuration will yield a persistent endpoint that allows you to stream data to. For more information on databases, see [Databases Overview](/setting-up-featurebase/cloud/deployments-overview). Below you can see our JSON schema that details the data being streamed to the source. The below schema contains various flower species and their measurements. The command below will start creating your database. 
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
 2. table_name - The name you want to give your table i.e. iris_table
 3. source_name - The name you want to give your source i.e. iris_streaming_source
-4. deployment id - The unique ID of your deployment
+4. database id - The unique ID of your database
 5. schema - A JSON blob that contains information about the data streaming into the source.
 
 **HTTP API Reference:**
@@ -132,7 +132,7 @@ curl --location --request POST 'https://api.molecula.cloud/v1/sinks' \
 --data-raw '{    
     "name": "iris_streaming_source",    
   	"sink_details": {
-      "deployment_id": "<deployment_id>",
+      "deployment_id": "<database_id>",
       "table": "iris_table"
     },
     "schema": {
@@ -191,11 +191,11 @@ curl --location --request POST 'https://api.molecula.cloud/v1/sinks' \
 }'
 ```
 
-You can also do this in the UI on the "Data Sources" page by clicking “New Source", choosing "iris_demo_deployment" as the deployment, "iris_streaming_source" as the source name, "iris_table" as the table, and defining the fields with the same information as the API call above, matching the image below:
+You can also do this in the UI on the "Data Sources" page by clicking “New Source", choosing "iris_demo_database" as the database, "iris_streaming_source" as the source name, "iris_table" as the table, and defining the fields with the same information as the API call above, matching the image below:
 
 ![Sreaming Source UI Configuration](/img/data-ingestion/cloud/streaming/tutorials/cloudquickstart/iris_source.png)
 
-Like deployments, sources takes some time to create. You should be able to see the "iris_streaming_source" status as "Creating" by running the command below or in the UI.
+Like databases, sources takes some time to create. You should be able to see the "iris_streaming_source" status as "Creating" by running the command below or in the UI.
 
 **HTTP API Reference:**
 ```shell
@@ -204,7 +204,7 @@ curl --location --request GET 'https://api.molecula.cloud/v1/sinks' \
 --header 'Content-Type: application/json' 
 ```
 
-Grab your source's id. This is a unique id for your source. Once your source is "Running", you can move to the next step. You can find your source id in the UI by clicking on "iris_streaming_source" and looking at the "Streaming Endpoint" url.
+Grab your source's id. This is a unique id for your source. Once your source is "Running", you can move to the next step. You can find your source id in the UI by clicking on "iris_streaming_source" and looking at the "Ingest Endpoint" url.
 
 #### Ingest Data
 
@@ -392,14 +392,14 @@ Now that data is loaded into your table, you are able to query it. Data is queri
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
-2. deployment id - The unique ID of your deployment
+2. database id - The unique ID of your database
 3. language - The query language being used i.e. "pql" or "sql"
 4. statement - The query to run i.e. "select * from iris_table limit 10"
 
 
 **HTTP API Reference (SQL):**
 ```shell
-curl --location --request POST 'https://data.molecula.cloud/v1/deployments/<deployment id>/query' \
+curl --location --request POST 'https://data.molecula.cloud/v1/deployments/<database id>/query' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' \
 --data-raw '{ 
@@ -411,7 +411,7 @@ curl --location --request POST 'https://data.molecula.cloud/v1/deployments/<depl
 **HTTP API Reference (PQL):**
 PQL
 ```shell
-curl --location --request POST 'https://data.molecula.cloud/v1/deployments/<deployment id>/query' \
+curl --location --request POST 'https://data.molecula.cloud/v1/deployments/<database id>/query' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' \
 --data-raw '{ 
@@ -452,24 +452,24 @@ curl --location --request GET 'https://api.molecula.cloud/v1/sinks/<sourceid>' \
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
-2. deployment id - The unique ID of your deployment
+2. database id - The unique ID of your database
 2. table_name - The name you want to give your table i.e. iris_table
 
 **HTTP API Reference:**
 ```shell
-curl --location --request DELETE 'https://api.molecula.cloud/v1/tables/<deployment id>/iris_table' \
+curl --location --request DELETE 'https://api.molecula.cloud/v1/tables/<database id>/iris_table' \
 --header 'Authorization: Bearer <IdToken>'  
 ```
 
-#### Delete Deployment
+#### Delete Database
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
-2. deployment id - The unique ID of your deployment
+2. database id - The unique ID of your database
 
 **HTTP API Reference:**
 ```shell
-curl --location --request DELETE 'https://api.molecula.cloud/v1/deployments/<deployment id>' \
+curl --location --request DELETE 'https://api.molecula.cloud/v1/deployments/<database id>' \
 --header 'Authorization: Bearer <IdToken>' 
 ```
 
@@ -477,7 +477,7 @@ This will take some time to delete. You can check the status of the delete with 
 
 **HTTP API Reference:**
 ```shell
-curl --location --request GET 'https://api.molecula.cloud/v1/deployments/<deployment id>' \
+curl --location --request GET 'https://api.molecula.cloud/v1/deployments/<database id>' \
 --header 'Authorization: Bearer <IdToken>' 
 ```
 
