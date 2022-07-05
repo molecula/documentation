@@ -1,7 +1,5 @@
 ---
-id: use-grafana-plugin
-title: How To Use the Grafana Plugin
-sidebar_label: Use the Grafana Plugin
+title: Grafana Connector
 ---
 
 Molecula provides a Grafana plugin, which can be used to interact with FeatureBase (4.0 or higher <!-- TODO is this correct? -->) to run queries and view visualizations of results. Note that this is unrelated to using Grafana for operational monitoring of the FeatureBase cluster. For details on that, see the [monitoring reference page](/reference/operations/enterprise/monitoring)
