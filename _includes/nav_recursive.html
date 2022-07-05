@@ -15,17 +15,26 @@
 
 
   <div class="space-y-1" x-show="$open" x-transition.scale.origin.top x-cloak>
-
+    <!-- DEBUG: category = {{ item.category }}-->
     {% for post in site.categories[item.category] %}
-
       {% assign child = false %}
-      <!-- DEBUG post = {{ post.title }} -->
-      {% for p in include.path %}
-        <!-- DEBUG   path = {{ p }} -->
+
+      {% for p in newpath %}
+        <!-- DEBUG: url = {{ post.url }}, p = {{ p }} -->
         {% if post.categories contains p %}
           {% assign child = true %}
+        {% else %}
+          {% break %}
         {% endif %}
-        <!--     child = {{ child }} -->
+      {% endfor %}
+
+      {% for c in post.categories %}
+        {% if newpath contains c %}
+
+        {% else %}
+          {% assign child = false %}
+          {% break %}
+        {% endif %}
       {% endfor %}
 
       {% if child %}
