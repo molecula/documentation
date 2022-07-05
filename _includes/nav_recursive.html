@@ -17,26 +17,25 @@
   <div class="space-y-1" x-show="$open" x-transition.scale.origin.top x-cloak>
     <!-- DEBUG: category = {{ item.category }}-->
     {% for post in site.categories[item.category] %}
+  
       {% assign child = false %}
+      {% assign newpath_size  = newpath | size %}
+      {% assign category_size = post.categories | size %}
 
-      {% for p in newpath %}
-        <!-- DEBUG: url = {{ post.url }}, p = {{ p }} -->
-        {% if post.categories contains p %}
+      {% if newpath_size == category_size %}
+        {% for i in (0..newpath_size) %}
+        <!-- DEBUG: {{ i }} -> {{ newpath[i] }} == {{ post.categories[i] }} -->
+        {% if newpath[i] == post.categories[i] %}
           {% assign child = true %}
-        {% else %}
-          {% break %}
-        {% endif %}
-      {% endfor %}
-
-      {% for c in post.categories %}
-        {% if newpath contains c %}
-
         {% else %}
           {% assign child = false %}
           {% break %}
         {% endif %}
-      {% endfor %}
+        {% endfor %}
+      {% endif %}
 
+      
+      
       {% if child %}
 
         {% capture category %}{{ post.categories | last }}{% endcapture %}
