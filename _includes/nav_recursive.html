@@ -24,7 +24,6 @@
 
       {% if newpath_size == category_size %}
         {% for i in (0..newpath_size) %}
-        <!-- DEBUG: {{ i }} -> {{ newpath[i] }} == {{ post.categories[i] }} -->
         {% if newpath[i] == post.categories[i] %}
           {% assign child = true %}
         {% else %}
