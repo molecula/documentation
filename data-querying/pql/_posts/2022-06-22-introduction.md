@@ -28,7 +28,7 @@ In PQL:
 
 - An *index* is a single "universe" of data, with a shared column space, and a group of related fields. The term *table* may be used interchangeably, as well as the deprecated term *VDS* (Virtual Data Source).
 - A *column* represents an instance of the entity of concern for a given table, such as a user or an event. Columns are common to all fields and rows within an index. Because this concept might be referred to as a row in other data stores, to reduce ambiguity, a column may be referred to as a *record*.
-- A *row* represents a single, binary characteristic that may be associated with any record. A row maintains a [set](https://en.wikipedia.org/wiki/Set_(mathematics)){:target="_blank"} of bits—a bitmap—indicating which records have a bit [Set](/data-querying/pql/write/set){:target="_blank"} for its attribute. Note that this is conceptually different from the use of "column" in other data stores, in that each row stores membership information per value. While this is mainly an implementation detail in normal FeatureBase usage, it can be helpful in understanding the underlying data model.
+- A *row* represents a single, binary characteristic that may be associated with any record. A row maintains a [set](https://en.wikipedia.org/wiki/Set_(mathematics)){:target="_blank"} of bits — a bitmap — indicating which records have a bit [Set](/data-querying/pql/write/set){:target="_blank"} for its attribute. To reduce ambiguity, a row may be referred to as a field value. Note that this is conceptually different from the use of "column" in other data stores, in that each row stores membership information per value. While this is mainly an implementation detail in normal FeatureBase usage, it can be helpful in understanding the underlying data model.
 - A *field* is a grouping of rows, for example, to combine several single rows into a non-boolean categorical value, or an integer value. From a user's perspective, this term aligns well with usage by other data stores.
 
 The names of the *Row Calls* and *Rows Calls* types, as well as calls like `Row` and `Rows` are all based on these definitions.
@@ -58,17 +58,17 @@ Row calls return an object representing a set of column keys, contained in a sin
 
 Row calls include:
 - Row selection
-  - [All](/data-querying/pql/read/all){:target="_blank"} returns the *universal set* for the index, all columns that have been set.
-  - [ConstRow](/data-querying/pql/read/constrow){:target="_blank"} provides a "literal" bitmap value, a constant bitmap.
-  - [Row](/data-querying/pql/read/row){:target="_blank"} selects from a single set row, by row key.
-  - [Limit](/data-querying/pql/read/limit){:target="_blank"} is also a row call by return type. It wraps other row calls to select a subset of results, in a pagination sense.
+  - [All()](/data-querying/pql/read/all){:target="_blank"} returns the *universal set* for the index -- i.e. it returns all the record IDs or record keys in the index.
+  - [ConstRow()](/data-querying/pql/read/constrow){:target="_blank"} provides a "literal" bitmap value -- i.e. it returns the record IDs or record keys specified by the user.
+  - [Row()](/data-querying/pql/read/row){:target="_blank"} selects from a single set row, by row key -- i.e. it returns the record IDs or record keys that have a specified value in a specified field.
+  - [Limit()](/data-querying/pql/read/limit){:target="_blank"} is also a row call by return type. It wraps other row calls to select a subset of results, in a pagination sense.
 - Boolean operations
-  - [Difference](/data-querying/pql/read/difference){:target="_blank"} computes the set difference between its first argument and all subsequent arguments (all row calls).
-  - [Intersect](/data-querying/pql/read/intersect){:target="_blank"} computes the set intersection across its two or more row call arguments.
-  - [Not](/data-querying/pql/read/not){:target="_blank"} computes the complement of the single row call argument, relative to the *universal set* for the index.
-  - [Union](/data-querying/pql/read/union){:target="_blank"} computes the set union across its one or more row call arguments.
-  - [UnionRows](/data-querying/pql/read/unionrows){:target="_blank"} computes the set union across many rows. Rather than accepting several row call arguments, `UnionRows` accepts any number of `Rows` arguments.
-  - [Xor](/data-querying/pql/read/xor){:target="_blank"} computes the exclusive set difference between its first argument and all subsequent arguments (all row calls).
+  - [Difference()](/data-querying/pql/read/difference){:target="_blank"} computes the set difference between its first argument and all subsequent arguments (all row calls).
+  - [Intersect()](/data-querying/pql/read/intersect){:target="_blank"} computes the set intersection across its two or more [row call](#row-calls){:target="_blank"} arguments.
+  - [Not()](/data-querying/pql/read/not){:target="_blank"} computes the complement of the single row call argument, relative to the *universal set* for the index -- i.e. it returns the difference between `All()` and some other [row call](#row-calls){:target="_blank"}.
+  - [Union()](/data-querying/pql/read/union){:target="_blank"} computes the set union across its one or more [row call](#row-calls){:target="_blank"} arguments.
+  - [UnionRows()](/data-querying/pql/read/unionrows){:target="_blank"} computes the set union across many rows. Rather than accepting several row call arguments, `UnionRows()` accepts any number of `Rows` arguments.
+  - [Xor()](/data-querying/pql/read/xor){:target="_blank"} computes the exclusive set difference between its first argument and all subsequent arguments (all [row calls](#row-calls){:target="_blank"}).
   
 [Distinct](/data-querying/pql/read/distinct){:target="_blank"} is a special row-like call, in that it can be used in the same context that other row calls can be used, despite a slight variation in its output type.
 
@@ -77,14 +77,14 @@ Row calls include:
 Rows calls return an object representing a set of row keys, contained in a single column. Rows calls may be used as input arguments to other queries.
 
 Rows calls include:
-- [Rows](/data-querying/pql/read/rows){:target="_blank"} returns a list of row IDs in the given field which have at least one bit set.
+- [Rows](/data-querying/pql/read/rows){:target="_blank"} returns a list of row IDs in the given field which have at least one bit set -- i.e. it returns a list of value in a field for all values associated with a record.
 
 ### Membership Calls
 
 Membership calls return a boolean value indicating set membership.
 
 Membership calls include:
-- [IncludesColumn](/data-querying/pql/read/includescolumn){:target="_blank"} indicates whether a given column key is present in a given row.
+- [IncludesColumn](/data-querying/pql/read/includescolumn){:target="_blank"} indicates whether a given record ID or record key is present in a given [row call](#row-calls){:target="_blank"}.
 
 ### Count Calls
 
@@ -100,10 +100,10 @@ Count calls include:
 Aggregation calls perform other aggregation operations on *individual sets*.
 
 Aggregation calls include:
-- [Max](/data-querying/pql/read/max){:target="_blank"} computes the maximum integer value or timestamp value in a field, from a single row call argument.
-- [Min](/data-querying/pql/read/min){:target="_blank"} computes the minimum integer value or timestamp value in a field, from a single row call argument.
-- [Percentile](/data-querying/pql/read/percentile){:target="_blank"} computes the percentile of integer values in a field, from a single row call argument.
-- [Sum](/data-querying/pql/read/sum){:target="_blank"} computes the sum of integer values in a field, from a single row call argument.
+- [Max](/data-querying/pql/read/max){:target="_blank"} computes the maximum integer value or timestamp value in a field, from a single [row call](#row-calls){:target="_blank"} argument.
+- [Min](/data-querying/pql/read/min){:target="_blank"} computes the minimum integer value or timestamp value in a field, from a single [row call](#row-calls){:target="_blank"} argument.
+- [Percentile](/data-querying/pql/read/percentile){:target="_blank"} computes the percentile of integer values in a field, from a single [row call](#row-calls){:target="_blank"} argument.
+- [Sum](/data-querying/pql/read/sum){:target="_blank"} computes the sum of integer values in a field, from a single [row call](#row-calls){:target="_blank"} argument.
 
 ### Exploratory Calls
 
@@ -112,10 +112,10 @@ Exploratory calls are used to drill down into a data set.
 - [Extract](/data-querying/pql/read/extract){:target="_blank"} is analogous to a general `select` query in a relational database, returning a subset of both rows and columns.
 
 ### Write Operations
-- [Clear](/data-querying/pql/write/clear){:target="_blank"} sets a single specified bit to zero.
-- [ClearRow](/data-querying/pql/write/clearrow){:target="_blank"} sets all bits to zero in the specified row.
-- [Delete](/data-querying/pql/write/delete){:target="_blank"} iterates over all fields and views in a set of provided columns, removing the columns.
-- [Set](/data-querying/pql/write/set){:target="_blank"} sets a single specified bit to one.
+- [Clear](/data-querying/pql/write/clear){:target="_blank"} sets a single specified bit to zero -- said another way, it removes a value from a field for a specified record.
+- [ClearRow](/data-querying/pql/write/clearrow){:target="_blank"} sets all bits to zero in the specified row -- said another way, it removes a value from a field for all records in an index.
+- [Delete](/data-querying/pql/write/delete){:target="_blank"} iterates over all fields and views in a set of provided columns, removing the columns -- i.e. removes an entire record or set of records from an index.
+- [Set](/data-querying/pql/write/set){:target="_blank"} sets a single specified bit to one -- said another way, it gives a specified record a value in a field.
 - [Store](/data-querying/pql/write/store){:target="_blank"} writes the results of the row call argument to the specified row.
 
 ### Other operations
