@@ -251,17 +251,17 @@ First, download the demo dataset from S3 using by clicking [this link](https://s
 
 Next, in a new terminal window, make a directory for the data: 
 ```
-mkdir Cseg0_backup
+mkdir ~/Cseg0_backup
 ```
 
 And unzip it into the directory: 
 ```
-tar -zxvf cseg0_backup.tar.gz -C cseg0_backup
+tar -zxvf ~/Downloads/cseg0_backup.tar.gz -C ~/Cseg0_backup
 ```
 
 Now, restore the data into FeatureBase: 
 ```
-featurebase restore --host localhost:10101 -s cseg0_backup/
+featurebase restore --host localhost:10101 -s ~/Cseg0_backup/
 ```
 
 Once it's completed successfully, you'll see this message: 
