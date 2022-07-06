@@ -102,7 +102,7 @@ Next, run the `featurebase server` process in the background by running:
 ```
 featurebase server -c /etc/featurebase.conf &
 ```
-This conclude the deployment of FeatureBase. Continue with [Restore 1 Billion Records](#restore-1b-records-of-demo-data-from-s3) to load data into your FeatureBase deployment.
+This conclude the deployment of FeatureBase on MacOS. Continue with [Restore 1 Billion Records](#restore-1b-records-of-demo-data-from-s3) to load data into your FeatureBase deployment.
 
 
 ## Configuring FeatureBase - Linux
