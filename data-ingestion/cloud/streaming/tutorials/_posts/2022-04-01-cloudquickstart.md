@@ -388,7 +388,7 @@ This will yield a response that details the number of successes and errors from 
 
 ### Consume Data
 
-Now that data is loaded into your table, you are able to query it. Data is queried using either [PQL (Pilosa Query Language)](/reference/data-querying/pql), our native query language, or the limited set of [SQL](/reference/data-querying/sql) we support. Example commands of both can be seen below. These queries can also be run in the UI on the "Query" page.
+Now that data is loaded into your table, you are able to query it. Data is queried using either [PQL (Pilosa Query Language)](/data-querying/pql/introduction), our native query language, or the limited set of [SQL](/reference/data-querying/sql) we support. Example commands of both can be seen below. These queries can also be run in the UI on the "Query" page.
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
