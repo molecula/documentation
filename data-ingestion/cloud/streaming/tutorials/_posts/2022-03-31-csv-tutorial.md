@@ -18,7 +18,7 @@ Before we begin, it's always a good idea to make sure you have all the credentia
 
 * FeatureBase Cloud credentials 
 
-* The endpoint to an existing Cloud ingest endpoint
+* An existing Cloud ingest endpoint
 
 
 
@@ -218,7 +218,7 @@ def make_json(csvFilePath, jsonFilePath, fieldnames, delim=',', header=True):
 
 
                 # End for field in fieldnames
-                print(row)
+                #print(row)
                 f.write(rdelim+'{ "value": '+json.dumps(row)+'}\n')
                 rdelim = ","
 
@@ -273,7 +273,7 @@ Finally, using the `requests` library, pass in a JSON file to an HTTP POST reque
 
 ```python
 def post_records(token, json_file,datahost):
-    """ Load in a json file with 1:n records and post them to FeatureBase Cloud via a ingest endpoint (sink)
+    """ Load in a json file with 1:n records and post them to FeatureBase Cloud via an ingest endpoint (sink)
 
     Args:
         token string: IDtoken for auth
@@ -512,7 +512,7 @@ def featurebase_authenticate(username, password):
 
 
 def post_records(token, json_file,datahost):
-    """ Load in a json file with 1:n records and post them to FeatureBase Cloud via a ingest endpoint (sink)
+    """ Load in a json file with 1:n records and post them to FeatureBase Cloud via an ingest endpoint (sink)
 
     Args:
         token string: IDtoken for auth
