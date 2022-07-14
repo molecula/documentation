@@ -5,20 +5,20 @@ title: Streaming in a CSV
 ---
 
 
-This tutorial will break down into steps how to load a CSV file into FeatureBase using an ingest endpoint, but if you'd rather look at the finished tutorial, please see the full source code at the bottom of this article.
+This tutorial will break down into steps how to load a CSV file into FeatureBase using a streaming source, but if you'd rather look at the finished tutorial, please see the full source code at the bottom of this article.
 
 
 ## Configuring account credentials and files
 
 Before we begin, it's always a good idea to make sure you have all the credentials and configuration parameters you need so that you aren't searching halfway through and lose train of thought. For this tutorial we'll need:
 
-* A CSV file to use, as well as the field names in that CSV file
+* A CSV file to use, as well as the field names in that CSV file.
 
 * A working python3 environment to run this code and install required packages
 
 * FeatureBase Cloud credentials 
 
-* An existing Cloud ingest endpoint
+* The endpoint to an existing Cloud ingest endpoint
 
 
 
@@ -45,13 +45,105 @@ JSON_FILE_PATH = '' # /path/to/file.json
 # e.g. ["id","sepallength","sepalwidth","petallength","petalwidth","species"]
 FIELD_NAMES = []
 
-# Leave these blank if don't want to send your records to your in ingest endpoint
+# Leave these blank if don't want to send your records to your ingest endpoint
 # FeatureBase Cloud username/password
 FEATUREBASE_USERNAME = ''
 FEATUREBASE_PASSWORD = ''
-# FeatureBase Cloud > Data Sources > {Source} > "Ingest Endpoint" e.g. "https://data.molecula.cloud/v1/sinks/...
+# FeatureBase Cloud > Data Sources > {Source} > "Streaming Endpoint" e.g. "https://data.molecula.cloud/v1/sinks/...
 FEATUREBASE_STREAMING_ENDPOINT = ''
 ```
+
+## Example Data
+Below is a small amount of iris (flower) csv records that can be saved as a file in order to follow along. If you'd like to use a much larger dataset but don't have your own data, one can be downloaded [below](/data-ingestion/cloud/streaming/tutorials/csv-tutorial#example-csv)
+
+```csv
+id,sepalLength,sepalWidth,petalLength,petalWidth,species
+1,5.1,3.5,1.4,0.2,setosa
+2,3.1,1.5,2.4,0.9,fake
+3,5.9,3.4,1.9,5.2,other
+4,4.9,3.8,6.4,1.2,another
+```
+
+Inputs for the above iris data above:
+
+```python
+# Full Path of the CSV file
+CSV_FILE_PATH = '<path to iris csv>' # /path/to/file.csv
+DELIMETER = ',' #Change to your file's delimeter
+HEADER = True #Change if your csv has no header file as the first line
+# Full Path of the json file(s) to write to and stream in
+JSON_FILE_PATH = '<path to write iris json files>' # /path/to/file.json
+# list of the ordered target field names to write to that correlate to each column in your csv file
+FIELD_NAMES = ["id","sepallength","sepalwidth","petallength","petalwidth","species"]
+```
+
+You'll need to create an ingest endpoint and table that maps to this data. The bellow schema can be used to create this using eith the API or UI:
+
+```shell
+{    
+    "name": "<endpoint_name>",    
+  	"sink_details": {
+      "deployment_id": "<database_id>",
+      "table": "<table_name>"
+    },
+    "schema": {
+        "type": "json",
+        "id_field": "id",
+        "allow_missing_fields": false,
+        "definition": [
+        {
+            "name": "id",
+            "path": ["id"],
+            "type": "id",
+            "config": {
+              "Mutex": false
+            }
+        },
+        {
+            "name": "sepallength",
+            "path": ["sepallength"],
+            "type": "decimal",
+            "config": {
+              "Scale": 2
+            }
+        },
+        {
+            "name": "sepalwidth",
+            "path": ["sepalwidth"],
+            "type": "decimal",
+            "config": {
+              "Scale": 2
+            }
+        },
+        {
+            "name": "petallength",
+            "path": ["petallength"],
+            "type": "decimal",
+            "config": {
+              "Scale": 2
+            }
+        },
+        {
+            "name": "petalwidth",
+            "path": ["petalwidth"],
+            "type": "decimal",
+            "config": {
+              "Scale": 2
+            }
+        },
+        {
+            "name": "species",
+            "path": ["species"],
+            "type": "string",
+            "config": {
+              "Mutex": true
+            }
+        }]
+    }
+}
+```
+
+
 
 ## Convert CSV to JSON Format
 
@@ -76,7 +168,7 @@ def make_json(csvFilePath, jsonFilePath, fieldnames, delim=',', header=True):
     #Create empty list to track files created
     file_list = []
 
-    print("Opening Molecula JSON Data File "+jsonFilePath)
+    print("Writing Molecula JSON Data File "+jsonFilePath)
     f = open(jsonFilePath, 'w', encoding='utf-8') 
     file_list.append(jsonFilePath)
 
@@ -109,6 +201,7 @@ def make_json(csvFilePath, jsonFilePath, fieldnames, delim=',', header=True):
                     f.write('] }')
                     f.close()
                     file_list.append(jsonFilePath+"_"+str(i-2))
+                    print("Writing Molecula JSON Data File "+jsonFilePath+"_"+str(i-2))
                     f = open(jsonFilePath+"_"+str(i-2), 'w', encoding='utf-8')
                     f.write('{ "records": [\n')
                     rdelim = ""
@@ -180,12 +273,12 @@ Finally, using the `requests` library, pass in a JSON file to an HTTP POST reque
 
 ```python
 def post_records(token, json_file,datahost):
-    """ Load in a json file with 1:n records and post them to FeatureBase Cloud via an ingest endpoint (sink)
+    """ Load in a json file with 1:n records and post them to FeatureBase Cloud via a streaming endpoint (sink)
 
     Args:
         token string: IDtoken for auth
         json_file (string): 1 to n json records in a file
-        datahost (string): Cloud ingest endpoint e.g. "https://data.molecula.cloud/v1/sinks/..."
+        datahost (string): Saas streaming endpoint e.g. "https://data.molecula.cloud/v1/sinks/..."
 
     Returns:
         int: Count of successful records if no errors
@@ -202,20 +295,32 @@ def post_records(token, json_file,datahost):
     print('Posting Records')
 
     #Send records
-    post = requests.post(datahost, headers=headers,data=body).json()
+    post = requests.post(datahost, headers=headers,data=body)
+    if post.status_code != 200:
+        print(post.text)
+
+    # Retry posting the records once if anything went wrong
+    try:
+        post.json()['records']
+    except KeyError:
+        print('Some Issue Occurred')
+    else:
+        if 'ProvisionedThroughputExceededException' in str(post.json()['records']):
+            time.sleep(1)
+            post = requests.post(datahost, headers=headers,data=body)
 
     #If errors exist, send the body of records, otherwise return the success counts
-    if post['error_count'] > 0:
-        print(f'There were {post["error_count"]} failed records. System Exiting')
-        print(post)
+    if post.json()['error_count'] > 0:
+        print(f'There were {post.json()["error_count"]} failed records. System Exiting')
+        print(post.json())
         exit()
     else:
-        return post['success_count']
+        return post.json()['success_count']
 ```
 
 
 ## Putting it all together
-The below snippet calls all the functions discussed above to convert your CSV file into JSON. Optionally, it sends them to your ingest endpoint if you enter your credentials and endpoint. This will send all of the JSON files created in the first step. 
+The below snippet calls all the functions discussed above to convert your CSV file into JSON. Optionally, it sends them to your streaming source if you enter your credentials and endpoint. This will send all of the JSON files created in the first step. 
 
 ```python
 def main():
@@ -287,7 +392,7 @@ FIELD_NAMES = []
 # FeatureBase Cloud username/password
 FEATUREBASE_USERNAME = ''
 FEATUREBASE_PASSWORD = ''
-# FeatureBase Cloud > Data Sources > {Source} > "Ingest Endpoint" e.g. "https://data.molecula.cloud/v1/sinks/...
+# FeatureBase Cloud > Data Sources > {Source} > "Streaming Endpoint" e.g. "https://data.molecula.cloud/v1/sinks/...
 FEATUREBASE_STREAMING_ENDPOINT = ''
 
 def make_json(csvFilePath, jsonFilePath, fieldnames, delim=',', header=True):
@@ -308,7 +413,7 @@ def make_json(csvFilePath, jsonFilePath, fieldnames, delim=',', header=True):
     #Create empty list to track files created
     file_list = []
 
-    print("Opening Molecula JSON Data File "+jsonFilePath)
+    print("Writing Molecula JSON Data File "+jsonFilePath)
     f = open(jsonFilePath, 'w', encoding='utf-8') 
     file_list.append(jsonFilePath)
 
@@ -341,6 +446,7 @@ def make_json(csvFilePath, jsonFilePath, fieldnames, delim=',', header=True):
                     f.write('] }')
                     f.close()
                     file_list.append(jsonFilePath+"_"+str(i-2))
+                    print("Writing Molecula JSON Data File "+jsonFilePath+"_"+str(i-2))
                     f = open(jsonFilePath+"_"+str(i-2), 'w', encoding='utf-8')
                     f.write('{ "records": [\n')
                     rdelim = ""
@@ -357,7 +463,7 @@ def make_json(csvFilePath, jsonFilePath, fieldnames, delim=',', header=True):
 
 
                 # End for field in fieldnames
-                print(row)
+                #print(row)
                 f.write(rdelim+'{ "value": '+json.dumps(row)+'}\n')
                 rdelim = ","
 
@@ -406,12 +512,12 @@ def featurebase_authenticate(username, password):
 
 
 def post_records(token, json_file,datahost):
-    """ Load in a json file with 1:n records and post them to FeatureBase Cloud via an ingest endpoint (sink)
+    """ Load in a json file with 1:n records and post them to FeatureBase Cloud via a streaming endpoint (sink)
 
     Args:
         token string: IDtoken for auth
         json_file (string): 1 to n json records in a file
-        datahost (string): Cloud ingest endpoint e.g. "https://data.molecula.cloud/v1/sinks/..."
+        datahost (string): Saas streaming endpoint e.g. "https://data.molecula.cloud/v1/sinks/..."
 
     Returns:
         int: Count of successful records if no errors
@@ -428,15 +534,27 @@ def post_records(token, json_file,datahost):
     print('Posting Records')
 
     #Send records
-    post = requests.post(datahost, headers=headers,data=body).json()
+    post = requests.post(datahost, headers=headers,data=body)
+    if post.status_code != 200:
+        print(post.text)
+
+    # Retry posting the records once if anything went wrong
+    try:
+        post.json()['records']
+    except KeyError:
+        print('Some Issue Occurred')
+    else:
+        if 'ProvisionedThroughputExceededException' in str(post.json()['records']):
+            time.sleep(1)
+            post = requests.post(datahost, headers=headers,data=body)
 
     #If errors exist, send the body of records, otherwise return the success counts
-    if post['error_count'] > 0:
-        print(f'There were {post["error_count"]} failed records. System Exiting')
-        print(post)
+    if post.json()['error_count'] > 0:
+        print(f'There were {post.json()["error_count"]} failed records. System Exiting')
+        print(post.json())
         exit()
     else:
-        return post['success_count']
+        return post.json()['success_count']
 
 
 def main():
@@ -456,4 +574,108 @@ def main():
 
 if __name__ == "__main__":
     main()
+```
+
+
+## Example CSV
+If you'd like to go along with a larger csv, a public age csv can be found [here](https://www.kaggle.com/datasets/imoore/age-dataset?resource=download). Note: You will need a Kaggle account to download this.
+
+After downloading the csv, run the following linux command with your new file name of choice in order to null handle all fields with a value of "0".
+
+```shell
+sed -e 's/^,/0,/' -e 's/,,/,0,/g' -e 's/,,/,0,/g' -e 's/,$/,0/' AgeDataset-V1.csv > <new file name>.csv
+```
+
+The inputs should match the following:
+
+```python
+# Full Path of the csv file
+CSV_FILE_PATH = '<path to age csv>' # /path/to/file.csv
+DELIMETER = ',' #Change to your file's delimeter
+HEADER = True #Change if your csv has no header file as the first line
+# Full Path of the json file(s) to write to and stream in
+JSON_FILE_PATH = '<path to write age json files>' # /path/to/file.json
+# list of the ordered target field names to write to that correlate to each column in your csv file
+# e.g. ["id","sepallength","sepalwidth","petallength","petalwidth","species"]
+FIELD_NAMES = ["id","name","description","gender","country","occupation", "birth_year", "death_year", "death_manner", "death_age"]
+```
+
+You'll need to create an ingest endpoint that maps to this data. The bellow schema can be used to create this using either the API or UI:
+
+```json
+{    
+    "name": "<endpoint_name",    
+    "sink_details": {
+      "deployment_id": "<database_id>",
+      "table": "<table_name>"
+    },
+    "schema": {
+        "type": "json",
+        "primary_key_fields": ["id"],
+        "allow_missing_fields": false,
+        "definition": [
+        {
+            "name": "id",
+            "path": ["id"],
+            "type": "string",
+            "config": {
+              "Mutex": true
+            }
+        },
+        {
+            "name": "name",
+            "path": ["name"],
+            "type": "string",
+            "config": {
+              "Mutex": true
+            }
+        },
+        {
+            "name": "description",
+            "path": ["description"],
+            "type": "string",
+            "config": {
+              "Mutex": true
+            }
+        },
+        {
+            "name": "gender",
+            "path": ["gender"],
+            "type": "string",
+            "config": {
+              "Mutex": true
+            }
+        },
+        {
+            "name": "country",
+            "path": ["country"],
+            "type": "string"
+        },
+        {
+            "name": "occupation",
+            "path": ["occupation"],
+            "type": "string"
+        },
+        {
+            "name": "birth_year",
+            "path": ["birth_year"],
+            "type": "int"
+        },
+        {
+            "name": "death_year",
+            "path": ["death_year"],
+            "type": "int"
+        },
+        {
+            "name": "death_manner",
+            "path": ["death_manner"],
+            "type": "string"
+        },
+        {
+            "name": "death_age",
+            "path": ["death_age"],
+            "type": "int"
+        }]
+    }
+  }
 ```
