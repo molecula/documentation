@@ -4,7 +4,7 @@ title: Enterprise Quick Start Guide
 
 ## Welcome to your FeatureBase Trial!
 
-Follow the guide outlined below for a hands-on demonstration of low-latency queries at scale using our FeatureBase SaaS platform. As you work through the guide, please note any questions or feedback that you may have for the Molecula team. We’re always looking for ways to improve the experience!
+Follow the guide outlined below for a hands-on demonstration of low-latency queries at scale using our FeatureBase Cloud platform. As you work through the guide, please note any questions or feedback that you may have for the Molecula team. We’re always looking for ways to improve the experience!
 
 In this demonstration you will:
 
@@ -397,7 +397,7 @@ GROUP BY education;
 
 Ranking queries are notorious for being computationally intensive - aka slow. Some solutions will use statistics to speed up a ranking query by approximating the true results, but that’s not always a desirable option. In addition to SQL, FeatureBase has a native language called PQL. In PQL, TopK queries can be run to return exact results in milliseconds. 
 
-This query returns the top five hobbies across all customers from the cseg table, sifting through a billion records in 117.2ms.
+This query returns the top five hobbies across all customers from the cseg table, sifting through a billion records.
 
 ```
 [cseg]TopK(hobbies, k=5)
