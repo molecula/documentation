@@ -16,6 +16,9 @@ nav:
   
   - title: Data Modeling Guide
     category: data-modeling-guide
+    subnav:
+      - title: Cloud
+        category: cloud
  
   - title: Data Ingestion
     category: data-ingestion
