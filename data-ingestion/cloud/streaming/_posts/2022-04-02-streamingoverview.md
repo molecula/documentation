@@ -48,15 +48,15 @@ This source's configuration requires a JSON schema for the data that streams thr
 
 | `"type":`            | JSON Input Type                         | FeatureBase Field Type                       | Config Options                                   |
 |----------------------|-----------------------------------------|----------------------------------------------|--------------------------------------------------|
-| `"id"`               | `10`                                    | set/mutex/time                               | `"Mutex"`, `"Quantum"`, `"CacheConfig"`          |
-| `"ids"`              | `[1, 2, 3]`                             | set/time                                     | `"Quantum"`, `"CacheConfig"`                     |
-| `"string"`           | `"example"`                             | keyed set/mutex/time                         | `"Mutex"`, `"Quantum"`, `"CacheConfig"`          |
-| `"strings"`          | `["a", "b", "c"]`                       | keyed set/time                               | `"Mutex"`, `"Quantum"`, `"CacheConfig"`          |
+| `"id"`               | `10`                                    | set/mutex/time                               | `"Mutex"`, `"Quantum"`, `"TTL"`, `"CacheConfig"` |
+| `"ids"`              | `[1, 2, 3]`                             | set/time                                     | `"Quantum"`, `"TTL"`, `"CacheConfig"`            |
+| `"string"`           | `"example"`                             | keyed set/mutex/time                         | `"Mutex"`, `"Quantum"`, `"TTL"`, `"CacheConfig"` |
+| `"strings"`          | `["a", "b", "c"]`                       | keyed set/time                               | `"Quantum"`, `"TTL"`, `"CacheConfig"` |
 | `"bool"`             | `true`/`false`                          | packed bool field (row in keyed set fields)  | None                                             |
 | `"int"`              | `10`/`-12`/`"example"`                  | integer (possibly a foreign-index reference) | `"Min"`, `"Max"`, `"ForeignIndex"`               |
 | `"decimal"`          | `10.9`/`"10.9"`                         | decimal                                      | `"Scale"`                                        |
 | `"signedIntBoolKey"` | `10`/`-12`                              | same as id, except a negative value clears   | None                                             |
-| `"recordTime"`       | `"2006-01-02T15:04:05Z07:00"`/`1273823` | applied to id(s)/string(s) (using "Quantum") | `"Layout"`, `"Epoch"`,`"Unit"`                   |
+| `"recordTime"`       | `"2006-01-02T15:04:05Z07:00"`/`1273823` | applied to id(s)/string(s) (using "Quantum") | `"Layout"`, `"Epoch"` , `"Unit"`                  |
 | `"dateInt"`          | `"2006-01-02T15:04:05Z07:00"`/`1273823` | integer timestamp relative to an epoch       | `"Layout"`, `"Epoch"`, `"Unit"`, `"CustomUnit"`  |
 | `"timestamp"`        | `"2006-01-02T15:04:05Z07:00"`/`1273823` | integer(BSI) timestamp relative to an epoch  | `"Granularity"`, `"Layout"`, `"Epoch"`, `"Unit"` |
 
@@ -64,8 +64,9 @@ This source's configuration requires a JSON schema for the data that streams thr
 
 When all config options are left as default, the `"Config"` field may be omitted. Otherwise, the config options are:
 * `"Mutex"`: if set to `true`, the data will be ingested into a mutex field instead of a set field
-* `"Quantum"`: the time quantum selection (e.g. `"YM"`/`"YMD"`) to use when ingesting into a time field using the time value from a `"recordTime"`
+* `"Quantum"`: the time quantum selection (Any Combination of `Y`,`M`,`D`,`H` e.g. `"YM"`/`"YMD"`) to use when ingesting into a time field using the time value from a `"recordTime"`
 * `"CacheConfig"`: the configuration when using a `TopN` cache; does not affect time fields
+* `"TTL"`: Time To Live duration for views specifies when views will deleted. Allowed time units are `h`, `m`, `s`, `ms`, `us`, `ns`. Time quantum is required in order to use TTL.
 * `"Layout"`: the format in which to parse time strings (defaults to RFC3339) - specified in [Go's format](https://golang.org/pkg/time/#pkg-constants)
 * `"Min"`: the minimum possible value for an acceptable integer (defaults to -2^63)
 * `"Max"`: the maximum possible value for an acceptable integer (defaults to 2^63 - 1)
@@ -80,9 +81,40 @@ Finally, there are a couple parameters that provide information about your schem
 
 |Parameter| Description  | Required? |
 | ------- | ------------ | --------- |
-|id field   |  The id-field option should be used when there is an existing field in the data which uniquely identifies each record in the table and consists of contiguous positive integers | Yes if primary key fields not provided |
-|primary key fields  |  The primary-key-fields option should be used when the data has no fields that could be used for id-field. This option uses one or more fields (any type) and concatenates them to create unique record IDs for your table. | Yes if id field not provided |
+|id field   |  The id-field option should be used when there is an existing field in the data which uniquely identifies each record in the table and consists of contiguous positive integers. This maps to the _id column in your table. | Yes if primary key fields not provided |
+|primary key fields  |  The primary-key-fields option should be used when the data has no fields that could be used for id-field. This option uses one or more fields (any type) and concatenates them to create unique record IDs for your table. This maps to the _id column in your table. | Yes if id field not provided |
 |allow_missing_fields  |  A boolean field that allows one or more of the fields defined in the schema to be missing from the JSON records streamed in. If a field is missing and this parameter is true, that field is left null with no bits set. If this parameter is False and a field is missing from the JSON records, an error will return and data will not be loaded into your table. | Yes |
+
+### Time Quantum
+
+Setting a time quantums involves creating two fields. A field that contains the data that will be set with a time, and a field that holds the actual time. Note that the time field won't be a field in the target table and can be named anything. It is only is used as the time associated with all time quantums for the ingester. An example of the this might be "stores_visited_id" that holds all store ids someone has visited and at what time they visited that store last:
+
+```json
+[
+	{
+		"name": "stores_visited_id",
+		"path": ["Path to stores_visited_id"],
+		"type": "id",
+		"config": {
+			"Mutex": false
+		}
+	}
+]
+```
+
+```json
+[
+	{
+		"name": "Any name you want",
+		"path": ["location to the timestamp/epoch"],
+		"type": "recordTime"
+	}
+]
+```
+
+For `"recordTime"` fields, there are essentially two modes. If `"Epoch"` or `"Unit"` are set, then the incoming data is interpreted as a number. Otherwise it's assumed that the incoming data is interpreted as a date/timestamp and the `"Layout"` is used to parse that value.
+
+### Record Format
 
 Once an ingest endpoint is configured, data can be streamed to it. Each record should be composed of a JSON blob. One or many records can be sent in a single HTTPS request and should have the following syntax:
 
