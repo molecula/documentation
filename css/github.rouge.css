@@ -208,8 +208,50 @@
 .highlight .w {
   color: #bbbbbb !important;
 }
-.highlight,
+
 pre {
+  border-radius: 10px;
   color: #4D4E4E !important;
-  background-color: #f8f8f8 !important;
+  background-color:  #F2F2F3 !important;
+}
+
+pre code {
+  padding-left: 0px !important;
+  font-family: monospace !important:
+}
+
+code {
+  font-size: 95% !important;
+  font-family: monospace !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  background-color: #F2F2F3;
+  border-radius: 5px;
+  padding-right: 7.5px !important;
+  padding-left: 7.5px !important;
+  padding-top: 3px !important;
+  padding-bottom: 3px !important;
+}
+
+code:before {
+  content: none !important;
+}
+
+code:after {
+  content: none !important;
+}
+
+blockquote {
+  font-style: normal !important;
+  font-weight: normal !important;
+  background: #FFFFFF;
+  border-left: 3px solid #084E83 !important;
+}
+
+blockquote:before {
+  content: none !important;
+}
+
+blockquote:after {
+  content: nono !important;
 }
