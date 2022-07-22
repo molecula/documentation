@@ -102,12 +102,12 @@ The available values for `type` are:
 | `"id"`               | `10`                                    | set/mutex/time                               | `"Mutex"`, `"Quantum"`, `"TTL"`, `"CacheConfig"` |
 | `"ids"`              | `[1, 2, 3]`                             | set/time                                     | `"Quantum"`, `"TTL"`, `"CacheConfig"`            |
 | `"string"`           | `"example"`                             | keyed set/mutex/time                         | `"Mutex"`, `"Quantum"`, `"TTL"`, `"CacheConfig"` |
-| `"strings"`          | `["a", "b", "c"]`                       | keyed set/time                               | `"Mutex"`, `"Quantum"`, `"TTL"`, `"CacheConfig"` |
+| `"strings"`          | `["a", "b", "c"]`                       | keyed set/time                               | `"Quantum"`, `"TTL"`, `"CacheConfig"` |
 | `"bool"`             | `true`/`false`                          | packed bool field (row in keyed set fields)  | None                                             |
 | `"int"`              | `10`/`-12`/`"example"`                  | integer (possibly a foreign-index reference) | `"Min"`, `"Max"`, `"ForeignIndex"`               |
 | `"decimal"`          | `10.9`/`"10.9"`                         | decimal                                      | `"Scale"`                                        |
 | `"signedIntBoolKey"` | `10`/`-12`                              | same as id, except a negative value clears   | None                                             |
-| `"recordTime"`       | `"2006-01-02T15:04:05Z07:00"`/`1273823` | applied to id(s)/string(s) (using "Quantum") | `"Layout"`, `"Epoch"`,`"Unit"`                   |
+| `"recordTime"`       | `"2006-01-02T15:04:05Z07:00"`/`1273823` | applied to id(s)/string(s) (using "Quantum") | `"Layout"`, `"Epoch"` , `"Unit"`                  |
 | `"dateInt"`          | `"2006-01-02T15:04:05Z07:00"`/`1273823` | integer timestamp relative to an epoch       | `"Layout"`, `"Epoch"`, `"Unit"`, `"CustomUnit"`  |
 | `"timestamp"`        | `"2006-01-02T15:04:05Z07:00"`/`1273823` | integer(BSI) timestamp relative to an epoch  | `"Granularity"`, `"Layout"`, `"Epoch"`, `"Unit"` |
 
@@ -115,7 +115,7 @@ The available values for `type` are:
 
 When all config options are left as default, the `"Config"` field may be omitted. Otherwise, the config options are:
 * `"Mutex"`: if set to `true`, the data will be ingested into a mutex field instead of a set field
-* `"Quantum"`: the time quantum selection (e.g. `"YM"`/`"YMD"`) to use when ingesting into a time field using the time value from a `"recordTime"`
+* `"Quantum"`: the time quantum selection (Any Combination of `Y`,`M`,`D`,`H` e.g. `"YM"`/`"YMD"`) to use when ingesting into a time field using the time value from a `"recordTime"`
 * `"CacheConfig"`: the configuration when using a `TopN` cache; does not affect time fields
 * `"TTL"`: Time To Live duration for views specifies when views will deleted. Allowed time units are `h`, `m`, `s`, `ms`, `us`, `ns`. Time quantum is required in order to use TTL.
 * `"Layout"`: the format in which to parse time strings (defaults to RFC3339) - specified in [Go's format](https://golang.org/pkg/time/#pkg-constants)
@@ -144,6 +144,33 @@ Assuming that the cache is full (the field has more than `"CacheSize"` rows with
 This cache can also be disabled by setting the type to `"none"`.
 Disabling the `TopN` cache will prevent `TopN` from working.
 When operating on a field without a cache, a slower [`TopK`](/data-querying/pql/read/topk) or sorted [`GroupBy`](/data-querying/pql/read/groupby) query may be used instead.
+
+### Time Quantum
+
+Setting a time quantums involves creating two fields. A field that contains the data that will be set with a time, and a field that holds the actual time. Note that the time field won't be a field in the target table and can be named anything. It is only is used as the time associated with all time quantums for the ingester. An example of the this might be "stores_visited_id" that holds all store ids someone has visited and at what time they visited that store last:
+
+```json
+[
+	{
+		"name": "stores_visited_id",
+		"path": ["Path to stores_visited_id"],
+		"type": "id",
+		"config": {
+			"Mutex": false
+		}
+	}
+]
+```
+
+```json
+[
+	{
+		"name": "Any name you want",
+		"path": ["location to the timestamp/epoch"],
+		"type": "recordTime"
+	}
+]
+```
 
 For `"recordTime"` fields, there are essentially two modes. If `"Epoch"` or `"Unit"` are set, then the incoming data is interpreted as a number. Otherwise it's assumed that the incoming data is interpreted as a date/timestamp and the `"Layout"` is used to parse that value.
 
