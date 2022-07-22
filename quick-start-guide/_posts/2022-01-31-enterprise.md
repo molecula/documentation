@@ -4,12 +4,12 @@ title: Enterprise Quick Start Guide
 
 ## Welcome to your FeatureBase Trial!
 
-Follow the guide outlined below for a hands-on demonstration of low-latency queries at scale using our FeatureBase SaaS platform. As you work through the guide, please note any questions or feedback that you may have for the Molecula team. We’re always looking for ways to improve the experience!
+Follow the guide outlined below for a hands-on demonstration of low-latency queries at scale using our FeatureBase Cloud platform. As you work through the guide, please note any questions or feedback that you may have for the Molecula team. We’re always looking for ways to improve the experience!
 
 In this demonstration you will:
 
 1. Download a single-node FeatureBase binary
-2. Configure FeatureBase
+2. Configure and run FeatureBase
 3. Restore two large-scale datasets into the database
 4. Run a set of analytics queries
 
@@ -26,7 +26,7 @@ Click ```Download``` on the option that best meets your needs to download the ta
 
 ## Configuring FeatureBase - MacOS
 
->Note: The FeatureBase executable are built for x86_64 and ARM64 CPU architectures. If you aren't running macOS, there are two other options. You can install and run FeatureBase on Linux or a Docker container. 
+>Note: The FeatureBase executable are built for x86_64 and ARM64 CPU architectures. If you aren't running macOS, there are two other options. You can install and run FeatureBase on [Linux](#configuring-featurebase---linux) or a Docker container. 
 
 >**Note:** Make sure you have ```wget```. If not, run ```brew install wget```. 
 
@@ -35,15 +35,15 @@ Click ```Download``` on the option that best meets your needs to download the ta
 
 First, open the Terminal application and type the code below to access the ```Downloads``` folder. 
 ```
-cd Downloads
+cd ~/Downloads
 ```
 
 Next, extract the ```.tar.gz file``` and copy the featurebase binary to your ```/usr/local/bin folder```.
   
 For the MacOS AMD64 Version: 
 ```
-tar -zxvf featurebase-v3.11.0-darwin-amd64.tar.gz
-sudo cp -r featurebase-v3.11.0-darwin-amd64 /usr/local/bin/featurebase
+tar -zxvf single_node_featurebase-latest-darwin-amd64.tar.gz
+sudo cp ~/Downloads/darwin-amd64/featurebase /usr/local/bin/
 chmod ugo+x /usr/local/bin/featurebase
 ```
 For the MacOS ARM64 Version: 
@@ -56,7 +56,7 @@ chmod ugo+x /usr/local/bin/featurebase
 Ensure this folder is in your path variable by, running ```echo $PATH``` in the command line and confirming ```/usr/local/bin/``` is there. 
 If it's not, run ```export PATH=$PATH:/usr/local/bin``` to append it to your path variable.
   
-Next, configure the FeatureBase server by creating and running the configuration file. 
+Next, configure the FeatureBase server by creating and running the configuration file. Go to [FeatureBase Configuration](/setting-up-featurebase/enterprise/featurebase-configuration) for more on configuring FeatureBase.
 
 ```
 sudo touch /etc/featurebase.conf
@@ -90,57 +90,24 @@ In the code above, ```bind``` tells FeatureBase to listen for HTTP request on al
 ### Setup Log and Data Folders
 ```featurebase.conf``` defined the ```data-dir``` and the ```log-path```. Here we'll want to create those folders and set the ```molecula``` user as the owner. The data directory is where FeatureBase puts the startup log file and the actual data that comprises the FeatureBase indexes. 
 
-Create the molecula user:
-
+Create a log and data folder and change the owner: 
  ```
- sudo adduser molecula
- ```
- 
- Create a log and data folder and change the owner: 
- ```
-sudo mkdir /var/log/molecula && sudo chown molecula:molecula /var/log/molecula
-sudo mkdir -p /var/lib/molecula && sudo chown molecula:molecula /var/lib/molecula
+sudo mkdir -p /var/log/molecula && sudo chown $USER /var/log/molecula
+sudo mkdir -p /var/lib/molecula && sudo chown $USER /var/lib/molecula
 ```
 ## Run FeatureBase
 
-Refresh ```systemd``` so the FeatureBase service unit will load. For more information on ```daemon-reload``` , go [here](https://serverfault.com/questions/700862/do-systemd-unit-files-have-to-be-reloaded-when-modified).
+Next, run the `featurebase server` process in the background by running:
 
 ```
-sudo systemctl daemon-reload
+featurebase server -c /etc/featurebase.conf &
 ```
+This conclude the deployment of FeatureBase on MacOS. Continue with [Restore 1 Billion Records](#restore-1b-records-of-demo-data-from-s3) to load data into your FeatureBase deployment.
 
-To automatically start FeatureBase after a reboot, you can run:
-```
-sudo systemctl enable featurebase.service
-```
-
-Verify it started successfully and is running: 
-```
-sudo systemctl status featurebase
-```
-
-You should get a response that looks like this: 
-```
-● featurebase.service - "Service for FeatureBase"
-     Loaded: loaded (/etc/systemd/system/featurebase.service; static; vendor preset: enabled)
-     Active: active (running) since Fri 2021-10-08 13:29:38 CDT; 12s ago
-   Main PID: 470112 (featurebase)
-      Tasks: 17 (limit: 18981)
-     Memory: 33.2M
-     CGroup: /system.slice/featurebase.service
-             └─470112 /usr/local/bin/featurebase server -c /etc/featurebase.conf
-
-Oct 08 13:29:38 user systemd[1]: Started "Service for FeatureBase".
-```
-
-The key here is ```Active: active (running)....``` If you see something else, the following command is a good place to start troubleshooting. Or reach out to SE@molecula.com for assistance. 
-```
-journalctl -u featurebase -r
-```
 
 ## Configuring FeatureBase - Linux
 
->**Note:** If you aren't running Linux, there are two other options. You can install and run FeatureBase on macOS or a Docker container. Note that FeatureBase executable is built for x86_64 and ARM64 CPU architectures.
+>**Note:** If you aren't running Linux, there are two other options. You can install and run FeatureBase on [macOS](#configuring-featurebase---macos) or a Docker container. Note that FeatureBase executable is built for x86_64 and ARM64 CPU architectures.
 
 >**Note:** Make sure you have ```wget``` . If not, run ```sudo yum install wget``` or ```sudo apt install wget```
 
@@ -284,17 +251,17 @@ First, download the demo dataset from S3 using by clicking [this link](https://s
 
 Next, in a new terminal window, make a directory for the data: 
 ```
-mkdir Cseg0_backup
+mkdir ~/Cseg0_backup
 ```
 
 And unzip it into the directory: 
 ```
-tar -zxvf cseg0_backup.tar.gz -C cseg0_backup
+tar -zxvf ~/Downloads/cseg0_backup.tar.gz -C ~/Cseg0_backup
 ```
 
 Now, restore the data into FeatureBase: 
 ```
-featurebase restore --host localhost:10101 -s cseg0_backup/
+featurebase restore --host localhost:10101 -s ~/Cseg0_backup/
 ```
 
 Once it's completed successfully, you'll see this message: 
@@ -430,7 +397,7 @@ GROUP BY education;
 
 Ranking queries are notorious for being computationally intensive - aka slow. Some solutions will use statistics to speed up a ranking query by approximating the true results, but that’s not always a desirable option. In addition to SQL, FeatureBase has a native language called PQL. In PQL, TopK queries can be run to return exact results in milliseconds. 
 
-This query returns the top five hobbies across all customers from the cseg table, sifting through a billion records in 117.2ms.
+This query returns the top five hobbies across all customers from the cseg table, sifting through a billion records.
 
 ```
 [cseg]TopK(hobbies, k=5)

@@ -2,6 +2,7 @@ nav:
   - title: Introduction
     category: introduction
 
+
   - title: Quick Start Guide
     category: quick-start-guide
   
@@ -15,6 +16,9 @@ nav:
   
   - title: Data Modeling Guide
     category: data-modeling-guide
+    subnav:
+      - title: Cloud
+        category: cloud
  
   - title: Data Ingestion
     category: data-ingestion
@@ -37,6 +41,18 @@ nav:
   - title: Data Querying
     category: data-querying
     subnav:
+      - title: PQL
+        category: pql
+        subnav:
+          - title: Read
+            category: read
+
+          - title: Write
+            category: write
+
+          - title: Other
+            category: other
+
       - title: Enterprise
         category: enterprise
         subnav:
@@ -77,7 +93,18 @@ nav:
       - title: Data Ingestion
         category: data-ingestion
       - title: Data Querying
-        category: data-querying
+        category: data-querying-ref
+        subnav:
+          - title: PQL
+            category: pql
+            subnav:
+              - title: Read
+                category: read
+              - title: Write
+                category: write
+              - title: Other
+                category: other
+
       - title: Operations
         category: operations
         subnav:
