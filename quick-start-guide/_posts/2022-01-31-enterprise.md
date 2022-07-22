@@ -109,9 +109,12 @@ Refresh ```systemd``` so the FeatureBase service unit will load. For more inform
 sudo systemctl daemon-reload
 ```
 <<<<<<< HEAD
+<<<<<<< HEAD
 This conclude the deployment of FeatureBase on MacOS. Continue with [Restore 1 Billion Records](#restore-1b-records-of-demo-data-from-s3) to load data into your FeatureBase deployment.
 =======
 >>>>>>> parent of 30a125b (Update 2022-01-31-enterprise.md)
+=======
+>>>>>>> parent of b5da735 (Update 2022-01-31-enterprise.md)
 
 To automatically start FeatureBase after a reboot, you can run:
 ```
