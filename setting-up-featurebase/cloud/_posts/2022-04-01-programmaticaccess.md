@@ -11,6 +11,7 @@ Everything that can be done in the user interface can be accomplished via REST a
 Molecula uses Oauth2.0 for all authorization, so every API call must be accompanied with a valid token. You can get tokens by passing your credentials to https://id.molecula.cloud . The below cURL command can be run on any linux-based system:
 
 **HTTP API Reference:**
+{% include codeHeader.html %}
 ```shell
 curl --location --request POST 'https://id.molecula.cloud' \
 --data-raw '{
