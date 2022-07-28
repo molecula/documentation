@@ -94,24 +94,20 @@ Once a database is "RUNNING", you will want to start loading data into it. This 
 
 #### Create A Table
 
-You must create a table before you can ingest data. For more information on tables, see [Tables](/data-ingestion/cloud/tables). The command below will create your table. You can also do this in the UI on the "Tables" page by clicking “New Table", selecting your database, entering "iris_table" for the name, and entering "table holding flower data" as the description.
+You must create a table before you can ingest data. For more information on tables, see [Tables](/data-ingestion/cloud/tables). The command below will create your table. 
 
-Inputs:
-1. IdToken - IdToken from auth token call to pass as "Authorization" header
-2. table_name - The name you want to give your table i.e. iris_table
-3. table_description - The description of the table i.e. "table holding flower data"
-4. database id - The ID returned from running a get on the /deployments endpoint above
+It is highly recommended to do table creation within the UI for easier mapping of column types, constraints, and options. Navigate to the "Tables" page and click “New Table", selecting your database, entering "iris_table" for the name, and entering "table holding flower data" as the description. The primary key for the iris table for this tutorial is a number, so choose `Number` as the ID type.
 
-**HTTP API Reference:**
-```shell
-curl --location --request POST 'https://api.molecula.cloud/v1/tables/<database_id>' \
---header 'Authorization: Bearer <IdToken>' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "name": "iris_table",
-    "description": "table holding flower data"    
-}'
-```
+Once created, go to the "COLUMNS" tab in order to add or delete columns. You will see the _id column that was created during table creation. click "ADD COLUMN" and add the following columns, types, and constraints:
+
+|Column Name | Type | Constraint |
+| --- | ----------- |  ----------- |
+| sepallength   |  decimal | Scale:2 |
+| sepalwidth   |  decimal | Scale:2 |
+| petallength   |  decimal | Scale:2 |
+| petalwidth   |  decimal | Scale:2 |
+| species   |  string | N/A |
+
 
 #### Create An Ingest Endpoint
 
