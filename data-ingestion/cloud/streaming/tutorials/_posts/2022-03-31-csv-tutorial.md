@@ -77,7 +77,23 @@ JSON_FILE_PATH = '<path to write iris json files>' # /path/to/file.json
 FIELD_NAMES = ["id","sepallength","sepalwidth","petallength","petalwidth","species"]
 ```
 
-You'll need to create an ingest endpoint and table that maps to this data. The bellow schema can be used to create this using eith the API or UI:
+
+You must create a table before you can ingest data. For more information on tables, see [Tables](/data-ingestion/cloud/tables). The command below will create your table. 
+
+It is highly recommended to do table creation within the UI for easier mapping of column types, constraints, and options. Navigate to the "Tables" page and click “New Table", selecting your database, entering "<table-name>" for the name, and entering "table holding flower data" as the description. The primary key for the iris table for this tutorial is a number, so choose `Number` as the ID type.
+
+Once created, go to the "COLUMNS" tab in order to add or delete columns. You will see the _id column that was created during table creation. click "ADD COLUMN" and add the following columns, types, and constraints:
+
+|Column Name | Type | Constraint |
+| --- | ----------- |  ----------- |
+| sepallength   |  decimal | Scale:2 |
+| sepalwidth   |  decimal | Scale:2 |
+| petallength   |  decimal | Scale:2 |
+| petalwidth   |  decimal | Scale:2 |
+| species   |  string | N/A |
+
+
+You'll need to create an ingest endpoint and table that maps to this data. The bellow schema can be used to create this using either the API or UI:
 
 ```shell
 {    
@@ -600,7 +616,7 @@ JSON_FILE_PATH = '<path to write age json files>' # /path/to/file.json
 FIELD_NAMES = ["id","name","description","gender","country","occupation", "birth_year", "death_year", "death_manner", "death_age"]
 ```
 
-You'll need to create an ingest endpoint that maps to this data. The bellow schema can be used to create this using either the API or UI:
+You'll need to create a table and an ingest endpoint that maps to this data. The table must be created with a "String" primary key and all the columns in the "schema":"definition" below. The json below can be used to create this using either the API or the "schema":"definition" array can be used in the UI:
 
 ```json
 {    

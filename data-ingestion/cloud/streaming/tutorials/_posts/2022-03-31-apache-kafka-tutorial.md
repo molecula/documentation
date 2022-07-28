@@ -261,9 +261,35 @@ Remember that the schema for fake flights (when converted to JSON) looks like th
  "flight_id": 1}
 ```
 
+#### Create A Table
+
+You must create a table before you can ingest data. For more information on tables, see [Tables](/data-ingestion/cloud/tables). The command below will create your table. 
+
+It is highly recommended to do table creation within the UI for easier mapping of column types, constraints, and options. Navigate to the "Tables" page and click “New Table", selecting your database, entering "flights" for the name, and entering "table holding flight data" as the description. The primary key for the flight table for this tutorial is a number, so choose Number as the ID type.
+
+Once created, go to the "COLUMNS" tab in order to add or delete columns. You will see the _id column that was created during table creation. click "ADD COLUMN" and add the following columns, types, and constraints:
+
+|Column Name | Type | Constraint |
+| --- | ----------- |  ----------- |
+| airline   |  string | N/A |
+| stops   |  string | N/A |
+| price   |  decimal | Scale:2 |
+| origin_airport   |  string | N/A |
+| origin_iata   |  string | N/A |
+| origin_icao   |  string | N/A |
+| origin_loc_city   |  string | N/A |
+| origin_loc_state   |  string | N/A |
+| origin_loc_country   |  string | N/A |
+| destination_airport   |  string | N/A |
+| destination_iata   |  string | N/A |
+| destination_icao   |  string | N/A |
+| destination_loc_city   |  string | N/A |
+| destination_loc_state   |  string | N/A |
+| destination_loc_country   |  string | N/A |
+
 #### Creating a FeatureBase Ingest Schema
 
-When creating an ignest endpoint in FeatureBase, we need to provide a JSON schema to make incoming records to table columns. For the fake flight dataset you can use the following:
+When creating an ignest endpoint in FeatureBase, we need to provide a JSON schema to make incoming records to table columns. For the fake flight dataset you can use the following in the UI
 
 ```json
 [
@@ -282,11 +308,9 @@ When creating an ignest endpoint in FeatureBase, we need to provide a JSON schem
     "path": ["price"],
     "type": "decimal",
     "config": {
-      "Min": 0,
-      "Max": 32767
+      "Scale": 2
     }
   },
-
   {
     "name": "origin_airport",
     "path": ["origin","airport"],
