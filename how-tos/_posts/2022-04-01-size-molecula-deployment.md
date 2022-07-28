@@ -1,5 +1,5 @@
 ---
-id: size-molecula-deployment
+id: size-molecula-database
 title: Sizing Your FeatureBase Database
 sidebar_label: Sizing FeatureBase
 ---
