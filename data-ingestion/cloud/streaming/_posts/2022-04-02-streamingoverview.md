@@ -19,7 +19,7 @@ There are a couple of states associated with these sources that are important to
 |Status | Description  |
 | --- | ----------- |
 |CREATING           |  The state of provisioning the hardware, installing software, and everything else in order to create a source. This will generally transition into the ACTIVE state. |
-|RUNNING           |  The healthy state of a source that is ready to use. |
+|ACTIVE           |  The healthy state of a source that is ready to use. |
 |UPDATING           |  The state of a source when an update is being applied. This might occur when hardware is being updated, software is being patched, etc. |
 |DELETING           |  The state when a source is being deleted and hardware is being spun down. This will generally transition into the DELETED state. |
 |DELETED           |  The state of a source that has been successfully deleted. |
