@@ -15,7 +15,7 @@ curl --location --request GET 'https://api.molecula.cloud/v1/service-properties/
 --header 'Authorization: Bearer <IdToken>' 
 ```
 
-The database name must be unique within the organization and only contain lower case alphanumeric, hyphen and underscore characters. You can have multiple databases, so it’s important to name these something meaningful to you and your organization. For example, if you have a customer segmentation database and know you’ll have a full staging environment, you might want to name your production database as cust_seg_production and your staging database as cust_seg_staging. Clicking “Start” will start creating your database. This can also be accomplished programmatically:
+The database name can only contain lowercase alphanumeric characters, dashes (-), and underscores (_) but must start with an alphabetic character. You can have multiple databases, so it’s important to name these something meaningful to you and your organization. For example, if you have a customer segmentation database and know you’ll have a full staging environment, you might want to name your production database as cust_seg_production and your staging database as cust_seg_staging. Clicking “Start” will start creating your database. This can also be accomplished programmatically:
 
 **HTTP API Reference:**
 ```shell
