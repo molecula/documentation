@@ -10,8 +10,10 @@ Databases are clusters of FeatureBase nodes. All of your data will live in table
 
 | Database Memory (GB) | Type        |
 | ---                    | ----------- |
-| 8                      | dev         |
-| 64 (Dev)               | dev         |
+| 8  (Development)       | dev         |
+| 64 (Development)       | dev         |
+| 16                     | prod        |
+| 32                     | prod        |
 | 64                     | prod        |
 | 128                    | prod        |
 | 256                    | prod        |

@@ -12,7 +12,7 @@ This tutorial will break down into steps how to load a CSV file into FeatureBase
 
 Before we begin, it's always a good idea to make sure you have all the credentials and configuration parameters you need so that you aren't searching halfway through and lose train of thought. For this tutorial we'll need:
 
-* A CSV file to use, as well as the field names in that CSV file.
+* A CSV file to use, as well as the column names in that CSV file.
 
 * A working python3 environment to run this code and install required packages
 
@@ -27,7 +27,7 @@ Before we begin, it's always a good idea to make sure you have all the credentia
 | Note that for the sake of simplicity, in this tutorial, we're hardcoding passwords and other secrets. Please don't do this in any capacity other than as a personal learning exercise! It's very easy to accidentally commit to code repositories or leave in a public place which invites data breaches for yourself or your organization. |
 
 
-Below represents all of the inputs you must enter to use these code snippets. This offers limited flexibility but does allow you to specify a delimiter, if not a **","** and if your CSV has a header as the first line or not. You will have to put all of the field (column) names in the order they appear in your CSV file and ensure they match the `path` names in your ingest endpoint. For more information on ingest endpoints, go [here](/data-ingestion/cloud/streaming/streamingoverview).
+Below represents all of the inputs you must enter to use these code snippets. This offers limited flexibility but does allow you to specify a delimiter, if not a **","** and if your CSV has a header as the first line or not. You will have to put all of the column names in the order they appear in your CSV file and ensure they match the `path` names in your ingest endpoint. For more information on ingest endpoints, go [here](/data-ingestion/cloud/streaming/streamingoverview).
 
 ```python
 import csv
@@ -41,7 +41,7 @@ DELIMETER = ',' #Change to your file's delimeter
 HEADER = True #Change if your csv has no header file as the first line
 # Full Path of the json file(s) to write to and stream in
 JSON_FILE_PATH = '' # /path/to/file.json
-# list of the ordered target field names to write to that correlate to each column in your csv file
+# list of the ordered target column names to write to that correlate to each column in your csv file
 # e.g. ["id","sepallength","sepalwidth","petallength","petalwidth","species"]
 FIELD_NAMES = []
 
@@ -73,7 +73,7 @@ DELIMETER = ',' #Change to your file's delimeter
 HEADER = True #Change if your csv has no header file as the first line
 # Full Path of the json file(s) to write to and stream in
 JSON_FILE_PATH = '<path to write iris json files>' # /path/to/file.json
-# list of the ordered target field names to write to that correlate to each column in your csv file
+# list of the ordered target column names to write to that correlate to each column in your csv file
 FIELD_NAMES = ["id","sepallength","sepalwidth","petallength","petalwidth","species"]
 ```
 
@@ -166,14 +166,14 @@ You'll need to create an ingest endpoint and table that maps to this data. The b
 The first step is to transform every row in the CSV file into the FeatureBase Cloud schema syntax, which can be seen in further detail at [here](/data-ingestion/cloud/streaming/streamingoverview). The output of this function will create 1 to many properly formatted JSON files for every 1000 records in your CSV file. 
 
 ```python
-def make_json(csvFilePath, jsonFilePath, fieldnames, delim=',', header=True):
+def make_json(csvFilePath, jsonFilePath, columnnames, delim=',', header=True):
     """ Function to convert a CSV to batches of json files
 
     Args:
         csvFilePath (path): Path of the target csv to convert to json
         jsonFilePath (path): Path of the target json file to write to
             Note batch sizes will append to this file name
-        fieldnames (list): List of the ordered target field names to write to
+        columnnames (list): List of the ordered target column names to write to
         delim (str, optional): Delimeter of the csv file Defaults to ','
         header boolean: Indicator if the csv has a header as the first line
 
@@ -191,9 +191,9 @@ def make_json(csvFilePath, jsonFilePath, fieldnames, delim=',', header=True):
     # Add the pre JSON content ...
     f.write('{ "records": [\n')
 
-    # Open a csv reader called DictReader and pass fieldnames in as the dictionary keys
+    # Open a csv reader called DictReader and pass columnnames in as the dictionary keys
     with open(csvFilePath, encoding='utf-8') as csvf:
-        csvReader = csv.DictReader(csvf, delimiter=delim, fieldnames=fieldnames)
+        csvReader = csv.DictReader(csvf, delimiter=delim, columnnames=columnnames)
          
         #
         # Convert each row into a dictionary and add it to data object
@@ -227,13 +227,13 @@ def make_json(csvFilePath, jsonFilePath, fieldnames, delim=',', header=True):
                 # #
                 row = {}
                 delim = ""
-                for field in fieldnames:
-                    if len(rows[field]) != 0:
-                        row[field] = rows[field]
+                for column in columnnames:
+                    if len(rows[column]) != 0:
+                        row[column] = rows[column]
                     delim = ","
 
 
-                # End for field in fieldnames
+                # End for column in columnnames
                 #print(row)
                 f.write(rdelim+'{ "value": '+json.dumps(row)+'}\n')
                 rdelim = ","
@@ -400,7 +400,7 @@ DELIMETER = ',' #Change to your file's delimeter
 HEADER = True #Change if your csv has no header file as the first line
 # Full Path of the json file(s) to write to and stream in
 JSON_FILE_PATH = '' # /path/to/file.json
-# list of the ordered target field names to write to that correlate to each column in your csv file
+# list of the ordered target column names to write to that correlate to each column in your csv file
 # e.g. ["id","sepallength","sepalwidth","petallength","petalwidth","species"]
 FIELD_NAMES = []
 
@@ -411,14 +411,14 @@ FEATUREBASE_PASSWORD = ''
 # FeatureBase Cloud > Data Sources > {Source} > "Ingest Endpoint" e.g. "https://data.molecula.cloud/v1/sinks/...
 FEATUREBASE_STREAMING_ENDPOINT = ''
 
-def make_json(csvFilePath, jsonFilePath, fieldnames, delim=',', header=True):
+def make_json(csvFilePath, jsonFilePath, columnnames, delim=',', header=True):
     """ Function to convert a CSV to batches of json files
 
     Args:
         csvFilePath (path): Path of the target csv to convert to json
         jsonFilePath (path): Path of the target json file to write to. 
             Note batch sizes will append to this file name
-        fieldnames (list): List of the ordered target field names to write to
+        columnnames (list): List of the ordered target column names to write to
         delim (str, optional): Delimiter of the csv file Defaults to ','.
         header boolean: Indicator if the csv has a header as the first line
 
@@ -436,9 +436,9 @@ def make_json(csvFilePath, jsonFilePath, fieldnames, delim=',', header=True):
     # Add the pre JSON content ...
     f.write('{ "records": [\n')
 
-    # Open a csv reader called DictReader and pass fieldnames in as the dictionary keys
+    # Open a csv reader called DictReader and pass columnnames in as the dictionary keys
     with open(csvFilePath, encoding='utf-8') as csvf:
-        csvReader = csv.DictReader(csvf, delimiter=delim, fieldnames=fieldnames)
+        csvReader = csv.DictReader(csvf, delimiter=delim, columnnames=columnnames)
          
         #
         # Convert each row into a dictionary and add it to data object
@@ -472,13 +472,13 @@ def make_json(csvFilePath, jsonFilePath, fieldnames, delim=',', header=True):
                 # #
                 row = {}
                 delim = ""
-                for field in fieldnames:
-                    if len(rows[field]) != 0:
-                        row[field] = rows[field]
+                for column in columnnames:
+                    if len(rows[column]) != 0:
+                        row[column] = rows[column]
                     delim = ","
 
 
-                # End for field in fieldnames
+                # End for column in columnnames
                 #print(row)
                 f.write(rdelim+'{ "value": '+json.dumps(row)+'}\n')
                 rdelim = ","
@@ -596,7 +596,7 @@ if __name__ == "__main__":
 ## Example CSV
 If you'd like to go along with a larger csv, a public age csv can be found [here](https://www.kaggle.com/datasets/imoore/age-dataset?resource=download). Note: You will need a Kaggle account to download this.
 
-After downloading the csv, run the following linux command with your new file name of choice in order to null handle all fields with a value of "0".
+After downloading the csv, run the following linux command with your new file name of choice in order to null handle all columns with a value of "0".
 
 ```shell
 sed -e 's/^,/0,/' -e 's/,,/,0,/g' -e 's/,,/,0,/g' -e 's/,$/,0/' AgeDataset-V1.csv > <new file name>.csv
@@ -611,7 +611,7 @@ DELIMETER = ',' #Change to your file's delimeter
 HEADER = True #Change if your csv has no header file as the first line
 # Full Path of the json file(s) to write to and stream in
 JSON_FILE_PATH = '<path to write age json files>' # /path/to/file.json
-# list of the ordered target field names to write to that correlate to each column in your csv file
+# list of the ordered target column names to write to that correlate to each column in your csv file
 # e.g. ["id","sepallength","sepalwidth","petallength","petalwidth","species"]
 FIELD_NAMES = ["id","name","description","gender","country","occupation", "birth_year", "death_year", "death_manner", "death_age"]
 ```

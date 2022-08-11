@@ -81,8 +81,8 @@ Finally, there are a couple parameters that provide information about your schem
 
 |Parameter| Description  | Required? |
 | ------- | ------------ | --------- |
-|id field   |  The id-field option should be used when there is an existing field in the data which uniquely identifies each record in the table and consists of contiguous positive integers. This maps to the _id column in your table. | Yes if primary key fields not provided |
-|primary key fields  |  The primary-key-fields option should be used when the data has no fields that could be used for id-field. This option uses one or more fields (any type) and concatenates them to create unique record IDs for your table. This maps to the _id column in your table. | Yes if id field not provided |
+|id_field   |  The id_field option should be used when there is an existing field in the data which uniquely identifies each record in the table and consists of contiguous positive integers. This maps to the _id column in your table. | Yes if primary key fields not provided |
+|primary_key_fields  |  The primary_key_fields option should be used when the data has no columns that could be used for id_field. This option uses one or more columns (any type) and concatenates them to create unique record IDs for your table. This maps to the _id column in your table. | Yes if id column not provided |
 |allow_missing_columns  |  A boolean option that allows one or more of the columns defined in the schema to be missing from the JSON records streamed in. If a column is missing and this parameter is true, that column is left null with no bits set. If this parameter is False and a column is missing from the JSON records, an error will return and data will not be loaded into your table. | Yes |
 
 ### Time Quantum

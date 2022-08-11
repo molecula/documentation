@@ -86,7 +86,7 @@ curl --location --request GET 'https://api.molecula.cloud/v1/deployments' \
 --header 'Content-Type: application/json' 
 ```
 
-Grab your database’s "id" field returned from the command above. This is a unique id for your database. Once your database is "RUNNING", you can move to the next step.
+Grab your database’s "id" returned from the command above. This is a unique id for your database. Once your database is "RUNNING", you can move to the next step.
 
 ### Ingest Data
 
@@ -187,7 +187,7 @@ curl --location --request POST 'https://api.molecula.cloud/v1/sinks' \
 }'
 ```
 
-You can also do this in the UI on the "Data Sources" page by clicking “New Source", choosing "iris_demo_database" as the database, "iris_streaming_source" as the source name, "iris_table" as the table, and defining the fields with the same information as the API call above, matching the image below:
+You can also do this in the UI on the "Data Sources" page by clicking “New Source", choosing "iris_demo_database" as the database, "iris_streaming_source" as the source name, "iris_table" as the table, and defining the column mappings with the same information as the API call above, matching the image below:
 
 ![Sreaming Source UI Configuration](/img/data-ingestion/cloud/streaming/tutorials/cloudquickstart/iris_source.png)
 
