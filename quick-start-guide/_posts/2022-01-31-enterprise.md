@@ -369,19 +369,44 @@ WHERE t2.bools = 'available_for_hire' and t1.hobbies = 'Teaching';
 
 
 
+
+
+
+### TopK - A FeatureBase Superpower
+
+Ranking queries are notorious for being computationally intensive - aka slow. Some solutions will use statistics to speed up a ranking query by approximating the true results, but that’s not always a desirable option. In addition to SQL, FeatureBase has a native language called [PQL](/reference/data-querying-ref/pql/introduction). In PQL, [```TopK```](/reference/data-querying-ref/pql/read/topk) queries can be run to return exact results in milliseconds. 
+
+This query returns the top five hobbies across all customers from the cseg table, sifting through a billion records.
+
+```
+[cseg]TopK(hobbies, k=5);
+```
+![Figure 9  Top K Query](https://user-images.githubusercontent.com/97700520/170797209-70c365ab-82f6-4930-828f-4ceade77dcdd.png)
+
+
+More complex, the next query returns the top ten hobbies among females who also like scuba diving from the cseg table in milliseconds. Even when adding complex filtering, the **TopK** queries can be run for exact results at scale without impacting query latency.
+
+```
+[cseg]TopK(hobbies, k=10, filter=Intersect(Row(sex=Female),Row(hobbies='Scuba Diving')));
+```
+
+![Figure 10 Top K Query with Filtering](https://user-images.githubusercontent.com/97700520/170797384-ea5b9573-3e2d-43ac-ab21-47c323f02418.png)
+
 ### Grouping with Complex Conditions and Aggregating
 
-Another query commonly seen in aggregation-related use cases is the **GROUP BY**. For example, let’s group by the hobbies counting only those with ultimate count above 200,000,000.
+Another query commonly seen in aggregation-related use cases is the ```GROUP BY```. For example, let’s group by the hobbies counting only those with ultimate ```COUNT``` above 200,000,000. We'll execute this query in [PQL](/reference/data-querying-ref/pql/introduction).
 
-```sql
-SELECT hobbies, COUNT(*) 
-FROM cseg 
-GROUP BY hobbies HAVING count > 200000000;
 ```
-![Figure 9  Group By Query](https://user-images.githubusercontent.com/97700520/170797068-03a7ecb9-ed65-4c74-95b8-f3794969fd7a.png)
+[cseg]GroupBy(
+Rows(hobbies),
+sort="count desc",
+having=CONDITION(count > 200000000)
+);
+```
+![Figure 11. GROUP BY Query](/img/quick-start-guide/enterprise/ent_cseg_groupby_having.png)
 
 
-Another useful facet of **GROUP BY** is the ability to add an aggregate argument and utilize the low latency aggregation in another capacity.
+Another useful facet of ```GROUP BY``` is the ability to add an aggregate argument and utilize the low-latency aggregation in another capacity. We'll execute this query in SQL.
 
 ```sql
 SELECT education, SUM(income) 
@@ -390,31 +415,10 @@ WHERE age=18
 GROUP BY education; 
 ```
 
-![Figure 10  Group by Query Filtered](https://user-images.githubusercontent.com/97700520/170797146-1ccdd6b5-82e6-4f5a-b8c2-f6b47d3e5897.png)
+![Figure 12  Group by Query Filtered](https://user-images.githubusercontent.com/97700520/170797146-1ccdd6b5-82e6-4f5a-b8c2-f6b47d3e5897.png)
 
 
-### TopK - A FeatureBase Superpower
-
-Ranking queries are notorious for being computationally intensive - aka slow. Some solutions will use statistics to speed up a ranking query by approximating the true results, but that’s not always a desirable option. In addition to SQL, FeatureBase has a native language called PQL. In PQL, TopK queries can be run to return exact results in milliseconds. 
-
-This query returns the top five hobbies across all customers from the cseg table, sifting through a billion records.
-
-```
-[cseg]TopK(hobbies, k=5)
-```
-![Figure 11  Top K Query](https://user-images.githubusercontent.com/97700520/170797209-70c365ab-82f6-4930-828f-4ceade77dcdd.png)
-
-
-More complex, the next query returns the top ten hobbies among females who also like scuba diving from the cseg table in milliseconds. Even when adding complex filtering, the **TopK** queries can be run for exact results at scale without impacting query latency.
-
-```
-[cseg]TopK(hobbies, k=10, filter=Intersect(Row(sex=Female),Row(hobbies='Scuba Diving')))
-```
-
-![Figure 12  Top K Query with Filtering](https://user-images.githubusercontent.com/97700520/170797384-ea5b9573-3e2d-43ac-ab21-47c323f02418.png)
-
-
->**NOTE:** At this point, we encourage you to mix and match segmentation criteria to experience low-latency queries even as complex conditions are added. You can use the Query Builder to help construct queries in SQL or PQL.
+>**NOTE:** At this point, we encourage you to mix and match segmentation criteria to experience low-latency queries even as complex conditions are added. You can use the Query Builder to help construct queries in PQL.
 
 ![Query builder](https://user-images.githubusercontent.com/97700520/170797492-89ace99d-6de5-4a6f-ba14-275f53462fb2.png)
 
@@ -467,20 +471,21 @@ WHERE t2.bools = 'available_for_hire' AND t1.hobbies = 'Teaching';
 
 ### Grouping with Complex Conditions
 
-```sql
-SELECT hobbies, count(*) 
-FROM cseg 
-GROUP BY hobbies 
-HAVING count > 200000000;
+```
+[cseg]GroupBy(
+Rows(hobbies),
+sort="count desc",
+having=CONDITION(count > 200000000)
+);
 ```
 
 ### Top K 
 
 ```
-[cseg]TopK(hobbies, k=5)
+[cseg]TopK(hobbies, k=5);
 ```
 
 ```
-[cseg]TopK(hobbies, k=10, filter=Intersect(Row(sex=Female),Row(hobbies='Scuba Diving')))
+[cseg]TopK(hobbies, k=10, filter=Intersect(Row(sex=Female),Row(hobbies='Scuba Diving')));
 ```
 
