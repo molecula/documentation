@@ -21,7 +21,7 @@ Once a database is running, you will want to start loading data into it. “Data
 
 
 ## Tables
-The “Tables” section allows you to create new tables and inspect the schema of existing tables. Today, FeatureBase schemas are created during data ingest when data is loaded, so metadata around tables will not be populated until data is loaded. Clicking on a table will allow users to see table metadata like the database it's in, fields and types, and more.
+The “Tables” section allows you to create new tables and inspect the schema of existing tables. Today, FeatureBase schemas are created during data ingest when data is loaded, so metadata around tables will not be populated until data is loaded. Clicking on a table will allow users to see table metadata like the database it lives in, columns and types, and more.
 
 ## Query
 The “Query” section allows you to explore data using PQL and SQL statements. The text editor allows for multiple queries to exist in the same pane. Individual queries are separated by newlines with only whitespace. You should first pick a database to query against in the top right corner. This will default to the oldest database created. Queries have an automatic limit of 100 records applied but can be adjusted up to a 10k maximum. This is to prevent impact to production databases resulting from accidentally trying to bring back too much data. The query page also allows you to browse tables and schemas, as well as see your historical queries.

@@ -362,8 +362,8 @@ def on_message(content, token):
   #
   # {
   #   "records": [
-  #     { "value": { <JSON blob containing fields of first record> } },
-  #     { "value": { <JSON blob containing fields of second record> } },
+  #     { "value": { <JSON blob containing columns of first record> } },
+  #     { "value": { <JSON blob containing columns of second record> } },
   #     ...
   #   ]
   # }

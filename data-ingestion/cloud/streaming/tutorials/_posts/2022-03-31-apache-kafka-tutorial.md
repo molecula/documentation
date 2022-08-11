@@ -97,7 +97,7 @@ For more documentation on the Confluent python client, please check out their of
 
 ### Create a Kafka Producer
 
-Since we want to produce and consume data with this script we'll create a thread function to setup a Kafka producer and write 1 billion messages. We'll also append the fake data object by appending a unique ID field (`flight_id`).
+Since we want to produce and consume data with this script we'll create a thread function to setup a Kafka producer and write 1 billion messages. We'll also append the fake data object by appending a unique ID column (`flight_id`).
 
 ```python
 def producer_thread():
