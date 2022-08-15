@@ -64,7 +64,7 @@ This source's configuration requires a JSON schema for the data that streams thr
 
 When all config options are left as default, the `"Config"` column may be omitted. Otherwise, the config options are:
 * `"Mutex"`: if set to `true`, the data will be ingested into a mutex column instead of a set column
-* `"Quantum"`: the time quantum selection (Any Combination of `Y`,`M`,`D`,`H` e.g. `"YM"`/`"YMD"`) to use when ingesting into a time column using the time value from a `"recordTime"`
+* `"Quantum"`: the time quantum selection (Any Combination of  time granularity `Y`,`M`,`D`,`H` that doesn't skip a grain e.g. `"YM"`/`"YMD"` but not `YD`) to use when ingesting into a time column using the time value from a `"recordTime"`
 * `"CacheConfig"`: the configuration when using a `TopN` cache; does not affect time columns
 * `"TTL"`: Time To Live duration for views specifies when views will deleted. Allowed time units are `h`, `m`, `s`, `ms`, `us`, `ns`. Time quantum is required in order to use TTL.
 * `"Layout"`: the format in which to parse time strings (defaults to RFC3339) - specified in [Go's format](https://golang.org/pkg/time/#pkg-constants)
@@ -72,8 +72,8 @@ When all config options are left as default, the `"Config"` column may be omitte
 * `"Max"`: the maximum possible value for an acceptable integer (defaults to 2^63 - 1)
 * `"ForeignIndex"`: the target index to reference columns of
 * `"Scale"`: the number of digits of precision to store after the decimal point
-* `"Epoch"`: the epoch which timestamps should be relative to. The value may specify a timezone, for example `"1980-11-30T14:20:28.000+07:00"`, or use zulu time (i.e. +00:00) `"1980-11-30T14:20:28.000Z"`. Defaults to the Unix epoch if not configured.
-* `"Unit"`: the time unit in which to store a timestamp (`dateInt`) or the incoming value interpreted as a duration with this `Unit`, starting at the configured `Epoch` (`recordTime`, `timestamp`). Can be `"d"`, `"h"`, `"m"`, `"s"`, `"ms"`, `"us"`, `"ns"`, for day, hour, minute, second, millisecond, microsecond, nanosecond respectively or `"c"` for custom (using `"CustomUnit"` for `dateInt`). Defaults to `"s"`.
+* `"Epoch"`: the epoch which timestamps should be relative to. This should only be set if the incoming data is an Epoch/number. The value may specify a timezone, for example `"1980-11-30T14:20:28.000+07:00"`, or use zulu time (i.e. +00:00) `"1980-11-30T14:20:28.000Z"`. Defaults to the Unix epoch if not configured.
+* `"Unit"`: For a (`dateInt`) type column, `Unit` is the time unit in which to store a timestamp.  For the (`recordTime`, `timestamp`) type columns, only set `Unit` if the incoming data is an Epoch/number. The incoming value is interpreted as a duration with this `Unit`, starting at the configured `Epoch`. `Unit` Can be `"d"`, `"h"`, `"m"`, `"s"`, `"ms"`, `"us"`, `"ns"`, for day, hour, minute, second, millisecond, microsecond, nanosecond respectively or `"c"` for custom (using `"CustomUnit"` for `dateInt`). Defaults to `"s"`.
 * `"CustomUnit"`: a 'duration' value which specifies a custom time unit; accepts values like "6h" for 6 hours, "1m30s" for 1 minute and 30 seconds; valid units can be described using "ns", "us", "ms", "s", "m", or "h"
 * `"Granularity"`: the resolution at which the incoming values will be stored. Allowed values are `s`, `ms`, `us`, `ns`. Defaults to `"s"`.
 
