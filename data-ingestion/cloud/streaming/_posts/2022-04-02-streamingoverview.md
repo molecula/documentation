@@ -64,7 +64,7 @@ This source's configuration requires a JSON schema for the data that streams thr
 
 When all config options are left as default, the `"Config"` column may be omitted. Otherwise, the config options are:
 * `"Mutex"`: if set to `true`, the data will be ingested into a mutex column instead of a set column
-* `"Quantum"`: the time quantum selection (Any Combination of  time granularity `Y`,`M`,`D`,`H` that doesn't skip a grain e.g. `"YM"`/`"YMD"` but not `YD`) to use when ingesting into a time column using the time value from a `"recordTime"`
+* `"Quantum"`: the time quantum selection (Any Combination of  time granularity `Y`,`M`,`D`,`H` that doesn't skip a grain e.g. `"YM"`/`"MDH"` but not `YD`) to use when ingesting into a time column using the time value from a `"recordTime"`
 * `"CacheConfig"`: the configuration when using a `TopN` cache; does not affect time columns
 * `"TTL"`: Time To Live duration for views specifies when views will deleted. Allowed time units are `h`, `m`, `s`, `ms`, `us`, `ns`. Time quantum is required in order to use TTL.
 * `"Layout"`: the format in which to parse time strings (defaults to RFC3339) - specified in [Go's format](https://golang.org/pkg/time/#pkg-constants)
