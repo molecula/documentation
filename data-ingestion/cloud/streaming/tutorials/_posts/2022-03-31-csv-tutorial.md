@@ -193,7 +193,7 @@ def make_json(csvFilePath, jsonFilePath, columnnames, delim=',', header=True):
 
     # Open a csv reader called DictReader and pass columnnames in as the dictionary keys
     with open(csvFilePath, encoding='utf-8') as csvf:
-        csvReader = csv.DictReader(csvf, delimiter=delim, columnnames=columnnames)
+        csvReader = csv.DictReader(csvf, delimiter=delim, fieldnames=columnnames)
          
         #
         # Convert each row into a dictionary and add it to data object
@@ -438,7 +438,7 @@ def make_json(csvFilePath, jsonFilePath, columnnames, delim=',', header=True):
 
     # Open a csv reader called DictReader and pass columnnames in as the dictionary keys
     with open(csvFilePath, encoding='utf-8') as csvf:
-        csvReader = csv.DictReader(csvf, delimiter=delim, columnnames=columnnames)
+        csvReader = csv.DictReader(csvf, delimiter=delim, fieldnames=columnnames)
          
         #
         # Convert each row into a dictionary and add it to data object
