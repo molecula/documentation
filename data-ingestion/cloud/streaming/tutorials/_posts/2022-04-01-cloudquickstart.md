@@ -66,12 +66,12 @@ Inputs:
 
 **HTTP API Reference:**
 ```shell
-curl --location --request POST 'https://api.molecula.cloud/v1/deployments' \
+curl --location --request POST 'https://api.molecula.cloud/v2/databases' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "name": "iris_demo_database",
-    "deployment_options":{
+    "database_options":{
         "shape": "8GB"
     }
 }'
@@ -81,7 +81,7 @@ A database takes a minute or so to create. You can see the status of the "iris_d
 
 **HTTP API Reference:**
 ```shell
-curl --location --request GET 'https://api.molecula.cloud/v1/deployments' \
+curl --location --request GET 'https://api.molecula.cloud/v2/databases' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' 
 ```
@@ -116,24 +116,24 @@ After a table exists, you can configure a source to load data into it. The inges
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
 2. table_name - The name you want to give your table i.e. iris_table
-3. source_name - The name you want to give your source i.e. iris_streaming_source
+3. source_name - The name you want to give your source i.e. iris_ingest_endpoint
 4. database id - The unique ID of your database
 5. schema - A JSON blob that contains information about the data streaming into the source.
 
 **HTTP API Reference:**
 ```shell
-curl --location --request POST 'https://api.molecula.cloud/v1/sinks' \
+curl --location --request POST 'https://api.molecula.cloud/v2/sinks' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' \
 --data-raw '{    
-    "name": "iris_streaming_source",    
+    "name": "iris_ingest_endpoint",    
   	"sink_details": {
-      "deployment_id": "<database_id>",
+      "database_id": "<database_id>",
       "table": "iris_table"
     },
     "schema": {
         "id_field": "id",
-        "allow_missing_fields": false,
+        "allow_missing_fields": true,
         "definition": [
         {
             "name": "id",
@@ -187,20 +187,20 @@ curl --location --request POST 'https://api.molecula.cloud/v1/sinks' \
 }'
 ```
 
-You can also do this in the UI on the "Data Sources" page by clicking “New Source", choosing "iris_demo_database" as the database, "iris_streaming_source" as the source name, "iris_table" as the table, and defining the column mappings with the same information as the API call above, matching the image below:
+You can also do this in the UI on the "Data Sources" page by clicking “New Source", choosing "iris_demo_database" as the database, "iris_ingest_endpoint" as the source name, "iris_table" as the table, and defining the column mappings with the same information as the API call above, matching the image below:
 
 ![Sreaming Source UI Configuration](/img/data-ingestion/cloud/streaming/tutorials/cloudquickstart/iris_source.png)
 
-Like databases, sources takes some time to create. You should be able to see the "iris_streaming_source" status as "Creating" by running the command below or in the UI.
+Like databases, sources takes some time to create. You should be able to see the "iris_ingest_endpoint" status as "Creating" by running the command below or in the UI.
 
 **HTTP API Reference:**
 ```shell
-curl --location --request GET 'https://api.molecula.cloud/v1/sinks' \
+curl --location --request GET 'https://api.molecula.cloud/v2/sinks' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' 
 ```
 
-Grab your source's id. This is a unique id for your source. Once your source is "Running", you can move to the next step. You can find your source id in the UI by clicking on "iris_streaming_source" and looking at the "Ingest Endpoint" url.
+Grab your source's id. This is a unique id for your source. Once your source is "Running", you can move to the next step. You can find your source id in the UI by clicking on "iris_ingest_endpoint" and looking at the "Ingest Endpoint" url.
 
 #### Ingest Data
 
@@ -213,7 +213,7 @@ Inputs:
 
 **HTTP API Reference:**
 ```shell
-curl --location --request POST 'https://data.molecula.cloud/v1/sinks/<sourceId>' \
+curl --location --request POST 'https://data.molecula.cloud/v2/sinks/<sourceId>' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -395,7 +395,7 @@ Inputs:
 
 **HTTP API Reference (SQL):**
 ```shell
-curl --location --request POST 'https://data.molecula.cloud/v1/deployments/<database id>/query' \
+curl --location --request POST 'https://data.molecula.cloud/v2/databases/<database id>/query' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' \
 --data-raw '{ 
@@ -407,7 +407,7 @@ curl --location --request POST 'https://data.molecula.cloud/v1/deployments/<data
 **HTTP API Reference (PQL):**
 PQL
 ```shell
-curl --location --request POST 'https://data.molecula.cloud/v1/deployments/<database id>/query' \
+curl --location --request POST 'https://data.molecula.cloud/v2/databases/<database id>/query' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' \
 --data-raw '{ 
@@ -432,7 +432,7 @@ Inputs:
 
 **HTTP API Reference:**
 ```shell
-curl --location --request DELETE 'https://api.molecula.cloud/v1/sinks/<sourceid>' \
+curl --location --request DELETE 'https://api.molecula.cloud/v2/sinks/<sourceid>' \
 --header 'Authorization: Bearer <IdToken>'  
 ```
 
@@ -440,7 +440,7 @@ This will take some time to delete. You can check the status of the delete with 
 
 **HTTP API Reference:**
 ```shell
-curl --location --request GET 'https://api.molecula.cloud/v1/sinks/<sourceid>' \
+curl --location --request GET 'https://api.molecula.cloud/v2/sinks/<sourceid>' \
 --header 'Authorization: Bearer <IdToken>'  
 ```
 
@@ -453,7 +453,7 @@ Inputs:
 
 **HTTP API Reference:**
 ```shell
-curl --location --request DELETE 'https://api.molecula.cloud/v1/tables/<database id>/iris_table' \
+curl --location --request DELETE 'https://api.molecula.cloud/v2/tables/<database id>/iris_table' \
 --header 'Authorization: Bearer <IdToken>'  
 ```
 
@@ -465,7 +465,7 @@ Inputs:
 
 **HTTP API Reference:**
 ```shell
-curl --location --request DELETE 'https://api.molecula.cloud/v1/deployments/<database id>' \
+curl --location --request DELETE 'https://api.molecula.cloud/v2/databases/<database id>' \
 --header 'Authorization: Bearer <IdToken>' 
 ```
 
@@ -473,7 +473,7 @@ This will take some time to delete. You can check the status of the delete with 
 
 **HTTP API Reference:**
 ```shell
-curl --location --request GET 'https://api.molecula.cloud/v1/deployments/<database id>' \
+curl --location --request GET 'https://api.molecula.cloud/v2/databases/<database id>' \
 --header 'Authorization: Bearer <IdToken>' 
 ```
 
