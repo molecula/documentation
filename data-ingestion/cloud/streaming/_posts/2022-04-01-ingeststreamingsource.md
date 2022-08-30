@@ -4,7 +4,7 @@ title: Stream Data With An Ingest Endpoint
 sidebar_label: Stream Data With An Ingest Endpoint
 ---
 
- **⚠ WARNING:** This page contains information that only applies to Molecula's Cloud offering. Additionally, this page represents a work in progress that is subject to frequent changes. 
+ **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes. 
 
 Once an “ACTIVE” ingest endpoint exists, data can be streamed to it over HTTPS via “POST” requests. Individual records or micro-batched payloads can be sent. Navigate [here](/data-ingestion/cloud/streaming/streamingoverview) to learn more about the required format for data, existing limits, and recommendations around streaming data. The UI currently only supports the ability to create a ingest endpoint but not stream data to it. This must be done using the API. Based on the previous schema example, below is an example of how multiple records are sent to the ingest endpoint:
 

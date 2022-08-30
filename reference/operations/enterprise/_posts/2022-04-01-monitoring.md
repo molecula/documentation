@@ -6,7 +6,7 @@ sidebar_label: Monitoring
 
 ## Metrics
 
-All Molecula components expose metrics via a [Prometheus](https://prometheus.io)
+All FeatureBase components expose metrics via a [Prometheus](https://prometheus.io)
 compatible endpoint. 
 
 Exposed metrics are described for each component below.
@@ -15,7 +15,7 @@ Exposed metrics are described for each component below.
 
 - Valid metric names match the regular expression `[a-zA-Z_:][a-zA-Z0-9_:]*`. The colon character is reserved for [recording rules](https://prometheus.io/docs/practices/rules/) and is avoided otherwise.
 - Format: `[namespaceprefix]_[metric_description]_[units]`. Example: `ingester_csv_deleter_rows_added_total` with namespace `ingester_csv`, metric name `deleter_rows_added`, and "unit" `total`, indicating a counter.
-- Molecula uses a different namespace for each component, for example `featurebase` and something starting with `ingester` for various Ingester binaries.
+- FeatureBase uses a different namespace for each component, for example `featurebase` and something starting with `ingester` for various Ingester binaries.
 - `snake_case`, not `camelCase`
 - As a rule of thumb, either the sum() or the avg() over all dimensions of a given metric should be meaningful (though not necessarily useful).
 
@@ -150,16 +150,16 @@ Below is an example configuration excerpt for Prometheus (the `scrape_configs` s
 
 ## Logging
 
-All Molecula components log to standard error by default and can be configured to log to a file. When logging to a file, Molecula components will re-open the log file on receipt of the HUP signal. See [How To Set Up Log Rotation](/how-tos/set-up-log-rotation) for more information.
+All FeatureBase components log to standard error by default and can be configured to log to a file. When logging to a file, FeatureBase components will re-open the log file on receipt of the HUP signal. See [How To Set Up Log Rotation](/how-tos/set-up-log-rotation) for more information.
 
 ## Tracing
 
-Molecula supports tracing via the [OpenTracing](https://opentracing.io/) standard. With this, tools such as [Jaeger](https://www.jaegertracing.io/) can be used to store and visualize trace data.
+FeatureBase supports tracing via the [OpenTracing](https://opentracing.io/) standard. With this, tools such as [Jaeger](https://www.jaegertracing.io/) can be used to store and visualize trace data.
 
 
 ## External Diagnostics
 
-Depending on contract details, Molecula may require the ability to "phone home" limited diagnostic information about its usage for billing, debugging, and license enforcement purposes. The details of connectivity and particulars of the data involved will be agreed upon prior to deployment.
+Depending on contract details, FeatureBase may require the ability to "phone home" limited diagnostic information about its usage for billing, debugging, and license enforcement purposes. The details of connectivity and particulars of the data involved will be agreed upon prior to deployment.
 
 
 ## Health Checks
@@ -172,7 +172,7 @@ FeatureBase's `/status` endpoint will respond with a JSON document describing th
 
 #### Other Components
 
-To check the health of other Molecula components, use their Prometheus metrics endpoint.
+To check the health of other FeatureBase components, use their Prometheus metrics endpoint.
 
 ## Scaling
 

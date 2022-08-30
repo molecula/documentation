@@ -23,7 +23,7 @@ Valid field names are lower case strings; they start with a lowercase letter, an
 
 ## Kafka Ingester
 
-The Kafka ingester reads Avro-encoded records from a Kafka topic, uses the Confluent schema registry to decode them, and ingests the data into Molecula.
+The Kafka ingester reads Avro-encoded records from a Kafka topic, uses the Confluent schema registry to decode them, and ingests the data into FeatureBase.
 
 Use `molecula-consumer-kafka -h `to list all available flags. Each flag is also available as an environment variable by prefixing it with "CONSUMER_" and converting any dots or dashes to underscores. For example tls.ca-certificate becomes CONSUMER_TLS_CA_CERTIFICATE.
 
@@ -211,7 +211,7 @@ Missing values and empty string values (`""`) are handled identically.
 
 ## SQL Ingester
 
-The SQL ingester uses a sql connection (via MSSQL, MySQL, or Postgres) to select data from a sql endpoint, and ingests the data into Molecula. It uses the SQL table column names as [header descriptions to specify how each field](/reference/data-ingestion/ingester-configuration#header-descriptions) should be ingested, similar to the CSV Ingester.
+The SQL ingester uses a sql connection (via MSSQL, MySQL, or Postgres) to select data from a sql endpoint, and ingests the data into FeatureBase. It uses the SQL table column names as [header descriptions to specify how each field](/reference/data-ingestion/ingester-configuration#header-descriptions) should be ingested, similar to the CSV Ingester.
 
 Use `molecula-consumer-sql -h` to list all available flags (or see table below). A few sample configurations are noted below:
 
@@ -297,7 +297,7 @@ postgres:	https://godoc.org/github.com/lib/pq
 
 ## Header Descriptions
 
-The [CSV](/reference/data-ingestion/ingester-configuration#csv-ingester) and [SQL](/reference/data-ingestion/ingester-configuration#sql-ingester) ingesters use the same syntax for describing how you want the fields in your source data to be ingested into Molecula. The basic structure is
+The [CSV](/reference/data-ingestion/ingester-configuration#csv-ingester) and [SQL](/reference/data-ingestion/ingester-configuration#sql-ingester) ingesters use the same syntax for describing how you want the fields in your source data to be ingested into FeatureBase. The basic structure is
 
 `field_name__FieldType_Arg1_Arg2`
 

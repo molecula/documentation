@@ -4,7 +4,7 @@ title: Streaming (HTTPS) Overview
 sidebar_label: Streaming (HTTPS) Overview
 ---
 
- **⚠ WARNING:** This page contains information that only applies to Molecula's Cloud offering. Additionally, this page represents a work in progress that is subject to frequent changes. 
+ **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes. 
 
 The ingest endpoint configuration will yield a persistent endpoint that allows you to stream data into your database over HTTPS. Each endpoint maps to one table within one database. If you have multiple disparate data sources, you may create multiple endpoints that push data to the same table. Once this source is provisioned, you can stream (post) JSON records to it using any method or application that can perform HTTPS requests. The table below describes the current limits of streaming data in:
 

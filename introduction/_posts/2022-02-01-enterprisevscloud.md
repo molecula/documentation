@@ -5,7 +5,7 @@ sidebar_label: Enterprise vs Cloud
 ---
 
  
-Molecula offers both Enterprise and Cloud versions of FeatureBase. While both use FeatureBase to store your data and power your analytics, there are key differences between the two when it comes to features. The capability matrices below help compare features between the two in key areas.
+There are Enterprise and Cloud versions of FeatureBase. While both use FeatureBase to store your data and power your analytics, there are key differences between the two when it comes to features. The capability matrices below help compare features between the two in key areas.
 
 ## Infrastructure
 

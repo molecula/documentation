@@ -6,7 +6,7 @@ sidebar_label: Set Up Log Rotation
 
 
 
-When logging to a file, Molecula components will re-open the log file on receipt of the HUP signal. This allows for seamless log rotation. As an example, to configure log rotation with FeatureBase:
+When logging to a file, FeatureBase components will re-open the log file on receipt of the HUP signal. This allows for seamless log rotation. As an example, to configure log rotation with FeatureBase:
 
 1. First create a log directory owned by the system user that runs the FeatureBase process; we recommend `/var/log/molecula`.
 

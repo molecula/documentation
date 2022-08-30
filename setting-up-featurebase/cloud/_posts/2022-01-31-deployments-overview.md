@@ -2,9 +2,9 @@
 title: Databases Overview
 ---
 
- **⚠ WARNING:** This page contains information that only applies to Molecula's Cloud offering. Additionally, this page represents a work in progress that is subject to frequent changes. 
+ **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes. 
 
-Databases are clusters of FeatureBase nodes. All of your data will live in tables within FeatureBase. They are dedicated resources for your data that you can load to and query against, and like common databases, you can only join tables that exist in the same database. Below is a list of database sizes Molecula offers: 
+Databases are clusters of FeatureBase nodes. All of your data will live in tables within FeatureBase. They are dedicated resources for your data that you can load to and query against, and like common databases, you can only join tables that exist in the same database. Below is a list of database sizes offered: 
 
 ### Sizes
 

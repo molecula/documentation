@@ -4,7 +4,7 @@ title: Key Concepts
 sidebar_label: Key Concepts
 ---
 
- **⚠ WARNING:** This page contains information that only applies to Molecula's Cloud offering. Additionally, this page represents a work in progress that is subject to frequent changes. 
+ **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes. 
 
 **Organization:** The entity that contains everything you own (users, resources, data, etc.) within the tool. You can think of this simply as your company.
 

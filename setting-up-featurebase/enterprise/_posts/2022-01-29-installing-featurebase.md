@@ -62,7 +62,7 @@ systemctl daemon-reload
 ```
 
 
-Start Molecula services:
+Start FeatureBase services:
 
 - `sudo systemctl start featurebase`
 - `sudo systemctl enable featurebase`
@@ -98,7 +98,7 @@ curl localhost:10101
 Should result in output similar to this:
 
 ```text
-Welcome. FeatureBase is running. Visit https://docs.molecula.cloud for more information.
+Welcome. FeatureBase is running. Visit https://docs.featurebase.com for more information.
 ```
 
 Running this command:
@@ -217,7 +217,7 @@ Create a data folder:
 sudo mkdir -p /opt/molecula/featurebase
 ```
 
-Start Molecula apps as background processes:
+Start FeatureBase apps as background processes:
 - `featurebase server -c /etc/featurebase.conf &`
 
 Install a postgres client for psql. We recommend installing via Homebrew:
@@ -237,7 +237,7 @@ curl localhost:10101
 Should result in output similar to this:
 
 ```text
-Welcome. FeatureBase is running. Visit https://docs.molecula.cloud for more information.
+Welcome. FeatureBase is running. Visit https://docs.featurebase.com for more information.
 ```
 
 Running this command:
@@ -309,7 +309,7 @@ In an AMI on EC2, in region us-east-2
 [Unit]
 After=network.target
 Description=Service for FeatureBase
-Documentation=https://docs.molecula.cloud/
+Documentation=https://docs.featurebase.com/
 DefaultDependencies=no
 
 [Service]

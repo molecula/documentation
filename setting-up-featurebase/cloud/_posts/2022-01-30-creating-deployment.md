@@ -3,7 +3,7 @@ title: Creating a Database
 ---
 
 
- **⚠ WARNING:** This page contains information that only applies to Molecula's Cloud offering. Additionally, this page represents a work in progress that is subject to frequent changes. 
+ **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes. 
 
 
 In the user interface, clicking "Databases" from the left hand navigation bar will direct you to the databases page. You can create a database by clicking “New Database". You will have the option to load sample data or start with an empty database. The tool has [sizes](/setting-up-featurebase/cloud/deployments-overview#sizes) based on memory, so all you need to provide is a database memory (unless you load sample data) from a drop down and a database name. Note the UI will only display the choices your organization has access to, which is determined when you purchase the product. These choices can be queried for programmatically as well and are referred to as “deployment shapes” in the API:

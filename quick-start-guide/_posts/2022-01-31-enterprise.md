@@ -4,7 +4,7 @@ title: Enterprise Quick Start Guide
 
 ## Welcome to your FeatureBase Trial!
 
-Follow the guide outlined below for a hands-on demonstration of low-latency queries at scale using our FeatureBase Cloud platform. As you work through the guide, please note any questions or feedback that you may have for the Molecula team. We’re always looking for ways to improve the experience!
+Follow the guide outlined below for a hands-on demonstration of low-latency queries at scale using our FeatureBase Cloud platform. As you work through the guide, please note any questions or feedback that you may have for the FeatureBase team. We’re always looking for ways to improve the experience!
 
 In this demonstration you will:
 
@@ -13,12 +13,12 @@ In this demonstration you will:
 3. Restore two large-scale datasets into the database
 4. Run a set of analytics queries
 
->If you run into any roadblocks or have questions throughout the demonstration, please reach out to your Molecula Representative or email SE@molecula.com.
+>If you run into any roadblocks or have questions throughout the demonstration, please reach out to your FeatureBase representative or email SE@molecula.com.
 
 ## Download Single-Node FeatureBase Binary
 First, sign up for your [Free Trial](https://www.molecula.com/start-free-trial/). 
 
->Please note that by clicking ```Start Free``` you agree to the [Terms of Service](https://www.molecula.com/featurebase-end-user-license-agreement/) and to receive occasional marketing emails from Molecula. You also understand that we will process your personal information in accordance with our [Privacy Policy](https://www.molecula.com/privacy/).
+>Please note that by clicking ```Start Free``` you agree to the [Terms of Service](https://www.molecula.com/featurebase-end-user-license-agreement/) and to receive occasional marketing emails from the FeatureBase team. You also understand that we will process your personal information in accordance with our [Privacy Policy](https://www.molecula.com/privacy/).
 
 
 Click ```Download``` on the option that best meets your needs to download the tarball containing the latest single-node FeatureBase binary.
@@ -224,11 +224,11 @@ journalctl -u featurebase -r
 If you do see ```Active: active (running)...``` then you can try to stop, start, and restart FeatureBase.
 
 ```
-# stop Molecula services
+# stop FeatureBase services
 sudo systemctl stop featurebase
 # verify stop
 sudo systemctl status featurebase
-# start Molecula services
+# start FeatureBase services
 sudo systemctl start featurebase
 # verify start
 sudo systemctl status featurebase
@@ -240,7 +240,7 @@ sudo systemctl status featurebase
 
 
 # Restore 1B records of Demo Data from S3
-In order to use FeatureBase, you’ll need data! In a real-life situation, the Molecula team will provide guided onboarding and data modeling for our organization’s data. In this exercise, we’ll be working with curated demo data to showcase the low-latency capabilities of FeatureBase. Instructions to load the demo data are laid out below.
+In order to use FeatureBase, you’ll need data! In a real-life situation, the FeatureBase team will provide guided onboarding and data modeling for our organization’s data. In this exercise, we’ll be working with curated demo data to showcase the low-latency capabilities of FeatureBase. Instructions to load the demo data are laid out below.
 
 First, download the demo dataset from S3 using by clicking [this link](https://se-public-datasets.s3.us-east-2.amazonaws.com/cseg0_backup.tar.gz)
 
@@ -349,7 +349,7 @@ SELECT AVG(income) FROM cseg;
 
 >Note that we don’t currently support full SQL, but are working toward expanding SQL functionality. For example, the AVERAGE function is not currently supported in GROUP BY queries and will be added soon.
 
->**If you have issues with your queries, please contact a [Molecula Representative](mailto:se@molecula.com). FeatureBase has a native language, called PQL, and we can help you translate your SQL queries to get the desired results.**
+>**If you have issues with your queries, please contact a [FeatureBase Representative](mailto:se@molecula.com). FeatureBase has a native language, called PQL, and we can help you translate your SQL queries to get the desired results.**
 
 ### INNER JOINs at Scale
 
@@ -426,7 +426,7 @@ GROUP BY education;
 
 ## What’s Next?
 
-We hope that this hands-on experience has further demonstrated the power of FeatureBase to power real-time analytics workflows at scale. While this example focused on a customer segmentation use case, the same type of workflows are often used in anomaly detection or business process optimization use cases and continues to perform as workloads grow to trillions of records. Additionally, FeatureBase excels at combining streaming and historical data in real-time, allowing you to analyze data as soon at is available in FeatureBase with no need for time-consuming preprocessing or preaggregation. From here, partner with your Molecula representative to better understand how FeatureBase will work for your organization’s specific needs.
+We hope that this hands-on experience has further demonstrated the power of FeatureBase to power real-time analytics workflows at scale. While this example focused on a customer segmentation use case, the same type of workflows are often used in anomaly detection or business process optimization use cases and continues to perform as workloads grow to trillions of records. Additionally, FeatureBase excels at combining streaming and historical data in real-time, allowing you to analyze data as soon at is available in FeatureBase with no need for time-consuming preprocessing or preaggregation. From here, partner with your FeatureBase representative to better understand how FeatureBase will work for your organization’s specific needs.
 
 ## Queries
 

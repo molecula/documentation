@@ -6,7 +6,7 @@ sidebar_label: Data Directory Structure
 
 In FeatureBase version 3.x, the data directory structure was updated to account for the new implementation of roaring B-tree format and etcd being used to manage key/value store. 
 
-In general, the Molecula team would like to discourage reliance on any particular details of the directory structure.
+In general, the FeatureBase team would like to discourage reliance on any particular details of the directory structure.
 
 FeatureBase v3.x:
 ```

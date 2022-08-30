@@ -2,6 +2,8 @@
 title: Streaming From Apache Kafka
 ---
 
+ **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes. 
+
 This tutorial will provide an example of one way you can ingest data from Apache Kafka to FeatureBase Cloud.
 
 ## Installing the Kafka Client Library
@@ -45,8 +47,8 @@ KAFKA_SASL_USERNAME = None
 KAFKA_SASL_PASSWORD = None
 
 # FeatureBase Cloud username/password
-FEATUREBASE_USERNAME = '{Molecula Username}'
-FEATUREBASE_PASSWORD = '{Molecula Password}'
+FEATUREBASE_USERNAME = '{FeatureBase Username}'
+FEATUREBASE_PASSWORD = '{FeatureBase Password}'
 
 # FeatureBase Cloud > Data Sources > {Source} > "Ingest Endpoint"
 FEATUREBASE_STREAMING_ENDPOINT = 'https://data.molecula.cloud/v1/sinks/{Sink UUID}'
