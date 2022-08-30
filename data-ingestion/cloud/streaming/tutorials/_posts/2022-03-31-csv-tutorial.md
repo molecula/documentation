@@ -363,7 +363,7 @@ if __name__ == "__main__":
 Save the code snippet below to a file name of your choice, fill in all variables under "ENTER ALL VARIABLES HERE", and execute the ```python3 <your name>.py``` command.
 
 ```python
-# Copyright 2022 Molecula Corp.
+# Copyright 2022 Molecula Corp. (DBA FeatureBase)
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy 
 # of this software and associated documentation files (the "Software"), to deal 

@@ -441,7 +441,7 @@ if __name__ == "__main__":
 Most of this code should look familiar if following the walthrough above, but some liberty was taken to improve performance by micro batching records together when writing to FeatureBase.
 
 ```python
-# Copyright 2022 Molecula Corp.
+# Copyright 2022 Molecula Corp. (DBA FeatureBase)
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy 
 # of this software and associated documentation files (the "Software"), to deal 
