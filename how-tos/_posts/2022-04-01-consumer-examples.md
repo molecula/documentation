@@ -8,7 +8,7 @@ sidebar_label: Consumer Usage Examples
 Also refer to the [ingester configuration reference](/reference/data-ingestion/ingester-configuration) page for details on configuration flags for all consumers.
 
 
-# Molecula consumer binaries
+# FeatureBase consumer binaries
 
 <!--
 molecula-consumer-furan - customer-specific, deprecated

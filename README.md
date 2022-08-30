@@ -1,6 +1,6 @@
 # Molecula Documentation
 
-This repository is hosted with GitHub pages with the live site found at: https://docs.molecula.cloud.
+This repository is hosted with GitHub pages with the live site found at: https://docs.featurebase.com.
 
 - [How Tos](#how-tos)
   * [Editing a Page](#editing-a-page)
@@ -9,7 +9,7 @@ This repository is hosted with GitHub pages with the live site found at: https:/
   * [Create a new Folder in the Navigation](#create-a-new-folder-in-the-navigation)
     + [Example Directory and Subdirectory](#example-directory-and-subdirectory)
 - [Building the Documentation Locally](#building-the-documentation-locally)
-- [Publishing to docs.molecula.cloud](#publishing-to-docsmoleculacloud)
+- [Publishing to docs.featurebase.com](#publishing-to-docsfeaturebasecom)
 
 ## How Tos
 
@@ -77,7 +77,7 @@ Assuming we want the following folder structure:
 ```
 Hello/
   World
-  Molecula
+  FeatureBase
 ```
 
 We would write the following:
@@ -90,8 +90,8 @@ nav:
       - title: World
         category: world
 
-      - title: Molecula
-        category: molecula 
+      - title: FeatureBase
+        category: FeatureBase 
   
 ```
 
@@ -131,8 +131,8 @@ For larger content edits or for changes to the theme, you'll likely need to clon
 
 
 
-## Publishing to docs.molecula.cloud
-You can think of the `main` branch as being a place to stage changes and the `gh-pages` branch as the publish copy found on https://docs.molecula.cloud.
+## Publishing to docs.featurebase.com
+You can think of the `main` branch as being a place to stage changes and the `gh-pages` branch as the publish copy found on https://docs.featurebase.com.
 
 When ready to go live with updates, **do not use the UI!** Instead use the following instructions below via terminal:
 

@@ -4,6 +4,7 @@ title: Data Types
 sidebar_label: Data Types
 ---
 
+
 <!--
 TODO: ensure all default values and ranges are defined for constraints
 Clarify what CACHETYPE does for users in a concise way if it comes into UI:
@@ -17,7 +18,7 @@ Add Bool to types:
 
 -->
 
- **⚠ WARNING:** This page contains information that only applies to Molecula's Cloud offering. Additionally, this page represents a work in progress that is subject to frequent changes. 
+ **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes. 
 
 ## Data Types
 

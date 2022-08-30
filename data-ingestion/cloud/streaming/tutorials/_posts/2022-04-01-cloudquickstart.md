@@ -4,14 +4,14 @@ title: Getting Started With Streaming
 sidebar_label: Getting Started With Streaming
 ---
 
- **⚠ WARNING:** This page contains information that only applies to Molecula's Cloud offering. Additionally, this page represents a work in progress that is subject to frequent changes. 
+ **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes. 
 
 
 ## Prerequisites
 
 The following Quick Start Guide requires the following:
 
-1. You have signed up with Molecula and have a user account and your credentials
+1. You have signed up with FeatureBase Cloud and have a user account and your credentials
 2. You have a linux environment capable of communicating with the public internet and running cURL commands
 
 ## Getting Started
@@ -20,7 +20,7 @@ The guide will take you from nothing in the product to having a small database w
 
 ### Getting A Token
 
-Molecula uses Oauth2.0 for all authorization, so every API call must be accompanied with a valid token. You can get tokens by passing your credentials to [https://id.molecula.cloud](https://id.molecula.cloud).
+FeatureBase Cloud uses Oauth2.0 for all authorization, so every API call must be accompanied with a valid token. You can get tokens by passing your credentials to [https://id.molecula.cloud](https://id.molecula.cloud).
 
 Inputs:
 1. USERNAME - your email

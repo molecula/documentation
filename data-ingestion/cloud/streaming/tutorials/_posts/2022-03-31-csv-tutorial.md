@@ -4,6 +4,7 @@ title: Streaming in a CSV
 
 ---
 
+ **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes. 
 
 This tutorial will break down into steps how to load a CSV file into FeatureBase using an ingest endpoint, but if you'd rather look at the finished tutorial, please see the full source code at the bottom of this article.
 
@@ -184,7 +185,7 @@ def make_json(csvFilePath, jsonFilePath, columnnames, delim=',', header=True):
     #Create empty list to track files created
     file_list = []
 
-    print("Writing Molecula JSON Data File "+jsonFilePath)
+    print("Writing FeatureBase JSON Data File "+jsonFilePath)
     f = open(jsonFilePath, 'w', encoding='utf-8') 
     file_list.append(jsonFilePath)
 
@@ -217,7 +218,7 @@ def make_json(csvFilePath, jsonFilePath, columnnames, delim=',', header=True):
                     f.write('] }')
                     f.close()
                     file_list.append(jsonFilePath+"_"+str(i-2))
-                    print("Writing Molecula JSON Data File "+jsonFilePath+"_"+str(i-2))
+                    print("Writing FeatureBase JSON Data File "+jsonFilePath+"_"+str(i-2))
                     f = open(jsonFilePath+"_"+str(i-2), 'w', encoding='utf-8')
                     f.write('{ "records": [\n')
                     rdelim = ""
@@ -343,7 +344,7 @@ def main():
     # 
     # Convert CSV to JSON and optionally post records if you have an ingest endpoint
     #
-    print("Converting CSV Data "+CSV_FILE_PATH+" to Molecula JSON Data "+JSON_FILE_PATH)
+    print("Converting CSV Data "+CSV_FILE_PATH+" to FeatureBase JSON Data "+JSON_FILE_PATH)
     files = make_json(CSV_FILE_PATH, JSON_FILE_PATH, FIELD_NAMES, DELIMETER, HEADER)
     if FEATUREBASE_USERNAME != '' and FEATUREBASE_PASSWORD != '' and FEATUREBASE_STREAMING_ENDPOINT != '':
         token = featurebase_authenticate(FEATUREBASE_USERNAME,FEATUREBASE_PASSWORD)
@@ -429,7 +430,7 @@ def make_json(csvFilePath, jsonFilePath, columnnames, delim=',', header=True):
     #Create empty list to track files created
     file_list = []
 
-    print("Writing Molecula JSON Data File "+jsonFilePath)
+    print("Writing FeatureBase JSON Data File "+jsonFilePath)
     f = open(jsonFilePath, 'w', encoding='utf-8') 
     file_list.append(jsonFilePath)
 
@@ -462,7 +463,7 @@ def make_json(csvFilePath, jsonFilePath, columnnames, delim=',', header=True):
                     f.write('] }')
                     f.close()
                     file_list.append(jsonFilePath+"_"+str(i-2))
-                    print("Writing Molecula JSON Data File "+jsonFilePath+"_"+str(i-2))
+                    print("Writing FeatureBase JSON Data File "+jsonFilePath+"_"+str(i-2))
                     f = open(jsonFilePath+"_"+str(i-2), 'w', encoding='utf-8')
                     f.write('{ "records": [\n')
                     rdelim = ""
@@ -577,7 +578,7 @@ def main():
     # 
     # Convert CSV to JSON and optionally post records if you have an ingest endpoint
     #
-    print("Converting CSV Data "+CSV_FILE_PATH+" to Molecula JSON Data "+JSON_FILE_PATH)
+    print("Converting CSV Data "+CSV_FILE_PATH+" to FeatureBase JSON Data "+JSON_FILE_PATH)
     files = make_json(CSV_FILE_PATH, JSON_FILE_PATH, FIELD_NAMES, DELIMETER, HEADER)
     if FEATUREBASE_USERNAME != '' and FEATUREBASE_PASSWORD != '' and FEATUREBASE_STREAMING_ENDPOINT != '':
         token = featurebase_authenticate(FEATUREBASE_USERNAME,FEATUREBASE_PASSWORD)

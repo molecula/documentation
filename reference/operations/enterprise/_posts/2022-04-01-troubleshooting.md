@@ -6,7 +6,7 @@ sidebar_label: Troubleshooting and Support
 
 ## Support Channels
 
-*   Please contact Molecula Support at [support@molecula.com](mailto:support@molecula.com) for help!
+*   Please contact FeatureBase Support at [support@molecula.com](mailto:support@molecula.com) for help!
 *   We're happy to share a Slack channel, and are available for in-person meetings and calls as needed.
 
 

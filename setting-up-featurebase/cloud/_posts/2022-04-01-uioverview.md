@@ -4,7 +4,7 @@ title: UI Overview & Navigation
 sidebar_label: UI Overview & Navigation
 ---
 
- **⚠ WARNING:** This page contains information that only applies to Molecula's Cloud offering. Additionally, this page represents a work in progress that is subject to frequent changes. 
+ **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes. 
 
 The user interface is meant to make provisioning, loading, querying, and monitoring your databases easy. When you log in on app.molecula.cloud, you will see a navigation bar on the left hand side of the screen. This is used to navigate between the different areas of the UI. This navigation bar is persisted to allow for switching between key areas quickly. The main working area of the page will populate based on the area you select. Each of the main areas is detailed below.
 

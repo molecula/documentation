@@ -6,9 +6,9 @@ sidebar_label: Host System
 
 ## Operating System Configuration
 
-This page discusses software configuration issues commonly encountered when deploying Molecula. For hardware requirements or scaling, look at [Sizing Molecula](/how-tos/size-molecula-database).
+This page discusses software configuration issues commonly encountered when deploying FeatureBase. For hardware requirements or scaling, look at [Sizing FeatureBase](/how-tos/size-molecula-database).
 
-Molecula's data storage splits the database into a potentially large number of files, which are open simultaneously. Most Unix-derived systems limit the number of simultaneous open files for a given process or user, and these limits are frequently small enough to be a problem. Similarly, there may be limits on the number of memory-mapped regions allowed in a process. These may need to be changed,
+FeatureBase's data storage splits the database into a potentially large number of files, which are open simultaneously. Most Unix-derived systems limit the number of simultaneous open files for a given process or user, and these limits are frequently small enough to be a problem. Similarly, there may be limits on the number of memory-mapped regions allowed in a process. These may need to be changed,
 either temporarily during initial development and testing, or as a machine-wide configuration change that persists across restarts.
 
 Throughout these instructions, commands given with a root prompt (`#`) are expected to require root privileges; you can run them in a root shell, or using `sudo`.
@@ -17,7 +17,7 @@ Throughout these instructions, commands given with a root prompt (`#`) are expec
 
 You can make temporary changes just to run the software once, or persistent changes which will survive reboots. We document both because the one-off changes are much easier to make, but in a production environment you will be happier making persistent changes.
 
-To temporarily increase the open file limit, you should be able to use `ulimit -n`. If you can't set the limit high enough, you will need root privileges. The `ulimit` program only affects the limits of the shell it's run in and child processes of that shell, so you can't use `sudo ulimit` to change the limit of your current shell; if you need to set a higher limit, launch a new shell using `sudo -s` or the equivalent, then change the ulimit, then use `su` to start a new shell running as your regular user but inheriting the higher limits. We do not recommend running Molecula with root privileges.
+To temporarily increase the open file limit, you should be able to use `ulimit -n`. If you can't set the limit high enough, you will need root privileges. The `ulimit` program only affects the limits of the shell it's run in and child processes of that shell, so you can't use `sudo ulimit` to change the limit of your current shell; if you need to set a higher limit, launch a new shell using `sudo -s` or the equivalent, then change the ulimit, then use `su` to start a new shell running as your regular user but inheriting the higher limits. We do not recommend running FeatureBase with root privileges.
 
 To temporarily increase the allowable memory-mapped regions on a Linux system, you can use the `sysctl` command, or just the `proc` filesystem:
 
@@ -91,7 +91,7 @@ On SSDs, TRIM should be enabled to reclaim the memory blocks that are no longer 
 
 ### Mac OS Systems
 
-On Mac OS, `ulimit` does not behave predictably, and the way to change the limits changes between releases. Additionally, the system's system integrity protection (SIP) functionality may prevent attempts to change this. For a more detailed writeup, have a look at Wilson Mar's [maximum limits](https://wilsonmar.github.io/maximum-limits/) page. The number of processes limit described there shouldn't be significant for Molecula. Mac OS does not seem to have a direct parallel to the maximum map count limits found on Linux systems.
+On Mac OS, `ulimit` does not behave predictably, and the way to change the limits changes between releases. Additionally, the system's system integrity protection (SIP) functionality may prevent attempts to change this. For a more detailed writeup, have a look at Wilson Mar's [maximum limits](https://wilsonmar.github.io/maximum-limits/) page. The number of processes limit described there shouldn't be significant for FeatureBase. Mac OS does not seem to have a direct parallel to the maximum map count limits found on Linux systems.
 
 You can temporarily raise the open file limit using `launchctl limit maxfiles 262144 262144`, although this will not persist across reboots. To persist it across reboots, you need to cause this command to be run during system startup every time. The easiest way to do this is by adding things to `/Library/LaunchDaemons`, but you can't do this while SIP is enabled, and you can't run `csrutil` once the system is up and running.
 

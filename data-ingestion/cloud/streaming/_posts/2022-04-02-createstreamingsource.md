@@ -4,7 +4,7 @@ title: Create An Ingest Endpoint
 sidebar_label: Create An Ingest Endpoint
 ---
 
- **⚠ WARNING:** This page contains information that only applies to Molecula's Cloud offering. Additionally, this page represents a work in progress that is subject to frequent changes. 
+ **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes. 
 
 In order to create an ingest endpoint, the following pre-requisites must be met:
 
