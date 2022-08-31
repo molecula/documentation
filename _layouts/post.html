@@ -17,15 +17,26 @@ layout: default
 {% include anchor_headings.html html=content anchorBody='<i class="fa-solid fa-link"></i>' anchorClass="anchor text-gray-200 font-lighter ml-1 lg:hidden no-underline text-mol-maya" %}
 
 
-
-
-
 <div class="space-y-100 border-t border-gray-200 mt-10 py-10 text-mol-slate sm:text-center">
   <h5 class="text-sm font-bold">Something missing or incorrect?</h5>
   {% assign branch = "main" %}
-  <a rel="nofollow" href="https://github.com/{{ site.github.repository_nwo }}/edit/{{ branch }}/{{ page.path }}" class="text-sm font-medium">
-    Help us improve this article
-  </a>
+  <a id="improve_link">Help us improve this article!</a>
+  <script defer r={{ site.github.repository_nwo }} b={{ branch }} p={{ page.path }}>
+    (function() {
+      var repo = document.currentScript.getAttribute('r')
+      var branch = document.currentScript.getAttribute('b')
+      var page = document.currentScript.getAttribute('p')
+      if (page.includes("reference/data-querying-ref")) {
+        page = page.replace("reference/data-querying-ref", "data-querying");
+      }
+   
+      link = "https://github.com/" + repo + "/edit/" + branch + "/" + page;
+      document.getElementById("improve_link").href = link;
+      document.getElementById("improve_link").rel = "nofollow";
+      document.getElementById("improve_link").class = "text-sm font-medium";
+    })();
+  </script>
+  
 </div>
 
 <!-- END _layouts/post.html -->
