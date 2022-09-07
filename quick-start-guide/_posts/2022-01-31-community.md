@@ -38,30 +38,30 @@ You can see the latest FeatureBase release [here](https://github.com/FeatureBase
 
 Click on the option that best meets your hardware's needs to download the tarball containing the latest FeatureBase binary.
 
-If you need to download the release from a remote server, you can perform a `wget` command.
+If you need to download the release programmatically, you can perform a `wget` command.
 
 <!---
 if there is a way to get this generic, please update! Seems like github as of 9/7/22 needs the name of the file, which I think will change with each release.
 -->
-Example for linux arm64:
-`wget https://github.com/FeatureBaseDB/featurebase/releases/latest/download/featurebase-community-v1.0.0-linux-arm64.tar.gz`
+**Example for linux arm64:**
+
+```
+wget https://github.com/FeatureBaseDB/featurebase/releases/latest/download/featurebase-community-v1.0.0-linux-arm64.tar.gz
+```
  
 
 ## Configuring FeatureBase - MacOS
 
->Note: The FeatureBase executable are built for x86_64 and ARM64 CPU architectures. If you aren't running macOS, there are two other options. You can install and run FeatureBase on [Linux](#configuring-featurebase---linux) or a Docker container. 
+>**Note:**  The FeatureBase executable are built for x86_64 and ARM64 CPU architectures. If you aren't running macOS, there are two other options. You can install and run FeatureBase on [Linux](#configuring-featurebase---linux) or a Docker container. 
 
->**Note:** Make sure you have ```wget```. If not, run ```brew install wget```. 
-
->**Note:** If you receive this error, it can be resolved in security & privacy settings on your Mac
->```"featurebase" cannot be opened because the developer cannot be verified"```
+>**Note:** Make sure you have ```wget``` if you want to download the release programmatically. To install, run ```brew install wget```. 
 
 First, open the Terminal application and type the code below to access the ```Downloads``` folder. 
 ```
 cd ~/Downloads
 ```
 
-Next, extract the ```.tar.gz file``` , copy the FeatureBase binary located in the ```featurebase=<version+architecture>/``` directory in the extract to your ```/usr/local/bin folder```, and make it executable. 
+Next, extract the ```.tar.gz file``` , copy the FeatureBase binary located in the ```featurebase-<version+architecture>/``` directory in the extract to your ```/usr/local/bin folder```, and make it executable. 
   
 For the MacOS AMD64 Version: 
 ```
@@ -132,7 +132,7 @@ Next, run the `featurebase server` process in the background by running:
 ```
 featurebase server -c /etc/featurebase.conf &
 ```
->**Note:** You may see a warning message similar to `“featurebase” can’t be opened because Apple cannot check it for malicious software.` If so, you need to navigate to "Security & Privacy" -> "General" settings to allow featurebase to be opened and run.
+>**Note:** You may see an error message similar to `“featurebase” can’t be opened because Apple cannot check it for malicious software.` or `"featurebase" cannot be opened because the developer cannot be verified"`. If so, you can resolve this issue by navigating to "Security & Privacy" -> "General" settings.
 
 This concludes the deployment of FeatureBase on MacOS. Continue with [Restore 1 Billion Records](#restore-1b-records-of-demo-data-from-s3) to load data into your FeatureBase deployment.
 
@@ -141,7 +141,7 @@ This concludes the deployment of FeatureBase on MacOS. Continue with [Restore 1 
 
 >**Note:** If you aren't running Linux, there are two other options. You can install and run FeatureBase on [macOS](#configuring-featurebase---macos) or a Docker container. Note that FeatureBase executable is built for x86_64 and ARM64 CPU architectures.
 
->**Note:** Make sure you have ```wget``` . If not, run ```sudo yum install wget``` or ```sudo apt install wget```
+>**Note:** Make sure you have ```wget``` if you want to download the release programmatically. To install, run ```sudo yum install wget``` or ```sudo apt install wget```
 
 First, download the appropriate binary for your system [here](https://github.com/FeatureBaseDB/featurebase/releases/latest).
 
@@ -292,7 +292,7 @@ Do we want to mention that this data can be used in 15 minutes with the cloud pr
 >**Please note that this file is large (~14GB) and contains over 1B records. Make sure that you have sufficient local storage. On average, it takes about 30 minutes to download, but actual download time may depend on your connection speed.**
 
 
->**To use your own data - check out our documentation for creating new sources [here](/reference/data-ingestion/ingester-configuration)
+>**To use your own data** - check out our documentation for creating new sources [here](/reference/data-ingestion/ingester-configuration)
 
 Next, in a new terminal window, make a directory for the data: 
 ```
@@ -322,7 +322,9 @@ This doesn't work in safari as of 9/7/2022
 
 Now, you can run queries in the [FeatureBase web application](http://localhost:10101/)
 
->**Note:** Please use Google Chrome when using the UI
+>**Note:** If the link above doesn't work for you:
+>1. Try using Google Chrome
+>2. Paste `localhost:10101` into your browser
 
 You can monitor health of the FeatureBase cluster and other activity on the homepage.
 ![Cluster Health](https://user-images.githubusercontent.com/97700520/170797631-d80cebff-ddb1-4ee3-a56b-e8b6e94d453b.png)
@@ -386,11 +388,9 @@ As you can see, the latency is in the sub-second time frame even when using comp
 ![Figure 6 Complex SUM](https://user-images.githubusercontent.com/97700520/172648422-2d20bd75-1805-4f99-822d-6825e90075d1.png)
 
 
->**NOTE:**
+>**NOTE:** When aggregating over a SET field, values for a record will be included in multiple groups if not excluded in the query. For example, when SUM(income) is used with a GROUP BY of “education”, income for a record with both ‘Bachelor’s degree’ and ‘High school diploma or GED’ will be included in both groups.
 
->When aggregating over a SET field, values for a record will be included in multiple groups if not excluded in the query. For example, when SUM(income) is used with a GROUP BY of “education”, income for a record with both ‘Bachelor’s degree’ and ‘High school diploma or GED’ will be included in both groups.
-
->It is common for a single person to have multiple values for a field that may seem contradictory or redundant, like “education”. This may be due to differences in status over time as data are collected and aggregated. A person may be categorized as having “education” status of “Some college” and later be categorized as having a “Bachelor’s degree”. When those two data sources are matched up, the person may have multiple values associated with them.
+>**NOTE:** It is common for a single person to have multiple values for a field that may seem contradictory or redundant, like “education”. This may be due to differences in status over time as data are collected and aggregated. A person may be categorized as having “education” status of “Some college” and later be categorized as having a “Bachelor’s degree”. When those two data sources are matched up, the person may have multiple values associated with them.
 
 Additionally, aggregations may include the AVERAGE argument.
 
@@ -417,6 +417,7 @@ WHERE t2.bools = 'available_for_hire' and t1.hobbies = 'Teaching';
 ```
 
 >**NOTE:** Included in the demo dataset is a table known as skills, please use the discovery queries to take a look at it!
+
 ![Figure 8  Inner Join Query](https://user-images.githubusercontent.com/97700520/170796998-7ce559da-58db-44c5-aa9b-a1a8c0b47c2b.png)
 
 
