@@ -5,7 +5,16 @@ title: Community Quick Start Guide
 ## Welcome to your FeatureBase Trial!
 
 <!---
-With the rebrand to FeatureBase, we should consider updating the use of molecula as users and in directories in the future. This needs to be coordinated with both this guide and the files that come in community releases
+With the rebrand to FeatureBase, we should consider updating the use of molecula as users and in directories in the future. This needs to be coordinated with both this guide and the files that come in community releases.
+There are also some things in the featurebase --help we should try to change over time:
+Update the docs listed: Complete documentation is available
+at https://docs.molecula.cloud/.
+
+"Molecula FeatureBase" version should probably change: Molecula FeatureBase v3.20.0 (Aug 25 2022 7:08PM, 6562b60) go1.19
+this is also listed as Pilosa in the featurebase server sys out:
+2022-09-07T20:41:25.725203Z INFO:  Molecula Pilosa v3.20.0 (Aug 25 2022 7:08PM, 6562b60) go1.19
+
+There are other various comments in this QSG for things we can ideally make better over time.
 -->
 
 Follow the guide outlined below for a hands-on demonstration of low-latency queries at scale using FeatureBase Community edition. As you work through the guide, please note any questions or feedback that you may have for the FeatureBase team. We’re always looking for ways to improve the experience!
@@ -28,6 +37,14 @@ You can see the latest FeatureBase release [here](https://github.com/FeatureBase
 
 
 Click on the option that best meets your hardware's needs to download the tarball containing the latest FeatureBase binary.
+
+If you need to download the release from a remote server, you can perform a `wget` command.
+
+<!---
+if there is a way to get this generic, please update! Seems like github as of 9/7/22 needs the name of the file, which I think will change with each release.
+-->
+Example for linux arm64:
+`wget https://github.com/FeatureBaseDB/featurebase/releases/latest/download/featurebase-community-v1.0.0-linux-arm64.tar.gz`
  
 
 ## Configuring FeatureBase - MacOS
@@ -49,13 +66,13 @@ Next, extract the ```.tar.gz file``` , copy the FeatureBase binary located in th
 For the MacOS AMD64 Version: 
 ```
 tar -zxvf featurebase-community-v1.0.0-darwin-amd64.tar.gz
-sudo cp ~/Downloads/featurebase-community-v1.0.0-darwin-amd64/featurebase-v3.20.0-darwin-amd64/featurebase /usr/local/bin/
+sudo cp ~/Downloads/featurebase-v3.20.0-darwin-amd64/featurebase /usr/local/bin/
 chmod ugo+x /usr/local/bin/featurebase
 ```
 For the MacOS ARM64 Version: 
 ```
 tar -zxvf featurebase-community-v1.0.0-darwin-arm64.tar.gz
-sudo cp ~/Downloads/featurebase-community-v1.0.0-darwin-arm64/featurebase-v3.20.0-darwin-arm64/featurebase /usr/local/bin/
+sudo cp ~/Downloads/featurebase-v3.20.0-darwin-arm64/featurebase /usr/local/bin/
 chmod ugo+x /usr/local/bin/featurebase
 ``` 
 >**Note:** The copy or cp command above moves the FeatureBase binary to ```/usr/local/bin/```. 
@@ -131,8 +148,9 @@ First, download the appropriate binary for your system [here](https://github.com
 Next, extract the ```.tar.gz file``` , copy the featurebase binary located in the ```featurebase=<version_architecture>/``` directory in the extract to your ```/usr/local/bin folder```, and make it executable. 
 
 ```
-chmod +x featurebase
-sudo cp featurebase /usr/local/bin
+tar -zxvf featurebase-community-v1.0.0-linux-arm64.tar.gz
+chmod +x featurebase-v3.20.0-linux-arm64/featurebase
+sudo cp featurebase-v3.20.0-linux-arm64/featurebase /usr/local/bin
 ```
 
 >**Note:** The copy or ```cp``` command above moves the ```featurebase``` binary to /usr/local/bin/. Ensure this folder is in your path variable by, running ```echo $PATH``` in the command line and confirming ```/usr/local/bin/``` is there. If it's not, run ```export PATH=$PATH:/usr/local/bin``` to append it to your path variable.
@@ -229,15 +247,13 @@ You get a message that looks like this:
 
 ```
 ● featurebase.service - "Service for FeatureBase"
-     Loaded: loaded (/etc/systemd/system/featurebase.service; static; vendor preset: enabled)
-     Active: active (running) since Fri 2021-10-08 13:29:38 CDT; 12s ago
-   Main PID: 470112 (featurebase)
-      Tasks: 17 (limit: 18981)
-     Memory: 33.2M
-     CGroup: /system.slice/featurebase.service
-             └─470112 /usr/local/bin/featurebase server -c /etc/featurebase.conf
+   Loaded: loaded (/etc/systemd/system/featurebase.service; disabled; vendor preset: disabled)
+   Active: active (running) since Wed 2022-09-07 20:13:13 UTC; 6s ago
+ Main PID: 30396 (featurebase)
+   CGroup: /system.slice/featurebase.service
+           └─30396 /usr/local/bin/featurebase server -c /etc/featurebase.conf
 
-Oct 08 13:29:38 user systemd[1]: Started "Service for FeatureBase".
+Sep 07 20:13:13 ip-10-0-0-5.us-east-2.compute.internal systemd[1]: Started "Service for FeatureBase".
 ```
 The key here is ```Active: active (running)....``` If you see something else, the following command is a good place to start troubleshooting.
 ```
@@ -269,6 +285,10 @@ In order to use FeatureBase, you’ll need data! In a real-life situation, the F
 
 First, download the demo dataset from S3 using by clicking [this link](https://se-public-datasets.s3.us-east-2.amazonaws.com/cseg0_backup.tar.gz)
 
+<!---
+Do we want to mention that this data can be used in 15 minutes with the cloud product here? 
+-->
+
 >**Please note that this file is large (~14GB) and contains over 1B records. Make sure that you have sufficient local storage. On average, it takes about 30 minutes to download, but actual download time may depend on your connection speed.**
 
 
@@ -295,7 +315,14 @@ Once it's completed successfully, you'll see this message:
 ... INFO:  http: Server closed
 ```
 
+<!---
+Try FeatureBase Cloud at app.molecula.cloud will need to change
+This doesn't work in safari as of 9/7/2022
+-->
+
 Now, you can run queries in the [FeatureBase web application](http://localhost:10101/)
+
+>**Note:** Please use Google Chrome when using the UI
 
 You can monitor health of the FeatureBase cluster and other activity on the homepage.
 ![Cluster Health](https://user-images.githubusercontent.com/97700520/170797631-d80cebff-ddb1-4ee3-a56b-e8b6e94d453b.png)
