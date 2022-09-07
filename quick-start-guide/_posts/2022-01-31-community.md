@@ -1,27 +1,33 @@
 ---
-title: Enterprise Quick Start Guide
+title: Community Quick Start Guide
 ---
 
 ## Welcome to your FeatureBase Trial!
 
-Follow the guide outlined below for a hands-on demonstration of low-latency queries at scale using our FeatureBase Cloud platform. As you work through the guide, please note any questions or feedback that you may have for the FeatureBase team. We’re always looking for ways to improve the experience!
+<!---
+With the rebrand to FeatureBase, we should consider updating the use of molecula as users and in directories in the future. This needs to be coordinated with both this guide and the files that come in community releases
+-->
+
+Follow the guide outlined below for a hands-on demonstration of low-latency queries at scale using FeatureBase Community edition. As you work through the guide, please note any questions or feedback that you may have for the FeatureBase team. We’re always looking for ways to improve the experience!
 
 In this demonstration you will:
 
-1. Download a single-node FeatureBase binary
+1. Download a FeatureBase binary
 2. Configure and run FeatureBase
 3. Restore two large-scale datasets into the database
 4. Run a set of analytics queries
 
 >If you run into any roadblocks or have questions throughout the demonstration, please reach out to your FeatureBase representative or email se@featurebase.com.
 
-## Download Single-Node FeatureBase Binary
-First, sign up for your [Free Trial](https://www.featurebase.com/). 
+## Download FeatureBase Binary
+To download releases of FeatureBase, you must have a github account.
 
->Please note that by clicking ```Start Free``` you agree to the [Terms of Service](https://www.molecula.com/featurebase-end-user-license-agreement/) and to receive occasional marketing emails from the FeatureBase team. You also understand that we will process your personal information in accordance with our [Privacy Policy](https://www.featurebase.com/privacy-policy/).
+You can see the latest FeatureBase release [here](https://github.com/FeatureBaseDB/featurebase/releases/latest)
+
+>Please note that by downloading FeatureBase you agree to the [License](https://github.com/FeatureBaseDB/featurebase/blob/master/LICENSE-2.0.txt) and to receive occasional marketing emails from the FeatureBase team. You also understand that we will process your personal information in accordance with our [Privacy Policy](https://www.featurebase.com/privacy-policy/).
 
 
-Click ```Download``` on the option that best meets your needs to download the tarball containing the latest single-node FeatureBase binary.
+Click on the option that best meets your hardware's needs to download the tarball containing the latest FeatureBase binary.
  
 
 ## Configuring FeatureBase - MacOS
@@ -38,18 +44,18 @@ First, open the Terminal application and type the code below to access the ```Do
 cd ~/Downloads
 ```
 
-Next, extract the ```.tar.gz file``` and copy the featurebase binary to your ```/usr/local/bin folder```.
+Next, extract the ```.tar.gz file``` , copy the FeatureBase binary located in the ```featurebase=<version+architecture>/``` directory in the extract to your ```/usr/local/bin folder```, and make it executable. 
   
 For the MacOS AMD64 Version: 
 ```
-tar -zxvf single_node_featurebase-latest-darwin-amd64.tar.gz
-sudo cp ~/Downloads/darwin-amd64/featurebase /usr/local/bin/
+tar -zxvf featurebase-community-v1.0.0-darwin-amd64.tar.gz
+sudo cp ~/Downloads/featurebase-community-v1.0.0-darwin-amd64/featurebase-v3.20.0-darwin-amd64/featurebase /usr/local/bin/
 chmod ugo+x /usr/local/bin/featurebase
 ```
 For the MacOS ARM64 Version: 
 ```
-tar -zxvf featurebase-v3.11.0-darwin-arm64.tar.gz
-sudo cp -r featurebase-v3.11.0-darwin-arm64 /usr/local/bin/featurebase
+tar -zxvf featurebase-community-v1.0.0-darwin-arm64.tar.gz
+sudo cp ~/Downloads/featurebase-community-v1.0.0-darwin-arm64/featurebase-v3.20.0-darwin-arm64/featurebase /usr/local/bin/
 chmod ugo+x /usr/local/bin/featurebase
 ``` 
 >**Note:** The copy or cp command above moves the FeatureBase binary to ```/usr/local/bin/```. 
@@ -57,6 +63,10 @@ Ensure this folder is in your path variable by, running ```echo $PATH``` in the 
 If it's not, run ```export PATH=$PATH:/usr/local/bin``` to append it to your path variable.
   
 Next, configure the FeatureBase server by creating and running the configuration file. Go to [FeatureBase Configuration](/setting-up-featurebase/enterprise/featurebase-configuration) for more on configuring FeatureBase.
+
+<!---
+we now include this file in a release, so we might want to consider making these align and conform in the future.
+-->
 
 ```
 sudo touch /etc/featurebase.conf
@@ -86,12 +96,15 @@ log-path = "/var/log/molecula/featurebase.log"
 
 In the code above, ```bind``` tells FeatureBase to listen for HTTP request on all IPv4 addresses on the local machine at port ```10101```. ```bind-grpc``` tells FeatureBase to listen for gRPC request on all IPv4 address on the local machine at port ```20101```. ```data-dir``` and ```log-path``` tell FeatureBase to write data and logs to their respective locations. 
 
+You'll notice there is a generic featurebase.conf within the release that can be referenced and used outside of this guide.
+
 
 ### Setup Log and Data Folders
 ```featurebase.conf``` defined the ```data-dir``` and the ```log-path```. Here we'll want to create those folders and set the ```molecula``` user as the owner. The data directory is where FeatureBase puts the startup log file and the actual data that comprises the FeatureBase indexes. 
 
 Create a log and data folder and change the owner: 
- ```
+
+```
 sudo mkdir -p /var/log/molecula && sudo chown $USER /var/log/molecula
 sudo mkdir -p /var/lib/molecula && sudo chown $USER /var/lib/molecula
 ```
@@ -102,7 +115,7 @@ Next, run the `featurebase server` process in the background by running:
 ```
 featurebase server -c /etc/featurebase.conf &
 ```
-This conclude the deployment of FeatureBase on MacOS. Continue with [Restore 1 Billion Records](#restore-1b-records-of-demo-data-from-s3) to load data into your FeatureBase deployment.
+This concludes the deployment of FeatureBase on MacOS. Continue with [Restore 1 Billion Records](#restore-1b-records-of-demo-data-from-s3) to load data into your FeatureBase deployment.
 
 
 ## Configuring FeatureBase - Linux
@@ -111,9 +124,10 @@ This conclude the deployment of FeatureBase on MacOS. Continue with [Restore 1 B
 
 >**Note:** Make sure you have ```wget``` . If not, run ```sudo yum install wget``` or ```sudo apt install wget```
 
-First, download the appropriate binary for your system [here](https://www.molecula.com/download-binary-trial/).
+First, download the appropriate binary for your system [here](https://github.com/FeatureBaseDB/featurebase/releases/latest).
 
-Next, ensure the binary is executable and move it to /usr/local/bin:
+Next, extract the ```.tar.gz file``` , copy the featurebase binary located in the ```featurebase=<version_architecture>/``` directory in the extract to your ```/usr/local/bin folder```, and make it executable. 
+
 ```
 chmod +x featurebase
 sudo cp featurebase /usr/local/bin
@@ -125,6 +139,10 @@ Next, create the configuration file:
 ```
 sudo nano /etc/featurebase.conf
 ```
+
+<!---
+we now include this file in a release, so we might want to consider making these align and conform in the future.
+-->
 
 Copy and paste the contents below. Then save and exit.
 ```
@@ -147,7 +165,12 @@ log-path = "/var/log/molecula/featurebase.log"
  
 Above, ```bind``` tells FeatureBase to listen for HTTP request on all IPv4 addresses on the local machine at port ```10101```. ```bind-grpc``` tells FeatureBase to listen for gRPC request on all IPv4 address on the local machine at port ```20101```. ```data-dir``` and ```log-path``` tell FeatureBase to write data and logs to their respective locations. 
 
+You'll notice there is a generic featurebase.conf within the release that can be referenced and used outside of this guide.
+
 ## Configure FeatureBase Service Unit
+<!---
+we now include the debian and redhat .service file in releases, so we may want to consider making these aligned or used in the future.
+-->
 On Linux, we recommend running FeatureBase as a ```systemd``` service unit. To learn more about ```systemd``` and units, go [here](https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files). To configure the FeatureBase service unit's function, we'll create a ```.service``` file.
 
 ```
@@ -345,7 +368,7 @@ Additionally, aggregations may include the AVERAGE argument.
 ```sql
 SELECT AVG(income) FROM cseg;
 ```
-![Figure 7  average income](https://user-images.githubusercontent.com/97700520/170796927-e7fc7f66-258d-49d2-a47f-a192d237ea9d.png)
+![Figure 7 average income](https://user-images.githubusercontent.com/97700520/170796927-e7fc7f66-258d-49d2-a47f-a192d237ea9d.png)
 
 >Note that we don’t currently support full SQL, but are working toward expanding SQL functionality. For example, the AVERAGE function is not currently supported in GROUP BY queries and will be added soon.
 
@@ -366,9 +389,6 @@ WHERE t2.bools = 'available_for_hire' and t1.hobbies = 'Teaching';
 
 >**NOTE:** Included in the demo dataset is a table known as skills, please use the discovery queries to take a look at it!
 ![Figure 8  Inner Join Query](https://user-images.githubusercontent.com/97700520/170796998-7ce559da-58db-44c5-aa9b-a1a8c0b47c2b.png)
-
-
-
 
 
 
