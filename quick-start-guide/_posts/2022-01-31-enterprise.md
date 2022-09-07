@@ -13,12 +13,12 @@ In this demonstration you will:
 3. Restore two large-scale datasets into the database
 4. Run a set of analytics queries
 
->If you run into any roadblocks or have questions throughout the demonstration, please reach out to your FeatureBase representative or email SE@molecula.com.
+>If you run into any roadblocks or have questions throughout the demonstration, please reach out to your FeatureBase representative or email se@featurebase.com.
 
 ## Download Single-Node FeatureBase Binary
-First, sign up for your [Free Trial](https://www.molecula.com/start-free-trial/). 
+First, sign up for your [Free Trial](https://www.featurebase.com/). 
 
->Please note that by clicking ```Start Free``` you agree to the [Terms of Service](https://www.molecula.com/featurebase-end-user-license-agreement/) and to receive occasional marketing emails from the FeatureBase team. You also understand that we will process your personal information in accordance with our [Privacy Policy](https://www.molecula.com/privacy/).
+>Please note that by clicking ```Start Free``` you agree to the [Terms of Service](https://www.molecula.com/featurebase-end-user-license-agreement/) and to receive occasional marketing emails from the FeatureBase team. You also understand that we will process your personal information in accordance with our [Privacy Policy](https://www.featurebase.com/privacy-policy/).
 
 
 Click ```Download``` on the option that best meets your needs to download the tarball containing the latest single-node FeatureBase binary.
@@ -349,7 +349,7 @@ SELECT AVG(income) FROM cseg;
 
 >Note that we don’t currently support full SQL, but are working toward expanding SQL functionality. For example, the AVERAGE function is not currently supported in GROUP BY queries and will be added soon.
 
->**If you have issues with your queries, please contact a [FeatureBase Representative](mailto:se@molecula.com). FeatureBase has a native language, called PQL, and we can help you translate your SQL queries to get the desired results.**
+>**If you have issues with your queries, please contact a [FeatureBase Representative](mailto:se@featurebase.com). FeatureBase has a native language, called PQL, and we can help you translate your SQL queries to get the desired results.**
 
 ### INNER JOINs at Scale
 

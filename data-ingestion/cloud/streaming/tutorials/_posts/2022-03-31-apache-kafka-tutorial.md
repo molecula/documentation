@@ -26,7 +26,7 @@ Before we begin it’s always a good idea to make sure you have all the credenti
 
 - Any credentials and permissions needed (if cluster secured) to read from the Kafka topic.
 
-- FeatureBase Cloud credentials. If you don’t have an account yet then [sign up for a free trial](https://www.molecula.com/start-free-trial/) (no credit card needed).
+- FeatureBase Cloud credentials. If you don’t have an account yet then [sign up for a free trial](https://www.featurebase.com/cloud) (no credit card needed).
 
 - The endpoint to an [existing Cloud ingest endpoint](/data-ingestion/cloud/streaming/createstreamingsource). In this tutorial you'll find the [schema](#creating-a-featurebase-source-schema) needed to create a new one and follow along, but a source will need to be configured and an endpoint available for configuration before testing with your data.
 

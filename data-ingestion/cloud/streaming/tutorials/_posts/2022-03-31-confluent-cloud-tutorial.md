@@ -22,7 +22,7 @@ Before we begin it's always a good idea to make sure you have all the credential
 
 * An API key and secret with permission to read from the Kafka topic.
 
-* FeatureBase Cloud credentials. If you don't have an account yet then [sign up for a free trial](https://www.molecula.com/start-free-trial/) (no credit card needed).
+* FeatureBase Cloud credentials. If you don't have an account yet then [sign up for a free trial](https://www.featurebase.com/cloud) (no credit card needed).
 
 * An existing Cloud ingest endpoint.
 
