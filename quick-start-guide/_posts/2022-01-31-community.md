@@ -2,7 +2,7 @@
 title: Community Quick Start Guide
 ---
 
-## Welcome to your FeatureBase Trial!
+## Welcome to FeatureBase!
 
 <!---
 With the rebrand to FeatureBase, we should consider updating the use of molecula as users and in directories in the future. This needs to be coordinated with both this guide and the files that come in community releases.
@@ -23,7 +23,7 @@ In this demonstration you will:
 
 1. Download a FeatureBase binary
 2. Configure and run FeatureBase
-3. Restore two large-scale datasets into the database
+3. Restore two large-scale datasets into FeatureBase
 4. Run a set of analytics queries
 
 >If you run into any roadblocks or have questions throughout the demonstration, please reach out to your FeatureBase representative or email se@featurebase.com.
