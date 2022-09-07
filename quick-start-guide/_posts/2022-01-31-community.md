@@ -115,6 +115,8 @@ Next, run the `featurebase server` process in the background by running:
 ```
 featurebase server -c /etc/featurebase.conf &
 ```
+>**Note:** You may see a warning message similar to `“featurebase” can’t be opened because Apple cannot check it for malicious software.` If so, you need to navigate to "Security & Privacy" -> "General" settings to allow featurebase to be opened and run.
+
 This concludes the deployment of FeatureBase on MacOS. Continue with [Restore 1 Billion Records](#restore-1b-records-of-demo-data-from-s3) to load data into your FeatureBase deployment.
 
 
