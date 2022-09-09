@@ -13,7 +13,7 @@ Note that FeatureBase server requires a high limit for open files. Check the doc
 
 Grab the appropriate FeatureBase binary for your system from the release you were provided, or from https://releases.molecula.cloud/.
 
-The FeatureBase binary can be run directly, with no setup and minimal configuration. For a production installation, some additional setup may be appropriate; see the [installation guide](/how-tos/install-featurebase).
+The FeatureBase binary can be run directly, with no setup and minimal configuration. For a production installation, some additional setup may be appropriate; see the [installation guide](/setting-up-featurebase/enterprise/installing-featurebase). 
 
 **NOTE:** 
 FeatureBase runs well on Linux and MacOS. It will not run on Windows.
