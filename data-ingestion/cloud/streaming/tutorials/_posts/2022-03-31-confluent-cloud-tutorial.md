@@ -158,7 +158,7 @@ def featurebase_authenticate(username, password):
 
   # Send HTTP POST request
   response = requests.post(
-    url  = "https://id.molecula.cloud", 
+    url  = "https://id.featurebase.com", 
     json = { 'USERNAME' : username, 'PASSWORD' : password })
 
   # Check for a HTTP 200 OK status code to confirm success.
@@ -315,7 +315,7 @@ def featurebase_authenticate(username, password):
 
   # Send HTTP POST request
   response = requests.post(
-    url  = "https://id.molecula.cloud", 
+    url  = "https://id.featurebase.com", 
     json = { 'USERNAME' : username, 'PASSWORD' : password })
 
   # Check for a HTTP 200 OK status code to confirm success.
@@ -358,7 +358,7 @@ def on_message(content, token):
   # Convert to FeatureBase Cloud format.
   #
   # For more details read our documentation on this topics at: 
-  # https://docs.molecula.cloud/data-ingestion/cloud/streaming/streamingoverview
+  # https://docs.featurebase.com/data-ingestion/cloud/streaming/streamingoverview
   #
   # {
   #   "records": [
@@ -379,14 +379,14 @@ def on_message(content, token):
   #
   # Send request to push data into FeatureBase Cloud
   #
-  # See: https://docs.molecula.cloud/data-ingestion/cloud/streaming/ingeststreamingsource
+  # See: https://docs.featurebase.com/data-ingestion/cloud/streaming/ingeststreamingsource
   #
   response = requests.post(
     url     = FEATUREBASE_STREAMING_ENDPOINT, 
     data    = payload,
     headers = { 
       # Need to pass the OAuth 2.0 IdToken we retrieved after authenticating 
-      # with https://id.molecula.cloud.
+      # with https://id.featurebase.com.
       'Authorization' : f'Bearer {token}', # 
       # The FeatureBase Cloud REST API requires the request body to be JSON.
       'Content-Type'  : 'application/json'

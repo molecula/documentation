@@ -20,7 +20,7 @@ The guide will take you from nothing in the product to having a small database w
 
 ### Getting A Token
 
-FeatureBase Cloud uses Oauth2.0 for all authorization, so every API call must be accompanied with a valid token. You can get tokens by passing your credentials to [https://id.molecula.cloud](https://id.molecula.cloud).
+FeatureBase Cloud uses Oauth2.0 for all authorization, so every API call must be accompanied with a valid token. You can get tokens by passing your credentials to https://id.featurebase.com
 
 Inputs:
 1. USERNAME - your email
@@ -28,7 +28,7 @@ Inputs:
 
 **HTTP API Reference:**
 ```shell
-curl --location --request POST 'https://id.molecula.cloud' \
+curl --location --request POST 'https://id.featurebase.com' \
 --data-raw '{
     "USERNAME": "<username>",
     "PASSWORD": "<password>"
@@ -47,7 +47,7 @@ If you'd like the command to only return the ID token for easier copying, you ca
 
 **HTTP API Reference:**
 ```shell
-curl --location --request POST 'https://id.molecula.cloud' \
+curl --location --request POST 'https://id.featurebase.com' \
 --data-raw '{
     "USERNAME": "<username>",
     "PASSWORD": "<password>"
@@ -57,22 +57,22 @@ curl --location --request POST 'https://id.molecula.cloud' \
 
 ### Create A Database
 
-The first step is creating a database. We will be using the "8GB" option for this walkthrough. For more information on databases, see [Database Overview](/setting-up-featurebase/cloud/deployments-overview).  The command below will start creating your database. You can also do this in the UI on the "Databases" page by clicking “New Database”, selecting "Standard", entering "iris_demo_database" for the name, and choosing the "8GB" option.
+The first step is creating a database. We will be using the 8GB shape for this walk-through. For more information on databases, see [Database Overview](/setting-up-featurebase/cloud/databases-overview).  The command below will start creating your database. You can also do this in the UI on the "Databases" page by clicking “New Database”, selecting "Standard", entering "iris_demo_database" for the name, and choosing the "8GB" option.
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
 2. database_name - the name you want to give your database i.e iris_demo_database
-3. database_shape - database shape/memory you are choosing i.e. 8GB
+3. database_shape - database shape/memory you are choosing i.e. 8GB-Development
 
 **HTTP API Reference:**
 ```shell
-curl --location --request POST 'https://api.molecula.cloud/v2/databases' \
+curl --location --request POST 'https://api.featurebase.com/v2/databases' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "name": "iris_demo_database",
     "database_options":{
-        "shape": "8GB"
+        "shape": "8GB-Development"
     }
 }'
 ```
@@ -81,7 +81,7 @@ A database takes a minute or so to create. You can see the status of the "iris_d
 
 **HTTP API Reference:**
 ```shell
-curl --location --request GET 'https://api.molecula.cloud/v2/databases' \
+curl --location --request GET 'https://api.featurebase.com/v2/databases' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' 
 ```
@@ -111,7 +111,7 @@ Once created, go to the "COLUMNS" tab in order to add or delete columns. You wil
 
 #### Create An Ingest Endpoint
 
-After a table exists, you can configure a source to load data into it. The ingest endpoint configuration will yield a persistent endpoint that allows you to stream data to. For more information on databases, see [Databases Overview](/setting-up-featurebase/cloud/deployments-overview). Below you can see our JSON schema that details the data being streamed to the source. The below schema contains various flower species and their measurements. The command below will start creating your database. 
+After a table exists, you can configure a source to load data into it. The ingest endpoint configuration will yield a persistent endpoint that allows you to stream data to. For more information on databases, see [Databases Overview](/setting-up-featurebase/cloud/databases-overview). Below you can see our JSON schema that details the data being streamed to the source. The below schema contains various flower species and their measurements. The command below will start creating your database. 
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
@@ -122,7 +122,7 @@ Inputs:
 
 **HTTP API Reference:**
 ```shell
-curl --location --request POST 'https://api.molecula.cloud/v2/sinks' \
+curl --location --request POST 'https://api.featurebase.com/v2/sinks' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' \
 --data-raw '{    
@@ -195,7 +195,7 @@ Like databases, sources takes some time to create. You should be able to see the
 
 **HTTP API Reference:**
 ```shell
-curl --location --request GET 'https://api.molecula.cloud/v2/sinks' \
+curl --location --request GET 'https://api.featurebase.com/v2/sinks' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' 
 ```
@@ -213,7 +213,7 @@ Inputs:
 
 **HTTP API Reference:**
 ```shell
-curl --location --request POST 'https://data.molecula.cloud/v2/sinks/<sourceId>' \
+curl --location --request POST 'https://data.featurebase.com/v2/sinks/<sourceId>' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -395,7 +395,7 @@ Inputs:
 
 **HTTP API Reference (SQL):**
 ```shell
-curl --location --request POST 'https://data.molecula.cloud/v2/databases/<database id>/query' \
+curl --location --request POST 'https://data.featurebase.com/v2/databases/<database id>/query' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' \
 --data-raw '{ 
@@ -407,7 +407,7 @@ curl --location --request POST 'https://data.molecula.cloud/v2/databases/<databa
 **HTTP API Reference (PQL):**
 PQL
 ```shell
-curl --location --request POST 'https://data.molecula.cloud/v2/databases/<database id>/query' \
+curl --location --request POST 'https://data.featurebase.com/v2/databases/<database id>/query' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' \
 --data-raw '{ 
@@ -432,7 +432,7 @@ Inputs:
 
 **HTTP API Reference:**
 ```shell
-curl --location --request DELETE 'https://api.molecula.cloud/v2/sinks/<sourceid>' \
+curl --location --request DELETE 'https://api.featurebase.com/v2/sinks/<sourceid>' \
 --header 'Authorization: Bearer <IdToken>'  
 ```
 
@@ -440,7 +440,7 @@ This will take some time to delete. You can check the status of the delete with 
 
 **HTTP API Reference:**
 ```shell
-curl --location --request GET 'https://api.molecula.cloud/v2/sinks/<sourceid>' \
+curl --location --request GET 'https://api.featurebase.com/v2/sinks/<sourceid>' \
 --header 'Authorization: Bearer <IdToken>'  
 ```
 
@@ -453,7 +453,7 @@ Inputs:
 
 **HTTP API Reference:**
 ```shell
-curl --location --request DELETE 'https://api.molecula.cloud/v2/tables/<database id>/iris_table' \
+curl --location --request DELETE 'https://api.featurebase.com/v2/tables/<database id>/iris_table' \
 --header 'Authorization: Bearer <IdToken>'  
 ```
 
@@ -465,7 +465,7 @@ Inputs:
 
 **HTTP API Reference:**
 ```shell
-curl --location --request DELETE 'https://api.molecula.cloud/v2/databases/<database id>' \
+curl --location --request DELETE 'https://api.featurebase.com/v2/databases/<database id>' \
 --header 'Authorization: Bearer <IdToken>' 
 ```
 
@@ -473,7 +473,7 @@ This will take some time to delete. You can check the status of the delete with 
 
 **HTTP API Reference:**
 ```shell
-curl --location --request GET 'https://api.molecula.cloud/v2/databases/<database id>' \
+curl --location --request GET 'https://api.featurebase.com/v2/databases/<database id>' \
 --header 'Authorization: Bearer <IdToken>' 
 ```
 

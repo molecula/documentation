@@ -22,7 +22,7 @@ You will receive an error ("Network Error") if either limit is exceeded.
 In order to query data, the following prerequisites must be met:
 
 1. A database exists that is in the “Running” state
-- Click [here](/setting-up-featurebase/cloud/creating-deployment) to learn how to create a database
+- Click [here](/setting-up-featurebase/cloud/creating-database) to learn how to create a database
 - Click [here](/reference/api/cloud/api) to see the database API docs
 2. A table exists in that database
 - Click [here](/data-ingestion/cloud/tables) to learn how to create a table
@@ -34,7 +34,7 @@ In the User interface, clicking the “Query” section on the left hand navigat
 
 **HTTP API Reference (SQL):**
 ```shell
-curl --location --request POST 'https://data.molecula.cloud/v1/deployments/<database id>/query' \
+curl --location --request POST 'https://data.featurebase.com/v2/databases/<database id>/query' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: Content-Type: application/json' \
 --data-raw '{ 
@@ -45,7 +45,7 @@ curl --location --request POST 'https://data.molecula.cloud/v1/deployments/<data
 
 **HTTP API Reference (PQL):**
 ```shell
-curl --location --request POST 'https://data.molecula.cloud/v1/deployments/<database id>/query' \
+curl --location --request POST 'https://data.featurebase.com/v2/databases/<database id>/query' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: Content-Type: application/json' \
 --data-raw '{ 

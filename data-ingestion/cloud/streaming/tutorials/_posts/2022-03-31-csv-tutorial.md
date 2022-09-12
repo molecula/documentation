@@ -50,7 +50,7 @@ FIELD_NAMES = []
 # FeatureBase Cloud username/password
 FEATUREBASE_USERNAME = ''
 FEATUREBASE_PASSWORD = ''
-# FeatureBase Cloud > Data Sources > {Source} > "Ingest Endpoint" e.g. "https://data.molecula.cloud/v1/sinks/...
+# FeatureBase Cloud > Data Sources > {Source} > "Ingest Endpoint" e.g. "https://data.featurebase.com/v2/sinks/...
 FEATUREBASE_STREAMING_ENDPOINT = ''
 ```
 
@@ -100,7 +100,7 @@ You'll need to create an ingest endpoint and table that maps to this data. The b
 {    
     "name": "<endpoint_name>",    
   	"sink_details": {
-      "deployment_id": "<database_id>",
+      "database_id": "<database_id>",
       "table": "<table_name>"
     },
     "schema": {
@@ -266,7 +266,7 @@ def featurebase_authenticate(username, password):
 
   # Send HTTP POST request
   response = requests.post(
-    url  = "https://id.molecula.cloud", 
+    url  = "https://id.featurebase.com", 
     json = { 'USERNAME' : username, 'PASSWORD' : password })
 
   # Check for a HTTP 200 OK status code to confirm success.
@@ -295,7 +295,7 @@ def post_records(token, json_file,datahost):
     Args:
         token string: IDtoken for auth
         json_file (string): 1 to n json records in a file
-        datahost (string): Cloud ingest endpoint e.g. "https://data.molecula.cloud/v1/sinks/..."
+        datahost (string): Cloud ingest endpoint e.g. "https://data.featurebase.com/v2/sinks/..."
 
     Returns:
         int: Count of successful records if no errors
@@ -409,7 +409,7 @@ FIELD_NAMES = []
 # FeatureBase Cloud username/password
 FEATUREBASE_USERNAME = ''
 FEATUREBASE_PASSWORD = ''
-# FeatureBase Cloud > Data Sources > {Source} > "Ingest Endpoint" e.g. "https://data.molecula.cloud/v1/sinks/...
+# FeatureBase Cloud > Data Sources > {Source} > "Ingest Endpoint" e.g. "https://data.featurebase.com/v2/sinks/...
 FEATUREBASE_STREAMING_ENDPOINT = ''
 
 def make_json(csvFilePath, jsonFilePath, columnnames, delim=',', header=True):
@@ -510,7 +510,7 @@ def featurebase_authenticate(username, password):
 
     # Send HTTP POST request
     response = requests.post(
-    url  = "https://id.molecula.cloud", 
+    url  = "https://id.featurebase.com", 
     json = { 'USERNAME' : username, 'PASSWORD' : password })
 
     # Check for a HTTP 200 OK status code to confirm success.
@@ -534,7 +534,7 @@ def post_records(token, json_file,datahost):
     Args:
         token string: IDtoken for auth
         json_file (string): 1 to n json records in a file
-        datahost (string): Cloud ingest endpoint e.g. "https://data.molecula.cloud/v1/sinks/..."
+        datahost (string): Cloud ingest endpoint e.g. "https://data.featurebase.com/v2/sinks/..."
 
     Returns:
         int: Count of successful records if no errors
@@ -623,7 +623,7 @@ You'll need to create a table and an ingest endpoint that maps to this data. The
 {    
     "name": "<endpoint_name",    
     "sink_details": {
-      "deployment_id": "<database_id>",
+      "database_id": "<database_id>",
       "table": "<table_name>"
     },
     "schema": {

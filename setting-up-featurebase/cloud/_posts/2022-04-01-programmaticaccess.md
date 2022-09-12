@@ -8,11 +8,11 @@ sidebar_label: Programmatic Access
 
 Everything that can be done in the user interface can be accomplished via REST api calls. Furthermore, APIs allow you to perform additional actions as well as gather more metadata about your organization and data. You will likely interact with the APIs in a production setting. Full Documentation for the APIs can be found [here](/reference/api/cloud/api).
 
-FeatureBase Cloud uses Oauth2.0 for all authorization, so every API call must be accompanied with a valid token. You can get tokens by passing your credentials to https://id.molecula.cloud . The below cURL command can be run on any linux-based system:
+FeatureBase Cloud uses Oauth2.0 for all authorization, so every API call must be accompanied with a valid token. You can get tokens by passing your credentials to https://id.featurebase.com . The below cURL command can be run on any linux-based system:
 
 **HTTP API Reference:**
 ```shell
-curl --location --request POST 'https://id.molecula.cloud' \
+curl --location --request POST 'https://id.featurebase.com' \
 --data-raw '{
     "USERNAME": "<username>",
     "PASSWORD": "<password>"

@@ -4,22 +4,22 @@ title: Databases Overview
 
  **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes. 
 
-Databases are clusters of FeatureBase nodes. All of your data will live in tables within FeatureBase. They are dedicated resources for your data that you can load to and query against, and like common databases, you can only join tables that exist in the same database. Below is a list of database sizes offered: 
+Databases are clusters of FeatureBase nodes. All of your data will live in tables within FeatureBase. They are dedicated resources for your data that you can load to and query against, and like common databases, you can only join tables that exist in the same database. Below is a list of database shapes offered: 
 
-### Sizes
+### Shapes
 
-| Database Memory (GB) | Type        |
-| ---                    | ----------- |
-| 8  (Development)       | dev         |
-| 64 (Development)       | dev         |
-| 16                     | prod        |
-| 32                     | prod        |
-| 64                     | prod        |
-| 128                    | prod        |
-| 256                    | prod        |
-| 512                    | prod        |
-| 1024                   | prod        |
-| 2048                   | prod        |
+| Database Shape | Database Memory (GB) | Purpose        |
+| ---                    | ----------- | | ----------- |
+| 8GB-Development        | 8       | development         |
+| 64GB-Development       | 64      | development         |
+| 16GB                   | 16      | production        |
+| 32GB                   | 32      | production        |
+| 64GB                   | 64      | production        |
+| 128GB                  | 128     | production        |
+| 256GB                  | 256     | production        |
+| 512GB                  | 512     | production        |
+| 1024GB                 | 1024    | production        |
+| 2048GB                 | 2048    | production        |
 
 dev: This database shape is meant for development and testing only
 prod: This database shape is ready for production use, is over-provisioned on disk space and memory to ensure performance, and has data replicated should a node ever go down
