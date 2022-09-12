@@ -1,0 +1,205 @@
+<svg class="railroad-diagram" height="152" viewbox="0 0 384 152" width="384" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(.5 .5)">
+  <g>
+   <path d="M20 21v20m0 -10h20">
+   </path>
+  </g>
+  <g>
+   <path d="M40 31h0">
+   </path>
+   <path d="M344 31h0">
+   </path>
+   <path d="M40 31h20">
+   </path>
+   <g>
+    <path d="M60 31h0">
+    </path>
+    <path d="M324 31h0">
+    </path>
+    <g class="terminal">
+     <path d="M60 31h0">
+     </path>
+     <path d="M156.5 31h0">
+     </path>
+     <rect height="22" rx="10" ry="10" width="96.5" x="60" y="20">
+     </rect>
+     <text x="108.25" y="35">
+      BATCHSIZE
+     </text>
+    </g>
+    <path d="M156.5 31h10">
+    </path>
+    <path d="M166.5 31h10">
+    </path>
+    <g class="non-terminal">
+     <path d="M176.5 31h0">
+     </path>
+     <path d="M324 31h0">
+     </path>
+     <rect height="22" width="147.5" x="176.5" y="20">
+     </rect>
+     <a>
+      <text x="250.25" y="35">
+       integer_literal
+      </text>
+     </a>
+    </g>
+   </g>
+   <path d="M324 31h20">
+   </path>
+   <path d="M40 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10">
+   </path>
+   <g>
+    <path d="M60 61h0">
+    </path>
+    <path d="M324 61h0">
+    </path>
+    <g class="terminal">
+     <path d="M60 61h0">
+     </path>
+     <path d="M156.5 61h0">
+     </path>
+     <rect height="22" rx="10" ry="10" width="96.5" x="60" y="50">
+     </rect>
+     <text x="108.25" y="65">
+      ROWSLIMIT
+     </text>
+    </g>
+    <path d="M156.5 61h10">
+    </path>
+    <path d="M166.5 61h10">
+    </path>
+    <g class="non-terminal">
+     <path d="M176.5 61h0">
+     </path>
+     <path d="M324 61h0">
+     </path>
+     <rect height="22" width="147.5" x="176.5" y="50">
+     </rect>
+     <a>
+      <text x="250.25" y="65">
+       integer_literal
+      </text>
+     </a>
+    </g>
+   </g>
+   <path d="M324 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10">
+   </path>
+   <path d="M40 31a10 10 0 0 1 10 10v40a10 10 0 0 0 10 10">
+   </path>
+   <g>
+    <path d="M60 91h63.75">
+    </path>
+    <path d="M260.25 91h63.75">
+    </path>
+    <g class="terminal">
+     <path d="M123.75 91h0">
+     </path>
+     <path d="M194.75 91h0">
+     </path>
+     <rect height="22" rx="10" ry="10" width="71" x="123.75" y="80">
+     </rect>
+     <text x="159.25" y="95">
+      FORMAT
+     </text>
+    </g>
+    <path d="M194.75 91h10">
+    </path>
+    <path d="M204.75 91h10">
+    </path>
+    <g class="terminal">
+     <path d="M214.75 91h0">
+     </path>
+     <path d="M260.25 91h0">
+     </path>
+     <rect height="22" rx="10" ry="10" width="45.5" x="214.75" y="80">
+     </rect>
+     <text x="237.5" y="95">
+      CSV
+     </text>
+    </g>
+   </g>
+   <path d="M324 91a10 10 0 0 0 10 -10v-40a10 10 0 0 1 10 -10">
+   </path>
+   <path d="M40 31a10 10 0 0 1 10 10v70a10 10 0 0 0 10 10">
+   </path>
+   <g class="non-terminal">
+    <path d="M60 121h28.5">
+    </path>
+    <path d="M295.5 121h28.5">
+    </path>
+    <rect height="22" width="207" x="88.5" y="110">
+    </rect>
+    <a>
+     <text x="192" y="125">
+      bulk_insert_map_option
+     </text>
+    </a>
+   </g>
+   <path d="M324 121a10 10 0 0 0 10 -10v-70a10 10 0 0 1 10 -10">
+   </path>
+  </g>
+  <path d="M 344 31 h 20 m 0 -10 v 20">
+  </path>
+ </g>
+ <style>
+  svg {
+    width: 100%;
+}
+
+path {
+    stroke-width: 3;
+    stroke: black;
+    fill: rgba(0,0,0,0);
+}
+text {
+    font: bold 14px monospace;
+    text-anchor: middle;
+    fill: black;
+}
+text.diagram-text {
+    font-size: 12px;
+}
+text.diagram-arrow {
+    font-size: 16px;
+}
+text.label {
+    text-anchor: start;
+}
+text.comment {
+    font: italic 12px monospace;
+}
+g.special-sequence rect {
+    fill: #ffe79a;
+    stroke: black;
+}
+g.special-sequence text {
+    font-style: italic;
+}
+rect {
+    stroke-width: 3;
+}
+rect.group-box {
+    stroke: gray;
+    stroke-dasharray: 10 5;
+    fill: none;
+}
+g.non-terminal rect {
+    fill: #feffdf;
+    stroke: black;
+}
+g.terminal rect {
+    fill: #feffdf;
+    stroke: black;
+}
+path.diagram-text {
+    stroke-width: 3;
+    stroke: black;
+    fill: white;
+    cursor: help;
+}
+g.diagram-text:hover path.diagram-text {
+    fill: #eee;
+}
+ </style>
+</svg>

@@ -104,6 +104,8 @@ nav:
                 category: write
               - title: Other
                 category: other
+          - title: SQL (preview)
+            category: sql
 
       - title: Operations
         category: operations
