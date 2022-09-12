@@ -11,7 +11,7 @@ Once an “ACTIVE” ingest endpoint exists, data can be streamed to it over HTT
 
 **HTTP API Reference:**
 ```shell
-curl --location --request POST 'https://data.molecula.cloud/v1/sinks/<sink_id>' \
+curl --location --request POST 'https://data.featurebase.com/v2/sinks/<sink_id>' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' \
 --data-raw '{

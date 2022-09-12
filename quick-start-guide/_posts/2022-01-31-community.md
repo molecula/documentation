@@ -7,8 +7,7 @@ title: Community Quick Start Guide
 <!---
 With the rebrand to FeatureBase, we should consider updating the use of molecula as users and in directories in the future. This needs to be coordinated with both this guide and the files that come in community releases.
 There are also some things in the featurebase --help we should try to change over time:
-Update the docs listed: Complete documentation is available
-at https://docs.molecula.cloud/.
+Update the docs listed: Complete documentation is available at https://docs.molecula.cloud/.
 
 "Molecula FeatureBase" version should probably change: Molecula FeatureBase v3.20.0 (Aug 25 2022 7:08PM, 6562b60) go1.19
 this is also listed as Pilosa in the featurebase server sys out:
@@ -134,7 +133,7 @@ featurebase server -c /etc/featurebase.conf &
 ```
 >**Note:** You may see an error message similar to `“featurebase” can’t be opened because Apple cannot check it for malicious software.` or `"featurebase" cannot be opened because the developer cannot be verified"`. If so, you can resolve this issue by navigating to "Security & Privacy" -> "General" settings.
 
-This concludes the deployment of FeatureBase on MacOS. Continue with [Restore 1 Billion Records](#restore-1b-records-of-demo-data-from-s3) to load data into your FeatureBase deployment.
+This concludes the setup of FeatureBase on MacOS. Continue with [Restore 1 Billion Records](#restore-1b-records-of-demo-data-from-s3) to load data into your FeatureBase database.
 
 
 ## Configuring FeatureBase - Linux
@@ -316,8 +315,9 @@ Once it's completed successfully, you'll see this message:
 ```
 
 <!---
-Try FeatureBase Cloud at app.molecula.cloud will need to change
-This doesn't work in safari as of 9/7/2022
+"Try FeatureBase Cloud at app.molecula.cloud" will need to change that is in the current UI
+
+Note: This doesn't work in safari as of 9/7/2022
 -->
 
 Now, you can run queries in the [FeatureBase web application](http://localhost:10101/)
@@ -332,7 +332,7 @@ You can monitor health of the FeatureBase cluster and other activity on the home
 
 ## Data Exploration of Customer Segmentation Feature Table 
 
-It’s always a good idea to understand what the dataset you’re working with contains before you get started. To do this, click on the ‘Tables’ section in the application to display the names of the tables in your deployment.
+It’s always a good idea to understand what the dataset you’re working with contains before you get started. To do this, click on the ‘Tables’ section in the application to display the names of the tables in your database.
 
 ![Figure 1  Tables](https://user-images.githubusercontent.com/97700520/170796333-d1dec693-83c0-4070-a5f6-d5d4fff409e4.png)
 

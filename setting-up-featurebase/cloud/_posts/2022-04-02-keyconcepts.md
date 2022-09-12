@@ -14,6 +14,6 @@ sidebar_label: Key Concepts
 
 **Sources:** Resources that load data into tables within databases. Today, the only source is an ingest endpoint that allows you to stream data into your database over HTTPS. Each endpoint has an associated schema and maps to one table within one database.
 
-**Control Plane:** A centralized layer that contains information and APIs that help you create and manage resources within your organization. You can think of this as the management layer on top of your data. You can tell an API exists in the control plane if the route starts with https://api.molecula.cloud.
+**Control Plane:** A centralized layer that contains information and APIs that help you create and manage resources within your organization. You can think of this as the management layer on top of your data. You can tell an API exists in the control plane if the route starts with https://api.featurebase.com.
 
-**Data Plane:** A layer that contains your data and APIs that let you directly communicate with your data. These APIs directly hit your databases directly and are intended to be used when a high number of concurrent queries and low latency matter. You can tell an API exists in the control plane if the route starts with https://data.molecula.cloud.
+**Data Plane:** A layer that contains your data and APIs that let you directly communicate with your data. These APIs directly hit your databases directly and are intended to be used when a high number of concurrent queries and low latency matter. You can tell an API exists in the control plane if the route starts with https://data.featurebase.com.
