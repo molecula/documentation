@@ -2,7 +2,12 @@
 title:  CREATE TABLE
 ---
 
-This content describes a feature in preview.
+| | |
+|-|-|
+| **ℹ️NOTE** | This page contains information that only applies to SQL Preview functionality (more information [here](/reference/data-querying-ref/sql/sql-overview)). Additionally, this page represents a work in progress that is subject to frequent changes. |
+
+---
+
 
 Creates a FeatureBase table. The the table already exists and `IF NOT EXISTS` is not specified the statement will not be successful. The identifier for the table must conform to the rules of FeatureBase identifiers.
 

@@ -2,7 +2,12 @@
 title: SHOW TABLES
 ---
 
-This content describes a feature in preview.
+| | |
+|-|-|
+| **ℹ️NOTE** | This page contains information that only applies to SQL Preview functionality (more information [here](/reference/data-querying-ref/sql/sql-overview)). Additionally, this page represents a work in progress that is subject to frequent changes. |
+
+---
+
 
 Shows the list of FeatureBase tables that exist on the server.
 
