@@ -405,7 +405,6 @@ curl --location --request POST 'https://data.featurebase.com/v2/databases/<datab
 ```
 
 **HTTP API Reference (PQL):**
-PQL
 ```shell
 curl --location --request POST 'https://data.featurebase.com/v2/databases/<database id>/query' \
 --header 'Authorization: Bearer <IdToken>' \
