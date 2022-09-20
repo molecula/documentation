@@ -5,7 +5,7 @@ title: Python Client Library
 
 ## Client
 
-A basic usage example of the Python client is shown below. Details about PQL query syntax can be found on the [PQL Introduction](/data-querying/pql/introduction) page.
+A basic usage example of the Python client is shown below. Details about PQL query syntax can be found on the [PQL Introduction](/data-querying/pql) page.
 
 
 ```python
