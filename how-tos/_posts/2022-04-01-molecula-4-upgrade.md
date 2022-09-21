@@ -104,7 +104,7 @@ The roaring-migrate binary is included in the FeatureBase release. To update Pil
  - ```backup-dir``` represents the directory where data converted to RBF will be stored. 
 
 #### 4. Stand-up a New FeatureBase
-Instructions for setting up FeatureBase are in the [How to Install FeatureBase](/how-tos/install-featurebase). Also, refer to the [FeatureBase Configuration](/setting-up-featurebase/enterprise/featurebase-configuration) for additional details. This stop is not necessarily dependent on the previous 3, and if your environment allows this, you'll probably want to do this first to minimize downtime.
+Instructions for setting up FeatureBase are in the [How to Install FeatureBase](/setting-up-featurebase/enterprise/installing-featurebase). Also, refer to the [FeatureBase Configuration](/setting-up-featurebase/enterprise/featurebase-configuration) for additional details. This stop is not necessarily dependent on the previous 3, and if your environment allows this, you'll probably want to do this first to minimize downtime.
 
 The new FeatureBase cluster needs to contain an odd number of nodes due to reliance on an embedded `etcd` cluster.
 
