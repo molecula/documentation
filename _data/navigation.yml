@@ -52,6 +52,9 @@ nav:
 
           - title: Other
             category: other
+        
+      - title: SQL (preview)
+        category: sql
 
       - title: Enterprise
         category: enterprise
