@@ -51,7 +51,7 @@ FEATUREBASE_USERNAME = '{FeatureBase Username}'
 FEATUREBASE_PASSWORD = '{FeatureBase Password}'
 
 # FeatureBase Cloud > Data Sources > {Source} > "Ingest Endpoint"
-FEATUREBASE_STREAMING_ENDPOINT = 'https://data.molecula.cloud/v1/sinks/{Sink UUID}'
+FEATUREBASE_STREAMING_ENDPOINT = 'https://data.featurebase.com/v2/sinks/{Endpoint ID}'
 ```
 
 #### Create a Fake Data Generator
@@ -213,7 +213,7 @@ def featurebase_authenticate(username, password):
 
   # Send HTTP POST request
   response = requests.post(
-    url  = "https://id.molecula.cloud", 
+    url  = "https://id.featurebase.com", 
     json = { 'USERNAME' : username, 'PASSWORD' : password })
 
   # Check for a HTTP 200 OK status code to confirm success.
@@ -399,14 +399,14 @@ def on_message(message, token):
   #
   # Send request to push data into FeatureBase Cloud
   #
-  # See: https://docs.molecula.cloud/data-ingestion/cloud/streaming/ingeststreamingsource
+  # See: https://docs.featurebase.com/data-ingestion/cloud/streaming/ingeststreamingsource
   #
   response = requests.post(
     url     = FEATUREBASE_STREAMING_ENDPOINT, 
     data    = payload,
     headers = { 
       # Need to pass the OAuth 2.0 IdToken we retrieved after authenticating 
-      # with https://id.molecula.cloud.
+      # with https://id.featurebase.com.
       'Authorization' : f'Bearer {token}',
       # The FeatureBase Cloud REST API requires the request body to be JSON.
       'Content-Type'  : 'application/json'
@@ -493,7 +493,7 @@ FEATUREBASE_USERNAME = '{Username}'
 FEATUREBASE_PASSWORD = '{Password}'
 
 # FeatureBase Cloud > Data Sources > {Source} > "Ingest Endpoint"
-FEATUREBASE_STREAMING_ENDPOINT = 'https://data.molecula.cloud/v1/sinks/{Sink UUID}'
+FEATUREBASE_STREAMING_ENDPOINT = 'https://data.featurebase.com/v2/sinks/{Endpoint ID}'
 
 ###########################################################
 
@@ -506,7 +506,7 @@ def featurebase_authenticate(username, password):
 
   # Send HTTP POST request
   response = requests.post(
-    url  = "https://id.molecula.cloud", 
+    url  = "https://id.featurebase.com", 
     json = { 'USERNAME' : username, 'PASSWORD' : password })
 
   # Check for a HTTP 200 OK status code to confirm success.
@@ -540,14 +540,14 @@ def on_message(batch, token):
   #
   # Send request to push data into FeatureBase Cloud
   #
-  # See: https://docs.molecula.cloud/data-ingestion/cloud/streaming/ingeststreamingsource
+  # See: https://docs.featurebase.com/data-ingestion/cloud/streaming/ingeststreamingsource
   #
   response = requests.post(
     url     = FEATUREBASE_STREAMING_ENDPOINT, 
     data    = payload,
     headers = { 
       # Need to pass the OAuth 2.0 IdToken we retrieved after authenticating 
-      # with https://id.molecula.cloud.
+      # with https://id.featurebase.com.
       'Authorization' : f'Bearer {token}',
       # The FeatureBase Cloud REST API requires the request body to be JSON.
       'Content-Type'  : 'application/json'

@@ -6,7 +6,7 @@ sidebar_label: Query Data
 
  **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes. 
  
-All data querying within the product is performed over HTTPS. Data is queried using either PQL (Pilosa Query Language), our native query language, or the limited set of SQL we support. To learn more about PQL, please visit the [introduction page](/data-querying/pql/introduction). To learn more about the SQL we support, please visit the [reference](/reference/data-querying/sql) page. As long as an application can issue HTTPS requests, it will be able to query and retrieve data.
+All data querying within the product is performed over HTTPS. Data is queried using either PQL (Pilosa Query Language), our native query language, or the limited set of SQL we support. To learn more about PQL, please visit the [introduction page](/data-querying/pql). To learn more about the SQL we support, please visit the [reference](/data-querying/sql) page. As long as an application can issue HTTPS requests, it will be able to query and retrieve data.
 
 The current query endpoint is a synchronous call that waits for your data to return. There are current limitations to the amount of data that can be returned and the amount of time the query can run. Those limits are shown below:
 
@@ -22,7 +22,7 @@ You will receive an error ("Network Error") if either limit is exceeded.
 In order to query data, the following prerequisites must be met:
 
 1. A database exists that is in the “Running” state
-- Click [here](/setting-up-featurebase/cloud/creating-deployment) to learn how to create a database
+- Click [here](/setting-up-featurebase/cloud/creating-database) to learn how to create a database
 - Click [here](/reference/api/cloud/api) to see the database API docs
 2. A table exists in that database
 - Click [here](/data-ingestion/cloud/tables) to learn how to create a table
@@ -34,7 +34,7 @@ In the User interface, clicking the “Query” section on the left hand navigat
 
 **HTTP API Reference (SQL):**
 ```shell
-curl --location --request POST 'https://data.molecula.cloud/v1/deployments/<database id>/query' \
+curl --location --request POST 'https://data.featurebase.com/v2/databases/<database id>/query' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: Content-Type: application/json' \
 --data-raw '{ 
@@ -45,7 +45,7 @@ curl --location --request POST 'https://data.molecula.cloud/v1/deployments/<data
 
 **HTTP API Reference (PQL):**
 ```shell
-curl --location --request POST 'https://data.molecula.cloud/v1/deployments/<database id>/query' \
+curl --location --request POST 'https://data.featurebase.com/v2/databases/<database id>/query' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: Content-Type: application/json' \
 --data-raw '{ 

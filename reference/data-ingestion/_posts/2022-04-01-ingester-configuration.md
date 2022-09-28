@@ -128,7 +128,7 @@ When all config options are left as default, the `"Config"` field may be omitted
 * `"CustomUnit"`: a 'duration' value which specifies a custom time unit; accepts values like "6h" for 6 hours, "1m30s" for 1 minute and 30 seconds; valid units can be described using "ns", "us", "ms", "s", "m", or "h"
 * `"Granularity"`: the resolution at which the incoming values will be stored. Allowed values are `s`, `ms`, `us`, `ns`. Defaults to `"s"`.
 
-The `"CacheConfig"` option specifies the size and type of a [`TopN`](/data-querying/pql/read/topn) cache for a set or mutex field.
+The `"CacheConfig"` option specifies the size and type of a [`TopN`](/reference/data-querying-ref/pql/read/topn) cache for a set or mutex field.
 This "cache" is used for the `TopN` approximation.
 The default setting is:
 ```json
@@ -143,7 +143,7 @@ Assuming that the cache is full (the field has more than `"CacheSize"` rows with
 
 This cache can also be disabled by setting the type to `"none"`.
 Disabling the `TopN` cache will prevent `TopN` from working.
-When operating on a field without a cache, a slower [`TopK`](/data-querying/pql/read/topk) or sorted [`GroupBy`](/data-querying/pql/read/groupby) query may be used instead.
+When operating on a field without a cache, a slower [`TopK`](/reference/data-querying-ref/pql/read/topk) or sorted [`GroupBy`](/reference/data-querying-ref/pql/read/groupby) query may be used instead.
 
 ### Time Quantum
 

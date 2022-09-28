@@ -52,7 +52,7 @@ The process of copying this data into FeatureBase is referred to as "flushing" i
 
 ## ID generation
 
-When ingesting into Molecula, each record must be associated with a key. Ingesters support four ways to do this, three suitable for production workloads:
+When ingesting into FeatureBase, each record must be associated with a key. Ingesters support four ways to do this, three suitable for production workloads:
 
 - `primary-key-fields`,
 - `id-field`,
@@ -61,7 +61,7 @@ When ingesting into Molecula, each record must be associated with a key. Ingeste
 
 The `id-field` option should be considered when there is an existing field in the data which uniquely identifies each record and consists of contiguous positive integers. For example, the auto-incremented ID field from a relational database is usually perfect for this.
 
-In most other cases, the `primary-key-fields` option should be used. This uses one or more fields, converted to strings, then concatenated (using `|` as the delimiter), to create unique record IDs. When only a single field is used for this, it will *not* be indexed as a field in Molecula. When multiple source fields are used, each individual field will be indexed in Molecula, in addition to being used for the record ID.
+In most other cases, the `primary-key-fields` option should be used. This uses one or more fields, converted to strings, then concatenated (using `|` as the delimiter), to create unique record IDs. When only a single field is used for this, it will *not* be indexed as a field in FeatureBase. When multiple source fields are used, each individual field will be indexed in FeatureBase, in addition to being used for the record ID.
 
 As an example, consider a data set of students across multiple schools, perhaps with a different CSV file for each school:
 
@@ -77,7 +77,7 @@ As an example, consider a data set of students across multiple schools, perhaps 
 | Bowie    |         2 | bd6c     |    15 |    10 |     |
 | Bowie    |         3 | 5651     |    16 |    10 |     |
 
-The studentID column, unique within a single school, serves as an identifier. When ingesting a single file corresponding to a single school, an ingest option like `--id-field=studentID` might work well. This will result in an index with `studentID` as Molecula record IDs, and every *other* column potentially represented as a FeatureBase field, including `school`, `UUID`, `age`, and `grade`.
+The studentID column, unique within a single school, serves as an identifier. When ingesting a single file corresponding to a single school, an ingest option like `--id-field=studentID` might work well. This will result in an index with `studentID` as FeatureBase record IDs, and every *other* column potentially represented as a FeatureBase field, including `school`, `UUID`, `age`, and `grade`.
 
 To ingest multiple files without conflicting IDs, a different approach is required. When an appropriate identifier like a UUID is available, that can be used directly, with an option like `--primary-key-fields=UUID`. This will result in an index with `UUID` as FeatureBase record keys, so the index depends on key translation to convert UUID string values to integer record IDs. Every other column would potentially be represented as a FeatureBase field, including `school`, `studentID`, `age`, and `grade`.
 
@@ -89,7 +89,7 @@ Finally, setting `external-generate` in addition to `auto-generate` uses Feature
 
 ## Kafka Ingester
 
-The Kafka ingester reads Avro-encoded records from a Kafka topic, uses the Confluent schema registry to decode them, and ingests the data into Molecula.
+The Kafka ingester reads Avro-encoded records from a Kafka topic, uses the Confluent schema registry to decode them, and ingests the data into FeatureBase.
 
 [Full configuration reference](/reference/data-ingestion/ingester-configuration#kafka-ingester)
 
@@ -159,7 +159,7 @@ The Kafka delete ingester configuration is the same as the Kafka ingester with t
 
 ## Kafka Static Ingester
 
-The Kafka Static ingester reads JSON-encoded records from a Kafka topic, uses a statically defined schema (with the ingester JSON header format) to decode them, and ingests the data into Molecula.
+The Kafka Static ingester reads JSON-encoded records from a Kafka topic, uses a statically defined schema (with the ingester JSON header format) to decode them, and ingests the data into FeatureBase.
 
 [Full configuration reference](/reference/data-ingestion/ingester-configuration#kafka-static-ingester)
 
@@ -173,13 +173,13 @@ The CSV ingester can read CSV files (optionally gzipped) and ingest them to Feat
 
 ## SQL Ingester
 
-The SQL ingester uses a sql connection (via MSSQL, MySQL, or Postgres) to select data from a sql endpoint, and ingests the data into Molecula. It uses the SQL table column names to [specify how each field](/explanations/ingesters#field-types) should be ingested, similar to the CSV Ingester.
+The SQL ingester uses a sql connection (via MSSQL, MySQL, or Postgres) to select data from a sql endpoint, and ingests the data into FeatureBase. It uses the SQL table column names to [specify how each field](/data-ingestion/enterprise/ingesters#field-types) should be ingested, similar to the CSV Ingester.
 
 [Full SQL Ingester Configuration Reference](/reference/data-ingestion/ingester-configuration#sql-ingester)
 
 ## Field types
 
-Many Molecula ingesters use the same syntax for describing how you want the fields in your source data to be ingested into Molecula. The basic structure is 
+Many Molecula ingesters use the same syntax for describing how you want the fields in your source data to be ingested into FeatureBase. The basic structure is 
 
 `field_name__FieldType_Arg1_Arg2`
 

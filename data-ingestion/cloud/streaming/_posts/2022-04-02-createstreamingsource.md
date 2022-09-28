@@ -9,7 +9,7 @@ sidebar_label: Create An Ingest Endpoint
 In order to create an ingest endpoint, the following pre-requisites must be met:
 
 1. A database exists that is in the “Running” state
-- Click [here](/setting-up-featurebase/cloud/creating-deployment) to learn how to create a database
+- Click [here](/setting-up-featurebase/cloud/creating-database) to learn how to create a database
 - Click [here](/reference/api/cloud/api) to see the database API docs
 2. A table exists in the database
 - Click [here](/data-ingestion/cloud/tables) to learn how to create a table
@@ -31,7 +31,7 @@ Clicking “create source” will start the process of creating your ingest endp
 
 **HTTP API Reference:**
 ```shell
-curl --location --request POST 'https://api.molecula.cloud/v1/sinks' \
+curl --location --request POST 'https://api.featurebase.com/v2/sinks' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' \
 --data-raw '{    
@@ -83,7 +83,7 @@ You will be returned to the “Data Sources” page and see a new entry with you
 
 **HTTP API Reference:**
 ```shell
-curl --location --request GET 'https://api.molecula.cloud/v2/sinks' \
+curl --location --request GET 'https://api.featurebase.com/v2/sinks' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' 
 ```
