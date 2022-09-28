@@ -1,5 +1,5 @@
 ---
-title: SQL (Preview) Overview
+title: SQL (Preview)
 ---
 
 | | |

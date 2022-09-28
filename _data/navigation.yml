@@ -41,21 +41,6 @@ nav:
   - title: Data Querying
     category: data-querying
     subnav:
-      - title: PQL
-        category: pql
-        subnav:
-          - title: Read
-            category: read
-
-          - title: Write
-            category: write
-
-          - title: Other
-            category: other
-        
-      - title: SQL (preview)
-        category: sql
-
       - title: Enterprise
         category: enterprise
         subnav:
