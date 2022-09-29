@@ -1,0 +1,370 @@
+<svg class="railroad-diagram" height="221" viewbox="0 0 541.5 221" width="541.5" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(.5 .5)">
+  <g>
+   <path d="M20 30v20m0 -10h20">
+   </path>
+  </g>
+  <g>
+   <path d="M40 40h0">
+   </path>
+   <path d="M501.5 40h0">
+   </path>
+   <path d="M40 40h20">
+   </path>
+   <g>
+    <path d="M60 40h0">
+    </path>
+    <path d="M481.5 40h0">
+    </path>
+    <g>
+     <path d="M60 40h0">
+     </path>
+     <path d="M162.5 40h0">
+     </path>
+     <path d="M60 40h20">
+     </path>
+     <g class="terminal">
+      <path d="M80 40h8.5">
+      </path>
+      <path d="M134 40h8.5">
+      </path>
+      <rect height="22" rx="10" ry="10" width="45.5" x="88.5" y="29">
+      </rect>
+      <text x="111.25" y="44">
+       AVG
+      </text>
+     </g>
+     <path d="M142.5 40h20">
+     </path>
+     <path d="M60 40a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10">
+     </path>
+     <g class="terminal">
+      <path d="M80 70h0">
+      </path>
+      <path d="M142.5 70h0">
+      </path>
+      <rect height="22" rx="10" ry="10" width="62.5" x="80" y="59">
+      </rect>
+      <text x="111.25" y="74">
+       COUNT
+      </text>
+     </g>
+     <path d="M142.5 70a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10">
+     </path>
+     <path d="M60 40a10 10 0 0 1 10 10v40a10 10 0 0 0 10 10">
+     </path>
+     <g class="terminal">
+      <path d="M80 100h8.5">
+      </path>
+      <path d="M134 100h8.5">
+      </path>
+      <rect height="22" rx="10" ry="10" width="45.5" x="88.5" y="89">
+      </rect>
+      <text x="111.25" y="104">
+       MAX
+      </text>
+     </g>
+     <path d="M142.5 100a10 10 0 0 0 10 -10v-40a10 10 0 0 1 10 -10">
+     </path>
+     <path d="M60 40a10 10 0 0 1 10 10v70a10 10 0 0 0 10 10">
+     </path>
+     <g class="terminal">
+      <path d="M80 130h8.5">
+      </path>
+      <path d="M134 130h8.5">
+      </path>
+      <rect height="22" rx="10" ry="10" width="45.5" x="88.5" y="119">
+      </rect>
+      <text x="111.25" y="134">
+       MIN
+      </text>
+     </g>
+     <path d="M142.5 130a10 10 0 0 0 10 -10v-70a10 10 0 0 1 10 -10">
+     </path>
+     <path d="M60 40a10 10 0 0 1 10 10v100a10 10 0 0 0 10 10">
+     </path>
+     <g class="terminal">
+      <path d="M80 160h8.5">
+      </path>
+      <path d="M134 160h8.5">
+      </path>
+      <rect height="22" rx="10" ry="10" width="45.5" x="88.5" y="149">
+      </rect>
+      <text x="111.25" y="164">
+       SUM
+      </text>
+     </g>
+     <path d="M142.5 160a10 10 0 0 0 10 -10v-100a10 10 0 0 1 10 -10">
+     </path>
+    </g>
+    <path d="M162.5 40h10">
+    </path>
+    <g class="terminal">
+     <path d="M172.5 40h0">
+     </path>
+     <path d="M201 40h0">
+     </path>
+     <rect height="22" rx="10" ry="10" width="28.5" x="172.5" y="29">
+     </rect>
+     <text x="186.75" y="44">
+      (
+     </text>
+    </g>
+    <path d="M201 40h10">
+    </path>
+    <g>
+     <path d="M211 40h0">
+     </path>
+     <path d="M443 40h0">
+     </path>
+     <path d="M211 40h20">
+     </path>
+     <g>
+      <path d="M231 40h0">
+      </path>
+      <path d="M423 40h0">
+      </path>
+      <g>
+       <path d="M231 40h0">
+       </path>
+       <path d="M359 40h0">
+       </path>
+       <path d="M231 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10">
+       </path>
+       <g>
+        <path d="M251 20h88">
+        </path>
+       </g>
+       <path d="M339 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10">
+       </path>
+       <path d="M231 40h20">
+       </path>
+       <g class="terminal">
+        <path d="M251 40h0">
+        </path>
+        <path d="M339 40h0">
+        </path>
+        <rect height="22" rx="10" ry="10" width="88" x="251" y="29">
+        </rect>
+        <text x="295" y="44">
+         DISTINCT
+        </text>
+       </g>
+       <path d="M339 40h20">
+       </path>
+      </g>
+      <path d="M359 40h10">
+      </path>
+      <g class="non-terminal">
+       <path d="M369 40h0">
+       </path>
+       <path d="M423 40h0">
+       </path>
+       <rect height="22" width="54" x="369" y="29">
+       </rect>
+       <a>
+        <text x="396" y="44">
+         expr
+        </text>
+       </a>
+      </g>
+     </g>
+     <path d="M423 40h20">
+     </path>
+     <path d="M211 40a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10">
+     </path>
+     <g class="terminal">
+      <path d="M231 70h81.75">
+      </path>
+      <path d="M341.25 70h81.75">
+      </path>
+      <rect height="22" rx="10" ry="10" width="28.5" x="312.75" y="59">
+      </rect>
+      <text x="327" y="74">
+       *
+      </text>
+     </g>
+     <path d="M423 70a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10">
+     </path>
+    </g>
+    <path d="M443 40h10">
+    </path>
+    <g class="terminal">
+     <path d="M453 40h0">
+     </path>
+     <path d="M481.5 40h0">
+     </path>
+     <rect height="22" rx="10" ry="10" width="28.5" x="453" y="29">
+     </rect>
+     <text x="467.25" y="44">
+      )
+     </text>
+    </g>
+   </g>
+   <path d="M481.5 40h20">
+   </path>
+   <path d="M40 40a10 10 0 0 1 10 10v130a10 10 0 0 0 10 10">
+   </path>
+   <g>
+    <path d="M60 190h11.5">
+    </path>
+    <path d="M470 190h11.5">
+    </path>
+    <g class="terminal">
+     <path d="M71.5 190h0">
+     </path>
+     <path d="M176.5 190h0">
+     </path>
+     <rect height="22" rx="10" ry="10" width="105" x="71.5" y="179">
+     </rect>
+     <text x="124" y="194">
+      PERCENTILE
+     </text>
+    </g>
+    <path d="M176.5 190h10">
+    </path>
+    <path d="M186.5 190h10">
+    </path>
+    <g class="terminal">
+     <path d="M196.5 190h0">
+     </path>
+     <path d="M225 190h0">
+     </path>
+     <rect height="22" rx="10" ry="10" width="28.5" x="196.5" y="179">
+     </rect>
+     <text x="210.75" y="194">
+      (
+     </text>
+    </g>
+    <path d="M225 190h10">
+    </path>
+    <path d="M235 190h10">
+    </path>
+    <g class="non-terminal">
+     <path d="M245 190h0">
+     </path>
+     <path d="M299 190h0">
+     </path>
+     <rect height="22" width="54" x="245" y="179">
+     </rect>
+     <a>
+      <text x="272" y="194">
+       expr
+      </text>
+     </a>
+    </g>
+    <path d="M299 190h10">
+    </path>
+    <path d="M309 190h10">
+    </path>
+    <g class="terminal">
+     <path d="M319 190h0">
+     </path>
+     <path d="M347.5 190h0">
+     </path>
+     <rect height="22" rx="10" ry="10" width="28.5" x="319" y="179">
+     </rect>
+     <text x="333.25" y="194">
+      ,
+     </text>
+    </g>
+    <path d="M347.5 190h10">
+    </path>
+    <path d="M357.5 190h10">
+    </path>
+    <g class="non-terminal">
+     <path d="M367.5 190h0">
+     </path>
+     <path d="M421.5 190h0">
+     </path>
+     <rect height="22" width="54" x="367.5" y="179">
+     </rect>
+     <a>
+      <text x="394.5" y="194">
+       expr
+      </text>
+     </a>
+    </g>
+    <path d="M421.5 190h10">
+    </path>
+    <path d="M431.5 190h10">
+    </path>
+    <g class="terminal">
+     <path d="M441.5 190h0">
+     </path>
+     <path d="M470 190h0">
+     </path>
+     <rect height="22" rx="10" ry="10" width="28.5" x="441.5" y="179">
+     </rect>
+     <text x="455.75" y="194">
+      )
+     </text>
+    </g>
+   </g>
+   <path d="M481.5 190a10 10 0 0 0 10 -10v-130a10 10 0 0 1 10 -10">
+   </path>
+  </g>
+  <path d="M 501.5 40 h 20 m 0 -10 v 20">
+  </path>
+ </g>
+ <style>
+  svg {
+    width: 100%;
+}
+
+path {
+    stroke-width: 3;
+    stroke: black;
+    fill: rgba(0,0,0,0);
+}
+text {
+    font: bold 14px monospace;
+    text-anchor: middle;
+    fill: black;
+}
+text.diagram-text {
+    font-size: 12px;
+}
+text.diagram-arrow {
+    font-size: 16px;
+}
+text.label {
+    text-anchor: start;
+}
+text.comment {
+    font: italic 12px monospace;
+}
+g.special-sequence rect {
+    fill: #ffe79a;
+    stroke: black;
+}
+g.special-sequence text {
+    font-style: italic;
+}
+rect {
+    stroke-width: 3;
+}
+rect.group-box {
+    stroke: gray;
+    stroke-dasharray: 10 5;
+    fill: none;
+}
+g.non-terminal rect {
+    fill: #feffdf;
+    stroke: black;
+}
+g.terminal rect {
+    fill: #feffdf;
+    stroke: black;
+}
+path.diagram-text {
+    stroke-width: 3;
+    stroke: black;
+    fill: white;
+    cursor: help;
+}
+g.diagram-text:hover path.diagram-text {
+    fill: #eee;
+}
+ </style>
+</svg>

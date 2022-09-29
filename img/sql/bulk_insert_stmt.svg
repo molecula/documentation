@@ -1,0 +1,260 @@
+<svg class="railroad-diagram" height="88" viewbox="0 0 1143 88" width="1143" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(.5 .5)">
+  <g>
+   <path d="M20 38v20m0 -10h20">
+   </path>
+  </g>
+  <path d="M40 48h10">
+  </path>
+  <g>
+   <path d="M50 48h0">
+   </path>
+   <path d="M1093 48h0">
+   </path>
+   <g class="terminal">
+    <path d="M50 48h0">
+    </path>
+    <path d="M104 48h0">
+    </path>
+    <rect height="22" rx="10" ry="10" width="54" x="50" y="37">
+    </rect>
+    <text x="77" y="52">
+     BULK
+    </text>
+   </g>
+   <path d="M104 48h10">
+   </path>
+   <path d="M114 48h10">
+   </path>
+   <g class="terminal">
+    <path d="M124 48h0">
+    </path>
+    <path d="M195 48h0">
+    </path>
+    <rect height="22" rx="10" ry="10" width="71" x="124" y="37">
+    </rect>
+    <text x="159.5" y="52">
+     INSERT
+    </text>
+   </g>
+   <path d="M195 48h10">
+   </path>
+   <path d="M205 48h10">
+   </path>
+   <g class="non-terminal">
+    <path d="M215 48h0">
+    </path>
+    <path d="M320 48h0">
+    </path>
+    <rect height="22" width="105" x="215" y="37">
+    </rect>
+    <a>
+     <text x="267.5" y="52">
+      identifier
+     </text>
+    </a>
+   </g>
+   <path d="M320 48h10">
+   </path>
+   <path d="M330 48h10">
+   </path>
+   <g class="terminal">
+    <path d="M340 48h0">
+    </path>
+    <path d="M394 48h0">
+    </path>
+    <rect height="22" rx="10" ry="10" width="54" x="340" y="37">
+    </rect>
+    <text x="367" y="52">
+     FROM
+    </text>
+   </g>
+   <path d="M394 48h10">
+   </path>
+   <path d="M404 48h10">
+   </path>
+   <g class="non-terminal">
+    <path d="M414 48h0">
+    </path>
+    <path d="M553 48h0">
+    </path>
+    <rect height="22" width="139" x="414" y="37">
+    </rect>
+    <a>
+     <text x="483.5" y="52">
+      string_literal
+     </text>
+    </a>
+   </g>
+   <path d="M553 48h10">
+   </path>
+   <g>
+    <path d="M563 48h0">
+    </path>
+    <path d="M1093 48h0">
+    </path>
+    <path d="M563 48a10 10 0 0 0 10 -10v-8a10 10 0 0 1 10 -10">
+    </path>
+    <g>
+     <path d="M583 20h490">
+     </path>
+    </g>
+    <path d="M1073 20a10 10 0 0 1 10 10v8a10 10 0 0 0 10 10">
+    </path>
+    <path d="M563 48h20">
+    </path>
+    <g>
+     <path d="M583 48h0">
+     </path>
+     <path d="M1073 48h0">
+     </path>
+     <g class="terminal">
+      <path d="M583 48h0">
+      </path>
+      <path d="M637 48h0">
+      </path>
+      <rect height="22" rx="10" ry="10" width="54" x="583" y="37">
+      </rect>
+      <text x="610" y="52">
+       WITH
+      </text>
+     </g>
+     <path d="M637 48h10">
+     </path>
+     <path d="M647 48h10">
+     </path>
+     <g class="non-terminal">
+      <path d="M657 48h0">
+      </path>
+      <path d="M830 48h0">
+      </path>
+      <rect height="22" width="173" x="657" y="37">
+      </rect>
+      <a>
+       <text x="743.5" y="52">
+        bulk_insert_option
+       </text>
+      </a>
+     </g>
+     <path d="M830 48h10">
+     </path>
+     <g>
+      <path d="M840 48h0">
+      </path>
+      <path d="M1073 48h0">
+      </path>
+      <path d="M840 48a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10">
+      </path>
+      <g>
+       <path d="M860 28h193">
+       </path>
+      </g>
+      <path d="M1053 28a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10">
+      </path>
+      <path d="M840 48h20">
+      </path>
+      <g>
+       <path d="M860 48h0">
+       </path>
+       <path d="M1053 48h0">
+       </path>
+       <path d="M860 48h10">
+       </path>
+       <g class="non-terminal">
+        <path d="M870 48h0">
+        </path>
+        <path d="M1043 48h0">
+        </path>
+        <rect height="22" width="173" x="870" y="37">
+        </rect>
+        <a>
+         <text x="956.5" y="52">
+          bulk_insert_option
+         </text>
+        </a>
+       </g>
+       <path d="M1043 48h10">
+       </path>
+       <path d="M870 48a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10">
+       </path>
+       <g>
+        <path d="M870 68h173">
+        </path>
+       </g>
+       <path d="M1043 68a10 10 0 0 0 10 -10v0a10 10 0 0 0 -10 -10">
+       </path>
+      </g>
+      <path d="M1053 48h20">
+      </path>
+     </g>
+    </g>
+    <path d="M1073 48h20">
+    </path>
+   </g>
+  </g>
+  <path d="M1093 48h10">
+  </path>
+  <path d="M 1103 48 h 20 m 0 -10 v 20">
+  </path>
+ </g>
+ <style>
+  svg {
+    width: 100%;
+}
+
+path {
+    stroke-width: 3;
+    stroke: black;
+    fill: rgba(0,0,0,0);
+}
+text {
+    font: bold 14px monospace;
+    text-anchor: middle;
+    fill: black;
+}
+text.diagram-text {
+    font-size: 12px;
+}
+text.diagram-arrow {
+    font-size: 16px;
+}
+text.label {
+    text-anchor: start;
+}
+text.comment {
+    font: italic 12px monospace;
+}
+g.special-sequence rect {
+    fill: #ffe79a;
+    stroke: black;
+}
+g.special-sequence text {
+    font-style: italic;
+}
+rect {
+    stroke-width: 3;
+}
+rect.group-box {
+    stroke: gray;
+    stroke-dasharray: 10 5;
+    fill: none;
+}
+g.non-terminal rect {
+    fill: #feffdf;
+    stroke: black;
+}
+g.terminal rect {
+    fill: #feffdf;
+    stroke: black;
+}
+path.diagram-text {
+    stroke-width: 3;
+    stroke: black;
+    fill: white;
+    cursor: help;
+}
+g.diagram-text:hover path.diagram-text {
+    fill: #eee;
+}
+ </style>
+</svg>
