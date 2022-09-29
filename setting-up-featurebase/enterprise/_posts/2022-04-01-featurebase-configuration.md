@@ -40,13 +40,6 @@ FeatureBase can be configured through command line flags, environment variables,
 | metric.host                    | PILOSA_METRIC_HOST                    | FEATUREBASE_METRIC_HOST                           | str   |      |
 | metric.poll-interval           | PILOSA_METRIC_POLL_INTERVAL           | FEATUREBASE_METRIC_POLL_INTERVAL                  | str   |      |
 | metric.service                 | PILOSA_METRIC_SERVICE                 | FEATUREBASE_METRIC_SERVICE                        | str   |      |
-| postgres.bind                  | PILOSA_POSTGRES_BIND                  | FEATUREBASE_POSTGRES_BIND                         | str   |      |
-| postgres.max-connections       | PILOSA_POSTGRES_MAX_CONNECTIONS       | FEATUREBASE_POSTGRES_MAX_CONNECTIONS              | int   |      |
-| postgres.max-startup-size      | PILOSA_POSTGRES_MAX_STARTUP_SIZE      | FEATUREBASE_POSTGRES_MAX_STARTUP_SIZE             | int   |      |
-| postgres.read-timeout          | PILOSA_POSTGRES_READ_TIMEOUT          | FEATUREBASE_POSTGRES_READ_TIMEOUT                 | str   |      |
-| postgres.startup-timeout       | PILOSA_POSTGRES_STARTUP_TIMEOUT       | FEATUREBASE_POSTGRES_STARTUP_TIMEOUT              | str   |      |
-| postgres.write-timout          | PILOSA_POSTGRES_WRITE_TIMOUT          | FEATUREBASE_POSTGRES_WRITE_TIMOUT                 | str   |      |
-| postgres.tls                   | PILOSA_POSTGRES_TLS                   | FEATUREBASE_POSTGRES_TLS                          | dict  |      |
 | profile.block-rate             | PILOSA_PROFILE_BLOCK_RATE             | FEATUREBASE_PROFILE_BLOCK_RATE                    | int   |      |
 | profile.mutex-fraction         | PILOSA_PROFILE_MUTEX_FRACTION         | FEATUREBASE_PROFILE_MUTEX_FRACTION                | int   |      |
 | schema-details-on              | PILOSA_SCHEMA_DETAILS_ON              | FEATUREBASE_SCHEMA_DETAILS_ON                     | bool  |      |
@@ -507,73 +500,13 @@ Size in bytes of mmap to allocate for key translation
       map-size = 10737418240
 ```
 
-#### Postgres Endpoint Bind
+#### SQL (preview) enabled
 
-Address to bind a postgres wire protocol endpoint.
-No postgres endpoint will be exposed unless a bind address is specified.
-Requires Molecula v3.0 or newer.
+Enable or disable the SQL (preview) feature.
 
 ```toml
-    [postgres]
-      bind = "localhost:55432"
-```
-
-#### Postgres Endpoint TLS
-
-The TLS configuration for the postgres endpoint is structured the same as the TLS configuration for FeatureBase's other endpoints, but placed under `[postgres.tls]`.
-If TLS is configured on the postgres endpoint, FeatureBase will reject unsecured connections.
-
-Example configuration with mutual TLS:
-
-```toml
-    [postgres]
-      bind = "localhost:55432"
-      [postgres.tls]
-        certificate = "/srv/featurebase/certs/server.crt"
-        key = "/srv/featurebase/certs/server.key"
-        ca-certificate = "/srv/featurebase/certs/ca.crt"
-        enable-client-verification = true
-```
-
-#### Postgres Endpoint Connection Limit
-
-The postgres endpoint has support for a connection limit.
-This is generally not necessary, so it is disabled by default.
-
-```toml
-    [postgres]
-      connection-limit = 10000
-```
-
-#### Postgres Maximum Startup Packet Size
-
-By default, the postgres endpoint uses an 8 MiB limit on incoming postgres startup packets.
-This should typically be sufficient, but may be exceeded if a client sends an unusually large amount of configuration data.
-Oversized startup packets are typically caused by connecting with a different protocol (e.g. HTTP).
-
-```toml
-    [postgres]
-      max-startup-size = 10000000
-```
-
-#### Postgres Timeouts
-
-In order to detect stalled clients, the Postgres endpoint has connection read and write timeouts.
-There is also a startup timeout, which is used for connection setup.
-
-The read timeout does not impact idle connections.
-Idle connections will only be closed by the server if TCP keepalive reports a break in the connection.
-TCP keepalives use the default configuration provided by the host.
-
-:::caution
-Due to a limitation of the postgres wire protocol, raising the write timeout may delay the shutdown of a FeatureBase node.
-:::
-
-```toml
-    [postgres]
-      startup-timeout = "20s"
-      read-timeout = "20s"
-      write-timeout = "20s"
+    [sql]
+      endpoint-enabled = true
 ```
 
 #### Usage Duty Cycle
