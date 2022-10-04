@@ -112,7 +112,7 @@ rename_column = "RENAME", [ "COLUMN" ], identifier, "TO", identifier ;
   Inserts data into a FeatureBase table.
 
 *)
-insert_stmt = ( "INSERT" | "REPLACE" ), "INTO", identifier, [ "(", identifier, { identifier, "," }, ")" ], "VALUES", "(", expr, { expr, "," }, ")" ;
+insert_stmt = ( "INSERT" | "REPLACE" ), "INTO", identifier, [ "(", identifier, { ",", identifier }, ")" ], "VALUES", "(", expr, { ",", expr }, ")" ;
 
 (*
 
