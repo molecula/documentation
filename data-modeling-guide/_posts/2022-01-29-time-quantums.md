@@ -49,7 +49,13 @@ When you want to keep every view across your full historical data or you are loo
 
 TTL holds the duration for the views that will be used to delete them based on the time quantum time and the current time. It does not care when the data is ingested, it only looks at the times associated with the data in time quantum views. Once the TTL duration expires, those views will be deleted. If TTL's value is 0s (default value), the views created based on the time quantum will not be deleted.
 
+<!--
+Actually we allow more but are aligning to how they are deleted and removing small units.
 Allowed time units for TTL are `h`, `m`, `s`, `ms`, `us`, `ns`. Time unit is required. Default value is `0s`.
+
+-->
+
+Allowed time units for TTL are `h`, `m`, `s`. Time unit is required. Default value is `0s`.
 
 Example:
 - "ttl":"7200s" is equal to 720 seconds (2 hours).
