@@ -31,15 +31,15 @@ You can associate multiple times with each value, so a value only has to exist i
 
 ## What is happening when you use time quantums? 
 
-Whenever a record with time quantums is ingested, a view is created for each level of granularity specified. This is essentially a copy of the column over a specific time range. If `YMDH` is specified and the time `2018-08-31T22:30:00Z` is ingested, a time view will exist for `2018`, `2018-08`, `2018-08-31`, and `2018-08-31T22`. This means data accounting for every hour for two days will have 48 views for each hour.
+Whenever a record with time quantums is ingested, a view is created for each level of granularity specified. This is essentially a copy of the column over a specific time range. If `YMDH` is specified and the time `2018-08-31T22:30:00Z` is ingested, a time view will exist for `2018`, `2018-08`, `2018-08-31`, and `2018-08-31T22`. This means data which has times for every hour for two days (say May 2nd and 3rd) in a field with `YMDH` time quantums configured will have 48+2+1+1+1 views (53) in total. 48 hours, 2 days, 1 month, 1 year, and the standard view. 
 
 # TTL (Time To Live)
 ## What is TTL?
-TTL stands for time to live. TTL allows you to delete time views. Views are only deleted when the end of the time range passes TTL. TTL is only an option for `IDSET` and `STRINGSET` columns with time quantums set.
+TTL stands for time to live. TTL allows you to delete time views. Views are only deleted when the end of the time range the view represents is older than the TTL. TTL is only an option for `IDSET` and `STRINGSET` columns with time quantums set.
 
 ## When should you use TTL?
 
-When you don't care about older views and want to reduce your datafootprint over time.
+When you don't care about older views and want to reduce the growth of your data footprint over time.
 
 ## When should you avoid TTL?
 
@@ -47,19 +47,25 @@ When you want to keep every view across your full historical data or you are loo
 
 ## How do you use TTL?
 
-TTL holds the duration for the views created by FeatureBase based on the time quantum and the current time. This means it deletes based on the value of timestamp associated with the value and the current time. It does not look at when a time is associated with a value. Once the TTL duration expires, those views will be deleted. If TTL's value is 0s (default value), the views created based on the time quantum will not be deleted.
+TTL holds the duration for the views that will be used to delete them based on the time quantum time and the current time. It does not care when the data is ingested, it only looks at the times associated with the data in time quantum views. Once the TTL duration expires, those views will be deleted. If TTL's value is 0s (default value), the views created based on the time quantum will not be deleted.
+
+<!--
+Note we actually allow `h`, `m`, `s`, `ms`, `us`, `ns` but the minimum granularity we delete on is hour, so only the largest are shown
+-->
 
 Allowed time units for TTL are `h`, `m`, `s`, `ms`, `us`, `ns`. Time unit is required. Default value is `0s`.
 
 Example:
-- "ttl":"1s" is equal to 1 second.
+- "ttl":"7200s" is equal to 720 seconds (2 hours).
 - "ttl":"72h" is equal to 72 hours.
-- "ttl":"72second" will return error `error: unknown unit "second" in duration "72second"`.
+- "ttl":"6000second" will return error `error: unknown unit "second" in duration "6000second"`.
 
-TTL removal is set to run when FeatureBase starts and every hour thereafter. This means view deletion is eventually consistent.
+TTL removal is set to run when FeatureBase starts and every hour thereafter. This means view deletion is eventually consistent. TTL removal is, in general, not guaranteed to run at any particular time, and you should always use closed time ranges on your queries if you need to guarantee that results older than the TTL don't show up. For this reason, while you may specify times below an hour, it is recommended to use a TTL of one hour or more.
 
 ## What is happening when you use TTL?
 
-A process runs every hour that looks at the views and the current time to see if it has exceeded the TTL set. Each time granularity uses slightly different rules that lead to eventually consistent deletion. For Example:
+A process runs periodically that looks at the views and the current time to see if they have exceeded the configured TTL. Each view may be deleted at a different time based on its granularity and how long it's been since the end of that view's time range. For Example:
 
-A column with `YMD` has three views for 9/2/2022 with TTL set to `30d`. The 9/2/2022 view is cleared after 30 days, the 9/2022 view is cleared at the end of 10/2022, and the 2022 view is deleted at the end of january 2023.  30 days passed at the end of the view. if the end of this view is past current time, delete.
+A column with `YMD` has four views for 2022-09-02 (2022, 2022-09, 2022-09-02 and standard) with TTL set to `30d`. The 2022-09-02 view is cleared after 30 days (roughly on 2022-10-02), the 2022-09 view is cleared on October 30, 2022, and the 2022 view is deleted January 30, 2023.
+
+The rule is, if the end of the time range represented by the view is older than the TTL, it can be deleted.
