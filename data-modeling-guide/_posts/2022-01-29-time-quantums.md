@@ -13,7 +13,7 @@ You should use time quantums when you want to associate a time with each value i
 
 ## When should you avoid time quantums? 
 
-You should avoid time quantums if you don’t have a time you want to associate with a value, if you aren't interested in deleting values over time to save space, if you are trying to count the number of distinct time quantums a particular value has associated with it, and if you are looking to pull out time values as opposed to filtering by them.
+You should avoid time quantums if you don’t have a time you want to associate with a value, if you aren't interested in deleting values over time to save space, if you are trying to count the number of distinct time quantums associated to a particular value, and if you are looking to pull out time values as opposed to filtering by them.
 
 ## How do you use time quantums?
 
