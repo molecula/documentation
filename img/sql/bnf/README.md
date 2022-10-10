@@ -12,7 +12,7 @@ Next, run the script:
 
 `./makebnf.sh`
 
-You should see some `Missing reference...` output followed by:
+You may see some warnings about `Missing reference...`, which should be followed by:
 
 `📜 Document created at ./sql3.html`
 
