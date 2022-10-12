@@ -95,7 +95,7 @@ On Mac OS, `ulimit` does not behave predictably, and the way to change the limit
 
 You can temporarily raise the open file limit using `launchctl limit maxfiles 262144 262144`, although this will not persist across reboots. To persist it across reboots, you need to cause this command to be run during system startup every time. The easiest way to do this is by adding things to `/Library/LaunchDaemons`, but you can't do this while SIP is enabled, and you can't run `csrutil` once the system is up and running.
 
-To disable the system integrity protection feature, restart your laptop, and hold down command + R to enter Recovery Mode. Open a terminal and enter `csrutil disable`, then restart your computer as you normally would. Now that SIP is disabled, you can create new LaunchDaemons files that will affect system limits. Copy the contents of this example plist file ([source](https://github.com/wilsonmar/mac-setup/blob/master/configs/limit.maxfiles.plist)) into a new file on your system located at `/Library/LaunchDaemons/limit.maxfiles.plist`:
+To disable the system integrity protection feature, restart your laptop, and hold down command + R to enter Recovery Mode. Open a terminal and enter `csrutil disable`, then restart your computer as you normally would. Now that SIP is disabled, you can create new LaunchDaemons files that will affect system limits. Copy the contents of this example plist file ([source](https://github.com/wilsonmar/mac-setup/blob/master/configs/limit.maxfiles.plist%20)) into a new file on your system located at `/Library/LaunchDaemons/limit.maxfiles.plist`:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

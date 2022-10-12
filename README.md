@@ -9,6 +9,7 @@ This repository is hosted with GitHub pages with the live site found at: https:/
   * [Create a new Folder in the Navigation](#create-a-new-folder-in-the-navigation)
     + [Example Directory and Subdirectory](#example-directory-and-subdirectory)
 - [Building the Documentation Locally](#building-the-documentation-locally)
+- [Checking For Broken Links](#checking-for-broken-links)
 - [Publishing to docs.featurebase.com](#publishing-to-docsfeaturebasecom)
 
 ## How Tos
@@ -55,8 +56,6 @@ If the image is externally hosted, then simply add the external image url and ca
 4. Click "Add file" and open the dropdown. Then select "Upload files".
 
 5. Drag and drop your image file and click "Commit changes" along with any notes what the image is used for.
-
-
 
 
 
@@ -128,6 +127,22 @@ For larger content edits or for changes to the theme, you'll likely need to clon
 
 4. Edit files at your leisure. The site will auto-rebuild and deploy on changes so no need to repeat step 3.
 
+
+## Checking For Broken Links
+Anytime you modify links, change page names, or change the nav file, please run the `dead_link_seeker.py` script. This script will crawl through all of the pages it finds off of the URL you pass, collect any URLs it sees, and call them to ensure proper health responses are returned. This should be run with python 3.6+ and uses packages that generally come installed (urllib,collections,HTMLParser), but you may have to install them conda/pip/etc. This can be run on your local build:
+
+```python
+python dead_link_seeker.py http://127.0.0.1:4000/
+```
+
+or on the website itself:
+
+```python
+python dead_link_seeker.py http://docs.featurebase.com/
+```
+For more detail, you may run in verbose mode by adding a `v` as a second arg.
+
+If you add or see any pages returned that are not printed out as exceptions at the end of the output, please add them to the `false_positive` list in the script. Keep the docs healthy!
 
 
 
