@@ -100,7 +100,7 @@ These metrics are pulled from the Go language runtime or operating system rather
 | `[featurebaseprefix]_mallocs`                  | gauge                               |
 | `[featurebaseprefix]_frees`                    | gauge                               |
 
-where `[featurebaseprefix]` is either `featurebase` if the [`--future.rename` configuration flag](/reference/featurebase-rename) is set, or `pilosa`.
+where `[featurebaseprefix]` is either `featurebase` if the [`--future.rename` configuration flag](/reference/operations/enterprise/featurebase-rename) is set, or `pilosa`.
 
 ### Transaction Metrics
 | Metric Name                                         | Description                              |
@@ -113,7 +113,7 @@ where `[featurebaseprefix]` is either `featurebase` if the [`--future.rename` co
 | `[featurebaseprefix]_transaction_exclusive_end`     |  count of ended exclusive transactions   |
 | `[featurebaseprefix]_transaction_exclusive_blocked` |  count of blocked exclusive transactions |
 
-where `[featurebaseprefix]` is either `featurebase` if the [`--future.rename` configuration flag](/reference/featurebase-rename) is set, or `pilosa`.
+where `[featurebaseprefix]` is either `featurebase` if the [`--future.rename` configuration flag](/reference/operations/enterprise/featurebase-rename) is set, or `pilosa`.
 
 ### Query Metrics (not implemented)
 | Metric Name                             | Description          |
@@ -121,7 +121,7 @@ where `[featurebaseprefix]` is either `featurebase` if the [`--future.rename` co
 | `[featurebaseprefix]_pql_queries_total` | count of PQL queries |
 | `[featurebaseprefix]_sql_queries_total` | count of SQL queries |
 
-where `[featurebaseprefix]` is either `featurebase` if the [`--future.rename` configuration flag](/reference/featurebase-rename) is set, or `pilosa`.
+where `[featurebaseprefix]` is either `featurebase` if the [`--future.rename` configuration flag](/reference/operations/enterprise/featurebase-rename) is set, or `pilosa`.
 
 ### Prometheus Configuration
 
@@ -195,4 +195,4 @@ While FeatureBase is in the RESIZING state, it denies any request which accesses
 
 ### Ingester
 
-Generally, scaling is handled by starting or stopping Ingester instances. Other options may be available for specific Ingesters; see [ingest tuning](/explanations/ingesters#ingest-tuning)
+Generally, scaling is handled by starting or stopping Ingester instances. Other options may be available for specific Ingesters; see [ingest tuning](/data-ingestion/enterprise/ingesters#ingest-tuning)
