@@ -15,11 +15,13 @@ nav:
         category: cloud
   
   - title: Data Modeling Guide
-    category: data-modeling-guide
+    category: data-modeling-guide    
     subnav:
+      - title: Examples
+        category: examples
       - title: Cloud
         category: cloud
- 
+      
   - title: Data Ingestion
     category: data-ingestion
     subnav:
