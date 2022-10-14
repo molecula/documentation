@@ -291,57 +291,45 @@ Once created, go to the "COLUMNS" tab in order to add or delete columns. You wil
 
 #### Creating a FeatureBase Ingest Schema
 
-When creating an ignest endpoint in FeatureBase, we need to provide a JSON schema to make incoming records to table columns. For the fake flight dataset you can use the following in the UI
+When creating an ingest endpoint in FeatureBase, we need to provide a JSON schema to make incoming records to table columns. For the fake flight dataset you can use the following in the UI
 
 ```json
 [
   {
     "name": "airline",
-    "path": ["airline"],
-    "type": "string"
+    "path": ["airline"]
   },
   {
     "name": "stops",
-    "path": ["stops"],
-    "type": "string"
+    "path": ["stops"]
   },
   {
     "name": "price",
-    "path": ["price"],
-    "type": "decimal",
-    "config": {
-      "Scale": 2
-    }
+    "path": ["price"]
   },
   {
     "name": "origin_airport",
-    "path": ["origin","airport"],
-    "type": "string"
+    "path": ["origin","airport"]
   },
   {
     "name": "origin_iata",
-    "path": ["origin","iata"],
-    "type": "string"
+    "path": ["origin","iata"]
   },
   {
     "name": "origin_icao",
-    "path": ["origin","icao"],
-    "type": "string"
+    "path": ["origin","icao"]
   },
   {
     "name": "origin_loc_city",
-    "path": ["origin","city"],
-    "type": "string"
+    "path": ["origin","city"]
   },
   {
     "name": "origin_loc_state",
-    "path": ["origin","state"],
-    "type": "string"
+    "path": ["origin","state"]
   },
   {
     "name": "origin_loc_country",
-    "path": ["origin","country"],
-    "type": "string"
+    "path": ["origin","country"]
   },
 
   {
@@ -356,28 +344,23 @@ When creating an ignest endpoint in FeatureBase, we need to provide a JSON schem
   },
   {
     "name": "destination_icao",
-    "path": ["destination","icao"],
-    "type": "string"
+    "path": ["destination","icao"]
   },
   {
     "name": "destination_loc_city",
-    "path": ["destination","city"],
-    "type": "string"
+    "path": ["destination","city"]
   },
   {
     "name": "destination_loc_state",
-    "path": ["destination","state"],
-    "type": "string"
+    "path": ["destination","state"]
   },
   {
     "name": "destination_loc_country",
-    "path": ["destination","country"],
-    "type": "string"
+    "path": ["destination","country"]
   },
   {
-    "name": "flight_id",
-    "path": ["flight_id"],
-    "type": "id"
+    "name": "_id",
+    "path": ["flight_id"]
   }
 ]
 ```

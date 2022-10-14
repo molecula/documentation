@@ -6,7 +6,25 @@ sidebar_label: Stream Data With An Ingest Endpoint
 
  **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes. 
 
-Once an “ACTIVE” ingest endpoint exists, data can be streamed to it over HTTPS via “POST” requests. Individual records or micro-batched payloads can be sent. Navigate [here](/data-ingestion/cloud/streaming/streamingoverview) to learn more about the required format for data, existing limits, and recommendations around streaming data. The UI currently only supports the ability to create a ingest endpoint but not stream data to it. This must be done using the API. Based on the previous schema example, below is an example of how multiple records are sent to the ingest endpoint:
+Once an “ACTIVE” ingest endpoint exists, data can be streamed to it over HTTPS via “POST” requests. Individual records or micro-batched payloads can be sent. 
+
+### Record Format
+
+Once an ingest endpoint is configured, data can be streamed to it. Each record should be composed of a JSON blob. One or many records can be sent in a single HTTPS request and should have the following syntax:
+
+```json
+{
+    "records": [ 
+        { "value": { <JSON blob containing columns of first record> } },
+        { "value": { <JSON blob containing columns of second record> } },
+        ...
+    ]
+}
+```
+
+It is recommended to “microbatch” records before sending them to maximize ingest rates. The maximum amount of records that can be sent in a single request is constrained by the limits [here](/data-ingestion/cloud/streaming/streamingoverview). The JSON blob does support nested structures, so it is up to your schema to define the `path` for each column’s value.
+
+Below is an example of how multiple records are sent to the ingest endpoint:
 
 
 **HTTP API Reference:**
@@ -22,4 +40,4 @@ curl --location --request POST 'https://data.featurebase.com/v2/sinks/<sink_id>'
 }'
 ```
 
-The full reference API for pushing data to an ingest endpoint can be found [here](/reference/api/cloud/api). For a tutorial on how to go from nothing to a database with data streaming in, see the [Getting Started page](/quick-start-guide/cloud).
+The full reference API for pushing data to an ingest endpoint can be found [here](/reference/api/cloud/api). For a tutorial on how to go from nothing to a database with data streaming in, see the [Getting Started With Streaming](/data-ingestion/cloud/streaming/tutorials/cloudquickstart).

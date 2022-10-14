@@ -79,9 +79,7 @@ FIELD_NAMES = ["id","sepallength","sepalwidth","petallength","petalwidth","speci
 ```
 
 
-You must create a table before you can ingest data. For more information on tables, see [Tables](/data-ingestion/cloud/tables). The command below will create your table. 
-
-It is highly recommended to do table creation within the UI for easier mapping of column types, constraints, and options. Navigate to the "Tables" page and click “New Table", selecting your database, entering "<table-name>" for the name, and entering "table holding flower data" as the description. The primary key for the iris table for this tutorial is a number, so choose `Number` as the ID type.
+You must create a table before you can ingest data. For more information on tables, see [Tables](/data-ingestion/cloud/tables). It is highly recommended to do table creation within the UI for easier mapping of column types, constraints, and options. Navigate to the "Tables" page and click “New Table", selecting your database, entering "<table-name>" for the name, and entering "table holding flower data" as the description. The primary key for the iris table for this tutorial is a number, so choose `Number` as the ID type.
 
 Once created, go to the "COLUMNS" tab in order to add or delete columns. You will see the _id column that was created during table creation. click "ADD COLUMN" and add the following columns, types, and constraints:
 
@@ -94,7 +92,7 @@ Once created, go to the "COLUMNS" tab in order to add or delete columns. You wil
 | species   |  string | N/A |
 
 
-You'll need to create an ingest endpoint and table that maps to this data. The bellow schema can be used to create this using either the API or UI:
+You'll also need to create an ingest endpoint that maps the data to your table. The json below can be used to create the ingest endpoint using either the API or the "schema":"definition" array can be referenced for the UI:
 
 ```shell
 {    
@@ -105,61 +103,36 @@ You'll need to create an ingest endpoint and table that maps to this data. The b
     },
     "schema": {
         "type": "json",
-        "id_field": "id",
+        "id_field": "_id",
         "allow_missing_fields": false,
         "definition": [
         {
-            "name": "id",
-            "path": ["id"],
-            "type": "id",
-            "config": {
-              "Mutex": false
-            }
+            "name": "_id",
+            "path": ["id"]
         },
         {
             "name": "sepallength",
-            "path": ["sepallength"],
-            "type": "decimal",
-            "config": {
-              "Scale": 2
-            }
+            "path": ["sepallength"]
         },
         {
             "name": "sepalwidth",
-            "path": ["sepalwidth"],
-            "type": "decimal",
-            "config": {
-              "Scale": 2
-            }
+            "path": ["sepalwidth"]
         },
         {
             "name": "petallength",
-            "path": ["petallength"],
-            "type": "decimal",
-            "config": {
-              "Scale": 2
-            }
+            "path": ["petallength"]
         },
         {
             "name": "petalwidth",
-            "path": ["petalwidth"],
-            "type": "decimal",
-            "config": {
-              "Scale": 2
-            }
+            "path": ["petalwidth"]
         },
         {
             "name": "species",
-            "path": ["species"],
-            "type": "string",
-            "config": {
-              "Mutex": true
-            }
+            "path": ["species"]
         }]
     }
 }
 ```
-
 
 
 ## Convert CSV to JSON Format
@@ -617,81 +590,73 @@ JSON_FILE_PATH = '<path to write age json files>' # /path/to/file.json
 FIELD_NAMES = ["id","name","description","gender","country","occupation", "birth_year", "death_year", "death_manner", "death_age"]
 ```
 
-You'll need to create a table and an ingest endpoint that maps to this data. The table must be created with a "String" primary key and all the columns in the "schema":"definition" below. The json below can be used to create this using either the API or the "schema":"definition" array can be used in the UI:
+You'll need to create a table and an ingest endpoint that maps to this data. The table must be created with a "String" primary key and all the columns below:
+
+|Column Name | Type | Constraint |
+| --- | ----------- |  ----------- |
+| name   |  string | N/A |
+| description   |  string | N/A |
+| gender   |  string | N/A |
+| country   |  string | N/A |
+| occupation   |  string | N/A |
+| birth_year   |  int | N/A |
+| death_year   |  int | N/A |
+| death_manner   |  string | N/A |
+| death_age   |  int | N/A |
+
+The json below can be used to create the ingest endpoint using either the API or the "schema":"definition" array can be referenced for the UI:
 
 ```json
 {    
-    "name": "<endpoint_name",    
+    "name": "<endpoint_name>",    
     "sink_details": {
       "database_id": "<database_id>",
       "table": "<table_name>"
     },
     "schema": {
         "type": "json",
-        "primary_key_fields": ["id"],
+        "primary_key_fields": ["_id"],
         "allow_missing_fields": false,
         "definition": [
         {
-            "name": "id",
-            "path": ["id"],
-            "type": "string",
-            "config": {
-              "Mutex": true
-            }
+            "name": "_id",
+            "path": ["id"]
         },
         {
             "name": "name",
-            "path": ["name"],
-            "type": "string",
-            "config": {
-              "Mutex": true
-            }
+            "path": ["name"]
         },
         {
             "name": "description",
-            "path": ["description"],
-            "type": "string",
-            "config": {
-              "Mutex": true
-            }
+            "path": ["description"]
         },
         {
             "name": "gender",
-            "path": ["gender"],
-            "type": "string",
-            "config": {
-              "Mutex": true
-            }
+            "path": ["gender"]
         },
         {
             "name": "country",
-            "path": ["country"],
-            "type": "string"
+            "path": ["country"]
         },
         {
             "name": "occupation",
-            "path": ["occupation"],
-            "type": "string"
+            "path": ["occupation"]
         },
         {
             "name": "birth_year",
-            "path": ["birth_year"],
-            "type": "int"
+            "path": ["birth_year"]
         },
         {
             "name": "death_year",
-            "path": ["death_year"],
-            "type": "int"
+            "path": ["death_year"]
         },
         {
             "name": "death_manner",
-            "path": ["death_manner"],
-            "type": "string"
+            "path": ["death_manner"]
         },
         {
             "name": "death_age",
-            "path": ["death_age"],
-            "type": "int"
+            "path": ["death_age"]
         }]
     }
   }
