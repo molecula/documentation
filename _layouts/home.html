@@ -4,3 +4,25 @@ layout: default
 <!-- BEGIN _layouts/home.html -->
 {{ content }}
 <!-- END _layouts/home.html -->
+
+<div class="space-y-100 border-t border-gray-200 mt-10 py-10 text-mol-slate sm:text-center">
+  <h5 class="text-sm font-bold">Want to get involved in the community?</h5>
+  {% assign branch = "main" %}
+  Help <a id="improve_link">improve this article</a> or join us on <a href="https://discord.com/invite/bSBYjDbUUb?utm_campaign=FeatureBase_Launch&utm_source=Guide&utm_medium=Community_page">Discord</a>!
+  <script defer r={{ site.github.repository_nwo }} b={{ branch }} p={{ page.path }}>
+    (function() {
+      var repo = document.currentScript.getAttribute('r')
+      var branch = document.currentScript.getAttribute('b')
+      var page = document.currentScript.getAttribute('p')
+      if (page.includes("reference/data-querying-ref")) {
+        page = page.replace("reference/data-querying-ref", "data-querying");
+      }
+   
+      link = "https://github.com/" + repo + "/edit/" + branch + "/" + page;
+      document.getElementById("improve_link").href = link;
+      document.getElementById("improve_link").rel = "nofollow";
+      document.getElementById("improve_link").class = "text-sm font-medium";
+    })();
+  </script>
+  
+</div>
