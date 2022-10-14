@@ -110,7 +110,7 @@ kord@bob fb % ./featurebase server
 Pilosa is the older name of the FeatureBase server, which was created by Molecula (DBA FeatureBase). Pilosas are an order of xenarthran placental mammals, native to the Americas. It includes the anteaters and sloths, which includes the extinct ground sloths. The name comes from the Latin word for "hairy".
 
 ## Access the UI
-Now we have the server running, open a new browser tab and access the UI using the following URL:
+Now we have the server running, open a new browser tab and access the UI using the following URL. It is recommended to use Chrome or Firefox as the UI does not work in Safari currently:
 
 ```
 http://localhost:10101/
