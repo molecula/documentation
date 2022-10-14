@@ -111,7 +111,7 @@ Once created, go to the "COLUMNS" tab in order to add or delete columns. You wil
 
 #### Create An Ingest Endpoint
 
-After a table exists, you can configure a source to load data into it. The ingest endpoint configuration will yield a persistent endpoint that allows you to stream data to. For more information on databases, see [Databases Overview](/setting-up-featurebase/cloud/databases-overview). Below you can see our JSON schema that details the data being streamed to the source. The below schema contains various flower species and their measurements. The command below will start creating your database. 
+After a table exists, you can configure a source to load data into it. The ingest endpoint configuration will yield a persistent endpoint that allows you to stream data to. For more information on ingesting, see [Streaming (HTTPS)](/data-ingestion/cloud/streaming/streamingoverview). Below you can see our JSON schema that details the data being streamed to the source. The below schema contains various flower species and their measurements. The command below will start creating your ingest endpoint. 
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
@@ -137,51 +137,27 @@ curl --location --request POST 'https://api.featurebase.com/v2/sinks' \
         "definition": [
         {
             "name": "id",
-            "path": ["id"],
-            "type": "id",
-            "config": {
-              "Mutex": false
-            }
+            "path": ["id"]
         },
         {
             "name": "sepallength",
-            "path": ["sepalLength"],
-            "type": "decimal",
-            "config": {
-              "Scale": 2
-            }
+            "path": ["sepalLength"]
         },
         {
             "name": "sepalwidth",
-            "path": ["sepalWidth"],
-            "type": "decimal",
-            "config": {
-              "Scale": 2
-            }
+            "path": ["sepalWidth"]
         },
         {
             "name": "petallength",
-            "path": ["petalLength"],
-            "type": "decimal",
-            "config": {
-              "Scale": 2
-            }
+            "path": ["petalLength"]
         },
         {
             "name": "petalwidth",
-            "path": ["petalWidth"],
-            "type": "decimal",
-            "config": {
-              "Scale": 2
-            }
+            "path": ["petalWidth"]
         },
         {
             "name": "species",
-            "path": ["species"],
-            "type": "string",
-            "config": {
-              "Mutex": true
-            }
+            "path": ["species"]
         }]
     }
 }'
