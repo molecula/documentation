@@ -119,7 +119,7 @@ http://localhost:10101/
 **NOTE:** 
 FeatureBase runs on port `10101`.
 
-![ui](/img/localhost.png)
+![ui](/img/welcome/localhost.png)
 
 ## Ingest Data
 We're now ready to ingest data. Create a new terminal window and copy the following and paste it into a `sample.csv` file located in the `featurebase` directory:
@@ -175,7 +175,7 @@ Now we have our sample data loaded, we can write a simple SQL query in the admin
 select * from allyourbase;
 ```
 
-![sql](/img/sql.png)
+![sql](/img/welcome/sql.png)
 
 In the [next section](/setting-up-featurebase/enterprise/installing-featurebase), we'll cover running FeatureBase as a daemon on Linux.
 
