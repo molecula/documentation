@@ -63,6 +63,9 @@ class LinkParser(HTMLParser):
         '''Loop through remaining pages, looking for HTML responses'''
         while self.pages_to_check:
             page = self.pages_to_check.pop()
+
+            # set the current page for reporting
+            self.page = page
             req = Request(page, headers={'User-Agent': agent})
             res = request.urlopen(req)
             if 'html' in res.headers['content-type']:
@@ -89,11 +92,11 @@ class LinkParser(HTMLParser):
             req = Request(link, headers={'User-Agent': agent}, method='HEAD')
             status = request.urlopen(req).getcode()
         except urllib.error.HTTPError as e:
-            print(f'HTTPError: {e.code} - {link}')  # (e.g. 404, 501, etc)
+            print(f'HTTPError: {e.code} - {link} in {self.page}')  # (e.g. 404, 501, etc)
         except urllib.error.URLError as e:
-            print(f'URLError: {e.reason} - {link}')  # (e.g. conn. refused)
+            print(f'URLError: {e.reason} - {link} in {self.page}')  # (e.g. conn. refused)
         except ValueError as e:
-            print(f'ValueError {e} - {link}')  # (e.g. missing protocol http)
+            print(f'ValueError {e} - {link} in {self.page}')  # (e.g. missing protocol http)
         else:
             if self.verbose:
                 print(f'{status} - {link}')
