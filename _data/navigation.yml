@@ -1,11 +1,28 @@
 nav:
+
+  - title: Welcome to FeatureBase
+    category: welcome
+  - title: Concepts
+    category: featurebase-concepts
+  - title: Cloud
+    category: featurebase-cloud
+  - title: Community
+    category: featurebase-community
+  - title: Enterprise
+    category: featurebase-enterprise
+  - title: SQL guide
+    category: sql-guide
+  - title: PQL guide
+    category: sql-guide
+
+
+
   - title: Introduction
     category: introduction
 
-
   - title: Quick Start Guide
     category: quick-start-guide
-  
+
   - title: Setting up FeatureBase
     category: setting-up-featurebase
     subnav:
@@ -13,15 +30,15 @@ nav:
         category: enterprise
       - title: Cloud
         category: cloud
-  
+
   - title: Data Modeling Guide
-    category: data-modeling-guide    
+    category: data-modeling-guide
     subnav:
       - title: Examples
         category: examples
       - title: Cloud
         category: cloud
-      
+
   - title: Data Ingestion
     category: data-ingestion
     subnav:
@@ -75,8 +92,8 @@ nav:
           - title: Organization Configuration
             category: org-configuration
   - title: How-Tos
-    category: how-tos 
- 
+    category: how-tos
+
   - title: Reference
     category: reference
     subnav:
@@ -113,4 +130,3 @@ nav:
             category: cloud
       - title: Release Notes
         category: release-notes
-
