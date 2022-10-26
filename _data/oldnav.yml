@@ -1,0 +1,100 @@
+nav:
+  - title: Data Modeling Guide
+    category: data-modeling-guide
+    subnav:
+      - title: Examples
+        category: examples
+      - title: Cloud
+        category: cloud
+
+  - title: Data Ingestion
+    category: data-ingestion
+    subnav:
+      - title: Enterprise
+        category: enterprise
+        subnav:
+          - title: Connectors
+            category: connectors
+
+      - title: Cloud
+        category: cloud
+        subnav:
+          - title: Streaming (HTTPS)
+            category: streaming
+            subnav:
+            - title: Streaming Tutorials
+              category: tutorials
+
+  - title: Data Querying
+    category: data-querying
+    subnav:
+      - title: Enterprise
+        category: enterprise
+        subnav:
+          - title: Connectors
+            category: connectors
+          - title: Libraries
+            category: libraries
+
+      - title: Cloud
+        category: cloud
+
+  - title: Administration
+    category: administration
+    subnav:
+      - title: Enterprise
+        category: enterprise
+        subnav:
+          - title: Security
+            category: security
+          - title: Data Management
+            category: data-management
+
+      - title: Cloud
+        category: cloud
+        subnav:
+          - title: Security
+            category: security
+          - title: Data Management
+            category: data-management
+          - title: Organization Configuration
+            category: org-configuration
+  - title: How-Tos
+    category: how-tos
+
+  - title: Reference
+    category: reference
+    subnav:
+      - title: Data Ingestion
+        category: data-ingestion
+      - title: Data Querying
+        category: data-querying-ref
+        subnav:
+          - title: PQL
+            category: pql
+            subnav:
+              - title: Read
+                category: read
+              - title: Write
+                category: write
+              - title: Other
+                category: other
+          - title: SQL (preview)
+            category: sql
+
+      - title: Operations
+        category: operations
+        subnav:
+          - title: Enterprise
+            category: enterprise
+          - title: Cloud
+            category: cloud
+      - title: APIs
+        category: api
+        subnav:
+          - title: Enterprise
+            category: enterprise
+          - title: Cloud
+            category: cloud
+      - title: Release Notes
+        category: release-notes
