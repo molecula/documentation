@@ -21,11 +21,14 @@
     <!- - Google Tag Manager - ->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-KHMPM8F');</script>
     <!- - End Google Tag Manager -->
-    
+
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
     <script src="https://unpkg.com/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
     <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
+<!--Stylesheets -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&family=Roboto+Mono" rel="stylesheet"> -->
     <link href="https://use.typekit.net/tlc0xkd.css" rel="stylesheet">
@@ -42,100 +45,9 @@
         }
       }
     </script>
-    <style type="text/css">
-      /* https://alpinejs.dev/directives/cloak */
-      [x-cloak] { display: none !important; }
-      .molecula-menu-btn svg.folder path {
-        d: path("M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z");
-        fill: currentColor;
-      }
-
-      .molecula-menu-btn[aria-expanded=true] svg.folder path {
-        d: path("M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z");
-        fill: none;
-      }
-
-      .molecula-menu-btn[aria-expanded=true] .molecula-menu-arrow {
-        transform: rotate(90deg);
-      }
-
-      nav .not-active {
-        border-left: 6px solid transparent !important;
-        color: #4D4E4E !important;
-      }
-
-      nav .active {
-        border-left: 6px solid #48B5CD !important;
-        color: #48B5CD !important;
-      }
-
-      article {
-        color: #4D4E4E !important;
-        font-weight: 300;
-      }
-
-      article h1 {
-        color: #084e83 !important;
-        font-family: industry, Roboto, sans-serif;
-        font-size: 2.5em !important;
-        font-weight: 100 !important;
-      }
-
-      article h2 {
-        color: #084e83 !important;
-        font-family: industry, Roboto, sans-serif;
-        font-weight: 600 !important;
-        font-size: 1.5em !important;
-      }
-
-      article h3 {
-        color: #48B5CD !important;
-        font-size: 1.2em !important;
-        font-weight: 500 !important;
-      }
-
-      article h4 {
-        color: #4D4E4E !important;
-      }
-
-      article a[href]:not(.anchor) {
-        color: #084E83;
-        font-weight: normal;
-      }
-
-      html {
-        scroll-padding-top: 5rem;
-      }
-
-      footer {
-        color: #808080 !important;
-      }
-
-      .anchor {
-        content: "lsdkfjdslfkjsdf";
-      }
-
-      .text-mol-aqua { color: #48B5CD !important;            }
-      .bg-mol-aqua   { background-color: #48B5CD !important; }
-
-      .text-mol-maya { color: #C3D4DD !important;            }
-      .bg-mol-maya   { background-color: #C3D4DD !important; }
-
-      .text-mol-slate { color: #4D4E4E !important;            }
-      .bg-mol-slate   { background-color: #4D4E4E !important; }
+    <link rel="stylesheet" href="{{- '_includes/featurebase.css' | relative_url -}}" /> <!--FeatureBase CSS file in non-standard location to make sure it's carried over to future themes -->
 
 
-      article h1:hover .anchor,
-      article h2:hover .anchor,
-      article h3:hover .anchor,
-      article h4:hover .anchor,
-      article h5:hover .anchor {
-        display: inline;
-        text-decoration: none;
-        color: #C3D4DD !important;
-      } 
-
-    </style>
   </head>
   <body class="h-full">
     <!-- Google Tag Manager (noscript) -->
@@ -149,10 +61,10 @@
 
 
     <!--
-      This example requires Tailwind CSS v2.0+ 
-      
+      This example requires Tailwind CSS v2.0+
+
       This example requires some changes to your config:
-      
+
       ```
       // tailwind.config.js
       module.exports = {
@@ -250,7 +162,7 @@
       </div>
 
       <div class="sticky top-6 z-10 flex-shrink-0 h-28 lg:bg-transparent bg-white flex">
-        
+
 
         <div class="flex items-center ml-10 py-2">
           <div class="flex-1 items-center">
@@ -282,7 +194,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
         </button> -->
-   
+
         <button type="button" @click="open = true" class="px-6 text-gray-500 focus:outline-none lg:hidden flex items-center">
           <span class="sr-only">Open sidebar</span>
           <!-- Heroicon name: outline/menu-alt-2 -->
@@ -290,14 +202,14 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
-   
-        
 
-<!-- 
+
+
+<!--
 
         <div class="flex-1 flex justify-between px-4 lg:px-0">
           <div class="flex-1 flex">
-            
+
           </div>
         </div> -->
 
@@ -313,7 +225,7 @@
 
               <div class="py-10">
                 <p class="text-base text-center">&copy; 2022 Molecula Corp. (DBA FeatureBase). All rights reserved.</p>
-              </div>  
+              </div>
 
             </article>
           </main>

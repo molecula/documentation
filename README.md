@@ -1,3 +1,25 @@
+# Docs-14 > Redesign of FeatureBase documentation
+
+## Content files
+
+| Directory | Description | Task Jira |
+|---|---|---|
+| `/_includes/docs` | Ensures single-source integrity of content regardless of the chosen  Jekyll theme | [DOCS-35](https://molecula.atlassian.net/browse/DOCS-35) |
+| `/docs` | Destination files for include files with theme-specific YAML headers | [DOCS-35](https://molecula.atlassian.net/browse/DOCS-35) |
+| `/_includes/docs/featurebase.css` | Featurebase-specific CSS styles which can be transferred with single-source content to new Jekyll theme as required. This will involve adding the stylesheet to the `<head>...</head>` content in the layout file found under `/_layouts`. | [DOCS-38](https://molecula.atlassian.net/browse/DOCS-38) |
+
+## Style Guides for writing content
+
+Find new style guides in Confluence:
+
+* [How to write better documentation](https://molecula.atlassian.net/wiki/spaces/DOCS/pages/1010925640/How+to+write+better+documentation)
+* [Content structure overview](https://molecula.atlassian.net/wiki/spaces/DOCS/pages/1011089428/Docs+as+code+Content+structure+overview)
+
+
+
+
+---EARLIER CONTENT---
+
 # Molecula Documentation
 
 This repository is hosted with GitHub pages with the live site found at: https://docs.featurebase.com.
@@ -19,11 +41,11 @@ Here is some documentation (meta documentation?) that explains how to do common 
 
 ### Editing a Page
 
-The best way to edit a page is to first go to the documentation site, and at the bottom of the page find the hyperlink to "help us improve this article". From there you will be sent directly to a text editor where you can propose your changes. 
+The best way to edit a page is to first go to the documentation site, and at the bottom of the page find the hyperlink to "help us improve this article". From there you will be sent directly to a text editor where you can propose your changes.
 
 **Don't worry about accidently breaking anything.** Since this site is stored as a Git repository all changes can be reverted. By design this process is to encourage quick edits by anyone in the company.
 
-**NOTE:** Your changes require review and approval before going live. 
+**NOTE:** Your changes require review and approval before going live.
 
 
 ### Adding a New Page
@@ -90,8 +112,8 @@ nav:
         category: world
 
       - title: FeatureBase
-        category: FeatureBase 
-  
+        category: FeatureBase
+
 ```
 
 **NOTE:** that nav is the top level element in the YAML file, and all directories are children of it. Also note that YAML is a space-sensitive format and each level of indent is 2 spaces.
@@ -109,9 +131,9 @@ For larger content edits or for changes to the theme, you'll likely need to clon
    ```
    git clone https://github.com/molecula/documentation
    ```
-   
+
 2. Go to the directory and install dependencies
-   
+
    ```
    cd documentation
    bundle install
@@ -120,7 +142,7 @@ For larger content edits or for changes to the theme, you'll likely need to clon
 
 
 3. Run the local server and visit http://localhost:4000
-   
+
    ```
    bundle exec jekyll serve --watch
    ```
@@ -157,7 +179,7 @@ cd documentation
 
 git checkout gh-pages
 git pull
-git merge --ff-only origin/main 
+git merge --ff-only origin/main
 git push
 ```
 If you don't do this then some commits seem to be lost or overwritten and that'll make authors sad :(
