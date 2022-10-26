@@ -8,6 +8,14 @@
 | `/docs` | Destination files for include files with theme-specific YAML headers | [DOCS-35](https://molecula.atlassian.net/browse/DOCS-35) |
 | `/_includes/docs/featurebase.css` | Featurebase-specific CSS styles which can be transferred with single-source content to new Jekyll theme as required. This will involve adding the stylesheet to the `<head>...</head>` content in the layout file found under `/_layouts`. | [DOCS-38](https://molecula.atlassian.net/browse/DOCS-38) |
 
+### CSS stylesheet
+
+Add this to the `<head>...</head>` in a new theme, **beneath** the Jekyll theme-specific stylesheet:
+
+```
+<link rel="stylesheet" href="{{- '_includes/featurebase.css' | relative_url -}}" />
+```
+
 ## Style Guides for writing content
 
 Find new style guides in Confluence:
