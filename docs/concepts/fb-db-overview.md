@@ -4,7 +4,7 @@ title: How do I build my FeatureBase Database?
 sidebar_label: Build Database
 ---
 
-{% include /docs/concepts/how-to-build-fb-db-source.md%}
+{% include /docs/concepts/fb-db-overview-source.md%}
 
 ## More support
 

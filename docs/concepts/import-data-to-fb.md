@@ -1,10 +1,10 @@
 ---
 id: import-data-overview
 title: How do I import data to FeatureBase?
-sidebar_label: Importing-data
+sidebar_label: How do I import data to FeatureBase?
 ---
 
-{% include /docs/concepts/how-to-import-data-source.md%}
+{% include /docs/concepts/import-data-to-fb-source.md%}
 
 ## Get support
 

@@ -18,6 +18,7 @@
 
 | Term | Description |
 |---|---|
+| Fact table | Each record in a fact table typically represents an immutable event (e.g. someone clicked a link or made a purchase, a temperature reading was recorded, etc). See [Learn about Fact tables](https://en.wikipedia.org/wiki/Fact_table) |
 | Fragment | See [Featurebase Fragment reference](/fb-db-ref/fb-fragment-ref.md)
 | FeatureBase Field | See [FeatureBase Field reference](/fb-db-ref/fb-field-ref.md)
 | PQL GroupBy | See [PQL Groupby reference](pql-groupby-ref.md)
