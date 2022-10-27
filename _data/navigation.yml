@@ -20,6 +20,8 @@ nav:
         category: enterprise-setup
       - title: Enterprise data ingestion
         category: enterprise-data-ingestion
+      - title: SQL-preview
+        category: enterprise-sql-preview
   - title: SQL guide
     category: sql-guide
   - title: PQL guide
