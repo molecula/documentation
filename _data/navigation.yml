@@ -6,10 +6,20 @@ nav:
     category: featurebase-concepts
   - title: Cloud
     category: featurebase-cloud
+    subnav:
+      - title: Cloud setup
+        category: cloud-setup
+      - title: Cloud data ingestion
+        category: cloud-data-ingestion
   - title: Community
     category: featurebase-community
   - title: Enterprise
     category: featurebase-enterprise
+    subnav:
+      - title: Enterprise setup
+        category: enterprise-setup
+      - title: Enterprise data ingestion
+        category: enterprise-data-ingestion
   - title: SQL guide
     category: sql-guide
   - title: PQL guide
