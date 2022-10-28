@@ -12,7 +12,7 @@ I182070945,00619,Larceny,LARCENY ALL OTHERS,D14,808,,2018-09-02 13:00:00,2018,9,
 I182070943,01402,Vandalism,VANDALISM,C11,347,,2018-08-21 00:00:00,2018,8,Tuesday,0,Part Two,HECLA ST,42.30682138,-71.06030035,"(42.30682138, -71.06030035)"
 ```
 
-Quickly looking at the file, you identify “INCIDENT_NUMBER” as the perfect candidate for your key. After jotting down the other columns and their potential types, you also decide “Location” seems unnecessary given “Lat” and “Long” already exist. Now you are off to ingest the data! For most databases, including FeatureBase, this means creating a [table](/data-ingestion/cloud/tables) and modeling the columns based on what you see in the file. You’ve come up with the following for FeatureBase:
+Quickly looking at the file, you identify “INCIDENT_NUMBER” as the perfect candidate for your key. After jotting down the other columns and their potential types, you also decide “Location” seems unnecessary given “Lat” and “Long” already exist. Now you are off to ingest the data! For most databases, including FeatureBase, this means creating a [table](/cloud/data-ingestion/tables) and modeling the columns based on what you see in the file. You’ve come up with the following for FeatureBase:
 
 |Data Type| Description | 
 | ------- | ------------ | 
@@ -32,7 +32,7 @@ Quickly looking at the file, you identify “INCIDENT_NUMBER” as the perfect c
 | Lat  | DECIMAL |
 | Long  | DECIMAL |
 
-FeatureBase’s use of bitmaps and bit slice indexing means you don’t have to worry about manually creating indexes on this table to improve city analysts' query performance. All that’s needed is the schema. This is followed by sending the data to be ingested. For some databases this is a drag and drop GUI, and in others, like FeatureBase, it’s through [push-based ingest](/data-ingestion/cloud/streaming/tutorials/csv-tutorial). 
+FeatureBase’s use of bitmaps and bit slice indexing means you don’t have to worry about manually creating indexes on this table to improve city analysts' query performance. All that’s needed is the schema. This is followed by sending the data to be ingested. For some databases this is a drag and drop GUI, and in others, like FeatureBase, it’s through [push-based ingest](/cloud/data-ingestion/streaming/tutorials/csv-tutorial). 
 
 After some expected back and forth and troubleshooting, you now have a FeatureBase table with 282,517 records! Job well done! Nothing could’ve gone wrong, but because it’s not your first rodeo, you do some simple record count validation to make sure no data was lost. Lo and behold you notice the file had 319,074 records! What is this madness? Well, it’s one of the differences between FeatureBase and other databases. It appears you made a mistake thinking “INCIDENT_NUMBER” was unique. Some databases may have thrown errors here because they would have seen duplicate values attempting to be loaded. Others may have ingested all 319,074 records because the backend implementation doesn’t require (or generates) unique keys. FeatureBase maintains unique keys and treats all ingest operations as UPSERTs. So every time a repeat incident number was loaded, all of the values in your table were updated for that incident’s record. The update behavior of UPSERTs depends on the data type that is being updated:
 
