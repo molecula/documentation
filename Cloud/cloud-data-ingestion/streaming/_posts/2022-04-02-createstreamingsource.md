@@ -9,7 +9,7 @@ sidebar_label: Create An Ingest Endpoint
 In order to create an ingest endpoint, the following pre-requisites must be met:
 
 1. A database exists that is in the “Running” state
-- Click [here](/setting-up-featurebase/cloud/creating-database) to learn how to create a database
+- Click [here](/cloud/cloud-setupcreating-database) to learn how to create a database
 - Click [here](/reference/api/cloud/api) to see the database API docs
 2. A table exists in the database
 - Click [here](/cloud/data-ingestion/tables) to learn how to create a table
