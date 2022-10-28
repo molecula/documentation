@@ -23,7 +23,7 @@ The rough formula for calculating total cluster data storage (across all hosts) 
 (num_records/shard_width)*size_per_shard*2
 ```
 
-For more detailed information on data size, see the [Data Modeling](/data-modeling-guide/data-modeling) section.
+For more detailed information on data size, see the [Data Modeling](/concepts/data-modeling) section.
 
 | Field Type              | Cardinality | Size (per shard) |
 | -                       |           - | -                |

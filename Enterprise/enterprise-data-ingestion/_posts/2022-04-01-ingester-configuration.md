@@ -317,7 +317,7 @@ String is for arbitrary string data. The data will be stored in a 'set', 'mutex'
 
 Argument 1 — Mutex: Either 'T' or 'F'. Specifies whether a "mutex" type field should be used  in FeatureBase. If 'T', a "mutex" field is used, and any particular record may only have a single value. If 'F', a "set" field is used, and a particular record may have multiple values for this field.
 
-Argument 2 — Time Quantum: If this argument is provided, the field will be a "time" field rather than "set" or "mutex". "time" fields work similarly to "set" fields but each value can have a coarse grained timestamp associated with it. The granularity is controlled by this argument and can be anything from yearly down to hourly. See the [FeatureBase Data Model docs](/data-modeling-guide/data-modeling) for more information about time fields.
+Argument 2 — Time Quantum: If this argument is provided, the field will be a "time" field rather than "set" or "mutex". "time" fields work similarly to "set" fields but each value can have a coarse grained timestamp associated with it. The granularity is controlled by this argument and can be anything from yearly down to hourly. See the [FeatureBase Data Model docs](/concepts/data-modeling) for more information about time fields.
 
 ### ID
 Example:
@@ -408,7 +408,7 @@ Example:
 
 StringArray is similar to the `String` type, but expects multiple values in a single record. Each value will be set in the corresponding row of the FeatureBase 'set' or 'time' field. To retrieve Array values from a CSV file, the data within the CSV column should be a comma separated list of array values enclosed in double quotes, e.g. `"Georgia,Texas,Oregon"`.
 
-Argument 1 — Time Quantum: If this argument is provided, the field will be a "time" field rather than "set". "time" fields work similarly to "set" fields but each value can have a coarse grained timestamp associated with it. The granularity is controlled by this argument and can be anything from yearly down to hourly. See the [FeatureBase Data Model docs](/data-modeling-guide/data-modeling) for more information about time fields.
+Argument 1 — Time Quantum: If this argument is provided, the field will be a "time" field rather than "set". "time" fields work similarly to "set" fields but each value can have a coarse grained timestamp associated with it. The granularity is controlled by this argument and can be anything from yearly down to hourly. See the [FeatureBase Data Model docs](/concepts/data-modeling) for more information about time fields.
 
 ### IDArray
 Example:
@@ -416,7 +416,7 @@ Example:
 
 IDArray is similar to the `ID` type, but expects multiple values in a single record. Each value will be set in the corresponding row of the FeatureBase 'set' or 'time'  field. To retrieve Array values from a CSV file, the data within the CSV column should be a comma separated list of values enclosed in double quotes, e.g. `"10,23,18"`.
 
-Argument 1 — Time Quantum: If this argument is provided, the field will be a "time" field rather than "set". "time" fields work similarly to "set" fields but each value can have a coarse grained timestamp associated with it. The granularity is controlled by this argument and can be anything from yearly down to hourly. See the [FeatureBase Data Model docs](/data-modeling-guide/data-modeling) for more information about time fields.
+Argument 1 — Time Quantum: If this argument is provided, the field will be a "time" field rather than "set". "time" fields work similarly to "set" fields but each value can have a coarse grained timestamp associated with it. The granularity is controlled by this argument and can be anything from yearly down to hourly. See the [FeatureBase Data Model docs](/concepts/data-modeling) for more information about time fields.
 
 ### Ignore
 Example:

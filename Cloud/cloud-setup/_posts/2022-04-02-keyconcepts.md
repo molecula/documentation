@@ -10,7 +10,7 @@ sidebar_label: Key Concepts
 
 **Databases:** A FeatureBase cluster. Databases are the underlying hardware used to both store and query your data. Clusters can consist of one or more nodes. Databases are managed with the “Databases” section in the UI.
 
-**Table:** An object within a database that stores related data. While [data modeling](/data-modeling-guide/data-modeling) within FeatureBase is different than other databases, a table is analogous to a table found in a traditional RDBMS. A table is created and must be uniquely named within a database. A table’s name is immutable once created.
+**Table:** An object within a database that stores related data. While [data modeling](/concepts/data-modeling) within FeatureBase is different than other databases, a table is analogous to a table found in a traditional RDBMS. A table is created and must be uniquely named within a database. A table’s name is immutable once created.
 
 **Sources:** Resources that load data into tables within databases. Today, the only source is an ingest endpoint that allows you to stream data into your database over HTTPS. Each endpoint has an associated schema and maps to one table within one database.
 
