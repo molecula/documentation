@@ -28,7 +28,7 @@ Before we begin it’s always a good idea to make sure you have all the credenti
 
 - FeatureBase Cloud credentials. If you don’t have an account yet then [sign up for a free trial](https://www.featurebase.com/cloud) (no credit card needed).
 
-- The endpoint to an [existing Cloud ingest endpoint](/data-ingestion/cloud/streaming/createstreamingsource). In this tutorial you'll find the [schema](#creating-a-featurebase-source-schema) needed to create a new one and follow along, but a source will need to be configured and an endpoint available for configuration before testing with your data.
+- The endpoint to an [existing Cloud ingest endpoint](/cloud/data-ingestion/streaming/createstreamingsource). In this tutorial you'll find the [schema](#creating-a-featurebase-source-schema) needed to create a new one and follow along, but a source will need to be configured and an endpoint available for configuration before testing with your data.
 
 | SECURITY WARNING                                                                                                                                                                                                                                                                                                                      |
 |:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -265,7 +265,7 @@ Remember that the schema for fake flights (when converted to JSON) looks like th
 
 #### Create A Table
 
-You must create a table before you can ingest data. For more information on tables, see [Tables](/data-ingestion/cloud/tables). The command below will create your table. 
+You must create a table before you can ingest data. For more information on tables, see [Tables](/cloud/data-ingestion/tables). The command below will create your table. 
 
 It is highly recommended to do table creation within the UI for easier mapping of column types, constraints, and options. Navigate to the "Tables" page and click “New Table", selecting your database, entering "flights" for the name, and entering "table holding flight data" as the description. The primary key for the flight table for this tutorial is a number, so choose Number as the ID type.
 
@@ -382,7 +382,7 @@ def on_message(message, token):
   #
   # Send request to push data into FeatureBase Cloud
   #
-  # See: https://docs.featurebase.com/data-ingestion/cloud/streaming/ingeststreamingsource
+  # See: https://docs.featurebase.com/cloud/data-ingestion/streaming/ingeststreamingsource
   #
   response = requests.post(
     url     = FEATUREBASE_STREAMING_ENDPOINT, 
@@ -523,7 +523,7 @@ def on_message(batch, token):
   #
   # Send request to push data into FeatureBase Cloud
   #
-  # See: https://docs.featurebase.com/data-ingestion/cloud/streaming/ingeststreamingsource
+  # See: https://docs.featurebase.com/cloud/data-ingestion/streaming/ingeststreamingsource
   #
   response = requests.post(
     url     = FEATUREBASE_STREAMING_ENDPOINT, 

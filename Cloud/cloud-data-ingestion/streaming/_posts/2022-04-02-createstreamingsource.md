@@ -12,7 +12,7 @@ In order to create an ingest endpoint, the following pre-requisites must be met:
 - Click [here](/setting-up-featurebase/cloud/creating-database) to learn how to create a database
 - Click [here](/reference/api/cloud/api) to see the database API docs
 2. A table exists in the database
-- Click [here](/data-ingestion/cloud/tables) to learn how to create a table
+- Click [here](/cloud/data-ingestion/tables) to learn how to create a table
 - Click [here](/reference/api/cloud/api) to see the table API docs
 
 If both prerequisites have been met, you can navigate to “Data Sources” on the left hand navigation bar. Here you will see all of the sources in your organization. Click “New Source” to create a ingest endpoint. You will need to pick a database using a dropdown. This is populated by all the databases in your organization. The source name can only contain lowercase alphanumeric characters, dashes (-), and underscores (_) but must start with an alphabetic character. This should be descriptive for your organization to understand what data is streaming from this endpoint as well as what environment this source is loading. For example, web clickstream data loading to production might be named web_clicks_production. 
@@ -112,7 +112,7 @@ curl --location --request GET 'https://api.featurebase.com/v2/sinks' \
 --header 'Content-Type: application/json' 
 ```
 
-Only sources in the "ACTIVE" state can have data pushed for ingest. To learn more about pushing data, click [here](/data-ingestion/cloud/streaming/ingeststreamingsource)
+Only sources in the "ACTIVE" state can have data pushed for ingest. To learn more about pushing data, click [here](/cloud/data-ingestion/streaming/ingeststreamingsource)
 
 
 

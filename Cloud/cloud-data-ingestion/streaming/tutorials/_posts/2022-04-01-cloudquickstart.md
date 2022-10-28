@@ -90,11 +90,11 @@ Grab your database’s "id" returned from the command above. This is a unique id
 
 ### Ingest Data
 
-Once a database is "RUNNING", you will want to start loading data into it. This section will help you create an ingest endpoint, which will yield a persistent endpoint that allows you to push data into your database over HTTPS. For more information on ingesting data, see [Ingest Data](/data-ingestion/cloud/ingestoverview).
+Once a database is "RUNNING", you will want to start loading data into it. This section will help you create an ingest endpoint, which will yield a persistent endpoint that allows you to push data into your database over HTTPS. For more information on ingesting data, see [Ingest Data](/cloud/data-ingestion/ingestoverview).
 
 #### Create A Table
 
-You must create a table before you can ingest data. For more information on tables, see [Tables](/data-ingestion/cloud/tables). The command below will create your table. 
+You must create a table before you can ingest data. For more information on tables, see [Tables](/cloud/data-ingestion/tables). The command below will create your table. 
 
 It is highly recommended to do table creation within the UI for easier mapping of column types, constraints, and options. Navigate to the "Tables" page and click “New Table", selecting your database, entering "iris_table" for the name, and entering "table holding flower data" as the description. The primary key for the iris table for this tutorial is a number, so choose `Number` as the ID type.
 
@@ -111,7 +111,7 @@ Once created, go to the "COLUMNS" tab in order to add or delete columns. You wil
 
 #### Create An Ingest Endpoint
 
-After a table exists, you can configure a source to load data into it. The ingest endpoint configuration will yield a persistent endpoint that allows you to stream data to. For more information on ingesting, see [Streaming (HTTPS)](/data-ingestion/cloud/streaming/streamingoverview). Below you can see our JSON schema that details the data being streamed to the source. The below schema contains various flower species and their measurements. The command below will start creating your ingest endpoint. 
+After a table exists, you can configure a source to load data into it. The ingest endpoint configuration will yield a persistent endpoint that allows you to stream data to. For more information on ingesting, see [Streaming (HTTPS)](/cloud/data-ingestion/streaming/streamingoverview). Below you can see our JSON schema that details the data being streamed to the source. The below schema contains various flower species and their measurements. The command below will start creating your ingest endpoint. 
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
@@ -165,7 +165,7 @@ curl --location --request POST 'https://api.featurebase.com/v2/sinks' \
 
 You can also do this in the UI on the "Data Sources" page by clicking “New Source", choosing "iris_demo_database" as the database, "iris_ingest_endpoint" as the source name, "iris_table" as the table, and defining the column mappings with the same information as the API call above, matching the image below:
 
-![Sreaming Source UI Configuration](/img/data-ingestion/cloud/streaming/tutorials/cloudquickstart/iris_source.png)
+![Sreaming Source UI Configuration](/img/cloud/data-ingestion/streaming/tutorials/cloudquickstart/iris_source.png)
 
 Like databases, sources takes some time to create. You should be able to see the "iris_ingest_endpoint" status as "Creating" by running the command below or in the UI.
 
@@ -180,7 +180,7 @@ Grab your source's id. This is a unique id for your source. Once your source is 
 
 #### Ingest Data
 
-We now have an endpoint we can stream data to. This guide will only send one payload of 150 records, but data can be continually pushed to this endpoint. For more information, please see the [Streaming (HTTPS)](/data-ingestion/cloud/streaming/streamingoverview). This action cannot be performed in the UI and must be done with the command below. 
+We now have an endpoint we can stream data to. This guide will only send one payload of 150 records, but data can be continually pushed to this endpoint. For more information, please see the [Streaming (HTTPS)](/cloud/data-ingestion/streaming/streamingoverview). This action cannot be performed in the UI and must be done with the command below. 
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header

@@ -22,7 +22,7 @@ Once an ingest endpoint is configured, data can be streamed to it. Each record s
 }
 ```
 
-It is recommended to “microbatch” records before sending them to maximize ingest rates. The maximum amount of records that can be sent in a single request is constrained by the limits [here](/data-ingestion/cloud/streaming/streamingoverview). The JSON blob does support nested structures, so it is up to your schema to define the `path` for each column’s value.
+It is recommended to “microbatch” records before sending them to maximize ingest rates. The maximum amount of records that can be sent in a single request is constrained by the limits [here](/cloud/data-ingestion/streaming/streamingoverview). The JSON blob does support nested structures, so it is up to your schema to define the `path` for each column’s value.
 
 Below is an example of how multiple records are sent to the ingest endpoint:
 
@@ -40,4 +40,4 @@ curl --location --request POST 'https://data.featurebase.com/v2/sinks/<sink_id>'
 }'
 ```
 
-The full reference API for pushing data to an ingest endpoint can be found [here](/reference/api/cloud/api). For a tutorial on how to go from nothing to a database with data streaming in, see the [Getting Started With Streaming](/data-ingestion/cloud/streaming/tutorials/cloudquickstart).
+The full reference API for pushing data to an ingest endpoint can be found [here](/reference/api/cloud/api). For a tutorial on how to go from nothing to a database with data streaming in, see the [Getting Started With Streaming](/cloud/data-ingestion/streaming/tutorials/cloudquickstart).
