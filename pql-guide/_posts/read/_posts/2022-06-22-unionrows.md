@@ -4,7 +4,7 @@ title: UnionRows()
 sidebar_label: UnionRows()
 ---
 
-`UnionRows()` is supplied, as arguments, any number of [Rows()](/reference/data-querying-ref/pql/read/rows) calls. Conceptually, `UnionRows()` does the following:
+`UnionRows()` is supplied, as arguments, any number of [Rows()](/reference/pql-guide/read/rows) calls. Conceptually, `UnionRows()` does the following:
 - unions all the field values in all the `Rows()` calls
 - then, returns record IDs / keys for records that have at least one of field values in that list of field values.
 
