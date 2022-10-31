@@ -31,7 +31,7 @@ The ingester takes configuration options which tell it how to interact with the 
 
 By default, FeatureBase listens for HTTP(S) on port 10101 and gRPC on port 20101. Both of these protocols are required for FeatureBase to function properly.
 
-Optionally, FeatureBase listens on port 55342 for the PostgreSQL wire protocol. It can accept [PQL](/pql-guide/pql) queries, or a [subset of SQL](/data-querying/sql) over this protocol.
+Optionally, FeatureBase listens on port 55342 for the PostgreSQL wire protocol. It can accept [PQL](/pql-guide/pql) queries, or a [subset of SQL](/sql-guide/sql) over this protocol.
 
 Internally, FeatureBase uses [embedded etcd](https://pkg.go.dev/github.com/coreos/etcd/embed) for consistently managing things like cluster membership and schema, using ports 10301 and 10401 by default.
 
