@@ -6,7 +6,7 @@ sidebar_label: Host System
 
 ## Operating System Configuration
 
-This page discusses software configuration issues commonly encountered when deploying FeatureBase. For hardware requirements or scaling, look at [Sizing FeatureBase](/how-tos/size-featurebase-database).
+This page discusses software configuration issues commonly encountered when deploying FeatureBase. For hardware requirements or scaling, look at [Sizing FeatureBase](/community/size-featurebase-database).
 
 FeatureBase's data storage splits the database into a potentially large number of files, which are open simultaneously. Most Unix-derived systems limit the number of simultaneous open files for a given process or user, and these limits are frequently small enough to be a problem. Similarly, there may be limits on the number of memory-mapped regions allowed in a process. These may need to be changed,
 either temporarily during initial development and testing, or as a machine-wide configuration change that persists across restarts.
