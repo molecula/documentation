@@ -28,7 +28,7 @@ Before we begin it’s always a good idea to make sure you have all the credenti
 
 - FeatureBase Cloud credentials. If you don’t have an account yet then [sign up for a free trial](https://www.featurebase.com/cloud) (no credit card needed).
 
-- The endpoint to an [existing Cloud ingest endpoint](/cloud/data-ingestion/streaming/createstreamingsource). In this tutorial you'll find the [schema](#creating-a-featurebase-source-schema) needed to create a new one and follow along, but a source will need to be configured and an endpoint available for configuration before testing with your data.
+- The endpoint to an [existing Cloud ingest endpoint](/cloud/cloud-data-ingestion/streaming/createstreamingsource). In this tutorial you'll find the [schema](#creating-a-featurebase-source-schema) needed to create a new one and follow along, but a source will need to be configured and an endpoint available for configuration before testing with your data.
 
 | SECURITY WARNING                                                                                                                                                                                                                                                                                                                      |
 |:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -382,7 +382,7 @@ def on_message(message, token):
   #
   # Send request to push data into FeatureBase Cloud
   #
-  # See: https://docs.featurebase.com/cloud/data-ingestion/streaming/ingeststreamingsource
+  # See: https://docs.featurebase.com/cloud/cloud-data-ingestion/streaming/ingeststreamingsource
   #
   response = requests.post(
     url     = FEATUREBASE_STREAMING_ENDPOINT, 
@@ -523,7 +523,7 @@ def on_message(batch, token):
   #
   # Send request to push data into FeatureBase Cloud
   #
-  # See: https://docs.featurebase.com/cloud/data-ingestion/streaming/ingeststreamingsource
+  # See: https://docs.featurebase.com/cloud/cloud-data-ingestion/streaming/ingeststreamingsource
   #
   response = requests.post(
     url     = FEATUREBASE_STREAMING_ENDPOINT, 

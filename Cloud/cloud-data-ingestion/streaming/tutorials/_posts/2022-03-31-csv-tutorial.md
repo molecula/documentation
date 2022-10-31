@@ -28,7 +28,7 @@ Before we begin, it's always a good idea to make sure you have all the credentia
 | Note that for the sake of simplicity, in this tutorial, we're hardcoding passwords and other secrets. Please don't do this in any capacity other than as a personal learning exercise! It's very easy to accidentally commit to code repositories or leave in a public place which invites data breaches for yourself or your organization. |
 
 
-Below represents all of the inputs you must enter to use these code snippets. This offers limited flexibility but does allow you to specify a delimiter, if not a **","** and if your CSV has a header as the first line or not. You will have to put all of the column names in the order they appear in your CSV file and ensure they match the `path` names in your ingest endpoint. For more information on ingest endpoints, go [here](/cloud/data-ingestion/streaming/streamingoverview).
+Below represents all of the inputs you must enter to use these code snippets. This offers limited flexibility but does allow you to specify a delimiter, if not a **","** and if your CSV has a header as the first line or not. You will have to put all of the column names in the order they appear in your CSV file and ensure they match the `path` names in your ingest endpoint. For more information on ingest endpoints, go [here](/cloud/cloud-data-ingestion/streaming/streamingoverview).
 
 ```python
 import csv
@@ -55,7 +55,7 @@ FEATUREBASE_STREAMING_ENDPOINT = ''
 ```
 
 ## Example Data
-Below is a small amount of iris (flower) csv records that can be saved as a file in order to follow along. If you'd like to use a much larger dataset but don't have your own data, one can be downloaded [below](/cloud/data-ingestion/streaming/tutorials/csv-tutorial#example-csv)
+Below is a small amount of iris (flower) csv records that can be saved as a file in order to follow along. If you'd like to use a much larger dataset but don't have your own data, one can be downloaded [below](/cloud/cloud-data-ingestion/streaming/tutorials/csv-tutorial#example-csv)
 
 ```csv
 id,sepalLength,sepalWidth,petalLength,petalWidth,species
@@ -137,7 +137,7 @@ You'll also need to create an ingest endpoint that maps the data to your table. 
 
 ## Convert CSV to JSON Format
 
-The first step is to transform every row in the CSV file into the FeatureBase Cloud schema syntax, which can be seen in further detail at [here](/cloud/data-ingestion/streaming/streamingoverview). The output of this function will create 1 to many properly formatted JSON files for every 1000 records in your CSV file. 
+The first step is to transform every row in the CSV file into the FeatureBase Cloud schema syntax, which can be seen in further detail at [here](/cloud/cloud-data-ingestion/streaming/streamingoverview). The output of this function will create 1 to many properly formatted JSON files for every 1000 records in your CSV file. 
 
 ```python
 def make_json(csvFilePath, jsonFilePath, columnnames, delim=',', header=True):
