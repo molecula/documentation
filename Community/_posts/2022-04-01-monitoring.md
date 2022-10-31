@@ -150,7 +150,7 @@ Below is an example configuration excerpt for Prometheus (the `scrape_configs` s
 
 ## Logging
 
-All FeatureBase components log to standard error by default and can be configured to log to a file. When logging to a file, FeatureBase components will re-open the log file on receipt of the HUP signal. See [How To Set Up Log Rotation](/how-tos/set-up-log-rotation) for more information.
+All FeatureBase components log to standard error by default and can be configured to log to a file. When logging to a file, FeatureBase components will re-open the log file on receipt of the HUP signal. See [How To Set Up Log Rotation](/community/set-up-log-rotation) for more information.
 
 ## Tracing
 
