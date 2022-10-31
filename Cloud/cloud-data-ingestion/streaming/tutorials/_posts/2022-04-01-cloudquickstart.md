@@ -179,7 +179,11 @@ Grab your source's id. This is a unique id for your source. Once your source is 
 
 #### Ingest Data
 
+<<<<<<< HEAD:Cloud/cloud-data-ingestion/streaming/tutorials/_posts/2022-04-01-cloudquickstart.md
 We now have an endpoint we can stream data to. This guide will only send one payload of 150 records, but data can be continually pushed to this endpoint. For more information, please see the [Streaming (HTTPS)](/cloud/cloud-data-ingestion/streaming/streamingoverview). This action can be performed in the UI by clicking on your endpoint, "iris_ingest_endpoint", on the "Data sources" page. This will take you to a screen with a "SEND RECORDS" button. Click this button and copy and paste the json passed for `--data-raw` below. Alternatively, this can be done with the command below. 
+=======
+We now have an endpoint we can stream data to. This guide will only send one payload of 150 records, but data can be continually pushed to this endpoint. For more information, please see the [Streaming (HTTPS)](/data-ingestion/cloud/streaming/streamingoverview). This action can be performed in the UI by clicking on your endpoint, "iris_ingest_endpoint", on the "Data sources" page. This will take you to a screen with a "SEND RECORDS" button. Click this button and copy and paste the json passed for `--data-raw` below. Alternatively, this can be done with the command below. 
+>>>>>>> main:data-ingestion/cloud/streaming/tutorials/_posts/2022-04-01-cloudquickstart.md
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header

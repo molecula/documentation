@@ -112,7 +112,11 @@ curl --location --request GET 'https://api.featurebase.com/v2/sinks' \
 --header 'Content-Type: application/json' 
 ```
 
+<<<<<<< HEAD:Cloud/cloud-data-ingestion/streaming/_posts/2022-04-02-createstreamingsource.md
 Only sources in the "ACTIVE" state can have data pushed for ingest. To learn more about pushing data, click [here](/cloud/cloud-data-ingestion/streaming/ingeststreamingsource). The full reference API for configuring an ingest endpoint can be found [here](/cloud/api).
+=======
+Only sources in the "ACTIVE" state can have data pushed for ingest. To learn more about pushing data, click [here](/data-ingestion/cloud/streaming/ingeststreamingsource). The full reference API for configuring an ingest endpoint can be found [here](/reference/api/cloud/api).
+>>>>>>> main:data-ingestion/cloud/streaming/_posts/2022-04-02-createstreamingsource.md
 
 
 
