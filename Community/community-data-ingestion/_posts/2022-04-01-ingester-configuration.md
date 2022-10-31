@@ -56,7 +56,7 @@ Note: In order for TLS to be used, the various TLS options need to be set, but e
 
 ## Kafka Delete Ingester
 
-The Kafka delete ingester configuration is the same as the Kafka ingester with the addition of `pilosa-grpc-hosts` (or `featurebase-grpc-hosts` with the [`--future.rename` configuration flag](/reference/operations/enterprise/featurebase-rename)) which is the endpoint on which FeatureBase is listening for GRPC connections. This is necessary as the delete ingester uses an `Inspect` call to figure out what values need to be deleted and that call is only available over this interface. By default it's `localhost:20101`.
+The Kafka delete ingester configuration is the same as the Kafka ingester with the addition of `pilosa-grpc-hosts` (or `featurebase-grpc-hosts` with the [`--future.rename` configuration flag](/community/featurebase-rename)) which is the endpoint on which FeatureBase is listening for GRPC connections. This is necessary as the delete ingester uses an `Inspect` call to figure out what values need to be deleted and that call is only available over this interface. By default it's `localhost:20101`.
 
 
 ## Kafka Static Ingester
@@ -226,7 +226,7 @@ molecula-consumer-sql \
 	--row-expr 'SELECT tableID as id__ID, zipcode as zipcode__String limit 10'
 ```
 
-Or, equivalently, with the [`--future.rename` configuration flag](/reference/operations/enterprise/featurebase-rename) configuration flag:
+Or, equivalently, with the [`--future.rename` configuration flag](/community/featurebase-rename) configuration flag:
 
 ```shell
 molecula-consumer-sql \

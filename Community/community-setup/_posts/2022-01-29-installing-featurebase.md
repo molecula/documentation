@@ -297,7 +297,7 @@ for vds in client.get_vds_list():
 
 ## Software Configuration
 
-Refer [Host System](/reference/operations/enterprise/hostsystem) for commonly encountered issues and operations checklist.
+Refer [Host System](/community/hostsystem) for commonly encountered issues and operations checklist.
 
 ## Sample Files
 

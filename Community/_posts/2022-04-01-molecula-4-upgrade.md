@@ -10,7 +10,7 @@ Molecula 4.x includes FeatureBase version 3.x, which is the main change from Mol
 In Molecula version 4.x, we have introduced a product rename from Pilosa to FeatureBase, roaring B-tree format for storage, and etcd for key-value store. These changes were made to improve high availability and consistency.
 
 ### Pilosa Rename
-Pilosa was renamed to FeatureBase. For details, refer to the [FeatureBase Rename](/reference/operations/enterprise/featurebase-rename) page.
+Pilosa was renamed to FeatureBase. For details, refer to the [FeatureBase Rename](/community/featurebase-rename) page.
 ### Roaring B-tree Format
 The new roaring B-tree format (RBF) storage backend provides ACID semantics at a shard level. It reduces heap usage for more predictable memory consumption and garbage collection behavior. 
 
@@ -35,7 +35,7 @@ FeatureBase v3.x:
 Some operations on the tables page of the UI can be very expensive on large datasets. One of these operations is the disk usage operation, which can be disabled with the `usage-duty-cycle` option (Additional details can be found in the [Configuration](#configuration) section). The tables page of the UI also calculates cardinality across all fields, which can be expensive. For FeatureBase v3.5, there is no configuration to disable calculating cardinality, but it is something to be aware of if using the UI. 
 
 ### Backup and Restore Functionality
-FeatureBase v3.x has new backup and restore functionality. For details, refer to the [Backups](/reference/operations/enterprise/backups) page. 
+FeatureBase v3.x has new backup and restore functionality. For details, refer to the [Backups](/community/backups) page. 
 
 ### Configuration
 
@@ -67,7 +67,7 @@ The entire `gossip` section has been removed as that functionality has been repl
 `--long-query-time`: Used to be nested under cluster, but it is now top level.
 
 ### Data Directory Structure    
-Changes to the data directory structure in FeatureBase were made to account for RBF and etcd changes. For details, refer to the [Data Directory Structure](/reference/operations/enterprise/data-directory-structure). In general, the Molecula team would like to discourage reliance on any particular details of the directory structure. 
+Changes to the data directory structure in FeatureBase were made to account for RBF and etcd changes. For details, refer to the [Data Directory Structure](/community/data-directory-structure). In general, the Molecula team would like to discourage reliance on any particular details of the directory structure. 
 
 Pilosa v2.x:
 ```
