@@ -6,7 +6,7 @@ sidebar_label: Streaming (HTTPS) Overview
 
  **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes. 
 
-FeatureBase allows you to stream data into your tables using one source type called an "ingest endpoint". The ingest endpoint configuration  will create a persistent endpoint that allows you to push data over HTTPS. Each endpoint maps to one table within one database. If you have multiple disparate data sources, you may create multiple endpoints that push data to the same table. Once this endpoint is provisioned, you can stream (POST) JSON records to it using any method or tool that can perform HTTPS requests. The table below describes the current limits of streaming data in for each endpoint:
+FeatureBase allows you to stream data into your tables using one source type called an "ingest endpoint". The ingest endpoint configuration will create a persistent endpoint that allows you to push data over HTTPS. Each endpoint maps to one table within one database. If you have multiple disparate data sources, you may create multiple endpoints that push data to the same table. Once this endpoint is provisioned, you can stream (POST) JSON records to it using any method or tool that can perform HTTPS requests. The table below describes the current limits of streaming data in for each endpoint:
 
 |Category (Exclusive) | Current Limit  |
 | --- | ----------- |
@@ -21,18 +21,18 @@ There are a couple of states associated with these sources that are important to
 | --- | ----------- |
 |CREATING           |  The state of provisioning the hardware, installing software, and everything else in order to create a source. This will generally transition into the ACTIVE state. |
 |ACTIVE           |  The healthy state of a source that is ready to use. |
-|UPDATING           |  The state of a source when an update is being applied. This might occur when hardware is being updated, software is being patched, etc. |
+|RESTARTING           |  The state of a source when an update is being applied. This will occur when the mappings are changed, hardware is being updated, software is being patched, etc. |
 |DELETING           |  The state when a source is being deleted and hardware is being spun down. This will generally transition into the DELETED state. |
 |DELETED           |  The state of a source that has been successfully deleted. |
 |FAILED           | The state of a source when something goes wrong. This can occur for a variety of reasons. If you see this state and the source is ok to delete, feel free to do so. Otherwise, please contact us. |
 
 
 ## Configuration
-For information on creating an ingest endpoint, please go [here](/cloud/data-ingestion/streaming/createstreamingsource)
+For information on creating an ingest endpoint, please go [here](/data-ingestion/cloud/streaming/createstreamingsource)
 
 ## Streaming Data
 
-For information on streaming data to an ingest endpoint, please go [here](/cloud/data-ingestion/streaming/ingeststreamingsource)
+For information on streaming data to an ingest endpoint, please go [here](/data-ingestion/cloud/streaming/ingeststreamingsource)
 
 
 <!--

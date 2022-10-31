@@ -35,7 +35,6 @@ curl --location --request POST 'https://id.featurebase.com' \
 }' 
 ```
 
-
 3 tokens are returned: Access, ID, and Refresh. Use the ID token for all of your API calls as the Authorization header:
 
 **HTTP API Reference:**
@@ -57,7 +56,7 @@ curl --location --request POST 'https://id.featurebase.com' \
 
 ### Create A Database
 
-The first step is creating a database. We will be using the 8GB shape for this walk-through. For more information on databases, see [Database Overview](/cloud/cloud-setupdatabases-overview).  The command below will start creating your database. You can also do this in the UI on the "Databases" page by clicking “New Database”, selecting "Standard", entering "iris_demo_database" for the name, and choosing the "8GB" option.
+The first step is creating a database. We will be using the 8GB shape for this walk-through. For more information on databases, see [Database Overview](/setting-up-featurebase/cloud/databases-overview).  The command below will start creating your database. You can also do this in the UI on the "Databases" page by clicking “New Database”, selecting "Standard", entering "iris_demo_database" for the name, and choosing the "8GB" option.
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
@@ -90,13 +89,13 @@ Grab your database’s "id" returned from the command above. This is a unique id
 
 ### Ingest Data
 
-Once a database is "RUNNING", you will want to start loading data into it. This section will help you create an ingest endpoint, which will yield a persistent endpoint that allows you to push data into your database over HTTPS. For more information on ingesting data, see [Ingest Data](/cloud/data-ingestion/ingestoverview).
+Once a database is "RUNNING", you will want to start loading data into it. This section will help you create an ingest endpoint, which will yield a persistent endpoint that allows you to push data into your database over HTTPS. For more information on ingesting data, see [Ingest Data](/data-ingestion/cloud/ingestoverview).
 
 #### Create A Table
 
-You must create a table before you can ingest data. For more information on tables, see [Tables](/cloud/data-ingestion/tables). The command below will create your table. 
+You must create a table before you can ingest data. For more information on tables, see [Tables](/data-ingestion/cloud/tables). The command below will create your table. 
 
-It is highly recommended to do table creation within the UI for easier mapping of column types, constraints, and options. Navigate to the "Tables" page and click “New Table", selecting your database, entering "iris_table" for the name, and entering "table holding flower data" as the description. The primary key for the iris table for this tutorial is a number, so choose `Number` as the ID type.
+It is highly recommended to do table creation within the UI for easier mapping of column types, constraints, and options. Navigate to the "Tables" page and click “New Table", selecting your database, entering "iris_table" for the name, and entering "table holding flower data" as the description. The primary key (id) for the iris table for this tutorial is an integer, so choose `Number` as the ID type.
 
 Once created, go to the "COLUMNS" tab in order to add or delete columns. You will see the _id column that was created during table creation. click "ADD COLUMN" and add the following columns, types, and constraints:
 
@@ -111,7 +110,7 @@ Once created, go to the "COLUMNS" tab in order to add or delete columns. You wil
 
 #### Create An Ingest Endpoint
 
-After a table exists, you can configure a source to load data into it. The ingest endpoint configuration will yield a persistent endpoint that allows you to stream data to. For more information on ingesting, see [Streaming (HTTPS)](/cloud/data-ingestion/streaming/streamingoverview). Below you can see our JSON schema that details the data being streamed to the source. The below schema contains various flower species and their measurements. The command below will start creating your ingest endpoint. 
+After a table exists, you can configure a source to load data into it. The ingest endpoint configuration will yield a persistent endpoint that allows you to stream data to. For more information on ingesting, see [Streaming (HTTPS)](/data-ingestion/cloud/streaming/streamingoverview). Below you can see our JSON schema that details the data being streamed to the source. The below schema contains various flower species and their measurements. The command below will start creating your ingest endpoint. 
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
@@ -132,11 +131,11 @@ curl --location --request POST 'https://api.featurebase.com/v2/sinks' \
       "table": "iris_table"
     },
     "schema": {
-        "id_field": "id",
+        "id_field": "_id",
         "allow_missing_fields": true,
         "definition": [
         {
-            "name": "id",
+            "name": "_id",
             "path": ["id"]
         },
         {
@@ -165,7 +164,7 @@ curl --location --request POST 'https://api.featurebase.com/v2/sinks' \
 
 You can also do this in the UI on the "Data Sources" page by clicking “New Source", choosing "iris_demo_database" as the database, "iris_ingest_endpoint" as the source name, "iris_table" as the table, and defining the column mappings with the same information as the API call above, matching the image below:
 
-![Sreaming Source UI Configuration](/img/cloud/data-ingestion/streaming/tutorials/cloudquickstart/iris_source.png)
+![Sreaming Source UI Configuration](/img/data-ingestion/cloud/streaming/tutorials/cloudquickstart/iris_source.png)
 
 Like databases, sources takes some time to create. You should be able to see the "iris_ingest_endpoint" status as "Creating" by running the command below or in the UI.
 
@@ -180,7 +179,7 @@ Grab your source's id. This is a unique id for your source. Once your source is 
 
 #### Ingest Data
 
-We now have an endpoint we can stream data to. This guide will only send one payload of 150 records, but data can be continually pushed to this endpoint. For more information, please see the [Streaming (HTTPS)](/cloud/data-ingestion/streaming/streamingoverview). This action cannot be performed in the UI and must be done with the command below. 
+We now have an endpoint we can stream data to. This guide will only send one payload of 150 records, but data can be continually pushed to this endpoint. For more information, please see the [Streaming (HTTPS)](/data-ingestion/cloud/streaming/streamingoverview). This action can be performed in the UI by clicking on your endpoint, "iris_ingest_endpoint", on the "Data sources" page. This will take you to a screen with a "SEND RECORDS" button. Click this button and copy and paste the json passed for `--data-raw` below. Alternatively, this can be done with the command below. 
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
@@ -189,7 +188,7 @@ Inputs:
 
 **HTTP API Reference:**
 ```shell
-curl --location --request POST 'https://data.featurebase.com/v2/sinks/<sourceId>' \
+curl --location --request POST 'https://data.featurebase.com/v2/sinks/<source id>' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -348,7 +347,7 @@ curl --location --request POST 'https://data.featurebase.com/v2/sinks/<sourceId>
 }'
 ```
 
-This will yield a response that details the number of successes and errors from the request, as well as a status for each record. You should see something similar return below and can move on to the next step
+This will yield a response that details the number of successes and errors from the request, as well as a status for each record. You should see something similar return below and can move on to the next step.
 
 ```json
 {'success_count': 150,
@@ -393,7 +392,7 @@ curl --location --request POST 'https://data.featurebase.com/v2/databases/<datab
 
 Queries yield JSON responses containing the requested data. Now is a good time to explore running other queries if you would like. 
 
-This marks the end of the streaming Quick Start. While this guide doesn't show the massive scale FeatureBase can perform against, it does show you how to get started. Now is a great time to look at our other streaming tutorials and start loading your own data in. Please feel free to [reach out](/reference/cloud/support) with any questions or feedback you have for this guide.
+This marks the end of the streaming Quick Start. While this guide doesn't show the massive scale FeatureBase can perform against, it does show you how to get started. Now is a great time to look at our other streaming tutorials and start loading your own data in. Please feel free to [reach out](/reference/operations/cloud/support) with any questions or feedback you have for this guide.
 
 ### Environment Cleanup
 
@@ -407,7 +406,7 @@ Inputs:
 
 **HTTP API Reference:**
 ```shell
-curl --location --request DELETE 'https://api.featurebase.com/v2/sinks/<sourceid>' \
+curl --location --request DELETE 'https://api.featurebase.com/v2/sinks/<source id>' \
 --header 'Authorization: Bearer <IdToken>'  
 ```
 
