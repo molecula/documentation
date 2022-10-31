@@ -5,7 +5,7 @@ sidebar_label: Consumer Usage Examples
 ---
 
 
-Also refer to the [ingester configuration reference](/reference/data-ingestion/ingester-configuration) page for details on configuration flags for all consumers.
+Also refer to the [ingester configuration reference](/community/community-data-ingestion/ingester-configuration) page for details on configuration flags for all consumers.
 
 
 # FeatureBase consumer binaries

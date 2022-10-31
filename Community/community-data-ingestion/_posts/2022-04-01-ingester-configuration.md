@@ -176,7 +176,7 @@ For `"recordTime"` fields, there are essentially two modes. If `"Epoch"` or `"Un
 
 ## CSV Ingester
 
-The CSV ingester can read CSV files (optionally gzipped) and ingest them to FeatureBase. It uses a naming convention in the header of the CSV file to [specify how each field](/reference/data-ingestion/ingester-configuration#header-descriptions) should be ingested. The header can either be included in the file or passed in separately if editing the file is not desirable. If passed in separately one should use the `--ignore-header` option if the CSV file has a header so that it is not interpreted as data. 
+The CSV ingester can read CSV files (optionally gzipped) and ingest them to FeatureBase. It uses a naming convention in the header of the CSV file to [specify how each field](/community/community-data-ingestion/ingester-configuration#header-descriptions) should be ingested. The header can either be included in the file or passed in separately if editing the file is not desirable. If passed in separately one should use the `--ignore-header` option if the CSV file has a header so that it is not interpreted as data. 
 
 The CSV ingester uses the CSV conventions outlined in [RFC-4180](https://datatracker.ietf.org/doc/html/rfc4180#section-2). CSV files following other conventions may result in undefined behavior. Few things to note from the specifications:
 - "Fields containing line breaks (CRLF), double quotes, and commas should be enclosed in double-quotes."
@@ -211,7 +211,7 @@ Missing values and empty string values (`""`) are handled identically.
 
 ## SQL Ingester
 
-The SQL ingester uses a sql connection (via MSSQL, MySQL, or Postgres) to select data from a sql endpoint, and ingests the data into FeatureBase. It uses the SQL table column names as [header descriptions to specify how each field](/reference/data-ingestion/ingester-configuration#header-descriptions) should be ingested, similar to the CSV Ingester.
+The SQL ingester uses a sql connection (via MSSQL, MySQL, or Postgres) to select data from a sql endpoint, and ingests the data into FeatureBase. It uses the SQL table column names as [header descriptions to specify how each field](/community/community-data-ingestion/ingester-configuration#header-descriptions) should be ingested, similar to the CSV Ingester.
 
 Use `molecula-consumer-sql -h` to list all available flags (or see table below). A few sample configurations are noted below:
 
@@ -297,7 +297,7 @@ postgres:	https://godoc.org/github.com/lib/pq
 
 ## Header Descriptions
 
-The [CSV](/reference/data-ingestion/ingester-configuration#csv-ingester) and [SQL](/reference/data-ingestion/ingester-configuration#sql-ingester) ingesters use the same syntax for describing how you want the fields in your source data to be ingested into FeatureBase. The basic structure is
+The [CSV](/community/community-data-ingestion/ingester-configuration#csv-ingester) and [SQL](/community/community-data-ingestion/ingester-configuration#sql-ingester) ingesters use the same syntax for describing how you want the fields in your source data to be ingested into FeatureBase. The basic structure is
 
 `field_name__FieldType_Arg1_Arg2`
 
