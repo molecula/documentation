@@ -22,7 +22,7 @@ First, sign up for your [Free Trial](https://www.featurebase.com/cloud). Click t
 ![Figure 1. Create an account and set your password](/img/quick-start-guide/cloud/account_signup.png)
 
 
-Next, you'll be asked to verify your account using the code sent to the email address you used to create your account. 
+Next, you'll be asked to verify your account using the code sent to the email address you used to create your account.
 
 ![Figure 2. Verify your account](/img/quick-start-guide/cloud/verification_email.png)
 
@@ -35,7 +35,7 @@ Navigate back to FeatureBase using [cloud.featurebase.com](https://cloud.feature
 ![Figure 3. Sign In](/img/quick-start-guide/cloud/sign_in.png)
 
 
-When you sign in, you'll be directed to the Home screen where you have options to complete a variety of actions using the navigation pane on the left side of the screen. 
+When you sign in, you'll be directed to the Home screen where you have options to complete a variety of actions using the navigation pane on the left side of the screen.
 
 ![Figure 4. FeatureBase Home Screen](/img/quick-start-guide/cloud/home_page.png)
 
@@ -49,7 +49,7 @@ In order to use our application, you’ll need data. In a real-life situation, t
 ![Figure 5. Configure a Quick Start Database that is pre-loaded with demo data](/img/quick-start-guide/cloud/create_cseg_db.png)
 
 
-While the database is spinning up, you will see messages on the ```Databases``` screen as the status progresses. While the database is ```CREATING```, data is being loaded in. 
+While the database is spinning up, you will see messages on the ```Databases``` screen as the status progresses. While the database is ```CREATING```, data is being loaded in.
 
 ![Figure 6. New Database: Creating](/img/quick-start-guide/cloud/db_creating.png)
 
@@ -109,8 +109,8 @@ It is unlikely to need to ```SUM``` in this manner across all records. It is muc
 Here we introduce comparative and logical operators including ```GREATER THAN```, ```AND```, and ```OR```. 
 
 ```sql
-SELECT SUM(income) 
-FROM cseg 
+SELECT SUM(income)
+FROM cseg
 WHERE income > 5000 AND age = 45 AND (skills='Ms Office' OR skills='Excel');
 ```
 
@@ -140,9 +140,9 @@ FeatureBase can merge at ingest and eliminate preprocessing in cases where perfo
 The ```INNER JOIN``` is facilitating a ```COUNT``` of records, or people, that are ```available for hire``` as indicated by having a ```STRING``` column true for ```available_for_hire``` located in the skills table, and having a ```STRING``` column true for ```Teaching```. In other words, we would like to ```COUNT``` the number of people who are teachers and also available for hire. The latency on this type of ```INNER JOIN``` at the billion records scale is still sub-second allowing for several interesting data models.
 
 ```sql
-SELECT count(*) AS count 
-FROM cseg AS t1 
-INNER JOIN skills AS t2 ON t1._id = t2.id 
+SELECT count(*) AS count
+FROM cseg AS t1
+INNER JOIN skills AS t2 ON t1._id = t2.id
 WHERE t2.bools = 'available_for_hire' and t1.hobbies = 'Teaching';
 ```
 ![Figure 15. INNER JOIN Query](/img/quick-start-guide/cloud/query_join.png)
@@ -154,7 +154,7 @@ WHERE t2.bools = 'available_for_hire' and t1.hobbies = 'Teaching';
 
 ### TopK - A FeatureBase Superpower
 
-Ranking queries are notorious for being computationally intensive - aka slow. Some solutions will use statistics to speed up a ranking query by approximating the true results, but that’s not always a desirable option. In addition to SQL, FeatureBase has a native language called [PQL](/data-querying/pql). In PQL, [```TopK```](/reference/pql-guide/read/topk) queries can be run to return exact results in milliseconds. 
+Ranking queries are notorious for being computationally intensive - aka slow. Some solutions will use statistics to speed up a ranking query by approximating the true results, but that’s not always a desirable option. In addition to SQL, FeatureBase has a native language called [PQL](/pql-guide/pql). In PQL, [```TopK```](/reference/pql-guide/read/topk) queries can be run to return exact results in milliseconds. 
 
 This query returns the top five hobbies across all customers from the cseg table, sifting through a billion records in 117.2ms.
 
@@ -174,7 +174,7 @@ More complex, the next query returns the top ten hobbies among females who also 
 
 ### Grouping with Complex Conditions and Aggregating
 
-Another query commonly seen in aggregation-related use cases is the ```GROUP BY```. For example, let’s group by the hobbies counting only those with ultimate ```COUNT``` above 200,000,000. We'll execute this query in [PQL](/data-querying/pql).
+Another query commonly seen in aggregation-related use cases is the ```GROUP BY```. For example, let’s group by the hobbies counting only those with ultimate ```COUNT``` above 200,000,000. We'll execute this query in [PQL](/pql-guide/pql).
 
 ```
 [cseg]GroupBy(
@@ -190,10 +190,10 @@ having=CONDITION(count > 200000000)
 Another useful facet of ```GROUP BY``` is the ability to add an aggregate argument and utilize the low-latency aggregation in another capacity. We'll execute this query in SQL.
 
 ```sql
-SELECT education, SUM(income) 
-FROM cseg 
-WHERE age=18 
-GROUP BY education; 
+SELECT education, SUM(income)
+FROM cseg
+WHERE age=18
+GROUP BY education;
 ```
 ![Figure 19. GROUP BY Query with Filters](/img/quick-start-guide/cloud/cseg_groupby_filter.png)
 
@@ -243,9 +243,9 @@ SELECT AVG(income) FROM cseg;
 ### JOINS
 
 ```sql
-SELECT count(*) AS count 
-FROM cseg AS t1 
-INNER JOIN skills AS t2 ON t1._id = t2.id 
+SELECT count(*) AS count
+FROM cseg AS t1
+INNER JOIN skills AS t2 ON t1._id = t2.id
 WHERE t2.bools = 'available_for_hire' AND t1.hobbies = 'Teaching';
 ```
 
@@ -281,10 +281,9 @@ Confirm the table drop by typing ```DELETE``` into the interface. Repeat for eac
 
 ![Figure 21. Confirm Delete Table](/img/quick-start-guide/cloud/delete_table_confirm.png)
 
-Repeat the process in the ```Databases``` screen for each database that you want to spin down. It may take a few minutes longer to delete a database than a typical table. 
+Repeat the process in the ```Databases``` screen for each database that you want to spin down. It may take a few minutes longer to delete a database than a typical table.
 
 ![Figure 22. Delete Database](/img/quick-start-guide/cloud/delete_database.png)
 
 
 ![Figure 23. Confirm Delete Database](/img/quick-start-guide/cloud/delete_database_confirm.png)
-

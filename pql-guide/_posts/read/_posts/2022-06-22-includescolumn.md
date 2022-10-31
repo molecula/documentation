@@ -4,7 +4,7 @@ title: IncludesColumn()
 sidebar_label: IncludesColumn()
 ---
 
-`IncludesColumn()` returns true if some record ID / record key is in a specified set of record IDs / record keys - i.e. if the specified record was returned by a specified [row call](/data-querying/pql#row-calls){:target="_blank"} or not.
+`IncludesColumn()` returns true if some record ID / record key is in a specified set of record IDs / record keys - i.e. if the specified record was returned by a specified [row call](/pql-guide/pql#row-calls){:target="_blank"} or not.
 
 ## Call Definition
 
@@ -12,7 +12,7 @@ sidebar_label: IncludesColumn()
 IncludesColumn(ROW_CALL, column=UINT_OR_STRING)
 ```
 #### Mandatory Arguments
- - `ROW_CALL`: the [row call](/data-querying/pql#row-calls){:target="_blank"} to compare against
+ - `ROW_CALL`: the [row call](/pql-guide/pql#row-calls){:target="_blank"} to compare against
  - `column`: the record ID or record key we want to check is in or not in the result of `ROW_CALL`
    - `UINT_OR_STRING`: unsigned integer for non keyed records or a string for keyed records
 

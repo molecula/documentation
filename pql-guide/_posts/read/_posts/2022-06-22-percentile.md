@@ -23,7 +23,7 @@ Percentile(field=FIELD, nth=NTH_VALUE, filter=ROW_CALL)
  - `nth` / `NTH_VALUE`: a whole number (such as 25) or a float (such as 80.5). This value should be within 0 and 100.0, both inclusive. When nth is 0, Percentile returns the minimum value. When nth is 100, Percentile returns the maximum value. When nth is 50, Percentile returns a value that is close to, but not necessarily exactly equal to, the median value.
 
 #### Optional Arguments
- - `filter` / `ROW_CALL` : the [row call](/data-querying/pql#row-calls){:target="_blank"}  used to filter records if desired.
+ - `filter` / `ROW_CALL` : the [row call](/pql-guide/pql#row-calls){:target="_blank"}  used to filter records if desired.
  
 #### Returns
 - the computed percentile and a count set to 1
