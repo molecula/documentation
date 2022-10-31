@@ -375,7 +375,7 @@ curl --location --request POST 'https://data.featurebase.com/v2/databases/<datab
 --header 'Content-Type: application/json' \
 --data-raw '{ 
     "language": "sql", 
-    "statement": "select * from iris_table limit 10"
+    "statement": "select top(10) * from iris_table;"
 }'
 ```
 
