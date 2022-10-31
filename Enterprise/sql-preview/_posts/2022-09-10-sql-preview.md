@@ -10,7 +10,7 @@ title: SQL (Preview)
 
 ## SQL is a Preview Feature
 
-By default, SQL is disabled in FeatureBase. To enable the feature, FeatureBase needs to be configured with the `sql.endpoint-enabled` option. For more information, see [FeatureBase Configuration](/setting-up-featurebase/enterprise/featurebase-configuration)
+By default, SQL is disabled in FeatureBase. To enable the feature, FeatureBase needs to be configured with the `sql.endpoint-enabled` option. For more information, see [FeatureBase Configuration](/community/community-setup/featurebase-configuration)
 
 When this option is enabled, FeatureBase supports sql queries over a http endpoint and at the command line.
 

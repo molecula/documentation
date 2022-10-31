@@ -50,7 +50,7 @@ To configure Azure Active Directory as an IdP:
 The `featurebase.conf` and associated `permissions.yml` files _MUST_ be _identical_ across all nodes in a cluster. Failure to do so may result in an insecure cluster.
 
 
-To enable authentication and authorization in FeatureBase, add the following lines to your `featurebase.conf`. More information on these parameters and their values can be found at [this link](/setting-up-featurebase/enterprise/featurebase-configuration)
+To enable authentication and authorization in FeatureBase, add the following lines to your `featurebase.conf`. More information on these parameters and their values can be found at [this link](/community/community-setup/featurebase-configuration)
 ```
 [auth]
  enable = true
@@ -107,7 +107,7 @@ Additionally, TLS must be enabled. Refer to [How To Enable TLS](/how-tos/enable-
     ```
     sudo mkdir -p /var/log/molecula/ && touch /var/log/molecula/query.log
     ```
-    If this looks unfamiliar, or this directory has not been set up, refer to [How To Install FeatureBase](/setting-up-featurebase/enterprise/installing-featurebase).
+    If this looks unfamiliar, or this directory has not been set up, refer to [How To Install FeatureBase](/community/community-setup/installing-featurebase).
 
 - Add the path to the `query-log-path` parameter in `featurebase.conf`.
 

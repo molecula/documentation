@@ -177,4 +177,4 @@ select * from allyourbase;
 
 ![sql](/img/welcome/sql.png)
 
-In the [next section](/setting-up-featurebase/enterprise/installing-featurebase), we'll cover running FeatureBase as a daemon on Linux.
+In the [next section](/community/community-setup/installing-featurebase), we'll cover running FeatureBase as a daemon on Linux.

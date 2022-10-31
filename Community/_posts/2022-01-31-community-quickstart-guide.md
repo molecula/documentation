@@ -78,7 +78,7 @@ chmod ugo+x /usr/local/bin/featurebase
 Ensure this folder is in your path variable by, running ```echo $PATH``` in the command line and confirming ```/usr/local/bin/``` is there. 
 If it's not, run ```export PATH=$PATH:/usr/local/bin``` to append it to your path variable.
   
-Next, configure the FeatureBase server by creating and running the configuration file. Go to [FeatureBase Configuration](/setting-up-featurebase/enterprise/featurebase-configuration) for more on configuring FeatureBase.
+Next, configure the FeatureBase server by creating and running the configuration file. Go to [FeatureBase Configuration](/community/community-setup/featurebase-configuration) for more on configuring FeatureBase.
 
 <!---
 we now include this file in a release, so we might want to consider making these align and conform in the future.

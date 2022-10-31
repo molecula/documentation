@@ -7,13 +7,13 @@ sidebar_label: Getting Started With FeatureBase
 FeatureBase supports multiple interfaces for querying and [ingestion](/data-ingestion/enterprise/ingesters). For this tutorial, we shall use the `csv-ingester` to insert data and both the web-UI and Postgres interface (via psql) to get familiar with querying FeatureBase. Ultimately you'll probably want to interact with FeatureBase through a [client library](/data-querying/enterprise/libraries/python-library).
 
 **NOTE:** 
-Note that FeatureBase server requires a high limit for open files. Check the documentation of your system to see how to increase it in case you hit that limit. As a workaround, you can also cap FeatureBase's [max-file-count](/setting-up-featurebase/enterprise/featurebase-configuration#max-file-count).
+Note that FeatureBase server requires a high limit for open files. Check the documentation of your system to see how to increase it in case you hit that limit. As a workaround, you can also cap FeatureBase's [max-file-count](/community/community-setup/featurebase-configuration#max-file-count).
 
 ### Starting FeatureBase
 
 Grab the appropriate FeatureBase binary for your system from the release you were provided, or from [here](https://github.com/FeatureBaseDB/featurebase/releases/latest). Existing customers can also look for releases at https://releases.molecula.cloud/.
 
-The FeatureBase binary can be run directly, with no setup and minimal configuration. For a production installation, some additional setup may be appropriate; see the [installation guide](/setting-up-featurebase/enterprise/installing-featurebase). 
+The FeatureBase binary can be run directly, with no setup and minimal configuration. For a production installation, some additional setup may be appropriate; see the [installation guide](/community/community-setup/installing-featurebase). 
 
 **NOTE:** 
 FeatureBase runs well on Linux and MacOS. It will not run on Windows.

@@ -180,7 +180,7 @@ For Molecula 2.1.1
 **IMPORTANT:**
 As with many data stores, FeatureBase requires open file limits to be increased from their defaults. Managing open file limits changes frequently with MacOS versions. Here are a few resources to consult:
 
-- [max-file-count configuration option](/setting-up-featurebase/enterprise/featurebase-configuration#max-file-count)
+- [max-file-count configuration option](/community/community-setup/featurebase-configuration#max-file-count)
 - https://gist.github.com/tombigel/d503800a282fcadbee14b537735d202c
 - https://docs.riak.com/riak/kv/latest/using/performance/open-files-limit/index.html#mac-os-x-el-capitan
 :::
