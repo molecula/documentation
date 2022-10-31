@@ -154,7 +154,7 @@ WHERE t2.bools = 'available_for_hire' and t1.hobbies = 'Teaching';
 
 ### TopK - A FeatureBase Superpower
 
-Ranking queries are notorious for being computationally intensive - aka slow. Some solutions will use statistics to speed up a ranking query by approximating the true results, but that’s not always a desirable option. In addition to SQL, FeatureBase has a native language called [PQL](/pql-guide/pql). In PQL, [```TopK```](/reference/pql-guide/read/topk) queries can be run to return exact results in milliseconds. 
+Ranking queries are notorious for being computationally intensive - aka slow. Some solutions will use statistics to speed up a ranking query by approximating the true results, but that’s not always a desirable option. In addition to SQL, FeatureBase has a native language called [PQL](/pql-guide/pql). In PQL, [```TopK```](/pql-guide/read/topk) queries can be run to return exact results in milliseconds. 
 
 This query returns the top five hobbies across all customers from the cseg table, sifting through a billion records in 117.2ms.
 
