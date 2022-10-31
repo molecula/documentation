@@ -4,7 +4,7 @@ title: Getting Started With FeatureBase
 sidebar_label: Getting Started With FeatureBase
 ---
 
-FeatureBase supports multiple interfaces for querying and [ingestion](/community/community-data-ingestion/ingesters). For this tutorial, we shall use the `csv-ingester` to insert data and both the web-UI and Postgres interface (via psql) to get familiar with querying FeatureBase. Ultimately you'll probably want to interact with FeatureBase through a [client library](/data-querying/enterprise/libraries/python-library).
+FeatureBase supports multiple interfaces for querying and [ingestion](/community/community-data-ingestion/ingesters). For this tutorial, we shall use the `csv-ingester` to insert data and both the web-UI and Postgres interface (via psql) to get familiar with querying FeatureBase. Ultimately you'll probably want to interact with FeatureBase through a [client library](/community/query-data/libraries/python-library).
 
 **NOTE:** 
 Note that FeatureBase server requires a high limit for open files. Check the documentation of your system to see how to increase it in case you hit that limit. As a workaround, you can also cap FeatureBase's [max-file-count](/community/community-setup/featurebase-configuration#max-file-count).
