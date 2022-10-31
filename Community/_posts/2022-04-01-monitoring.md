@@ -195,4 +195,4 @@ While FeatureBase is in the RESIZING state, it denies any request which accesses
 
 ### Ingester
 
-Generally, scaling is handled by starting or stopping Ingester instances. Other options may be available for specific Ingesters; see [ingest tuning](/data-ingestion/enterprise/ingesters#ingest-tuning)
+Generally, scaling is handled by starting or stopping Ingester instances. Other options may be available for specific Ingesters; see [ingest tuning](/community/community-data-ingestion/ingesters#ingest-tuning)
