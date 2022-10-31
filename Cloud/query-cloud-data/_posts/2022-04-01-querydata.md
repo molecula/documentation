@@ -22,7 +22,7 @@ You will receive an error ("Network Error") if either limit is exceeded.
 In order to query data, the following prerequisites must be met:
 
 1. A database exists that is in the “Running” state
-- Click [here](/setting-up-featurebase/cloud/creating-database) to learn how to create a database
+- Click [here](/cloud/cloud-setup/creating-database) to learn how to create a database
 - Click [here](/cloud/api) to see the database API docs
 2. A table exists in that database
 - Click [here](/cloud/cloud-data-ingestion/tables) to learn how to create a table
