@@ -158,7 +158,7 @@ molecula-consumer-csv \
     --files stargazer.csv
 ```
 
-Note that `--batch-size` is set to a larger value this time. Furthermore, as mentioned earlier, we are tracking not just which user starred a project, but also when they did it, with a time field. The last argument for the `stargazer` field, with the value of `YMD`, sets the field's [time quantum](/reference/glossary#time-quantum) (granularity) to year, month, day.
+Note that `--batch-size` is set to a larger value this time. Furthermore, as mentioned earlier, we are tracking not just which user starred a project, but also when they did it, with a time field. The last argument for the `stargazer` field, with the value of `YMD`, sets the field's [time quantum](/concepts/glossary#time-quantum) (granularity) to year, month, day.
 
 
 ### Querying the data
