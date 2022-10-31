@@ -23,10 +23,10 @@ In order to query data, the following prerequisites must be met:
 
 1. A database exists that is in the “Running” state
 - Click [here](/setting-up-featurebase/cloud/creating-database) to learn how to create a database
-- Click [here](/reference/api/cloud/api) to see the database API docs
+- Click [here](/cloud/api) to see the database API docs
 2. A table exists in that database
 - Click [here](/data-ingestion/cloud/tables) to learn how to create a table
-- Click [here](/reference/api/cloud/api) to see the table API docs
+- Click [here](/cloud/api) to see the table API docs
 3. Data has been loaded into the table
 - Click [here](/data-ingestion/cloud/streaming/streamingoverview) to learn how to ingest data
 
