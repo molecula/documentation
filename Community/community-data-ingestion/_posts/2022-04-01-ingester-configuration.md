@@ -12,9 +12,9 @@ When authentication is enabled, only users with admin permissions or whitelisted
 There are 2 methods for authentication for ingest: 
 
 ### 1. Whitelisted IPs
-A valid IP must be included in `configured-ips`. Whitelisted IPs will be granted admin permissions. To configure this option, follow these [instructions](/how-tos/enable-auth#configuring-featurebase).
+A valid IP must be included in `configured-ips`. Whitelisted IPs will be granted admin permissions. To configure this option, follow these [instructions](/community/enable-auth#configuring-featurebase).
 ### 2. auth-token flag 
-A valid JWT must be passed to the `auth-token` flag for any ingester. The user must have admin permissions. The token may be obtained by following these [instructions](/how-tos/enable-auth#how-to-get-auth-token). 
+A valid JWT must be passed to the `auth-token` flag for any ingester. The user must have admin permissions. The token may be obtained by following these [instructions](/community/enable-auth#how-to-get-auth-token). 
 
 ## General Ingestion Rules
 
@@ -51,7 +51,7 @@ Note: In order for TLS to be used, the various TLS options need to be set, but e
 | tls.key                        | string  | Path to TLS key file. |
 | tls.skip-verify                | bool    | Skip verification of server certs. |
 | verbose                        | bool    | Enable verbose logging. |
-| auth-token					 | string  | JWT authentication token obtained by following these [instructions](/how-tos/enable-auth#how-to-get-auth-token) |
+| auth-token					 | string  | JWT authentication token obtained by following these [instructions](/community/enable-auth#how-to-get-auth-token) |
 
 
 ## Kafka Delete Ingester
