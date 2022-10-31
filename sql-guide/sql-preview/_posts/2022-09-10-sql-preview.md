@@ -89,11 +89,11 @@ curl -XPOST localhost:10101/sql -d 'select foo'
 
 The SQL preview contains different types of queries that are discussed further in the reference pages:
 
-- [Functions](/reference/data-querying-ref/sql/sql-functions){:target="_blank"} Various functions for analytics that are supported
-- [Show Tables](/reference/data-querying-ref/sql/sql-show-tables){:target="_blank"} Shows the list of FeatureBase tables that exist on the server.
-- [Show Columns](/reference/data-querying-ref/sql/sql-show-columns){:target="_blank"} Shows the list of FeatureBase columns that exist in a table.
-- [Select](/reference/data-querying-ref/sql/sql-select){:target="_blank"} Selects data from a FeatureBase table.
-- [Insert](/reference/data-querying-ref/sql/sql-insert){:target="_blank"} Inserts data into a FeatureBase table.
-- [Create Table](/reference/data-querying-ref/sql/sql-create-table){:target="_blank"} Creates a FeatureBase table. 
-- [Alter Table](/reference/data-querying-ref/sql/sql-alter-table){:target="_blank"} Alters a FeatureBase table.
+- [Functions](/sql-guide/sql-functions){:target="_blank"} Various functions for analytics that are supported
+- [Show Tables](/sql-guide/sql-show-tables){:target="_blank"} Shows the list of FeatureBase tables that exist on the server.
+- [Show Columns](/sql-guide/sql-show-columns){:target="_blank"} Shows the list of FeatureBase columns that exist in a table.
+- [Select](/sql-guide/sql-select){:target="_blank"} Selects data from a FeatureBase table.
+- [Insert](/sql-guide/sql-insert){:target="_blank"} Inserts data into a FeatureBase table.
+- [Create Table](/sql-guide/sql-create-table){:target="_blank"} Creates a FeatureBase table. 
+- [Alter Table](/sql-guide/sql-alter-table){:target="_blank"} Alters a FeatureBase table.
 
