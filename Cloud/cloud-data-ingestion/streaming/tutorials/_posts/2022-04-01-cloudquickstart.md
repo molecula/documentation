@@ -392,7 +392,7 @@ curl --location --request POST 'https://data.featurebase.com/v2/databases/<datab
 
 Queries yield JSON responses containing the requested data. Now is a good time to explore running other queries if you would like. 
 
-This marks the end of the streaming Quick Start. While this guide doesn't show the massive scale FeatureBase can perform against, it does show you how to get started. Now is a great time to look at our other streaming tutorials and start loading your own data in. Please feel free to [reach out](/reference/operations/cloud/support) with any questions or feedback you have for this guide.
+This marks the end of the streaming Quick Start. While this guide doesn't show the massive scale FeatureBase can perform against, it does show you how to get started. Now is a great time to look at our other streaming tutorials and start loading your own data in. Please feel free to [reach out](/cloud/support) with any questions or feedback you have for this guide.
 
 ### Environment Cleanup
 
