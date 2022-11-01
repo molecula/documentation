@@ -1,10 +1,10 @@
 ---
 
-title: Streaming from Confluent Cloud
+title: Cloud ingestion - Streaming from Confluent Cloud
 
 ---
 
- **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes. 
+ **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes.
 
 For the purpose of this walkthrough it is assumed that a Kafka cluster is deployed and an existing Kafka topic is already being written to.
 
@@ -60,7 +60,7 @@ FEATUREBASE_STREAMING_ENDPOINT = ''
 
 ## Setting up Confluent Kafka Client
 
-For more documentation on the Confluent python client, please check out their official documentation at [Kafka Python Client &#124; Confluent Documentation](https://docs.confluent.io/kafka-clients/python/current/overview.html). 
+For more documentation on the Confluent python client, please check out their official documentation at [Kafka Python Client &#124; Confluent Documentation](https://docs.confluent.io/kafka-clients/python/current/overview.html).
 
 For convienence, the following sample was modified from one of Confluent's examples. The original source can be found here: [confluent-kafka-python/confluent_cloud.py](https://github.com/confluentinc/confluent-kafka-python/blob/master/examples/confluent_cloud.py)
 
@@ -87,7 +87,7 @@ def error_cb(err):
         # triggering flush() or poll() call.
         raise KafkaException(err)
 
-  # Create a confluent consumer 
+  # Create a confluent consumer
   consumer = Consumer({
       'bootstrap.servers': CONFLUENT_BOOSTRAP_SERVER,
       'sasl.mechanism'   : 'PLAIN',
@@ -115,14 +115,14 @@ Once the Kafka consumer is configured and topics have been subscribed, we'll sta
 ```python
   def on_message(content):
     print(content)
-  
-  
+
+
   try:
     while True:
         msg = consumer.poll(0.1)  # Wait for message or event/error
         if msg is None:
             # No message available within timeout.
-            # Initial message consumption may take up to `session.timeout.ms` 
+            # Initial message consumption may take up to `session.timeout.ms`
             # for the group to rebalance and start consuming.
             continue
         if msg.error():
@@ -158,17 +158,17 @@ def featurebase_authenticate(username, password):
 
   # Send HTTP POST request
   response = requests.post(
-    url  = "https://id.featurebase.com", 
+    url  = "https://id.featurebase.com",
     json = { 'USERNAME' : username, 'PASSWORD' : password })
 
   # Check for a HTTP 200 OK status code to confirm success.
   if response.status_code != 200:
     raise Exception(
-      "Failed to authenticate. Response from authentication service:\n" + 
+      "Failed to authenticate. Response from authentication service:\n" +
       response.text)
 
-  # On a successful authentication, you should retrieve the IdToken located in 
-  # the response at 'AuthenticationResult.IdToken'. This will be needed for any 
+  # On a successful authentication, you should retrieve the IdToken located in
+  # the response at 'AuthenticationResult.IdToken'. This will be needed for any
   # further API calls.
   json  = response.json()
 
@@ -213,7 +213,7 @@ def on_message(content, token):
 
 
 
-Then we'll transform it to match the FeatureBase Cloud schema syntax which can be seen in more details in [here](/cloud/cloud-data-ingestion/streaming/streamingoverview).
+Then we'll transform it to match the FeatureBase Cloud schema syntax which can be seen in more details in [here](/cloud/cloud-data-ingestion/streamingoverview).
 
 
 
@@ -241,10 +241,10 @@ def on_message(content, token):
   # ...
 
   response = requests.post(
-    url     = FEATUREBASE_STREAMING_ENDPOINT, 
+    url     = FEATUREBASE_STREAMING_ENDPOINT,
     data    = payload,
-    headers = { 
-      'Authorization' : f'Bearer {token}', 
+    headers = {
+      'Authorization' : f'Bearer {token}',
       'Content-Type'  : 'application/json'
     })
 
@@ -261,23 +261,23 @@ def on_message(content, token):
 
 ```python
 # Copyright 2022 Molecula Corp. (DBA FeatureBase)
-# 
-# Permission is hereby granted, free of charge, to any person obtaining a copy 
-# of this software and associated documentation files (the "Software"), to deal 
-# in the Software without restriction, including without limitation the rights 
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell 
-# copies of the Software, and to permit persons to whom the Software is 
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
-# 
-# The above copyright notice and this permission notice shall be included in 
+#
+# The above copyright notice and this permission notice shall be included in
 # all copies or substantial portions of the Software.
-# 
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
 from confluent_kafka import Consumer, KafkaError, KafkaException
@@ -315,17 +315,17 @@ def featurebase_authenticate(username, password):
 
   # Send HTTP POST request
   response = requests.post(
-    url  = "https://id.featurebase.com", 
+    url  = "https://id.featurebase.com",
     json = { 'USERNAME' : username, 'PASSWORD' : password })
 
   # Check for a HTTP 200 OK status code to confirm success.
   if response.status_code != 200:
     raise Exception(
-      "Failed to authenticate. Response from authentication service:\n" + 
+      "Failed to authenticate. Response from authentication service:\n" +
       response.text)
 
-  # On a successful authentication, you should retrieve the IdToken located in 
-  # the response at 'AuthenticationResult.IdToken'. This will be needed for any 
+  # On a successful authentication, you should retrieve the IdToken located in
+  # the response at 'AuthenticationResult.IdToken'. This will be needed for any
   # further API calls.
   json  = response.json()
 
@@ -334,12 +334,12 @@ def featurebase_authenticate(username, password):
 
 
 def on_message(content, token):
-  """Callback function which takes content pull from a subscribed Kafka queue, 
-     transforms it to the schema required by FeatureBase Cloud, and writes 
+  """Callback function which takes content pull from a subscribed Kafka queue,
+     transforms it to the schema required by FeatureBase Cloud, and writes
      directly to the sink to make it immediately available for querying.
   """
   #
-  # Using the pageview datagen connector provided by Confluent Cloud which 
+  # Using the pageview datagen connector provided by Confluent Cloud which
   # creates messages that look like this:
   #
   # {"viewtime":6671,"userid":"User_2","pageid":"Page_64"}
@@ -353,12 +353,12 @@ def on_message(content, token):
 
   # Parse and convert JSON object to python dict
   content = json.loads(content)
-  
+
   #
   # Convert to FeatureBase Cloud format.
   #
-  # For more details read our documentation on this topics at: 
-  # https://docs.featurebase.com/cloud/cloud-data-ingestion/streaming/streamingoverview
+  # For more details read our documentation on this topics at:
+  # https://docs.featurebase.com/cloud/cloud-data-ingestion/streamingoverview
   #
   # {
   #   "records": [
@@ -379,15 +379,15 @@ def on_message(content, token):
   #
   # Send request to push data into FeatureBase Cloud
   #
-  # See: https://docs.featurebase.com/cloud/cloud-data-ingestion/streaming/ingeststreamingsource
+  # See: https://docs.featurebase.com/cloud/cloud-data-ingestion/ingeststreamingsource
   #
   response = requests.post(
-    url     = FEATUREBASE_STREAMING_ENDPOINT, 
+    url     = FEATUREBASE_STREAMING_ENDPOINT,
     data    = payload,
-    headers = { 
-      # Need to pass the OAuth 2.0 IdToken we retrieved after authenticating 
+    headers = {
+      # Need to pass the OAuth 2.0 IdToken we retrieved after authenticating
       # with https://id.featurebase.com.
-      'Authorization' : f'Bearer {token}', # 
+      'Authorization' : f'Bearer {token}', #
       # The FeatureBase Cloud REST API requires the request body to be JSON.
       'Content-Type'  : 'application/json'
     })
@@ -421,7 +421,7 @@ if __name__ == "__main__":
   # Login to FeatureBase Cloud and get identity token.
   token = featurebase_authenticate(FEATUREBASE_USERNAME, FEATUREBASE_PASSWORD)
 
-  # Create a confluent consumer 
+  # Create a confluent consumer
   consumer = Consumer({
       'bootstrap.servers': CONFLUENT_BOOSTRAP_SERVER,
       'sasl.mechanism'   : 'PLAIN',
@@ -442,7 +442,7 @@ if __name__ == "__main__":
         msg = consumer.poll(0.1)  # Wait for message or event/error
         if msg is None:
             # No message available within timeout.
-            # Initial message consumption may take up to `session.timeout.ms` 
+            # Initial message consumption may take up to `session.timeout.ms`
             # for the group to rebalance and start consuming.
             continue
         if msg.error():

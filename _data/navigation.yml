@@ -1,7 +1,5 @@
 nav:
 
-  - title: Welcome to FeatureBase
-    category: welcome
   - title: Concepts
     category: featurebase-concepts
   - title: Cloud
@@ -9,10 +7,10 @@ nav:
     subnav:
       - title: Cloud setup
         category: cloud-setup
-      - title: Cloud data ingestion
-        category: cloud-data-ingestion
       - title: Cloud data modeling
         category: cloud-data-modeling
+      - title: Cloud data ingestion
+        category: cloud-data-ingestion
       - title: Query cloud data
         category: query-cloud-data
   - title: Community
@@ -20,16 +18,16 @@ nav:
   - title: Enterprise
     category: featurebase-enterprise
     subnav:
-      - title: Enterprise setup
-        category: enterprise-setup
-      - title: Enterprise data ingestion
-        category: enterprise-data-ingestion
-      - title: Enterprise APIs
-        category: enterprise-apis
-      - title: Query enterprise data
-        category: query-enterprise-data
-      - title: SQL-preview
-        category: enterprise-sql-preview
+      - title: Community setup
+        category: community-setup
+      - title: Community data ingestion
+        category: community-data-ingestion
+      - title: Community APIs
+        category: community-apis
+      - title: Query community data
+        category: query-community-data
+      - title: Release notes
+        category: release-notes
   - title: PQL guide
     category: pql-guide
     subnav:
@@ -41,3 +39,6 @@ nav:
         category: pql-other
   - title: SQL guide
     category: sql-guide
+    subnav:
+      - title: SQL-preview
+        category: enterprise-sql-preview

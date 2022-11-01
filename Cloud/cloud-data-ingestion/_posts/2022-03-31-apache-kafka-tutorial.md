@@ -1,8 +1,8 @@
 ---
-title: Streaming From Apache Kafka
+title: Cloud ingestion - streaming From Apache Kafka
 ---
 
- **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes. 
+ **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes.
 
 This tutorial will provide an example of one way you can ingest data from Apache Kafka to FeatureBase Cloud.
 
@@ -28,7 +28,7 @@ Before we begin it’s always a good idea to make sure you have all the credenti
 
 - FeatureBase Cloud credentials. If you don’t have an account yet then [sign up for a free trial](https://www.featurebase.com/cloud) (no credit card needed).
 
-- The endpoint to an [existing Cloud ingest endpoint](/cloud/cloud-data-ingestion/streaming/createstreamingsource). In this tutorial you'll find the [schema](#creating-a-featurebase-source-schema) needed to create a new one and follow along, but a source will need to be configured and an endpoint available for configuration before testing with your data.
+- The endpoint to an [existing Cloud ingest endpoint](/cloud/cloud-data-ingestion/createstreamingsource). In this tutorial you'll find the [schema](#creating-a-featurebase-source-schema) needed to create a new one and follow along, but a source will need to be configured and an endpoint available for configuration before testing with your data.
 
 | SECURITY WARNING                                                                                                                                                                                                                                                                                                                      |
 |:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -113,7 +113,7 @@ def producer_thread():
       'sasl.username'    : KAFKA_SASL_USERNAME,
       'sasl.password'    : KAFKA_SASL_PASSWORD,
     })
-    
+
     #Can make this a higher range for more records
     for flight_id in range(100):
       flight  = fake.flight()
@@ -145,7 +145,7 @@ def error_cb(err):
         # triggering flush() or poll() call.
         raise KafkaException(err)
 
-# Create a Kafka consumer 
+# Create a Kafka consumer
 consumer = Consumer({
     'bootstrap.servers': KAFKA_BROKER,
     'sasl.mechanism'   : KAFKA_SASL_MECHANISM,
@@ -179,7 +179,7 @@ Once the Kafka consumer is configured and topics have been subscribed, we’ll s
         msg = consumer.poll(0.1)  # Wait for message or event/error
         if msg is None:
             # No message available within timeout.
-            # Initial message consumption may take up to `session.timeout.ms` 
+            # Initial message consumption may take up to `session.timeout.ms`
             # for the group to rebalance and start consuming.
             continue
         if msg.error():
@@ -213,17 +213,17 @@ def featurebase_authenticate(username, password):
 
   # Send HTTP POST request
   response = requests.post(
-    url  = "https://id.featurebase.com", 
+    url  = "https://id.featurebase.com",
     json = { 'USERNAME' : username, 'PASSWORD' : password })
 
   # Check for a HTTP 200 OK status code to confirm success.
   if response.status_code != 200:
     raise Exception(
-      "Failed to authenticate. Response from authentication service:\n" + 
+      "Failed to authenticate. Response from authentication service:\n" +
       response.text)
 
-  # On a successful authentication, you should retrieve the IdToken located in 
-  # the response at 'AuthenticationResult.IdToken'. This will be needed for any 
+  # On a successful authentication, you should retrieve the IdToken located in
+  # the response at 'AuthenticationResult.IdToken'. This will be needed for any
   # further API calls.
   json  = response.json()
 
@@ -265,7 +265,7 @@ Remember that the schema for fake flights (when converted to JSON) looks like th
 
 #### Create A Table
 
-You must create a table before you can ingest data. For more information on tables, see [Tables](/cloud/data-ingestion/tables). The command below will create your table. 
+You must create a table before you can ingest data. For more information on tables, see [Tables](/cloud/data-ingestion/tables). The command below will create your table.
 
 It is highly recommended to do table creation within the UI for easier mapping of column types, constraints, and options. Navigate to the "Tables" page and click “New Table", selecting your database, entering "flights" for the name, and entering "table holding flight data" as the description. The primary key for the flight table for this tutorial is a number, so choose Number as the ID type.
 
@@ -371,8 +371,8 @@ After modifying the `on_message()` function to better reflect the schema we get 
 
 ```python
 def on_message(message, token):
-  """Callback function which takes content pull from a subscribed Kafka queue, 
-     transforms it to the schema required by FeatureBase Cloud, and writes 
+  """Callback function which takes content pull from a subscribed Kafka queue,
+     transforms it to the schema required by FeatureBase Cloud, and writes
      directly to the sink to make it immediately available for querying.
   """
   records = map(lambda record : { 'value' : json.loads(record) }, [message])
@@ -382,13 +382,13 @@ def on_message(message, token):
   #
   # Send request to push data into FeatureBase Cloud
   #
-  # See: https://docs.featurebase.com/cloud/cloud-data-ingestion/streaming/ingeststreamingsource
+  # See: https://docs.featurebase.com/cloud/cloud-data-ingestion/ingeststreamingsource
   #
   response = requests.post(
-    url     = FEATUREBASE_STREAMING_ENDPOINT, 
+    url     = FEATUREBASE_STREAMING_ENDPOINT,
     data    = payload,
-    headers = { 
-      # Need to pass the OAuth 2.0 IdToken we retrieved after authenticating 
+    headers = {
+      # Need to pass the OAuth 2.0 IdToken we retrieved after authenticating
       # with https://id.featurebase.com.
       'Authorization' : f'Bearer {token}',
       # The FeatureBase Cloud REST API requires the request body to be JSON.
@@ -425,23 +425,23 @@ Most of this code should look familiar if following the walthrough above, but so
 
 ```python
 # Copyright 2022 Molecula Corp. (DBA FeatureBase)
-# 
-# Permission is hereby granted, free of charge, to any person obtaining a copy 
-# of this software and associated documentation files (the "Software"), to deal 
-# in the Software without restriction, including without limitation the rights 
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell 
-# copies of the Software, and to permit persons to whom the Software is 
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
-# 
-# The above copyright notice and this permission notice shall be included in 
+#
+# The above copyright notice and this permission notice shall be included in
 # all copies or substantial portions of the Software.
-# 
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
 from threading import Thread
@@ -466,7 +466,7 @@ KAFKA_TOPICS = ['test']
 # the following constants to reflect your configuration.
 KAFKA_BROKER = '{Broker Hostname}:9092'
 
-KAFKA_SASL_MECHANISM = 'PLAINTEXT' 
+KAFKA_SASL_MECHANISM = 'PLAINTEXT'
 KAFKA_SECURITY_PROTOCOL = 'PLAINTEXT'
 KAFKA_SASL_USERNAME = None
 KAFKA_SASL_PASSWORD = None
@@ -489,17 +489,17 @@ def featurebase_authenticate(username, password):
 
   # Send HTTP POST request
   response = requests.post(
-    url  = "https://id.featurebase.com", 
+    url  = "https://id.featurebase.com",
     json = { 'USERNAME' : username, 'PASSWORD' : password })
 
   # Check for a HTTP 200 OK status code to confirm success.
   if response.status_code != 200:
     raise Exception(
-      "Failed to authenticate. Response from authentication service:\n" + 
+      "Failed to authenticate. Response from authentication service:\n" +
       response.text)
 
-  # On a successful authentication, you should retrieve the IdToken located in 
-  # the response at 'AuthenticationResult.IdToken'. This will be needed for any 
+  # On a successful authentication, you should retrieve the IdToken located in
+  # the response at 'AuthenticationResult.IdToken'. This will be needed for any
   # further API calls.
   json  = response.json()
 
@@ -509,8 +509,8 @@ def featurebase_authenticate(username, password):
 
 
 def on_message(batch, token):
-  """Callback function which takes content pull from a subscribed Kafka queue, 
-     transforms it to the schema required by FeatureBase Cloud, and writes 
+  """Callback function which takes content pull from a subscribed Kafka queue,
+     transforms it to the schema required by FeatureBase Cloud, and writes
      directly to the sink to make it immediately available for querying.
   """
 
@@ -523,13 +523,13 @@ def on_message(batch, token):
   #
   # Send request to push data into FeatureBase Cloud
   #
-  # See: https://docs.featurebase.com/cloud/cloud-data-ingestion/streaming/ingeststreamingsource
+  # See: https://docs.featurebase.com/cloud/cloud-data-ingestion/ingeststreamingsource
   #
   response = requests.post(
-    url     = FEATUREBASE_STREAMING_ENDPOINT, 
+    url     = FEATUREBASE_STREAMING_ENDPOINT,
     data    = payload,
-    headers = { 
-      # Need to pass the OAuth 2.0 IdToken we retrieved after authenticating 
+    headers = {
+      # Need to pass the OAuth 2.0 IdToken we retrieved after authenticating
       # with https://id.featurebase.com.
       'Authorization' : f'Bearer {token}',
       # The FeatureBase Cloud REST API requires the request body to be JSON.
@@ -566,7 +566,7 @@ def error_cb(err):
 
 
 def producer_thread():
-    """Generates 100 (but change range to scale this up) fake airline flights using Faker and an addon provider 
+    """Generates 100 (but change range to scale this up) fake airline flights using Faker and an addon provider
        called Airtravel. These fake flights are pushed into the Kafka topic.
     """
     print('Starting to produce messages.')
@@ -580,7 +580,7 @@ def producer_thread():
       'sasl.username'    : KAFKA_SASL_USERNAME,
       'sasl.password'    : KAFKA_SASL_PASSWORD,
     })
-    
+
     #make this a higher number to see more records flow in
     for flight_id in range(100):
       #
@@ -604,10 +604,10 @@ def producer_thread():
       #  "flight_id": 1}
       #
       flight  = fake.flight()
-      
+
       # Add 'flight_id' property to object
       flight['flight_id'] = flight_id + 1
-      
+
       message = json.dumps(flight)
       producer.produce(KAFKA_TOPICS[0], message)
 
@@ -658,7 +658,7 @@ def consumer_thread(token):
           continue
         if msg is None:
             # No message available within timeout.
-            # Initial message consumption may take up to `session.timeout.ms` 
+            # Initial message consumption may take up to `session.timeout.ms`
             # for the group to rebalance and start consuming.
             continue
         if msg.error():

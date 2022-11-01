@@ -1,5 +1,7 @@
 ---
+id: sqlpreview
 title: SQL (Preview)
+sidebar_label: SQL Preview
 ---
 
 | | |
@@ -94,6 +96,5 @@ The SQL preview contains different types of queries that are discussed further i
 - [Show Columns](/sql-guide/sql-show-columns){:target="_blank"} Shows the list of FeatureBase columns that exist in a table.
 - [Select](/sql-guide/sql-select){:target="_blank"} Selects data from a FeatureBase table.
 - [Insert](/sql-guide/sql-insert){:target="_blank"} Inserts data into a FeatureBase table.
-- [Create Table](/sql-guide/sql-create-table){:target="_blank"} Creates a FeatureBase table. 
+- [Create Table](/sql-guide/sql-create-table){:target="_blank"} Creates a FeatureBase table.
 - [Alter Table](/sql-guide/sql-alter-table){:target="_blank"} Alters a FeatureBase table.
-

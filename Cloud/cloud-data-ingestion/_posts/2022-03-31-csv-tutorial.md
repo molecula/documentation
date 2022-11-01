@@ -1,10 +1,10 @@
 ---
 
-title: Streaming in a CSV
+title: Cloud ingestion - streaming in a CSV
 
 ---
 
- **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes. 
+ **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes.
 
 This tutorial will break down into steps how to load a CSV file into FeatureBase using an ingest endpoint, but if you'd rather look at the finished tutorial, please see the full source code at the bottom of this article.
 
@@ -17,7 +17,7 @@ Before we begin, it's always a good idea to make sure you have all the credentia
 
 * A working python3 environment to run this code and install required packages
 
-* FeatureBase Cloud credentials 
+* FeatureBase Cloud credentials
 
 * An existing Cloud ingest endpoint
 
@@ -28,7 +28,7 @@ Before we begin, it's always a good idea to make sure you have all the credentia
 | Note that for the sake of simplicity, in this tutorial, we're hardcoding passwords and other secrets. Please don't do this in any capacity other than as a personal learning exercise! It's very easy to accidentally commit to code repositories or leave in a public place which invites data breaches for yourself or your organization. |
 
 
-Below represents all of the inputs you must enter to use these code snippets. This offers limited flexibility but does allow you to specify a delimiter, if not a **","** and if your CSV has a header as the first line or not. You will have to put all of the column names in the order they appear in your CSV file and ensure they match the `path` names in your ingest endpoint. For more information on ingest endpoints, go [here](/cloud/cloud-data-ingestion/streaming/streamingoverview).
+Below represents all of the inputs you must enter to use these code snippets. This offers limited flexibility but does allow you to specify a delimiter, if not a **","** and if your CSV has a header as the first line or not. You will have to put all of the column names in the order they appear in your CSV file and ensure they match the `path` names in your ingest endpoint. For more information on ingest endpoints, go [here](/cloud/cloud-data-ingestion/streamingoverview).
 
 ```python
 import csv
@@ -55,7 +55,7 @@ FEATUREBASE_STREAMING_ENDPOINT = ''
 ```
 
 ## Example Data
-Below is a small amount of iris (flower) csv records that can be saved as a file in order to follow along. If you'd like to use a much larger dataset but don't have your own data, one can be downloaded [below](/cloud/cloud-data-ingestion/streaming/tutorials/csv-tutorial#example-csv)
+Below is a small amount of iris (flower) csv records that can be saved as a file in order to follow along. If you'd like to use a much larger dataset but don't have your own data, one can be downloaded [below](/cloud/cloud-data-ingestion/csv-tutorial#example-csv)
 
 ```csv
 id,sepalLength,sepalWidth,petalLength,petalWidth,species
@@ -137,7 +137,7 @@ You'll also need to create an ingest endpoint that maps the data to your table. 
 
 ## Convert CSV to JSON Format
 
-The first step is to transform every row in the CSV file into the FeatureBase Cloud schema syntax, which can be seen in further detail at [here](/cloud/cloud-data-ingestion/streaming/streamingoverview). The output of this function will create 1 to many properly formatted JSON files for every 1000 records in your CSV file. 
+The first step is to transform every row in the CSV file into the FeatureBase Cloud schema syntax, which can be seen in further detail at [here](/cloud/cloud-data-ingestion/streamingoverview). The output of this function will create 1 to many properly formatted JSON files for every 1000 records in your CSV file.
 
 ```python
 def make_json(csvFilePath, jsonFilePath, columnnames, delim=',', header=True):
@@ -159,7 +159,7 @@ def make_json(csvFilePath, jsonFilePath, columnnames, delim=',', header=True):
     file_list = []
 
     print("Writing FeatureBase JSON Data File "+jsonFilePath)
-    f = open(jsonFilePath, 'w', encoding='utf-8') 
+    f = open(jsonFilePath, 'w', encoding='utf-8')
     file_list.append(jsonFilePath)
 
     # Add the pre JSON content ...
@@ -168,7 +168,7 @@ def make_json(csvFilePath, jsonFilePath, columnnames, delim=',', header=True):
     # Open a csv reader called DictReader and pass columnnames in as the dictionary keys
     with open(csvFilePath, encoding='utf-8') as csvf:
         csvReader = csv.DictReader(csvf, delimiter=delim, fieldnames=columnnames)
-         
+
         #
         # Convert each row into a dictionary and add it to data object
         #
@@ -219,7 +219,7 @@ def make_json(csvFilePath, jsonFilePath, columnnames, delim=',', header=True):
     # Print out and return the full list of files created
     print(f'The following JSON files were created: {file_list}')
     return file_list
-  
+
 ```
 
 
@@ -239,17 +239,17 @@ def featurebase_authenticate(username, password):
 
   # Send HTTP POST request
   response = requests.post(
-    url  = "https://id.featurebase.com", 
+    url  = "https://id.featurebase.com",
     json = { 'USERNAME' : username, 'PASSWORD' : password })
 
   # Check for a HTTP 200 OK status code to confirm success.
   if response.status_code != 200:
     raise Exception(
-      "Failed to authenticate. Response from authentication service:\n" + 
+      "Failed to authenticate. Response from authentication service:\n" +
       response.text)
 
-  # On a successful authentication, you should retrieve the IdToken located in 
-  # the response at 'AuthenticationResult.IdToken'. This will be needed for any 
+  # On a successful authentication, you should retrieve the IdToken located in
+  # the response at 'AuthenticationResult.IdToken'. This will be needed for any
   # further API calls.
   json  = response.json()
 
@@ -310,11 +310,11 @@ def post_records(token, json_file,datahost):
 
 
 ## Putting it all together
-The below snippet calls all the functions discussed above to convert your CSV file into JSON. Optionally, it sends them to your ingest endpoint if you enter your credentials and endpoint. This will send all of the JSON files created in the first step. 
+The below snippet calls all the functions discussed above to convert your CSV file into JSON. Optionally, it sends them to your ingest endpoint if you enter your credentials and endpoint. This will send all of the JSON files created in the first step.
 
 ```python
 def main():
-    # 
+    #
     # Convert CSV to JSON and optionally post records if you have an ingest endpoint
     #
     print("Converting CSV Data "+CSV_FILE_PATH+" to FeatureBase JSON Data "+JSON_FILE_PATH)
@@ -337,23 +337,23 @@ Save the code snippet below to a file name of your choice, fill in all variables
 
 ```python
 # Copyright 2022 Molecula Corp. (DBA FeatureBase)
-# 
-# Permission is hereby granted, free of charge, to any person obtaining a copy 
-# of this software and associated documentation files (the "Software"), to deal 
-# in the Software without restriction, including without limitation the rights 
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell 
-# copies of the Software, and to permit persons to whom the Software is 
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
-# 
-# The above copyright notice and this permission notice shall be included in 
+#
+# The above copyright notice and this permission notice shall be included in
 # all copies or substantial portions of the Software.
-# 
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
 # Requirements:
@@ -390,7 +390,7 @@ def make_json(csvFilePath, jsonFilePath, columnnames, delim=',', header=True):
 
     Args:
         csvFilePath (path): Path of the target csv to convert to json
-        jsonFilePath (path): Path of the target json file to write to. 
+        jsonFilePath (path): Path of the target json file to write to.
             Note batch sizes will append to this file name
         columnnames (list): List of the ordered target column names to write to
         delim (str, optional): Delimiter of the csv file Defaults to ','.
@@ -404,7 +404,7 @@ def make_json(csvFilePath, jsonFilePath, columnnames, delim=',', header=True):
     file_list = []
 
     print("Writing FeatureBase JSON Data File "+jsonFilePath)
-    f = open(jsonFilePath, 'w', encoding='utf-8') 
+    f = open(jsonFilePath, 'w', encoding='utf-8')
     file_list.append(jsonFilePath)
 
     # Add the pre JSON content ...
@@ -413,7 +413,7 @@ def make_json(csvFilePath, jsonFilePath, columnnames, delim=',', header=True):
     # Open a csv reader called DictReader and pass columnnames in as the dictionary keys
     with open(csvFilePath, encoding='utf-8') as csvf:
         csvReader = csv.DictReader(csvf, delimiter=delim, fieldnames=columnnames)
-         
+
         #
         # Convert each row into a dictionary and add it to data object
         #
@@ -483,17 +483,17 @@ def featurebase_authenticate(username, password):
 
     # Send HTTP POST request
     response = requests.post(
-    url  = "https://id.featurebase.com", 
+    url  = "https://id.featurebase.com",
     json = { 'USERNAME' : username, 'PASSWORD' : password })
 
     # Check for a HTTP 200 OK status code to confirm success.
     if response.status_code != 200:
         raise Exception(
-            "Failed to authenticate. Response from authentication service:\n" + 
+            "Failed to authenticate. Response from authentication service:\n" +
             response.text)
 
-    # On a successful authentication, you should retrieve the IdToken located in 
-    # the response at 'AuthenticationResult.IdToken'. This will be needed for any 
+    # On a successful authentication, you should retrieve the IdToken located in
+    # the response at 'AuthenticationResult.IdToken'. This will be needed for any
     # further API calls.
     json  = response.json()
 
@@ -548,7 +548,7 @@ def post_records(token, json_file,datahost):
 
 
 def main():
-    # 
+    #
     # Convert CSV to JSON and optionally post records if you have an ingest endpoint
     #
     print("Converting CSV Data "+CSV_FILE_PATH+" to FeatureBase JSON Data "+JSON_FILE_PATH)
