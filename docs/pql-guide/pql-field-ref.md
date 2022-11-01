@@ -1,3 +1,9 @@
+---
+id: pql-field
+title: PQL field reference
+sidebar_label: PQL field
+---
+
 source: /data-querying/_posts/2022-06-22-pql
 
 ## Description
@@ -18,3 +24,8 @@ A *field* is a grouping of rows, for example, to combine several single rows int
 ## Further information
 
 * [PQL TopN](/pql/pql-topn-ref.md)
+
+
+## Get support
+
+{% include /docs/get-support-source.md %}

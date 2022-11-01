@@ -2,7 +2,19 @@
 title: Welcome to FeatureBase!
 ---
 
-FeatureBase is a [B-tree](https://en.wikipedia.org/wiki/B-tree) database which uses [Roaring Bitmaps](https://roaringbitmap.org/). This makes it suitable for doing analytical queries on massive data sets immediately after ingestion. If you are the inquisitive type, you may be interested in the [architectural overview](https://docs.featurebase.com/setting-up-featurebase/Community/architecture).
+---
+id: welcome
+title: Welcome to FeatureBase
+sidebar_label: Welcome to FeatureBase
+---
+
+Featurebase is a B-tree database which you can use to perform analytical queries on massive data sets without needing to wait for indexing.
+
+## Before you begin
+
+* [Learn about B-tree databases](URL)
+* [Learn more about Featurebase query languages](URL to the SQL/PQL guides)
+* [Learn more about how Featurebase imports your data](URL to overview of ingestion)
 
 ## Comparing Cloud and Community editions
 

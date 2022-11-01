@@ -1,3 +1,9 @@
+---
+id: pql-column-ref
+title: PQL column reference
+sidebar_label: PQL column reference
+---
+
 source: /data-querying/_posts/2022-06-22-pql
 ## Description
 
@@ -18,3 +24,7 @@ Source: /data-querying/_posts/2022-06-22-pql
 ## Further information
 
 * [PQL TopN](/pql/pql-topn-ref.md)
+
+## Get support
+
+{% include /docs/get-support-source.md %}

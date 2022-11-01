@@ -4,7 +4,29 @@ title: PQL Row (ranged) reference
 sidebar_label: PQL Row(ranged)
 ---
 
-{% include /docs/pql/pql-row-ranged-source.md%}
+
+## Description
+
+A PQL query that returns bits based on comparison to timestamps, set according to the time quantum.
+
+## Syntax
+
+
+## Arguments
+
+
+## Additional information
+
+
+## Examples
+
+
+## Further information
+
+* [PQL Row]()
+* [PQL Row bsi]()
+* [PQL Rows]()
+* [PQL Row timestamp]
 
 ## Get support
 
