@@ -4,7 +4,24 @@ title: FeatureBase Field Ranged Time Quantum reference
 sidebar_label: FeatureBase Field Ranged Time Quantum reference
 ---
 
-{% include /docs/fb-db-ref/fb-field-ranged-time-quantum-ref.md%}
+
+## Description
+
+Defines the granularity to be used for ranged Row queries on time fields.
+
+## Syntax
+
+
+## Arguments
+
+
+## Additional information
+
+
+## Examples
+
+
+## Further information
 
 ## Get support
 

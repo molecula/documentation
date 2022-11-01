@@ -1,3 +1,9 @@
+---
+id: fb-bitmap-ref
+title: FeatureBase bitmapreference
+sidebar_label: FeatureBase bitmap reference
+---
+
 
 ## Description
 
@@ -32,3 +38,7 @@ Implemented with RBF (Roaring B-tree format),
 
 * [FeatureBase row reference]()
 * [Roaring Bitmaps](https://roaringbitmap.org/).
+
+## Get support
+
+{% include /docs/get-support-source.md %}
