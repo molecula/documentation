@@ -154,7 +154,7 @@ WHERE t2.bools = 'available_for_hire' and t1.hobbies = 'Teaching';
 
 ### TopK - A FeatureBase Superpower
 
-Ranking queries are notorious for being computationally intensive - aka slow. Some solutions will use statistics to speed up a ranking query by approximating the true results, but that’s not always a desirable option. In addition to SQL, FeatureBase has a native language called [PQL](/pql-guide/pql). In PQL, [```TopK```](/pql-guide/read/topk) queries can be run to return exact results in milliseconds. 
+Ranking queries are notorious for being computationally intensive - aka slow. Some solutions will use statistics to speed up a ranking query by approximating the true results, but that’s not always a desirable option. In addition to SQL, FeatureBase has a native language called [PQL](/pql-guide/pql-introduction). In PQL, [```TopK```](/pql-guide/read/topk) queries can be run to return exact results in milliseconds. 
 
 This query returns the top five hobbies across all customers from the cseg table, sifting through a billion records in 117.2ms.
 
@@ -174,7 +174,7 @@ More complex, the next query returns the top ten hobbies among females who also 
 
 ### Grouping with Complex Conditions and Aggregating
 
-Another query commonly seen in aggregation-related use cases is the ```GROUP BY```. For example, let’s group by the hobbies counting only those with ultimate ```COUNT``` above 200,000,000. We'll execute this query in [PQL](/pql-guide/pql).
+Another query commonly seen in aggregation-related use cases is the ```GROUP BY```. For example, let’s group by the hobbies counting only those with ultimate ```COUNT``` above 200,000,000. We'll execute this query in [PQL](/pql-guide/pql-introduction).
 
 ```
 [cseg]GroupBy(
