@@ -15,7 +15,7 @@ This may be caused by the MacOS Gatekeeper system
 
 ## Solution
 
-{% include /docs/issue-fb-mac-gatekeeper.md %}
+{% include /docs/community/issue-fb-mac-gatekeeper.md %}
 
 
 ## Further information

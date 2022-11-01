@@ -18,7 +18,7 @@ Follow these instructions to install FeatureBase on a Mac)S environment.
 
 ## Authorize FeatureBase with MacOS Gatekeeper system
 
-{% include /docs/issue-fb-mac-gatekeeper.md %}
+{% include /docs/community/issue-fb-mac-gatekeeper.md %}
 
 ## Next step
 
