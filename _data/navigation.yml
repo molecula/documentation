@@ -1,9 +1,9 @@
 nav:
 
   - title: Concepts
-    category: featurebase-concepts
-  - title: Cloud
-    category: featurebase-cloud
+    category: concepts
+  - title: FeatureBase Cloud
+    category: cloud
     subnav:
       - title: Cloud setup
         category: cloud-setup
@@ -13,32 +13,27 @@ nav:
         category: cloud-data-ingestion
       - title: Query cloud data
         category: query-cloud-data
-  - title: Community
-    category: featurebase-community
-  - title: Enterprise
-    category: featurebase-enterprise
+  - title: FeatureBase Community
+    category: community
     subnav:
       - title: Community setup
         category: community-setup
       - title: Community data ingestion
         category: community-data-ingestion
-      - title: Community APIs
-        category: community-apis
-      - title: Query community data
-        category: query-community-data
+      - title: Community API
+        category: community-api
+      - title: Query data
+        category: query-data
       - title: Release notes
         category: release-notes
   - title: PQL guide
     category: pql-guide
     subnav:
       - title: Read
-        category: pql-read
+        category: read
       - title: Write
-        category: pql-write
+        category: write
       - title: Other
-        category: pql-other
+        category: other
   - title: SQL guide
     category: sql-guide
-    subnav:
-      - title: SQL-preview
-        category: enterprise-sql-preview
