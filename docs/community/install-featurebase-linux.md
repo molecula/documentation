@@ -13,7 +13,7 @@ Follow these instructions to install FeatureBase on a Linux environment.
 
 ## Install FeatureBase on Linux
 
-{% include /docs/install-fb-linux-source.md %}
+{% include /docs/community/install-fb-linux-source.md %}
 
 ## Next step
 

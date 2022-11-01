@@ -21,7 +21,7 @@ Therefore you must install a hypervisor on the target system before installing F
 
 ## Install FeatureBase community on the virtual environment
 
-{% include /docs/install-fb-linux-source.md %}
+{% include /docs/community/install-fb-linux-source.md %}
 
 ## Next step
 
