@@ -1,7 +1,7 @@
 ---
-id: pql
+id: pql-introduction
 title: PQL Introduction
-sidebar_label: PQL
+sidebar_label: PQL-introduction
 ---
 
 Pilosa Query Language (PQL) is FeatureBase's native query language.
@@ -54,7 +54,7 @@ Read operations can be further grouped into several types. All of these types ar
 
 ### Row Calls
 
-Row calls return an object representing a set of column keys, contained in a single row. Row calls may be used as input arguments to other queries. 
+Row calls return an object representing a set of column keys, contained in a single row. Row calls may be used as input arguments to other queries.
 
 Row calls include:
 - Row selection
@@ -69,7 +69,7 @@ Row calls include:
   - [Union()](/pql-guide/read/union){:target="_blank"} computes the set union across its one or more [row call](#row-calls){:target="_blank"} arguments.
   - [UnionRows()](/pql-guide/read/unionrows){:target="_blank"} computes the set union across many rows. Rather than accepting several row call arguments, `UnionRows()` accepts any number of `Rows` arguments.
   - [Xor()](/pql-guide/read/xor){:target="_blank"} computes the exclusive set difference between its first argument and all subsequent arguments (all [row calls](#row-calls){:target="_blank"}).
-  
+
 [Distinct](/pql-guide/read/distinct){:target="_blank"} is a special row-like call, in that it can be used in the same context that other row calls can be used, despite a slight variation in its output type.
 
 ### Rows Calls
