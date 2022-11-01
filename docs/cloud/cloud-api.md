@@ -4,7 +4,11 @@ title: FeatureBase Cloud API
 sidebar_label: FeatureBase Cloud API
 ---
 
-{% include /docs/cloud/cloud-api-source.md %}
+FeatureBase Cloud has a comprehensive set of Application Programmer Interfaces for different purposes.
+
+## Further information
+
+* [FeatureBase Cloud API reference](https://api-docs-featurebase-cloud.redoc.ly)S
 
 ## Get support
 

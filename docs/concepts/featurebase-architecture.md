@@ -4,7 +4,9 @@ title: FeatureBase architecture
 sidebar_label: FeatureBase architecture
 ---
 
-{% include /docs/concepts/fb-architecture-source.md%}
+
+
+![FeatureBase Network Architecture Diagram](/img/molecula-architecture-diagram.png "FeatureBase Network Architecture Diagram")
 
 ## Get support
 
