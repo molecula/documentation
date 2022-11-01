@@ -1,5 +1,7 @@
 nav:
-
+  - title: FeatureBase cloud
+    category: fb-cloud
+    
   - title: Concepts
     category: concepts
 
