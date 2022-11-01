@@ -2,6 +2,7 @@ nav:
 
   - title: Concepts
     category: concepts
+
   - title: FeatureBase Cloud
     category: cloud
     subnav:
@@ -13,6 +14,7 @@ nav:
         category: cloud-data-ingestion
       - title: Query cloud data
         category: query-cloud-data
+
   - title: FeatureBase Community
     category: community
     subnav:
@@ -26,6 +28,7 @@ nav:
         category: query-data
       - title: Release notes
         category: release-notes
+
   - title: PQL guide
     category: pql-guide
     subnav:
@@ -35,5 +38,6 @@ nav:
         category: write
       - title: Other
         category: other
+
   - title: SQL guide
     category: sql-guide
