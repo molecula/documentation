@@ -3,34 +3,15 @@ nav:
   - title: Docs
     category: docs
     subnav:
-      - title: Welcome to FeatureBase
-        category: welcome
       - title: Concepts
         category: concepts
       - title: Cloud
         category: cloud
       - title: Community
         category: community
-      - title: Enterprise
-        category: enterprise
       - title: Featurebase Database
         category: fb-db
       - title: PQL guide
         category: pql-guide
       - title: SQL guide
         category: sql-guide
-
-  - title: Introduction
-    category: introduction
-
-
-  - title: Quick Start Guide
-    category: quick-start-guide
-
-  - title: Setting up FeatureBase
-    category: setting-up-featurebase
-    subnav:
-      - title: Enterprise
-        category: enterprise
-      - title: Cloud
-        category: cloud
