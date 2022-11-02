@@ -4,6 +4,7 @@
 {% assign newpath = include.path | concat: toarray %}
 {% assign id = newpath | join: '-' %}
 {% assign newpath_size  = newpath | size | minus: 1 %}
+{% assign doclist = site.data.samplelist.docs | sort: 'title'  %}
 
 {% assign should_open = false %}
 {% for i in (0..newpath_size) %}
@@ -19,18 +20,18 @@
 
 <div x-data="{ $open : $persist(false).as('menu-toggle-{{ id }}') }" class="space-y-1">
   <button type="button" @click="$open = ! $open" :aria-expanded="$open" class="molecula-menu-btn bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-900 group w-full flex items-center pl-2 pr-1 py-2 text-left text-sm font-medium  outline-none">
-    
+
     <i :class="$open || {{ should_open }} ? 'fa-chevron-down fa-solid ml-2 mr-1 flex-shrink-0' : 'fa-chevron-right fa-solid mx-2 flex-shrink-0'"></i>
 
     <span class="flex-1 not-active font-medium uppercase text-xs tracking-wider"> {{ item.title }} </span>
     <!-- Expanded: "text-gray-400 rotate-90", Collapsed: "text-gray-300" -->
-    
+
   </button>
 
   <div class="space-y-1" x-show="$open || {{ should_open }}" x-transition.scale.origin.top x-cloak>
     <!-- DEBUG: category = {{ item.category }}-->
     {% for post in site.categories[item.category] %}
-  
+
       {% assign child = false %}
       {% assign category_size = post.categories | size | minus: 1 %}
 
@@ -45,8 +46,8 @@
         {% endfor %}
       {% endif %}
 
-      
-      
+
+
       {% if child %}
 
         {% capture category %}{{ post.categories | last }}{% endcapture %}
