@@ -4,6 +4,7 @@
 {% assign newpath = include.path | concat: toarray %}
 {% assign id = newpath | join: '-' %}
 {% assign newpath_size  = newpath | size | minus: 1 %}
+{% assign doclist = site.data.samplelist.docs | sort: 'title'  %}
 
 
 {% assign should_open = false %}
