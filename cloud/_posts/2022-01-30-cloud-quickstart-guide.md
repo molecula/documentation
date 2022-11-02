@@ -2,7 +2,7 @@
 title: Cloud Quick Start Guide
 ---
 
-## Welcome to FeatureBase
+## Welcome to FeatureBase!
 
 Follow the guide outlined below for a hands-on demonstration of low-latency queries at scale using our FeatureBase Cloud platform. As you work through the guide, please note any questions or feedback that you may have for the FeatureBase team. We’re always looking for ways to improve the experience!
 
