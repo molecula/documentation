@@ -1,6 +1,7 @@
 ---
-title: install and configure featurebase community
-
+id: install-config-community
+title: Install and configure FeatureBase community
+sidebar_label: Install & configure FeatureBase community
 ---
 
 
