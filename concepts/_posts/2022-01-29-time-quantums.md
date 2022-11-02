@@ -3,6 +3,7 @@ title: Time Quantums And TTL
 ---
 
 # Time Quantums
+
 ## What are time quantums?
 
 A time quantum is a feature for `IDSET` and `STRINGSET` type columns that allows you to associate a time (or multiple times) with each value in the column. Setting a time quantum creates views on the column that allow range queries down to the time granularity specified. You can think of a view as a rollup of your data based on the granularity of time you specify. If no time quantums are set, your data has one "standard" view by default.
@@ -11,7 +12,7 @@ A time quantum is a feature for `IDSET` and `STRINGSET` type columns that allows
 
 You should use time quantums when you want to associate a time with each value in `IDSET` and `STRINGSET` type columns, in addition to querying by that time.
 
-## When should you avoid time quantums? 
+## When should you avoid time quantums?
 
 You should avoid time quantums if you don’t have a time you want to associate with a value, if you aren't interested in deleting values over time to save space, if you are trying to count the number of distinct time quantums associated to a particular value, and if you are looking to pull out time values as opposed to filtering by them.
 
@@ -29,9 +30,9 @@ Querying using time quantums is only supported in (PQL Rows Queries)[/pql-guide/
 
 You can associate multiple times with each value, so a value only has to exist in one view to be returned. This will not return the value twice and will only be counted once. You cannot return the underlying timestamps associated with each value.
 
-## What is happening when you use time quantums? 
+## What is happening when you use time quantums?
 
-Whenever a record with time quantums is ingested, a view is created for each level of granularity specified. This is essentially a copy of the column over a specific time range. If `YMDH` is specified and the time `2018-08-31T22:30:00Z` is ingested, a time view will exist for `2018`, `2018-08`, `2018-08-31`, and `2018-08-31T22`. This means data which has times for every hour for two days (say May 2nd and 3rd) in a column with `YMDH` time quantums configured will have 48+2+1+1+1 views (53) in total. 48 hours, 2 days, 1 month, 1 year, and the standard view. 
+Whenever a record with time quantums is ingested, a view is created for each level of granularity specified. This is essentially a copy of the column over a specific time range. If `YMDH` is specified and the time `2018-08-31T22:30:00Z` is ingested, a time view will exist for `2018`, `2018-08`, `2018-08-31`, and `2018-08-31T22`. This means data which has times for every hour for two days (say May 2nd and 3rd) in a column with `YMDH` time quantums configured will have 48+2+1+1+1 views (53) in total. 48 hours, 2 days, 1 month, 1 year, and the standard view.
 
 # TTL (Time To Live)
 ## What is TTL?
