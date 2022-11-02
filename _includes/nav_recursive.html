@@ -6,7 +6,6 @@
 {% assign newpath_size  = newpath | size | minus: 1 %}
 {% assign doclist = site.data.samplelist.docs | sort: 'title'  %}
 
-
 {% assign should_open = false %}
 {% for i in (0..newpath_size) %}
   <!-- DEBUG {{ i }}: {{ newpath[i] }} == {{ page.categories[i] }} -->
