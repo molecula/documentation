@@ -55,7 +55,7 @@ FEATUREBASE_STREAMING_ENDPOINT = ''
 ```
 
 ## Example Data
-Below is a small amount of iris (flower) csv records that can be saved as a file in order to follow along. If you'd like to use a much larger dataset but don't have your own data, one can be downloaded [below](/cloud/cloud-data-ingestion/csv-tutorial#example-csv)
+Below is a small amount of iris (flower) csv records that can be saved as a file in order to follow along. If you'd like to use a much larger dataset but don't have your own data, one can be downloaded [below](/cloud//cloud-data-ingestion/streaming-https-endpoint/tutorial-streaming-csv#example-csv)
 
 ```csv
 id,sepalLength,sepalWidth,petalLength,petalWidth,species
