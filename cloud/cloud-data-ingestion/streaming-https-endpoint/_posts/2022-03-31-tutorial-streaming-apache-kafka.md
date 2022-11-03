@@ -1,5 +1,5 @@
 ---
-title: Streaming From Apache Kafka
+title: Tutorial - streaming From Apache Kafka
 ---
 
  **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes.

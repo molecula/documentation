@@ -1,6 +1,6 @@
 ---
 
-title: Streaming from Confluent Cloud
+title: Tutorial - streaming from Confluent Cloud
 
 ---
 
