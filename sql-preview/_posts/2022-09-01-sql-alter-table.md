@@ -20,9 +20,8 @@ Alters a FeatureBase table.
 
 ![expr](/img/sql/add_column.svg)
 
-See [`CREATE TABLE`](/sql-guide/sql-create-table) for column_def
+See [`CREATE TABLE`](/sql-preview/sql-create-table) for column_def
 
 #### drop_column
 
 ![expr](/img/sql/drop_column.svg)
-

@@ -20,7 +20,7 @@ Creates a FeatureBase table. The the table already exists and `IF NOT EXISTS` is
 ![expr](/img/sql/column_def.svg)
 
 You must specify an `_id` column for `CREATE TABLE` to be successful. The type for the `_id` column can be `id` for a non-keyed table or `string` for a keyed table. No column constraints are permitted for the `_id` column.
-The identifier for each column must conform to the rules of FeatureBase identifiers. Valid type names are specified in [Data Types](/sql-guide/sql-datatypes). `decimal` types require a scale to be specified.
+The identifier for each column must conform to the rules of FeatureBase identifiers. Valid type names are specified in [Data Types](/sql-preview/sql-datatypes). `decimal` types require a scale to be specified.
 
 
 
@@ -28,7 +28,7 @@ The identifier for each column must conform to the rules of FeatureBase identifi
 
 ![expr](/img/sql/type_name.svg)
 
-See also [Data Types](/sql-guide/sql-datatypes).
+See also [Data Types](/sql-preview/sql-datatypes).
 
 #### column_constraint
 Column constraints are optional for columns.
