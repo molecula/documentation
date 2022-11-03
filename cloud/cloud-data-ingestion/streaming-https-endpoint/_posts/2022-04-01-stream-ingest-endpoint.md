@@ -4,9 +4,9 @@ title: Stream Data With An Ingest Endpoint
 sidebar_label: Stream Data With An Ingest Endpoint
 ---
 
- **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes. 
+ **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes.
 
-Once an “ACTIVE” ingest endpoint exists, data can be streamed to it over HTTPS via “POST” requests. Individual records or micro-batched payloads can be sent. 
+Once an “ACTIVE” ingest endpoint exists, data can be streamed to it over HTTPS via “POST” requests. Individual records or micro-batched payloads can be sent.
 
 ### Record Format
 
@@ -14,7 +14,7 @@ Once an ingest endpoint is configured, data can be streamed to it. Each record s
 
 ```json
 {
-    "records": [ 
+    "records": [
         { "value": { <JSON blob containing columns of first record> } },
         { "value": { <JSON blob containing columns of second record> } },
         ...
@@ -22,7 +22,7 @@ Once an ingest endpoint is configured, data can be streamed to it. Each record s
 }
 ```
 
-It is recommended to “microbatch” records before sending them to maximize ingest rates. The maximum amount of records that can be sent in a single request is constrained by the limits [here](/cloud/cloud-data-ingestion/streamingoverview). The JSON blob does support nested structures, so it is up to your schema to define the `path` for each column’s value.
+It is recommended to “microbatch” records before sending them to maximize ingest rates. The maximum amount of records that can be sent in a single request is constrained by the limits [here](/cloud/cloud-data-ingestion/streaming-https-endpoint/cloud-streaming-overview). The JSON blob does support nested structures, so it is up to your schema to define the `path` for each column’s value.
 
 Clicking on your endpoint in the UI will take you to a screen with a "SEND RECORDS" button. This allows you to send data by pasting json records in the format shown above. This can also be accomplished programmatically. Below is an example of how multiple records are sent to the ingest endpoint:
 

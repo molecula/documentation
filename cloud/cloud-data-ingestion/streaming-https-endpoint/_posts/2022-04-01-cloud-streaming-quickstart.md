@@ -110,7 +110,7 @@ Once created, go to the "COLUMNS" tab in order to add or delete columns. You wil
 
 #### Create An Ingest Endpoint
 
-After a table exists, you can configure a source to load data into it. The ingest endpoint configuration will yield a persistent endpoint that allows you to stream data to. For more information on ingesting, see [Streaming (HTTPS)](/cloud/cloud-data-ingestion/streamingoverview). Below you can see our JSON schema that details the data being streamed to the source. The below schema contains various flower species and their measurements. The command below will start creating your ingest endpoint.
+After a table exists, you can configure a source to load data into it. The ingest endpoint configuration will yield a persistent endpoint that allows you to stream data to. For more information on ingesting, see [Streaming (HTTPS)](/cloud/cloud-data-ingestion/streaming-https-endpoint/cloud-streaming-overview). Below you can see our JSON schema that details the data being streamed to the source. The below schema contains various flower species and their measurements. The command below will start creating your ingest endpoint.
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
@@ -179,7 +179,7 @@ Grab your source's id. This is a unique id for your source. Once your source is 
 
 #### Ingest Data
 
-We now have an endpoint we can stream data to. This guide will only send one payload of 150 records, but data can be continually pushed to this endpoint. For more information, please see the [Streaming (HTTPS)](/cloud/cloud-data-ingestion/streamingoverview). This action can be performed in the UI by clicking on your endpoint, "iris_ingest_endpoint", on the "Data sources" page. This will take you to a screen with a "SEND RECORDS" button. Click this button and copy and paste the json passed for `--data-raw` below. Alternatively, this can be done with the command below.
+We now have an endpoint we can stream data to. This guide will only send one payload of 150 records, but data can be continually pushed to this endpoint. For more information, please see the [Streaming (HTTPS)](/cloud/cloud-data-ingestion/streaming-https-endpoint/cloud-streaming-overview). This action can be performed in the UI by clicking on your endpoint, "iris_ingest_endpoint", on the "Data sources" page. This will take you to a screen with a "SEND RECORDS" button. Click this button and copy and paste the json passed for `--data-raw` below. Alternatively, this can be done with the command below.
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header

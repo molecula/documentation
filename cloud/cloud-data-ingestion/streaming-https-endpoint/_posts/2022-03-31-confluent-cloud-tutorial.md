@@ -213,7 +213,7 @@ def on_message(content, token):
 
 
 
-Then we'll transform it to match the FeatureBase Cloud schema syntax which can be seen in more details in [here](/cloud/cloud-data-ingestion/streamingoverview).
+Then we'll transform it to match the FeatureBase Cloud schema syntax which can be seen in more details in [here](/cloud/cloud-data-ingestion/streaming-https-endpoint/cloud-streaming-overview).
 
 
 
@@ -358,7 +358,7 @@ def on_message(content, token):
   # Convert to FeatureBase Cloud format.
   #
   # For more details read our documentation on this topics at:
-  # https://docs.featurebase.com/cloud/cloud-data-ingestion/streamingoverview
+  # https://docs.featurebase.com/cloud/cloud-data-ingestion/streaming-https-endpoint/cloud-streaming-overview
   #
   # {
   #   "records": [
