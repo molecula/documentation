@@ -9,6 +9,9 @@ nav:
         category: cloud
       - title: Community
         category: community
+        folderitems:
+        - Title: Community Home
+          url: /community-home
       - title: Featurebase Database
         category: fb-db
       - title: PQL guide
