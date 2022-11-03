@@ -103,8 +103,9 @@ These metrics are pulled from the Go language runtime or operating system rather
 where `[featurebaseprefix]` is either `featurebase` if the [`--future.rename` configuration flag](/community/featurebase-rename) is set, or `pilosa`.
 
 ### Transaction Metrics
-| Metric Name | Description|
-|---|---|
+
+| Metric Name | Description |
+| - | - |
 | `[featurebaseprefix]_transaction_start` | count of started transactions|
 | `[featurebaseprefix]_transaction_end` | count of ended transactions|
 | `[featurebaseprefix]_transaction_blocked` | count of blocked transactions|
@@ -116,6 +117,7 @@ where `[featurebaseprefix]` is either `featurebase` if the [`--future.rename` co
 where `[featurebaseprefix]` is either `featurebase` if the [`--future.rename` configuration flag](/community/featurebase-rename) is set, or `pilosa`.
 
 ### Query Metrics (not implemented)
+
 | Metric Name | Description|
 | - | -|
 | `[featurebaseprefix]_pql_queries_total` | count of PQL queries |
