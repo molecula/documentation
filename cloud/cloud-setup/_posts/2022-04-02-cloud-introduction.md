@@ -26,4 +26,4 @@ Our novel approach minimizes I/O on queries by allowing the database engine to r
 
 - Data ingest that allows you to push records when ready and without having to open up your datacenter
 
-For those new to FeatureBase, we recommend the starting with the [Getting Started](/cloud/cloud) tutorial.
+For those new to FeatureBase, we recommend the starting with the [Getting Started](/cloud/cloud-setup/cloud-quickstart-guide) tutorial.
