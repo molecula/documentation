@@ -25,7 +25,9 @@ id: enterprisevscloud
 title: Enterprise vs Cloud
 sidebar_label: Enterprise vs Cloud
 ```
-NOTE: Page YAML does not affect URL.
+
+* NOTE: Page YAML does not affect URL.
+* sidebar_label can be omitted if the nav is the same as the title
 
 ## Content filenames
 

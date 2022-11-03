@@ -1,5 +1,5 @@
 ---
-title: Cloud ingestion - streaming From Apache Kafka
+title: Streaming From Apache Kafka
 ---
 
  **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes.
