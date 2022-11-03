@@ -1,6 +1,6 @@
 ---
 
-title: Cloud ingestion - Streaming from Confluent Cloud
+title: Streaming from Confluent Cloud
 
 ---
 
