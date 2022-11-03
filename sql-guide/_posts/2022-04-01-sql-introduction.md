@@ -1,7 +1,5 @@
 ---
-id: sql-introduction
 title: SQL Introduction
-sidebar_label: SQL introduction
 ---
 
 FeatureBase supports a limited selection of SQL.

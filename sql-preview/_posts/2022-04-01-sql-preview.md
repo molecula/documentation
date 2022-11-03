@@ -1,7 +1,5 @@
 ---
-id: sqlpreview
 title: SQL (Preview)
-sidebar_label: SQL Preview
 ---
 
 | | |
