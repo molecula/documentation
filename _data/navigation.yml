@@ -44,3 +44,6 @@ nav:
 
   - title: SQL guide
     category: sql-guide
+
+  - title: SQL preview
+    category: sql-preview
