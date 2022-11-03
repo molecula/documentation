@@ -14,8 +14,8 @@ I182070943,01402,Vandalism,VANDALISM,C11,347,,2018-08-21 00:00:00,2018,8,Tuesday
 
 Quickly looking at the file, you identify “INCIDENT_NUMBER” as the perfect candidate for your key. After jotting down the other columns and their potential types, you also decide “Location” seems unnecessary given “Lat” and “Long” already exist. Now you are off to ingest the data! For most databases, including FeatureBase, this means creating a [table](/cloud/cloud-data-ingestion/tables) and modeling the columns based on what you see in the file. You’ve come up with the following for FeatureBase:
 
-|Data Type| Description | 
-| ------- | ------------ | 
+|Data Type| Description |
+| ------- | ------------ |
 | OFFENSE_CODE  | INT |
 | OFFENSE_CODE_GROUP  | STRING |
 | offense_description  | STRING |
@@ -32,21 +32,21 @@ Quickly looking at the file, you identify “INCIDENT_NUMBER” as the perfect c
 | Lat  | DECIMAL |
 | Long  | DECIMAL |
 
-FeatureBase’s use of bitmaps and bit slice indexing means you don’t have to worry about manually creating indexes on this table to improve city analysts' query performance. All that’s needed is the schema. This is followed by sending the data to be ingested. For some databases this is a drag and drop GUI, and in others, like FeatureBase, it’s through [push-based ingest](/cloud//cloud-data-ingestion/streaming-https-endpoint/tutorial-streaming-csv). 
+FeatureBase’s use of bitmaps and bit slice indexing means you don’t have to worry about manually creating indexes on this table to improve city analysts' query performance. All that’s needed is the schema. This is followed by sending the data to be ingested. For some databases this is a drag and drop GUI, and in others, like FeatureBase, it’s through [push-based ingest](/cloud//cloud-data-ingestion/streaming-https-endpoint/tutorial-streaming-csv).
 
 After some expected back and forth and troubleshooting, you now have a FeatureBase table with 282,517 records! Job well done! Nothing could’ve gone wrong, but because it’s not your first rodeo, you do some simple record count validation to make sure no data was lost. Lo and behold you notice the file had 319,074 records! What is this madness? Well, it’s one of the differences between FeatureBase and other databases. It appears you made a mistake thinking “INCIDENT_NUMBER” was unique. Some databases may have thrown errors here because they would have seen duplicate values attempting to be loaded. Others may have ingested all 319,074 records because the backend implementation doesn’t require (or generates) unique keys. FeatureBase maintains unique keys and treats all ingest operations as UPSERTs. So every time a repeat incident number was loaded, all of the values in your table were updated for that incident’s record. The update behavior of UPSERTs depends on the data type that is being updated:
 
 |Datatype Being Updated| Behavior| Example |
 | ------- | ------------ | ------------ |
-| STRING, ID, INT, DECIMAL, TIMESTAMP  | Replace existing value | Existing FeatureBase Value: <br> app_status (STRING): Pending <br>New Value Sent:<br>Approved<br> New FeatureBase Value:<br> app_status (STRING): Approve 
-| IDSET, STRINGSET  | Add (not delete) new values | Existing FeatureBase Value: <br> app_status (STRINGSET): Pending <br>New Value Sent:<br>Approved<br> New FeatureBase Value:<br> app_status (STRINGSET): Pending, Approve 
+| STRING, ID, INT, DECIMAL, TIMESTAMP  | Replace existing value | Existing FeatureBase Value: <br> app_status (STRING): Pending <br>New Value Sent:<br>Approved<br> New FeatureBase Value:<br> app_status (STRING): Approve
+| IDSET, STRINGSET  | Add (not delete) new values | Existing FeatureBase Value: <br> app_status (STRINGSET): Pending <br>New Value Sent:<br>Approved<br> New FeatureBase Value:<br> app_status (STRINGSET): Pending, Approve
 
-Well now you are conflicted. On the one hand, you know this is the actual number of unique incidents, so counts on this table will reflect actuals (versus needing a count distinct with 319,074 records). This is nice because you know the city’s analysts won’t make mistakes and count the same crime multiple times. However, you have lost some of the definition of your data like offense codes and groups that have multiple values for a single incident. You could create a new unique key for this data, but you find a FeatureBase superpower, [IDSETS & STRINGSETS](/cloud/cloud-data-modelling/data-types#data-types). These datatype gives individual records the ability to store multiple values for a single column.
+Well now you are conflicted. On the one hand, you know this is the actual number of unique incidents, so counts on this table will reflect actuals (versus needing a count distinct with 319,074 records). This is nice because you know the city’s analysts won’t make mistakes and count the same crime multiple times. However, you have lost some of the definition of your data like offense codes and groups that have multiple values for a single incident. You could create a new unique key for this data, but you find a FeatureBase superpower, [IDSETS & STRINGSETS](/cloud/cloud-data-modeling/data-types#data-types). These datatype gives individual records the ability to store multiple values for a single column.
 
 First, you look into `IDSET` but find you don’t know what the `ID` type is. After going through the docs, you find the `ID` type is for unsigned integers that are more meaningful to represent as discrete values. Looking at your data model, you’ve made a mistake assigning some columns like “OFFENSE_CODE'' as integers. These codes are discrete values that should be treated categorically, as they will be used in `GROUP BY` and `WHERE` queries and not aggregated on or used in range queries. Others, like “YEAR”, are appropriate because you might use range queries in addition to `GROUP BY` statements. Now understanding `ID`, you see `IDSET` can be used to store multiple `ID` values for a single column. This is exactly what columns like “OFFENSE_CODE'' need. Next, you see `STRINGSET` operates similarly and can be used to store multiple `STRING` values for a single column, such as “OFFENSE_CODE_GROUP”. This type would be appropriate for others like “STREET” if different values were populated with the data, which they are not today. You revisit your data model (updated types below) and now consider if this is a good move:
 
-|Data Type| Description | 
-| ------- | ------------ | 
+|Data Type| Description |
+| ------- | ------------ |
 | OFFENSE_CODE  | IDSET |
 | OFFENSE_CODE_GROUP  | STRINGSET |
 | offense_description  | STRINGSET |
@@ -54,16 +54,16 @@ First, you look into `IDSET` but find you don’t know what the `ID` type is. Af
 
 With this model, you won’t lose any of your data’s definition and will still maintain the true count of 282,517 unique incidents. What’s more, you see the space savings compared to both implementing a new unique key in FeatureBase and using a traditional database. A new unique key would have meant storing 36,557 additional records, and while these would be stored as efficient bitmaps, they would further grow your data footprint and potentially have an impact over time. You’d also be storing the same “INCIDENT_NUMBER”  multiple times in addition to the new keys for every record. A traditional database would have meant writing many records with duplicate values for all the columns that don’t change (all date/time columns ( i.e "OCCURRED_ON_DATE"), “REPORTING_AREA”, lat/long, et al):
 
-|PK(_id)| INCIDENT_NUMBER | OFFENSE_CODE| OFFENSE_CODE_GROUP | OCCURRED_ON_DATE | 
+|PK(_id)| INCIDENT_NUMBER | OFFENSE_CODE| OFFENSE_CODE_GROUP | OCCURRED_ON_DATE |
 | ------- | ------------ | ------------ | ------------ | ------------ |
-| 1 | *I162097077* | 00735 | Auto Theft Recovery | *2016-11-28T12:00:00Z* | 
+| 1 | *I162097077* | 00735 | Auto Theft Recovery | *2016-11-28T12:00:00Z* |
 | 2 | *I162097077* | 01300 | Recovered Stolen Property | *2016-11-28T12:00:00Z* |
 | 3 | *I162097077* | 03125 | Warrant Arrests | *2016-11-28T12:00:00Z* |
 
 
 Your new data model is much more efficient and only needs an additional bit tracked for each additional value in the `IDSET` and `STRINGSET` type columns, so you feel good about this call! In fact it’d be a crime not to do this… Ok sorry for that.
 
-|INCIDENT_NUMBER (_id)| OFFENSE_CODE| OFFENSE_CODE_GROUP | OCCURRED_ON_DATE | 
+|INCIDENT_NUMBER (_id)| OFFENSE_CODE| OFFENSE_CODE_GROUP | OCCURRED_ON_DATE |
 | ------- | ------------ | ------------ | ------------ |
 | I162097077 | 00735,01300,00735  | Auto Theft Recovery, Warrant Arrests, Recovered Stolen Property | 2016-11-28T12:00:00Z |
 
