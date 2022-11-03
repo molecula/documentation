@@ -61,5 +61,5 @@ FeatureBase is a [B-tree](https://en.wikipedia.org/wiki/B-tree) database which u
 
 ## Next step
 
-* [Learn how to setup FeatureBase Cloud](/cloud/cloud-setup/cloud-quickstart-guide)
-* [Learn how to setup FeatureBase Community](/community/community-quickstart-guide)
+* [Learn about FeatureBase Cloud](/cloud/cloud-setup/cloud-introduction)
+* [Learn how to setup FeatureBase Community](/community/community-setup/community-quickstart-guide)
