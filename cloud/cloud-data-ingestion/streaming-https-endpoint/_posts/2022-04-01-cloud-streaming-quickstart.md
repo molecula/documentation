@@ -1,7 +1,5 @@
 ---
-id: testing 123
 title: Getting Started With Streaming
-sidebar_label: Getting Started With Streaming
 ---
 
  **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes.
@@ -164,7 +162,7 @@ curl --location --request POST 'https://api.featurebase.com/v2/sinks' \
 
 You can also do this in the UI on the "Data Sources" page by clicking “New Source", choosing "iris_demo_database" as the database, "iris_ingest_endpoint" as the source name, "iris_table" as the table, and defining the column mappings with the same information as the API call above, matching the image below:
 
-![Sreaming Source UI Configuration](/img/cloud/cloud-data-ingestion/streaming-https-endpoint/cloud-streaming-quickstart/iris_source.png)
+![Streaming Source UI Configuration](/img/cloud-streaming/iris_source.png)
 
 Like databases, sources takes some time to create. You should be able to see the "iris_ingest_endpoint" status as "Creating" by running the command below or in the UI.
 
