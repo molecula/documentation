@@ -26,6 +26,7 @@ title: Enterprise vs Cloud
 sidebar_label: Enterprise vs Cloud
 ```
 
+* id and sidebar_label affect the Nav. It's simpler to remove unless the title is too long
 * NOTE: Page YAML does not affect URL.
 * sidebar_label can be omitted if the nav is the same as the title
 
