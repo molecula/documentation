@@ -47,7 +47,7 @@ PQL queries can be broadly grouped into:
 
 - Read operations, which comprise the majority of PQL keywords, and often the majority of PQL usage.
 - Write operations, some of which are often avoided in favor of using [ingesters](/community/community-data-ingestion/ingesters){:target="_blank"}.
-- [Other operations](/pql-guide/pql#other-operations){:target="_blank"}
+- [Other operations](/pql-guide/pql-introduction#other-operations){:target="_blank"}
 
 Read operations can be further grouped into several types. All of these types are summarized below.
 

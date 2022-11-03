@@ -28,10 +28,10 @@ UnionRows(ROWS_CALL, ... )
 ```
 
 #### Mandatory Arguments
-- `ROWS_CALL` : a [rows call](/pql-guide/pql#rows-calls){:target="_blank"} (set of record IDs / keys). Note the FIELD argument to `Rows()` here must be a Set, Mutex, or Time field.
+- `ROWS_CALL` : a [rows call](/pql-guide/pql-introduction#rows-calls){:target="_blank"} (set of record IDs / keys). Note the FIELD argument to `Rows()` here must be a Set, Mutex, or Time field.
 
 #### Optional Arguments
-- `...` : Any number of additional [rows calls](/pql-guide/pql#rows-calls){:target="_blank"} seperated by commas. Note the FIELD argument to `Rows()` here must be a Set, Mutex, or Time field.
+- `...` : Any number of additional [rows calls](/pql-guide/pql-introduction#rows-calls){:target="_blank"} seperated by commas. Note the FIELD argument to `Rows()` here must be a Set, Mutex, or Time field.
 
 #### Returns
 - list of record IDs or record keys
