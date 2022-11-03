@@ -28,7 +28,7 @@ There are a couple of states associated with these sources that are important to
 
 
 ## Configuration
-For information on creating an ingest endpoint, please go [here](/cloud/cloud-data-ingestion/createstreamingsource)
+For information on creating an ingest endpoint, please go [here](/cloud/cloud-data-ingestion/streaming-https-endpoint/create-ingest-endpoint)
 
 ## Streaming Data
 
