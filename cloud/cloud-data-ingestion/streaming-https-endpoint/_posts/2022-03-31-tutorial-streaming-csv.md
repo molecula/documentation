@@ -1,6 +1,6 @@
 ---
 
-title: Cloud ingestion - streaming in a CSV
+title: Streaming in a CSV
 
 ---
 
