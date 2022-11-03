@@ -19,7 +19,7 @@ Union(
 )
 ```
 
-`UnionRows()` is a [row call](/pql-guide/pql#row-calls){:target="_blank"}.
+`UnionRows()` is a [row call](/pql-guide/pql-introduction#row-calls){:target="_blank"}.
 
 ## Call Definition
 
