@@ -17,9 +17,6 @@ nav:
 
   - title: FeatureBase Community
     category: community
-    folderitems:
-    - title: Community Install & Config
-      url: /community-install-config
     subnav:
       - title: Community setup
         category: community-setup
