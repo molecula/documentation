@@ -379,7 +379,7 @@ def on_message(content, token):
   #
   # Send request to push data into FeatureBase Cloud
   #
-  # See: https://docs.featurebase.com/cloud/cloud-data-ingestion/ingeststreamingsource
+  # See: https://docs.featurebase.com/cloud/cloud-data-ingestion/streaming-https-endpoint/stream-ingest-endpoint
   #
   response = requests.post(
     url     = FEATUREBASE_STREAMING_ENDPOINT,

@@ -32,7 +32,7 @@ For information on creating an ingest endpoint, please go [here](/cloud/cloud-da
 
 ## Streaming Data
 
-For information on streaming data to an ingest endpoint, please go [here](/cloud/cloud-data-ingestion/ingeststreamingsource)
+For information on streaming data to an ingest endpoint, please go [here](/cloud/cloud-data-ingestion/streaming-https-endpoint/stream-ingest-endpoint)
 
 
 <!--
