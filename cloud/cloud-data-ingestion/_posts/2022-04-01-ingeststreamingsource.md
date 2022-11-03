@@ -85,4 +85,4 @@ curl --location --request GET 'https://api.featurebase.com/v2/sinks/<sink_id>/me
 
 Note that the metrics endpoint will only store data for time periods where records are sent. Gaps between timestamps indicates the endpoint received no records during that period.
 
-For a tutorial on how to go from nothing to a database with data streaming in, see the [Getting Started With Streaming](/cloud/cloud-data-ingestion/cloudquickstart).
+For a tutorial on how to go from nothing to a database with data streaming in, see the [Getting Started With Streaming](/cloud/cloud-data-ingestion/cloud-https-endpoint/cloud-streaming-quickstart).

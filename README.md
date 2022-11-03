@@ -12,29 +12,37 @@ Updated documentation for Featurebase doco following alterations documented in h
 `/_data_/navigation.yml`
 
 * `title` - value can include upper/lowercase
-* `category` - value must match the folder name, including case and dash/underscores
+* `category` - case-sensitive category name must match the folder name
 * `subnav:` is for subfolders
 
-### Page YAML
+## YAML metadata
+
+YAML metadata affects the page title and the left nav node under the folders.
 
 Example YAML
 ```
 id: enterprisevscloud
 title: Enterprise vs Cloud
 sidebar_label: Enterprise vs Cloud
+```
+NOTE: Page YAML does not affect URL.
 
+## Content filenames
+
+Content files need to be added to `/_post` folders under the parent folders.
+
+They take the form:
+```
+YYYY-MM-DD-pagename-in-url.md
 ```
 
-### Post YAML
+* Posts are date-stamped
+* What follows the datestamp is the page name in the URL
 
-Posts are date-stamped `YYYY-MM-DD-filename.md`
 
-Example YAML
 
-```
-title: post-title that appears in nav
-```
 
+---
 
 # Molecula Documentation
 
