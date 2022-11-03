@@ -12,6 +12,9 @@ nav:
         category: cloud-data-modeling
       - title: Cloud data ingestion
         category: cloud-data-ingestion
+        subnav:
+          - title: Streaming HTTPS endpoint
+            category: streaming-https-endpoint
       - title: Query cloud data
         category: query-cloud-data
 
