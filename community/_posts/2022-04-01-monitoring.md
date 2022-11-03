@@ -34,7 +34,7 @@ Some metrics are specific to individual components, and described below.
 ### Ingesters Metrics
 
 | Metric Name | Description |
-|---|---|
+| - | - |
 | `[namespaceprefix]_deleter_rows_added_total` | count of rows ingested for deletion<br/>(labels: type={packed-bool,set,mutex,bool,int,decimal}) |
 | `[namespaceprefix]_ingester_schema_changes_total | count of schema changes |
 | `[namespaceprefix]_ingester_rows_added_total`| count of rows ingested |
