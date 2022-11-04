@@ -4,6 +4,10 @@ title: Welcome to FeatureBase!
 
 FeatureBase is a [B-tree](https://en.wikipedia.org/wiki/B-tree) database which uses [Roaring Bitmaps](https://roaringbitmap.org/). This makes it suitable for doing analytical queries on massive data sets immediately after ingestion. If you are the inquisitive type, you may be interested in the [architectural overview](/community/community-setup/architecture).
 
+## Before you begin
+
+* [Learn about Database Bitmaps](https://www.featurebase.com/blog/bitmaps-making-real-time-analytics-real)
+
 ## Comparing FeatureBase Cloud and Community
 
 ## Infrastructure
@@ -63,3 +67,8 @@ FeatureBase is a [B-tree](https://en.wikipedia.org/wiki/B-tree) database which u
 
 * [Learn about FeatureBase Cloud](/cloud/cloud-setup/cloud-introduction)
 * [Learn how to setup FeatureBase Community](/community/community-setup/community-quickstart-guide)
+
+## Further information
+
+* [Read the technical whitepaper](https://www.featurebase.com/blog/featurebase-technical-white-paper)
+* [Learn the history of the product that became FeatureBase](https://www.featurebase.com/blog/pilosa-molecula-featurebase-a-story-of-evolution)
