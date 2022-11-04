@@ -4,7 +4,7 @@ title: Ingester Configuration
 sidebar_label: Ingester Configuration
 ---
 
-Also see the [consumer examples](/community/consumer-examples) page for usage examples with corresponding data and configuration files <!-- TODO and queries -->.
+Also see the [consumer examples](/community/community-data-ingestion/consumer-examples) page for usage examples with corresponding data and configuration files <!-- TODO and queries -->.
 
 ## Authentication
 When authentication is enabled, only users with admin permissions or whitelisted IPs will be allowed to perform ingest. 

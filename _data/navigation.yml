@@ -23,6 +23,8 @@ nav:
     subnav:
       - title: Community setup
         category: community-setup
+      - title: Community database
+        category: community-database
       - title: Community data ingestion
         category: community-data-ingestion
       - title: Community API

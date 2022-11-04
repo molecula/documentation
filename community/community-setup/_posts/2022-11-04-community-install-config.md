@@ -4,7 +4,6 @@ title: Install and configure FeatureBase community
 sidebar_label: Install & configure FeatureBase community
 ---
 
-
 This welcome guide is designed to get you started using FeatureBase on a Mac or Linux/UNIX based system in around five minutes. It covers downloading and starting the FeatureBase server as well as ingesting and querying a small amount of data. Other guides and documentation may be accessed via the sidebar to your left.
 
 If you are using Windows, you may [build the binary](https://github.com/featurebasedb/featureBase/#build-featurebase-server-from-source) yourself or use our [cloud trial](https://cloud.featurebase.com/signup).
