@@ -6,31 +6,37 @@ nav:
   - title: FeatureBase Cloud
     category: cloud
     subnav:
-      - title: Cloud setup
+      - title: Setup
         category: cloud-setup
-      - title: Cloud data modeling
+      - title: Data modeling
         category: cloud-data-modeling
-      - title: Cloud data ingestion
+      - title: Data ingestion
         category: cloud-data-ingestion
         subnav:
           - title: Streaming HTTPS endpoint
             category: streaming-https-endpoint
-      - title: Query cloud data
+      - title: Query data
         category: query-cloud-data
 
   - title: FeatureBase Community
     category: community
     subnav:
-      - title: Community setup
+      - title: Setup
         category: community-setup
-      - title: Community database
+      - title: Security
+        category: community-security
+      - title: Database
         category: community-database
-      - title: Community data ingestion
+      - title: Data ingestion
         category: community-data-ingestion
-      - title: Community API
+      - title: Monitoring
+        category: community-monitoring
+      - title: API
         category: community-api
       - title: Query data
         category: query-data
+      - title: Previous versions
+        category: previous-versions
       - title: Release notes
         category: release-notes
 

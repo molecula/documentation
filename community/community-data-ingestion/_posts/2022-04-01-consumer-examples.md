@@ -105,7 +105,7 @@ molecula-consumer-csv \
     --files=sample.csv \
 ```
 
-Or, equivalently, with the [`--future.rename` configuration flag](/community/featurebase-rename):
+Or, equivalently, with the [`--future.rename` configuration flag](/community/previous-versions/featurebase-rename):
 
 ```shell
 molecula-consumer-csv \
@@ -125,7 +125,7 @@ connecting to FeatureBase. The values for these parameters are the filenames for
 correspond to the target FeatureBase instances. If verification of certificate is not desired
 (especially for self-signed certificates), we need to include `--tls.skip-verify`. Since the default
 bind point for FeatureBase hosts are HTTP, we provide the bind points using `--pilosa-hosts` (or,
-`--featurebase-hosts` with the [`--future.rename` configuration flag](/community/featurebase-rename)).
+`--featurebase-hosts` with the [`--future.rename` configuration flag](/community/previous-versions/featurebase-rename)).
 
 ## Kafka consumer
 
@@ -148,7 +148,7 @@ Data:
 
 
 ### Kafka delete consumer
-Configuration and usage for this consumer is identical to the Kafka consumer, with the exception of the `pilosa-grpc-hosts` (or `featurebase-grpc-hosts` with the [`--future.rename` configuration flag](/community/featurebase-rename)). Instead of inserting data into FeatureBase from the received messages, it deletes the corresponding data from FeatureBase. This provides delete capabilities using the same Kafka interface.
+Configuration and usage for this consumer is identical to the Kafka consumer, with the exception of the `pilosa-grpc-hosts` (or `featurebase-grpc-hosts` with the [`--future.rename` configuration flag](/community/previous-versions/featurebase-rename)). Instead of inserting data into FeatureBase from the received messages, it deletes the corresponding data from FeatureBase. This provides delete capabilities using the same Kafka interface.
 
 
 ## Kafka static consumer
@@ -377,7 +377,7 @@ molecula-consumer-sql \
     --row-expr 'SELECT asset_tag as asset_tag__String, weight as weight__Int, warehouse as warehouse__String FROM assets'
 ```
 
-Or, equivalently, with the [`--future.rename` configuration flag](/community/featurebase-rename):
+Or, equivalently, with the [`--future.rename` configuration flag](/community/previous-versions/featurebase-rename):
 
 ```shell
 molecula-consumer-sql \
@@ -407,7 +407,7 @@ molecula-consumer-sql \
     --row-expr 'SELECT pk as pk__String, asset_tag as asset_tag__String, fan_time as `fan_time__Timestamp_s_2006-01-02`, SUBSTRING(fan_vol, 1, CHAR_LENGTH(fan_vol)-1) as fan_vol__Int FROM events'
 ```
 
-Or, equivalently, with the [`--future.rename` configuration flag](/community/featurebase-rename):
+Or, equivalently, with the [`--future.rename` configuration flag](/community/previous-versions/featurebase-rename):
 
 ```shell
 molecula-consumer-sql \
@@ -434,7 +434,7 @@ molecula-consumer-sql \
     --row-expr 'SELECT events.pk as pk__String, events.asset_tag as asset_tag__String, assets.weight as weight__Int, SUBSTRING(events.pk, 1, 3) as locale__String FROM events INNER JOIN assets on assets.asset_tag = events.asset_tag'
 ```
 
-Or, equivalently, with the [`--future.rename` configuration flag](/community/featurebase-rename):
+Or, equivalently, with the [`--future.rename` configuration flag](/community/previous-versions/featurebase-rename):
 
 ```shell
 molecula-consumer-sql \

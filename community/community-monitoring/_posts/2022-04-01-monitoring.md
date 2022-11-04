@@ -81,7 +81,7 @@ where in the case of Ingesters, `[namespaceprefix]` is one of:
 | `[featurebaseprefix]_antientropy_total` | count of times the AntiEntropy process runs |
 | `[featurebaseprefix]_antientropy_duration_seconds`| histogram of duration of AntiEntropy process |
 
-where `[featurebaseprefix]` is either `featurebase` if the [`--future.rename` configuration flag](/community/featurebase-rename) is set, or `pilosa`.
+where `[featurebaseprefix]` is either `featurebase` if the [`--future.rename` configuration flag](/community/previous-versions/featurebase-rename) is set, or `pilosa`.
 
 In addition, metrics are generated for counts of individual query calls. These are identified by the `query` prefix, for example `query_topn_total`. For PQL calls, these include the following queries: `Sum`, `Min`, `Max`, `MinRow`, `MaxRow`, `Count`, `TopN`, `Rows`, `GroupBy`. Note that the query name is represented as lower-case in the metric name. SQL calls may also affect these metrics, depending on SQL->PQL mapping of the particular query.
 
@@ -100,7 +100,7 @@ These metrics are pulled from the Go language runtime or operating system rather
 | `[featurebaseprefix]_mallocs`| gauge |
 | `[featurebaseprefix]_frees`| gauge |
 
-where `[featurebaseprefix]` is either `featurebase` if the [`--future.rename` configuration flag](/community/featurebase-rename) is set, or `pilosa`.
+where `[featurebaseprefix]` is either `featurebase` if the [`--future.rename` configuration flag](/community/previous-versions/featurebase-rename) is set, or `pilosa`.
 
 ### Transaction Metrics
 
@@ -114,7 +114,7 @@ where `[featurebaseprefix]` is either `featurebase` if the [`--future.rename` co
 | `[featurebaseprefix]_transaction_exclusive_end` |count of ended exclusive transactions |
 | `[featurebaseprefix]_transaction_exclusive_blocked` |count of blocked exclusive transactions |
 
-where `[featurebaseprefix]` is either `featurebase` if the [`--future.rename` configuration flag](/community/featurebase-rename) is set, or `pilosa`.
+where `[featurebaseprefix]` is either `featurebase` if the [`--future.rename` configuration flag](/community/previous-versions/featurebase-rename) is set, or `pilosa`.
 
 ### Query Metrics (not implemented)
 
@@ -123,7 +123,7 @@ where `[featurebaseprefix]` is either `featurebase` if the [`--future.rename` co
 | `[featurebaseprefix]_pql_queries_total` | count of PQL queries |
 | `[featurebaseprefix]_sql_queries_total` | count of SQL queries |
 
-where `[featurebaseprefix]` is either `featurebase` if the [`--future.rename` configuration flag](/community/featurebase-rename) is set, or `pilosa`.
+where `[featurebaseprefix]` is either `featurebase` if the [`--future.rename` configuration flag](/community/previous-versions/featurebase-rename) is set, or `pilosa`.
 
 ### Prometheus Configuration
 
@@ -152,7 +152,7 @@ static_configs:
 
 ## Logging
 
-All FeatureBase components log to standard error by default and can be configured to log to a file. When logging to a file, FeatureBase components will re-open the log file on receipt of the HUP signal. See [How To Set Up Log Rotation](/community/set-up-log-rotation) for more information.
+All FeatureBase components log to standard error by default and can be configured to log to a file. When logging to a file, FeatureBase components will re-open the log file on receipt of the HUP signal. See [How To Set Up Log Rotation](/community/community-monitoring/set-up-log-rotation) for more information.
 
 ## Tracing
 

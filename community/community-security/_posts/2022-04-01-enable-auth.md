@@ -68,7 +68,7 @@ To enable authentication and authorization in FeatureBase, add the following lin
  configured-ips = []
 ```
 
-Additionally, TLS must be enabled. Refer to [How To Enable TLS](/community/enable-mutual-tls) for more details.
+Additionally, TLS must be enabled. Refer to [How To Enable TLS](/community/community-security/enable-mutual-tls) for more details.
 
 - Create a permissions file: `permissions.yaml`.
     - Copy the example below and update with group ids, index names and permissions.
@@ -112,7 +112,7 @@ Additionally, TLS must be enabled. Refer to [How To Enable TLS](/community/enabl
 - Add the path to the `query-log-path` parameter in `featurebase.conf`.
 
 ## TLS Configuration
-TLS _must_ be enabled when authentication is enabled.  To configure basic TLS, refer to [How To Enable TLS](/community/enable-mutual-tls).
+TLS _must_ be enabled when authentication is enabled.  To configure basic TLS, refer to [How To Enable TLS](/community/community-security/enable-mutual-tls).
 
 When TLS is enabled, the scheme must be explicitly defined as `https` in `featurebase.conf` and in the command-line.
 
