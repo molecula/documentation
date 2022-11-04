@@ -1,7 +1,5 @@
 ---
-id: fb-field-ref
 title: FeatureBase Field reference
-sidebar_label: FeatureBase Field reference
 ---
 
 

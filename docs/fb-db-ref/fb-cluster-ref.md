@@ -1,7 +1,5 @@
 ---
-id: fb-cluster-ref
 title: FeatureBase cluster reference
-sidebar_label: FeatureBase cluster reference
 ---
 
 

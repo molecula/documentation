@@ -1,7 +1,5 @@
 ---
-id: pql-column-ref
 title: PQL column reference
-sidebar_label: PQL column reference
 ---
 
 source: /data-querying/_posts/2022-06-22-pql

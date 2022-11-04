@@ -1,7 +1,5 @@
 ---
-id: pql-field
 title: PQL field reference
-sidebar_label: PQL field
 ---
 
 source: /data-querying/_posts/2022-06-22-pql

@@ -1,7 +1,5 @@
 ---
-id: shard-anti-entropy-ref
 title: Shard anti-entropy reference
-sidebar_label: Shard anti-entropy reference
 ---
 
 ## Description

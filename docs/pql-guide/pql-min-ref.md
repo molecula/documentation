@@ -1,9 +1,6 @@
 ---
-id: pql-min-ref
 title: PQL Min reference
-sidebar_label: PQL Min reference
 ---
-
 
 ## Description
 

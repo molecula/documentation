@@ -1,7 +1,5 @@
 ---
-id: signup-cloud
 title: How do I signup to FeatureBase Cloud?
-sidebar_label: How do I signup to FeatureBase Cloud?
 ---
 
 You can sign up and try out Featurebase cloud for [TRIAL PERIOD].

@@ -1,7 +1,5 @@
 ---
-id: fb-bsi-ref
 title: FeatureBase bsi reference
-sidebar_label: FeatureBase bsi reference
 ---
 
 

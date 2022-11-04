@@ -1,7 +1,5 @@
 ---
-id: pql-row-timestamp-ref
 title: PQL Row (timestamp) reference
-sidebar_label: PQL Row (timestamp) reference
 ---
 
 

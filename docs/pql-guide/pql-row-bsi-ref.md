@@ -1,7 +1,5 @@
 ---
-id: pql-row-bsi-ref
 title: PQL Row (BSI) reference
-sidebar_label: PQL Rows reference
 ---
 
 

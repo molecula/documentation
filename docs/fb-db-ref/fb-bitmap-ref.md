@@ -1,7 +1,5 @@
 ---
-id: fb-bitmap-ref
 title: FeatureBase bitmapreference
-sidebar_label: FeatureBase bitmap reference
 ---
 
 

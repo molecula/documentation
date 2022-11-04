@@ -1,7 +1,5 @@
 ---
-id: install-community-linux
 title: How do I install FeatureBase Community on Linux?
-sidebar_label: Install community on linux
 ---
 
 Follow these instructions to install FeatureBase on a Linux environment.
@@ -13,11 +11,11 @@ Follow these instructions to install FeatureBase on a Linux environment.
 
 ## Install FeatureBase on Linux
 
-{% include /docs/community/install-fb-linux-source.md %}
+{% include /docs/community/fbcom-install-linux-source.md %}
 
 ## Next step
 
-* [Startup and connect to FeatureBase](/startup-connect-fb-local)
+* [Startup and connect to FeatureBase](docs/community/fbcom-startup-connect)
 
 ## Further information
 

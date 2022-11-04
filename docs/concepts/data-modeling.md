@@ -1,7 +1,5 @@
 ---
-id: data-modelling
 title: Data modeling overview
-sidebar_label: Data modeling overview
 ---
 
 # Status: Alpha (well before first draft)

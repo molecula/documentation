@@ -1,7 +1,5 @@
 ---
-id: pql-index-ref
 title: PQL Index reference
-sidebar_label: PQL index
 ---
 
 

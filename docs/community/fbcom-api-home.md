@@ -1,9 +1,6 @@
 ---
-id: community-api-home
 title: FeatureBase Community APIs
-sidebar_label: FeatureBase Community APIs
 ---
-
 
 FeatureBase Community provides three built-in APIs which are not functionally equivalent:
 
@@ -14,8 +11,8 @@ FeatureBase Community provides three built-in APIs which are not functionally eq
 
 ## Further information
 
-* [Community HTTP API](/docs/community/community-http-api.md)
-* [Community gRPC API](/docs/community/community-grpc-api.md)
+* [Community HTTP API](/docs/community/fbcom-http-api.md)
+* [Community gRPC API](/docs/community/fbcom-grpc-api.md)
 
 ## Get support
 

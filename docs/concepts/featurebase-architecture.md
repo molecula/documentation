@@ -1,7 +1,5 @@
 ---
-id: featurebase-architecture
 title: FeatureBase architecture
-sidebar_label: FeatureBase architecture
 ---
 
 

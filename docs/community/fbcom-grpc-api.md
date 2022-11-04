@@ -1,7 +1,5 @@
 ---
-id: community-grpc-api
 title: FeatureBase Community gRPC APIs
-sidebar_label: Community gRPC API
 ---
 
 

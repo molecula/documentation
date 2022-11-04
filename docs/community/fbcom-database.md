@@ -1,7 +1,5 @@
 ---
-id: cloud-ingest-datasource
 title: How do I import data to a cloud database?
-sidebar_label: Import data to cloud
 ---
 
 
@@ -10,3 +8,8 @@ sidebar_label: Import data to cloud
 
 * [Learn about FeatureBase Databases]()
 * [Learn how to setup a local Database]()
+
+
+## Get support
+
+{% include /docs/get-support-source.md %}

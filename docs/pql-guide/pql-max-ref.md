@@ -1,7 +1,5 @@
 ---
-id: pql-max-ref
 title: PQL Max reference
-sidebar_label: PQL Max reference
 ---
 
 

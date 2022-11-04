@@ -1,7 +1,5 @@
 ---
-id: shard-maxshard-ref
 title: Shard MaxShard reference
-sidebar_label: Shard MaxShard reference
 ---
 
 

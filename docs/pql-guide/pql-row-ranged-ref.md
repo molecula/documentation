@@ -1,7 +1,5 @@
 ---
-id: pql-row-ranged-ref
 title: PQL Row (ranged) reference
-sidebar_label: PQL Row(ranged)
 ---
 
 

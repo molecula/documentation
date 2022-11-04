@@ -1,7 +1,5 @@
 ---
-id: glossary
 title: FeatureBase glossary of terms
-sidebar_label: FeatureBase glossary of terms
 ---
 
 

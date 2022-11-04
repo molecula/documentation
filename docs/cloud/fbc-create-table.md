@@ -1,7 +1,5 @@
 ---
-id: cloud-create-table
 title: How do I create a table in a FeatureBase Cloud Database?
-sidebar_label: How do I create a table in a FeatureBase Cloud Database?
 ---
 
 This page explains how to create Tables using FeatureBase Cloud.
@@ -10,7 +8,6 @@ This page explains how to create Tables using FeatureBase Cloud.
 
 * [Learn about FeatureBase databases](/concepts/how-do-i-build-fb-db.md)
 * [Learn how to create a FeatureBase database](/cloud/cloud-create-database.md)
-*
 
 ## How do I create a FeatureBase Table?
 

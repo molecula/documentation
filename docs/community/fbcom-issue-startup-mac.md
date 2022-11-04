@@ -1,7 +1,5 @@
 ---
-id: issue-startup-mac
 title: Issue - FeatureBase Community won't startup on Mac
-sidebar_label: Issue - FeatureBase Community won't startup on Mac
 ---
 
 ## Issue
@@ -15,15 +13,13 @@ This may be caused by the MacOS Gatekeeper system
 
 ## Solution
 
-{% include /docs/community/issue-fb-mac-gatekeeper.md %}
-
+{% include /docs/issues/fbcom-issue-mac-startup-source.md %}
 
 ## Further information
 
 If these steps don't work, you can try reinstalling the software.
 
-* [How do I install FeatureBase Community on mac](/docs/community/install-featurebase-mac)
-
+* [How do I install FeatureBase Community on mac](/docs/community/fbcom-install-mac)
 
 ## Get support
 

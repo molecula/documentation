@@ -1,7 +1,5 @@
 ---
-id: fb-index-ref
 title: FeatureBase Index reference
-sidebar_label: FeatureBase Index reference
 ---
 
 ## Description

@@ -1,7 +1,5 @@
 ---
-id: pql-groupby-ref
 title: PQL GroupBy reference
-sidebar_label: PQL GroupBy reference
 ---
 
 ## Description

@@ -1,7 +1,5 @@
 ---
-id: login-cloud
 title: How do I login to FeatureBase Cloud?
-sidebar_label: How do I login to FeatureBase Cloud?
 ---
 
 This page explains where you can login to FeatureBase cloud.

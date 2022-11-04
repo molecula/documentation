@@ -1,5 +1,4 @@
 
-
 1. Open a Terminal Window
 2. Execute the following command to deactivate the Quarantine flag
 

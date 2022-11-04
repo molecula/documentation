@@ -1,7 +1,5 @@
 ---
-id: mutex-field-ref
 title: Mutex field reference
-sidebar_label: Mutex field reference
 ---
 
 ## Description

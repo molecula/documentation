@@ -1,9 +1,6 @@
 ---
-id: fb-fragment-ref
 title: FeatureBase Fragment reference
-sidebar_label: FeatureBase Fragment reference
 ---
-
 
 ## Description
 

@@ -1,7 +1,5 @@
 ---
-id: pql-topn-ref
 title: PQL TopN reference
-sidebar_label: PQL TopN reference
 ---
 
 ## Description

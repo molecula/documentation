@@ -1,7 +1,5 @@
 ---
-id: shard-replica-ref
 title: Shard replica reference
-sidebar_label: Shard replica reference
 ---
 
 ## Description

@@ -19,3 +19,7 @@
 mv featurebase-*-community-darwin-arm64/ opt
 mv idk-*-arm64 idk
 ```
+
+## Set the execute flag on `idk` executables
+
+{% include /docs/community/fbcom-issue-permission-denied-ingest-source.md %}

@@ -1,7 +1,5 @@
 ---
-id: pql-home
 title: Pilosa Query Language (PQL) reference
-sidebar_label: PQL reference
 ---
 
 ## Source
