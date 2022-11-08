@@ -8,6 +8,17 @@ title: Data modeling overview
 * /data-ingestion/_posts/2022-04-04-ingestoverview.md
 * https://molecula.atlassian.net/wiki/spaces/EN/pages/720338949/The+Book+of+Wisdom#Data-Modeling-Considerations
 
+## how is data represented in FeatureBase?
+
+
+
+
+When importing data into FeatureBase, you have a number of choices about how to represent that data. Choices about data representation mean tradeoffs in both storage and runtime performance, and there are no best answers for all circumstances. This section offers guidance on likely ways to make these decisions, and a bit of theory describing what’s happening under the hood to help you make better choices. If you’re not sure, it’s always a good idea to try things out and compare results.
+
+
+
+
+
 
 
 ## Introduction (delete heading when finished)
