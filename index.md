@@ -1,74 +1,82 @@
 ---
-title: Welcome to FeatureBase!
+title: Welcome to FeatureBase Help
 ---
 
-FeatureBase is a [B-tree](https://en.wikipedia.org/wiki/B-tree) database which uses [Roaring Bitmaps](https://roaringbitmap.org/). This makes it suitable for doing analytical queries on massive data sets immediately after ingestion. If you are the inquisitive type, you may be interested in the [architectural overview](/community/community-setup/architecture).
+FeatureBase Help contains high level overviews of software functionality, plus procedural documentation for FeatureBase Cloud and the self-managed Community edition.
 
 ## Before you begin
 
-* [Learn about Database Bitmaps](https://www.featurebase.com/blog/bitmaps-making-real-time-analytics-real)
+* [Learn more about FeatureBase](https://www.featurebase.com/)
 
-## Comparing FeatureBase Cloud and Community
+## Comparing Cloud and Community editions
+
+These tables provided a side-by-side comparison of Cloud and Community functionality.
+
+[Contact us](#get-support) if you have any questions.
 
 ## Infrastructure
 
-| Feature | Cloud  | Community |
-| ------ | ----- | ----------- |
-| Click to Deploy |  Yes | No |
-| Automated Scale Up/Down|  No | No |
-| Automated Scale In/Out |  No | No |
-| Regional Deployment |  No | Yes |
-
-## Security
-
-|Feature | Cloud  | Community  |
-| ------ | ----- | ----------- |
-|Encryption In Flight |  Yes| Yes |
-|Encryption at Rest |  Yes| Yes |
-|Authentication + Authorization (OAuth) |  Yes | Yes |
-|Role-Based Access Control (Basic) |  No | Yes |
-|User Management |  Yes | Yes |
-|Audit Logging |  Yes | Yes |
-
-## Operations
-
-| Feature | Cloud  | Community  |
-| ------ | ----- | ----------- |
-| Backup + Restore |  No | Yes |
-| Data Replication |  Yes | Yes |
-| Metrics & Monitoring |  No | Yes |
-| Editable FeatureBase Config File |  No | Yes |
+| Feature | Cloud  | Community  | Notes  |
+| ------ | ----- | ----------- | ----------- |
+| Click to Deploy |  No | Yes | Windows installations require a Hypervisor  |
+| Automated Scale Up/Down|  Yes | Yes |   |
+| Automated Scale In/Out |  Yes | Yes |   |
+| Regional Deployment |  Yes | No |   |
 
 ## Data Ingestion
 
-|Feature | Cloud  | Community  | Notes  |
+| Feature | Cloud  | Community  | Notes  |
 | ------ | ----- | ----------- | ----------- |
-| Streaming (HTTPS)  |  Yes | No |   |
-| Kafka (Pull-based) |  No| Yes | Client-side kafka consumption & push for Cloud |
-| Database (Pull-based) |  No | Yes |  Client-side database consumption & push for Cloud |
-| CSV/Bulk Ingest  |  No | Yes |  Client-side file consumption & push for Cloud |
+| Streaming (HTTPS)  |  No | Yes |   |
+| Kafka (Pull-based) |  Yes | No | Client-side kafka consumption & push for Cloud |
+| Database (Pull-based) |  Yes | No |  Client-side database consumption & push for Cloud |
+| CSV/Bulk Ingest  |  Yes | No |  Client-side file consumption & push for Cloud |
 
 ## Data Consumption
 
-|Feature | Cloud  | Community  | Notes  |
+| Feature | Cloud  | Community  | Notes  |
 | ------ | ----- | ----------- | ----------- |
-| Query UI  |  Yes| Yes |   |
-| FeatureBase SQL - HTTPS |  Yes| No | Any language/tool (Python, Go, etc) that can read over HTTPS  |
-| FeatureBase PQL - HTTPS |  Yes| Yes | Any language/tool (Python, Go, etc) that can read over HTTPS  |
-| gRPC Endpoint |  No | Yes |   |
-| Postgres Endpoint |  No| Yes |   |
-| Unbounded Queries (Advanced Queries) |  No| Yes | Cloud Limited to 6mb and/or 30sec  |
-| PQL Query Builder |  No| Yes |   |
-| Python Client |  No | Yes |   |
-| Grafana Plug-In |  No | Yes |   |
-| Postgres Lookup Database Option |  No| Yes |   |
+| Query UI  |  No | No |   |
+| FeatureBase SQL - HTTPS |  No | Yes | Any language/tool (Python, Go, etc) that can read over HTTPS  |
+| FeatureBase PQL - HTTPS |  No | No | Any language/tool (Python, Go, etc) that can read over HTTPS  |
+| gRPC Endpoint |  Yes | No |   |
+| Postgres Endpoint |  Yes | No |   |
+| Unbounded Queries (Advanced Queries) |  Yes | No | Cloud Limited to 6mb and/or 30sec  |
+| PQL Query Builder |  Yes | No |   |
+| Python Client |  Yes | No |   |
+| Grafana Plug-In |  Yes | No |   |
+| Postgres Lookup Database Option |  Yes | No |   |
 
-## Next step
+## Operations
 
-* [Learn about FeatureBase Cloud](/cloud/cloud-setup/cloud-introduction)
-* [Learn how to setup FeatureBase Community](/community/community-setup/community-install-config)
+| Feature | Cloud  | Community  | Notes  |
+| ------ | ----- | ----------- | ----------- |
+| Backup + Restore |  Yes | No |   |
+| Data Replication |  No | No |  |
+| Metrics & Monitoring |  Yes | No |   |
+| Editable FeatureBase Config File |  Yes | No |   |
+
+## Security
+
+| Feature | Cloud  | Community  | Notes  |
+| ------ | ----- | ----------- | ----------- |
+| Encryption In Flight |  No | No |  |
+| Encryption at Rest |  No | No |   |
+| Authentication + Authorization (OAuth) |  No | No |  |
+| Role-Based Access Control (Basic) |  Yes | No |   |
+| User Management |  No | No |  |
+| Audit Logging |  No | No |   |
+
+## Next Step
+
+You can choose to setup a cloud account, or install FeatureBase on a local server.
+
+* [Setup your FeatureBase cloud account](/docs/cloud/part1-signup-to-cloud)
+{% include /docs/community/fbcom-install-links.md %}
 
 ## Further information
 
-* [Read the technical whitepaper](https://www.featurebase.com/blog/featurebase-technical-white-paper)
-* [Learn the history of the product that became FeatureBase](https://www.featurebase.com/blog/pilosa-molecula-featurebase-a-story-of-evolution)
+
+## Get support
+
+{% include /docs/get-support-source.md %}
