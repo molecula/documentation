@@ -1,7 +1,5 @@
 ---
-id: programmaticaccess
 title: Programmatic Access
-sidebar_label: Programmatic Access
 ---
 
  **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes.
