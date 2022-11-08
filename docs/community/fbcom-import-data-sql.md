@@ -1,16 +1,14 @@
 ---
-title: How do I import data using a CSV?
+title: How do I import data using SQL?
 ---
 
 ## Source (delete when finished)
-* http://docs.featurebase.com/reference/data-ingestion/ingester-configuration#csv-ingester
-* http://docs.featurebase.com/data-ingestion/enterprise/ingesters#csv-ingester
+
+* http://docs.featurebase.com/data-ingestion/enterprise/ingesters#sql-ingester
+* http://docs.featurebase.com/reference/data-ingestion/ingester-configuration#sql-ingester
 
 ## Before you begin
 
-* Create a CSV file containing your data
-
-NEED REF FILE INFO ON THE INGESTER AND THE FLAGS
 
 ## Run the CSV ingest script
 

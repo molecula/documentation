@@ -2,12 +2,13 @@
 title: Data modeling overview
 ---
 
-# Status: Alpha (well before first draft)
+## Source (delete when finished)
 
-## Source
+* /data-modeling-guide/_posts/2022-04-01-data-modeling.md
+* /data-ingestion/_posts/2022-04-04-ingestoverview.md
+* https://molecula.atlassian.net/wiki/spaces/EN/pages/720338949/The+Book+of+Wisdom#Data-Modeling-Considerations
 
-/data-modeling-guide/_posts/2022-04-01-data-modeling.md
-/data-ingestion/_posts/2022-04-04-ingestoverview.md
+
 
 ## Introduction (delete heading when finished)
 

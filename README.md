@@ -23,7 +23,10 @@ Find new style guides in Confluence:
 * [How to write better documentation](https://molecula.atlassian.net/wiki/spaces/DOCS/pages/1010925640/How+to+write+better+documentation)
 * [Content structure overview](https://molecula.atlassian.net/wiki/spaces/DOCS/pages/1011089428/Docs+as+code+Content+structure+overview)
 
+## Page prefixes
 
+* fbc = FeatureBase Cloud
+* fbcom = FeatureBase Community
 
 
 ---EARLIER CONTENT---
