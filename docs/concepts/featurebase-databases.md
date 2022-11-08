@@ -4,7 +4,22 @@ title: Learn about FeatureBase databases
 
 This page provides a high-level overview of FeatureBase databases.
 
-NEED CLUSTER INFO
+## SOURCES (DELETE WHEN FINISHED)
+
+* https://docs.featurebase.com/setting-up-featurebase/cloud/keyconcepts
+* https://docs.featurebase.com/data-modeling-guide/data-modeling
+* https://docs.featurebase.com/data-modeling-guide/time-quantums
+* https://docs.featurebase.com/setting-up-featurebase/cloud/databases-overview
+
+## Before you begin
+
+*
+
+## What is a FeatureBase database?
+
+
+
+
 
 
 ## Further information
@@ -15,10 +30,3 @@ NEED CLUSTER INFO
 ## Get support
 
 {% include /docs/get-support-source.md %}
-
-## SOURCES (DELETE WHEN FINISHED)
-
-* https://docs.featurebase.com/setting-up-featurebase/cloud/keyconcepts
-* https://docs.featurebase.com/data-modeling-guide/data-modeling
-* https://docs.featurebase.com/data-modeling-guide/time-quantums
-* https://docs.featurebase.com/setting-up-featurebase/cloud/databases-overview

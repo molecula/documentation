@@ -18,6 +18,13 @@ title: FeatureBase glossary of terms
 |---|---|
 | FeatureBase Cluster | See [FeatureBase cluster reference](/fb-db-ref/fb-cluster-ref.md)
 
+## D
+
+| Term | Description |
+|---|---|
+| Database | A FeatureBase database is a cluster of FeatureBase nodes. All data is stored in tables within the database. |
+| Data source | A data source is the source of data imported (ingested) into FeatureBase via different methods including CSV, HTTP and Kafka. |
+
 ## F-G-H-I
 
 | Term | Description |
@@ -27,6 +34,7 @@ title: FeatureBase glossary of terms
 | FeatureBase Field | See [FeatureBase Field reference](/fb-db-ref/fb-field-ref.md)
 | PQL GroupBy | See [PQL Groupby reference](pql-groupby-ref.md)
 | Index | See [Featurebase Index reference](/fb-db-ref/fb-index-ref.md) |
+| Ingestion | See [FeatureBase ingestion](/docs/concepts/featurebase-ingestion)
 
 ## M
 
