@@ -1,7 +1,5 @@
 ---
-
 title: Cloud Introduction
-
 ---
 
  **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes.
@@ -28,7 +26,7 @@ Our novel approach minimizes I/O on queries by allowing the database engine to r
 
 ## Frequently asked questions
 
-* [Read the Cloud FAQ](/cloud/cloud-faq)
+* [Read the Cloud FAQ](/cloud/cloudfaq)
 
 ## Terms and conditions
 
