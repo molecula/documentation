@@ -10,7 +10,8 @@ As long as an application can issue HTTPS requests, it will be able to query and
 
 ## Before you begin
 
-{% include /cloud/database-dependencies.md %}
+{% include /cloud/database-dependencies %}
+* [Learn how to import data to FeatureBase](/cloud/cloud-data-ingestion/ingest-data-overview)
 * [Learn about PQL](/pql-guide/pql-introduction)
 * [Learn about supported SQL](/sql-guide/sql-introduction)
 
@@ -26,17 +27,6 @@ The current query endpoint is a synchronous call that waits for your data to ret
 You will receive an error ("Network Error") if either limit is exceeded.
 
 ## Executing A Query
-
-In order to query data, the following prerequisites must be met:
-
-1. A database exists that is in the “Running” state
-- Click [here](/cloud/cloud-data-ingestion/creating-database) to learn how to create a database
-- Click [here](/cloud/cloud-api) to see the database API docs
-2. A table exists in that database
-- Click [here](/cloud/cloud-data-ingestion/tables) to learn how to create a table
-- Click [here](/cloud/cloud-api) to see the table API docs
-3. Data has been loaded into the table
-- Click [here](/cloud/cloud-data-ingestion/streaming-https-endpoint/cloud-streaming-overview) to learn how to ingest data
 
 In the User interface, clicking the “Query” section on the left hand navigation bar will take you to a page where you can explore data using PQL & SQL statements. The text editor allows for multiple queries to exist in the same pane. Individual queries are separated by newlines with only whitespace. You should first pick a database to query against in the top right corner. This will default to the oldest database created. You can redirect any query to a particular database by aliasing/prepending it with `“{<database name>}”`. Queries can be run by either clicking the run button or with a key combination of `“Ctrl + Enter"` or `Cmd + Enter"`. This can also be accomplished programmatically <link to query in references> for both SQL and PQL by changing the “language” parameter to sql and pql respectively. Put these in tabs
 

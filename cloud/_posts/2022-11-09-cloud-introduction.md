@@ -10,7 +10,7 @@ FeatureBase Cloud is fully managed and intended for users that don't want to hav
 
 FeatureBase is a feature-oriented database platform that powers real-time analytics and machine learning applications by executing low-latency, high-throughput, and highly concurrent workloads. Similar to the evolution of data formats from row-oriented to columnar, FeatureBase further evolves columnar into a feature-oriented format that makes each distinct data value individually addressable (accessible, readable, writable and retrievable).
 
-Our novel approach minimizes I/O on queries by allowing the database engine to read and write exactly the data it needs and intelligently compress that data in memory. The result is a step-function improvement in analytical workloads!
+Our novel approach minimizes I/O on queries by allowing the database engine to read and write exactly the data it needs and intelligently compress that data in memory. The result is a step-function improvement in analytical workloads.
 
 ## Key Cloud Features
 
@@ -37,7 +37,3 @@ All users must agree to the Terms of Service before they can sign up.
 ## Next step
 
 * [Learn how to setup your FeatureBase Cloud account](/cloud/cloud-setup/cloud-quickstart-guide)
-
-## Further information
-
-* [Learn about]

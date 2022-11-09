@@ -1,26 +1,27 @@
 ---
-id: data-modeling
 title: Data Modeling
-sidebar_label: Data Modeling
 ---
 
-<!--
-TODO: add explanatory content
-we have other existing data-model articles/gdocs/etc that would fit here and make it more useful
-- https://github.com/molecula/featurebase/blob/0fbdbc7ccbbb09504c9b37c22db6879dd7f5632b/docs/data-model.md
-- pilosa.com/docs
-- seebs 2021/06: https://docs.google.com/document/d/1Gj-2BjTGWfdLcu16_l0Ghguc7N9jEESVdUQuhZrrAoY/edit
-- seebs data model outline: https://github.com/molecula/docs/pull/68/files
-- jaffee "value oriented" https://docs.google.com/document/d/12LlV9U_Zf8Hn_5hCfmuYBZ9MGW3LLfy7Bs2HE9r8LuE/edit
-- jaffee "the fourth dimension" https://docs.google.com/document/d/1vm-UsA2ZMRN_0c95fas-c0cYPk-kc24TA1j---HzMzo/edit
-- travis 2018: https://docs.google.com/document/d/1LKlqvtd9f9nSKNTKormDdLvjHOXOKd6luh_AuEkpw_w/edit#heading=h.d2nbbdlqfudo
--->
+Data modeling is a key component in FeatureBase that involves understanding both how you will consume your data and how FeatureBase can represent your data to meet your needs.
+
+IMPORTANT: Data modeling must be performed before ingestion to avoid long-term issues
+
+<!--see DOCS-58 for other sources of information that need reviewing-->
+
+## Before you begin
+
+* [Learn about FeatureBase](/index.html)
+* [Contact FeatureBase support with questions about data modeling](/https://www.featurebase.com/contact-us)
 
 ## Concepts
 
-When importing data into FeatureBase, you have a number of choices about how to represent that data. Choices about data representation mean tradeoffs in both storage and runtime performance, and there are no best answers for all circumstances. This section offers guidance on likely ways to make these decisions, and a bit of theory describing what's happening under the hood to help you make better choices. If you're not sure, it's always a good idea to try things out and compare results.
+When importing data into FeatureBase, you have a number of choices about how to represent that data.
 
-### Facts and Dimensions
+Choices about data representation mean trade-offs in both storage and runtime performance, and there are no best answers for all circumstances.
+
+This section offers guidance on likely ways to make these decisions, and a bit of theory describing what's happening under the hood to help you make better choices. If you're not sure, it's always a good idea to try things out and compare results.
+
+## Facts and Dimensions
 
 In a standard relational model, one often hears about "fact" tables vs "dimensions". Each record in a fact table typically represents an immutable event (e.g. someone clicked a link or made a purchase, a temperature reading was recorded, etc). Dimensions on the other hand usually represent slower changing "metadata". If your fact is that a user performed a certain action, one of your dimensions might be a "users" table that records things like date of birth, gender, address. Recording this information along with every fact would lead to a huge amount of duplication so it is typically split out.
 
@@ -34,11 +35,13 @@ It takes up more space to store things like this, but if you have a workload tha
 
 Fields are used to segment rows within an index, for example to define different functional groups. A FeatureBase field might correspond to a single field in a relational table, where each row in a standard FeatureBase field represents a single possible value of the relational field. Similarly, an integer field could represent all possible integer values of a relational field.
 
+<!-- TODO
+
 ### Field Options
 
-<!-- TODO this section is a placeholder, to provide minimal information about field options that are still exposed in the API, and linked from the http-api page -->
+this section is a placeholder, to provide minimal information about field options that are still exposed in the API, and linked from the http-api page -->
 
-#### Ranked
+### Ranked
 
 Ranked Fields maintain a sorted cache of column counts by Row ID (yielding the top rows by columns with a bit set in each). This cache facilitates the TopN query. The cache size defaults to 50,000 and can be set at Field creation.
 
@@ -50,14 +53,18 @@ The LRU cache maintains the most recently accessed Rows.
 
 <!-- TODO diagram? -->
 
+### Time Quantums & Time To Live (TTL)
 
-#### Time Quantum
+Setting a time quantum on a field creates extra views which allow ranged Row queries down to the time interval specified.
 
-Setting a time quantum on a field creates extra views which allow ranged Row queries down to the time interval specified. For example, if the time quantum is set to `YMD`, ranged Row queries down to the granularity of a day are supported.
+TTL is an option for fields with the type of time. Time quantum is required for TTL to function.
+
+
+* [Learn about Time quantums and TTL](/concepts/time-quantums)
 
 #### TTL (Time To Live)
 
- TTL is an option for fields with the type of time. Time quantum is required for TTL to function.
+TTL is an option for fields with the type of time. Time quantum is required for TTL to function.
  Allowed time units for TTL are `h`, `m`, `s`, `ms`, `us`, `ns`. Time unit is required. Default value is `0s`.
 
  Example:

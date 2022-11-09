@@ -1,7 +1,5 @@
 ---
-id: ingestoverview
 title: Ingest Data Overview
-sidebar_label: Ingest Data Overview
 ---
 
 This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes.
@@ -18,7 +16,9 @@ Once data is pushed, the records accumulate in the uncompressed format they came
 
 ## Data Model
 
-Data modeling is a key component in FeatureBase that involves understanding both how you will consume your data and how FeatureBase can represent your data to meet your consumption’s needs. This is a prerequisite that must be done before ingesting data and  involves tradeoffs in performance and storage. The FeatureBase team will help you understand modeling and how to model your data. Full documentation on data modeling can be found [here](/concepts/data-modeling).
+Data modeling determines how data is imported to FeatureBase and how it is represented to meet your needs.
+
+* [Learn about data modeling](/concepts/data-modeling-overview).
 
 ## Next step
 
