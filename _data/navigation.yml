@@ -17,6 +17,8 @@ nav:
             category: streaming-https-endpoint
       - title: Query data
         category: query-cloud-data
+      - title: Configuration
+        category: cloud-configuration
 
   - title: FeatureBase Community
     category: community
