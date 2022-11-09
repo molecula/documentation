@@ -54,4 +54,4 @@ Database states are represented by `status` in the FeatureBase application and A
 
 ## Further information
 
-* [Learn how to create a Database in Cloud](/cloud/cloud-data-ingestion/creating-database)
+* [Learn how to create a Database in Cloud](/cloud/cloud-setup/creating-database)
