@@ -8,7 +8,7 @@ sidebar_label: Create An Ingest Endpoint
 
 ## Before you begin
 
-{% include /cloud/database-dependencies.md %}
+{% include cloud/database-dependencies.md %}
 
 ## How to add an ingest endpoint
 

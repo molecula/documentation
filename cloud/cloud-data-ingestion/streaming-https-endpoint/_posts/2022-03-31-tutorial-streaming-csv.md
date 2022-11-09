@@ -10,7 +10,7 @@ This tutorial will break down into steps how to load a CSV file into FeatureBase
 
 ## Before you begin
 
-{% include /cloud/database-dependencies.md %}
+{% include cloud/database-dependencies.md %}
 
 ## Configuring account credentials and files
 
