@@ -31,9 +31,6 @@ nav:
         category: community-database
       - title: Data ingestion
         category: community-data-ingestion
-        subnav:
-          - title: CSV and SQL ingestion
-            category: csv-sql-ingester
       - title: Monitoring
         category: community-monitoring
       - title: API
