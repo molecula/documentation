@@ -11,7 +11,7 @@ IMPORTANT: Data modeling must be performed before ingestion to avoid long-term i
 ## Before you begin
 
 * [Learn about FeatureBase](/index.html)
-* [Contact FeatureBase support with questions about data modeling](/https://www.featurebase.com/contact-us)
+* [Contact FeatureBase support with questions about data modeling](https://www.featurebase.com/contact-us)
 
 ## Concepts
 
