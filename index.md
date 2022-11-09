@@ -75,8 +75,3 @@ You can choose to setup a cloud account, or install FeatureBase on a local serve
 {% include /docs/community/fbcom-install-links.md %}
 
 ## Further information
-
-
-## Get support
-
-{% include /docs/get-support-source.md %}
