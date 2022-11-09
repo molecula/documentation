@@ -1,8 +1,8 @@
 ---
-title: Case Study - Data Modeling and Time Quantums
+title: Case Study - Data Modeling With Crime Data
 ---
 
-This case study describes a way to conceptualise data modeling in FeatureBase versus a traditional RDBMS.
+This case study describes a way to conceptualize data modeling in FeatureBase versus a traditional RDBMS.
 
 ## Before you begin
 
@@ -14,7 +14,7 @@ As a data professional, you are tasked with helping the city of Boston reduce cr
 
 ## Task 1: import data to FeatureBase
 
-You've decided to use FeatureBase to help you query and analyse the data.
+You've decided to use FeatureBase to help you query and analyze the data.
 
 The first task is to `head` the file and look at the provided schema to get a sense of the columns and, most importantly, what the grain of the data is.
 
@@ -44,7 +44,7 @@ FeatureBase’s use of bitmaps and bit slice indexing means you don’t have to 
 
 #### Example table
 
-|Data Type| Description |
+|Column Name| Data Type |
 | ------- | ------------ |
 | OFFENSE_CODE  | INT |
 | OFFENSE_CODE_GROUP  | STRING |
@@ -98,33 +98,33 @@ And `IDSET` can be used to store multiple ID values for a single column which is
 
 `STRINGSET` operates similarly and can be used to store multiple STRING values for a single column, such as “OFFENSE_CODE_GROUP”. It would also be appropriate for the `STREET` column if different values were populated with the data.
 
-### Updated data model
+### A more efficient data model
 
-The data model will retain the definition and maintain the true incident count of 282517 unique incidents.
+The following changes to the data model will retain the definition and maintain the true incident count of 282517 unique incidents.
 
-|Data Type| Description |
+|Column Name| Data Type |
 | ------- | ------------ |
 | OFFENSE_CODE  | IDSET |
 | OFFENSE_CODE_GROUP  | STRINGSET |
 | offense_description  | STRINGSET |
 | UCR_PART  | STRINGSET |
 
-In addition, there is a space saving compared to a traditional database which writes many records with duplicate values for all the columns , which would result in:
-* storing 36557 additional records
-* storing an identical `INCIDENT_NUMBER` multiple times
-* New keys for each record, e.g., all data/time columns such as  `OCCURRED_ON_DATE`, “REPORTING_AREA”, `lat`, `long`, etc.
+In addition, there is space savings compared to a traditional database table that writes many records with duplicate values for all the columns, which would result in:
+* storing 36557 additional records with new keys for each
+* storing records with identical `INCIDENT_NUMBER`s along with duplicate values for all the columns that don’t change (date/time columns (`OCCURRED_ON_DATE`, `MONTH`, etc.), `REPORTING_AREA`, `lat`, `long`, and more)
 
-For example:
+A traditional database table example:
 
 |PK(_id)| INCIDENT_NUMBER | OFFENSE_CODE| OFFENSE_CODE_GROUP | OCCURRED_ON_DATE |
 | ------- | ------------ | ------------ | ------------ | ------------ |
-| 1 | *I162097077* | 00735 | Auto Theft Recovery | *2016-11-28T12:00:00Z* |
-| 2 | *I162097077* | 01300 | Recovered Stolen Property | *2016-11-28T12:00:00Z* |
-| 3 | *I162097077* | 03125 | Warrant Arrests | *2016-11-28T12:00:00Z* |
+| 1 | **I162097077** | 00735 | Auto Theft Recovery | **2016-11-28T12:00:00Z** |
+| 2 | **I162097077** | 01300 | Recovered Stolen Property | **2016-11-28T12:00:00Z** |
+| 3 | **I162097077** | 03125 | Warrant Arrests | **2016-11-28T12:00:00Z** |
 
-### A more efficient data model
 
-This data model is more efficient and only needs an additional bit tracked for each additional value in the `IDSET` and `STRINGSET` type columns.
+The data model using the `IDSET` and `STRINGSET` type columns is more efficient because each column only needs one additional bit set for each additional value.
+
+A FeatureBase table example:
 
 |INCIDENT_NUMBER (_id)| OFFENSE_CODE| OFFENSE_CODE_GROUP | OCCURRED_ON_DATE |
 | ------- | ------------ | ------------ | ------------ |
@@ -132,32 +132,37 @@ This data model is more efficient and only needs an additional bit tracked for e
 
 ## Task 2: long term planning
 
-In the current data, all data is rolled up to one timestamp `OCCURRED_ON_DATE` which means there's no way to identify when each unique `OFFENCE_CODE` was added. This means that related crimes are recorded as separate incidents.
+In the current data, all data is rolled up to one timestamp `OCCURRED_ON_DATE`, which means there's no way to associate when each unique `OFFENSE_CODE` was added to the `IDSET`. This means if different codes occur at different times for a single incident, the city will have no way of knowing.
+
+An example might be a robbery that starts at a certain location, like the bank, which has a specific values for street, lat, long, etc., but then a couple hours later is given a car crash offense code at a different location when the robbers are stopped by the police.
 
 ### Using Time Quantums to add granularity without extra records
 
-A solution is to have the attributes of each incident updated at an `UPDATE_DATE`.
+One solution is to have the attributes of each incident updated with an associated `UPDATE_DATE`. Note: this is a non-existent column in the dataset but something that could be added later on.
 
-Time Quantums allow you to associate a time with each value in `IDSET` and `STRINGSET` columns. For example:
+Time Quantums allow you to associate a time with each value in `IDSET` and `STRINGSET` columns. Using the Robbery example:
 
-* An incident occurs at a specified `STREET`
-* A new value for `STREET` is added to represent a related incident, which is associated with an `UPDATE_DATE` column
+* A new value for `STREET` is added to the incident with an associated time (`UPDATE_DATE`) that corresponds to when the robbers crashed and were stopped by the police
 
-NOTE: Times can only be used as filters and cannot be extracted or returned with a query result set.
-
-#### Example data model
+#### Example record using time quantums
 
 |INCIDENT_NUMBER (_id)| OFFENSE_CODE| STREET |
 | ------- | ------------ | ------------ |
 | I162097077 | 00735 (2016-11-28T12:00:00Z) <br> 01300 (2016-11-28T16:00:00Z) <br>00735 (2016-11-29T11:00:00Z)  | GIBSON ST (2016-11-28T12:00:00Z) <br> BROOKS ST(2016-11-28T16:00:00Z) <br> CENTRAL AVE (2016-11-29T11:00:00Z) |
 
+NOTE: Times can only be used as filters and cannot be extracted or returned with a query result set.
+
+#### The impact of time quantums
+
+Now the city can analyze the data even further, such as seeing how an incident progresses over time (i.e. what streets were visited between two times), without having to create a new record every time there is an update for the incident. This is really powerful because the city can now accurately run queries that give them answers to question like “what crimes were occurring on this street between time A and time B?"
+
 ## Conclusion
 
 The data models presented above will allow deeper analysis of data, including:
 
-* querying related incidents within the same record
 * a smaller data footprint
 * low-latency advantages
+* time-based query patterns
 
 ## Further information
 
