@@ -2,9 +2,9 @@
 title: Databases Overview
 ---
 
- **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes. 
+ **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes.
 
-Databases are clusters of FeatureBase nodes. All of your data will live in tables within FeatureBase. They are dedicated resources for your data that you can load to and query against, and like common databases, you can only join tables that exist in the same database. Below is a list of database shapes offered: 
+Databases are clusters of FeatureBase nodes. All of your data will live in tables within FeatureBase. They are dedicated resources for your data that you can load to and query against, and like common databases, you can only join tables that exist in the same database. Below is a list of database shapes offered:
 
 ### Shapes
 
@@ -39,4 +39,6 @@ There are a couple of states associated with databases that are important to und
 |DELETED           |  The state of a database that has been successfully deleted. |
 |FAILED           |  The state of a database when something goes wrong. This can occur for a variety of reasons. If you see this state and the database is ok to delete, feel free to do so. Otherwise, please contact us.|
 
+## Further information
 
+* [Learn how to create a Database in Cloud](/cloud/cloud-data-ingestion/creating-database)

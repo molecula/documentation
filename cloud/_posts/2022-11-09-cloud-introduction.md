@@ -26,4 +26,20 @@ Our novel approach minimizes I/O on queries by allowing the database engine to r
 
 - Data ingest that allows you to push records when ready and without having to open up your datacenter
 
-For those new to FeatureBase, we recommend the starting with the [Getting Started](/cloud/cloud-setup/cloud-quickstart-guide) tutorial.
+## Frequently asked questions
+
+* [Read the Cloud FAQ](/cloud/cloud-faq)
+
+## Terms and conditions
+
+All users must agree to the Terms of Service before they can sign up.
+
+* [Learn about the Cloud terms of service](https://www.featurebase.com/cloud-terms)
+
+## Next step
+
+* [Learn how to setup your FeatureBase Cloud account](/cloud/cloud-setup/cloud-quickstart-guide)
+
+## Further information
+
+* [Learn about]
