@@ -8,7 +8,7 @@ title: Tutorial - streaming from Confluent Cloud
 
 ## Before you begin
 
-{% include cloud/database-dependencies.md %}
+{% include /cloud/database-dependencies.md.md.md %}
 
 For the purpose of this walkthrough it is assumed that a Kafka cluster is deployed and an existing Kafka topic is already being written to.
 

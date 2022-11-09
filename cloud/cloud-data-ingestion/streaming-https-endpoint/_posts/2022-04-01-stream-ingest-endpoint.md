@@ -6,7 +6,7 @@ title: Stream Data With An Ingest Endpoint
 
 ## Before you begin
 
-{% include cloud/database-dependencies.md %}
+{% include /cloud/database-dependencies.md.md.md %}
 
 Once an “ACTIVE” ingest endpoint exists, data can be streamed to it over HTTPS via “POST” requests. Individual records or micro-batched payloads can be sent.
 
