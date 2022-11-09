@@ -6,7 +6,7 @@ TTL stands for time to live. TTL allows you to delete time views. Views are only
 
 ## Before you begin
 
-* [Learn about data modeling](/concepts/data-modeling-overview-overview)
+* [Learn about data modeling](/concepts/data-modeling-overview)
 * [Learn about time quantums](/concepts/time-quantums)
 
 ## When should you use TTL?

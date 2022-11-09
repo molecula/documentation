@@ -4,7 +4,7 @@ title: Time Quantums
 
 ## Before you begin
 
-* [Learn about data modeling](/concepts/data-modeling-overview-overview)
+* [Learn about data modeling](/concepts/data-modeling-overview)
 
 ## What are time quantums?
 
