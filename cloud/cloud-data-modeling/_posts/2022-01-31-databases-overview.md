@@ -21,14 +21,14 @@ Production database shapes are over-provisioned on disk space and memory to ensu
 
 | Database Shape | Database Memory (GB) |
 |---|---|
-| 16GB                   | 16      |
-| 32GB                   | 32      |
-| 64GB                   | 64      |
-| 128GB                  | 128     |
-| 256GB                  | 256     |
-| 512GB                  | 512     |
-| 1024GB                 | 1024    |
-| 2048GB                 | 2048    |
+| 16GB | 16 |
+| 32GB | 32 |
+| 64GB | 64 |
+| 128GB | 128 |
+| 256GB | 256 |
+| 512GB | 512 |
+| 1024GB | 1024 |
+| 2048GB | 2048 |
 
 ### Development shapes
 
@@ -36,8 +36,8 @@ These shapes are intended for development and testing.
 
 | Database Shape | Database Memory (GB) |
 | --- | ----------- |
-| 8GB-Development        | 8       | development         |
-| 64GB-Development       | 64      | development         |
+| 8GB-Development | 8 |
+| 64GB-Development | 64 |
 
 ## Database states
 
@@ -45,12 +45,12 @@ Database states are represented by `status` in the FeatureBase application and A
 
 |Status | Description  |
 | --- | ----------- |
-|CREATING |  The state of provisioning the hardware, installing software, and everything else in order to create a FeatureBase database.This will generally transition into RUNNING state. |
-|RUNNING |  The healthy state of a database that is ready to use. |
-|UPDATING |  The state of a database when an update is being applied. This might occur when hardware is being updated, software is being patched, etc. |
-|DELETING |  The state when a database is being deleted and hardware is being spun down. This will generally transition into DELETED state. |
-|DELETED |  The state of a database that has been successfully deleted. |
-|FAILED |  The state of a database when something goes wrong. This can occur for a variety of reasons. If you see this state and the database is ok to delete, feel free to do so. [Contact FeatureBase Support](https://www.featurebase.com/contact-us) if you have any questions. |
+| CREATING |  The state of provisioning the hardware, installing software, and everything else in order to create a FeatureBase database.This will generally transition into RUNNING state. |
+| RUNNING |  The healthy state of a database that is ready to use. |
+| UPDATING |  The state of a database when an update is being applied. This might occur when hardware is being updated, software is being patched, etc. |
+| DELETING |  The state when a database is being deleted and hardware is being spun down. This will generally transition into DELETED state. |
+| DELETED |  The state of a database that has been successfully deleted. |
+| FAILED |  The state of a database when something goes wrong. This can occur for a variety of reasons. If you see this state and the database is ok to delete, feel free to do so. [Contact FeatureBase Support](https://www.featurebase.com/contact-us) if you have any questions. |
 
 ## Further information
 
