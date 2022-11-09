@@ -6,7 +6,7 @@ This page contains information that only applies to FeatureBase Cloud. Additiona
 
 ## Before you begin
 
-{% include /cloud/database-dependencies.md.md.md %}
+{% include /cloud/database-dependencies.md %}
 
 ## Load data into your database
 

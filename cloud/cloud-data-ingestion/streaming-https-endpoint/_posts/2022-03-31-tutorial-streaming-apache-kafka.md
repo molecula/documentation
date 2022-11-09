@@ -8,7 +8,7 @@ This tutorial will provide an example of one way you can ingest data from Apache
 
 ## Before you begin
 
-{% include /cloud/database-dependencies.md.md.md %}
+{% include /cloud/database-dependencies.md %}
 
 ## Installing the Kafka Client Library
 

@@ -10,7 +10,7 @@ As long as an application can issue HTTPS requests, it will be able to query and
 
 ## Before you begin
 
-{% include /cloud/database-dependencies.md.md %}
+{% include /cloud/database-dependencies.md %}
 * [Learn how to import data to FeatureBase](/cloud/cloud-data-ingestion/ingest-data-overview)
 * [Learn about PQL](/pql-guide/pql-introduction)
 * [Learn about supported SQL](/sql-guide/sql-introduction)
