@@ -7,12 +7,11 @@ FeatureBase Help contains high level overviews of software functionality, plus p
 ## Before you begin
 
 * [Learn more about FeatureBase](https://www.featurebase.com/){:target="_blank"}
+* [Contact FeatureBase support](https://www.featurebase.com/contact-us)
 
 ## Comparing Cloud and Community editions
 
 These tables provided a side-by-side comparison of Cloud and Community functionality.
-
-[Contact us](#get-support) if you have any questions.
 
 ## Infrastructure
 
