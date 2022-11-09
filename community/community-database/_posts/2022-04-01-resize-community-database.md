@@ -1,7 +1,5 @@
 ---
-id: resize-featurebase-cluster
 title: Resizing Your FeatureBase Cluster
-sidebar_label: Resizing FeatureBase
 ---
 
 ## Summary
