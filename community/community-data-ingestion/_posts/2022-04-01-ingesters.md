@@ -168,14 +168,14 @@ The Kafka Static ingester reads JSON-encoded records from a Kafka topic, uses a 
 
 The CSV ingester can read CSV files (optionally gzipped) and ingest them to FeatureBase. It uses a naming convention in the header of the CSV file to [specify how each field](/community/community-data-ingestion/ingesters#field-types) should be ingested. The header can either be included in the file or passed in separately if editing the file is not desirable. If passed in separately one should use the `--ignore-header` option if the CSV file has a header so that it is not interpreted as data.
 
-[Full CSV Ingester Configuration Reference](/community/community-data-ingestion/ingester-configuration#csv-ingester)
+[Full CSV Ingester Configuration Reference](/community/community-data-ingestion/csv-sql-ingester/csv-ingester-configuration)
 
 
 ## SQL Ingester
 
 The SQL ingester uses a sql connection (via MSSQL, MySQL, or Postgres) to select data from a sql endpoint, and ingests the data into FeatureBase. It uses the SQL table column names to [specify how each field](/community/community-data-ingestion/ingesters#field-types) should be ingested, similar to the CSV Ingester.
 
-[Full SQL Ingester Configuration Reference](/community/community-data-ingestion/ingester-configuration#sql-ingester)
+[Full SQL Ingester Configuration Reference](/community/community-data-ingestion/csv-sql-ingester/sql-ingester-configuration)
 
 ## Field types
 

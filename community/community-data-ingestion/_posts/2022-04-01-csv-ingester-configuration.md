@@ -1,37 +1,128 @@
 ---
-id: ingester-configuration
-title: Ingester Configuration
-sidebar_label: Ingester Configuration
+title: CSV Ingester Configuration
 ---
 
 Also see the [consumer examples](/community/community-data-ingestion/consumer-examples) page for usage examples with corresponding data and configuration files <!-- TODO and queries -->.
 
-## Authentication
-When authentication is enabled, only users with admin permissions or whitelisted IPs will be allowed to perform ingest.
 
-There are 2 methods for authentication for ingest:
+The CSV ingester can read CSV files (optionally gzipped) and ingest them to FeatureBase. It uses a naming convention in the header of the CSV file to [specify how each field](/community/community-data-ingestion/ingester-configuration#header-descriptions) should be ingested. The header can either be included in the file or passed in separately if editing the file is not desirable. If passed in separately one should use the `--ignore-header` option if the CSV file has a header so that it is not interpreted as data.
 
-### 1. Whitelisted IPs
-A valid IP must be included in `configured-ips`. Whitelisted IPs will be granted admin permissions. To configure this option, follow these [instructions](/community/community-security/enable-auth#configuring-featurebase).
-### 2. auth-token flag
-A valid JWT must be passed to the `auth-token` flag for any ingester. The user must have admin permissions. The token may be obtained by following these [instructions](/community/community-security/enable-auth#how-to-get-auth-token).
+The CSV ingester uses the CSV conventions outlined in [RFC-4180](https://datatracker.ietf.org/doc/html/rfc4180#section-2). CSV files following other conventions may result in undefined behavior. Few things to note from the specifications:
+- "Fields containing line breaks (CRLF), double quotes, and commas should be enclosed in double-quotes."
+- "If double-quotes are used to enclose fields, then a double-quote appearing inside a field must be escaped by preceding it with another double quote."
 
-## General Ingestion Rules
+Use `molecula-consumer-csv -h` to list all available flags. Each flag is also available as an environment variable by prefixing it with "CONSUMER_".
 
-## Fields
-Valid field names are lower case strings; they start with a lowercase letter, and contain only alphanumeric characters and _-. They must be 230 characters or less in length.
+| Flag            | Type    | Description                                                                                                                   |
+| -               | -       | -                                                                                                                             |
+| 	files         | strings | List of files, URLs, or directories to ingest.                                                                                |
+| 	header        | strings | Optional header. If not passed, first line of each file is used.                                                              |
+| 	ignore-header | bool    | Ignore header in file and use configured header. You *must* configure a header.                                               |
+| 	just-do-it    | bool    | Any header field not in the appropriate format, just downcase, use it as the name and process the value as a String/set field |
 
-## Kafka Ingester
+### Missing Values
 
-* [Learn about Kafka ingestion configuration](/community/community-data-ingestion/kafka-ingester-configuration)
+Missing values and empty string values (`""`) are handled identically.
 
-## CSV Ingester
-
-* [Learn about CSV ingestion configuration](/community/community-data-ingestion/csv-sql-ingester/csv-ingester-configuration)
+| Field Type 	| Expected Behavior	During CSV Ingestion																			|
+| -------------	| --------------------------------------------------------------------------------------------------------------	|
+|`"ID"`			| Raise error during ingestion if `"ID"` is selected for primary-key-field. Otherwise, behave same as `"String"`. 	|
+|`"DateInt"`	| Raise error during ingestion - timestamp must have a valid value.													|
+|`"Timestamp"`	| Raise error during ingestion - input is not time. 																|
+|`"RecordTime"`	| Do not update value in index. 																					|
+|`"Int"` 		| Do not update value in index. 								 													|
+|`"Decimal"`	| Do not update value in index. 																					|
+|`"String"`		| Do not update value in index. 																					|
+|`"Bool"`		| Do not update value in index. 																					|
+|`"StringArray"`| Do not update value in index. 																					|
+|`"IDArray"`	| Do not update value in index. 																					|
+|`"ForeignKey"` | Do not update value in index. 																				 	|
 
 ## SQL Ingester
 
-* [Learn about SQL ingestion configuration](/community/community-data-ingestion/csv-sql-ingester/sql-ingester-configuration)
+The SQL ingester uses a sql connection (via MSSQL, MySQL, or Postgres) to select data from a sql endpoint, and ingests the data into FeatureBase. It uses the SQL table column names as [header descriptions to specify how each field](/community/community-data-ingestion/ingester-configuration#header-descriptions) should be ingested, similar to the CSV Ingester.
+
+Use `molecula-consumer-sql -h` to list all available flags (or see table below). A few sample configurations are noted below:
+
+```shell
+molecula-consumer-sql \
+	--connection-string 'server=sqldb.myserver.com;userid=mysqlusername;password=secret;database=mydbname' \
+	--pilosa-hosts 10.0.0.1:10101 \
+	--batch-size 1000000 \
+	--driver=mssql \
+	--index=myindexname \
+	--id-field=id \
+	--row-expr 'SELECT tableID as id__ID, zipcode as zipcode__String limit 10'
+```
+
+Or, equivalently, with the [`--future.rename` configuration flag](/community/previous-versions/featurebase-rename) configuration flag:
+
+```shell
+molecula-consumer-sql \
+    --future.rename \
+	--connection-string 'server=sqldb.myserver.com;userid=mysqlusername;password=secret;database=mydbname' \
+	--featurebase-hosts 10.0.0.1:10101 \
+	--batch-size 1000000 \
+	--driver=mssql \
+	--index=myindexname \
+	--id-field=id \
+	--row-expr 'SELECT tableID as id__ID, zipcode as zipcode__String limit 10'
+```
+
+Example connection strings:
+
+MySQL:
+```shell
+--driver mysql --connection-string 'myusername:password@(10.0.0.1:3306)/mydb'
+```
+MS SQL:
+```shell
+--driver mssql --connection-string 'server=sqldb.myserver.com;userid=mysqlusername;password=secret;database=mydbname'
+```
+Postgres:
+```shell
+--driver postgres --connection-string 'postgresql://postgres:password@localhost:5432/molecula?sslmode=disable'
+```
+or
+```shell
+--driver postgres --connection-string 'user=postgres password=password host=localhost port=5432 dbname=molecula sslmode=disable'
+```
+
+See the following documentation for more details on connection strings:
+
+MySQL: 		https://github.com/go-sql-driver/mysql#dsn-data-source-name
+
+MSSQL: 		https://github.com/denisenkom/go-mssqldb#connection-parameters-and-dsn
+
+postgres:	https://godoc.org/github.com/lib/pq
+
+| Flag                           | Type    | Description |
+| -                              | -       | - |
+| assume-empty-pilosa            | bool    | Alias for --assume-empty-featurebase. Will be deprecated in the next major release. |
+| assume-empty-featurebase       | bool    | Setting this means that you're doing an initial bulk ingest which assumes that data does not need to be cleared/unset in FeatureBase. There are various performance enhancements that can be made in this case. For example, for booleans if a false value comes in, we'll just set the bit in the bools-exists field... we won't clear it in the bools field. |
+| auto-generate                  | bool    | Automatically generate IDs. |
+| batch-size                     | int     | Number of records to read before indexing all of them at once. Generally, larger means better throughput and more memory usage. 1,048,576 might be a good number. (default 1) |
+| connection-string              | string  | credentials for connecting to sql database (default "postgres://user:password@localhost:5432/defaultindex?sslmode=disable") |
+| driver                         | string  | key used for finding go sql database driver (default "postgres") |
+| exp-split-batch-mode           | bool    | Tell go-pilosa to build bitmaps locally over many batches and import them at the end. Experimental. Does not support int or mutex fields. Don't use this unless you know what you're doing. |
+| id-field                       | string  | Field which contains the integer column ID. May not be used in conjunction with primary-key-fields. If both are empty, auto-generated IDs will be used. |
+| index                          | string  | Name of FeatureBase index. |
+| log-path                       | string  | Log file to write to. Empty means stderr. |
+| pack-bools                     | string  | If non-empty, boolean fields will be packed into two set fields—one with this name, and one with &lt;name>-exists. (default "bools") |
+| pilosa-hosts                   | strings | Alias for --featurebase-hosts. Will be deprecated in the next major release. |
+| featurebase-hosts              | strings | Comma separated list of host:port pairs for FeatureBase. (Default: localhost:10101) |
+| pprof                          | string  | host:port on which to listen for pprof (default "localhost:6062") |
+| primary-key-fields             | strings | Data field(s) which make up the primary key for a ecord. These will be concatenated and translated to a FeatureBase ID. If empty, record key translation will not be used. (default []) |
+| row-expr                       | string  | sql + type description on input |
+| stats                          | string  | host:port on which to host metrics (default "localhost:9093") |
+| string-array-separator         | string  | separator used to delineate values in string array (default ",") |
+| tls.ca-certificate             | string  | Path to CA certificate file. |
+| tls.certificate                | string  | Path to certificate file. |
+| tls.enable-client-verification | bool    | Enable verification of client certificates. |
+| tls.key                        | string  | Path to certificate key file. |
+| tls.skip-verify                | bool    | Disables verification of server certificates. |
+| verbose                        | bool    | Enable verbose logging. |
+| write-csv                      | string  | Write data we're ingesting to a CSV file with the given name. |
 
 ## Header Descriptions
 

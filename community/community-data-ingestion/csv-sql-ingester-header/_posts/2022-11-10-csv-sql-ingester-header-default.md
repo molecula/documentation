@@ -1,51 +1,42 @@
 ---
-id: ingester-configuration
-title: Ingester Configuration
-sidebar_label: Ingester Configuration
+title: CSV and SQL ingester default header
 ---
 
-Also see the [consumer examples](/community/community-data-ingestion/consumer-examples) page for usage examples with corresponding data and configuration files <!-- TODO and queries -->.
+This is a list of headers suitable for use with CSV and SQL ingesters. These describe how fields in source data are to be ingested by FeatureBase.
 
-## Authentication
-When authentication is enabled, only users with admin permissions or whitelisted IPs will be allowed to perform ingest.
+## Before you begin
 
-There are 2 methods for authentication for ingest:
+* [Learn about ingester configuration](/community/community-data-ingestion/ingester-configuration)
+* [Learn about CSV ingester configuration](/community/community-data-ingestion/csv-sql-ingester/csv-ingester-configuration)
+* [Learn about SQL ingester configuration](/community/community-data-ingestion/csv-sql-ingester/sql-ingester-configuration)
 
-### 1. Whitelisted IPs
-A valid IP must be included in `configured-ips`. Whitelisted IPs will be granted admin permissions. To configure this option, follow these [instructions](/community/community-security/enable-auth#configuring-featurebase).
-### 2. auth-token flag
-A valid JWT must be passed to the `auth-token` flag for any ingester. The user must have admin permissions. The token may be obtained by following these [instructions](/community/community-security/enable-auth#how-to-get-auth-token).
+## Syntax
 
-## General Ingestion Rules
+```
+field_name__FieldType_Arg1_Arg2
+```
 
-## Fields
-Valid field names are lower case strings; they start with a lowercase letter, and contain only alphanumeric characters and _-. They must be 230 characters or less in length.
+## Arguments
 
-## Kafka Ingester
+* field_name
+* __FieldType - list of field types found under [/community/community-data-ingestion/]
+* _argN - optional arguments that are positional
 
-* [Learn about Kafka ingestion configuration](/community/community-data-ingestion/kafka-ingester-configuration)
+## Examples
 
-## CSV Ingester
+Declare a field named `age`, that it is expected to be an integer and two positional arguments which represent a minimum and maximum value
 
-* [Learn about CSV ingestion configuration](/community/community-data-ingestion/csv-sql-ingester/csv-ingester-configuration)
+```
+age__Int_0_120`
+```
 
-## SQL Ingester
-
-* [Learn about SQL ingestion configuration](/community/community-data-ingestion/csv-sql-ingester/sql-ingester-configuration)
-
-## Header Descriptions
-
-The [CSV](/community/community-data-ingestion/csv-sql-ingester/csv-ingester-configuration) and [SQL](/community/community-data-ingestion/csv-sql-ingester/sql-ingester-configuration) ingesters use the same syntax for describing how you want the fields in your source data to be ingested into FeatureBase. The basic structure is
-
-`field_name__FieldType_Arg1_Arg2`
-
-That is, you name each field, and then you specify the field's type (separated by two underscores), and then any arguments that the field type takes. For example:
-
-`age__Int_0_120`
-
-declares that field is named 'age', is expected to be an integer, and be between 0 and 120. In general, all arguments are optional, but they are also positional, so if you want to specify a maximum value for the int field, you must first specify a minimum value.
+## Header field types
 
 Here is the full list of field types along with their arguments:
+
+| Field type | Further information |
+|---|---|
+| String | [/community/community-data-ingestion/csv-sql-ingester]
 
 ### String
 Example:
