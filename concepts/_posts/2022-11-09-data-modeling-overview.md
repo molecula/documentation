@@ -41,13 +41,13 @@ Fields are used to segment rows within an index, for example to define different
 
 this section is a placeholder, to provide minimal information about field options that are still exposed in the API, and linked from the http-api page -->
 
-### Ranked
+## Ranked
 
 Ranked Fields maintain a sorted cache of column counts by Row ID (yielding the top rows by columns with a bit set in each). This cache facilitates the TopN query. The cache size defaults to 50,000 and can be set at Field creation.
 
 <!-- TODO diagram? -->
 
-#### LRU
+### LRU
 
 The LRU cache maintains the most recently accessed Rows.
 
@@ -57,7 +57,7 @@ The LRU cache maintains the most recently accessed Rows.
 
 Setting a time quantum on a field creates extra views which allow ranged Row queries down to the time interval specified.
 
-* [Learn about Time quantums and TTL](/concepts/time-quantums)
+* [Learn about Time quantums](/concepts/time-quantums)
 
 ### TTL (Time To Live)
 
