@@ -19,7 +19,7 @@ Before we begin, it's always a good idea to make sure you have all the credentia
 
 * FeatureBase Cloud credentials 
 
-* An existing Cloud ingest endpoint
+* An existing [Cloud ingest endpoint](/data-ingestion/cloud/streaming/createstreamingsource)
 
 
 
