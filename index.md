@@ -6,7 +6,7 @@ FeatureBase Help contains high level overviews of software functionality, plus p
 
 ## Before you begin
 
-* [Learn more about FeatureBase](https://www.featurebase.com/)
+* [Learn more about FeatureBase](https://www.featurebase.com/){:target="_blank"}
 
 ## Comparing Cloud and Community editions
 
