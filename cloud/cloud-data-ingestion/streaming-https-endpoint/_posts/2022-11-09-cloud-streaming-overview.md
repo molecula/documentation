@@ -1,10 +1,15 @@
 ---
-id: streamingoverview
 title: Streaming (HTTPS) Overview
-sidebar_label: Streaming (HTTPS) Overview
 ---
 
- **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes. 
+**⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes.
+
+## Before you start
+
+* [Create a database](/cloud/cloud-data-ingestion/creating-database)
+* [Create tables](/cloud/cloud-data-ingestion/tables)
+
+## Streaming data to tables
 
 FeatureBase allows you to stream data into your tables using one source type called an "ingest endpoint". The ingest endpoint configuration will create a persistent endpoint that allows you to push data over HTTPS. Each endpoint maps to one table within one database. If you have multiple disparate data sources, you may create multiple endpoints that push data to the same table. Once this endpoint is provisioned, you can stream (POST) JSON records to it using any method or tool that can perform HTTPS requests. The table below describes the current limits of streaming data in for each endpoint:
 
@@ -28,12 +33,12 @@ There are a couple of states associated with these sources that are important to
 
 
 ## Configuration
-For information on creating an ingest endpoint, please go [here](/cloud/cloud-data-ingestion/streaming-https-endpoint/create-ingest-endpoint)
+
+* [Learn how to create an ingest endpoint](/cloud/cloud-data-ingestion/streaming-https-endpoint/create-ingest-endpoint)
 
 ## Streaming Data
 
-For information on streaming data to an ingest endpoint, please go [here](/cloud/cloud-data-ingestion/streaming-https-endpoint/stream-ingest-endpoint)
-
+* [Learn how to stream data to an ingest endpoint](/cloud/cloud-data-ingestion/streaming-https-endpoint/stream-ingest-endpoint)
 
 <!--
 **Type**: This is the FeatureBase type you are storing the value as. A list of types is below:

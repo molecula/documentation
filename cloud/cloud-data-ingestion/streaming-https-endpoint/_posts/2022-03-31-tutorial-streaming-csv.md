@@ -8,6 +8,9 @@ title: Tutorial - streaming in a CSV
 
 This tutorial will break down into steps how to load a CSV file into FeatureBase using an ingest endpoint, but if you'd rather look at the finished tutorial, please see the full source code at the bottom of this article.
 
+## Before you begin
+
+{% include /cloud/database-dependencies.md %}
 
 ## Configuring account credentials and files
 

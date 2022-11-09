@@ -1,12 +1,20 @@
 ---
-id: querydata
 title: Query Data
-sidebar_label: Query Data
 ---
 
- **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes. 
- 
-All data querying within the product is performed over HTTPS. Data is queried using either PQL (Pilosa Query Language), our native query language, or the limited set of SQL we support. To learn more about PQL, please visit the [introduction page](/pql-guide/pql-introduction). To learn more about the SQL we support, please visit the [reference](/sql-guide/sql-introduction) page. As long as an application can issue HTTPS requests, it will be able to query and retrieve data.
+**⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes.
+
+All data querying within the product is performed over HTTPS. Data is queried using either PQL (Pilosa Query Language), our native query language, or the limited set of SQL we support.
+
+As long as an application can issue HTTPS requests, it will be able to query and retrieve data.
+
+## Before you begin
+
+{% include /cloud/database-dependencies.md %}
+* [Learn about PQL](/pql-guide/pql-introduction)
+* [Learn about supported SQL](/sql-guide/sql-introduction)
+
+## About the query endpoint
 
 The current query endpoint is a synchronous call that waits for your data to return. There are current limitations to the amount of data that can be returned and the amount of time the query can run. Those limits are shown below:
 
@@ -37,8 +45,8 @@ In the User interface, clicking the “Query” section on the left hand navigat
 curl --location --request POST 'https://data.featurebase.com/v2/databases/<database id>/query' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: Content-Type: application/json' \
---data-raw '{ 
-    "language": "sql", 
+--data-raw '{
+    "language": "sql",
     "statement": "<SQL>"
 }'
 ```
@@ -48,8 +56,8 @@ curl --location --request POST 'https://data.featurebase.com/v2/databases/<datab
 curl --location --request POST 'https://data.featurebase.com/v2/databases/<database id>/query' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: Content-Type: application/json' \
---data-raw '{ 
-    "language": "pql", 
+--data-raw '{
+    "language": "pql",
     "statement": "<PQL>"
 }'
 ```

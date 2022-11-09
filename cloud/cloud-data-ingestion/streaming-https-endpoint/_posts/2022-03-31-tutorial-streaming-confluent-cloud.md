@@ -4,7 +4,11 @@ title: Tutorial - streaming from Confluent Cloud
 
 ---
 
- **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes.
+**⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes.
+
+## Before you begin
+
+{% include /cloud/database-dependencies.md %}
 
 For the purpose of this walkthrough it is assumed that a Kafka cluster is deployed and an existing Kafka topic is already being written to.
 

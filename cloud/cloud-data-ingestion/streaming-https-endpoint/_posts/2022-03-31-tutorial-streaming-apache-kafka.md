@@ -6,6 +6,10 @@ title: Tutorial - streaming From Apache Kafka
 
 This tutorial will provide an example of one way you can ingest data from Apache Kafka to FeatureBase Cloud.
 
+## Before you begin
+
+{% include /cloud/database-dependencies.md %}
+
 ## Installing the Kafka Client Library
 
 For the purpose of this tutorial the official [Confluent Kafka library for Python](https://docs.confluent.io/kafka-clients/python/current/overview.html). It is a python library wrapped around their C-lanaguage library `librdkafka`.

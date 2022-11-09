@@ -1,10 +1,12 @@
 ---
-id: ingeststreamingsource
 title: Stream Data With An Ingest Endpoint
-sidebar_label: Stream Data With An Ingest Endpoint
 ---
 
- **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes.
+**⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes.
+
+## Before you begin
+
+{% include /cloud/database-dependencies.md %}
 
 Once an “ACTIVE” ingest endpoint exists, data can be streamed to it over HTTPS via “POST” requests. Individual records or micro-batched payloads can be sent.
 
