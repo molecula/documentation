@@ -42,8 +42,12 @@ YYYY-MM-DD-pagename-in-url.md
 * Posts are date-stamped
 * What follows the datestamp is the page name in the URL
 
+## External links/open in new tab
 
-
+For example:
+```
+[Learn more about FeatureBase](https://www.featurebase.com/){:target="_blank"}
+```
 
 ---
 
