@@ -1,5 +1,5 @@
 ---
-title: Case Study - Time Quantums and Time ti Live
+title: Case Study - Data Modeling and Time Quantums
 ---
 
 This case study describes a way to conceptualise data modeling in FeatureBase versus a traditional RDBMS.
