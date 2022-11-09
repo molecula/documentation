@@ -17,54 +17,54 @@ These tables provided a side-by-side comparison of Cloud and Community functiona
 
 | Feature | Cloud  | Community  | Notes  |
 | ------ | ----- | ----------- | ----------- |
-| Click to Deploy |  No | Yes | Windows installations require a Hypervisor  |
-| Automated Scale Up/Down|  Yes | Yes |   |
-| Automated Scale In/Out |  Yes | Yes |   |
-| Regional Deployment |  Yes | No |   |
+| Click to Deploy |  Yes | No | Windows installations require a Hypervisor  |
+| Automated Scale Up/Down|  No | No |   |
+| Automated Scale In/Out |  No | No |   |
+| Regional Deployment |  No | Yes |   |
 
 ## Data Ingestion
 
 | Feature | Cloud  | Community  | Notes  |
 | ------ | ----- | ----------- | ----------- |
-| Streaming (HTTPS)  |  No | Yes |   |
-| Kafka (Pull-based) |  Yes | No | Client-side kafka consumption & push for Cloud |
-| Database (Pull-based) |  Yes | No |  Client-side database consumption & push for Cloud |
-| CSV/Bulk Ingest  |  Yes | No |  Client-side file consumption & push for Cloud |
+| Streaming (HTTPS)  |  Yes | No |   |
+| Kafka (Pull-based) |  No | Yes | Client-side kafka consumption & push for Cloud |
+| Database (Pull-based) |  No | Yes |  Client-side database consumption & push for Cloud |
+| CSV/Bulk Ingest  |  No | Yes |  Client-side file consumption & push for Cloud |
 
 ## Data Consumption
 
 | Feature | Cloud  | Community  | Notes  |
 | ------ | ----- | ----------- | ----------- |
-| Query UI  |  No | No |   |
-| FeatureBase SQL - HTTPS |  No | Yes | Any language/tool (Python, Go, etc) that can read over HTTPS  |
-| FeatureBase PQL - HTTPS |  No | No | Any language/tool (Python, Go, etc) that can read over HTTPS  |
-| gRPC Endpoint |  Yes | No |   |
-| Postgres Endpoint |  Yes | No |   |
-| Unbounded Queries (Advanced Queries) |  Yes | No | Cloud Limited to 6mb and/or 30sec  |
-| PQL Query Builder |  Yes | No |   |
-| Python Client |  Yes | No |   |
-| Grafana Plug-In |  Yes | No |   |
-| Postgres Lookup Database Option |  Yes | No |   |
+| Query UI  |  Yes | Yes |   |
+| FeatureBase SQL - HTTPS |  Yes | No | Any language/tool (Python, Go, etc) that can read over HTTPS  |
+| FeatureBase PQL - HTTPS |  Yes | Yes | Any language/tool (Python, Go, etc) that can read over HTTPS  |
+| gRPC Endpoint |  No | Yes |   |
+| Postgres Endpoint |  No | Yes |   |
+| Unbounded Queries (Advanced Queries) |  No | Yes | Cloud Limited to 6mb and/or 30sec  |
+| PQL Query Builder |  No | Yes |   |
+| Python Client |  No | Yes |   |
+| Grafana Plug-In |  No | Yes |   |
+| Postgres Lookup Database Option |  No | Yes |   |
 
 ## Operations
 
 | Feature | Cloud  | Community  | Notes  |
 | ------ | ----- | ----------- | ----------- |
-| Backup + Restore |  Yes | No |   |
-| Data Replication |  No | No |  |
-| Metrics & Monitoring |  Yes | No |   |
-| Editable FeatureBase Config File |  Yes | No |   |
+| Backup + Restore |  No | Yes |   |
+| Data Replication |  Yes | Yes |  |
+| Metrics & Monitoring |  No | Yes |   |
+| Editable FeatureBase Config File |  No | Yes |   |
 
 ## Security
 
 | Feature | Cloud  | Community  | Notes  |
 | ------ | ----- | ----------- | ----------- |
-| Encryption In Flight |  No | No |  |
-| Encryption at Rest |  No | No |   |
-| Authentication + Authorization (OAuth) |  No | No |  |
-| Role-Based Access Control (Basic) |  Yes | No |   |
-| User Management |  No | No |  |
-| Audit Logging |  No | No |   |
+| Encryption In Flight |  Yes | Yes |  |
+| Encryption at Rest |  Yes | Yes |   |
+| Authentication + Authorization (OAuth) |  Yes | Yes |  |
+| Role-Based Access Control (Basic) |  No | Yes |   |
+| User Management |  Yes | Yes |  |
+| Audit Logging |  Yes | Yes |   |
 
 ## Next Step
 
