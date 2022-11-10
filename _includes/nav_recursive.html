@@ -5,6 +5,7 @@
 {% assign id = newpath | join: '-' %}
 {% assign newpath_size  = newpath | size | minus: 1 %}
 
+
 {% assign should_open = false %}
 {% for i in (0..newpath_size) %}
   <!-- DEBUG {{ i }}: {{ newpath[i] }} == {{ page.categories[i] }} -->

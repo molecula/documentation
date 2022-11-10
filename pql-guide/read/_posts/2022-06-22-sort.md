@@ -1,0 +1,221 @@
+---
+id: sort
+title: Sort()
+sidebar_label: Sort()
+---
+
+The `Sort()` call is used to get the IDs ordered by a specified field. This is used in combination with 
+`Extract()` call to extract the values of specified fields ordered by the sort field. 
+
+## Call Definition
+
+```pql
+Sort(ROW_CALL, field = FIELD, limit = UINT, offset = UINT, sort-desc=BOOL)
+```
+
+#### Mandatory Arguments
+ - `ROW_CALL` : the [row call](/pql-guide/pql-introduction#row-calls){:target="_blank"} used to filter records
+ - `field` / `FIELD` : the name of the field to sort by. This supports Int, Decimal, Timestamp, Boolean and Mutex fields.
+
+#### Optional Arguments
+ - `limit` : the number of records you'd like to limit the query to. For example, limit=0 returns nothing and limit=100 returns 100 records. This is an optional argument. If it's not supplied there will be no limit on the number of records returned.
+ - `offset` : the offset from the beginning you'd like to use. For example, offset=0 starts at the beginning and could potentially return all the records. An offset=100 will start returning records after the first 100 that would have been returned by the `ROW_CALL`. This is an optional argument. If it's not supplied there will be no offset applied.
+ - `sort-desc`: the order in which the results are sorted. For example, sort-desc=true returns the results in descending order of the value of the field. This is am optional argument.
+ If nothing is supplied, the results are sorted in ascending order(sort-desc=false).
+
+#### Returns
+- list of record IDs or record keys, in the order of the value of the field. 
+
+## Examples
+
+### Data:
+```
+Index: customer (non keyed index)
+
+ _id | age (Int) | has_purchased (Set) | last_purchase (Timestamp)
+-----+-----------+---------------------+---------------------------
+ 0   |    23     | ["brand1","brand2"] | 2021-01-05T08:30:00Z
+ 1   |    31     | ["brand1","brand3"] | 2020-09-12T12:30:00Z
+ 2   |    28     | ["brand1","brand3"] | 2021-08-06T16:15:00Z
+ 3   |    19     | []                  | 2021-10-01T12:45:00Z
+ 4   |    25     | ["brand1","brand4"] | 2021-10-01T20:45:00Z
+ 5   |    40     | ["brand4"]          | 2022-01-13T11:00:00Z
+```
+
+<hr>
+### Example 1
+Extract all the data from the customer index sorted by age
+
+#### Query
+```
+[customer]Extract(Sort(All(), field = age), Rows(age), Rows(has_purchased), Rows(last_purchase))
+```
+
+#### Tabular Response
+```
+ _id | age |    has_purchased    |     last_purchase
+-----+-----+---------------------+------------------------
+ 3   | 19  | []                  | "2021-10-01T12:45:00Z"
+ 0   | 23  | ["brand1","brand2"] | "2021-01-05T08:30:00Z"
+ 4   | 25  | ["brand1","brand4"] | "2021-10-01T20:45:00Z"
+ 2   | 28  | ["brand1","brand3"] | "2021-08-06T16:15:00Z"
+ 1   | 31  | ["brand1","brand3"] | "2020-09-12T12:30:00Z"
+ 5   | 40  | ["brand4"]          | "2022-01-13T11:00:00Z"
+```
+#### HTTP Response
+```json
+{
+  "results": [
+    {
+      "fields": [
+        {
+          "name": "age",
+          "type": "int64"
+        },
+        {
+          "name": "has_purchased",
+          "type": "[]string"
+        },
+        {
+          "name": "last_purchase",
+          "type": "timestamp"
+        }
+      ],
+      "columns": [
+        {
+          "column": 3,
+          "rows": [
+            19,
+            [],
+            "2021-10-01T12:45:00Z"
+          ]
+        },
+        {
+          "column": 0,
+          "rows": [
+            23,
+            [
+              "brand1",
+              "brand2"
+            ],
+            "2021-01-05T08:30:00Z"
+          ]
+        },
+        {
+          "column": 4,
+          "rows": [
+            25,
+            [
+              "brand1",
+              "brand4"
+            ],
+            "2021-10-01T20:45:00Z"
+          ]
+        },
+        {
+          "column": 2,
+          "rows": [
+            28,
+            [
+              "brand1",
+              "brand3"
+            ],
+            "2021-08-06T16:15:00Z"
+          ]
+        },
+        {
+          "column": 1,
+          "rows": [
+            31,
+            [
+              "brand1",
+              "brand3"
+            ],
+            "2020-09-12T12:30:00Z"
+          ]
+        },
+        {
+          "column": 5,
+          "rows": [
+            40,
+            [
+              "brand4"
+            ],
+            "2022-01-13T11:00:00Z"
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+#### Explanation
+The records are fetched in the non-decreasing order of age. 
+
+<hr>
+### Example 2
+Extract 2 latest records from the customer index with age > 23.
+
+#### Query
+```
+[customer]Extract(Sort(Row(age > 23), field = last_purchase, limit = 2, sort-desc = true), Rows(age), Rows(has_purchased), Rows(last_purchase))
+```
+
+#### Tabular Response
+```
+ _id | age |    has_purchased    |     last_purchase
+-----+-----+---------------------+------------------------
+ 5   | 40  | ["brand4"]          | "2022-01-13T11:00:00Z"
+ 4   | 25  | ["brand1","brand4"] | "2021-10-01T20:45:00Z"
+```
+
+#### HTTP Response
+```json
+{
+  "results": [
+    {
+      "fields": [
+        {
+          "name": "age",
+          "type": "int64"
+        },
+        {
+          "name": "has_purchased",
+          "type": "[]string"
+        },
+        {
+          "name": "last_purchase",
+          "type": "timestamp"
+        }
+      ],
+      "columns": [
+        {
+          "column": 5,
+          "rows": [
+            40,
+            [
+              "brand4"
+            ],
+            "2022-01-13T11:00:00Z"
+          ]
+        },
+        {
+          "column": 4,
+          "rows": [
+            25,
+            [
+              "brand1",
+              "brand4"
+            ],
+            "2021-10-01T20:45:00Z"
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+#### Explanation
+`Row(age > 23)` sorted by `last_purchase` in descending order, returns `[5 , 4 , 3 , 2 , 0 , 1]` which is then limited to `[5 , 4]` and the `Extract` pulls the 
+records for these IDs. 
