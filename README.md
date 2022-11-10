@@ -1,3 +1,56 @@
+# FeatureBase documentation
+
+Updated documentation for Featurebase doco following alterations documented in https://molecula.atlassian.net/wiki/spaces/DOCS/pages/1007747427/Featurebase+doc+review%3A+summary+of+findings
+
+## Theme = Minmia (Jekyll default)
+
+* Manually maintained sidebar Nav
+* Page YAML differs from Post YAML
+
+## Nav
+
+`/_data_/navigation.yml`
+
+* `title` - value can include upper/lowercase
+* `category` - case-sensitive category name must match the folder name
+* `subnav:` is for subfolders
+
+## YAML metadata
+
+YAML metadata affects the page title and the left nav node under the folders.
+
+Example YAML
+```
+id: enterprisevscloud
+title: Enterprise vs Cloud
+sidebar_label: Enterprise vs Cloud
+```
+
+* id and sidebar_label affect the Nav. It's simpler to remove unless the title is too long
+* NOTE: Page YAML does not affect URL.
+* sidebar_label can be omitted if the nav is the same as the title
+
+## Content filenames
+
+Content files need to be added to `/_post` folders under the parent folders.
+
+They take the form:
+```
+YYYY-MM-DD-pagename-in-url.md
+```
+
+* Posts are date-stamped
+* What follows the datestamp is the page name in the URL
+
+## External links/open in new tab
+
+For example:
+```
+[Learn more about FeatureBase](https://www.featurebase.com/){:target="_blank"}
+```
+
+---
+
 # Molecula Documentation
 
 This repository is hosted with GitHub pages with the live site found at: https://docs.featurebase.com.
@@ -19,11 +72,11 @@ Here is some documentation (meta documentation?) that explains how to do common 
 
 ### Editing a Page
 
-The best way to edit a page is to first go to the documentation site, and at the bottom of the page find the hyperlink to "help us improve this article". From there you will be sent directly to a text editor where you can propose your changes. 
+The best way to edit a page is to first go to the documentation site, and at the bottom of the page find the hyperlink to "help us improve this article". From there you will be sent directly to a text editor where you can propose your changes.
 
 **Don't worry about accidently breaking anything.** Since this site is stored as a Git repository all changes can be reverted. By design this process is to encourage quick edits by anyone in the company.
 
-**NOTE:** Your changes require review and approval before going live. 
+**NOTE:** Your changes require review and approval before going live.
 
 
 ### Adding a New Page
@@ -90,8 +143,8 @@ nav:
         category: world
 
       - title: FeatureBase
-        category: FeatureBase 
-  
+        category: FeatureBase
+
 ```
 
 **NOTE:** that nav is the top level element in the YAML file, and all directories are children of it. Also note that YAML is a space-sensitive format and each level of indent is 2 spaces.
@@ -109,9 +162,9 @@ For larger content edits or for changes to the theme, you'll likely need to clon
    ```
    git clone https://github.com/molecula/documentation
    ```
-   
+
 2. Go to the directory and install dependencies
-   
+
    ```
    cd documentation
    bundle install
@@ -120,7 +173,7 @@ For larger content edits or for changes to the theme, you'll likely need to clon
 
 
 3. Run the local server and visit http://localhost:4000
-   
+
    ```
    bundle exec jekyll serve --watch
    ```
@@ -157,7 +210,7 @@ cd documentation
 
 git checkout gh-pages
 git pull
-git merge --ff-only origin/main 
+git merge --ff-only origin/main
 git push
 ```
 If you don't do this then some commits seem to be lost or overwritten and that'll make authors sad :(

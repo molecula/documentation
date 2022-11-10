@@ -1,0 +1,96 @@
+---
+title: SQL Introduction
+---
+
+FeatureBase supports a limited selection of SQL.
+
+NOTE: New SQL is being added constantly, but please get in touch if you want something you require that is missing to be prioritized with the FeatureBase team. In the interim, please check out our native query language, PQL, as it may be able to solve your requirements today.
+
+## List of supported SQL queries
+
+### show
+
+`show tables`
+
+`show fields from tbl`
+
+
+### drop
+
+`drop table tbl`
+
+
+### point select
+
+`select * from tbl where _id = 1`
+
+`select fld1, fld2 from tbl where _id = 1`
+
+`select _id, fld from tbl where _id = 1`
+
+
+### select distinct
+
+`select distinct fld from tbl`
+
+
+### select count
+
+`select count(*) from tbl`
+
+`select count(*) from tbl where fld = 1`
+
+`select count(*) from tbl where fld1 = 1 and fld2 = 2`
+
+`select count(distinct fld) from tbl`
+
+
+### select ids from segment
+
+`select _id from tbl where fld = 1`
+
+`select _id from tbl where fld in (1, 2)`
+
+`select _id from tbl where fld1 = 1 limit 1`
+
+`select _id from tbl where fld1 = 1 and fld2 = 2`
+
+
+### select int function
+
+`select min(fld) from tbl`
+
+`select max(fld) from tbl`
+
+`select sum(fld) from tbl`
+
+`select avg(fld) from tbl`
+
+`select min(fld) from tbl where fld = 1`
+
+`select max(fld) from tbl where fld = 1`
+
+`select sum(fld) from tbl where fld = 1`
+
+`select avg(fld) from tbl where fld = 1`
+
+
+### group by
+
+`select fld, count(*) from tbl group by fld`
+
+`select fld1, fld2, count(*) from tbl group by fld1, fld2`
+
+`select fld1, fld2, count(*) from tbl group by fld1, fld2 limit 1`
+
+`select fld1, fld2, count(*) from tbl where fld1 = 1 group by fld1, fld2`
+
+`select fld1, count(*) from tbl group by fld1 having count > 1`
+
+`select fld1, fld2, sum(fld3) from tbl where fld1 = 1 group by fld1, fld2`
+
+`select fld1, fld2, sum(fld3) from tbl where fld1 = 1 group by fld1, fld2 having count > 1`
+
+`select fld, count(fld) from tbl group by fld`
+
+`select fld1, count(fld1) from tbl where fld2=1 group by fld1`
