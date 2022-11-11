@@ -11,7 +11,7 @@ Follow these instructions to install FeatureBase on a Linux environment.
 
 ## Install FeatureBase on Linux
 
-{% include /docs/community/fbcom-install-linux-source-source.md %}
+{% include /docs/community/fbcom-install-linux-source.md %}
 
 ## Next step
 
