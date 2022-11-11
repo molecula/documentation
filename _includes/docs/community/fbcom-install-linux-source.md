@@ -22,4 +22,4 @@ mv idk-*-arm64 idk
 
 ## Set the execute flag on `idk` executables
 
-{% include /docs/community/fbcom-issue-permission-denied-ingest-source.md %}
+{% include /docs/issues/fbcom-issue-permission-denied-ingest-source.md %}
