@@ -51,6 +51,12 @@ For example:
 
 ---
 
+## Material icons
+
+Used in the application and now available in help
+
+https://developers.google.com/fonts/docs/material_icons
+
 # Molecula Documentation
 
 This repository is hosted with GitHub pages with the live site found at: https://docs.featurebase.com.
