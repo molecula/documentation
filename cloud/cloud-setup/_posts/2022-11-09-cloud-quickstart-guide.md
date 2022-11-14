@@ -1,52 +1,22 @@
 ---
-title: Cloud Quick Start Guide
+title: Working with sample data
 ---
 
-## Welcome to FeatureBase!
+FeatureBase Cloud provides sample data which can be used to help understand how FeatureBase works.
 
-Follow the guide outlined below for a hands-on demonstration of low-latency queries at scale using our FeatureBase Cloud platform. As you work through the guide, please note any questions or feedback that you may have for the FeatureBase team. We’re always looking for ways to improve the experience!
+## Before you begin
 
-In this demonstration you will:
+{% include /cloud/cloud-before-begin.md %}
 
-1. Create a new FeatureBase database
-2. Pre-load two large-scale demo datasets into the database
-3. Run a set of analytics queries
+## Create a database pre-loaded with demo data
 
-If you run into any roadblocks or have questions throughout the demonstration, please reach out to [se@featurebase.com](mailto:se@featurebase.com).
+Once created, the database will take time to start up.
 
-## Sign-Up Overview
-
-
-First, sign up for your [Free Trial](https://www.featurebase.com/cloud). Click the ```Start Cloud Trial``` button to navigate to the FeatureBase Cloud application and set up your account. You will be asked to enter your First Name, Last Name, Email address, and password. You will also be asked to read and agree to the [FeatureBase Terms of Service](https://www.featurebase.com/cloud-terms/).  
-
-![Figure 1. Create an account and set your password](/img/quick-start-guide/cloud/account_signup.png)
+1. Click **Databases** > **New Database**.
+2. Name your database.
+3. Click **Start with pre-loaded sample data**.
 
 
-Next, you'll be asked to verify your account using the code sent to the email address you used to create your account.
-
-![Figure 2. Verify your account](/img/quick-start-guide/cloud/verification_email.png)
-
-
-
-Now that you are signed up, you will have access to FeatureBase for 21 days. After 21 days, your resources will be shutdown, and you will no longer be able to create more. If you encounter any problems during this process or would like to reactivate your account, contact [se@featurebase.com](mailto:se@featurebase.com).
-
-Navigate back to FeatureBase using [cloud.featurebase.com](https://cloud.featurebase.com/)
-
-![Figure 3. Sign In](/img/quick-start-guide/cloud/sign_in.png)
-
-
-When you sign in, you'll be directed to the Home screen where you have options to complete a variety of actions using the navigation pane on the left side of the screen.
-
-![Figure 4. FeatureBase Home Screen](/img/quick-start-guide/cloud/home_page.png)
-
-
-## Configuring your environment
-
-In order to use our application, you’ll need data. In a real-life situation, the FeatureBase team will provide guided onboarding and data modeling for our organization’s data. In this exercise, we’ll be working with curated demo data to showcase the low-latency capabilities of FeatureBase. Navigate to the ```Databases``` screen, click "New Database", and select ```Start with pre-loaded sample data``` to create a database pre-loaded with the demo data. You may need enter a Database name if this isn't your first Database.
-
->This is a great time to grab a cup of coffee or reply to all those waiting Slack messages! A new database is spinning up and over 1B records are loading.
-
-![Figure 5. Configure a Quick Start Database that is pre-loaded with demo data](/img/quick-start-guide/cloud/create_cseg_db.png)
 
 
 While the database is spinning up, you will see messages on the ```Databases``` screen as the status progresses. While the database is ```CREATING```, data is being loaded in.

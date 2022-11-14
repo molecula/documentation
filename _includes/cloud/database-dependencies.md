@@ -1,2 +1,2 @@
-* [Learn how to create a database](/cloud/cloud-setup/creating-database)
-* [Learn how to create tables](/cloud/cloud-data-ingestion/tables)
+* [Learn how to create a database](/cloud/cloud-databases/cloud-db-create-api]
+* [Learn how to create tables](/cloud/cloud-databases/cloud-create-table-api)

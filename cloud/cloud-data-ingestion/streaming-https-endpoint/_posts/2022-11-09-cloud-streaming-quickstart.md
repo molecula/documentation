@@ -1,89 +1,19 @@
 ---
-title: Getting Started With Streaming
+title: HTTPS streaming API for cloud overview
 ---
 
- **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes.
+## Before you begin
 
-
-## Prerequisites
-
-The following Quick Start Guide requires the following:
-
-1. You have signed up with FeatureBase Cloud and have a user account and your credentials
-2. You have a linux environment capable of communicating with the public internet and running cURL commands
-
-## Getting Started
-
-The guide will take you from nothing in the product to having a small database with data to query. Its purpose is to get you up and running quickly, while simultaneously teaching you how to use the product. While this tutorial will populate most information for you, there will be inputs required from you in the code snippets (indicated by <> symbols)
+{% include /cloud/cloud-before-begin.md %}
+{% include install-curl.md %}
 
 ### Getting A Token
 
-FeatureBase Cloud uses Oauth2.0 for all authorization, so every API call must be accompanied with a valid token. You can get tokens by passing your credentials to https://id.featurebase.com
-
-Inputs:
-1. USERNAME - your email
-2. PASSWORD - your password
-
-**HTTP API Reference:**
-```shell
-curl --location --request POST 'https://id.featurebase.com' \
---data-raw '{
-    "USERNAME": "<username>",
-    "PASSWORD": "<password>"
-}'
-```
-
-3 tokens are returned: Access, ID, and Refresh. Use the ID token for all of your API calls as the Authorization header:
-
-**HTTP API Reference:**
-```shell
---header 'Authorization: Bearer <IdToken>' \
-```
-
-If you'd like the command to only return the ID token for easier copying, you can run the following:
-
-**HTTP API Reference:**
-```shell
-curl --location --request POST 'https://id.featurebase.com' \
---data-raw '{
-    "USERNAME": "<username>",
-    "PASSWORD": "<password>"
-}' | grep -Eo '"IdToken":.*?[^\\]",' | sed -e 's/[\"\,\: ]*//g' | sed -e 's/IdToken//'
-```
-
+* [Learn how to obtain API tokens](/cloud/query-cloud-data/cloud-obtain-tokens-ssh)
 
 ### Create A Database
 
-The first step is creating a database. We will be using the 8GB shape for this walk-through. For more information on databases, see [Database Overview](/cloud/cloud-setup/databases-overview).  The command below will start creating your database. You can also do this in the UI on the "Databases" page by clicking “New Database”, selecting "Standard", entering "iris_demo_database" for the name, and choosing the "8GB" option.
-
-Inputs:
-1. IdToken - IdToken from auth token call to pass as "Authorization" header
-2. database_name - the name you want to give your database i.e iris_demo_database
-3. database_shape - database shape/memory you are choosing i.e. 8GB-Development
-
-**HTTP API Reference:**
-```shell
-curl --location --request POST 'https://api.featurebase.com/v2/databases' \
---header 'Authorization: Bearer <IdToken>' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "name": "iris_demo_database",
-    "database_options":{
-        "shape": "8GB-Development"
-    }
-}'
-```
-
-A database takes a minute or so to create. You can see the status of the "iris_demo_database" as "Creating" in the UI or by running the command below.
-
-**HTTP API Reference:**
-```shell
-curl --location --request GET 'https://api.featurebase.com/v2/databases' \
---header 'Authorization: Bearer <IdToken>' \
---header 'Content-Type: application/json'
-```
-
-Grab your database’s "id" returned from the command above. This is a unique id for your database. Once your database is "RUNNING", you can move to the next step.
+* [Learn how to create a database using the API](/cloud/cloud-databases/cloud-db-create-api)
 
 ### Ingest Data
 
