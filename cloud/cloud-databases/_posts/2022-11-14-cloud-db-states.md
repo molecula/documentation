@@ -6,7 +6,7 @@ Database states are represented by `status` in the FeatureBase application and A
 
 ## Before you begin
 
-{% include /cloud/cloud-before-begin%}
+{% include /cloud/cloud-before-begin.md %}
 
 ## Database states
 
