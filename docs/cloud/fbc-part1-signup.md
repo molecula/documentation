@@ -2,27 +2,23 @@
 title: How do I signup to FeatureBase Cloud?
 ---
 
-You can sign up and try out Featurebase cloud for [TRIAL PERIOD].
+All users start with a 21 day trial period.
 
 [Information on what happens after that expires goes here. FYI, it’s not in the terms of service]
 
 ## Before you begin
-[Read the terms of service](URL)
-
-Have your contact details ready, and a password
+* The Cloud trial period is 21 days at which time you can login but not perform activities. [Contact FeatureBase Support](mailto:se@featurebase.com) to extend your trial
+* [Read the terms of service](URL)
+* Have contact details and a password ready
 
 ## Signing up for Featurebase cloud
 
-Click [Sign up for cloud trial](URL)
-
-Check your email for the confirmation message to complete signup.
+1. Click [Sign up for cloud trial](https://cloud.featurebase.com/signup)
+2. Check your email for the confirmation message to complete signup.
 
 ## Next step
 
-[Login to the front-end](URL)
-
-## Further information
-[Featurebase architectural overview](URL to https://docs.featurebase.com/setting-up-featurebase/enterprise/architecture)
+* [Login to FeatureBase Cloud](https://cloud.featurebase.com/login)
 
 ## Get support
 
