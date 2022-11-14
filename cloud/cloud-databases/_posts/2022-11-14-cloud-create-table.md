@@ -24,7 +24,7 @@ There are two types of table:
 
 ## Step 1: view tables
 
-{% include /cloud/view-table-list.md %}
+{% include /cloud/cloud-view-table-list.md %}
 
 ## Step 2: create table
 

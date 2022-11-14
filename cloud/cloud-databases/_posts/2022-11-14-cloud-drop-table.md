@@ -18,7 +18,7 @@ There are a number of reasons why you may choose to drop a table, including:
 
 ## Step 1: View table list
 
-{% include /cloud/view-table-list.md %}
+{% include /cloud/cloud-view-table-list.md %}
 
 ## Step 2: Drop the selected table
 

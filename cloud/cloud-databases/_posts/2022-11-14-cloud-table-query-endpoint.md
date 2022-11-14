@@ -14,7 +14,7 @@ The table query endpoint is used when running remote table queries via the API.
 
 ### Step 1: view tables
 
-{% include /cloud/view-table-list.md %}
+{% include /cloud/cloud-view-table-list.md %}
 
 ### Step 2: view the query endpoint
 

@@ -12,7 +12,7 @@ A table endpoint is required for [ingestion|querying|both?].
 
 ## Step 1: view tables
 
-{% include /cloud/view-tables.md %}
+{% include /cloud/cloud-view-table-list.md %}
 
 ## Step 2: obtain table endpoint
 
