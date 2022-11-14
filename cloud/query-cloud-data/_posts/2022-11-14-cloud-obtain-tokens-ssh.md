@@ -10,7 +10,7 @@ Tokens are obtained by passing credentials to https://id.featurebase.com
 
 ## Before you begin
 
-{% include /cloud/cloud-before-begin %}
+{% include /cloud/cloud-before-begin.md %}
 
 ## Syntax
 

@@ -1,5 +1,5 @@
 ---
-title: Issue: Network error when running queries
+title: Issue - Network error when running queries
 ---
 
 This error may be experienced during the 21 day trial period for FeatureBase Cloud accounts.

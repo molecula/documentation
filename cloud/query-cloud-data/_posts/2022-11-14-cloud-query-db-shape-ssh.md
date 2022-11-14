@@ -1,5 +1,5 @@
 ---
-title: title: How do I query my database shape via SSH?
+title: How do I query my database shape via SSH?
 ---
 
 ## Before you begin

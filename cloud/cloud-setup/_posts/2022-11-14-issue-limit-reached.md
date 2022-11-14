@@ -1,5 +1,5 @@
 ---
-title: Issue: Limit reached when creating databases and ingesting data
+title: Issue - Limit reached when creating databases and ingesting data
 ---
 
 This error may occur when running FeatureBase Cloud on a trial account.
