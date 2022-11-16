@@ -21,6 +21,7 @@ There are two types of table:
 
 {% include /cloud/cloud-before-begin.md %}
 * [Create a database](/cloud/cloud-databases/cloud-db-create)
+* [Learn about data types and constraints](/cloud/cloud-data-modeling/data-types)
 
 ## Step 1: view tables
 

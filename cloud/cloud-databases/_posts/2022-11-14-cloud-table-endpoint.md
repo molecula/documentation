@@ -8,7 +8,7 @@ A table endpoint is required for [ingestion|querying|both?].
 
 {% include /cloud/cloud-before-begin.md %}
 * [Create a database](/cloud/cloud-databases/cloud-db-create)
-* [Create a table](/cloud/cloud-databases/cloud-create-table)
+* [Create a table](/cloud/cloud-databases/cloud-table-create)
 
 ## Step 1: view tables
 

@@ -34,6 +34,6 @@ You can setup a database with trial data at any time for no charge.
 ## Next step
 
 * [Learn more about the sample data](/)
-* [Learn how to add tables](/cloud/cloud-databases/cloud-create-table)
+* [Learn how to add tables](/cloud/cloud-databases/cloud-table-create)
 
 ## Further information

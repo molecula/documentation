@@ -14,7 +14,7 @@ There are a number of reasons you may decide to delete a database, including:
 ## Before you begin
 
 {% include /cloud/cloud-before-begin.md %}
-* [Learn how to drop tables](/cloud/cloud-databases/cloud-drop-table)
+* [Learn how to drop tables](/cloud/cloud-databases/cloud-table-drop)
 
 ## How to delete a database
 
