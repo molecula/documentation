@@ -4,6 +4,8 @@ title: How do I manage tables in FeatureBase Cloud?
 
 This page provides an overview of FeatureBase tables and links to guide you through creating, altering and dropping tables.
 
+{% include /concepts/create-table-summary.md %}
+
 ## Before you begin
 
 {% include /cloud/cloud-before-begin.md %}
@@ -15,9 +17,19 @@ This page provides an overview of FeatureBase tables and links to guide you thro
 
 * [Learn about data modeling](/concepts/data-modeling-overview)
 
-IMPORTANT: Create your tables only after you have performed data modeling.
+IMPORTANT: Perform data modeling **before** creating tables to avoid issues.
 
-## Object names
+## Table primary key
+
+{% include /cloud/table-primary-key-table.md %}
+
+## Column data types and constraints
+
+{% include /cloud/cloud-pk-table.md%}
+
+* [Learn about data types and constraints](/cloud/cloud-data-modeling/data-types)
+
+## Naming standard
 
 {% include /concepts/object-naming-standard.md %}
 * table and column names must start with an alphabetic character
@@ -26,8 +38,8 @@ IMPORTANT: Create your tables only after you have performed data modeling.
 
 * [Create table](/cloud/cloud-databases/cloud-table-create)
 * [Add table columns](/cloud/cloud-databases/cloud-table-add-column)
-* [Drop table](/cloud/cloud-databases/cloud-table-drop)
 * [Drop table columns](/cloud/cloud-databases/cloud-table-drop-column)
+* [Drop table](/cloud/cloud-databases/cloud-table-drop)
 
 ## Managing tables using the Cloud API
 
@@ -35,11 +47,10 @@ IMPORTANT: Create your tables only after you have performed data modeling.
 * [Alter table using the API](/cloud/cloud-databases/cloud-table-create-api)
 * [Drop table using the API](/cloud/cloud-databases/cloud-table-drop-api)
 
-
 ## Next step
 
 * [Learn about setting up data ingestion](/cloud/cloud-data-ingestion/ingest-data-overview)
 
 <!--
-* [Learn how to create data sources and import data](/cloud/cloud-ingestion/)
+* [Learn how to create data sources and import data](/cloud/cloud-ingestion/cloud-datasources-manage)
 -->

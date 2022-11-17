@@ -1,0 +1,3 @@
+---
+title: BOOL data type
+---

@@ -11,20 +11,11 @@ You can add a column to a FeatureBase table.
 * [Learn how to create tables](/cloud/cloud-databases/cloud-table-manage)
 * Table columns cannot be edited once created.
 
-## Table column data types and constraints
+## Column data types and constraints
 
-You can choose from the following data types and their constraints
+You can choose from the following data types and their constraints:
 
-| Data type | Optional constraints | Further information |
-|---|---|---|
-| bool (boolean) | none |  |
-| decimal | SCALE | [DECIMAL data type](/cloud/cloud-databases/cloud-decimal-data-type) |
-| id | none | [ID data type](/cloud/cloud-databases/cloud-id-data-type) |
-| idset | Time Quantum, TTL (Time to live) | [IDSET data type](/cloud/cloud-databases/cloud-idset-data-type) |
-| int | min, max | [INT data type](/cloud/cloud-databases/cloud-int-data-type) |
-| string | none | [STRING data type](/cloud/cloud-databases/cloud-string-data-type) |
-| stringset | Time Quantum, TTL (Time to live) | [STRINGSET data type](/cloud/cloud-databases/cloud-stringset-data-type) |
-| timestamp | Time unit | [TIMESTAMP data type](/cloud/cloud-databases/cloud-timestamp-data-type) |
+{% include /cloud/cloud-data-type-table.md%}
 
 ## Column names
 

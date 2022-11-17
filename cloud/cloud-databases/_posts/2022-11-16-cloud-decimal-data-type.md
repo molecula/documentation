@@ -10,9 +10,9 @@ DECIMAL...SCALE...
 
 ## Arguments
 
-| Argument | Description | Further information |
-|---|---|---|
-| DECIMAL | Numeric data type ideally used for decimal numbers where the exact scale is known. Defaults to two (2) |  |
+| Argument | Description |
+|---|---|
+| DECIMAL | Numeric data type ideally used for decimal numbers where the exact scale is known. Defaults to two (2) |
 | SCALE | Constraint that determines the number of digits of precision to store after the decimal point. Defaults to two (2) |
 
 ## Additional information

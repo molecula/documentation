@@ -26,13 +26,15 @@ table names can include only lower-case alphabetic letters, numbers, dash and un
 |---|---|---|
 | database_id | destination database for the table |  |
 | IdToken |  | [Obtain ID Token](/cloud/query-cloud-data/cloud-obtain-tokens-ssh) |
-| table_name | user supplied table name. |  |
+| table_name | user supplied table name. | [Naming standards](#naming-standards) |
 | table_description | optional description of table |  |
 | keys |  |  |
 
 ## Additional information
 
+### Naming standard
 
+{% include /concepts/object-naming-standard.md %}
 
 ## Examples
 

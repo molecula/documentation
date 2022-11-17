@@ -2,26 +2,25 @@
 title: How do I create a table in FeatureBase Cloud?
 ---
 
-Create tables before importing data to FeatureBase.
-
-When created, a table is assigned a:
-* Table endpoint for use when importing data from a data-source
-* Query endpoint for use when querying data using the HTTPS streaming endpoint
-
-## Types of table
-
-There are two types of table:
-
-| Type | Description | Further information |
-|---|---|---|
-| Number |  |  |
-| String |  |  |
+{% include /concepts/create-table-summary.md %}
 
 ## Before you begin
 
 {% include /cloud/cloud-before-begin.md %}
-* [Create a database](/cloud/cloud-databases/cloud-db-create)
-* [Learn about data types and constraints](/cloud/cloud-data-modeling/data-types)
+* [Learn how to manage databases](/cloud/cloud-databases/cloud-db-manage)
+* [Learn about featureBase Cloud tables](/cloud/cloud-databases/cloud-table-manage)
+
+## Naming standards
+
+{% include /concepts/object-naming-standard.md %}
+
+## Table primary keys
+
+{% include /cloud/cloud-pk-table.md %}
+
+## Table data types
+
+{% include /cloud/cloud-data-type-table.md %}
 
 ## Step 1: view tables
 
@@ -39,3 +38,5 @@ There are two types of table:
 * [Learn how to add columns to a table](/cloud/cloud-databases/cloud-table-add-column)
 
 ## Further information
+
+* [Learn how to create a table using the API](/cloud/cloud-databases/cloud-table-create-api)

@@ -4,19 +4,28 @@ title: How do I create a Database?
 
 This procedure explains how to create a Database in FeatureBase Cloud.
 
-IMPORTANT: It's important to plan your databases before setting up a production environment. [Learn about data modeling in FeatureBase](/concepts/data-modeling-overview)
-
-## Database sizes
-
-Database sizing affects how much you pay per month for your FeatureBase Cloud account.
-
-You can setup a database with trial data at any time for no charge.
-
 ## Before you begin
 
 {% include /cloud/cloud-before-begin.md %}
-* [Perform data modeling before setting up a production environment](/concepts/data-modeling-overview)
-* have a name ready for your database
+* [Learn how to manage databases](/cloud/cloud-databases/cloud-db-manage)
+* [Perform data modeling](/concepts/data-modeling-overview)  rior to creating databases to avoid issues.
+
+## Cloud database shapes
+
+{% include /concepts/database-shape-summary.md %}
+
+* [Learn about cloud database shapes](/cloud/cloud-databases/cloud-db-shape)
+
+## Naming standards
+
+{% include /concepts/object-naming-standard.md %}
+* Database names must start with an underscore (_).
+
+## Database states
+
+{% include /concepts/db-states-summary.md %}
+
+* [Learn about cloud database states](/cloud/cloud-databases/cloud-db-states)
 
 ## How do I create a FeatureBase Database?
 

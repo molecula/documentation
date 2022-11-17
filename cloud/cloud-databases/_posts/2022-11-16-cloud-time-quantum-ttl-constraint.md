@@ -2,29 +2,6 @@
 title: timeQuantum and TTL (Time To Live) Constraints
 ---
 
-## Before you begin
-
-* timeQuantum and ttl row queries are only supported by PQL queries.
-* timestamps must be passed with each record for timeQuantum columns.
-
-
-
-Note this means you can only pass one time for all the time quantums in a record. For more information on configuring ingest, see the appropriate section in "Data Ingestion" navigation.
-
-TTL an optional argument used with the TIMEQUANTUM constraint on IDSET and STRINGSET data type columns.
-
-## Purpose
-
-timeQuantum allows users to query IDSET and STRINGSET column data by a timestamp on specified column fields.
-
-TTL enables the deletion of time views where a time range exceeds the stated Time To Live.
-
-
-
-Once created, a timestamp must be passed with each record during ingest that will be associated with all time quantum columns. Note this means you can only pass one time for all the time quantums in a record. For more information on configuring ingest, see the appropriate section in "Data Ingestion" navigation.
-
-Querying using time quantums is only supported in (PQL Rows Queries)[/pql-guide/read/rows]. You can pass a timestamp in the `to` and `from` arguments. In the example below, the `customer` table will pull back the customer IDs and what stores they visited between `2018-08-31` and `2022-02-18`
-
 ## Syntax
 
 ```
@@ -35,8 +12,8 @@ curl -XPOST http://localhost:10101/index/**[index_name]**/field/**field_name** -
 
 | Argument | Description | Further information |
 |---|---|---|
-| index_name |  |  |
-| field_name |  |  |
+| index_name |  | [naming standard](#naming-standard) |
+| field_name |  | [naming standard](#naming-standard) |
 | type |  |  |
 | timeQuantum | Create a view on IDSET and STRINGSET columns that allow range queries down to the specified time. timeQuantum associates a time with each value in the column. |  |
 | YMDH | Granularity of time represented by Year, Month, Day, Hour |
@@ -44,10 +21,13 @@ curl -XPOST http://localhost:10101/index/**[index_name]**/field/**field_name** -
 | <integer> | integer value paired with the time unit. Defaults to `0s` |  |
 | time_unit | `h` (hours), `m` (minutes), `s` (seconds) |  |
 
-
 ## Additional information
 
-* IDSET and STRINGSET Data has one standard view by default unless a timeQuantum is set
+* IDSET and STRINGSET Data has one standard view by default unless a timeQuantum is set.
+
+### Naming standard
+
+{% include /concepts/object-naming-standard.md %}
 
 ### timeQuantum
 
@@ -58,7 +38,7 @@ timeQuantum is used when:
 * database space is not at a premium
 * querying times directly rather than filtering
 
-#### Time granularity
+### Time granularity
 
 Time granularity allows for lower latency queries at the cost of increased storage. For example:
 * set MD for queries that include a range of months
@@ -72,11 +52,11 @@ Queries run on mismatched time granularities are slower but will function correc
 
 ### ttl
 
+* ttl enables the deletion of time views where a time range exceeds the stated Time To Live.
 * ttl should not be used if you require complete and consistent historical data.
 * time_units
   * ttl of 0s (default value) indicates views created on the timeQuantum will not be deleted
-  * we recommend using a ttl of one hour or more to improve results.
-  * Use closed time ranges in queries to guarantee results older than the `ttl` are not returned
+  * FeatureBase recommends using a ttl of one hour or more to improve results.
   * `error: unknown unit` is generated if an incorrect time_unit is used (e.g., `"ttl":"60second"`)
 
 * TTL deletion
