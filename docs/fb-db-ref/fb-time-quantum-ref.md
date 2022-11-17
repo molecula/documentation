@@ -2,6 +2,8 @@
 title: Time quantum reference
 ---
 
+Source: https://stackoverflowteams.com/c/molecula/questions/187
+
 Source: /concepts/2022-11-08-time-quantums
 
 Whole page of material there.

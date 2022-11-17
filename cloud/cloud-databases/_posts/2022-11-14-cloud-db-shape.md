@@ -1,14 +1,20 @@
 ---
-title: What sizes of database can I create in FeatureBase Cloud?
+title: What types of database can I create in FeatureBase Cloud?
 ---
 
-## What is a database shape?
+FeatureBase Cloud has the concept of "shapes" which define:
+* how much data the database can contain
+* how much memory and CPUs are available to perform ingestion and queries
 
+Database shapes incur an hourly fee, chargeable at the end of the month.
 
+## Before you begin
+
+{% include /cloud/cloud-before-begin.md %}
 
 ## Available shapes
 
-NOTE: These options may not be available for some organizations. Contact FeatureBase Support for help
+NOTE: These options may not be available for some organizations. Contact FeatureBase Support for help.
 
 ### Production shapes
 
@@ -30,6 +36,6 @@ Production database shapes are over-provisioned on disk space and memory to ensu
 These shapes are intended for development and testing.
 
 | Database Shape | Database Memory (GB) |
-| --- | ----------- |
+| --- | --- |
 | 8GB-Development | 8 |
 | 64GB-Development | 64 |

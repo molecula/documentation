@@ -7,6 +7,8 @@ There are a number of reasons why you may choose to drop a table, including:
 * incorrect name
 * database deletion
 
+NOTE: You can also [drop tables using the API](/cloud/cloud-databases/cloud-drop-table-api)
+
 ## Warnings
 
 * Tables cannot be recovered once deleted
@@ -15,6 +17,8 @@ There are a number of reasons why you may choose to drop a table, including:
 ## Before you begin
 
 {% include /cloud/cloud-before-begin.md %}
+* [Create a database](/cloud/cloud-databases/cloud-db-manage)
+* [Create a table](/cloud/cloud-databases/cloud-table-manage)
 
 ## Step 1: View table list
 
@@ -22,10 +26,9 @@ There are a number of reasons why you may choose to drop a table, including:
 
 ## Step 2: Drop the selected table
 
-1. Click &#8942; for the table you wish to drop.
-2. Click **Drop table**
-3. Enter "DELETE" in the confirmation dialog.
-4. Click **Drop table**.
+1. Click &#8942; > **Drop table**
+2. Enter "DELETE" in the confirmation dialog.
+3. Click **Drop table**.
 
 ## Further information
 

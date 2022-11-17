@@ -36,4 +36,6 @@ There are two types of table:
 
 ## Next step
 
-* Learn how to import data from data-sources.
+* [Learn how to add columns to a table](/cloud/cloud-databases/cloud-table-add-column)
+
+## Further information
