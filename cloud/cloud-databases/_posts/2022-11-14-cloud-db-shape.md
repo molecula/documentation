@@ -2,11 +2,9 @@
 title: What types of database can I create in FeatureBase Cloud?
 ---
 
-FeatureBase Cloud has the concept of "shapes" which define:
-* how much data the database can contain
-* how much memory and CPUs are available to perform ingestion and queries
+{% include /concepts/database-shape-summary.md %}
 
-Database shapes incur an hourly fee, chargeable at the end of the month.
+IMPORTANT: Cloud Database shapes incur an hourly fee, chargeable at the end of the month.
 
 ## Before you begin
 
@@ -39,3 +37,7 @@ These shapes are intended for development and testing.
 | --- | --- |
 | 8GB-Development | 8 |
 | 64GB-Development | 64 |
+
+## Further information
+
+* [Learn how to manage FeatureBase Cloud databases](/cloud/cloud-database/cloud-db-manage)

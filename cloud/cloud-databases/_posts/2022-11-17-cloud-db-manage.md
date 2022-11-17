@@ -14,7 +14,22 @@ This page provides an overview of FeatureBase databases and links to guide you t
 
 * [Learn about data modeling](/concepts/data-modeling-overview)
 
-### Cloud database shape
+### Cloud database shapes
+
+{% include /concepts/database-shape-summary.md %}
+
+* [Learn about cloud database shapes](/cloud/cloud-databases/cloud-db-shape)
+
+## Database names
+
+{% include /concepts/object-naming-standard.md %}
+* Database names must start with an underscore (_).
+
+## Database states
+
+{% include /concepts/db-states-summary.md %}
+
+* [Learn about cloud database states](/cloud/cloud-databases/cloud-db-states)
 
 ## Managing databases in FeatureBase Cloud
 

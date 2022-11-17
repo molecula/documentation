@@ -7,7 +7,7 @@ This page provides an overview of FeatureBase tables and links to guide you thro
 ## Before you begin
 
 {% include /cloud/cloud-before-begin.md %}
-* [Create a FeatureBase database](/cloud/cloud-databases/cloud-db-manage)
+* [Learn how to manage Cloud databases](/cloud/cloud-databases/cloud-db-manage)
 
 ## Data modeling
 
@@ -15,7 +15,12 @@ This page provides an overview of FeatureBase tables and links to guide you thro
 
 * [Learn about data modeling](/concepts/data-modeling-overview)
 
-Create your tables only after you have performed data modeling.
+IMPORTANT: Create your tables only after you have performed data modeling.
+
+## Object names
+
+{% include /concepts/object-naming-standard.md %}
+* table and column names must start with an alphabetic character
 
 ## Managing tables in FeatureBase Cloud
 
@@ -30,10 +35,11 @@ Create your tables only after you have performed data modeling.
 * [Alter table using the API](/cloud/cloud-databases/cloud-table-create-api)
 * [Drop table using the API](/cloud/cloud-databases/cloud-table-drop-api)
 
-<!--
 
 ## Next step
 
-* [Learn how to create data sources and import data](/cloud/cloud-ingestion/)
+* [Learn about setting up data ingestion](/cloud/cloud-data-ingestion/ingest-data-overview)
 
+<!--
+* [Learn how to create data sources and import data](/cloud/cloud-ingestion/)
 -->

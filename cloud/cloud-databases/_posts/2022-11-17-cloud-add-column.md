@@ -26,6 +26,11 @@ You can choose from the following data types and their constraints
 | stringset | Time Quantum, TTL (Time to live) | [STRINGSET data type](/cloud/cloud-databases/cloud-stringset-data-type) |
 | timestamp | Time unit | [TIMESTAMP data type](/cloud/cloud-databases/cloud-timestamp-data-type) |
 
+## Column names
+
+{% include /concepts/object-naming-standard.md %}
+* column names must start with an alphabetic character.
+
 ## Step 1: View all tables
 
 {% include /cloud/cloud-view-table-list.md %}
