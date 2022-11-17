@@ -1,5 +1,5 @@
 ---
-title: database states reference
+title: Database states reference
 ---
 
 {% include /concepts/db-states-summary.md %}
