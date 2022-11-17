@@ -5,7 +5,7 @@ title: IDSET data type
 ## Syntax
 
 ```
-
+IDSET...
 ```
 
 ## Arguments
@@ -13,8 +13,6 @@ title: IDSET data type
 | Argument | Description | Further information |
 |---|---|---|
 | IDSET | Data type used where there is a need to set multiple ID values for a single column |
-| timeQuantum | Constraint not set by default | [timeQuantum constraint](/) |
-| ttl | Constraint that modifies timeQuantum and defaults to zero seconds `0s` | [TTL constraint](/) |
 
 ## Additional information
 
@@ -31,3 +29,7 @@ Track all the store IDs a customer has visited
 ```
 CODE EXAMPLE
 ```
+
+## Further information
+
+* [Time Quantum and Time to Live constraint](/cloud/cloud-databases/cloud-timequantum-ttl-constraint)

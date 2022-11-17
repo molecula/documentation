@@ -5,7 +5,7 @@ title: STRINGSET data type
 ## Syntax
 
 ```
-
+STRINGSET...
 ```
 
 ## Arguments
@@ -13,8 +13,6 @@ title: STRINGSET data type
 | Argument | Description | Further information |
 |---|---|---|
 | STRINGSET | Data type used to set multiple STRING values for a single column. |
-| timeQuantum | Constraint not set by default | [timeQuantum constraint](/) |
-| ttl | Constraint that modifies timeQuantum and defaults to zero seconds `0s` | [ttl constraint](/) |
 
 ## Additional information
 
@@ -30,3 +28,7 @@ Track all the store IDs a customer has visited
 ```
 CODE EXAMPLE
 ```
+
+## Further information
+
+* [Time Quantum and Time to Live constraint](/cloud/cloud-databases/cloud-timequantum-ttl-constraint)
