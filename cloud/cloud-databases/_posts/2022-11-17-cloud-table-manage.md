@@ -21,7 +21,7 @@ IMPORTANT: Perform data modeling **before** creating tables to avoid issues.
 
 ## Table primary key
 
-{% include /cloud/table-primary-key-table.md %}
+{% include /cloud/cloud-pk-table.md %}
 
 ## Column data types and constraints
 
