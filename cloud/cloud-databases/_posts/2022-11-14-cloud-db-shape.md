@@ -12,13 +12,13 @@ IMPORTANT: Cloud Database shapes incur an hourly fee, chargeable at the end of t
 
 ## Available shapes
 
-NOTE: These options may not be available for some organizations. Contact FeatureBase Support for help.
+NOTE: These options may not be available for some organizations. [Contact FeatureBase Support](https://www.featurebase.com/contact-us) for help.
 
 ### Production shapes
 
 Production database shapes are over-provisioned on disk space and memory to ensure performance, and has data replicated should a node ever go down.
 
-| Shape | Memory (GB) | Volume (GB) | Compute (vCPU) |
+| Shape | Memory (GB) | GP3 Volume (GB) | Compute (vCPU) |
 |---|---|---|---|
 | 32GB | 32 | 100 | 12 |
 | 64GB | 64 | 300 | 24 |
@@ -28,11 +28,13 @@ Production database shapes are over-provisioned on disk space and memory to ensu
 | 1024GB | 1024 | 5000 | 320 |
 | 2048GB | 2048 | 10000 | 576 |
 
+* [Learn about AWS GP3](https://aws.amazon.com/about-aws/whats-new/2020/12/introducing-new-amazon-ebs-general-purpose-volumes-gp3/)
+
 ### Development shapes
 
 These shapes are intended for development and testing.
 
-| Shape | Memory (GB) | Volume (GB) | Compute (vCPU) |
+| Shape | Memory (GB) | GP3 Volume (GB) | Compute (vCPU) |
 |---|---|---|---|
 | 8GB-Development | 8 | 32(gp3) | 2 |
 | 64GB-Development | 64 | 64 (gp3) | 16 |
