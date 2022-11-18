@@ -15,7 +15,3 @@ title: Where do I find the table endpoint in FeatureBase Cloud?
 ## Step 2: obtain table endpoint
 
 * Click &#8942; > **Copy table endpoint**.
-
-## Next step
-
-Paste the endpoint into the destination.
