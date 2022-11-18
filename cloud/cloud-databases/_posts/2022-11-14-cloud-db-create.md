@@ -43,6 +43,6 @@ This procedure explains how to create a Database in FeatureBase Cloud.
 ## Next step
 
 * [Learn more about the sample data](/)
-* [Learn how to add tables](/cloud/cloud-databases/cloud-table-create)
+* [Learn how to add tables](/cloud/cloud-tables/cloud-table-create)
 
 ## Further information

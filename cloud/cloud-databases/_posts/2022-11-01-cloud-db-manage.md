@@ -40,7 +40,7 @@ IMPORTANT: Perform data modeling **before** creating databases to avoid issues.
 
 ## Managing databases using the FeatureBase API
 
-* [Create database](/cloud/cloud-databases/cloud-db-create-api)
+* [Create database](/cloud/cloud-databases/db-api/cloud-db-create-api)
 * [Drop database](/cloud/cloud-databases/cloud-db-delete-api)
 
 ## Next step

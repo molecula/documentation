@@ -12,6 +12,8 @@ nav:
         category: cloud-data-modeling
       - title: Databases
         category: cloud-databases
+      - title: Tables
+        category: cloud-tables
       - title: Data ingestion
         category: cloud-data-ingestion
         subnav:

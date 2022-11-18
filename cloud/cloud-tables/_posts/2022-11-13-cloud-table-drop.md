@@ -18,7 +18,7 @@ NOTE: You can also [drop tables using the API](/cloud/cloud-databases/cloud-drop
 
 {% include /cloud/cloud-before-begin.md %}
 * [Create a database](/cloud/cloud-databases/cloud-db-manage)
-* [Create a table](/cloud/cloud-databases/cloud-table-manage)
+* [Create a table](/cloud/cloud-tables/cloud-table-manage)
 
 ## Step 1: View table list
 

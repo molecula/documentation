@@ -8,7 +8,7 @@ You can add a column to a FeatureBase table.
 
 {% include /cloud/cloud-before-begin.md %}
 * [Learn how to create a database](/cloud/cloud-databases/cloud-db-manage)
-* [Learn how to create tables](/cloud/cloud-databases/cloud-table-manage)
+* [Learn how to create tables](/cloud/cloud-tables/cloud-table-manage)
 * Table columns cannot be edited once created.
 
 ## Column data types and constraints
@@ -37,4 +37,4 @@ You can choose from the following data types and their constraints:
 
 ## Further information
 
-* [Learn how to drop a table column](/cloud/cloud-databases/cloud-table-drop-column)
+* [Learn how to drop a table column](/cloud/cloud-tables/cloud-table-drop-column)

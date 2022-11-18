@@ -6,7 +6,7 @@ title: How do I drop a column from a FeatureBase Cloud table?
 
 {% include /cloud/cloud-before-begin.md %}
 * [Learn how to create a database](/cloud/cloud-databases/cloud-db-manage)
-* [Learn how to create tables](/cloud/cloud-databases/cloud-table-manage)
+* [Learn how to create tables](/cloud/cloud-tables/cloud-table-manage)
 * [Learn how to create a table column](/cloud/cloud-databases/cloud-table-add-column)
 
 ## Step 1: View all tables
@@ -25,4 +25,4 @@ WARNING: Deletion is permanent.
 
 ## Further information
 
-* [Alter tables using the API](/cloud/cloud-databases/cloud-table-alter-api)
+* [Alter tables using the API](/cloud/cloud-databases/db-api/cloud-table-alter-api)
