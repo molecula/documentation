@@ -13,8 +13,8 @@ You can add a column to a FeatureBase table.
 
 ## Column data types and constraints
 
-{% include /cloud/cloud-data-type-table.md%}
--->
+{% include /cloud/cloud-data-type-table.md %}
+
 ## Naming standard
 
 {% include /concepts/column-naming-standard.md %}
@@ -26,11 +26,10 @@ You can add a column to a FeatureBase table.
 ## Step 2: Add a column to a table
 
 1. Click the table name.
-2. Click **Columns**.
-3. Click **Add column**.
-4. Enter a name for the column
-5. Choose the data type and enter values for the constraints if available.
-6. Click **Add column**
+2. Click **Columns** > **Add column**.
+3. Enter a name for the column
+4. Choose the data type and enter values for the constraints if available.
+5. Click **Add column**
 
 ## Further information
 
