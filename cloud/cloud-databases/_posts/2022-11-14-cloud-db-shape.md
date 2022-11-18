@@ -9,14 +9,23 @@ IMPORTANT: Cloud Database shapes incur an hourly fee, chargeable at the end of t
 ## Before you begin
 
 {% include /cloud/cloud-before-begin.md %}
+* [Databases are created on AWS GP3 systems](https://aws.amazon.com/ebs/general-purpose/)
+* [Contact FeatureBase Support](https://www.featurebase.com/contact-us) to upgrade your account to access production database shapes
 
-## Available shapes
+### Trial account and Development shapes
 
-NOTE: These options may not be available for some organizations. [Contact FeatureBase Support](https://www.featurebase.com/contact-us) for help.
+Two database shapes are available on all accounts. These are intended for development and testing purposes.
+
+| Shape | Memory (GB) | AWS GP3 Volume (GB) | Compute (vCPU) |
+|---|---|---|---|
+| 8GB-Development | 8 | 32(gp3) | 2 |
+| 64GB-Development | 64 | 64 (gp3) | 16 |
 
 ### Production shapes
 
-Production database shapes are over-provisioned on disk space and memory to ensure performance, and has data replicated should a node ever go down.
+Production shapes are available on paid accounts. These have:
+* overprovisioned disk space and memory to ensure best performance
+* data replication should a node go down.
 
 | Shape | Memory (GB) | GP3 Volume (GB) | Compute (vCPU) |
 |---|---|---|---|
@@ -27,17 +36,6 @@ Production database shapes are over-provisioned on disk space and memory to ensu
 | 512GB | 512 | 2500 | 192 |
 | 1024GB | 1024 | 5000 | 320 |
 | 2048GB | 2048 | 10000 | 576 |
-
-* [Learn about AWS GP3](https://aws.amazon.com/about-aws/whats-new/2020/12/introducing-new-amazon-ebs-general-purpose-volumes-gp3/)
-
-### Development shapes
-
-These shapes are intended for development and testing.
-
-| Shape | Memory (GB) | GP3 Volume (GB) | Compute (vCPU) |
-|---|---|---|---|
-| 8GB-Development | 8 | 32(gp3) | 2 |
-| 64GB-Development | 64 | 64 (gp3) | 16 |
 
 ## Further information
 
