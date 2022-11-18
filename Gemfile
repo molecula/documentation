@@ -36,10 +36,6 @@ gem "webrick", "~> 1.7"
 
 gem 'jekyll-default-layout'
 
-# broken link checker from https://www.supertechcrew.com/jekyll-check-for-broken-links/
-gem 'rake'
-gem 'html-proofer'
-
 # Addon needed to make 'Help us improve this article' link at
 # bottom of posts.
 #
