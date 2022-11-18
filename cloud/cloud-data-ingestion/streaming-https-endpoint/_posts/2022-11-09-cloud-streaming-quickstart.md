@@ -54,7 +54,7 @@ curl --location --request POST 'https://id.featurebase.com' \
 
 ### Create A Database
 
-The first step is creating a database. We will be using the 8GB shape for this walk-through. For more information on databases, see [Database Overview](/cloud/cloud-setup/databases-overview).  The command below will start creating your database. You can also do this in the UI on the "Databases" page by clicking “New Database”, selecting "Standard", entering "iris_demo_database" for the name, and choosing the "8GB" option.
+The first step is creating a database. We will be using the 8GB shape for this walk-through. For more information on databases, see [Database Overview](/cloud/cloud-databases/cloud-db-manage).  The command below will start creating your database. You can also do this in the UI on the "Databases" page by clicking “New Database”, selecting "Standard", entering "iris_demo_database" for the name, and choosing the "8GB" option.
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
@@ -91,7 +91,7 @@ Once a database is "RUNNING", you will want to start loading data into it. This 
 
 #### Create A Table
 
-You must create a table before you can ingest data. For more information on tables, see [Tables](/cloud/cloud-data-ingestion/tables). The command below will create your table.
+You must create a table before you can ingest data. For more information on tables, see [Tables](/cloud/cloud-tables/cloud-table-manage). The command below will create your table.
 
 It is highly recommended to do table creation within the UI for easier mapping of column types, constraints, and options. Navigate to the "Tables" page and click “New Table", selecting your database, entering "iris_table" for the name, and entering "table holding flower data" as the description. The primary key (id) for the iris table for this tutorial is an integer, so choose `Number` as the ID type.
 
