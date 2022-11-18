@@ -42,14 +42,8 @@ IMPORTANT: Perform data modeling **before** creating tables to avoid issues.
 
 ## Managing tables using the Cloud API
 
-* [Create table using the API](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/createTable)
-* [Update table using the API](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/puttable)
-* [Drop table using the API](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/deletetable)
+* [Table API reference](https://api-docs-featurebase-cloud.redoc.ly/v2#tag/Tables)
 
 ## Next step
 
 * [Learn about setting up data ingestion](/cloud/cloud-data-ingestion/ingest-data-overview)
-
-<!--
-* [Learn how to create data sources and import data](/cloud/cloud-ingestion/cloud-datasources-manage)
--->

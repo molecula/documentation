@@ -13,7 +13,7 @@ title: HTTPS streaming API for cloud overview
 
 ### Create A Database
 
-* [Learn how to create a database using the API](/cloud/cloud-databases/cloud-db-create-api)
+* [Learn how to create a database using the API](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/createDatabase)
 
 ### Ingest Data
 
