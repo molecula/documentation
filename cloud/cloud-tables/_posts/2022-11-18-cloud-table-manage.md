@@ -44,6 +44,10 @@ IMPORTANT: Perform data modeling **before** creating tables to avoid issues.
 
 * [Table API reference](https://api-docs-featurebase-cloud.redoc.ly/v2#tag/Tables)
 
+## Joining tables
+
+Tables that exist in the same database can be joined.
+
 ## Next step
 
 * [Learn about setting up data ingestion](/cloud/cloud-data-ingestion/ingest-data-overview)

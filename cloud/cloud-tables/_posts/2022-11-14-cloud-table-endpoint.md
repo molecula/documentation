@@ -2,6 +2,8 @@
 title: Where do I find the table endpoint in FeatureBase Cloud?
 ---
 
+The table endpoint is used when importing data from an external data source.
+
 ## Before you begin
 
 {% include /cloud/cloud-before-begin.md %}

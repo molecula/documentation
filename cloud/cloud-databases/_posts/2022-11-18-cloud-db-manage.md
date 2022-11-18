@@ -4,6 +4,8 @@ title: How do I manage databases in FeatureBase Cloud?
 
 This page provides an overview of FeatureBase databases and links to guide you through the process of creating databases and tables.
 
+FeatureBase databases are clusters of FeatureBase nodes which act as dedicated resources to load and query data from an external data source.
+
 ## Before you begin
 
 {% include /cloud/cloud-before-begin.md %}
