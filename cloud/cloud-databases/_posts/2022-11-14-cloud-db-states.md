@@ -7,6 +7,7 @@ title: Database states reference
 ## Before you begin
 
 {% include /cloud/cloud-before-begin.md %}
+* [Manage databases](/cloud/cloud-databases/cloud-db-manage)
 
 ## Database states
 
@@ -21,4 +22,4 @@ title: Database states reference
 
 ## Further information
 
-* [Learn how to query the database status via SSH](/cloud//query-cloud-data/cloud-query-db-status-ssh)
+* [Query the database state via the API](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/getDatabase)
