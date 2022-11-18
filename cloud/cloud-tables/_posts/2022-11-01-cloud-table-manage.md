@@ -31,8 +31,7 @@ IMPORTANT: Perform data modeling **before** creating tables to avoid issues.
 
 ## Naming standard
 
-{% include /concepts/object-naming-standard.md %}
-* table and column names must start with an alphabetic character
+{% include /concepts/table-naming-standard.md %}
 
 ## Managing tables in FeatureBase Cloud
 

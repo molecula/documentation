@@ -17,10 +17,9 @@ You can choose from the following data types and their constraints:
 
 {% include /cloud/cloud-data-type-table.md%}
 
-## Column names
+## Naming standard
 
-{% include /concepts/object-naming-standard.md %}
-* column names must start with an alphabetic character.
+{% include /concepts/column-naming-standard.md %}
 
 ## Step 1: View all tables
 

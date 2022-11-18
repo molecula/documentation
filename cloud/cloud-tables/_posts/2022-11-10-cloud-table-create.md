@@ -12,7 +12,7 @@ title: How do I create a table in FeatureBase Cloud?
 
 ## Naming standards
 
-{% include /concepts/object-naming-standard.md %}
+{% include /concepts/table-naming-standard.md %}
 
 ## Table primary keys
 

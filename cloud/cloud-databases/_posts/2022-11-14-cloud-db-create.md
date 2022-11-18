@@ -18,8 +18,7 @@ This procedure explains how to create a Database in FeatureBase Cloud.
 
 ## Naming standards
 
-{% include /concepts/object-naming-standard.md %}
-* Database names must start with an underscore (_).
+{% include /concepts/database-naming-standard.md %}
 
 ## Database states
 
