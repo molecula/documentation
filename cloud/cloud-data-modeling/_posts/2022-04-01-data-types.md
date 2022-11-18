@@ -12,13 +12,15 @@ Clarify what CACHETYPE does for users in a concise way if it comes into UI:
 
 add EPOCH if offered:
 | EPOCH  | TIMESTAMP  | The epoch which timestamps should be relative to. This is represented as a RFC339 time stamp string. The value may specify a timezone, for example 1980-11-30T14:20:28.000+07:00, or use zulu time (i.e. +00:00) 1980-11-30T14:20:28.000Z.  | The Unix epoch (`1970-01-01T00:00:00Z`) |
+(Added to /cloud/cloud-data-types/cloud-timestamp-data-type)
 
 Add Bool to types:
 | BOOL  | The BOOL type stores simple boolean (true/false) values. Any integer value will be interpreted as false if 0 and true otherwise. Strings (in any upper/lower case combination) ‘0’, ‘f’, ‘false’, and the empty string will be interpreted as false, and true otherwise. | This type is best for simple query filtering |
+(Added to /cloud/cloud-data-types/cloud-bool-data-type)
 
 -->
 
- **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes. 
+ **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes.
 
 ## Data Types
 
@@ -44,5 +46,3 @@ Each data type has constraints that can be applied to modify and optimize how da
 | TIMEUNIT  | TIMESTAMP  | The time unit in which to store a timestamp. The accepted units are days, hours, minutes, seconds, milliseconds, microseconds, and nanoseconds and are declared with  `d`, `h`, `m`, `s`, `ms`, `us`, `ns`  respectively | `s` |
 | TIMEQUANTUM & TTL (coming soon) | IDSET, STRINGSET  | Time quantums are special constraints that allow users to track when values are set for records by passing a `"recordTime"` timestamp in addition to the value itself. This is unique to SETs because the datatype supports multiple values that can be updated over time.  Tracking is supported by hour (`H`), day (`D`), month (`M`), or year (`Y`) or any combination of the four. Setting these allows for lower latency queries depending on the period of time you are querying over but increase storage. For example, If you plan to have queries with a range over multiple months, `MD` is the best option, but if you will be querying over only a couple of days, `D` will be preferred. An optional time to live (TTL) argument can be passed that will delete old values for a record after that period of time passes. TTL deletion runs when FeatureBase starts and every hour thereafter. You can specify the TTL by specifying an integer and a time unit from hours to nanoseconds (<integer>+`h`, `m`, `s`, `ms`, `us`, `ns`). A TTL of `72h` will retain values for 72 hours before deletion. A TTL of `0s` indicates data will never be deleted. | TIMEQUANTUM (Not set by default), TTL (`0s`) |
 | SCALE  | DECIMAL  | The number of digits of precision to store after the decimal point. | 2 |
-
-

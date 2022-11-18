@@ -8,7 +8,7 @@ NOTE: For ease of use, Constraint information is included with the relevant Data
 
 ## Before you begin
 
-* [Create a Cloud database using the UI](/cloud/cloud-databases/cloud-db-create)
+* [Create a Cloud database using the UI](/cloud/cloud-databases/cloud-db-create), OR
 * [Create a Cloud database using the API](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/createDatabase)
 
 ## Data types

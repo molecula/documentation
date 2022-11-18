@@ -5,15 +5,18 @@ title: TIMESTAMP data type
 ## Syntax
 
 ```
-TIMESTAMP [TIMEUNIT]
+TIMESTAMP [TIMEUNIT] [EPOCH]
 ```
 
 ## Arguments
 
 | Argument | Description | Further information |
 |---|---|---|
-| TIMESTAMP | Time and date data type used for time series analysis |
+| TIMESTAMP | Time and date data type used for time series analysis | [Time stamp](https://en.wikipedia.org/wiki/Timestamp) |
 | TIMEUNIT | Constraint for time and date that defaults to second `s` | See [TIMEUNIT values](#timeunit-values) |
+| EPOCH | The epoch which timestamps should be relative to. This is represented as a RFC339 time stamp string. | See [Epoch values](#epoch-values) |
+
+## Additional information
 
 ### TIMEUNIT values
 
@@ -25,5 +28,14 @@ TIMESTAMP [TIMEUNIT]
 | milliseconds | `ms` |
 | microseconds | `us` |
 | nanoseconds | `ns` |
+
+### EPOCH values
+
+* Represented as an [RFC339 time stamp string](https://www.rfc-editor.org/rfc/rfc3339)
+
+| Timestamp | Example | Further information |
+|---|---|---|
+| Time zone | 1980-11-30T14:20:28.000+07:00 | [Time zone](https://en.wikipedia.org/wiki/Time_zone) |
+| Zulu (military) time | 1980-11-30T14:20:28.000Z | [Zulu Time Zone](https://www.timeanddate.com/time/zones/z) |
 
 ## Examples
