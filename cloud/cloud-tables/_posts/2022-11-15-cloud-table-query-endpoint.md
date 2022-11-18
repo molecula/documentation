@@ -20,9 +20,3 @@ The table query endpoint is used when running remote table queries via the API.
 
 1. Click &#8942; for the table to query.
 2. Choose **Copy query endpoint**
-
-## Next step
-
-Paste the query endpoint into the HTTPS query.
-
-## Further information

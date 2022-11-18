@@ -25,4 +25,4 @@ WARNING: Deletion is permanent.
 
 ## Further information
 
-* [Update tables using the API](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/puttable)
+* [Delete table column API reference](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/deletetableColumn)

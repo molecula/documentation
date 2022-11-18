@@ -40,5 +40,5 @@ This procedure explains how to create a Database in FeatureBase Cloud.
 
 ## Further information
 
-* [Learn how to create a database using the API](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/createDatabase)
+* [Create database API reference](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/createDatabase)
 * [Learn how to delete a database](/cloud/cloud-databases/cloud-db-delete)

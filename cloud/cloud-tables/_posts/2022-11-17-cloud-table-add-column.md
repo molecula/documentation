@@ -36,4 +36,5 @@ You can choose from the following data types and their constraints:
 
 ## Further information
 
+* [Create table column API reference](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/createTableColumn)
 * [Learn how to drop a table column](/cloud/cloud-tables/cloud-table-drop-column)

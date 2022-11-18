@@ -2,8 +2,6 @@
 title: Where do I find the table endpoint in FeatureBase Cloud?
 ---
 
-A table endpoint is required for [ingestion|querying|both?].
-
 ## Before you begin
 
 {% include /cloud/cloud-before-begin.md %}
