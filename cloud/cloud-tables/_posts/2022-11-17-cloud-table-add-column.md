@@ -13,10 +13,8 @@ You can add a column to a FeatureBase table.
 
 ## Column data types and constraints
 
-You can choose from the following data types and their constraints:
-
 {% include /cloud/cloud-data-type-table.md%}
-
+-->
 ## Naming standard
 
 {% include /concepts/column-naming-standard.md %}
