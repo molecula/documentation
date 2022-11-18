@@ -2,8 +2,7 @@
 title: How do I delete a database in FeatureBase Cloud?
 ---
 
-There are a number of reasons you may decide to delete a database, including:
-* FeatureBase Cloud trial limitations
+Learn how to delete a FeatureBase Cloud database.
 
 ## Warnings
 
@@ -14,7 +13,8 @@ There are a number of reasons you may decide to delete a database, including:
 ## Before you begin
 
 {% include /cloud/cloud-before-begin.md %}
-* [Learn how to drop tables](/cloud/cloud-tables/cloud-table-drop)
+* [Create a database](/cloud/cloud-databases/cloud-db-create)
+* [Drop tables](/cloud/cloud-tables/cloud-table-drop)
 
 ## How to delete a database
 
@@ -26,4 +26,4 @@ There are a number of reasons you may decide to delete a database, including:
 
 ## Further information
 
-* [Learn how to create a database](/cloud/cloud-databases/cloud-db-create)
+* [Learn how to delete databases using the API](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/deleteDatabase)

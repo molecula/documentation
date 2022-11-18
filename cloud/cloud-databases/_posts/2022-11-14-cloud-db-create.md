@@ -8,7 +8,8 @@ This procedure explains how to create a Database in FeatureBase Cloud.
 
 {% include /cloud/cloud-before-begin.md %}
 * [Learn how to manage databases](/cloud/cloud-databases/cloud-db-manage)
-* [Perform data modeling](/concepts/data-modeling-overview)  rior to creating databases to avoid issues.
+* [Perform data modeling](/concepts/data-modeling-overview) prior to creating databases to avoid issues.
+* FeatureBase Trial accounts allow one database.
 
 ## Cloud database shapes
 
@@ -41,7 +42,9 @@ This procedure explains how to create a Database in FeatureBase Cloud.
 
 ## Next step
 
-* [Learn more about the sample data](/)
 * [Learn how to add tables](/cloud/cloud-tables/cloud-table-create)
 
 ## Further information
+
+* [Learn how to create a database using the API](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/createDatabase)
+* [Learn how to delete a database](/cloud/cloud-databases/cloud-db-delete)

@@ -7,6 +7,7 @@ This page provides an overview of FeatureBase databases and links to guide you t
 ## Before you begin
 
 {% include /cloud/cloud-before-begin.md %}
+* You can create one database in a FeatureBase Cloud Trial account.
 
 ## Data modeling
 
@@ -37,8 +38,11 @@ This page provides an overview of FeatureBase databases and links to guide you t
 
 ## Managing databases using the FeatureBase API
 
-* [Create database](/cloud/db-api/cloud-db-create-api)
-* [Drop database](/cloud/cloud-databases/cloud-db-delete-api)
+* [Create database](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/createDatabase)
+* [List databases](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/listDatabases)
+* [Return information on a database](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/getDatabase)
+* [Alter databases](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/putDatabase)
+* [Drop database](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/deleteDatabase)
 
 ## Next step
 
