@@ -18,8 +18,7 @@ https://cloud.featurebase.com/login
 
 ## Next step
 
-* [Learn how to setup a FeatureBase Database and tables]()
-* [Learn how to import data to Featurebase]()
+* [Learn how to setup a FeatureBase Database and tables](/cloud/cloud-databases/cloud-db-manage)
 
 ## Get support
 
