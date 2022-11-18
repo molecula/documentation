@@ -14,8 +14,6 @@ This page provides an overview of FeatureBase databases and links to guide you t
 
 * [Learn about data modeling](/concepts/data-modeling-overview)
 
-IMPORTANT: Perform data modeling **before** creating databases to avoid issues.
-
 ## Cloud database shapes
 
 {% include /concepts/database-shape-summary.md %}
