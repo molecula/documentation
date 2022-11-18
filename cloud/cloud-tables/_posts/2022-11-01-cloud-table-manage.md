@@ -42,9 +42,9 @@ IMPORTANT: Perform data modeling **before** creating tables to avoid issues.
 
 ## Managing tables using the Cloud API
 
-* [Create table using the API](/cloud/db-api/cloud-table-create-api)
-* [Alter table using the API](/cloud/db-api/cloud-table-create-api)
-* [Drop table using the API](/cloud/db-api/cloud-table-drop-api)
+* [Create table using the API](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/createTable)
+* [Update table using the API](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/puttable)
+* [Drop table using the API](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/deletetable)
 
 ## Next step
 

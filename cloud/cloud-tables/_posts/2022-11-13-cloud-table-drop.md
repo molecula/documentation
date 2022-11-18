@@ -7,8 +7,6 @@ There are a number of reasons why you may choose to drop a table, including:
 * incorrect name
 * database deletion
 
-NOTE: You can also [drop tables using the API](/cloud/cloud-databases/cloud-drop-table-api)
-
 ## Warnings
 
 * Tables cannot be recovered once deleted
@@ -32,4 +30,5 @@ NOTE: You can also [drop tables using the API](/cloud/cloud-databases/cloud-drop
 
 ## Further information
 
+* [Learn how to delete tables using the API](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/deletetable)
 * [Learn how to create tables](/cloud/cloud-database/create-table)

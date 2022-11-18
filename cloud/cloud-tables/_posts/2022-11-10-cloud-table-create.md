@@ -39,4 +39,4 @@ title: How do I create a table in FeatureBase Cloud?
 
 ## Further information
 
-* [Learn how to create a table using the API](/cloud/db-api/cloud-table-create-api)
+* [Learn how to create a table using the API](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/createTable)

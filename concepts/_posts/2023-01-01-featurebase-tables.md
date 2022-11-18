@@ -10,7 +10,7 @@ FeatureBase tables are similar to those in a traditional RDBMS because they:
 
 ## FeatureBase Cloud
 
-* [Create a table in FeatureBase Cloud](/cloud/cloud-databases/cloud-create-table)
-* [Drop a table in FeatureBase Cloud](/cloud/cloud-databases/cloud-drop-table)
-* [Create a table using the Cloud API](/cloud/cloud-databases/create-table-api)
-* [Drop a table using the Cloud API](/cloud/cloud-databases/drop-table-api)
+* [Manage tables in FeatureBase Cloud](/cloud/cloud-tables/cloud-table-manage)
+* [API table reference](https://api-docs-featurebase-cloud.redoc.ly/v2#tag/Tables)
+
+## Further information

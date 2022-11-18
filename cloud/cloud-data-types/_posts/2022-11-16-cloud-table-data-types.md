@@ -9,7 +9,7 @@ NOTE: For ease of use, Constraint information is included with the relevant Data
 ## Before you begin
 
 * [Create a Cloud database using the UI](/cloud/cloud-databases/cloud-db-create)
-* [Create a Cloud database using the API](/cloud/db-api/cloud-db-create-api)
+* [Create a Cloud database using the API](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/createDatabase)
 
 ## Data types
 
@@ -51,4 +51,4 @@ Constraints are applied when a column is created.
 ## Further information
 
 * [Create a Cloud table](/cloud/cloud-tables/cloud-table-create)
-* [Create a Cloud table using the API](/cloud/db-api/cloud-table-create-api)
+* [Create a Cloud table using the API](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/createTable)

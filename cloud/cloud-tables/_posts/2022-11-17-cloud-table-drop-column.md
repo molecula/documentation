@@ -25,4 +25,4 @@ WARNING: Deletion is permanent.
 
 ## Further information
 
-* [Alter tables using the API](/cloud/db-api/cloud-table-alter-api)
+* [Update tables using the API](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/puttable)
