@@ -42,4 +42,4 @@ This page provides an overview of FeatureBase databases and links to guide you t
 
 ## Next step
 
-* [Learn how to manage FeatureBase Cloud tables](/cloud/cloud-databases/manage-tables)
+* [Learn how to manage FeatureBase Cloud tables](/cloud/cloud-tables/cloud-table-manage)

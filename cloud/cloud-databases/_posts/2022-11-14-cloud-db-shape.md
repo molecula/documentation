@@ -18,8 +18,8 @@ Two database shapes are available on all accounts. These are intended for develo
 
 | Shape | Memory (GB) | AWS GP3 Volume (GB) | Compute (vCPU) |
 |---|---|---|---|
-| 8GB-Development | 8 | 32(gp3) | 2 |
-| 64GB-Development | 64 | 64 (gp3) | 16 |
+| 8GB-Development | 8 | 32 | 2 |
+| 64GB-Development | 64 | 64 | 16 |
 
 ### Production shapes
 
