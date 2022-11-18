@@ -25,4 +25,4 @@ WARNING: Deletion is permanent.
 
 ## Further information
 
-* [Alter tables using the API](/cloud/cloud-databases/db-api/cloud-table-alter-api)
+* [Alter tables using the API](/cloud/db-api/cloud-table-alter-api)

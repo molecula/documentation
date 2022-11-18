@@ -1,7 +1,7 @@
 ---
 title: What types of database can I create in FeatureBase Cloud?
 ---
-
+<!--source https://molecula.atlassian.net/wiki/spaces/PROD/pages/893222913/Packaging+Pricing -->
 {% include /concepts/database-shape-summary.md %}
 
 IMPORTANT: Cloud Database shapes incur an hourly fee, chargeable at the end of the month.
@@ -18,25 +18,24 @@ NOTE: These options may not be available for some organizations. Contact Feature
 
 Production database shapes are over-provisioned on disk space and memory to ensure performance, and has data replicated should a node ever go down.
 
-| Database Shape | Database Memory (GB) |
-|---|---|
-| 16GB | 16 |
-| 32GB | 32 |
-| 64GB | 64 |
-| 128GB | 128 |
-| 256GB | 256 |
-| 512GB | 512 |
-| 1024GB | 1024 |
-| 2048GB | 2048 |
+| Shape | Memory (GB) | Volume (GB) | Compute (vCPU) |
+|---|---|---|---|
+| 32GB | 32 | 100 | 12 |
+| 64GB | 64 | 300 | 24 |
+| 128GB | 128 | 500 | 48 |
+| 256GB | 256 | 1200 | 96 |
+| 512GB | 512 | 2500 | 192 |
+| 1024GB | 1024 | 5000 | 320 |
+| 2048GB | 2048 | 10000 | 576 |
 
 ### Development shapes
 
 These shapes are intended for development and testing.
 
-| Database Shape | Database Memory (GB) |
-| --- | --- |
-| 8GB-Development | 8 |
-| 64GB-Development | 64 |
+| Shape | Memory (GB) | Volume (GB) | Compute (vCPU) |
+|---|---|---|---|
+| 8GB-Development | 8 | 32(gp3) | 2 |
+| 64GB-Development | 64 | 64 (gp3) | 16 |
 
 ## Further information
 
