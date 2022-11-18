@@ -8,6 +8,8 @@ nav:
     subnav:
       - title: Setup
         category: cloud-setup
+      - title: API
+        category: cloud-api
       - title: Data modeling
         category: cloud-data-modeling
       - title: Databases
