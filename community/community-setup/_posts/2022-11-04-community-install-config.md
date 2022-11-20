@@ -77,7 +77,7 @@ opt    idk
 The `idk` directory contains a few ingestion tools. We'll get to this in a minute.
 
 ## Set File Flags to Run
-Before you start the server, you may need to turn off the quarantine flag on the executables so they can run them from the command line (assuming you are using macOS):
+Before you start the server, if you are running macOS, you may need to turn off the quarantine flag on the executables so they may be run from the command line:
 
 ```
 xattr -d com.apple.quarantine opt/featurebase
