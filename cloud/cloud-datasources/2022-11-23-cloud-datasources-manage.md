@@ -6,8 +6,6 @@ title: Manage data sources
 
 A data source is a file or database that contains data you intend to import to FeatureBase Cloud.
 
-{include /concepts/ingestion-note.md}
-
 ## Before you begin
 
 * [Learn how data is imported to FeatureBase](/concepts/featurebase-ingestion)
@@ -25,9 +23,6 @@ A data source is a file or database that contains data you intend to import to F
 ## Naming standards
 
 {% include /concepts/datasource-naming-standards.md %}
-
-
-
 
 ## Managing data sources in FeatureBase Cloud
 
