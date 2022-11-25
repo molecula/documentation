@@ -1,7 +1,8 @@
-**Ingestion** is a FeatureBase term that describes the multiple processes involved with transforming then importing data to FeatureBase.
+To take advantage of fast queries, reduced storage and hardware overheads, you must import your data to FeatureBase.
 
-This process involves:
+The multi-part process to do this is called **ingestion** and involves:
 
-* pushing data from the source to FeatureBase
-* transforming your data to the roaring bitmap format required by FeatureBase tables
-* importing data into destination tables
+* data modeling and mapping to determine the best data types and constraints to apply to destination table columns
+* setup and configuration of HTTPS streaming endpoints to receive JSON data
+* automatic transformation of JSON source data to roaring bitmap format
+* copy of data to destination table columns

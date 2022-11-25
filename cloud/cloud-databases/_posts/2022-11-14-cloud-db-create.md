@@ -9,7 +9,10 @@ This procedure explains how to create a Database in FeatureBase Cloud.
 {% include /cloud/cloud-before-begin.md %}
 * [Learn how to manage databases](/cloud/cloud-databases/cloud-db-manage)
 * [Perform data modeling](/concepts/data-modeling-overview) prior to creating databases to avoid issues.
-* FeatureBase Trial accounts are limited to one database and development database shapes (8GB or 16GB)
+
+## Trial accounts
+
+{% include /cloud/trial-account-limits.md %}
 
 ## Cloud database shapes
 

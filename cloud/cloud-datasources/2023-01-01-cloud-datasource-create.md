@@ -2,21 +2,19 @@
 title: Create data source
 ---
 
-## How do I create a data source?
-
-
+Creating a data source is a two-step process that results in an HTTPS endpoint you can use to stream data from your source database to a FeatureBase table.
 
 ## Before you begin
 
-* Trial accounts are allowed one data source.
-{% include /cloud/cloud-before-begin%}
-* [Create a database](/cloud/cloud-databases/cloud-db-create)
-* [Add tables](/cloud/cloud-tables/cloud-table-create)
-* [Learn about data sources](/cloud/cloud-data-sources/cloud-data-source-manage)
+{% include /cloud/cloud-before-begin.md %}
+{% include /cloud/cloud-ingest-before-begin.md %}
+* Have source to target table mappings ready to input.
 
 ## Naming standards
 
 {% include /concepts/datasource-naming-standards.md %}
+
+## Data source 
 
 ## Step 1: define data source name and target
 
@@ -27,3 +25,7 @@ title: Create data source
 5. Select the target table.
 
 ## Step 2: Map source and target columns
+
+
+
+1.

@@ -11,6 +11,10 @@ This page provides an overview of FeatureBase tables and links to guide you thro
 {% include /cloud/cloud-before-begin.md %}
 * [Learn how to manage Cloud databases](/cloud/cloud-databases/cloud-db-manage)
 
+## Trial accounts
+
+{% include /cloud/trial-account-limits.md %}
+
 ## Data modeling
 
 {% include /concepts/data-modeling-overview.md %}

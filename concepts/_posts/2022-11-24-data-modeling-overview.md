@@ -1,14 +1,12 @@
 ---
-title: Featurebase data modeling overview
+title: FeatureBase data modeling overview
 ---
 
-FeatureBase allows users to perform fast queries on their data.
+{% include /concepts/ingestion-summary.md %}
 
-FeatureBase is used to perform fast queries on user data.
+## Before you begin
 
-To do this, your data must be imported to FeatureBase from the data source.
-
-This is a four-part process.
+*
 
 ## Part 1: Establishing your use case
 
@@ -19,6 +17,7 @@ The first step is to establish:
 ## Part 2: data mapping
 
 {% include /concepts/data-mapping-summary.md %}
+
 ## Part 3: create destination tables
 
 
@@ -32,7 +31,7 @@ FeatureBase performs a data transformation to convert data pushed to the product
 * [Learn about FeatureBase](/index.html)
 * [Contact FeatureBase support with questions about data modeling](https://www.featurebase.com/contact-us)
 
-<!-- Adapted content for /concepts/2023-01-01-query-fact-dimension-tables,md 
+<!-- Adapted content for /concepts/2023-01-01-query-fact-dimension-tables,md
 
 Usually when you're doing queries that involve facts, you're not interested in the events themselves, but one of the dimensions that they affect. For example, you might want to know how many users visited a certain blog post as opposed to how many times that blog post was visited.
 
