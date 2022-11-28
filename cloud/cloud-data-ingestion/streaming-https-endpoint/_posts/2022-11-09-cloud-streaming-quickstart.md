@@ -87,7 +87,7 @@ Grab your database’s "id" returned from the command above. This is a unique id
 
 ### Ingest Data
 
-Once a database is "RUNNING", you will want to start loading data into it. This section will help you create an ingest endpoint, which will yield a persistent endpoint that allows you to push data into your database over HTTPS. For more information on ingesting data, see [Ingest Data](/cloud/cloud-data-ingestion/ingest-data-overview).
+Once a database is "RUNNING", you will want to start loading data into it. This section will help you create an ingest endpoint, which will yield a persistent endpoint that allows you to push data into your database over HTTPS. For more information on ingesting data, see [Ingest Data](/cloud/cloud-data-ingestion/cloud-ingest-overview).
 
 #### Create A Table
 

@@ -54,4 +54,4 @@ Tables that exist in the same database can be joined.
 
 ## Next step
 
-* [Learn about setting up data ingestion](/cloud/cloud-data-ingestion/ingest-data-overview)
+* [Learn about setting up data ingestion](/cloud/cloud-data-ingestion/cloud-ingest-overview)

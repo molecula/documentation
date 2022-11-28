@@ -48,7 +48,7 @@ NOTE: Not all SQL syntax is currently supported.
 ## Before you begin
 
 {% include /cloud/database-dependencies.md %}
-* [Learn how to import data to FeatureBase](/cloud/cloud-data-ingestion/ingest-data-overview)
+* [Learn how to import data to FeatureBase](/cloud/cloud-data-ingestion/cloud-ingest-overview)
 
 ## How do I run a query?
 

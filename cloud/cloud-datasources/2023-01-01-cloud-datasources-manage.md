@@ -73,4 +73,4 @@ For example,
 
 ## Next step
 
-* [Learn how to stream data to a data source](/cloud/cloud-data-ingestion/ingest-data-overview.md)
+* [Learn how to stream data to a data source](/cloud/cloud-data-ingestion/cloud-ingest-overview.md)

@@ -18,7 +18,9 @@ The first step is to establish:
 
 {% include /concepts/data-mapping-summary.md %}
 
-## Part 3: create destination tables
+## Part 3: Export your data in the appropriate format
+
+FeatureBase Cloud users
 
 
 
