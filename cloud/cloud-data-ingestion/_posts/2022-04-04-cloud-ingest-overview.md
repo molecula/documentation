@@ -23,24 +23,29 @@ On this page you will find:
 
 Important: read the following conceptual pages to understand the process of importing data to FeatureBase.
 
-* [Learn what is involved with importing data to FeatureBase](/concepts/featurebase-ingestion)
-* [Learn the concepts involved with data modeling](/concepts/data-modeling-overview)
+{% include /concepts/ingest-before-begin.md %}
 
 ## Comparison of methods
 
-| Data source | Requires | Pros | Cons | Further information |
-|---|---|---|---|---|
-| JSON file | Database, tables and columns setup | Import using the UI | ??? | [JSON file import](#) |
-| CSV file | Experience with API  |  |  | [CSV file import](#) |
-| Apache Kafka | Experience with API  |  |  | [Apache Kafka import](#) |
-| Confluent Cloud | Experience with API |  |  | [Confluent Cloud import](#) |
+| Data source | Pros | Cons | Further information |
+|---|---|---|---|
+| JSON file | Import using the UI | Experience with JSON | [JSON file import](#) |
+| CSV file | ??? | API experience | [CSV file import](#) |
+| Apache Kafka | ??? | API experience | [Apache Kafka import](#) |
+| Confluent Cloud | ??? | API experience | [Confluent Cloud import](#) |
 
-## Import data using a JSON file
+## Import JSON data using the web interface
 
 This process can be performed exclusively in the Cloud web interface and requires:
-* a JSON file containing the table structure and data exported from your database
-* a destination database
-* one or more tables that map to the data types contained in your JSON file
+
+| Task | Further information |
+|---|---|
+| Create JSON file(s) with table structure and data for import | {% include /cloud/json-workflow-pt1-link.md %} |
+| Create target database | {% include /cloud/json-workflow-pt2-link.md %} |
+| Create target tables | {% include /cloud/json-workflow-pt3-link.md %} |
+| Map table column data types to JSON data | {% include /cloud/json-workflow-pt4-link.md %} |
+| Add data source to create HTTPS endpoint to import data | {% include /cloud/json-workflow-pt5-link.md %} |
+| Import JSON data to FeatureBase Cloud | {% include /cloud/json-workflow-pt6-link.md %} |
 
 ## Import data using a CSV file
 

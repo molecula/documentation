@@ -4,6 +4,8 @@ title: How do I create a Database?
 
 This procedure explains how to create a Database in FeatureBase Cloud.
 
+NOTE: You can also [create a database with pre-loaded data](/cloud/cloud-database/cloud-db-create-sample)
+
 ## Before you begin
 
 {% include /cloud/cloud-before-begin.md %}
@@ -24,20 +26,10 @@ This procedure explains how to create a Database in FeatureBase Cloud.
 
 {% include /concepts/database-naming-standard.md %}
 
-## How do I create a FeatureBase Database?
+## Create a database
 
-1. Click **Databases** > **New database**
-2. Name your database.
-3. Choose the database type:
+{% include /cloud/cloud-db-create-all.md %}
 
-| Type | Description | Further information |
-|---|---|---|
-| Start with pre-loaded database sample | 1 million records |  |
-| Start with a clean database | Choose from development or production shapes. | [Database shapes](/cloud/cloud-databases/cloud-db-shapes) |
-
-<ol start="4"><!--added because numbering restarts after para break-->
-  <li>Click **Create database**.</li>
-</ol>
 ## Next step
 
 * [Learn how to add tables](/cloud/cloud-tables/cloud-table-create)

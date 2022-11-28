@@ -39,7 +39,7 @@ There are a couple of states associated with these sources that are important to
 
 * [Learn how to stream data to an ingest endpoint](/cloud/cloud-data-ingestion/streaming-https-endpoint/stream-ingest-endpoint)
 
-<!--
+<!-- DUPLICATION OF DATA TYPES from /cloud/streaming-https-endpoint/_posts/2022-11-09-cloud-streaming-overview.md
 **Type**: This is the FeatureBase type you are storing the value as. A list of types is below:
 
 | `"type":`            | JSON Input Type                         | FeatureBase Data Type                       | Config Options                                   |
