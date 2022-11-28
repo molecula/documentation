@@ -19,17 +19,17 @@ Here is an example of an insert statement:
 insert into test_table (_id, column1, column2) values (1, 10, 'data10'), (2, 10, 'data10'); 
 ```
 
-### Syntax
+## Syntax
 
 ![expr](/img/sql/insert_stmt.svg)
 
-#### column_list
+### column_list
 
 ![expr](/img/sql/column_list.svg)
 
 _column_list_ is the target list of columns to be inserted into. They must be valid columns for the specified table _table_name_, and one of the columns must be the `_id` column. If no _column_list_ is specified, a column list consisting of all columns in the table is assumed.
 
-#### value_list
+### value_list
 
 ![expr](/img/sql/value_list.svg)
 

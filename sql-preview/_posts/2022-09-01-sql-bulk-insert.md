@@ -26,17 +26,17 @@ with
     input 'FILE';
 ```
 
-### Syntax
+## Syntax
 
 ![expr](/img/sql/bulk_insert_stmt.svg)
 
-#### column_list
+### column_list
 
 ![expr](/img/sql/column_list.svg)
 
 _column_list_ is the target list of columns to be inserted into. They must be valid columns for the specified table _table_name_, and one of the columns must be the `_id` column. If no _column_list_ is specified, a column list consisting of all columns in the table is assumed.
 
-#### MAP clause
+### MAP clause
 
 ![expr](/img/sql/map_list.svg)
 
@@ -49,15 +49,15 @@ _map_list_ is a list of expressions and data types that specifiy how to get the 
 the values can be referred to using the variables `@0`, `@1` and `@2` respectively. If there is no TRANSFORM clause specified, the values from the map clause are placed directly into the columns specified in the _column_list_.
 
 
-##### MAP clause for CSV data
+#### MAP clause for CSV data
 
 If CSV is specified as the source, the map expression should be an integer offset for the desired column in the CSV data. The data in that column and an attempt is made to convert it to the specified data type. It is an error if the data cannot be converted to the type specified.
 
-##### MAP clause for NDJSON data
+#### MAP clause for NDJSON data
 
 If NDJSON is specified as the source, the map expression should be a string JsonPath expression for the desired value in the NDJSON data. The expression is evaluated on the data and an attempt is made to convert it to the specified data type. It is an error if the data cannot be converted to the type specified.
 
-#### TRANSFORM clause
+### TRANSFORM clause
 
 ![expr](/img/sql/value_list.svg)
 
@@ -67,46 +67,70 @@ The TRANSFORM clause allows specification of transforms before the rows are inse
 
 the values can be referred to using the variables `@0`, `@1` and `@2` respectively.
 
-The number of expressions in the TRANSFORM clause must match the number of expressions in the column list. 
+The number of expressions in the TRANSFORM clause must match the number of expressions in the column list. Transforms can be any valid expression e.g. (given the `MAP` clause above):
+
+```sql
+TRANSFORM (
+    @0 + 10, -- offset the new _id value by 10
+    @1,      -- pass through unchanged
+    case     -- clean up state names
+        when @2 = 'Texas' then 'TX' end
+        when @2 = 'California' then 'CA' end
+        else @2
+    end
+)
+```
 
 
-#### FROM clause
+### FROM clause
 
 The FROM clause specifies the source of the data. It can be a single line string literal or a multi-line string literal. The way this literal is interprested depends on the value of the INPUT option (ses below).
 
-##### FROM clause for files
+#### FROM clause for files
 
 For files the from clause should be a valid file name. In FeatureBase Cloud this will fail with an error because there is no local access to the file system.
 
-##### FROM clause for urls
+#### FROM clause for urls
 
 For urls the from clause should be a valid url.
 
-##### FROM clause for inline stream
+#### FROM clause for inline stream
 
-For an inline stream, the contents of the literal a read as though they were in a file.
+For an inline stream, the contents of the literal a read as though they were in a file. A stream can be specified using the multi-line string literal syntax:
 
-#### Bulk Insert Options
+```sql
+x'this
+is
+a
+multi-line
+string
+literal'
+```
+
+FeatureBase will treat the contents of this string literal as though it was file and read from it line by line.
+
+
+### Bulk Insert Options
 
 ![expr](/img/sql/bulk_insert_options.svg)
 ![expr](/img/sql/bulk_insert_option.svg)
 
-##### BATCHSIZE
+#### BATCHSIZE
 
 Bulk insert commits row in batches. Use the `BATCHSIZE` option to specifiy the batch size. The default is 1000.
 
-##### ROWSLIMIT
+#### ROWSLIMIT
 
 Bulk insert allows you you limit the number of rows processed. Setting the `ROWSLIMIT` option to 100, for example, will limit the number of rows processed to 100.
 
-##### INPUT
+#### INPUT
 
 The `INPUT` option sets the type of input. Valid values are `'FILE'`, `'URL'` or `'STREAM'`
 
-##### FORMAT
+#### FORMAT
 
 The `FORMAT` option sets the format of the source data. Valid values are `'CSV'` and `'NDJSON'`
 
-##### HEADER_ROW
+#### HEADER_ROW
 
 If `HEADER_ROW` is specified and the `FORMAT` is `'CSV'`, the first row in the CSV is skipped.
