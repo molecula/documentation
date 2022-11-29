@@ -12,10 +12,15 @@ It will take approximately 10 minutes to create the database.
 
 {% include /cloud/cloud-before-begin.md %}
 
-## Step one: create database loaded with sample data
+## Step one: create database
 
-{% include /cloud/cloud-db-new-source.md %}
+{% include /cloud/cloud-db-new-name.md %}
+
+## Step two: load the sample data
 {% include /cloud/cloud-db-load-sample.md %}
+
+## Step three: save settings
+
 {% include /cloud/cloud-db-click-create.md %}
 
 ## Next step
