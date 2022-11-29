@@ -15,7 +15,7 @@ Selects data from a FeatureBase table.
 
 ![expr](/img/sql/select_stmt.svg)
 
-#### DISTINCT
+### DISTINCT
 
 The DISTINCT keyword specifies that only unique rows exist in the output.
 
