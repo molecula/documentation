@@ -29,7 +29,11 @@ NOTE: You can also [create a database with pre-loaded data](/cloud/cloud-databas
 
 ## Create a database
 
-{% include /cloud/cloud-db-create-all.md %}
+{% include /cloud/cloud-db-new-source.md %}
+{% include /cloud/cloud-db-shape-table-head.md%}
+{% include /cloud/cloud-db-shape-dev.md %}
+{% include /cloud/cloud-db-shape-prod.md %}
+{% include /cloud/cloud-db-click-create.md %}
 
 ## Next step
 
