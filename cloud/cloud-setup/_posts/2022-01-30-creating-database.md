@@ -43,4 +43,4 @@ Once your database is in the “RUNNING” state, you are free to start creating
 
 ## Next step
 
-* [Learn how to create tables](/cloud/cloud-data-ingestion/tables)
+* [Learn how to create tables](/cloud/cloud-tables/cloud-table-manage)
