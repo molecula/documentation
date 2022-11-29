@@ -1,5 +1,5 @@
 ---
-title: How do I evaluate FeatureBase Cloud query speed?
+title: How do I quickly evaluate FeatureBase at scale?
 ---
 
 This procedure explains how to create a database loaded with sample data you can query immediately.
