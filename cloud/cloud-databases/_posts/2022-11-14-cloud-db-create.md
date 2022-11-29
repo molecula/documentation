@@ -4,7 +4,7 @@ title: How do I create a Database?
 
 This procedure explains how to create a Database in FeatureBase Cloud.
 
-NOTE: You can also [create a database with pre-loaded data](/cloud/cloud-database/cloud-db-create-sample)
+NOTE: You can also [create a database with pre-loaded data](/cloud/cloud-databases/cloud-db-create-sample)
 
 ## Before you begin
 
