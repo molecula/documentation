@@ -10,6 +10,8 @@ nav:
         category: cloud-setup
       - title: Data modeling
         category: cloud-data-modeling
+      - title: Databases
+        category: cloud-databases
       - title: Data ingestion
         category: cloud-data-ingestion
         subnav:
