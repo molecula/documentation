@@ -22,6 +22,7 @@ FeatureBase databases are clusters of FeatureBase nodes that act as dedicated re
 
 ## Naming standards
 
+{% include /concepts/object-naming-standard %}
 {% include /concepts/database-naming-standard.md %}
 
 ## Database states
