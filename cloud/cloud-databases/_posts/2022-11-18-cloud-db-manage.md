@@ -14,12 +14,6 @@ FeatureBase databases are clusters of FeatureBase nodes that act as dedicated re
 
 {% include /cloud/trial-account-limits.md %}
 
-## Data modeling
-
-{% include /concepts/data-modeling-overview.md %}
-
-* [Learn about data modeling](/concepts/data-modeling-overview)
-
 ## Cloud database shapes
 
 {% include /concepts/database-shape-summary.md %}
