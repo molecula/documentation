@@ -29,3 +29,4 @@ Production shapes are available on paid accounts. These have:
 ## Further information
 
 * [Learn how to manage FeatureBase Cloud databases](/cloud/cloud-database/cloud-db-manage)
+* [Query database shapes via the API](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/getServiceProperties)
