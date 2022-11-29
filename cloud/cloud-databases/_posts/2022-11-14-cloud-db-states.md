@@ -1,5 +1,5 @@
 ---
-title: Cloud database states
+title: What states can my Database have?
 ---
 
 {% include /concepts/db-states-summary.md %}
