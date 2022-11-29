@@ -9,7 +9,6 @@ FeatureBase databases are clusters of FeatureBase nodes that act as dedicated re
 ## Before you begin
 
 {% include /cloud/cloud-before-begin.md %}
-* FeatureBase Cloud Trial accounts are limited to one database
 
 ## Trial accounts
 
