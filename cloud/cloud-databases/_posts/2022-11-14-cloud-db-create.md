@@ -10,7 +10,6 @@ NOTE: You can also [create a database with pre-loaded data](/cloud/cloud-databas
 
 {% include /cloud/cloud-before-begin.md %}
 * [Learn how to manage databases](/cloud/cloud-databases/cloud-db-manage)
-* [Perform data modeling](/concepts/data-modeling-overview) prior to creating databases to avoid issues.
 
 ## Trial accounts
 
