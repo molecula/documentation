@@ -19,6 +19,8 @@ nav:
         category: query-cloud-data
       - title: Configuration
         category: cloud-configuration
+      - title: Issues
+        category: cloud-issues
 
   - title: FeatureBase Community
     category: community
