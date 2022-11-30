@@ -9,7 +9,7 @@ This page provides an overview of FeatureBase tables and links to guide you thro
 ## Before you begin
 
 {% include /cloud/cloud-before-begin.md %}
-* [Learn how to manage Cloud databases](/cloud/cloud-databases/cloud-db-manage)
+* [Learn how to manage Cloud databases](/cloud/cloud-setup/databases-overview)
 
 ## Trial accounts
 
