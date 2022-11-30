@@ -29,9 +29,13 @@ NOTE: You can also [create a database with pre-loaded data](/cloud/cloud-databas
 ## Create database
 
 {% include /cloud/cloud-db-new-name.md %}
+
 * Choose from development shapes intended for testing
+
 {% include /cloud/cloud-db-shape-dev.md %}
+
 * Or choose a production shape instead:
+
 {% include /cloud/cloud-db-shape-prod.md %}
 {% include /cloud/cloud-db-click-create.md %}
 
