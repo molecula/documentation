@@ -12,7 +12,7 @@ It will take approximately 10 minutes to create the database.
 
 {% include /cloud/cloud-before-begin.md %}
 
-## Create database
+## Create database with pre-loaded data
 
 {% include /cloud/cloud-db-new-name.md %}
 {% include /cloud/cloud-db-load-sample.md %}
