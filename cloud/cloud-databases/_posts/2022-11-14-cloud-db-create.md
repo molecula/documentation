@@ -41,7 +41,11 @@ NOTE: You can also [create a database with pre-loaded data](/cloud/cloud-databas
 
 ## Next step
 
+* [Learn how to create tables](/cloud/cloud-data-ingestion/tables)
+
+<!--requires cloud-tables PR to be merged
 * [Learn how to add tables](/cloud/cloud-tables/cloud-table-create)
+-->
 
 ## Further information
 
