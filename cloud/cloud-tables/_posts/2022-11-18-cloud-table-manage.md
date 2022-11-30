@@ -40,9 +40,9 @@ IMPORTANT: Perform data modeling **before** creating tables to avoid issues.
 ## Managing tables in FeatureBase Cloud
 
 * [Create table](/cloud/cloud-tables/cloud-table-create)
-* [Add table columns](/cloud/cloud-databases/cloud-table-add-column)
-* [Drop table columns](/cloud/cloud-databases/cloud-table-drop-column)
-* [Drop table](/cloud/cloud-databases/cloud-table-drop)
+* [Add table columns](/cloud/cloud-tables/cloud-table-add-column)
+* [Drop table columns](/cloud/cloud-tables/cloud-table-drop-column)
+* [Drop table](/cloud/cloud-tables/cloud-table-drop)
 
 ## Managing tables using the Cloud API
 
@@ -54,4 +54,4 @@ Tables that exist in the same database can be joined.
 
 ## Next step
 
-* [Learn about setting up data ingestion](/cloud/cloud-data-ingestion/cloud-ingest-overview)
+* [Learn about setting up data ingestion](/cloud/cloud-data-ingestion/ingest-data-overview)
