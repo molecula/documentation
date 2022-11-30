@@ -24,7 +24,7 @@ NOTE: You can also [create a database with pre-loaded data](/cloud/cloud-databas
 ## Naming standards
 
 {% include /concepts/object-naming-standard.md %}
-{% include /concepts/database-naming-standard.md %}
+{% include /cloud/cloud-db-naming-standard.md %}
 
 ## Step one: name the database
 
