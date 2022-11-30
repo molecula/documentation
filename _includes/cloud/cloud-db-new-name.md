@@ -1,2 +1,2 @@
-1. Click **Databases** > **New database**
-2. Name your database.
+* Click **Databases** > **New database**
+* Name your database.
