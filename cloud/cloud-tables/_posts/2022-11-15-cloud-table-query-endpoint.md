@@ -7,7 +7,7 @@ The table query endpoint is used to query a FeatureBase Cloud table.
 ## Before you begin
 
 {% include /cloud/cloud-before-begin.md%}
-* [Create a database](/cloud/cloud-databases/cloud-db-create)
+* [Create a database](/cloud/cloud-setup/creating-database)
 * [Create a table](/cloud/cloud-tables/cloud-table-create)
 
 ## Where do I find the query endpoint?

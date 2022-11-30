@@ -6,9 +6,9 @@ title: How do I drop a column from a FeatureBase Cloud table?
 ## Before you begin
 
 {% include /cloud/cloud-before-begin.md %}
-* [Learn how to create a database](/cloud/cloud-databases/cloud-db-manage)
+* [Learn how to create a database](/cloud/cloud-setup/creating-database)
 * [Create a table](/cloud/cloud-tables/cloud-table-create)
-* [Create a table column](/cloud/cloud-databases/cloud-table-add-column)
+* [Create a table column](/cloud/cloud-tables/cloud-table-add-column)
 
 ## Step 1: View all tables
 

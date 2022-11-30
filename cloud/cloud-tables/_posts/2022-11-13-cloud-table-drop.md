@@ -16,7 +16,7 @@ There are a number of reasons why you may choose to drop a table, including:
 ## Before you begin
 
 {% include /cloud/cloud-before-begin.md %}
-* [Create a database](/cloud/cloud-databases/cloud-db-create)
+* [Create a database](/cloud/cloud-setup/creating-database)
 * [Create a table](/cloud/cloud-tables/cloud-table-create)
 
 ## Step 1: View table list
@@ -32,4 +32,4 @@ There are a number of reasons why you may choose to drop a table, including:
 ## Further information
 
 * [Delete table API reference](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/deletetable)
-* [Learn how to create tables](/cloud/cloud-database/create-table)
+* [Learn how to create tables](/cloud/cloud-tables/create-table)
