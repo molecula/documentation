@@ -14,7 +14,8 @@ title: How do I add a column to an existing table in FeatureBase Cloud?
 
 ## Naming standard
 
-{% include /concepts/column-naming-standard.md %}
+{% include /cloud/object-naming-standard.md%}
+{% include /cloud/cloud-column-naming-standard.md %}
 
 ## Step 1: View all tables
 

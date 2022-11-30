@@ -10,13 +10,11 @@ The table query endpoint is used to query a FeatureBase Cloud table.
 * [Create a database](/cloud/cloud-setup/creating-database)
 * [Create a table](/cloud/cloud-tables/cloud-table-create)
 
-## Where do I find the query endpoint?
-
-### Step 1: view tables
+## Step 1: view tables
 
 {% include /cloud/cloud-view-table-list.md %}
 
-### Step 2: view the query endpoint
+## Step 2: copy the query endpoint
 
 1. Click &#8942; for the table to query.
 2. Choose **Copy query endpoint**
