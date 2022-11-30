@@ -34,7 +34,7 @@ FeatureBase databases are clusters of FeatureBase nodes that act as dedicated re
 ## Managing databases in FeatureBase Cloud
 
 * [Create database](/cloud/cloud-databases/cloud-db-create)
-* [Drop database](/cloud/cloud-databases/cloud-db-delete)
+* [Delete database](/cloud/cloud-databases/cloud-db-delete)
 
 ## Managing databases using the FeatureBase API
 
