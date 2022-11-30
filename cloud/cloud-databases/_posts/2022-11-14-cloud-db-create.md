@@ -30,7 +30,7 @@ NOTE: You can also [create a database with pre-loaded data](/cloud/cloud-databas
 
 {% include /cloud/cloud-db-new-name.md %}
 
-* Choose from development shapes intended for testing
+* Choose from development shapes intended for testing:
 
 {% include /cloud/cloud-db-shape-dev.md %}
 
