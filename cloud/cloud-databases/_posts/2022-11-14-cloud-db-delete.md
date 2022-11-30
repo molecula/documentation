@@ -14,7 +14,11 @@ Learn how to delete a FeatureBase Cloud database.
 
 {% include /cloud/cloud-before-begin.md %}
 * [Create a database](/cloud/cloud-databases/cloud-db-create)
+* [Delete tables](/cloud/cloud-setup/cloud-quickstart-guide#spinning-down-a-database)
+
+<!-- restore this when the cloud-tables PR is merged
 * [Drop tables](/cloud/cloud-tables/cloud-table-drop)
+-->
 
 ## How to delete a database
 
