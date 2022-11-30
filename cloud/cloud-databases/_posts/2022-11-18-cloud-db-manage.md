@@ -16,14 +16,14 @@ FeatureBase databases are clusters of FeatureBase nodes that act as dedicated re
 
 ## Cloud database shapes
 
-{% include /concepts/database-shape-summary.md %}
+{% include /cloud/cloud-db-shape-summary.md %}
 
 * [Learn about cloud database shapes](/cloud/cloud-databases/cloud-db-shape)
 
 ## Naming standards
 
 {% include /concepts/object-naming-standard %}
-{% include /concepts/database-naming-standard.md %}
+{% include /cloud/cloud-db-naming-standard %}
 
 ## Database states
 

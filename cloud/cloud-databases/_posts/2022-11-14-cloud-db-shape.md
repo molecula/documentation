@@ -2,7 +2,7 @@
 title: What types of database can I create in FeatureBase Cloud?
 ---
 <!--source https://molecula.atlassian.net/wiki/spaces/PROD/pages/893222913/Packaging+Pricing -->
-{% include /concepts/database-shape-summary.md %}
+{% include /cloud/cloud-db-shape-summary.md %}
 
 IMPORTANT: Cloud Database shapes incur an hourly fee, chargeable at the end of the month.
 

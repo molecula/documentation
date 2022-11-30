@@ -17,13 +17,13 @@ NOTE: You can also [create a database with pre-loaded data](/cloud/cloud-databas
 
 ## Cloud database shapes
 
-{% include /concepts/database-shape-summary.md %}
+{% include /cloud/cloud-db-shape-summary.md %}
 
 * [Learn about cloud database shapes](/cloud/cloud-databases/cloud-db-shape)
 
 ## Naming standards
 
-{% include /concepts/object-naming-standard %}
+{% include /concepts/object-naming-standard.md %}
 {% include /concepts/database-naming-standard.md %}
 
 ## Step one: name the database
