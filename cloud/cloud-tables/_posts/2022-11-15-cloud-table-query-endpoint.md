@@ -2,7 +2,7 @@
 title: Where do I find the table Query Endpoint in FeatureBase Cloud?
 ---
 
-The table query endpoint is used when running remote table queries via the API.
+The table query endpoint is used to query a FeatureBase Cloud table.
 
 ## Before you begin
 

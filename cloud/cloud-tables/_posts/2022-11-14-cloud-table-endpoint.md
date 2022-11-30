@@ -1,8 +1,8 @@
 ---
-title: Where do I find the table endpoint in FeatureBase Cloud?
+title: How do I obtain metadata on my table?
 ---
 
-The table endpoint is used when importing data from an external data source.
+The table endpoint is used to obtain metadata on a table via the API.
 
 ## Before you begin
 

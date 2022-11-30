@@ -6,6 +6,7 @@ There are a number of reasons why you may choose to drop a table, including:
 * incorrect configuration
 * incorrect name
 * database deletion
+* data deletion
 
 ## Warnings
 
