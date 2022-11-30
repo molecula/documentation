@@ -1,1 +1,1 @@
-* Click **Create database**
+* Click **Create database**.
