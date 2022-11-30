@@ -1,7 +1,10 @@
 ---
-title: How do I drop a column from a FeatureBase Cloud table?
+title: How do I delete a column from a FeatureBase Cloud table?
 ---
 
+You may need to delete a column if:
+* the data-type is incorrect for incoming data
+* the column contains incorrect data
 
 ## Before you begin
 
@@ -14,7 +17,7 @@ title: How do I drop a column from a FeatureBase Cloud table?
 
 {% include /cloud/cloud-view-table-list.md %}
 
-## Step 2: Drop the selected column
+## Step 2: Delete the selected column
 
 WARNING: Deletion is permanent.
 
