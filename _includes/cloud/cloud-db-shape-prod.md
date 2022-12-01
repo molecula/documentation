@@ -1,4 +1,4 @@
-| Shape | Memory (GB) | AWS GP3 Volume (GB) | Compute (vCPU) |
+| Shape | Memory (GB) | Volume (GB) | Compute (vCPU) |
 |---|---|---|---|
 | 32GB prod | 32 | 100 | 12 |
 | 64GB prod | 64 | 300 | 24 |
