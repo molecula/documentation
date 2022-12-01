@@ -186,7 +186,7 @@ Inputs:
 
 **HTTP API Reference:**
 ```shell
-curl --location --request POST 'https://data.featurebase.com/v2/sinks/<source id>' \
+curl --location --request POST 'https://data.featurebase.com/v2/sinks/<sourceid>' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -404,7 +404,7 @@ Inputs:
 
 **HTTP API Reference:**
 ```shell
-curl --location --request DELETE 'https://api.featurebase.com/v2/sinks/<source id>' \
+curl --location --request DELETE 'https://api.featurebase.com/v2/sinks/<sourceid>' \
 --header 'Authorization: Bearer <IdToken>'  
 ```
 
