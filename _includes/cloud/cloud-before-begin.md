@@ -1,6 +1,5 @@
 * [Learn about FeatureBase Cloud](/cloud/cloud-introduction)
-* [Setup FeatureBase Cloud](/cloud/cloud-setup/cloud-quickstart-guide)
-
+* [Setup a cloud account and login](/cloud/cloud-setup/cloud-quickstart-guide)
 
 <!-- Fix when the https://github.com/molecula/documentation/pull/268 goes in
 * [Setup a FeatureBase Cloud account](/cloud/fbc-part1-signup)
