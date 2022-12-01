@@ -11,7 +11,6 @@ IMPORTANT: Cloud Database shapes incur an hourly fee, chargeable at the end of t
 ## Before you begin
 
 {% include /cloud/cloud-before-begin.md %}
-* [Databases are created on AWS GP3 systems](https://aws.amazon.com/ebs/general-purpose/)
 * [Contact FeatureBase Support](https://www.featurebase.com/contact-us) to upgrade your account to access production database shapes
 
 ### Trial account and Development shapes
