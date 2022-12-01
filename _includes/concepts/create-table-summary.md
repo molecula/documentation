@@ -5,5 +5,3 @@ FeatureBase tables are similar to those in traditional relational databases:
 * columns with data types and constraints.
 
 The first column is automatically created on all tables and serves as the primary key.
-
-When created, a table is assigned a Query endpoint for use when querying data using the HTTPS streaming endpoint.
