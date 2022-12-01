@@ -59,10 +59,6 @@ Shards can be replicated (copied) to a different node in the cluster if required
 
 Replica integrity is maintained by the `anti-entropy` process that compares all shard replicas on the cluster.
 
-## Moving data into FeatureBase
+## Next step
 
-The process of moving data to FeatureBase tables is known as **Ingestion** and is a multi-stage process that includes:
-
-* converting batches of data to Roaring BitMap format
-* mapping source records to target records
-* copying converted data to the target
+* [Learn how FeatureBase handles your data](/concepts/data-handling.md)
