@@ -8,6 +8,10 @@ nav:
     subnav:
       - title: Setup
         category: cloud-setup
+      - title: Databases
+        category: cloud-databases
+      - title: Tables
+        category: cloud-tables
       - title: Data modeling
         category: cloud-data-modeling
       - title: Data ingestion
@@ -19,6 +23,8 @@ nav:
         category: query-cloud-data
       - title: Configuration
         category: cloud-configuration
+      - title: API
+        category: cloud-api
       - title: Troubleshooting
         category: cloud-troubleshooting
 
