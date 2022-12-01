@@ -20,4 +20,4 @@ This is a 21 day trial period
 
 ## Next step
 
-* [Login to FeatureBase Cloud](https://cloud.featurebase.com/login)
+* [Login to FeatureBase Cloud](/cloud/fbc-part2-login)
