@@ -1,8 +1,8 @@
 ---
-title: Where do I find the table Query Endpoint in FeatureBase Cloud?
+title: Where do I find the Query Endpoint in FeatureBase Cloud?
 ---
 
-The table query endpoint is used to query a FeatureBase Cloud table.
+The table query endpoint is used to query a FeatureBase Cloud database.
 
 ## Before you begin
 
