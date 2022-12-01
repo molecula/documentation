@@ -109,6 +109,17 @@ literal'
 
 FeatureBase will treat the contents of this string literal as though it was file and read from it line by line.
 
+#### FROM clause for data with apostrophes (`'`)
+
+Data in the FROM caluse that contain apostrophes (`'`) must be escaped with an additional apostrophe. 
+
+Incorrect inline stream example:
+
+`FeatureBase's speed`
+
+Correct inline stream example:
+
+`FeatureBase''s speed`
 
 ### Bulk Insert Options
 
