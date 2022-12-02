@@ -20,4 +20,4 @@ You can login to FeatureBase Cloud in two ways:
 
 ## Next step
 
-* [Learn how to setup a FeatureBase Database](/cloud/cloud-databases/cloud-manage-databases)
+* [Learn how to setup a FeatureBase Database](/cloud/cloud-databases/cloud-db-manage)
