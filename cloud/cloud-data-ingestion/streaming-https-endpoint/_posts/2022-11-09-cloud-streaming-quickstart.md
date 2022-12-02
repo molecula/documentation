@@ -54,7 +54,7 @@ curl --location --request POST 'https://id.featurebase.com' \
 
 ### Create A Database
 
-The first step is creating a database. We will be using the 8GB shape for this walk-through. For more information on databases, see [Database Overview](/cloud/cloud-setup/databases-overview).  The command below will start creating your database. You can also do this in the UI on the "Databases" page by clicking “New Database”, selecting "Standard", entering "iris_demo_database" for the name, and choosing the "8GB" option.
+The first step is creating a database. We will be using the 8GB shape for this walk-through. For more information on databases, see [Database Overview](/cloud/cloud-databases/cloud-db-manage).  The command below will start creating your database. You can also do this in the UI on the "Databases" page by clicking “New Database”, selecting "Standard", entering "iris_demo_database" for the name, and choosing the "8GB" option.
 
 Inputs:
 1. IdToken - IdToken from auth token call to pass as "Authorization" header
@@ -186,7 +186,7 @@ Inputs:
 
 **HTTP API Reference:**
 ```shell
-curl --location --request POST 'https://data.featurebase.com/v2/sinks/<source id>' \
+curl --location --request POST 'https://data.featurebase.com/v2/sinks/<sourceid>' \
 --header 'Authorization: Bearer <IdToken>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -404,7 +404,7 @@ Inputs:
 
 **HTTP API Reference:**
 ```shell
-curl --location --request DELETE 'https://api.featurebase.com/v2/sinks/<source id>' \
+curl --location --request DELETE 'https://api.featurebase.com/v2/sinks/<sourceid>' \
 --header 'Authorization: Bearer <IdToken>'  
 ```
 
