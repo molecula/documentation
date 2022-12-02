@@ -9,7 +9,7 @@ This page explains where you can login to FeatureBase cloud.
 * [Learn more about FeatureBase cloud](/cloud/cloud-introduction)
 * [Learn about the 21 day trial period](/cloud/cloud-introduction#cloud-trial)
 * [Read the terms of service](https://www.featurebase.com/cloud-terms)
-* [Sign-up to FeatureBase Cloud](/cloud/part1-signup-to-cloud)
+* [Sign-up to FeatureBase Cloud](/cloud/fbc-part1-signup)
 
 ## Sign in to FeatureBase Cloud
 
@@ -20,4 +20,4 @@ You can login to FeatureBase Cloud in two ways:
 
 ## Next step
 
-* [Learn how to setup a FeatureBase Database and tables](/cloud/cloud-setup/databases-overview)
+* [Learn how to setup a FeatureBase Database](/cloud/cloud-databases/cloud-manage-databases)
