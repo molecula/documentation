@@ -7,7 +7,7 @@ title: How do I create a table in FeatureBase Cloud?
 ## Before you begin
 
 {% include /cloud/cloud-before-begin.md %}
-* [Learn how to create a database](/cloud/cloud-setup/creating-database)
+* [Learn how to create a database](/cloud/cloud-databases/cloud-db-create)
 * [Learn how to manage tables](/cloud/cloud-tables/cloud-table-manage)
 
 ## Naming standards

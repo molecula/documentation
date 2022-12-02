@@ -136,7 +136,7 @@ SELECT AVG(income) FROM cseg;
 <!--
 This needs to be updated back to INNER JOIN and SQL once SQL3 JOIN functionality is stable
 -->
-FeatureBase can merge at ingest and eliminate preprocessing in cases where performant **INNER JOIN**s are required. Data from two separate tables or sources can be merged into a single normalized table by matching on a unique key in each dataset. Since FeatureBase can execute queries very quickly, workflows requiring ```INNER JOIN```s can be simplified with FeatureBase by merging disparate datasets at ingest. In the following example, we are combining many of the queries in this guide and adding the ```INNER JOIN``` functionality using the `DISTINCT` function in FeatureBase's native language called [PQL](/data-querying/pql).
+FeatureBase can merge at ingest and eliminate preprocessing in cases where performant **INNER JOIN**s are required. Data from two separate tables or sources can be merged into a single normalized table by matching on a unique key in each dataset. Since FeatureBase can execute queries very quickly, workflows requiring ```INNER JOIN```s can be simplified with FeatureBase by merging disparate datasets at ingest. In the following example, we are combining many of the queries in this guide and adding the ```INNER JOIN``` functionality using the `DISTINCT` function in FeatureBase's native language called [PQL](/pql-guide/pql-introduction).
 
 The ```INNER JOIN``` is facilitating a ```COUNT``` of records, or people, that are ```available for hire``` as indicated by having a ```STRING``` column true for ```available_for_hire``` located in the skills table, and having a ```STRING``` column true for ```Teaching```. In other words, we would like to ```COUNT``` the number of people who are teachers and also available for hire. The latency on this type of ```INNER JOIN``` at the billion records scale is still sub-second allowing for several interesting data models.
 
@@ -154,7 +154,7 @@ Distinct(Row(bools='available_for_hire'), field= id, index=skills)))
 
 ### TopK - A FeatureBase Superpower
 
-Ranking queries are notorious for being computationally intensive - aka slow. Some solutions will use statistics to speed up a ranking query by approximating the true results, but that’s not always a desirable option. In PQL, [```TopK```](/reference/data-querying-ref/pql/read/topk) queries can be run to return exact results in milliseconds. 
+Ranking queries are notorious for being computationally intensive - aka slow. Some solutions will use statistics to speed up a ranking query by approximating the true results, but that’s not always a desirable option. In PQL, [```TopK```](/pql-guide/read/topk) queries can be run to return exact results in milliseconds. 
 
 This query returns the top five hobbies across all customers from the cseg table, sifting through a billion records in 117.2ms.
 

@@ -8,12 +8,12 @@ nav:
     subnav:
       - title: Setup
         category: cloud-setup
-      - title: Tables
-        category: cloud-tables
-      - title: Data modeling
-        category: cloud-data-modeling
       - title: Databases
         category: cloud-databases
+      - title: Data modeling
+        category: cloud-data-modeling
+      - title: Tables
+        category: cloud-tables
       - title: Data ingestion
         category: cloud-data-ingestion
         subnav:
