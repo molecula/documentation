@@ -109,9 +109,9 @@ literal'
 
 FeatureBase will treat the contents of this string literal as though it was file and read from it line by line.
 
-#### FROM clause for data with apostrophes (`'`)
+#### FROM clause for data with single quotes (`'`) and double quotes(`"`)
 
-Data in the FROM caluse that contain apostrophes (`'`) must be escaped with an additional apostrophe. 
+Data in the FROM caluse that contain single quotes (`'`) must be escaped with an additional single quote (even if CSV values are quoted). 
 
 Incorrect inline stream example:
 
@@ -120,6 +120,16 @@ Incorrect inline stream example:
 Correct inline stream example:
 
 `FeatureBase''s speed`
+
+If data in the FROM clause is quoted, the double quotes (`"`) in the data must be escaped with an additional double quote.
+
+Incorrect inline stream example:
+
+`"“Time is money.” – Benjamin Franklin."`
+
+Correct inline stream example:
+
+`""“Time is money.”" – Benjamin Franklin."`
 
 ### Bulk Insert Options
 
