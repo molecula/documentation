@@ -269,7 +269,7 @@ Remember that the schema for fake flights (when converted to JSON) looks like th
 
 #### Create A Table
 
-You must create a table before you can ingest data. For more information on tables, see [Tables](/cloud/cloud-data-ingestion/tables). The command below will create your table.
+You must create a table before you can ingest data. For more information on tables, see [Tables](/cloud/cloud-tables/cloud-table-manage). The command below will create your table.
 
 It is highly recommended to do table creation within the UI for easier mapping of column types, constraints, and options. Navigate to the "Tables" page and click “New Table", selecting your database, entering "flights" for the name, and entering "table holding flight data" as the description. The primary key for the flight table for this tutorial is a number, so choose Number as the ID type.
 

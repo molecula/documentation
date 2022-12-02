@@ -82,7 +82,7 @@ FIELD_NAMES = ["id","sepallength","sepalwidth","petallength","petalwidth","speci
 ```
 
 
-You must create a table before you can ingest data. For more information on tables, see [Tables](/cloud/cloud-data-ingestion/tables). It is highly recommended to do table creation within the UI for easier mapping of column types, constraints, and options. Navigate to the "Tables" page and click “New Table", selecting your database, entering "<table-name>" for the name, and entering "table holding flower data" as the description. The primary key for the iris table for this tutorial is a number, so choose `Number` as the ID type.
+You must create a table before you can ingest data. For more information on tables, see [Tables](/cloud/cloud-tables/cloud-table-manage). It is highly recommended to do table creation within the UI for easier mapping of column types, constraints, and options. Navigate to the "Tables" page and click “New Table", selecting your database, entering "<table-name>" for the name, and entering "table holding flower data" as the description. The primary key for the iris table for this tutorial is a number, so choose `Number` as the ID type.
 
 Once created, go to the "COLUMNS" tab in order to add or delete columns. You will see the _id column that was created during table creation. click "ADD COLUMN" and add the following columns, types, and constraints:
 
