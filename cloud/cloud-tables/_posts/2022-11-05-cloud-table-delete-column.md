@@ -9,7 +9,7 @@ You may need to delete a column if:
 ## Before you begin
 
 {% include /cloud/cloud-before-begin.md %}
-* [Learn how to create a database](/cloud/cloud-setup/creating-database)
+* [Learn how to create a database](/cloud/cloud-databases/cloud-db-create)
 * [Create a table](/cloud/cloud-tables/cloud-table-create)
 * [Create a table column](/cloud/cloud-tables/cloud-table-add-column)
 

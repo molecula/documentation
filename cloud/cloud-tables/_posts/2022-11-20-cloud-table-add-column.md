@@ -5,7 +5,7 @@ title: How do I add a column to an existing table in FeatureBase Cloud?
 ## Before you begin
 
 {% include /cloud/cloud-before-begin.md %}
-* [Create a database](/cloud/cloud-setup/creating-database)
+* [Create a database](/cloud/cloud-databases/cloud-db-create)
 * [Create a table](/cloud/cloud-tables/cloud-table-create)
 
 ## Column data types and constraints
