@@ -2,7 +2,7 @@
 
 Updated documentation for Featurebase doco following alterations documented in https://molecula.atlassian.net/wiki/spaces/DOCS/pages/1007747427/Featurebase+doc+review%3A+summary+of+findings
 
-## Theme = Minmia (Jekyll default)
+## Theme = Minima(Jekyll default)
 
 * Manually maintained sidebar Nav
 * Page YAML differs from Post YAML
@@ -167,6 +167,7 @@ For larger content edits or for changes to the theme, you'll likely need to clon
 
    ```
    cd documentation
+   sudo gem install bundler:2.3.9
    bundle install
    ```
 
