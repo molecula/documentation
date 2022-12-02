@@ -2,6 +2,8 @@
 title: Cloud Introduction
 ---
 
+ **⚠ WARNING:** This page contains information that only applies to FeatureBase Cloud. Additionally, this page represents a work in progress that is subject to frequent changes.
+
 FeatureBase Cloud is fully managed and intended for users that don't want to have to operate and maintain the underlying hardware for FeatureBase. Our Cloud solution takes what makes FeatureBase amazing and makes it even easier to provision and operate in order to get value from your data faster.
 
 ## Key Cloud Features
@@ -32,4 +34,4 @@ All users must agree to the Terms of Service before they can sign up.
 
 ## Next step
 
-* [Learn how to setup your FeatureBase Cloud account](/cloud/fbc-part1-signup)
+* [Learn how to setup your FeatureBase Cloud account](/cloud/cloud-setup/cloud-quickstart-guide)
