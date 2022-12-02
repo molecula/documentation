@@ -1,1 +1,1 @@
-[Contact FeatureBase support](se@featurebase.com)
+[Contact FeatureBase support](mailto: se@featurebase.com)
