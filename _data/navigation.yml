@@ -8,6 +8,8 @@ nav:
     subnav:
       - title: Setup
         category: cloud-setup
+      - title: Tables
+        category: cloud-tables
       - title: Data modeling
         category: cloud-data-modeling
       - title: Databases
