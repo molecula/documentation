@@ -189,15 +189,19 @@ delete_stmt = "DELETE" ;
   Queries a FeatureBase table.
 
 *)
-select_stmt = "SELECT", [ top_clause ], [ "DISTINCT" ], result_column, { ",", result_column }, [ from_clause ], [ where_clause ], [group_by_clause], [order_by_clause] ;
+select_stmt = "SELECT", [ "DISTINCT" ], [ top_clause ], select_list, [ from_clause ], [ where_clause ], [group_by_clause], [having_clause], [order_by_clause] ;
 
 top_clause = ( "TOP" | "TOPN" ), "(", expr, ")" ;  
 
-result_column = expr, [ [ "AS" ], column_alias ]
+select_list = select_item, { ",", select_item } ;
+
+select_item = expr, [ [ "AS" ], column_alias ]
       | "*"
-      | identifier, ".", "*" ;
+      | qualifier, ".", "*" ;
 
 column_alias = identifier ;
+
+qualifier = identifier ;
 
 from_clause = "FROM", table_or_subquery, { ",", table_or_subquery } ;
 
@@ -211,9 +215,16 @@ table_option = "SHARDS", "(", integer_literal, { ",", integer_literal }, ")";
 
 where_clause = "WHERE", expr ;
 
-group_by_clause = "GROUP", "BY", expr, { ",", expr }, [ "HAVING", expr ] ;
+group_by_clause = "GROUP", "BY", column_expr, { ",", column_expr };
 
-order_by_clause = "ORDER", "BY", expr, [ "ASC" | "DESC" ], { ",", expr, [ "ASC" | "DESC" ] };
+column_expr = expr ;
+
+having_clause = "HAVING", expr ;
+
+order_by_clause = "ORDER", "BY", order_by_expression, { ",", order_by_expression };
+
+order_by_expression = expr, [ "ASC" | "DESC" ] ;
+
 
 (*
 

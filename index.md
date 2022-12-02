@@ -4,10 +4,16 @@ title: Welcome to FeatureBase Help
 
 FeatureBase Help contains high level overviews of software functionality, plus procedural documentation for FeatureBase Cloud and the self-managed Community edition.
 
+## What is FeatureBase?
+
+FeatureBase is a feature-oriented database platform that powers real-time analytics and machine learning applications by executing low-latency, high-throughput, and highly concurrent workloads. Similar to the evolution of data formats from row-oriented to columnar, FeatureBase further evolves columnar into a feature-oriented format that makes each distinct data value individually addressable (accessible, readable, writable and retrievable).
+
+Our novel approach minimizes I/O on queries by allowing the database engine to read and write exactly the data it needs and intelligently compress that data in memory. The result is a step-function improvement in analytical workloads.
+
 ## Before you begin
 
 * [Learn more about FeatureBase](https://www.featurebase.com/){:target="_blank"}
-* [Contact FeatureBase support](https://www.featurebase.com/contact-us)
+* [Contact FeatureBase support](https://www.featurebase.com/contact-us){:target="_blank"}
 
 ## Comparing Cloud and Community editions
 
