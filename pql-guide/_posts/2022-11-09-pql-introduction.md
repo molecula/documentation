@@ -1,7 +1,7 @@
 ---
 id: pql-introduction
 title: PQL Introduction
-sidebar_label: PQL-introduction
+sidebar_label: PQL Introduction
 ---
 
 Pilosa Query Language (PQL) is FeatureBase's native query language.
@@ -110,6 +110,10 @@ Aggregation calls include:
 Exploratory calls are used to drill down into a data set.
 
 - [Extract](/pql-guide/read/extract){:target="_blank"} is analogous to a general `select` query in a relational database, returning a subset of both rows and columns.
+
+### DataFrame Calls
+- [Apply](/pql-guide/read/apply){:target="_blank"} computes Ivy code against `float64` and / or `int64` data$
+- [Arrow](/pql-guide/read/arrow){:target="_blank"} is analogous to `Extract()` and `SELECT <columns> FROM <table> WHERE <condition>` query in SQL.
 
 ### Write Operations
 - [Clear](/pql-guide/write/clear){:target="_blank"} sets a single specified bit to zero -- said another way, it removes a value from a field for a specified record.
