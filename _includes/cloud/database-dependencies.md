@@ -1,3 +1,2 @@
-{% include /cloud/cloud-before-begin.md %}
-* [Create a database](/cloud/cloud-databases/cloud-db-create]
-* [Create tables](/cloud/cloud-tables/cloud-create-table)
+* [Learn how to create a database](/cloud/cloud-databases/cloud-db-create)
+* [Learn how to create tables](/cloud/cloud-data-ingestion/tables)

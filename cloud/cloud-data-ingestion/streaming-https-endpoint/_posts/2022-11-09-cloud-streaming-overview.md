@@ -6,7 +6,8 @@ title: Streaming (HTTPS) Overview
 
 ## Before you start
 
-{% include /cloud/database-dependencies.md %}
+* [Create a database](/cloud/cloud-databases/cloud-db-create)
+* [Create tables](/cloud/cloud-tables/cloud-table-manage)
 
 ## Streaming data to tables
 

@@ -1,3 +1,3 @@
-Data modeling is a key component in FeatureBase that involves understanding both how you will consume your data and how FeatureBase can represent your data to meet your needs.
-
-IMPORTANT: Data modeling must be performed before ingestion to avoid long-term issues
+Data modeling must be performed before creating database tables to ensure:
+* source column data is matched to FeatureBase data types prior to transformation and import
+* queries on the data meet expectations

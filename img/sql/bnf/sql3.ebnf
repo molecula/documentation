@@ -112,7 +112,7 @@ rename_column = "RENAME", [ "COLUMN" ], identifier, "TO", identifier ;
   Inserts data into a FeatureBase table.
 
 *)
-insert_stmt = ( "INSERT" | "REPLACE" ), "INTO", identifier, [ "(", identifier, { ",", identifier }, ")" ], "VALUES", "(", expr, { ",", expr }, ")" ;
+insert_stmt = ( "INSERT" | "REPLACE" ), "INTO", table_name, [ column_list ], "VALUES", value_list, { ",", value_list } ;
 
 (*
 
@@ -121,19 +121,57 @@ insert_stmt = ( "INSERT" | "REPLACE" ), "INTO", identifier, [ "(", identifier, {
   Bulk inserts data into a FeatureBase table.
 
 *)
-bulk_insert_stmt = "BULK", "INSERT", identifier, "FROM", string_literal, [ "WITH", bulk_insert_option, { bulk_insert_option } ];
+bulk_insert_stmt = "BULK", ( "INSERT" | "REPLACE" ), "INTO", table_name, [ column_list ], "MAP", map_list, [ "TRANSFORM", value_list ], "FROM", string_literal, "WITH", bulk_insert_options ;
+
+(*
+
+  Examples
+  ----------------
+
+Bulk insert from a csv file - assumes that the server has access to the file at that path. `map` clause for csv files is the column index.
+
+  `bulk insert into testtable (_id, i1, 12, d1) map (0, 1, 2, 3) from '/users/foo/bar.csv' with format csv batchsize 1000 rowslimit 10000;`
+
+Source could be an url.
+
+  `bulk insert into testtable (_id, i1, 12, d1) map (0, 1, 2, 3) from 'https://foo.bar.com/bar.csv' with format csv batchsize 1000 rowslimit 10000;`
+
+Pre-batching transformation of values using a values clause - to refer to the new column value from the source we can use `$value`.
+
+  `bulk insert into testtable (_id, i1, i2, d1) map (0, 1, 2, 3) transform ($value, $value + 2, $value, $value) from '/users/foo/bar.csv' with format csv batchsize 1000 rowslimit 10000;`
+  
+We can support ndjson as a format - in this case the `map` clause contains jsonpath expressions.
+
+  `bulk insert into testtable (_id, i1, 12, d1) map ('$.foo', '$.bar', '$.baz', '$.boo') transform ($value, $value + 2, $value, $value) from '/users/foo/bar.json' with format ndjson batchsize 1000 rowslimit 10000;`
+  
+Another variant with an inline 'stream' (multi-line string delimiter to be decided).
+
+  `bulk insert into testtable (_id, i1, 12, d1) map ('$.foo', '$.bar', '$.baz', '$.boo') transform ($value, $value + 2, $value, $value) from 
+  """
+  {"foo": 1000, "bar": 10, "baz": 20, "boo": 3}
+  """ 
+  with input stream format ndjson batchsize 1000 rowslimit 10000;`
+
+*)
+
+column_list =
+  "(", column_name, { ",", column_name }, ")" ;
+
+map_list =
+  "(", expr type_name, { ",", expr type_name }, ")" ;
+
+value_list = 
+  "(", expr, { ",", expr }, ")" ;
+
+bulk_insert_options = 
+  bulk_insert_option, { bulk_insert_option } ;
 
 bulk_insert_option = 
       "BATCHSIZE", integer_literal
     | "ROWSLIMIT", integer_literal
-    | "FORMAT", "CSV"
-    | bulk_insert_map_option ;
-
-bulk_insert_map_option = "MAP", map_id_option | map_column_option ;
-
-map_id_option = "_ID", "TO", ( "AUTOINCREMENT" | expr, { ",", expr } );
-
-map_column_option = "OFFSET", integer_literal, "TO", column_name ;
+    | "INPUT", string_literal
+    | "FORMAT", string_literal
+    | "HEADER_ROW" ;
 
 (*
 
@@ -151,15 +189,19 @@ delete_stmt = "DELETE" ;
   Queries a FeatureBase table.
 
 *)
-select_stmt = "SELECT", [ top_clause ], [ "DISTINCT" ], result_column, { ",", result_column }, [ from_clause ], [ where_clause ], [group_by_clause] ;
+select_stmt = "SELECT", [ "DISTINCT" ], [ top_clause ], select_list, [ from_clause ], [ where_clause ], [group_by_clause], [having_clause], [order_by_clause] ;
 
 top_clause = ( "TOP" | "TOPN" ), "(", expr, ")" ;  
 
-result_column = expr, [ [ "AS" ], column_alias ]
+select_list = select_item, { ",", select_item } ;
+
+select_item = expr, [ [ "AS" ], column_alias ]
       | "*"
-      | identifier, ".", "*" ;
+      | qualifier, ".", "*" ;
 
 column_alias = identifier ;
+
+qualifier = identifier ;
 
 from_clause = "FROM", table_or_subquery, { ",", table_or_subquery } ;
 
@@ -173,7 +215,16 @@ table_option = "SHARDS", "(", integer_literal, { ",", integer_literal }, ")";
 
 where_clause = "WHERE", expr ;
 
-group_by_clause = "GROUP", "BY", expr, { ",", expr }, [ "HAVING", expr ] ;
+group_by_clause = "GROUP", "BY", column_expr, { ",", column_expr };
+
+column_expr = expr ;
+
+having_clause = "HAVING", expr ;
+
+order_by_clause = "ORDER", "BY", order_by_expression, { ",", order_by_expression };
+
+order_by_expression = expr, [ "ASC" | "DESC" ] ;
+
 
 (*
 

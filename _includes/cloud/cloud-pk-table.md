@@ -1,4 +1,4 @@
-The table ID column is used as the table primary key and must uniquely represent a record in your table.
+The table ID column (`_id`) is used as the table primary key and must uniquely represent a record in your table.
 
 | Type | Data source table unique key |
 |---|---|
