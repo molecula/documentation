@@ -1,7 +1,7 @@
 ---
-id: floating-point-consumer
-title: Floating Point / DataFrame Consumer
-sidebar_label: Floating Point / DataFrame Consumer
+id: dataframe-consumer
+title: DataFrame Consumer
+sidebar_label: DataFrame Consumer
 ---
 
 ## Overview
