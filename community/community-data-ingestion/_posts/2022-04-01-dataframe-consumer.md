@@ -4,6 +4,8 @@ title: DataFrame Consumer
 sidebar_label: DataFrame Consumer
 ---
 
+**NOTE**: This page contians information that only applies to preview functionality involving `float64` and `int64` data types. This page represents a work in progress that is subject to fequent changes. To enable this functionality, you must use the `--dataframe.enable` flag when running FeatureBase.
+
 ## Overview
 
 FeatureBase's native data format (the bitmap) is designed for high speed filtering and summation of integer and fixed point numbers (`Int` and `Decimal` field types). However, when you need to do more general purpose calculation such as multiplication, division, or transcendental functions, the `float64` and `int64` data types should be used. Currently, the best way to get data into FeatureBase using those types is the consumer documented here.
@@ -21,6 +23,7 @@ This is a small subset of the things you can do with the `float64` and `int64` f
 ## Considerations
 Below are some things to consider when using this consumer:
 - This consumer ingests data from a single CSV file (pointed to by the `-csv` flag)
+- `null` is not currently supported for `float64` and `int64` datatypes. Missing values in the CSV file will be interpreted and stored as zero.
 - This consumer only ingest data to keyed indexes in FeatureBase
 - In order to map data between bitmap fields and `float64`/`int64` fields, the first column in the CSV file should correspond the the record keys used for records with bitmap data.
 - The first line in the CSV file must define the column name (which will be used to refer to the data in queries) and the column's field type. The format for each column must be `<column_name>__<column_type>` where `<column_type>` can take the value `F` for `float64` and `I` for `int64` data.
