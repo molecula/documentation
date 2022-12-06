@@ -80,4 +80,4 @@ You are also able to see, search for, and re-run your historical queries. Click 
 
 ## Further information
 
-* [Learn how to query databases using the API](/cloud/query-data/cloud-query-ssh)
+* [Learn how to query databases using the API](https://api-docs-featurebase-cloud.redoc.ly/v2#tag/Query)

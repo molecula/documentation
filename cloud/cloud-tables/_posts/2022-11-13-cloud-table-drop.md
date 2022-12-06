@@ -31,4 +31,4 @@ There are a number of reasons why you may choose to drop a table, including:
 ## Further information
 
 * [Delete table API reference](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/deletetable)
-* [Learn how to create tables](/cloud/cloud-database/create-table)
+* [Learn how to create tables](/cloud/cloud-tables/cloud-table-create)
