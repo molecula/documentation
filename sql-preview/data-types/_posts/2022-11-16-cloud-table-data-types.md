@@ -17,23 +17,23 @@ Data types used to define the type of data that a table column can contain. They
 
 ### Numeric data types
 
-* [BOOL](/cloud/cloud-data-types/cloud-bool-data-type)
-* [DECIMAL](/cloud/cloud-data-types/cloud-decimal-data-type)
-* [INT](/cloud/cloud-data-types/cloud-int-data-type)
-* [ID](/cloud/cloud-data-types/cloud-id-data-type)
+* [BOOL](/sql-preview/data-typescloud-bool-data-type)
+* [DECIMAL](/sql-preview/data-typescloud-decimal-data-type)
+* [INT](/sql-preview/data-typescloud-int-data-type)
+* [ID](/sql-preview/data-typescloud-id-data-type)
 
 ### String data types
 
-* [STRING](/cloud/cloud-data-types/cloud-string-data-type)
+* [STRING](/sql-preview/data-typescloud-string-data-type)
 
 ### Date/Time data types
 
-* [TIMESTAMP](/cloud/cloud-data-types/cloud-timestamp-data-type)
+* [TIMESTAMP](/sql-preview/data-typescloud-timestamp-data-type)
 
 ### FeatureBase data types
 
-* [IDSET](/cloud/cloud-data-types/cloud-idset-data-type)
-* [STRINGSET](/cloud/cloud-data-types/cloud-stringset-data-type)
+* [IDSET](/sql-preview/data-typescloud-idset-data-type)
+* [STRINGSET](/sql-preview/data-typescloud-stringset-data-type)
 
 ## Constraints
 
@@ -43,11 +43,11 @@ Constraints are applied when a column is created.
 
 | Constraint | Data type |
 |---|---|
-| MIN, MAX | [INT](/cloud/cloud-data-types/cloud-int-data-type) |
-| SCALE | [DECIMAL](/cloud/cloud-data-types/cloud-decimal-data-type) |
-| TIMEUNIT | [TIMESTAMP](/cloud/cloud-data-types/cloud-timestamp-data-type) |
-| TIMEQUANTUM, TTL | [IDSET](/cloud/cloud-data-types/cloud-idset-data-type) |
-| TIMEQUANTUM, TTL | [STRINGSET](/cloud/cloud-data-types/cloud-stringset-data-type) |
+| MIN, MAX | [INT](/sql-preview/data-typescloud-int-data-type) |
+| SCALE | [DECIMAL](/sql-preview/data-typescloud-decimal-data-type) |
+| TIMEUNIT | [TIMESTAMP](/sql-preview/data-typescloud-timestamp-data-type) |
+| TIMEQUANTUM, TTL | [IDSET](/sql-preview/data-typescloud-idset-data-type) |
+| TIMEQUANTUM, TTL | [STRINGSET](/sql-preview/data-typescloud-stringset-data-type) |
 
 ## Further information
 
