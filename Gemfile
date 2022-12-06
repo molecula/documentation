@@ -41,3 +41,7 @@ gem 'jekyll-default-layout'
 #
 # For more info see: http://jekyll.github.io/github-metadata/
 gem "jekyll-github-metadata"
+
+# addon for htmlproofer dead link checker
+gem 'rake'
+gem 'html-proofer'
