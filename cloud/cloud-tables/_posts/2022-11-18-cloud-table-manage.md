@@ -27,7 +27,7 @@ IMPORTANT: Perform data modeling **before** creating tables to avoid issues.
 
 {% include /cloud/cloud-pk-table.md%}
 
-* [Learn about data types and constraints](/cloud/cloud-data-modeling/data-types)
+* [Learn about data types and constraints](/sql-preview/data-types/data-types-home)
 
 ## Naming standard
 

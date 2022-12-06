@@ -166,5 +166,5 @@ The data models presented above will allow deeper analysis of data, including:
 
 ## Further information
 
-* [Learn more about IDSETS and STRINGSETS](/cloud/cloud-data-modeling/data-types#data-types)
+* [Learn more about IDSETS and STRINGSETS](/sql-preview/data-types/data-types-home#data-types)
 * [Learn more about Time Quantums](/concepts/time-quantums)
