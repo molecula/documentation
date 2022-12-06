@@ -34,4 +34,4 @@ CODE EXAMPLE
 
 ## Further information
 
-* [Time Quantum and Time to Live constraint](/sql-preview/data-typescloud-timequantum-ttl-constraint)
+* [Time Quantum and Time to Live constraint](/sql-preview/data-types/cloud-timequantum-ttl-constraint)

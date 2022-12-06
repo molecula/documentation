@@ -27,6 +27,6 @@ INT is not suitable for queries that
 * look for discrete values
 * include data sets with low cardinality
 
-Instead, use the [ID data type](/sql-preview/data-typescloud-id-data-type).
+Instead, use the [ID data type](/sql-preview/data-types/cloud-id-data-type).
 
 ## Examples
