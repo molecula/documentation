@@ -15,7 +15,7 @@
 
 This example demonstrates the deletion dates of three column views where `ttl:30d`
 
-| Views on column | Date of deletion | Explanation |
+| View date | ttl date of deletion | Explanation |
 |---|---|---|
 | 2022 | January 30, 2023 | Date assumed to be end of 2022 |
 | 2022-09 | October 30, 2022 | Date assumed to be end of September |
