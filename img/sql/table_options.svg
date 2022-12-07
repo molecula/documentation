@@ -1,4 +1,4 @@
-<svg class="railroad-diagram" height="92" viewbox="0 0 418 92" width="418" xmlns="http://www.w3.org/2000/svg">
+<svg class="railroad-diagram" height="122" viewbox="0 0 418 122" width="418" xmlns="http://www.w3.org/2000/svg">
  <g transform="translate(.5 .5)">
   <g>
    <path d="M20 21v20m0 -10h20">
@@ -84,6 +84,44 @@
     </g>
    </g>
    <path d="M358 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10">
+   </path>
+   <path d="M40 31a10 10 0 0 1 10 10v40a10 10 0 0 0 10 10">
+   </path>
+   <g>
+    <path d="M60 91h29.75">
+    </path>
+    <path d="M328.25 91h29.75">
+    </path>
+    <g class="terminal">
+     <path d="M89.75 91h0">
+     </path>
+     <path d="M169.25 91h0">
+     </path>
+     <rect height="22" rx="10" ry="10" width="79.5" x="89.75" y="80">
+     </rect>
+     <text x="129.5" y="95">
+      COMMENT
+     </text>
+    </g>
+    <path d="M169.25 91h10">
+    </path>
+    <path d="M179.25 91h10">
+    </path>
+    <g class="non-terminal">
+     <path d="M189.25 91h0">
+     </path>
+     <path d="M328.25 91h0">
+     </path>
+     <rect height="22" width="139" x="189.25" y="80">
+     </rect>
+     <a>
+      <text x="258.75" y="95">
+       string_literal
+      </text>
+     </a>
+    </g>
+   </g>
+   <path d="M358 91a10 10 0 0 0 10 -10v-40a10 10 0 0 1 10 -10">
    </path>
   </g>
   <path d="M 378 31 h 20 m 0 -10 v 20">

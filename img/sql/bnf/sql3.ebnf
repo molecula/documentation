@@ -89,7 +89,8 @@ column_constraint =
       | "CACHETYPE", ( "RANKED" | "LRU" ), [ "SIZE", integer_literal ] ;
 
 table_options = "KEYPARTITIONS", integer_literal
-      | "SHARDWIDTH", integer_literal ;
+      | "SHARDWIDTH", integer_literal
+      | "COMMENT", string_literal ;
 
 type_name = "INT" 
     | "BOOL"
