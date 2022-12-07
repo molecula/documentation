@@ -7,8 +7,6 @@ Int is a numeric datatype used with the `min` and `max` constraints.
 ## Syntax
 
 ```
-syntax goes here
-
 INT MIN | MAX
 ```
 

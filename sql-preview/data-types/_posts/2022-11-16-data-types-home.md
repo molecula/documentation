@@ -2,7 +2,7 @@
 title: Cloud table data types and constraints
 ---
 
-Data types and constraints are used to define table columns when creating tables via SQL
+Data types and constraints are used to define table columns when creating tables via SQL.
 
 NOTE: For ease of use, Constraint information is included with the relevant Data type reference.
 

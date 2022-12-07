@@ -5,7 +5,7 @@ title: STRING data type
 ## Syntax
 
 ```
-STRING...
+STRING
 ```
 
 ## Arguments
