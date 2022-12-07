@@ -31,5 +31,7 @@ Pip:
 Run the script:
 
 `python extract.py`
+or
+`python3 extract.py`
 
 All done! Go validate the images have been properly updated in the /img/sql folder.

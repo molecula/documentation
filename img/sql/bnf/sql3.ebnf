@@ -11,6 +11,7 @@ sql3 = statement, [ ";" ] ;
 
 statement = show_tables
       | show_columns
+      | show_create_table
       | drop_table
       | create_table_stmt
       | alter_table_stmt
@@ -36,6 +37,15 @@ show_tables = "SHOW", "TABLES" ;
 
 *)
 show_columns = "SHOW", "COLUMNS", "FROM", identifier ;
+
+(*
+
+  SHOW CREATE TABLE
+  ----------------
+  Shows the ddl on a FeatureBase table.
+
+*)
+show_create_table = "SHOW", "CREATE", "TABLE", identifier ;
 
 (*
 

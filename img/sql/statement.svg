@@ -1,4 +1,4 @@
-<svg class="railroad-diagram" height="302" viewbox="0 0 284.5 302" width="284.5" xmlns="http://www.w3.org/2000/svg">
+<svg class="railroad-diagram" height="332" viewbox="0 0 284.5 332" width="284.5" xmlns="http://www.w3.org/2000/svg">
  <g transform="translate(.5 .5)">
   <g>
    <path d="M20 21v20m0 -10h20">
@@ -46,15 +46,15 @@
    <path d="M40 31a10 10 0 0 1 10 10v40a10 10 0 0 0 10 10">
    </path>
    <g class="non-terminal">
-    <path d="M60 91h29.75">
+    <path d="M60 91h0">
     </path>
-    <path d="M194.75 91h29.75">
+    <path d="M224.5 91h0">
     </path>
-    <rect height="22" width="105" x="89.75" y="80">
+    <rect height="22" width="164.5" x="60" y="80">
     </rect>
     <a>
      <text x="142.25" y="95">
-      drop_table
+      show_create_table
      </text>
     </a>
    </g>
@@ -63,15 +63,15 @@
    <path d="M40 31a10 10 0 0 1 10 10v70a10 10 0 0 0 10 10">
    </path>
    <g class="non-terminal">
-    <path d="M60 121h0">
+    <path d="M60 121h29.75">
     </path>
-    <path d="M224.5 121h0">
+    <path d="M194.75 121h29.75">
     </path>
-    <rect height="22" width="164.5" x="60" y="110">
+    <rect height="22" width="105" x="89.75" y="110">
     </rect>
     <a>
      <text x="142.25" y="125">
-      create_table_stmt
+      drop_table
      </text>
     </a>
    </g>
@@ -80,15 +80,15 @@
    <path d="M40 31a10 10 0 0 1 10 10v100a10 10 0 0 0 10 10">
    </path>
    <g class="non-terminal">
-    <path d="M60 151h4.25">
+    <path d="M60 151h0">
     </path>
-    <path d="M220.25 151h4.25">
+    <path d="M224.5 151h0">
     </path>
-    <rect height="22" width="156" x="64.25" y="140">
+    <rect height="22" width="164.5" x="60" y="140">
     </rect>
     <a>
      <text x="142.25" y="155">
-      alter_table_stmt
+      create_table_stmt
      </text>
     </a>
    </g>
@@ -97,15 +97,15 @@
    <path d="M40 31a10 10 0 0 1 10 10v130a10 10 0 0 0 10 10">
    </path>
    <g class="non-terminal">
-    <path d="M60 181h25.5">
+    <path d="M60 181h4.25">
     </path>
-    <path d="M199 181h25.5">
+    <path d="M220.25 181h4.25">
     </path>
-    <rect height="22" width="113.5" x="85.5" y="170">
+    <rect height="22" width="156" x="64.25" y="170">
     </rect>
     <a>
      <text x="142.25" y="185">
-      select_stmt
+      alter_table_stmt
      </text>
     </a>
    </g>
@@ -122,7 +122,7 @@
     </rect>
     <a>
      <text x="142.25" y="215">
-      insert_stmt
+      select_stmt
      </text>
     </a>
    </g>
@@ -131,15 +131,15 @@
    <path d="M40 31a10 10 0 0 1 10 10v190a10 10 0 0 0 10 10">
    </path>
    <g class="non-terminal">
-    <path d="M60 241h4.25">
+    <path d="M60 241h25.5">
     </path>
-    <path d="M220.25 241h4.25">
+    <path d="M199 241h25.5">
     </path>
-    <rect height="22" width="156" x="64.25" y="230">
+    <rect height="22" width="113.5" x="85.5" y="230">
     </rect>
     <a>
      <text x="142.25" y="245">
-      bulk_insert_stmt
+      insert_stmt
      </text>
     </a>
    </g>
@@ -148,19 +148,36 @@
    <path d="M40 31a10 10 0 0 1 10 10v220a10 10 0 0 0 10 10">
    </path>
    <g class="non-terminal">
-    <path d="M60 271h25.5">
+    <path d="M60 271h4.25">
     </path>
-    <path d="M199 271h25.5">
+    <path d="M220.25 271h4.25">
     </path>
-    <rect height="22" width="113.5" x="85.5" y="260">
+    <rect height="22" width="156" x="64.25" y="260">
     </rect>
     <a>
      <text x="142.25" y="275">
-      delete_stmt
+      bulk_insert_stmt
      </text>
     </a>
    </g>
    <path d="M224.5 271a10 10 0 0 0 10 -10v-220a10 10 0 0 1 10 -10">
+   </path>
+   <path d="M40 31a10 10 0 0 1 10 10v250a10 10 0 0 0 10 10">
+   </path>
+   <g class="non-terminal">
+    <path d="M60 301h25.5">
+    </path>
+    <path d="M199 301h25.5">
+    </path>
+    <rect height="22" width="113.5" x="85.5" y="290">
+    </rect>
+    <a>
+     <text x="142.25" y="305">
+      delete_stmt
+     </text>
+    </a>
+   </g>
+   <path d="M224.5 301a10 10 0 0 0 10 -10v-250a10 10 0 0 1 10 -10">
    </path>
   </g>
   <path d="M 244.5 31 h 20 m 0 -10 v 20">
