@@ -5,13 +5,13 @@ title: STRINGSET data type
 ## Syntax
 
 ```
-STRINGSET...
+STRINGSET
 ```
 
 ## Arguments
 
-| Argument | Description | Further information |
-|---|---|---|
+| Argument | Description |
+|---|---|
 | STRINGSET | Data type used to set multiple STRING values for a single column. |
 
 ## Additional information
@@ -31,4 +31,4 @@ CODE EXAMPLE
 
 ## Further information
 
-* [Time Quantum and Time to Live constraint](/sql-preview/data-types/cloud-timequantum-ttl-constraint)
+* [Time Quantum and Time to Live constraint](/sql-preview/data-types/constraint-timequantum-ttl)

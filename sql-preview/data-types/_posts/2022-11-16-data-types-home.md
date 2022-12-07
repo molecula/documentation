@@ -2,7 +2,7 @@
 title: Cloud table data types and constraints
 ---
 
-Data types and constraints are used to define table columns when creating tables via the Cloud UI or the API.
+Data types and constraints are used to define table columns when creating tables via SQL
 
 NOTE: For ease of use, Constraint information is included with the relevant Data type reference.
 
@@ -17,23 +17,23 @@ Data types used to define the type of data that a table column can contain. They
 
 ### Numeric data types
 
-* [BOOL](/sql-preview/data-types/cloud-bool-data-type)
-* [DECIMAL](/sql-preview/data-types/cloud-decimal-data-type)
-* [INT](/sql-preview/data-types/cloud-int-data-type)
-* [ID](/sql-preview/data-types/cloud-id-data-type)
+* [BOOL](/sql-preview/data-types/data-type-bool)
+* [DECIMAL](/sql-preview/data-types/data-type-decimal)
+* [INT](/sql-preview/data-types/data-type-int)
+* [ID](/sql-preview/data-types/data-type-id)
 
 ### String data types
 
-* [STRING](/sql-preview/data-types/cloud-string-data-type)
+* [STRING](/sql-preview/data-types/data-type-string)
 
 ### Date/Time data types
 
-* [TIMESTAMP](/sql-preview/data-types/cloud-timestamp-data-type)
+* [TIMESTAMP](/sql-preview/data-types/data-type-timestamp)
 
 ### FeatureBase data types
 
-* [IDSET](/sql-preview/data-types/cloud-idset-data-type)
-* [STRINGSET](/sql-preview/data-types/cloud-stringset-data-type)
+* [IDSET](/sql-preview/data-types/data-type-idset)
+* [STRINGSET](/sql-preview/data-types/data-type-stringset)
 
 ## Constraints
 
@@ -43,11 +43,10 @@ Constraints are applied when a column is created.
 
 | Constraint | Data type |
 |---|---|
-| MIN, MAX | [INT](/sql-preview/data-types/cloud-int-data-type) |
-| SCALE | [DECIMAL](/sql-preview/data-types/cloud-decimal-data-type) |
-| TIMEUNIT | [TIMESTAMP](/sql-preview/data-types/cloud-timestamp-data-type) |
-| TIMEQUANTUM, TTL | [IDSET](/sql-preview/data-types/cloud-idset-data-type) |
-| TIMEQUANTUM, TTL | [STRINGSET](/sql-preview/data-types/cloud-stringset-data-type) |
+| MIN, MAX | [INT](/sql-preview/data-types/data-type-int) |
+| SCALE | [DECIMAL](/sql-preview/data-types/data-type-decimal) |
+| TIMEQUANTUM, TTL | [IDSET](/sql-preview/data-types/data-type-idset)<br/> [STRINGSET](/sql-preview/data-types/data-type-stringset) |
+| TIMEUNIT | [TIMESTAMP](/sql-preview/data-types/data-type-timestamp) |
 
 ## Further information
 

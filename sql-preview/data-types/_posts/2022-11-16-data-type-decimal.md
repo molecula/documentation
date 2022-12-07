@@ -2,17 +2,19 @@
 title: Decimal data type
 ---
 
+Decimal is a numeric data type used with `scale` constraint.
+
 ## Syntax
 
 ```
-DECIMAL...SCALE...
+DECIMAL()
 ```
 
 ## Arguments
 
 | Argument | Description |
 |---|---|
-| DECIMAL | Numeric data type ideally used for decimal numbers where the exact scale is known. Defaults to two (2) |
+| DECIMAL | Numeric data type ideally used for decimal numbers where the exact scale is known. |
 | SCALE | Constraint that determines the number of digits of precision to store after the decimal point. Defaults to two (2) |
 
 ## Additional information

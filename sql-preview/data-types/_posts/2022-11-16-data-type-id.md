@@ -5,13 +5,13 @@ title: ID numeric datatype
 ## Syntax
 
 ```
-ID...
+ID
 ```
 
 ## Arguments
 
-| Argument | Description | Further information |
-|---|---|---|
+| Argument | Description |
+|---|---|
 | ID | Numeric data type used for unsigned integers that are between `1` and `2^63 -1` |  |
 
 ## Additional information

@@ -10,8 +10,8 @@ STRING...
 
 ## Arguments
 
-| Argument | Description | Further information |
-|---|---|---|
+| Argument | Description |
+|---|---|
 | STRING | Used for STRING, CHAR and VARCHAR data. |
 
 ## Additional information

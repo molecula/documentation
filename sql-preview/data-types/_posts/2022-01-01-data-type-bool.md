@@ -5,7 +5,7 @@ title: BOOL data type
 ## Syntax
 
 ```
-BOOL...
+BOOL
 ```
 
 ## Arguments
@@ -21,8 +21,6 @@ Use this table to determine how integer and string values are represented when a
 | data | value | bool |
 |---|---|---|
 | integer | 0 | 0 |
-| integer > 0 | 1 |
+| integer > 0 | 1 | 1 |
 | string | empty, `0`, `f`, `false` | 0 |
 | string | other string values | 1 |
-
-## Examples

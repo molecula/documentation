@@ -2,6 +2,8 @@
 title: TIMESTAMP data type
 ---
 
+Timestamp is a date-time data type used with `timeunit` and `epoch` constraints.
+
 ## Syntax
 
 ```
@@ -13,7 +15,7 @@ TIMESTAMP [TIMEUNIT] [EPOCH]
 | Argument | Description | Further information |
 |---|---|---|
 | TIMESTAMP | Time and date data type used for time series analysis | [Time stamp](https://en.wikipedia.org/wiki/Timestamp) |
-| TIMEUNIT | Constraint for time and date that defaults to second `s` | See [TIMEUNIT values](#timeunit-values) |
+| TIMEUNIT | The time unit in which to store a timestamp that defaults to second `s | See [TIMEUNIT values](#timeunit-values) |
 | EPOCH | The epoch which timestamps should be relative to. This is represented as a RFC339 time stamp string. | See [Epoch values](#epoch-values) |
 
 ## Additional information

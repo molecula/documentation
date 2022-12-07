@@ -12,8 +12,8 @@ IDSET...
 
 ## Arguments
 
-| Argument | Description | Further information |
-|---|---|---|
+| Argument | Description |
+|---|---|
 | IDSET | Data type used where there is a need to set multiple ID values for a single column |
 
 ## Additional information
@@ -24,14 +24,6 @@ IDSET...
   * searching for discrete values
 * Use the INT data type to perform range queries using `<` or `>`
 
-## Example
-
-Track all the store IDs a customer has visited
-
-```
-CODE EXAMPLE
-```
-
 ## Further information
 
-* [Time Quantum and Time to Live constraint](/sql-preview/data-types/cloud-timequantum-ttl-constraint)
+* [Time Quantum and Time to Live constraint](/sql-preview/data-types/constraint-timequantum-ttl)
