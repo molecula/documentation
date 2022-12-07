@@ -52,7 +52,7 @@ Column constraints are optional for columns.
 |------------------|-----------------------------------------------------------------------|
 | KEYPARTITIONS    | integer literal; between 1-10000                                      |
 | SHARDWIDTH       | integer literal; must be a power of two greater than or equal to 2^16 |
-
+| COMMENT          | string literal;  description of the table                             |
 
 #### Example
 
@@ -69,5 +69,5 @@ create table allcoltypes (
 	idcol id cachetype ranked size 1000, 
     idsetcol idset cachetype lru size 1000,
 	idsetcolq idset cachetype lru size 1000 timequantum 'ymd' ttl '24h'
-) keypartitions 12 shardwidth 65536
+) keypartitions 12 shardwidth 65536 comment 'table description'
 ```
