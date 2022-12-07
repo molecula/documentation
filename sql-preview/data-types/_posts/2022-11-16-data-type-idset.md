@@ -15,6 +15,7 @@ IDSET
 | Argument | Description |
 |---|---|
 | IDSET | Data type used where there is a need to set multiple ID values for a single column |
+{% include /sql-preview/timequantum-ttl-args.md %}
 
 ## Additional information
 

@@ -5,13 +5,16 @@ title: timeQuantum and TTL (Time To Live) Constraints
 ## Syntax
 
 ```
-Would be nice to have syntax referring back to the
+curl -XPOST http://localhost:10101/index/**[index_name]**/field/**field_name** -d'{ "options": {"type":"time", "timeQuantum":"YMDH", **"ttl":">integer>time_unit"**}}'
 ```
 
 ## Arguments
 
 | Argument | Description | Further information |
 |---|---|---|
+| index_name |  | [naming standard](#naming-standard) |
+| field_name |  | [naming standard](#naming-standard) |
+| type |  |  |
 | timeQuantum | Create a view on IDSET and STRINGSET columns that allow range queries down to the specified time. timeQuantum associates a time with each value in the column. |  |
 | YMDH | Granularity of time represented by Year, Month, Day, Hour |
 | "ttl" | Used to reduce the growth of a data footprint by deleting older views. |  |
@@ -50,21 +53,38 @@ Queries run on mismatched time granularities are slower but will function correc
 ### ttl
 
 * ttl enables the deletion of time views where a time range exceeds the stated Time To Live.
-* ttl runs when FeatureBase starts and every hour to make view deletion consistent
-* ttl is not guaranteed to run at a specific time
 * ttl should not be used if you require complete and consistent historical data.
-
 * time_units
   * ttl of 0s (default value) indicates views created on the timeQuantum will not be deleted
   * FeatureBase recommends using a ttl of one hour or more to improve results.
   * `error: unknown unit` is generated if an incorrect time_unit is used (e.g., `"ttl":"60second"`)
 
-#### TTL order of events
+* TTL deletion
+  * runs when FeatureBase starts and every hour thereafter to make view deletion consistent.
+  * is not guaranteed to run at a specific time.
 
-This example demonstrates the deletion dates of three views where `ttl:30d`
+## Examples
 
-| Views on column | Date of deletion | Explanation |
-|---|---|---|
-| 2022 | January 30, 2023 | Date assumed to be end of 2022 |
-| 2022-09 | October 30, 2022 | Date assumed to be end of September |
-| 2022-09-02 | 2022-10-02 | Deletion after 30 days as intended |
+### TTL explanation
+
+A column with `YMD` has four views for 2022-09-02 and TTL is set to `30d`
+* 2022
+* 2022-09
+* 2022-09-02 and standard
+
+This means that the following views are deleted:
+* 2022-09-02 view is cleared after 30 days (roughly on 2022-10-02),
+* 2022-09 view is cleared on October 30, 2022
+* 2022 view is deleted January 30, 2023.
+
+### Create a new `ttl` field
+
+```
+curl -XPOST http://localhost:10101/index/**test_ttl_index**/field/**data_ttl** -d'{ "options": {"type":"time", "timeQuantum":"YMDH", **"ttl":"24h"**}}'
+```
+
+### Update an existing field to apply `ttl`
+
+```
+curl -XPATCH http://localhost:10101/index/**test_ttl_index**/field/**data_ttl** -d'{ **"option": "ttl", "value": "24h"**}
+```
