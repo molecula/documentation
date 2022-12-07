@@ -13,6 +13,7 @@ STRINGSET
 | Argument | Description |
 |---|---|
 | STRINGSET | Data type used to set multiple STRING values for a single column. |
+{% include /sql-preview/timequantum-ttl-args.md %}
 
 ## Additional information
 
@@ -20,6 +21,10 @@ STRINGSET
 * STRINGSET is used when:
   * grouping by
   * searching for discrete values
+
+{% include /sql-preview/time-quantum-additional.md %}
+
+{% include /sql-preview/ttl-additional.md %}
 
 ## Example
 

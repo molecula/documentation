@@ -25,6 +25,10 @@ IDSET
   * searching for discrete values
 * Use the INT data type to perform range queries using `<` or `>`
 
+{% include /sql-preview/time-quantum-additional.md %}
+
+{% include /sql-preview/ttl-additional.md %}
+
 ## Further information
 
 * [Time Quantum and Time to Live constraint](/sql-preview/data-types/constraint-timequantum-ttl)
