@@ -1,6 +1,7 @@
 ---
 title: How do I delete a column from a FeatureBase Cloud table?
 ---
+{% include /cloud/cloud-sql-alternative.md %}
 
 You may need to delete a column if:
 * the data-type is incorrect for incoming data
