@@ -1,6 +1,7 @@
 ---
 title: How do I drop a table in FeatureBase Cloud?
 ---
+{% include /cloud/cloud-sql-alternative.md %}
 
 There are a number of reasons why you may choose to drop a table, including:
 * incorrect configuration
