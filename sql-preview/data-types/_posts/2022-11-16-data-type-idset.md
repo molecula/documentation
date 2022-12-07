@@ -25,7 +25,7 @@ IDSET
   * searching for discrete values
 * Use the INT data type to perform range queries using `<` or `>`
 
-{% include /sql-preview/time-quantum-additional.md %}
+{% include /sql-preview/timequantum-additional.md %}
 
 {% include /sql-preview/ttl-additional.md %}
 

@@ -22,7 +22,7 @@ STRINGSET
   * grouping by
   * searching for discrete values
 
-{% include /sql-preview/time-quantum-additional.md %}
+{% include /sql-preview/timequantum-additional.md %}
 
 {% include /sql-preview/ttl-additional.md %}
 
