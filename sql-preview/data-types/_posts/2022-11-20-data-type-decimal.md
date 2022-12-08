@@ -1,5 +1,5 @@
 ---
-title: Decimal data type
+title: DECIMAL data type
 ---
 
 Decimal is a numeric data type used with `scale` constraint.
