@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo Now pulling latest changes...
+git pull
+echo Now building site...
+bundle exec jekyll build
+echo Now running htmlproofer...
+bundle exec htmlproofer ./_site
+echo NOTE: Everything but external links needs to be fixed
