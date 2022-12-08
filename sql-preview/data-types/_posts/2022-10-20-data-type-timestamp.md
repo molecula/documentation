@@ -16,7 +16,7 @@ TIMESTAMP [TIMEUNIT] [EPOCH]
 |---|---|---|
 | TIMESTAMP | Time and date data type used for time series analysis | [Time stamp](https://en.wikipedia.org/wiki/Timestamp) |
 | TIMEUNIT | The time unit in which to store a timestamp that defaults to second `s | See [TIMEUNIT values](#timeunit-values) |
-| EPOCH | The epoch which timestamps should be relative to. This is represented as a RFC339 time stamp string. | See [Epoch values](#epoch-values) |
+| EPOCH | The epoch which timestamps will be stored relative to. This is represented as a RFC339 time stamp string | See [Epoch values](#epoch-values) |
 
 ## Additional information
 
