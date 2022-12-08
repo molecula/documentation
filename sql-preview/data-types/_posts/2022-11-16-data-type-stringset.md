@@ -25,11 +25,3 @@ STRINGSET
 {% include /sql-preview/timequantum-additional.md %}
 
 {% include /sql-preview/ttl-additional.md %}
-
-## Example
-
-Track all the store IDs a customer has visited
-
-```
-CODE EXAMPLE
-```

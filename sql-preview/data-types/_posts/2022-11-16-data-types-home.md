@@ -19,8 +19,8 @@ Data types used to define the type of data that a table column can contain. They
 
 * [BOOL](/sql-preview/data-types/data-type-bool)
 * [DECIMAL](/sql-preview/data-types/data-type-decimal)
-* [INT](/sql-preview/data-types/data-type-int)
 * [ID](/sql-preview/data-types/data-type-id)
+* [INT](/sql-preview/data-types/data-type-int)
 
 ### String data types
 
