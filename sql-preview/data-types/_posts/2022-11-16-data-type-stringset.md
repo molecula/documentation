@@ -33,7 +33,3 @@ Track all the store IDs a customer has visited
 ```
 CODE EXAMPLE
 ```
-
-## Further information
-
-* [Time Quantum and Time to Live constraint](/sql-preview/data-types/constraint-timequantum-ttl)

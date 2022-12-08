@@ -28,7 +28,3 @@ IDSET
 {% include /sql-preview/timequantum-additional.md %}
 
 {% include /sql-preview/ttl-additional.md %}
-
-## Further information
-
-* [Time Quantum and Time to Live constraint](/sql-preview/data-types/constraint-timequantum-ttl)
