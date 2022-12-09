@@ -183,6 +183,11 @@ For larger content edits or for changes to the theme, you'll likely need to clon
 
 
 ## Checking For Broken Links
+
+There are two methods, and in both cases you're looking for broken **internal** links.
+
+## python script
+
 Anytime you modify links, change page names, or change the nav file, please run the `dead_link_seeker.py` script. This script will crawl through all of the pages it finds off of the URL you pass, collect any URLs it sees, and call them to ensure proper health responses are returned. This should be run with python 3.6+ and uses packages that generally come installed (urllib,collections,HTMLParser), but you may have to install them conda/pip/etc. This can be run on your local build:
 
 ```python
@@ -198,7 +203,18 @@ For more detail, you may run in verbose mode by adding a `v` as a second arg.
 
 If you add or see any pages returned that are not printed out as exceptions at the end of the output, please add them to the `false_positive` list in the script. Keep the docs healthy!
 
+## htmlproofer gem
 
+* html-proofer has been added to `Gemfile`
+* load for the first time on a repository by running `bundle` at the command line.
+
+Then run the broken link checker using the batch file:
+
+```
+bash check-links.sh
+```
+
+NOTE: Everything but external links needs to be fixed.
 
 ## Publishing to docs.featurebase.com
 You can think of the `main` branch as being a place to stage changes and the `gh-pages` branch as the publish copy found on https://docs.featurebase.com.

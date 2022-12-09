@@ -15,6 +15,6 @@ Time granularity allows for lower latency queries at the cost of increased stora
 
 You can omit but not skip time granularity.
 * YM is valid
-* MS is invalid
+* YH is invalid
 
 NOTE: Queries run on mismatched time granularities are slower but will function correctly. For example: YM time granularity then query on days.
