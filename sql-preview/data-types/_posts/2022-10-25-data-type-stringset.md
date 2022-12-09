@@ -5,7 +5,7 @@ title: STRINGSET data type
 ## Syntax
 
 ```
-STRINGSET
+STRINGSET [TIMEQUANTUM 'ymdh' [TTL '{value} h|m|s}']]
 ```
 
 ## Arguments
