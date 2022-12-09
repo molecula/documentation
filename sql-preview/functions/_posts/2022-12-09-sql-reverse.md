@@ -21,7 +21,7 @@ reverse(expr)
 
 #### Arguments
 
-The argument `expr` can either be a string column or another another string function
+The argument `expr` can either be a string column or another string function
 
 #### Return Type
 `string`
