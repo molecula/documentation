@@ -7,7 +7,7 @@ Int is a numeric datatype used with the `min` and `max` constraints.
 ## Syntax
 
 ```
-INT MIN | MAX
+INT MIN [MIN VALUE] MAX [MAX VALUE]
 ```
 
 ## Arguments
@@ -25,5 +25,3 @@ INT is not suitable for queries that
 * include data sets with low cardinality
 
 Instead, use the [ID data type](/sql-preview/data-types/data-type-id).
-
-## Examples
