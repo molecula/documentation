@@ -13,5 +13,7 @@ title: SQL String Functions
 
 [REVERSE()](/sql-preview/functions/sql-reverse#reverse){:target="_blank"}
 
+[SUBSTRING()](/sql-preview/functions/sql-substring#substring){:target="_blank"}
+
 
 
