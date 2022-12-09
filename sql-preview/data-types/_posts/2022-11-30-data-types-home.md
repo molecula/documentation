@@ -43,6 +43,7 @@ Constraints are applied when a column is created.
 
 | Constraint | Data type |
 |---|---|
+| EPOCH | [TIMESTAMP](/sql-preview/data-types/data-type-timestamp)
 | MIN, MAX | [INT](/sql-preview/data-types/data-type-int) |
 | SCALE | [DECIMAL](/sql-preview/data-types/data-type-decimal) |
 | TIMEQUANTUM, TTL | [IDSET](/sql-preview/data-types/data-type-idset)<br/> [STRINGSET](/sql-preview/data-types/data-type-stringset) |
