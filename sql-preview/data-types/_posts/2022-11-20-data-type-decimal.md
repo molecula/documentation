@@ -7,7 +7,7 @@ Decimal is a numeric data type used with `scale` constraint.
 ## Syntax
 
 ```
-DECIMAL()
+DECIMAL([SCALE VALUE])
 ```
 
 ## Arguments
@@ -16,6 +16,7 @@ DECIMAL()
 |---|---|
 | DECIMAL | Numeric data type ideally used for decimal numbers where the exact scale is known. |
 | SCALE | Constraint that determines the number of digits of precision to store after the decimal point. Defaults to two (2) |
+| VALUE | integer value of zero or more. |
 
 ## Additional information
 
