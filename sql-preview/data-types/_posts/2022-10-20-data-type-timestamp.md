@@ -7,7 +7,7 @@ Timestamp is a date-time data type used with `timeunit` and `epoch` constraints.
 ## Syntax
 
 ```
-TIMESTAMP TIMEUNIT [TIMEUNIT VALUE] EPOCH [EPOCH VALUE]
+TIMESTAMP [TIMEUNIT {value}] [EPOCH {value}]
 ```
 
 ## Arguments

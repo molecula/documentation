@@ -7,7 +7,7 @@ NOTE: FeatureBase recommends using a TTL of `1h` or more to improve results.
 * TTL runs:
   * when FeatureBase starts and every hour to make view deletion consistent
   * are not guaranteed to run at a specific time
-* `error: unknown unit` is generated if an incorrect value is used (e.g., `"ttl '60second'`)
+* `error: unknown unit` is generated if an incorrect value is used (e.g., TTL is set to `60second`)
 
 * TTL should not be used if you require complete and consistent historical data.
 

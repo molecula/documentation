@@ -7,7 +7,7 @@ IDSET is a FeatureBase datatype used with `timeQuantum` and `ttl` constraints.
 ## API syntax
 
 ```
-IDSET [{TIMEQUANTUM 'ymdh'} [{TTL '<integer> h|m|s}']]
+IDSET [TIMEQUANTUM {value} [TTL '{value}}']]
 ```
 
 ## Arguments

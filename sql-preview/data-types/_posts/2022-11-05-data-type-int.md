@@ -7,7 +7,7 @@ Int is a numeric datatype used with the `min` and `max` constraints.
 ## Syntax
 
 ```
-INT MIN [MIN VALUE] MAX [MAX VALUE]
+INT [MIN {value}] [MAX {value}]
 ```
 
 ## Arguments
