@@ -1,6 +1,7 @@
 ---
 title: How do I create a table in FeatureBase Cloud?
 ---
+{% include /cloud/cloud-sql-alternative.md %}
 
 {% include /concepts/create-table-summary.md %}
 

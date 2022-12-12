@@ -35,10 +35,22 @@ IMPORTANT: Perform data modeling **before** creating tables to avoid issues.
 
 ## Managing tables in FeatureBase Cloud
 
-* [Create table](/cloud/cloud-tables/cloud-table-create)
-* [Add table columns](/cloud/cloud-tables/cloud-table-add-column)
-* [Drop table columns](/cloud/cloud-tables/cloud-table-delete-column)
-* [Drop table](/cloud/cloud-tables/cloud-table-drop)
+* Create table
+    * [UI](/cloud/cloud-tables/cloud-table-create)
+    * [SQL](/sql-preview/sql-create-table)
+* Add table columns
+    * [UI](/cloud/cloud-tables/cloud-table-add-column)
+    * [SQL](/sql-preview/sql-alter-table#add_column)
+* Drop table columns
+    * [UI](/cloud/cloud-tables/cloud-table-delete-column)
+    * [SQL](/sql-preview/sql-alter-table#drop_column)
+* Drop table
+    * [UI](/cloud/cloud-tables/cloud-table-drop)
+    * [SQL](/sql-preview/sql-alter-table#drop_column)
+
+<!--
+DROP TABLE SQL PAGE NEEDS TO BE CREATED AND REPLACED ABOVE
+-->
 
 ## Managing tables using the Cloud API
 
