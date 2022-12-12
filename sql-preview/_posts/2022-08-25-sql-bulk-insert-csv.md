@@ -1,15 +1,13 @@
 ---
-title: How do I Bulk Insert A CSV File?
+title: Tutorial - Ingest a CSV with BULK INSERT
 ---
 
 ## Before you begin
 {% include /sql-preview/before_ingest.md %}
 
-## Step 0: learn about the data
+[Learn about the age dataset](https://www.kaggle.com/datasets/imoore/age-dataset?resource=download)
 
-1. Learn a little bit about the [age dataset](https://www.kaggle.com/datasets/imoore/age-dataset?resource=download)
-
-## Step 2: create table
+## Step 1: create table
 
 ```sql
 CREATE TABLE age (
@@ -26,12 +24,12 @@ CREATE TABLE age (
 ) keypartitions 12 shardwidth 65536;
 ```
 
-## Step 3: ingest data
+## Step 2: ingest data
 
 ```sql
 BULK INSERT
-    INTO age (_id, name, description, gender, country, occupation,
-            birth_year, death_year, death_manner, birth_age )
+INTO age (_id, name, description, gender, country, occupation,
+    birth_year, death_year, death_manner, birth_age )
 MAP(0 STRING,
 1 STRING,
 2 STRING,
@@ -51,7 +49,7 @@ WITH
     HEADER_ROW;
 ```
 
-## Step 4: query the data
+## Step 3: query the data
 
 ```sql
 SELECT COUNT(*) FROM age;
