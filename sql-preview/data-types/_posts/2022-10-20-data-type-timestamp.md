@@ -15,7 +15,7 @@ TIMESTAMP [TIMEUNIT {value}] [EPOCH {value}]
 | Argument | Description | Further information |
 |---|---|---|
 | TIMESTAMP | Time and date data type used for time series analysis | [Time stamp](https://en.wikipedia.org/wiki/Timestamp) |
-| TIMEUNIT | The time unit in which to store a timestamp that defaults to second `s | See [TIMEUNIT values](#timeunit-value) |
+| TIMEUNIT | The time unit in which to store a timestamp that defaults to second `s` | See [TIMEUNIT values](#timeunit-value) |
 | EPOCH | The epoch which timestamps will be stored relative to. This is represented as [RFC339 time stamp string](https://www.rfc-editor.org/rfc/rfc3339). Defaults to the [Unix epoch](https://www.unixtutorial.org/unix-epoch/) | See [Epoch values](#epoch-value) |
 
 ## Additional information
