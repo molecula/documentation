@@ -15,5 +15,6 @@ title: SQL String Functions
 
 [SUBSTRING()](/sql-preview/functions/sql-substring#substring){:target="_blank"}
 
+[UPPER()](/sql-preview/functions/sql-upper#upper){:target="_blank"}
 
 
