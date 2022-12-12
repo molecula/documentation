@@ -64,5 +64,7 @@ nav:
   - title: SQL preview
     category: sql-preview
     subnav:
+      - title: Data types
+        category: data-types
       - title: Functions
         category: functions
