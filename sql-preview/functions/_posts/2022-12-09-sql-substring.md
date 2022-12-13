@@ -9,35 +9,35 @@ title: SUBSTRING
 
 ---
 
-### SUBSTRING()
+## SUBSTRING()
 
 `Substring()` extracts a substring from the given string, starting at the specified start index and with the specified length.
 
-#### Syntax
+### Syntax
 
 ```
 substring(expr,startIndex,length)
 ```
 
-#### Arguments
+### Arguments
 
 _expr_ 
-The input string from which to extract the substring. Expr can either be a string column or another string function.
+The input string from which to extract the substring. The argument `expr` is any expression of type `string`.
 
 _startIndex_
-The starting index of the substring in the input string, starting at zero. startIndex must be an integer.
+The starting index of the substring in the evaluated expression, starting at zero. `startIndex` can be any expression of type `int`
 
-_length_ *(optional)*
-The length of the substring to extract. length must be a positive integer
+_length_ *(optional)* (Default: end of evaluated `expr`)
+The length of the substring to extract. `length` can be any expression of type `int`. 
 
-#### Return Type
+### Return Type
 `string`
 
-#### Return Value
+### Return Value
 `substring()` returns the extracted substring
-#### Remarks
+### Remarks
 None
-#### Examples
+### Examples
 A. Substring of the string in a column
 
 ```sql
