@@ -9,28 +9,28 @@ title: REVERSE
 
 ---
 
-### REVERSE()
+## REVERSE()
 
 `Reverse()` function returns the reversed strings from the selected column.
 
-#### Syntax
+### Syntax
 
 ```
 reverse(expr)
 ```
 
-#### Arguments
+### Arguments
 
-The argument `expr` can either be a string column or another string function
+The argument `expr` is any expression of type `string`.
 
-#### Return Type
+### Return Type
 `string`
 
-#### Return Value
+### Return Value
 `reverse()` returns the reversed input string
-#### Remarks
+### Remarks
 None
-#### Examples
+### Examples
 A. Reversing strings in a column
 
 ```sql
