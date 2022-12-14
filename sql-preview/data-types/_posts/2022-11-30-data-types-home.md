@@ -15,6 +15,19 @@ NOTE: For ease of use, Constraint information is included with the relevant Data
 
 Data types used to define the type of data that a table column can contain. They are modified by Constraints.
 
+### Mapping data types
+
+| SQL Data Type | FeatureBase Data Type |
+|---------------|---|
+| int | int |
+| bool | bool |
+| timestamp | timestamp |
+| decimal | decimal |
+| string | keyed mutex |
+| stringset | keyed set |
+| id | mutex |
+| idset | set |
+
 ### Numeric data types
 
 * [BOOL](/sql-preview/data-types/data-type-bool)
