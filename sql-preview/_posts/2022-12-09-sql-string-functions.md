@@ -15,5 +15,7 @@ title: SQL String Functions
 
 [SUBSTRING()](/sql-preview/functions/sql-substring#substring){:target="_blank"}
 
+[REPLACEALL()](/sql-preview/functions/sql-replaceall#replaceall){:target="_blank"}
+
 
 
