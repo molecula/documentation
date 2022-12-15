@@ -17,7 +17,7 @@ STRING
 ## Additional information
 
 The STRING data type:
-* has a `keyed-mutex` internal data type
+* has a `keyed mutex` internal data type
 * works best when:
   * Looking for discrete values,
   * `group by` where cardinality is low
