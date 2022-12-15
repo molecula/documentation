@@ -2,15 +2,15 @@
 title: Issue - Data Modeling MIN/MAX Integer Precision Loss
 ---
 
-Specifying the MIN and MAX constraint for `int` is limited to `-2^53` and `2^53 -1`
+Specifying the MIN and MAX constraint for `int` is limited to `-2^53` and `2^53 -1`, which is less than FeatureBase can actually handle (`-2^63` and `2^63 -1`) respectively
 
 ## Cause
 
-Precision loss due to JS and Go integer limitations at scale
+This error can be caused when specifying integers for the MIN and MAX constraints that are outside of the range between `-2^53` and `2^53 -1`  Precision loss due to Jacascript and Go integer limitations at scale.
 
 ## Solution
 
-If you plan to ingest integers outside of the listed range, simply specify the column with type `int` and no constraints, so the default values are applied internally.
+Specify int as the column name with no constraints to apply default values internally.
 
 ## Further information
 
