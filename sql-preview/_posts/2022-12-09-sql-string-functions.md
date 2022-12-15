@@ -21,7 +21,3 @@ title: SQL String Functions
 
 [STRINGSPLIT()](/sql-preview/functions/sql-stringsplit#stringsplit){:target="_blank"}
 
-
-
-
-
