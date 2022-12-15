@@ -203,7 +203,10 @@ NOTE: It's important to fix internal links. External links will be reported as b
 
 Anytime you modify links, change page names, or change the nav file, please run the `dead_link_seeker.py` script. This script will crawl through all of the pages it finds off of the URL you pass, collect any URLs it sees, and call them to ensure proper health responses are returned. This should be run with python 3.6+ and uses packages that generally come installed (urllib,collections,HTMLParser), but you may have to install them conda/pip/etc. This can be run on your local build:
 
-```python
+Run on ec2-user:
+```
+bundle exec jekyll serve --watch --host 0.0.0.0 &
+
 python dead_link_seeker.py http://127.0.0.1:4000/
 ```
 
