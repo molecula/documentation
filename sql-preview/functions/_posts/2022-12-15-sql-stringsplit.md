@@ -5,13 +5,13 @@ title: STRINGSPLIT
 
 `Stringsplit()` function splits a string into multiple substrings based on a specified separator.
 
-### Syntax
+## Syntax
 
 ```
 stringsplit(expr,seperator,position)
 ```
 
-### Arguments
+## Arguments
 
 _expr_ 
 The input string to split. The argument `expr` is any expression of type `string`.
@@ -22,14 +22,14 @@ A character or string that will be used to split the evaluated expression `expr`
 _position_ *(optional)* (Default value : 0)
 Substring to retrive from the resulting array of substrings. `position` can be any expression of type `int`. 
 
-### Return Type
+## Return Type
 `string`
 
-### Return Value
+## Return Value
 `stringsplit()` returns the substring at the position, from the resulting array of substrings.
-### Remarks
+## Remarks
 None
-### Examples
+## Examples
 A. Split strings and return second substring
 
 ```sql
