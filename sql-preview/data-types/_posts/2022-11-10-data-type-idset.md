@@ -19,11 +19,14 @@ IDSET [TIMEQUANTUM {value} [TTL '{value}}']]
 
 ## Additional information
 
-* IDSET data has one standard view by default unless a timeQuantum is set
-* IDSET is used for:
+The IDSET data type:
+* has a `mutex` internal data type
+* one standard view by default unless a timeQuantum is set.
+* is used for:
   * grouping by
   * searching for discrete values
-* Use the INT data type to perform range queries using `<` or `>`
+
+NOTE: Use the INT data type to perform range queries using `<` or `>`
 
 {% include /sql-preview/timequantum-additional.md %}
 
