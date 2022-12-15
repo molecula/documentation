@@ -3,8 +3,6 @@ id: sql-replaceall
 title: REPLACEALL
 ---
 
-## REPLACEALL()
-
 `ReplaceAll()` function replaces all occurrences of the expression `exprOld` in the evaluated expression `expr` with a new expression `exprNew`.
 
 ### Syntax
