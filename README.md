@@ -186,10 +186,7 @@ For larger content edits or for changes to the theme, you'll likely need to clon
 
 There are two methods to check for broken links
 
-### HTMLPROOFER
-
-
-## Broken link checker
+## Broken link checker (x86 systems only)
 
 * html-proofer has been added to `Gemfile`
 * load for the first time on a repository by running `bundle` at the command line.
@@ -202,7 +199,7 @@ bash check-links.sh
 
 NOTE: It's important to fix internal links. External links will be reported as broken, but these need to be tested manually.
 
-### dead_link_seeker.py
+### dead_link_seeker.py (Apple, Arm systems)
 
 Anytime you modify links, change page names, or change the nav file, please run the `dead_link_seeker.py` script. This script will crawl through all of the pages it finds off of the URL you pass, collect any URLs it sees, and call them to ensure proper health responses are returned. This should be run with python 3.6+ and uses packages that generally come installed (urllib,collections,HTMLParser), but you may have to install them conda/pip/etc. This can be run on your local build:
 
