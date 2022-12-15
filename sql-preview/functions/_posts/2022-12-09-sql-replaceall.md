@@ -5,13 +5,13 @@ title: REPLACEALL
 
 `ReplaceAll()` function replaces all occurrences of the expression `exprOld` in the evaluated expression `expr` with a new expression `exprNew`.
 
-### Syntax
+## Syntax
 
 ```
 replaceall(expr,exprOld,exprNew)
 ```
 
-### Arguments
+## Arguments
 
 _expr_ 
 The evaluated expression in which all occurrences of `exprOld` should be replaced with `exprNew`. `expr` can be any expression of type `string`
@@ -22,14 +22,14 @@ The substring that should be replaced. `exprOld` can be any expression of type `
 _exprNew_ 
 The substring that should be used as a replacement for `exprOld`. `exprNew` can be any expression of type `string`
 
-### Return Type
+## Return Type
 `string`
 
-### Return Value
+## Return Value
 `replaceall()` returns a string that is the result of replacing all occurrences of `exprOld` in `expr` with `exprNew`.
-### Remarks
+## Remarks
 None
-### Examples
+## Examples
 A. Replacing all the occurances
 
 ```sql
