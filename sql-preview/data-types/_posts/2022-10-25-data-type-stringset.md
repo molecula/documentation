@@ -19,9 +19,10 @@ STRINGSET [TIMEQUANTUM {value} [TTL '{value}}']]
 
 ## Additional information
 
-* STRINGSET has a `keyed set` internal datatype
-* STRINGSET data has one standard view by default unless a timeQuantum is set
-* STRINGSET is used when:
+The STRINGSET data type:
+* has a `keyed set` internal datatype
+* one standard view by default unless a timeQuantum is set.
+* is used when:
   * grouping by
   * searching for discrete values
 

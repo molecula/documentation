@@ -16,6 +16,8 @@ ID
 
 ## Additional information
 
-ID is used with data sets with low cardinality when:
-* grouping by
-* querying discrete values
+The ID data type:
+* has a `mutex` internal data type
+* is used with data sets with low cardinality when:
+  * grouping by
+  * querying discrete values
