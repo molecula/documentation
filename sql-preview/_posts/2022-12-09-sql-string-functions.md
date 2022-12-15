@@ -19,5 +19,7 @@ title: SQL String Functions
 
 [UPPER()](/sql-preview/functions/sql-upper#upper){:target="_blank"}
 
+[STRINGSPLIT()](/sql-preview/functions/sql-stringsplit#stringsplit){:target="_blank"}
+
 
 
