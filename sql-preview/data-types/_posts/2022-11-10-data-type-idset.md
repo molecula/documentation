@@ -20,7 +20,7 @@ IDSET [TIMEQUANTUM {value} [TTL '{value}}']]
 ## Additional information
 
 The IDSET data type:
-* has a `mutex` internal data type
+* has a `set` internal data type
 * one standard view by default unless a timeQuantum is set.
 * is used for:
   * grouping by
