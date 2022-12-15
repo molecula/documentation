@@ -1,0 +1,41 @@
+---
+id: sql-upper
+title: UPPER
+---
+
+`UPPER()` function returns the converted strings to Upper case from the selected column.
+
+#### Syntax
+
+```
+upper(expr)
+```
+
+#### Arguments
+
+The argument `expr` is any expression of type string
+
+#### Return Type
+`string`
+
+#### Return Value
+`upper()` returns the input string converted to upper case
+#### Remarks
+None
+#### Examples
+Converting strings to Upper case in a column
+
+```sql
+create table segments
+    (_id id, segment string);
+
+insert into segments(_id,segment)
+    values (1,'green')
+
+select _id, upper(segment) as convertedstr from segments;
++-----+---------------+
+| _id | convertedstr  |
++-----+---------------+
+|   1 | GREEN         |
++-----+---------------+
+```

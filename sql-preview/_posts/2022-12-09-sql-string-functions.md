@@ -17,5 +17,7 @@ title: SQL String Functions
 
 [REPLACEALL()](/sql-preview/functions/sql-replaceall#replaceall){:target="_blank"}
 
+[UPPER()](/sql-preview/functions/sql-upper#upper){:target="_blank"}
+
 
 
