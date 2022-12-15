@@ -21,6 +21,7 @@ reverse(expr)
 
 ### Arguments
 
+_expr_
 The argument `expr` is any expression of type `string`.
 
 ### Return Type

@@ -19,4 +19,6 @@ title: SQL String Functions
 
 [STRINGSPLIT()](/sql-preview/functions/sql-stringsplit#stringsplit){:target="_blank"}
 
+[REPLACEALL()](/sql-preview/functions/sql-replaceall#replaceall){:target="_blank"}
+
 
