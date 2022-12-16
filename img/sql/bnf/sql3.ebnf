@@ -182,6 +182,7 @@ bulk_insert_option =
     | "ROWSLIMIT", integer_literal
     | "INPUT", string_literal
     | "FORMAT", string_literal
+    | "ALLOW_MISSING_VALUES"
     | "HEADER_ROW" ;
 
 (*

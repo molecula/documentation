@@ -42,7 +42,7 @@ _column_list_ is the target list of columns to be inserted into. They must be va
 
 The MAP clause defines how the source data is read and what the expected data types are.
 
-_map_list_ is a list of expressions and data types that specifiy how to get the source data from the source. If a TRANSFORM clause is specified, the values from the map can be referenced using variables named for the ordinal position they are specified in the map clause. For example, given a MAP clause as follows:
+_map_list_ is a list of expressions and data types that specify how to get the source data from the source. If a TRANSFORM clause is specified, the values from the map can be referenced using variables named for the ordinal position they are specified in the map clause. For example, given a MAP clause as follows:
 
 `MAP (0 id, 1 int, 4 string)`
 
@@ -51,11 +51,15 @@ the values can be referred to using the variables `@0`, `@1` and `@2` respective
 
 #### MAP clause for CSV data
 
-If CSV is specified as the source, the map expression should be an integer offset for the desired column in the CSV data. The data in that column and an attempt is made to convert it to the specified data type. It is an error if the data cannot be converted to the type specified.
+If CSV is specified as the source, the map expression should be an integer offset for the desired column in the CSV data. The data in that column is read and an attempt is made to convert it to the specified data type. An error occurs if the data cannot be converted to the type specified.
 
 #### MAP clause for NDJSON data
 
-If NDJSON is specified as the source, the map expression should be a string JsonPath expression for the desired value in the NDJSON data. The expression is evaluated on the data and an attempt is made to convert it to the specified data type. It is an error if the data cannot be converted to the type specified.
+If NDJSON is specified as the source, the map expression should be a string [JsonPath expression](https://goessner.net/articles/JsonPath/index.html#e2) for the desired value in the NDJSON data:
+
+`MAP ('$.idpath' id, '$.int.path.' int, '$.path.to.string' string)`
+
+ The expression is evaluated on the data and an attempt is made to convert it to the specified data type. An error occurs if the data cannot be converted to the type specified.
 
 ### TRANSFORM clause
 
@@ -84,15 +88,15 @@ TRANSFORM (
 
 ### FROM clause
 
-The FROM clause specifies the source of the data. It can be a single line string literal or a multi-line string literal. The way this literal is interprested depends on the value of the INPUT option (ses below).
+The FROM clause specifies the source of the data. It can be a single line string literal or a multi-line string literal. The way this literal is interpreted depends on the value of the INPUT option (ses below).
 
 #### FROM clause for files
 
-For files the from clause should be a valid file name. In FeatureBase Cloud this will fail with an error because there is no local access to the file system.
+For files, the FROM clause should be a valid file name. In FeatureBase Cloud this will fail with an error because there is no local access to the file system.
 
 #### FROM clause for urls
 
-For urls the from clause should be a valid url.
+For urls, the FROM clause should be a valid url.
 
 #### FROM clause for inline stream
 
@@ -107,38 +111,40 @@ string
 literal'
 ```
 
-FeatureBase will treat the contents of this string literal as though it was file and read from it line by line.
+FeatureBase will treat the contents of this string literal as though it was a file and read from it line by line.
 
-#### FROM clause for data with single quotes (`'`) and double quotes(`"`)
+#### FROM clause for STREAM data with single quotes (`'`) and double quotes(`"`)
 
-Data in the FROM caluse that contain single quotes (`'`) must be escaped with an additional single quote (even if CSV values are quoted). 
+Data in the FROM clause that contain single quotes (`'`) must be escaped with an additional single quote (even if CSV values are quoted). 
 
-Incorrect inline stream example:
+Incorrect inline STREAM example:
 
 `FeatureBase's speed`
 
-Correct inline stream example:
+Correct inline STREAM example:
 
 `FeatureBase''s speed`
 
 If data in the FROM clause is quoted, the double quotes (`"`) in the data must be escaped with an additional double quote.
 
-Incorrect inline stream example:
+Incorrect inline STREAM example:
 
-`"“Time is money.” – Benjamin Franklin."`
+`""Time is money." – Benjamin Franklin."`
 
-Correct inline stream example:
+Correct inline STREAM example:
 
-`""“Time is money.”" – Benjamin Franklin."`
+`"""Time is money."" – Benjamin Franklin."`
 
-### Bulk Insert Options
+### WITH clause
 
 ![expr](/img/sql/bulk_insert_options.svg)
 ![expr](/img/sql/bulk_insert_option.svg)
 
+The WITH clause allows you to pass statement level options
+
 #### BATCHSIZE
 
-Bulk insert commits row in batches. Use the `BATCHSIZE` option to specifiy the batch size. The default is 1000.
+Bulk insert commits row in batches. Use the `BATCHSIZE` option to specfify the batch size. The default is 1000.
 
 #### ROWSLIMIT
 
@@ -152,6 +158,18 @@ The `INPUT` option sets the type of input. Valid values are `'FILE'`, `'URL'` or
 
 The `FORMAT` option sets the format of the source data. Valid values are `'CSV'` and `'NDJSON'`
 
-#### HEADER_ROW
+#### NDJSON Options
 
-If `HEADER_ROW` is specified and the `FORMAT` is `'CSV'`, the first row in the CSV is skipped.
+The following options are only valid when `FORMAT` is `'NDJSON'`
+
+##### ALLOW_MISSING_VALUES
+
+If `ALLOW_MISSING_VALUES` is specified, any JsonPath expressions in the MAP clause that are valid but can't find a value in the data will return a `NULL`. This is useful if you expect some missing data and want to continue inserting. If `ALLOW_MISSING_VALUES` is not specified, an error will return on the first record of missing data.
+
+#### CSV Options
+
+The following options are only valid when `FORMAT` is `'CSV'`
+
+##### HEADER_ROW
+
+If `HEADER_ROW` is specified, the first row in the CSV is skipped.
