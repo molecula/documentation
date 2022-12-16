@@ -16,6 +16,7 @@ title: SQL String Functions
 [SUBSTRING()](/sql-preview/functions/sql-substring#substring){:target="_blank"}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 [UPPER()](/sql-preview/functions/sql-upper#upper){:target="_blank"}
 
 [STRINGSPLIT()](/sql-preview/functions/sql-stringsplit#stringsplit){:target="_blank"}
@@ -26,3 +27,10 @@ title: SQL String Functions
 =======
 [TRIM()]{/sql-preview/functions/sql-trim#trim){:target="_blank"}
 >>>>>>> 4c96571 (Adding documentation for Trim funcs - Trim, Rtrim & LTrim)
+=======
+[TRIM()](/sql-preview/functions/sql-trim#trim){:target="_blank"}
+
+[RTRIM()](/sql-preview/functions/sql-rtrim#rtrim){:target="_blank"}
+
+[LTRIM()](/sql-preview/functions/sql-ltrim#ltrim){:target="_blank"}
+>>>>>>> 374e44f (Added separate docs for Trim, Rtrim & Ltrim)
