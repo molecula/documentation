@@ -27,3 +27,5 @@ title: SQL String Functions
 
 [LTRIM()](/sql-preview/functions/sql-ltrim#ltrim){:target="_blank"}
 
+[ASCII()](/sql-preview/functions/sql-ascii#ascii){:target="_blank"}
+
