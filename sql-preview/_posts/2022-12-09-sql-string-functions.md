@@ -30,3 +30,6 @@ title: SQL String Functions
 [ASCII()](/sql-preview/functions/sql-ascii#ascii){:target="_blank"}
 
 [LEN()](/sql-preview/functions/sql-len#len){:target="_blank"}
+
+[CHAR()](/sql-preview/functions/sql-char#char){:target="_blank"}
+
