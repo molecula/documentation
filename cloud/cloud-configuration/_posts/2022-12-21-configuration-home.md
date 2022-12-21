@@ -6,7 +6,6 @@ The **Configuration** page provides access to manage your Cloud organization and
 
 ## Before you begin
 
-{% include /cloud/cloud-user-admin-role-needed.md %}
 {% include /cloud/cloud-before-begin.md %}
 
 ## Managing your organization
