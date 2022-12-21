@@ -10,7 +10,7 @@ title: How do I manage cloud users?
 
 ## View and search cloud users
 
-* [View and search cloud users](/cloud/cloud-configuration/cloud-users-view-search)
+* [Learn how to view and search cloud users](/cloud/cloud-configuration/cloud-users-view-search)
 
 ## Create a cloud user
 
@@ -28,8 +28,8 @@ title: How do I manage cloud users?
 
 {% include /cloud/cloud-user-deactivate-summary.md%}
 
-* [Deactivate a cloud user](/cloud/cloud-configuration/cloud-user-deactivate)
+* [Learn how to deactivate a cloud user](/cloud/cloud-configuration/cloud-user-deactivate)
 
 ## Transfer a cloud user to another FeatureBase instance
 
-* [Transfer a cloud user to another FeatureBase instance](/cloud/cloud-configuration/cloud-users-transfer)
+* [Learn how to transfer a cloud user to another FeatureBase instance](/cloud/cloud-configuration/cloud-users-transfer)
