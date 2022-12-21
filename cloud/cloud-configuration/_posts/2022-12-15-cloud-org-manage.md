@@ -10,7 +10,7 @@ Within the Manage Organization page you can:
 
 ## Before you begin
 
-{% include /cloud/cloud-user-admin-privs-needed.md %}
+{% include /cloud/cloud-user-admin-role-needed.md %}
 {% include /cloud/cloud-before-begin.md %}
 
 ## Change organization details

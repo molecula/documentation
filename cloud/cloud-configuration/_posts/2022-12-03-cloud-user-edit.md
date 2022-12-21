@@ -33,7 +33,7 @@ Administrator users can also change user privileges on all but the account owner
 
 {% include /cloud/cloud-user-privileges.md %}
 
-{% include /cloud/cloud-user-admin-privs-needed.md %}
+{% include /cloud/cloud-user-admin-role-needed.md %}
 
 {% include /cloud/cloud-user-edit-steps.md %}
 * Change the user privileges to **User** or **Administrator** as required.

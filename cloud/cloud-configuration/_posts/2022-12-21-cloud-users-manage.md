@@ -6,7 +6,7 @@ title: How do I manage cloud users?
 
 ## Before you begin
 
-{% include /cloud/cloud-user-admin-privs-needed.md %}
+{% include /cloud/cloud-user-admin-role-needed.md %}
 {% include /cloud/cloud-before-begin.md %}
 
 ## View and search cloud users

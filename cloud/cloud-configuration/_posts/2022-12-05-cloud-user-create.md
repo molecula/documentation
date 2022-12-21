@@ -9,7 +9,7 @@ title: How do I create Cloud users?
 
 ## Before you begin
 
-{% include /cloud/cloud-user-admin-privs-needed.md %}
+{% include /cloud/cloud-user-admin-role-needed.md %}
 {% include /cloud/cloud-before-begin.md %}
 * [Learn how to manage cloud users](/cloud/configuration/cloud-users-manage)
 
