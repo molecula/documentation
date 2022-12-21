@@ -13,7 +13,7 @@ Administrator users can also change user roles for all but the account owner.
 {% include /cloud/cloud-before-begin.md %}
 * [Learn how to manage cloud users](/cloud/cloud-configuration/cloud-users-manage)
 * [Create a cloud user](/cloud/cloud-configuration/cloud-users-create)
-* The user must confirm their account for it to be editable.
+* The user must confirm their account before it can be edited
 
 ## Edit user details
 
