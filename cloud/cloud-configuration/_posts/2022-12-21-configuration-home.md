@@ -6,20 +6,21 @@ The **Configuration** page provides access to manage your Cloud organization and
 
 ## Before you begin
 
+{% include /cloud/cloud-user-admin-privs-needed.md %}
 {% include /cloud/cloud-before-begin.md %}
 
 ## Managing your organization
 
 {% include /cloud/cloud-summary-org.md %}
 
-* [Learn how to make changes to your organization](/cloud/cloud-configuration/manage-org)
+* [Learn how to make changes to your organization](/cloud/cloud-configuration/cloud-org-manage)
 
 ## Managing cloud users
 
 {% include /cloud/cloud-summary-users.md %}
 
-* [Learn how to view and search for FeatureBase Cloud users]
-* [Learn how to add FeatureBase Cloud users]
-* [Learn how to delete FeatureBase Cloud users]
-
-## Manage your account
+* [Learn how to manage cloud users](/cloud/configuration/cloud-users-manage)
+* [Learn how to view and search for FeatureBase Cloud users](/cloud/configuration/cloud-users-view-search)
+* [Learn how to add FeatureBase Cloud users](/cloud/configuration/cloud-users-add)
+* [Learn how to deactivate FeatureBase Cloud users](/cloud/configuration/cloud-users-deactivate)
+* [Learn how to transfer users to a different FeatureBase instance](/cloud/configuration/cloud-users-transfer)
