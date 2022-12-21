@@ -12,7 +12,7 @@ The **Configuration** page provides access to manage your Cloud organization and
 
 {% include /cloud/cloud-summary-org.md %}
 
-* [Learn how to make changes to your organization]
+* [Learn how to make changes to your organization](/cloud/cloud-configuration/manage-org)
 
 ## Managing cloud users
 
