@@ -4,7 +4,7 @@ title: How do I edit Cloud user details?
 
 All users can change their first name and their password.
 
-Administrator users can also change user privileges on all but the account owner.
+Administrator users can also change user roles for all but the account owner.
 
 {% include /cloud/cloud-username-nochange.md %}
 
@@ -29,7 +29,7 @@ Administrator users can also change user privileges on all but the account owner
 * Enter a new password.
 * Click **Update**.
 
-## Change privileges
+## Change user role
 
 {% include /cloud/cloud-user-roles.md %}
 
