@@ -4,7 +4,6 @@ title: How do I deactivate a Cloud user?
 
 The account owner can deactivate any cloud user to prevent login or if the email address is incorrect.
 
-
 ## Before you begin
 
 {% include /cloud/cloud-user-admin-privs-needed.md %}
