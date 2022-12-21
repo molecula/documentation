@@ -9,10 +9,6 @@ title: How do I manage cloud users?
 {% include /cloud/cloud-user-admin-privs-needed.md %}
 {% include /cloud/cloud-before-begin.md %}
 
-## User privileges
-
-{% include /cloud/cloud-user-privileges.md %}
-
 ## View and search cloud users
 
 * [View and search cloud users](/cloud/configuration/cloud-users-view-search)
@@ -22,13 +18,17 @@ title: How do I manage cloud users?
 {% include /cloud/cloud-user-notification-msg.md %}
 {% include /cloud/cloud-username-nochange.md %}
 
-* [Create a cloud user](/cloud/configuration/cloud-users-create)
+* [Learn how to create a cloud user](/cloud/configuration/cloud-users-create)
 
-## Edit user first and last name and change privileges
+## Edit user to change name and privileges
 
-* [Edit a cloud user](/cloud/configuration/cloud-users-edit)
+{% include /cloud/cloud-user-privileges.md %}
+
+* [Learn how to edit a cloud user](/cloud/configuration/cloud-users-edit)
 
 ## Deactivate cloud users
+
+{% include /cloud/cloud-user-deactivate-summary.md%}
 
 * [Deactivate a cloud user](/cloud/configuration/cloud-users-deactivate)
 

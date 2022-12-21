@@ -13,10 +13,13 @@ title: How do I create Cloud users?
 {% include /cloud/cloud-before-begin.md %}
 * [Learn how to manage cloud users](/cloud/configuration/cloud-users-manage)
 
-
 ## Add a cloud user
 
 * Click **Configuration** > **Manage users**.
 * Click **Invite new user**.
 * Enter one or more email addresses, using commas to separate them.
 * Click **Send invitation**
+
+## Next step
+
+* [Learn how to change user privileges](/cloud/cloud-configuration/cloud-user-edit.md)
