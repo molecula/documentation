@@ -3,7 +3,7 @@ title: How do I create Cloud users?
 ---
 
 {% include /cloud/cloud-summary-users.md %}
-{% include /cloud/cloud-user-privileges.md %}
+{% include /cloud/cloud-user-roles.md %}
 {% include /cloud/cloud-user-notification-msg.md %}
 {% include /cloud/cloud-username-nochange.md %}
 

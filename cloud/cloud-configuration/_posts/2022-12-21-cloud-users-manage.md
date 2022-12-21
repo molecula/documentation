@@ -22,7 +22,7 @@ title: How do I manage cloud users?
 
 ## Edit user to change name and privileges
 
-{% include /cloud/cloud-user-privileges.md %}
+{% include /cloud/cloud-user-roles.md %}
 
 * [Learn how to edit a cloud user](/cloud/configuration/cloud-users-edit)
 
