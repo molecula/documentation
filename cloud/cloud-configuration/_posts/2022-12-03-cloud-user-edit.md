@@ -11,8 +11,8 @@ Administrator users can also change user privileges on all but the account owner
 ## Before you begin
 
 {% include /cloud/cloud-before-begin.md %}
-* [Learn how to manage cloud users](/cloud/configuration/cloud-users-manage)
-* [Create a cloud user](/cloud/configuration/cloud-users-create)
+* [Learn how to manage cloud users](/cloud/cloud-configuration/cloud-users-manage)
+* [Create a cloud user](/cloud/cloud-configuration/cloud-users-create)
 * The user must confirm their account for it to be editable.
 
 ## Edit user details

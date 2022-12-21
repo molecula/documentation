@@ -19,4 +19,4 @@ The **Configuration** page provides access to manage your Cloud organization and
 
 {% include /cloud/cloud-summary-users.md %}
 
-* [Learn how to manage cloud users](/cloud/configuration/cloud-users-manage)
+* [Learn how to manage cloud users](/cloud/cloud-configuration/cloud-users-manage)
