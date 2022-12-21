@@ -18,19 +18,19 @@ title: How do I manage cloud users?
 {% include /cloud/cloud-user-notification-msg.md %}
 {% include /cloud/cloud-username-nochange.md %}
 
-* [Learn how to create a cloud user](/cloud/cloud-configuration/cloud-users-create)
+* [Learn how to create a cloud user](/cloud/cloud-configuration/cloud-user-create)
 
 ## Edit user to change name and privileges
 
 {% include /cloud/cloud-user-roles.md %}
 
-* [Learn how to edit a cloud user](/cloud/cloud-configuration/cloud-users-edit)
+* [Learn how to edit a cloud user](/cloud/cloud-configuration/cloud-user-edit)
 
 ## Deactivate cloud users
 
 {% include /cloud/cloud-user-deactivate-summary.md%}
 
-* [Deactivate a cloud user](/cloud/cloud-configuration/cloud-users-deactivate)
+* [Deactivate a cloud user](/cloud/cloud-configuration/cloud-user-deactivate)
 
 ## Transfer a cloud user to another FeatureBase instance
 
