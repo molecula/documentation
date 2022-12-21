@@ -30,8 +30,6 @@ When complete, the user can login and has the read-only user role.
 * Scroll to **Invited users**
 * Click <span class="actionmenubutton"></span> on the user > **Copy invite URL**.
 
-
-
 ## Next step
 
 * [Learn how to change user privileges](/cloud/cloud-configuration/cloud-user-edit.md)
