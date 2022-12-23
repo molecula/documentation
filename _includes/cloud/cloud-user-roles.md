@@ -1,4 +1,6 @@
-By default all accounts are created with the read-only role. These can be upgraded to the Administrator role after the user has verified their account.
+By default all accounts are created with the Standard user role.
+
+User account roles can be changed by an Administrator once the user account is verified and **Active**.
 
 | Standard user role | Administrator role |
 |---|---|
