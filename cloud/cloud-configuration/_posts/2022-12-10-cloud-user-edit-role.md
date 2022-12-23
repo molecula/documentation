@@ -2,14 +2,9 @@
 title: How do I change a user role?
 ---
 
-Administrators can edit all **Active** user accounts, including:
+Administrators can grant or revoke roles for any **Active** user account except their own.
 
-* Change first and last names
-* Reset passwords
-* Change the user role
-* [Deactivate and reactivate accounts](/cloud/cloud-configuration/cloud-user-deactivate)
-
-{% include /cloud/cloud-user-status.md %}
+{% include /cloud/cloud-user-roles.md %}
 
 ## Before you begin
 
@@ -17,11 +12,9 @@ Administrators can edit all **Active** user accounts, including:
 * [Learn how to manage cloud users](/cloud/cloud-configuration/cloud-users-manage)
 * [Create a cloud user](/cloud/cloud-configuration/cloud-users-create)
 
-## Change user role
-
-{% include /cloud/cloud-user-roles.md %}
-
 {% include /cloud/cloud-user-admin-role-needed.md %}
+
+## Change user role
 
 {% include /cloud/cloud-user-edit-steps.md %}
 * Change the user privileges to **User** or **Administrator** as required.
