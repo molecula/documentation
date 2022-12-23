@@ -15,7 +15,7 @@ NOTE: You may need to add `noreply@molecula.com` and `noreply@verificationemail.
 
 FeatureBase sends a confirmation code to your email address.
 
-* Click the [**sign in** link](https://cloud.featurebase.com/login) to open the login page.
+* Click the [**sign in** link](https://cloud.featurebase.com/login){:target="_blank"} to open the login page.
 * Enter your user email and password > **Sign in**.
 * Enter the confirmation code then click **Confirm**.
 
