@@ -8,8 +8,8 @@ nav:
     subnav:
       - title: Setup
         category: cloud-setup
-      - title: My profile
-        category: my-profile
+      - title: My account
+        category: my-account
       - title: Databases
         category: cloud-databases
       - title: Data modeling
