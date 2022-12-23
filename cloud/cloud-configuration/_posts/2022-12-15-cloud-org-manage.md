@@ -2,25 +2,25 @@
 title: How do I manage my organization?
 ---
 
-{% include /cloud/cloud-summary-org.md%}
-
-Within the Manage Organization page you can:
-* Change address and contact details for your organization
-* Change technical and billing email addresses which default to the owner but can be changed.
+{% include /cloud/cloud-summary-org.md %}
 
 ## Before you begin
 
 {% include /cloud/cloud-user-admin-role-needed.md %}
 {% include /cloud/cloud-before-begin.md %}
 
-## Change organization details
+## How do I change my organization name and address?
 
-* Click **Configuration** > **Organization settings**
-* Update address details as required
-* Click **Update**.
+* [Learn how to change organization details](/cloud/cloud-configuratino/cloud-org-address)
 
-## Change technical and billing email addresses
+## How do I change my billing address for my account?
 
-* Click **Configuration** > **Organization settings**
-* Update technical and/or billing email addresses as required.
-* Click **Update**.
+{% include /cloud/cloud-summary-billing-contact.md %}
+
+* [Learn how to update billing details](/cloud/cloud-configuration/cloud-org-update-billing)
+
+## How do I change my technical contact details?
+
+{% include /cloud/cloud-summary-tech-contact.md %}
+
+* [Learn how to update technical contact address](/cloud/cloud-configuration/cloud-org-update-tech-contact)
