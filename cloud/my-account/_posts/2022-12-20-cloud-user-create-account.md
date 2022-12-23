@@ -9,10 +9,18 @@ NOTE: You may need to add `noreply@molecula.com` and `noreply@verificationemail.
 ## Create your FeatureBase account
 
 * Click **Create my account** on the FeatureBase invitation email
-* Complete the joining form and click **Next**
-* [Login to FeatureBase](https://cloud.featurebase.com/login)
-* Enter the confirmation code then click **Confirm**.
+* Complete the joining form then click **Next**
 
-## Login to FeatureBase
+## Confirm account
 
-* [Login at](https://cloud.featurebase.com/login)
+FeatureBase sends a confirmation code to your email address.
+
+* Click the [**sign in** link](https://cloud.featurebase.com/login) to open the login page
+* Enter your user email and password > **Sign in**.
+* Enter the confirmation code then click **Confirm**
+
+Your user is now **Active**
+
+## Next step
+
+* [Learn how to query FeatureBase indexes](/cloud/query-cloud-data/querydata)
