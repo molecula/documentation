@@ -1,5 +1,5 @@
 ---
-title: How do I edit Cloud user details?
+title: How do I change a user role?
 ---
 
 Administrators can edit all **Active** user accounts, including:

@@ -21,12 +21,6 @@ title: How do I manage cloud users?
 
 * [Learn how to create a cloud user](/cloud/cloud-configuration/cloud-user-invite)
 
-## How do I edit user details?
-
-{% include /cloud/cloud-user-profile-summary.md %}
-
-* [Learn how to update user details and reset password]()
-
 ## How do I change user roles?
 
 {% include /cloud/cloud-user-roles.md %}
@@ -38,5 +32,3 @@ title: How do I manage cloud users?
 {% include /cloud/cloud-user-deactivate-summary.md%}
 
 * [Learn how to deactivate a cloud user](/cloud/cloud-configuration/cloud-user-deactivate)
-
-## How do I transfer user to another FeatureBase organization?

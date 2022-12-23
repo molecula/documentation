@@ -1,8 +1,10 @@
 ---
-title: How do I deactivate a Cloud user?
+title: How do I activate or deactivate a Cloud user?
 ---
 
 {% include /cloud/cloud-user-deactivate-summary.md%}
+
+NOTE: You may choose to [change the user role](/cloud/cloud-configuration/cloud-user-edit-role) rather than deactivating the account.
 
 ## Before you begin
 
@@ -14,4 +16,13 @@ title: How do I deactivate a Cloud user?
 ## Deactivate a user
 
 * Click **Configuration** > **Manage users**
-* Click <span class="actionmenubutton"></span> on the user to change > Deactivate.
+* {% include icon-edit-unicode.md %} on the **Active** user > **Deactivate user**.
+
+## Reactivate a user
+
+* Click **Configuration** > **Manage users**
+* {% include icon-edit-unicode.md %} on the **Deactivated** user > **Reactivate User**.
+
+## Further information
+
+* [Learn how to edit a user role](/cloud/cloud-configuration/cloud-user-edit-role)

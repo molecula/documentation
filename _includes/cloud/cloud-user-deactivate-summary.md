@@ -1,1 +1,3 @@
-The account owner can deactivate any cloud user to prevent login or if the email address is incorrect.
+An Administrator can activate or deactivate any user as required.
+
+Deactivated users are unable to login to FeatureBase.
