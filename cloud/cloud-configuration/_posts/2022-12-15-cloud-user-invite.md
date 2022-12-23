@@ -33,4 +33,4 @@ It is included in the invitation email, but you can also provide the URL via a d
 
 ## Next step
 
-* [Learn how to change user privileges](/cloud/cloud-configuration/cloud-user-edit.md)
+* [Learn how to change user privileges](/cloud/cloud-configuration/cloud-user-edit-role.md)
