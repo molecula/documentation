@@ -4,7 +4,7 @@ title: How do I activate or deactivate a Cloud user?
 
 {% include /cloud/cloud-user-deactivate-summary.md%}
 
-NOTE: You may choose to [change the user role](/cloud/cloud-configuration/cloud-user-edit-role) rather than deactivating the account.
+NOTE: You may choose to [change the user role](/cloud/cloud-configuration/cloud-user-edit-role-edit) rather than deactivating the account.
 
 ## Before you begin
 
@@ -25,4 +25,4 @@ NOTE: You may choose to [change the user role](/cloud/cloud-configuration/cloud-
 
 ## Further information
 
-* [Learn how to edit a user role](/cloud/cloud-configuration/cloud-user-edit-role)
+* [Learn how to edit a user role](/cloud/cloud-configuration/cloud-user-edit-role-edit)
