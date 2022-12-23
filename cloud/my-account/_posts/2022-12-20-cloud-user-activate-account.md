@@ -1,5 +1,5 @@
 ---
-title: How do I create a FeatureBase account?
+title: How do I activate my FeatureBase account?
 ---
 
 FeatureBase users are invited to join an organization via email.

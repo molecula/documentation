@@ -8,7 +8,7 @@ WARNING: Accepting the move means you **cannot** login to your original organiza
 
 ## Before you begin
 
-* [Create a FeatureBase account](/cloud/cloud-user-create-account)
+* [Activate your FeatureBase account](/cloud/my-account/cloud-user-activate-account)
 
 ## Moving your account
 
