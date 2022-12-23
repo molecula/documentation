@@ -3,14 +3,13 @@ title: How do I invite Cloud users?
 ---
 
 {% include /cloud/cloud-summary-users.md %}
-{% include /cloud/cloud-user-roles.md %}
-{% include /cloud/cloud-user-notification-msg.md %}
 
 ## Before you begin
 
 {% include /cloud/cloud-user-admin-role-needed.md %}
 {% include /cloud/cloud-before-begin.md %}
 * [Learn how to manage cloud users](/cloud/cloud-configuration/cloud-users-manage)
+
 {% include /cloud/cloud-username-nochange.md %}
 
 ## Invite a cloud user
