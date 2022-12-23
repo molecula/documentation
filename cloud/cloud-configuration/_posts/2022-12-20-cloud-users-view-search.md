@@ -16,4 +16,4 @@ View and search for users from the Configuration > Manage users page.
 ## Search for users
 
 * Enter part or all the user email in the search field.
-* Click <span class="cancel-rounded-icon"></span> to remove the filter.
+* {% include /cloud/icon-clear-field-unicode.md %} to remove the filter.

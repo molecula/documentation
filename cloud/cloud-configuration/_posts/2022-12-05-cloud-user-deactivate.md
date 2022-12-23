@@ -16,12 +16,12 @@ NOTE: You may choose to [change the user role](/cloud/cloud-configuration/cloud-
 ## Deactivate a user
 
 * Click **Configuration** > **Manage users**
-* {% include icon-edit-unicode.md %} on the **Active** user > **Deactivate user**.
+* {% include /cloud/icon-edit-unicode.md %} on the **Active** user > **Deactivate user**.
 
 ## Reactivate a user
 
 * Click **Configuration** > **Manage users**
-* {% include icon-edit-unicode.md %} on the **Deactivated** user > **Reactivate User**.
+* {% include /cloud/icon-edit-unicode.md %} on the **Deactivated** user > **Reactivate User**.
 
 ## Further information
 

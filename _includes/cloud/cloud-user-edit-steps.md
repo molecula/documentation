@@ -1,2 +1,2 @@
 * Click **Configuration** > **Manage users**
-* Click <span class="actionmenubutton"></span> on the user to change > **Edit**.
+* {% include /cloud/icon-edit-unicode.md %} on the user to change > **Edit**.

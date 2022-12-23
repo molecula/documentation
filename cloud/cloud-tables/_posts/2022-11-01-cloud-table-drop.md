@@ -26,7 +26,7 @@ There are a number of reasons why you may choose to drop a table, including:
 
 ## Step 2: Drop the selected table
 
-1. Click &#8942; > **Drop table**
+1. {% include /cloud/icon-edit-unicode.md %} > **Drop table**
 2. Enter "DELETE" in the confirmation dialog.
 3. Click **Drop table**.
 

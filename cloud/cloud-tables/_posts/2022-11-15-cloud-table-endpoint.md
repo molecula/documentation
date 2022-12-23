@@ -16,4 +16,4 @@ The table endpoint is used to obtain metadata on a table via the API.
 
 ## Step 2: obtain table endpoint
 
-* Click &#8942; > **Copy table endpoint**.
+* {% include /cloud/icon-edit-unicode.md %} > **Copy table endpoint**.
