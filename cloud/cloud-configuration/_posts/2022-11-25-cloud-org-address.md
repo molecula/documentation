@@ -14,5 +14,6 @@ title: How do I change my organization name and address for billing?
 ## Change organization details
 
 {% include /cloud/cloud-open-org-settings-step.md %}
-* Update the billing address as required.
+* Update your organization name and address as required
+* Optionally change the Technical and Billing contact addresses.
 * Click **Update**.
