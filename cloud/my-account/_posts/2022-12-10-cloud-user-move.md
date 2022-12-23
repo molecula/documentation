@@ -12,6 +12,8 @@ WARNING: Accepting the move means you **cannot** login to your original organiza
 
 ## Moving your account
 
+NOTE: You can opt-out of the account move by ignoring the email or clicking **No, thanks** on the confirmation page.
+
 * Click **Move account** in the invitation email.
 * Click **Move account** on the FeatureBase confirmation page.
 * Login with your current user name and password.
