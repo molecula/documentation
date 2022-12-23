@@ -69,7 +69,6 @@ This repository is hosted with GitHub pages with the live site found at: https:/
 
 Here is some documentation (meta documentation?) that explains how to do common actions to update the website.
 
-
 ### Editing a Page
 
 The best way to edit a page is to first go to the documentation site, and at the bottom of the page find the hyperlink to "help us improve this article". From there you will be sent directly to a text editor where you can propose your changes.
@@ -77,14 +76,6 @@ The best way to edit a page is to first go to the documentation site, and at the
 **Don't worry about accidently breaking anything.** Since this site is stored as a Git repository all changes can be reverted. By design this process is to encourage quick edits by anyone in the company.
 
 **NOTE:** Your changes require review and approval before going live.
-
-
-### Adding a New Page
-
-
-**[TODO]**
-
-
 
 ### Adding New Images
 
@@ -96,21 +87,13 @@ Images can be added to the markdown pages with:
 
 For more information on Markdown and images see: [Images | Markdown Guide](https://www.markdownguide.org/basic-syntax/#images-1).
 
-
-
 If the image is externally hosted, then simply add the external image url and call it a day. Otherwise you'll want to host it in this repository with the following steps:
 
 1. Set your image address as /img/{photo filename}
-
 2. Go to https://github.com/molecula/documentation/tree/main/img
-
 3. Find the button in the top right labeled "Add file".
-
 4. Click "Add file" and open the dropdown. Then select "Upload files".
-
 5. Drag and drop your image file and click "Commit changes" along with any notes what the image is used for.
-
-
 
 ### Create a new Folder in the Navigation
 
@@ -151,12 +134,17 @@ nav:
 
 **NOTE:** that the location of the new folder needs to be `/hello/world/_posts/`. The `_posts` directory is very important and must be added to any directory containing markdown files. The markdown files MUST be in the `_posts` directory.
 
+## Serving documentation remotely
 
+We have an EC2 instance available for remote testing.
 
-## Building the Documentation Locally
+* [Remote documentation on EC2](https://molecula.atlassian.net/wiki/spaces/DOCS/pages/1010500163/FeatureBase+documentation+staging+test+environment)
+
+## Serving documentation locally
+
+NOTE: Take care with this process as you **will** experience gemfile conflicts if you choose to also build the new docs found at [/featurebase/featurebase-docs](https://github.com/FeatureBaseDB/featurebase-docs)
 
 For larger content edits or for changes to the theme, you'll likely need to clone the repository and edit it locally. To do so:
-
 
 1. Clone the repository   
    ```
@@ -171,8 +159,6 @@ For larger content edits or for changes to the theme, you'll likely need to clon
    bundle install
    ```
 
-
-
 3. Run the local server and visit http://localhost:4000
 
    ```
@@ -180,7 +166,6 @@ For larger content edits or for changes to the theme, you'll likely need to clon
    ```
 
 4. Edit files at your leisure. The site will auto-rebuild and deploy on changes so no need to repeat step 3.
-
 
 ## Checking For Broken Links
 Anytime you modify links, change page names, or change the nav file, please run the `dead_link_seeker.py` script. This script will crawl through all of the pages it finds off of the URL you pass, collect any URLs it sees, and call them to ensure proper health responses are returned. This should be run with python 3.6+ and uses packages that generally come installed (urllib,collections,HTMLParser), but you may have to install them conda/pip/etc. This can be run on your local build:
@@ -198,9 +183,8 @@ For more detail, you may run in verbose mode by adding a `v` as a second arg.
 
 If you add or see any pages returned that are not printed out as exceptions at the end of the output, please add them to the `false_positive` list in the script. Keep the docs healthy!
 
-
-
 ## Publishing to docs.featurebase.com
+
 You can think of the `main` branch as being a place to stage changes and the `gh-pages` branch as the publish copy found on https://docs.featurebase.com.
 
 When ready to go live with updates, **do not use the UI!** Instead use the following instructions below via terminal:
