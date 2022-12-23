@@ -11,7 +11,7 @@ title: How do I manage my organization?
 
 ## How do I change my organization name and address?
 
-* [Learn how to change organization details](/cloud/cloud-configuratino/cloud-org-address)
+* [Learn how to change organization details](/cloud/cloud-configuration/cloud-org-address)
 
 ## How do I change my billing address for my account?
 
