@@ -10,7 +10,7 @@ Administrators can grant or revoke roles for any **Active** user account except 
 
 {% include /cloud/cloud-before-begin.md %}
 * [Learn how to manage cloud users](/cloud/cloud-configuration/cloud-users-manage)
-* [Invite a cloud user](/cloud/cloud-configuration/cloud-users-invite)
+* [Invite a cloud user](/cloud/cloud-configuration/cloud-user-invite)
 
 {% include /cloud/cloud-user-admin-role-needed.md %}
 
