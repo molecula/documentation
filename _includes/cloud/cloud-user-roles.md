@@ -1,6 +1,6 @@
-By default all accounts are created with the Standard user role.
+By default all accounts are created with the **User** role.
 
-User account roles can be changed by an Administrator once the user account is verified and **Active**.
+Administrators can change user roles once the account is verified and **Active**.
 
 | Standard user role | Administrator role |
 |---|---|
