@@ -1,1 +1,1 @@
-NOTE: You cannot change a user email address (their user name) after it is created.
+NOTE: You cannot change the email address on the user account.
