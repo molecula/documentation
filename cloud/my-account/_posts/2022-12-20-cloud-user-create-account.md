@@ -10,7 +10,7 @@ NOTE: You may need to add `noreply@molecula.com` and `noreply@verificationemail.
 
 * Click **Create my account** on the FeatureBase invitation email
 * Complete the joining form and click **Next**
-* [Login at](https://cloud.featurebase.com/login)
+* [Login to FeatureBase](https://cloud.featurebase.com/login)
 * Enter the confirmation code then click **Confirm**.
 
 ## Login to FeatureBase
