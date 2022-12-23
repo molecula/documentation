@@ -22,5 +22,4 @@ Administrators can grant or revoke roles for any **Active** user account except 
 
 ## Further information
 
-* [Learn how to invite users](/cloud/cloud-configuration/cloud-user-invite)
 * [Learn how to deactivate and activate users](/cloud/cloud-configuration/cloud-user-deactivate)
