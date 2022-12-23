@@ -5,5 +5,3 @@ The user profile summary displays:
 * User role (can be changed by Administrators)
 * Dates the profile was created and last modified
 * The account status
-
-NOTE: The email address used as the login cannot be changed

@@ -1,3 +1,10 @@
-A user will receive an email from `noreply@featurebase.com` when this process is completed. This gives them a login URL and a method to set their own password.
+## User notifications
 
-The user account becomes active after they login for the first time.
+Users receive notification emails for several reasons:
+
+* Invitation to create an account
+* Invitation to move an account to a different organization
+* New account confirmation
+* Password reset
+
+Notifications include the organization name and the administrator email address.

@@ -8,6 +8,7 @@ title: How do I manage cloud users?
 
 {% include /cloud/cloud-before-begin.md %}
 
+<!--this next include has its own heading-->
 {% include /cloud/cloud-user-status.md %}
 
 ## How do I view and search users

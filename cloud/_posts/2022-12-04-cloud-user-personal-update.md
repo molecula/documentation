@@ -3,13 +3,11 @@ title: How do I update my details and change password?
 ---
 
 {% include /cloud/cloud-user-profile-summary.md %}
+{% include /cloud/cloud-username-nochange.md %}
 
 ## Before you begin
 
-* Click **Create my account** on the FeatureBase invitation email
-* Complete the joining form and click **Next**
-* [Login at](https://cloud.featurebase.com/login)
-* Enter the confirmation code then click **Confirm**.
+* [Learn how to create a FeatureBase account](/cloud/cloud-user-create-account.md)
 
 ## How do I view my user profile?
 
@@ -20,3 +18,5 @@ title: How do I update my details and change password?
 |---|---|
 | User first and last name | **Edit** |
 | Password | **Change password** |
+
+* Make your changes then click **Update**.
