@@ -2,8 +2,6 @@
 title: How do I change a user role?
 ---
 
-Administrators can grant or revoke roles for any **Active** user account except their own.
-
 {% include /cloud/cloud-user-roles.md %}
 
 ## Before you begin
