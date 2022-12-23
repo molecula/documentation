@@ -25,8 +25,8 @@ title: How do I manage cloud users?
 
 * [Learn how to edit user roles](/cloud/cloud-configuration/cloud-user-edit-role)
 
-## How do I deactivate cloud users?
+## How do I activate and deactivate cloud users?
 
 {% include /cloud/cloud-user-deactivate-summary.md%}
 
-* [Learn how to deactivate a cloud user](/cloud/cloud-configuration/cloud-user-deactivate)
+* [Learn how to activate and deactivate a cloud user](/cloud/cloud-configuration/cloud-user-deactivate)
