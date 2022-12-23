@@ -6,7 +6,10 @@ title: How do I update my details and change password?
 
 ## Before you begin
 
-{% include /cloud/cloud-before-begin.md %}
+* Click **Create my account** on the FeatureBase invitation email
+* Complete the joining form and click **Next**
+* [Login at](https://cloud.featurebase.com/login)
+* Enter the confirmation code then click **Confirm**.
 
 ## How do I view my user profile?
 
