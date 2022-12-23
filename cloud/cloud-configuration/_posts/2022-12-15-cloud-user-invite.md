@@ -1,5 +1,5 @@
 ---
-title: How do I create Cloud users?
+title: How do I invite Cloud users?
 ---
 
 {% include /cloud/cloud-summary-users.md %}
