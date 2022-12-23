@@ -17,8 +17,6 @@ title: How do I manage cloud users?
 
 ## How do I invite a user to my organization?
 
-{% include /cloud/cloud-summary-users.md %}
-
 * [Learn how to create a cloud user](/cloud/cloud-configuration/cloud-user-invite)
 
 ## How do I change user roles?
