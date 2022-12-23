@@ -7,7 +7,7 @@ title: How do I update my details and change password?
 
 ## Before you begin
 
-* [Learn how to activate your FeatureBase account](/cloud/my-account/cloud-user-activate-account.md)
+* [Learn how to activate your FeatureBase account](/cloud/my-account/cloud-user-activate-account)
 
 ## How do I view my user profile?
 
