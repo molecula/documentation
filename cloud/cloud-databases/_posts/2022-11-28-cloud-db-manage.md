@@ -42,7 +42,7 @@ FeatureBase databases are clusters of FeatureBase nodes that act as dedicated re
 
 ## Next step
 
-* [Learn how to manage FeatureBase Cloud tables](/cloud/cloud-data-ingestion/tables)
+* [Learn how to manage FeatureBase Cloud tables](/cloud/cloud-tables/cloud-table-manage)
 
 <!-- change this once the new tables content goes in
 * [Learn how to manage FeatureBase Cloud tables](/cloud/cloud-tables/cloud-table-manage)

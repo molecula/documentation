@@ -6,16 +6,16 @@ sidebar_label: Getting Started With FeatureBase
 
 FeatureBase supports multiple interfaces for querying and [ingestion](/community/community-data-ingestion/ingesters). For this tutorial, we shall use the `csv-ingester` to insert data and both the web-UI and Postgres interface (via psql) to get familiar with querying FeatureBase. Ultimately you'll probably want to interact with FeatureBase through a [client library](/community/query-data/python-library).
 
-**NOTE:** 
+**NOTE:**
 Note that FeatureBase server requires a high limit for open files. Check the documentation of your system to see how to increase it in case you hit that limit. As a workaround, you can also cap FeatureBase's [max-file-count](/community/community-setup/featurebase-configuration#max-file-count).
 
 ### Starting FeatureBase
 
 Grab the appropriate FeatureBase binary for your system from the release you were provided, or from [here](https://github.com/FeatureBaseDB/featurebase/releases/latest). Existing customers can also look for releases at https://releases.molecula.cloud/.
 
-The FeatureBase binary can be run directly, with no setup and minimal configuration. For a production installation, some additional setup may be appropriate; see the [installation guide](/community/community-setup/installing-featurebase). 
+The FeatureBase binary can be run directly, with no setup and minimal configuration. For a production installation, some additional setup may be appropriate; see the [installation guide](/community/community-setup/installing-featurebase).
 
-**NOTE:** 
+**NOTE:**
 FeatureBase runs well on Linux and MacOS. It will not run on Windows.
 
 You can place it somewhere on your `PATH`, or run the binary directly.
@@ -71,7 +71,7 @@ In order to better understand FeatureBase's capabilities, we will create a sampl
 
 Although FeatureBase doesn't keep the data in a tabular format, we still use the terms "columns" and "rows" when describing the data model. We put the primary objects in columns, and the properties of those objects in rows. For example, the Star Trace project will contain an index called "repository" which contains columns representing Github repositories, and rows representing properties like programming languages and stargazers. We can better organize the rows by grouping them into sets called Fields. So the "repository" index might have a "languages" field as well as a "stargazers" field. You can learn more about indexes and fields in the [Data Model](/concepts/data-modeling-overview) section of the documentation.
 
-**NOTE:** 
+**NOTE:**
 If at any time you want to verify the data structure, you can request the schema as follows:
 
 ```shell
@@ -111,7 +111,7 @@ curl localhost:10101/schema
   ]
 }
 ```
-**NOTE:** 
+**NOTE:**
 This is the response you should receive once completing this project. It has also been formatted using [`jq`](https://stedolan.github.io/jq) (external link).
 
 
@@ -136,15 +136,15 @@ molecula-consumer-csv \
     --header "language__ID_F,project_id__ID_F" \
     --id-field project_id \
     --batch-size 1000 \
-    --files language.csv 
+    --files language.csv
 
 ```
 
-There are a couple of things to note about the above command, particularly the flags and arguments used: 
-* `--index`: set the index that shall be used. If this index does not exist, it shall be created automatically. 
-* `--header`: set the header to be used if the original csv file does not have a header. Each column name also specifies the type that FeatureBase shall use to represent the data (after the two underscores). For more details on all the data-types that FeatureBase avails, be sure to check out the [Field Types](/community/community-data-ingestion/ingester-configuration) section later on. For now, it suffices to say that the `ID` type is a simple integer representation of a particular property that an object has. For example, if an object has `project_id` set to 10 and `language` set to 6, 8 and 18, it means that the object was assigned the project ID 10 and uses Go, C and Python. 
-* `--id-field`: specify which column contains the primary key for the object. 
-* `--batch-size`: by default `molecula-consumer-csv` ingests rows one at a time which is quite slow. To speed up ingestion, set the batch size to a higher number such as 1000. The exact batch-size to be used though depends on the domain, setting and tradeoffs. 
+There are a couple of things to note about the above command, particularly the flags and arguments used:
+* `--index`: set the index that shall be used. If this index does not exist, it shall be created automatically.
+* `--header`: set the header to be used if the original csv file does not have a header. Each column name also specifies the type that FeatureBase shall use to represent the data (after the two underscores). For more details on all FeatureBase data-types see [Field Types](/community/community-data-ingestion/ingester-configuration) section later on. For now, it suffices to say that the `ID` type is a simple integer representation of a particular property that an object has. For example, if an object has `project_id` set to 10 and `language` set to 6, 8 and 18, it means that the object was assigned the project ID 10 and uses Go, C and Python. 
+* `--id-field`: specify which column contains the primary key for the object.
+* `--batch-size`: by default `molecula-consumer-csv` ingests rows one at a time which is quite slow. To speed up ingestion, set the batch size to a higher number such as 1000. The exact batch-size to be used though depends on the domain, setting and tradeoffs.
 * `--files`: provide the path to the file to ingest data from.
 
 Next,ingest the stargazers via the following command:
@@ -169,7 +169,7 @@ Which repositories did user 14 star:
 [repository]Row(stargazer=14);
 ```
 ```table
- _id 
+ _id
 ═════
  1
  2
@@ -201,12 +201,12 @@ What are the top 5 languages in the sample data:
 Which repositories were starred by user 14 and 19:
 ```shell
 [repository]Intersect(
-    Row(stargazer=14), 
+    Row(stargazer=14),
     Row(stargazer=19)
 );
 ```
 ```table
- _id 
+ _id
 ═════
  2
  3
@@ -224,12 +224,12 @@ Which repositories were starred by user 14 and 19:
 Which repositories were starred by user 14 or 19:
 ```shell
 [repository]Union(
-    Row(stargazer=14), 
+    Row(stargazer=14),
     Row(stargazer=19)
 );
 ```
 ```table
- _id 
+ _id
 ═════
  1
  2
@@ -247,13 +247,13 @@ Which repositories were starred by user 14 or 19:
 Which repositories were starred by user 14 and 19 and also were written in language 1:
 ```shell
 [repository]Intersect(
-    Row(stargazer=14), 
+    Row(stargazer=14),
     Row(stargazer=19),
     Row(language=1)
 );
 ```
 ```table
- _id 
+ _id
 ═════
  2
  362
@@ -267,11 +267,11 @@ Set user 99999 as a stargazer for repository 77777:
 [repository]Set(77777, stargazer=99999);
 ```
 ```table
- result 
+ result
 ════════
  true
 (1 row)
 ```
 
-Please note that while user ID 99999 may not be sequential with the other column IDs, it is still a relatively low number. 
+Please note that while user ID 99999 may not be sequential with the other column IDs, it is still a relatively low number.
 Don't try to use arbitrary 64-bit integers as column or row IDs in FeatureBase - this will lead to problems such as poor performance and out of memory errors.

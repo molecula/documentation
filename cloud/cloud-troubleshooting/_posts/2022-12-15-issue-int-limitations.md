@@ -14,5 +14,5 @@ Specify int as the column name with no constraints to apply default values inter
 
 ## Further information
 
-[INT Data Type](/sql-preview/data-types/data-type-int#arguments)
+[INT Data Type](/sql-preview/data-types/data-type-int)
 {% include contact-support.md %} to discuss upgrading your account.
