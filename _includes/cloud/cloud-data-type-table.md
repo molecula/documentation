@@ -1,4 +1,4 @@
-* [Learn about data types and constraints](/cloud/cloud-data-modeling/data-types)
+* [Learn about data types and constraints](/sql-preview/data-types/data-types-home)
 
 <!-- commented out because this isn't in the current branch
 | Data type | Optional constraints | Further information |
