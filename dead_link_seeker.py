@@ -36,7 +36,7 @@ from urllib import request, parse
 from urllib.parse import urlparse, urljoin
 from urllib.request import Request
 from html.parser import HTMLParser
-# Deque (Doubly Ended Queue) in Python is implemented using the module “collections“. 
+# Deque (Doubly Ended Queue) in Python is implemented using the module “collections“.
 # Deque is preferred over a list in the cases where we need quicker append and pop operations from both the ends of the container.
 # Deque provides an O(1) time complexity for append and pop operations as compared to a list that provides O(n) time complexity.
 from collections import deque
@@ -108,7 +108,7 @@ class LinkParser(HTMLParser):
 verbose = len(sys.argv) > 2 and sys.argv[2] == 'v'
 # enable this as a script, e.g., 'https://docs.featurebase.com/ v'
 LinkParser(sys.argv[1], verbose)
-#Add any false positives to this list to let users know to ignore these errors
+# Add any false positives to this list to let users know to ignore these errors
 false_positive = ['mailto*','https://roaringbitmap.org/']
 print("The following sites are flagged but do work: ")
 for site in false_positive:
