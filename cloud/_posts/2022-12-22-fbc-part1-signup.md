@@ -1,17 +1,19 @@
 ---
-title: How do I signup to FeatureBase Cloud?
+title: How do I sign up to FeatureBase Cloud?
 ---
 
-Sign up to FeatureBase cloud using these instructions.
+Sign up for a FeatureBase Cloud account which you can use free of charge for 21 days.
+
+The user account attached to your email address is automatically granted the **Administrator** role which gives full access to the system
 
 ## Before you begin
 
 * [Learn more about FeatureBase cloud](/cloud/cloud-introduction)
 * [Learn about the 21 day trial period](/cloud/cloud-introduction#cloud-trial)
 * [Read the terms of service](https://www.featurebase.com/cloud-terms)
-* Have contact details and a password ready
+* Have contact details and a complex password ready
 
-## Signing up for Featurebase cloud
+## Signing up for FeatureBase cloud
 
 This is a 21 day trial period
 
@@ -22,3 +24,7 @@ This is a 21 day trial period
 ## Next step
 
 * [Login to FeatureBase Cloud](/cloud/fbc-part2-login)
+
+## Further information
+
+* [Learn about FeatureBase roles and privileges](/cloud/cloud-configuration/cloud-user-roles-ref)

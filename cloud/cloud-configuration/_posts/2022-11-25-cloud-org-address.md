@@ -8,6 +8,7 @@ title: How do I change my organization name and address for billing?
 
 * [Learn about FeatureBase Cloud pricing](https://www.featurebase.com/pricing)
 * {% include contact-support.md %} to arrange an upgrade
+
 {% include /cloud/cloud-user-admin-role-needed.md %}
 {% include /cloud/cloud-before-begin.md %}
 

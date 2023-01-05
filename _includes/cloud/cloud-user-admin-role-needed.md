@@ -1,1 +1,1 @@
-You will need an owner or Administrator account to perform these steps
+You will need the Administrator role to perform these steps

@@ -2,9 +2,9 @@
 title: How do I move my account to another FeatureBase organization?
 ---
 
-Active FeatureBase users may be invited to join a different organization.
+FeatureBase users may be invited to join a different organization.
 
-WARNING: Accepting the move means you **cannot** login to your original organization.
+WARNING: Accepting the move means you **cannot** access your original organization.
 
 ## Before you begin
 
