@@ -4,8 +4,6 @@ title: How do I invite Cloud users?
 
 {% include /cloud/cloud-summary-users.md %}
 
-{% include /cloud/cloud-summary-user-move.md %}
-
 ## Before you begin
 
 {% include /cloud/cloud-user-admin-role-needed.md %}
@@ -14,23 +12,26 @@ title: How do I invite Cloud users?
 
 {% include /cloud/cloud-username-nochange.md %}
 
-## Invite a cloud user
+## How do I invite a user to my organization?
 
-You can invite a new user to your FeatureBase organization, or one that belongs with a different organization.
+When you invite a user, FeatureBase will:
+* generate a unique invitation URL that expires after 7 days
+* sends the invitation URL to the provided email address
+* adds the user email address to the **Invited users** list
+
+### Invite a user
 
 * Click **Configuration** > **Manage users**.
 * Click **Invite new user**.
 * Enter one or more email addresses, using commas to separate them.
 * Click **Send invitation**.
 
-## Copy the invitation URL
+## Provide invitation URL (optional)
 
-The invitation URL allows a user to setup their account with their name, a password and to agree with the FeatureBase terms of service.
-
-It is included in the invitation email, but you can also provide the URL via a different method.
+You can copy the invitation URL and provide it to the user if required.
 
 * Click **Configuration** > **Manage users**.
-* Scroll to **Invited users**
+* Scroll to **Invited users**.
 * {%  include /cloud/icon-edit-unicode.md %} on the user > **Copy invite URL**.
 
 ## Next step
