@@ -7,7 +7,7 @@ STRINGSET is a FeatureBase datatype used with `TIMEQUANTUM` and `TTL` (Time To L
 ## Syntax
 
 ```
-STRINGSET [TIMEQUANTUM {value} [TTL '{value}}']]
+STRINGSET [TIMEQUANTUM {value} [TTL '{value}']]
 ```
 
 ## Arguments
