@@ -2,7 +2,9 @@ FeatureBase Cloud supports two user roles for **active** accounts:
 * User - granted automatically to all verified accounts on first login
 * Administrator - granted by existing account with administrator role
 
-## User management
+Each role contains a collection of system privileges.
+
+## User management privileges
 
 | Privilege | User role | Administrator role |
 |---|---|---|
@@ -15,25 +17,25 @@ FeatureBase Cloud supports two user roles for **active** accounts:
 | Activate user account | No | Yes |
 | Deactivate user account | No | Yes |
 
-## Database management
+## Database management privileges
 
 | Privilege | User role | Administrator role |
 |---|---|---|
-| Create Databases | Yes | Yes |
-| Read & query Databases | Yes | Yes |
-| Update Databases | Own database | All |
-| Delete Databases | Own database | All |
+| Create databases | Yes | Yes |
+| Read & query databases | Yes | Yes |
+| Update databases | Own database | All |
+| Delete databases | Own database | All |
 
-## Table management
+## Table management privileges
 
 | Privilege | User role | Administrator role |
 |---|---|---|
-| Create Tables | Yes | Yes |
-| Read & query Tables | Yes | Yes |
-| Update Tables | Own tables | All |
-| Delete Tables | Own tables | All |
+| Create tables | Yes | Yes |
+| Read & query tables | Yes | Yes |
+| Update tables | Own tables | All |
+| Delete tables | Own tables | All |
 
-## Data source management
+## Data source management privileges
 
 | Privilege | User role | Administrator role |
 |---|---|---|
@@ -42,7 +44,7 @@ FeatureBase Cloud supports two user roles for **active** accounts:
 | Update data sources | Own data sources | All |
 | Delete data sources | Own data sources | All |
 
-## Organization management
+## Organization management privileges
 
 | Privilege | User role | Administrator role |
 |---|---|---|

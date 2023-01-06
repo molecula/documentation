@@ -2,7 +2,7 @@
 title: How do I change a user role?
 ---
 
-{% include /cloud/cloud-user-roles.md %}
+{% include /cloud/cloud-summary-user-roles.md %}
 
 ## Before you begin
 

@@ -4,6 +4,8 @@ title: How do I invite Cloud users?
 
 {% include /cloud/cloud-summary-users.md %}
 
+{% include /cloud/cloud-summary-user-move.md %}
+
 ## Before you begin
 
 {% include /cloud/cloud-user-admin-role-needed.md %}

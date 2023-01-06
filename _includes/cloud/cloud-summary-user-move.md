@@ -1,6 +1,6 @@
-Users accounts can move to another organization under the following conditions:
+Moving an account to another organization will be successful under the following conditions:
 
-| Account role | Condition |
-|---|---|
-| User & Administrator | Transfer databases, tables & data sources to another user |
-| Administrator | One or more accounts granted **Administrator** role in current organization |
+| Account roles | Condition | Action |
+|---|---|---|
+| User & Administrator | No resources owned by account | Delete databases, tables and Data sources from the account. |
+| Administrator | Organization requires one or more users with **Administrator** role. | Upgrade one or more users with the **Administrator** role |
