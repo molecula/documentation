@@ -7,10 +7,6 @@ Updated documentation for Featurebase doco following alterations documented in h
 * Manually maintained sidebar Nav
 * Page YAML differs from Post YAML
 
-## Local build
-
-See /README-local-build for information
-
 ## Nav
 
 `/_data_/navigation.yml`

@@ -6,49 +6,40 @@ Each role contains a collection of system privileges.
 
 ## User management privileges
 
-| Privilege | User role | Administrator role |
-|---|---|---|
-| [Login](/cloud/fbc-part2-login) | Yes | Yes |
-| [Invite users](/cloud/cloud-configuration/cloud-user-invite) | No | Yes |
-| Copy invite URL | No | Yes |
-| [Read user profiles](/cloud/cloud-configuration/cloud-users-view-search) | Own account | Yes |
-| Update user profile | [Own account](/cloud/my-account/cloud-user-personal-update) | Yes |
-| [Alter role](/cloud/cloud-configuration/cloud-user-edit-role) | No | All but own account |
-| [Activate user account](/cloud/cloud-configuration/cloud-user-deactivate) | No | Yes |
-| [Deactivate user account](/cloud/cloud-configuration/cloud-user-deactivate) | No | Yes |
+| Privilege | Applicable role(s) |
+|---|---|
+| [Login](/cloud/fbc-part2-login) | User, Administrator |
+| [Invite users](/cloud/cloud-configuration/cloud-user-invite) | Administrator |
+| Copy invite URL | Administrator|
+| [Read user profiles](/cloud/cloud-configuration/cloud-users-view-search) | User(Own account), Administrator|
+| [Update user profile](/cloud/my-account/cloud-user-personal-update) | User(Own account), Administrator |
+| [Alter role](/cloud/cloud-configuration/cloud-user-edit-role) | Administrator(All but own account) |
+| [Activate user account](/cloud/cloud-configuration/cloud-user-deactivate) | Administrator |
+| [Deactivate user account](/cloud/cloud-configuration/cloud-user-deactivate) | Administrator|
 
 ## Database management privileges
 
-| Privilege | User role | Administrator role |
-|---|---|---|
-| [Create databases](/cloud/cloud-databases/cloud-db-create) | Yes | Yes |
-| Read & query databases | Yes | Yes |
-| Delete databases | Own database | All |
+| Privilege | Applicable role(s) |
+|---|---|
+| [Create databases](/cloud/cloud-databases/cloud-db-create) | User, Administrator |
+| Read & query databases | User, Administrator |
+| Delete databases | User, Administrator |
 
 ## Table management privileges
 
-| Privilege | User role | Administrator role |
-|---|---|---|
-| [Create tables](/cloud/cloud-tables/cloud-table-create) | Yes | Yes |
-| Read & query tables | Yes | Yes |
-| [Add table column](/cloud/cloud-tables/cloud-table-add-column) | Own tables | All |
-| [Delete table column](/cloud/cloud-tables/cloud-table-delete-column) | Own tables | All |
-| [Delete tables](/cloud/cloud-tables/cloud-table-drop) | Own tables | All |
-
-## Data source management privileges
-
-| Privilege | User role | Administrator role |
-|---|---|---|
-| Create data sources | Yes | Yes |
-| Read & query data sources | Yes | Yes |
-| Update data sources | Own data sources | All |
-| Delete data sources | Own data sources | All |
+| Privilege | Applicable role(s) |
+|---|---|
+| [Create tables](/cloud/cloud-tables/cloud-table-create) | User, Administrator |
+| Read & query tables | User, Administrator |
+| [Add table column](/cloud/cloud-tables/cloud-table-add-column) | User, Administrator|
+| [Delete table column](/cloud/cloud-tables/cloud-table-delete-column) | User, Administrator|
+| [Delete tables](/cloud/cloud-tables/cloud-table-drop) | User, Administrator |
 
 ## Organization management privileges
 
-| Privilege | User role | Administrator role |
-|---|---|---|
-| Read organization details | No | Yes |
-| [Update organization details](/cloud/cloud-configuration/cloud-org-address) | No | Yes |
-| [Update billing contact](/cloud/cloud-configuration/cloud-org-update-billing) | No | Yes |
-| [Update technical contact](/cloud/cloud-configuration/cloud-org-update-tech-contact) | No | Yes |
+| Privilege | Applicable role(s) |
+|---|---|
+| Read organization details | Administrator |
+| [Update organization details](/cloud/cloud-configuration/cloud-org-address) | Administrator |
+| [Update billing contact](/cloud/cloud-configuration/cloud-org-update-billing) | Administrator |
+| [Update technical contact](/cloud/cloud-configuration/cloud-org-update-tech-contact) | Administrator |

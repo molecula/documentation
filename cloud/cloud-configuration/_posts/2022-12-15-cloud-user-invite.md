@@ -16,8 +16,8 @@ title: How do I invite Cloud users?
 
 When you invite a user, FeatureBase will:
 * generate a unique invitation URL that expires after 7 days
-* sends the invitation URL to the provided email address
-* adds the user email address to the **Invited users** list
+* send the invitation URL to the provided email address
+* add the user email address to the **Invited users** list
 
 ### Invite a user
 
@@ -36,4 +36,4 @@ You can copy the invitation URL and provide it to the user if required.
 
 ## Next step
 
-* [Learn how to change user privileges](/cloud/cloud-configuration/cloud-user-edit-role.md)
+* [Learn how to change user privileges](/cloud/cloud-configuration/cloud-user-edit-role)
