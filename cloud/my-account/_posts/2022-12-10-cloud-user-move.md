@@ -14,7 +14,7 @@ WARNING: Accepting the move means you **cannot** access your original organizati
 
 ## Moving your account
 
-NOTE: You can opt-out of the account move by ignoring the email or clicking **No, thanks** on the confirmation page.
+NOTE: You can opt-out of the account move by ignoring the email or click **No, thanks** on the confirmation page.
 
 * Click **Move account** in the invitation email.
 * Click **Move account** on the FeatureBase confirmation page.
