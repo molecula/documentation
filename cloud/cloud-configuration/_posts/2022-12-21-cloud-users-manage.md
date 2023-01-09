@@ -8,11 +8,13 @@ title: How do I manage cloud users?
 
 {% include /cloud/cloud-before-begin.md %}
 
-## User Status
+## User status
 
-* [Learn ](/cloud/cloud-ref-user-status)
+* [Learn about the user status](/cloud/cloud-ref-user-status)
 
-{% include /cloud-config/cloud-summary-user-status.md %}
+## User roles and privileges
+
+* [Learn about user roles and privileges](/cloud/cloud-ref-user-roles)
 
 ## How do I view and search users
 
