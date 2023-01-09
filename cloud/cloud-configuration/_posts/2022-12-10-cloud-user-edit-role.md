@@ -19,7 +19,7 @@ title: How do I change a user role?
 
 * Click **Configuration** > **Manage users**
 * {% include /cloud-icons/icon-edit-unicode.md %} on the user > **Edit**.
-* Change the user privileges to **User** or **Administrator** as required.
+* Change the role as required.
 * Click **Update**.
 
 ## Further information
