@@ -21,6 +21,6 @@ title: How do I manage my organization?
 
 ## How do I change my technical contact details?
 
-{% include /cloud/cloud-summary-tech-contact.md %}
+{% include /cloud-config/cloud-summary-tech-contact.md %}
 
 * [Learn how to update technical contact address](/cloud/cloud-configuration/cloud-org-update-tech-contact)

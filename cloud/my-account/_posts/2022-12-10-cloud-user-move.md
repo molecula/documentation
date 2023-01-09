@@ -4,7 +4,7 @@ title: How do I move my account to another FeatureBase organization?
 
 FeatureBase users may be invited to join a different organization.
 
-{% include /cloud/cloud-summary-user-move.md %}
+{% include /cloud-config/cloud-summary-user-move.md %}
 
 WARNING: Accepting the move means you **cannot** access your original organization.
 
