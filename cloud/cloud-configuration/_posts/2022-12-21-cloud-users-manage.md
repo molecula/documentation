@@ -21,7 +21,7 @@ title: How do I manage cloud users?
 
 ## How do I change user roles?
 
-{% include /cloud-config/cloud-summary-user-roles %}
+{% include /cloud-config/cloud-summary-user-roles.md %}
 
 * [Learn how to edit user roles](/cloud/cloud-configuration/cloud-user-edit-role)
 
