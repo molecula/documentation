@@ -7,7 +7,7 @@ title: How do I change my organization name and address?
 ## Before you begin
 
 {% include /cloud-config/cloud-user-admin-role-needed.md %}
-* [Learn about FeatureBase Cloud pricing](https://www.featurebase.com/pricing)
+* [Learn about FeatureBase Cloud pricing](https://www.featurebase.com/pricing){:target="_blank"}
 * {% include contact-support.md %} to arrange an upgrade
 {% include /cloud/cloud-before-begin.md %}
 
