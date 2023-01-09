@@ -6,6 +6,5 @@ title: Cloud move user reference
 
 ## Further information
 
-The process for moving users to another organization is the same for inviting them.
-
-* [Learn how invite users](/cloud/cloud-config/cloud-user-invite)
+* [Learn how invite users to an organization](/cloud/cloud-config/cloud-user-invite)
+* [Learn how to move your account to another organization](/cloud/my-account/cloud-user-move)
