@@ -1,15 +1,18 @@
 ---
-title: How do I activate or deactivate a Cloud user?
+title: How do I control who can login to my organization?
 ---
 
-Administrators can **Activate** or **Deactivate** user accounts as required.
+The Login privilege is granted to all **Active** users via their role.
+
+An Administrator can revoke the Login privilege by deactivating the account.
+
+NOTE: {% include contact-support.md%} to delete user accounts.
 
 ## Before you begin
 
 {% include /cloud-config/cloud-user-admin-role-needed.md %}
+* [Learn about the user status](/cloud/cloud-config/cloud-ref-user-status)
 {% include /cloud/cloud-before-begin.md %}
-* [Learn about user statuses](/cloud/cloud-user-status-ref)
-* [Learn how to manage cloud users](/cloud/cloud-configuration/cloud-users-manage)
 * [Invite a cloud user](/cloud/cloud-configuration/cloud-user-invite)
 
 ## Deactivate a user
@@ -26,4 +29,5 @@ NOTE: You may choose to [change the user role](/cloud/cloud-configuration/cloud-
 
 ## Further information
 
+* [Learn about user roles and privileges](/cloud/cloud-config/cloud-ref-user-roles)
 * [Learn how to edit a user role](/cloud/cloud-configuration/cloud-user-edit-role)
