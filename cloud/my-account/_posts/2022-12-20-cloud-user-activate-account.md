@@ -1,5 +1,5 @@
 ---
-title: How do I create a FeatureBase account?
+title: How do I create and activate my account?
 ---
 
 FeatureBase users can create an FeatureBase account in two ways:
@@ -23,7 +23,7 @@ NOTE: You may need to add `noreply@molecula.com` and `noreply@verificationemail.
 * Click the checkbox to accept the terms of service
 * Click **Next**
 
-## Step 2 - confirm and activate account
+### Step 2 - confirm and activate account
 
 FeatureBase sends a confirmation code to your email address.
 
@@ -35,4 +35,4 @@ Your user is now **Active** and you have the **user** role.
 
 ## Next step
 
-* [Learn about Featurebase user roles](/cloud/cloud-configuration/cloud-user-roles-ref)
+* [Learn about FeatureBase user roles](/cloud/cloud-configuration/cloud-user-roles-ref)
