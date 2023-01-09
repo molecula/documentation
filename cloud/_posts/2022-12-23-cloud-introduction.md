@@ -32,4 +32,4 @@ All users must agree to the Terms of Service before they can sign up.
 
 ## Next step
 
-* [Learn how to setup your FeatureBase Cloud account](/cloud/cloud-setup/cloud-quickstart-guide)
+* [Learn how to setup a cloud account then login](/cloud/fbc-part1-signup)
