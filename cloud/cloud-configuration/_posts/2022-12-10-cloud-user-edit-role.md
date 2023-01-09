@@ -2,7 +2,7 @@
 title: How do I change a user role?
 ---
 
-{% include /cloud/cloud-summary-user-roles.md %}
+{% include /cloud-config/cloud-summary-user-roles.md %}
 
 ## Before you begin
 
@@ -10,11 +10,11 @@ title: How do I change a user role?
 * [Learn how to manage cloud users](/cloud/cloud-configuration/cloud-users-manage)
 * [Invite a cloud user](/cloud/cloud-configuration/cloud-user-invite)
 
-{% include /cloud/cloud-user-admin-role-needed.md %}
+{% include /cloud-config/cloud-user-admin-role-needed.md %}
 
 ## Change user role
 
-{% include /cloud/cloud-user-edit-steps.md %}
+{% include /cloud-config/cloud-user-edit-steps.md %}
 * Change the user privileges to **User** or **Administrator** as required.
 * Click **Update**.
 

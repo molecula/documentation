@@ -6,7 +6,7 @@ title: How do I manage my organization?
 
 ## Before you begin
 
-{% include /cloud/cloud-user-admin-role-needed.md %}
+{% include /cloud-config/cloud-user-admin-role-needed.md %}
 {% include /cloud/cloud-before-begin.md %}
 
 ## How do I change my organization name and address?
@@ -15,7 +15,7 @@ title: How do I manage my organization?
 
 ## How do I change my billing address for my account?
 
-{% include /cloud/cloud-summary-billing-contact.md %}
+{% include /cloud-config/cloud-summary-billing-contact.md %}
 
 * [Learn how to update billing details](/cloud/cloud-configuration/cloud-org-update-billing)
 

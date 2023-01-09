@@ -2,7 +2,7 @@
 title: Cloud user roles reference
 ---
 
-{% include /cloud/cloud-summary-user-roles.md %}
+{% include /cloud-config/cloud-summary-user-roles.md %}
 
 ## Further information
 
