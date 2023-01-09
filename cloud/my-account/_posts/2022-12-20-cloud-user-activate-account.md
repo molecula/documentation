@@ -37,4 +37,4 @@ Your user is now **Active** and you have the **user** role.
 
 ## Next step
 
-* [Learn about FeatureBase user roles](/cloud/cloud-configuration/cloud-user-roles-ref)
+* [Learn about FeatureBase user roles](/cloud/cloud-configuration/cloud-ref-user-roles)

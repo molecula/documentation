@@ -27,4 +27,4 @@ This is a 21 day trial period
 
 ## Further information
 
-* [Learn about FeatureBase roles and privileges](/cloud/cloud-configuration/cloud-user-roles-ref)
+* [Learn about FeatureBase roles and privileges](/cloud/cloud-configuration/cloud-ref-user-roles)
