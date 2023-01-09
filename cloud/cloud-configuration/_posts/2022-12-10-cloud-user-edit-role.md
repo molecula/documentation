@@ -3,6 +3,10 @@ title: How do I change a user role?
 ---
 
 {% include /cloud-config/cloud-summary-user-roles.md %}
+{% include /cloud-config/cloud-summary-user-privs.md %}
+{% include /cloud-config/cloud-summary-db-privs.md %}
+{% include /cloud-config/cloud-summary-table-privs.md %}
+{% include /cloud-config/cloud-summary-org-privs.md %}
 
 ## Before you begin
 
