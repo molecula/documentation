@@ -25,7 +25,7 @@ IMPORTANT: Perform data modeling **before** creating tables to avoid issues.
 
 ## Column data types and constraints
 
-* [Learn about data types and constraints](/sql-preview/data-types/data-types-home)
+* [Learn about data types and constraints](/cloud/cloud-data-modeling/data-types)
 
 ## Naming standard
 
