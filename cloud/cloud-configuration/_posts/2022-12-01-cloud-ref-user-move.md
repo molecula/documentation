@@ -1,5 +1,5 @@
 ---
-title: Move user reference
+title: Cloud move user reference
 ---
 
 {% include /cloud-config/cloud-summary-user-move.md%}
