@@ -13,4 +13,4 @@ The user account status appears on the user profile page and in the Manage users
 
 ## Next step
 
-* [Learn how to manage users](/cloud-configuration/cloud-users-manage)
+* [Learn how to manage users](/cloud/cloud-configuration/cloud-users-manage)
