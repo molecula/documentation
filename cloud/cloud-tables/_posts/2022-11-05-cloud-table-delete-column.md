@@ -24,7 +24,7 @@ WARNING: Deletion is permanent.
 
 1. Click the table name.
 2. Click **Columns**.
-3. {% include /cloud/icon-edit-unicode.md %} on the column > **Delete**.
+3. {% include /cloud-icons/icon-edit-unicode.md %} on the column > **Delete**.
 5. Enter "DELETE" in the confirmation dialog.
 6. Click **Delete**.
 
