@@ -11,7 +11,7 @@ NOTE: {% include contact-support.md%} to delete user accounts.
 ## Before you begin
 
 {% include /cloud-config/cloud-user-admin-role-needed.md %}
-* [Learn about the user status](/cloud/cloud-config/cloud-ref-user-status)
+* [Learn about the user status](/cloud/cloud-configuration/cloud-ref-user-status)
 {% include /cloud/cloud-before-begin.md %}
 * [Invite a cloud user](/cloud/cloud-configuration/cloud-user-invite)
 
