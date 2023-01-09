@@ -6,5 +6,5 @@ title: Cloud move user reference
 
 ## Further information
 
-* [Learn how invite users to an organization](/cloud/cloud-config/cloud-user-invite)
+* [Learn how invite users to an organization](/cloud/cloud-configuration/cloud-user-invite)
 * [Learn how to move your account to another organization](/cloud/my-account/cloud-user-move)
