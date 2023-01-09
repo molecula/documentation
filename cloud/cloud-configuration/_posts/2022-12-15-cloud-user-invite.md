@@ -36,4 +36,4 @@ You can copy the invitation URL and provide it to the user if required.
 
 ## Next step
 
-* [Learn how to change user privileges](/cloud/cloud-configuration/cloud-user-edit-role)
+* [Learn how to change user roles](/cloud/cloud-configuration/cloud-user-edit-role)
