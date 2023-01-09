@@ -8,8 +8,11 @@ title: How do I manage cloud users?
 
 {% include /cloud/cloud-before-begin.md %}
 
-<!--this next include has its own heading-->
-{% include /cloud-config/cloud-user-status.md %}
+## User Status
+
+* [Learn ](/cloud/cloud-ref-user-status)
+
+{% include /cloud-config/cloud-summary-user-status.md %}
 
 ## How do I view and search users
 
@@ -27,6 +30,6 @@ title: How do I manage cloud users?
 
 ## How do I activate and deactivate cloud users?
 
-{% include /cloud-config/cloud-user-deactivate-summary.md%}
+
 
 * [Learn how to activate and deactivate a cloud user](/cloud/cloud-configuration/cloud-user-deactivate)
