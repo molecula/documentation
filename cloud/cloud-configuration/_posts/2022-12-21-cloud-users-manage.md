@@ -14,7 +14,7 @@ title: How do I manage cloud users?
 * [Invite users to your organization](/cloud/cloud-configuration/cloud-user-invite)
 * [Revoke the login privilege for existing users](/cloud/cloud-configuration/cloud-user-deactivate)
 
-## How do I view and search for users
+## How do I view and search for users?
 
 * [Learn how to view and search cloud users](/cloud/cloud-configuration/cloud-users-view-search)
 
