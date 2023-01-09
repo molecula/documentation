@@ -29,5 +29,5 @@ NOTE: You may choose to [change the user role](/cloud/cloud-configuration/cloud-
 
 ## Further information
 
-* [Learn about user roles and privileges](/cloud/cloud-config/cloud-ref-user-roles)
+* [Learn about user roles and privileges](/cloud/cloud-configuration/cloud-ref-user-roles)
 * [Learn how to edit a user role](/cloud/cloud-configuration/cloud-user-edit-role)
