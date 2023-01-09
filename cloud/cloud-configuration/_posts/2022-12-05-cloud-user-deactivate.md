@@ -6,6 +6,8 @@ The Login privilege is granted to all **Active** users via their role.
 
 An Administrator can revoke the Login privilege by **deactivating** the account.
 
+The privilege can be restored by **activating** the account.
+
 NOTE: {% include contact-support.md%} to delete user accounts.
 
 ## Before you begin
