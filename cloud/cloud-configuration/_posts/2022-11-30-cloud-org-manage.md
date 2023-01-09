@@ -2,7 +2,7 @@
 title: How do I manage my organization?
 ---
 
-{% include /cloud/cloud-summary-org.md %}
+{% include /cloud-config/cloud-summary-org.md %}
 
 ## Before you begin
 
