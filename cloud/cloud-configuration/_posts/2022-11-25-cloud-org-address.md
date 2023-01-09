@@ -10,7 +10,7 @@ title: How do I change my organization name and address for billing?
 * {% include contact-support.md %} to arrange an upgrade
 
 {% include /cloud-config/cloud-user-admin-role-needed.md %}
-{% include /cloud-config/cloud-before-begin.md %}
+{% include /cloud/cloud-before-begin.md %}
 
 ## Change organization details
 
