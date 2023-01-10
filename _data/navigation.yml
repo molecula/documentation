@@ -25,6 +25,8 @@ nav:
         category: cloud-configuration
       - title: Troubleshooting
         category: cloud-troubleshooting
+      - title: My account
+        category: my-account
 
   - title: FeatureBase Community
     category: community
