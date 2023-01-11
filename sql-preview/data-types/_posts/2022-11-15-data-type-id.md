@@ -2,7 +2,7 @@
 title: ID numeric datatype
 ---
 
-## Syntax
+## DDL Syntax
 
 ```
 ID

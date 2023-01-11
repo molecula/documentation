@@ -4,7 +4,7 @@ title: STRINGSET data type
 
 STRINGSET is a FeatureBase datatype used with `TIMEQUANTUM` and `TTL` (Time To Live) constraints.
 
-## Syntax
+## DDL Syntax
 
 ```
 STRINGSET [TIMEQUANTUM {value} [TTL '{value}']]

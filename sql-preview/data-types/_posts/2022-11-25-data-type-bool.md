@@ -2,7 +2,7 @@
 title: BOOL data type
 ---
 
-## Syntax
+## DDL Syntax
 
 ```
 BOOL

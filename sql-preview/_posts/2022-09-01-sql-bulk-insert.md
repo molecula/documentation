@@ -100,7 +100,13 @@ For urls, the FROM clause should be a valid url.
 
 #### FROM clause for inline stream
 
-For an inline stream, the contents of the literal a read as though they were in a file. A stream can be specified using the multi-line string literal syntax:
+For an inline stream, the contents of the literal a read as though they were in a file. A stream can be specified using the single-line string literal syntax:
+
+```sql
+'this is a single-line string literal'
+```
+
+Or using the multi-line string literal syntax (prepend an `x`):
 
 ```sql
 x'this

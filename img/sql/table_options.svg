@@ -1,130 +1,48 @@
-<svg class="railroad-diagram" height="122" viewbox="0 0 418 122" width="418" xmlns="http://www.w3.org/2000/svg">
+<svg class="railroad-diagram" height="62" viewbox="0 0 338.5 62" width="338.5" xmlns="http://www.w3.org/2000/svg">
  <g transform="translate(.5 .5)">
   <g>
    <path d="M20 21v20m0 -10h20">
    </path>
   </g>
+  <path d="M40 31h10">
+  </path>
   <g>
-   <path d="M40 31h0">
+   <path d="M50 31h0">
    </path>
-   <path d="M378 31h0">
+   <path d="M288.5 31h0">
    </path>
-   <path d="M40 31h20">
-   </path>
-   <g>
-    <path d="M60 31h0">
+   <g class="terminal">
+    <path d="M50 31h0">
     </path>
-    <path d="M358 31h0">
+    <path d="M129.5 31h0">
     </path>
-    <g class="terminal">
-     <path d="M60 31h0">
-     </path>
-     <path d="M190.5 31h0">
-     </path>
-     <rect height="22" rx="10" ry="10" width="130.5" x="60" y="20">
-     </rect>
-     <text x="125.25" y="35">
-      KEYPARTITIONS
-     </text>
-    </g>
-    <path d="M190.5 31h10">
-    </path>
-    <path d="M200.5 31h10">
-    </path>
-    <g class="non-terminal">
-     <path d="M210.5 31h0">
-     </path>
-     <path d="M358 31h0">
-     </path>
-     <rect height="22" width="147.5" x="210.5" y="20">
-     </rect>
-     <a>
-      <text x="284.25" y="35">
-       integer_literal
-      </text>
-     </a>
-    </g>
+    <rect height="22" rx="10" ry="10" width="79.5" x="50" y="20">
+    </rect>
+    <text x="89.75" y="35">
+     COMMENT
+    </text>
    </g>
-   <path d="M358 31h20">
+   <path d="M129.5 31h10">
    </path>
-   <path d="M40 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10">
+   <path d="M139.5 31h10">
    </path>
-   <g>
-    <path d="M60 61h12.75">
+   <g class="non-terminal">
+    <path d="M149.5 31h0">
     </path>
-    <path d="M345.25 61h12.75">
+    <path d="M288.5 31h0">
     </path>
-    <g class="terminal">
-     <path d="M72.75 61h0">
-     </path>
-     <path d="M177.75 61h0">
-     </path>
-     <rect height="22" rx="10" ry="10" width="105" x="72.75" y="50">
-     </rect>
-     <text x="125.25" y="65">
-      SHARDWIDTH
+    <rect height="22" width="139" x="149.5" y="20">
+    </rect>
+    <a>
+     <text x="219" y="35">
+      string_literal
      </text>
-    </g>
-    <path d="M177.75 61h10">
-    </path>
-    <path d="M187.75 61h10">
-    </path>
-    <g class="non-terminal">
-     <path d="M197.75 61h0">
-     </path>
-     <path d="M345.25 61h0">
-     </path>
-     <rect height="22" width="147.5" x="197.75" y="50">
-     </rect>
-     <a>
-      <text x="271.5" y="65">
-       integer_literal
-      </text>
-     </a>
-    </g>
+    </a>
    </g>
-   <path d="M358 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10">
-   </path>
-   <path d="M40 31a10 10 0 0 1 10 10v40a10 10 0 0 0 10 10">
-   </path>
-   <g>
-    <path d="M60 91h29.75">
-    </path>
-    <path d="M328.25 91h29.75">
-    </path>
-    <g class="terminal">
-     <path d="M89.75 91h0">
-     </path>
-     <path d="M169.25 91h0">
-     </path>
-     <rect height="22" rx="10" ry="10" width="79.5" x="89.75" y="80">
-     </rect>
-     <text x="129.5" y="95">
-      COMMENT
-     </text>
-    </g>
-    <path d="M169.25 91h10">
-    </path>
-    <path d="M179.25 91h10">
-    </path>
-    <g class="non-terminal">
-     <path d="M189.25 91h0">
-     </path>
-     <path d="M328.25 91h0">
-     </path>
-     <rect height="22" width="139" x="189.25" y="80">
-     </rect>
-     <a>
-      <text x="258.75" y="95">
-       string_literal
-      </text>
-     </a>
-    </g>
-   </g>
-   <path d="M358 91a10 10 0 0 0 10 -10v-40a10 10 0 0 1 10 -10">
-   </path>
   </g>
-  <path d="M 378 31 h 20 m 0 -10 v 20">
+  <path d="M288.5 31h10">
+  </path>
+  <path d="M 298.5 31 h 20 m 0 -10 v 20">
   </path>
  </g>
  <style>

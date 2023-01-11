@@ -4,7 +4,7 @@ title: INT data type
 
 Int is a numeric datatype used with the `min` and `max` constraints.
 
-## Syntax
+## DDL Syntax
 
 ```
 INT [MIN {value}] [MAX {value}]

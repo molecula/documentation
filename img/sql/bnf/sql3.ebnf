@@ -85,12 +85,9 @@ column_constraint =
         "MIN", integer_literal
       | "MAX", integer_literal
       | "TIMEUNIT", string_literal, [ "EPOCH", date_literal ]
-      | "TIMEQUANTUM", string_literal, [ "TTL", string_literal ]
-      | "CACHETYPE", ( "RANKED" | "LRU" ), [ "SIZE", integer_literal ] ;
+      | "TIMEQUANTUM", string_literal, [ "TTL", string_literal ];
 
-table_options = "KEYPARTITIONS", integer_literal
-      | "SHARDWIDTH", integer_literal
-      | "COMMENT", string_literal ;
+table_options = "COMMENT", string_literal ;
 
 type_name = "INT" 
     | "BOOL"

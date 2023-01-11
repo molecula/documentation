@@ -12,14 +12,14 @@ title: Tutorial - Ingest a CSV with BULK INSERT
 ```sql
 CREATE TABLE age (
     _id STRING,
-    name STRING cachetype ranked size 1000,
-    description STRING cachetype ranked size 1000,
-    gender STRING cachetype ranked size 1000,
-    country STRING cachetype ranked size 1000,
-    occupation STRING cachetype ranked size 1000,
+    name STRING,
+    description STRING,
+    gender STRING,
+    country STRING,
+    occupation STRING,
     birth_year INT min -32767 max 32767,
     death_year INT min -32767 max 32767,
-    death_manner STRING cachetype ranked size 1000,
+    death_manner STRING,
     birth_age INT min -32767 max 32767
 ) keypartitions 12 shardwidth 65536;
 ```
