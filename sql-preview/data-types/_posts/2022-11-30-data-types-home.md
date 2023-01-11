@@ -62,6 +62,11 @@ Constraints are applied when a column is created.
 | TIMEQUANTUM, TTL | [IDSET](/sql-preview/data-types/data-type-idset)<br/> [STRINGSET](/sql-preview/data-types/data-type-stringset) |
 | TIMEUNIT | [TIMESTAMP](/sql-preview/data-types/data-type-timestamp) |
 
+<!--
+removed from functionality but keeping in a comment if later available:
+| Cachetype | [ID](/sql-preview/data-types/data-type-id)<br/> [STRING](/sql-preview/data-types/data-type-string)<br/> [IDSET](/sql-preview/data-types/data-type-idset)<br/> [STRINGSET](/sql-preview/data-types/data-type-stringset) |
+-->
+
 ## Further information
 
 * [Create a Cloud table](/cloud/cloud-tables/cloud-table-create)

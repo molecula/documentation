@@ -4,7 +4,7 @@ title: DECIMAL data type
 
 Decimal is a numeric data type used with `scale` constraint.
 
-## Syntax
+## DDL Syntax
 
 ```
 DECIMAL[({SCALE value})]

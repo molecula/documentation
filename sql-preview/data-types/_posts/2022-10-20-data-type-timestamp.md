@@ -4,7 +4,7 @@ title: TIMESTAMP data type
 
 Timestamp is a date-time data type used with `timeunit` and `epoch` constraints.
 
-## Syntax
+## DDL Syntax
 
 ```
 TIMESTAMP [TIMEUNIT {value}] [EPOCH {value}]

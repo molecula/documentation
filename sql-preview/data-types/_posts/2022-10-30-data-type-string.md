@@ -2,7 +2,7 @@
 title: STRING data type
 ---
 
-## Syntax
+## DDL Syntax
 
 ```
 STRING

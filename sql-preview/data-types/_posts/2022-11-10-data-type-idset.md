@@ -4,10 +4,10 @@ title: IDSET data type
 
 IDSET is a FeatureBase datatype used with `timeQuantum` and `ttl` constraints.
 
-## API syntax
+## DDL Syntax
 
 ```
-IDSET [TIMEQUANTUM {value} [TTL '{value}}']]
+IDSET [TIMEQUANTUM {value} [TTL '{value}']]
 ```
 
 ## Arguments
