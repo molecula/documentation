@@ -32,4 +32,3 @@ title: SQL String Functions
 [LEN()](/sql-preview/functions/sql-len#len){:target="_blank"}
 
 [CHAR()](/sql-preview/functions/sql-char#char){:target="_blank"}
-

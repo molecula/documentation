@@ -9,8 +9,7 @@ title: How do I create a table in FeatureBase Cloud?
 ## Before you begin
 
 {% include /cloud/cloud-before-begin.md %}
-* [Learn how to create a database](/cloud/cloud-databases/cloud-db-create)
-* [Learn how to manage tables](/cloud/cloud-tables/cloud-table-manage)
+{% include /cloud/database-dependencies.md %}
 
 ## Naming standards
 
@@ -37,7 +36,3 @@ title: How do I create a table in FeatureBase Cloud?
 ## Next step
 
 * [Learn how to add columns to a table](/cloud/cloud-tables/cloud-table-add-column)
-
-## Further information
-
-* [Create table API reference](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/createTable)

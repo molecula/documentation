@@ -30,4 +30,4 @@ Learn how to delete a FeatureBase Cloud database.
 
 ## Further information
 
-* [Delete database API reference](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/deleteDatabase)
+* [Delete database API reference](https://api-docs-featurebase-cloud.redoc.ly/latest#operation/deleteDatabase)

@@ -37,4 +37,4 @@ Production shapes are available on paid accounts. These have:
 * [Learn about FeatureBase Cloud pricing](https://www.featurebase.com/pricing){:target=""_blank}
 * [Learn about data modeling](/concepts/data-modeling-overview)
 * [Learn how to manage FeatureBase Cloud databases](/cloud/cloud-databases/cloud-db-manage)
-* [Query database shapes via the API](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/getServiceProperties)
+* [Query database shapes via the API](https://api-docs-featurebase-cloud.redoc.ly/latest#operation/getServiceProperties)

@@ -52,14 +52,12 @@ IMPORTANT: Perform data modeling **before** creating tables to avoid issues.
 DROP TABLE SQL PAGE NEEDS TO BE CREATED AND REPLACED ABOVE
 -->
 
-## Managing tables using the Cloud API
-
-* [Table API reference](https://api-docs-featurebase-cloud.redoc.ly/v2#tag/Tables)
-
-## Joining tables
-
-Tables that exist in the same database can be joined.
-
 ## Next step
 
 * [Learn about setting up data ingestion](/cloud/cloud-data-ingestion/ingest-data-overview)
+
+## Further information
+
+* [SQL - SHOW TABLES](/sql-preview/sql-show-tables)
+* [SQL - SHOW COLUMNS](/sql-preview/sql-show-columns)
+* [SQL - SHOW CREATE TABLE](/sql-preview/sql-show-create-table)
