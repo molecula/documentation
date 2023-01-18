@@ -29,6 +29,3 @@ WARNING: Deletion is permanent.
 5. Enter "DELETE" in the confirmation dialog.
 6. Click **Delete**.
 
-## Further information
-
-* [Delete table column API reference](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/deletetableColumn)

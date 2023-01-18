@@ -11,7 +11,7 @@ There are a number of reasons why you may choose to drop a table, including:
 ## Warnings
 
 * Tables cannot be recovered once deleted
-* Deleting tables will affect data-sources and running queries
+* Deleting tables will affect running queries
 
 {% include /cloud/cloud-table-create-sql.md %}
 
@@ -30,8 +30,3 @@ There are a number of reasons why you may choose to drop a table, including:
 1. {% include /cloud-icons/icon-edit-unicode.md %} > **Drop table**
 2. Enter "DELETE" in the confirmation dialog.
 3. Click **Drop table**.
-
-## Further information
-
-* [Delete table API reference](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/deletetable)
-* [Learn how to create tables](/cloud/cloud-tables/cloud-table-create)
