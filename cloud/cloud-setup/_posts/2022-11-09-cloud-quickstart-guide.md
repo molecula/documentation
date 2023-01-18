@@ -49,24 +49,24 @@ In order to use our application, you’ll need data. In a real-life situation, t
 ![Figure 5. Configure a Quick Start Database that is pre-loaded with demo data](/img/quick-start-guide/cloud/create_cseg_db.png)
 
 
-While the database is spinning up, you will see messages on the ```Databases``` screen as the status progresses. While the database is ```CREATING```, data is being loaded in.
+While the database is spinning up, you will see updates to "Status" on the ```Databases``` section as the creation progresses. The database will have a status of ```CREATING``` followed by ```PROVISIONING``` while the process is starting and resources are provisioned. The database will then shift to ```RESTORING```, which indicates that data is being loaded into your database. 
 
-![Figure 6. New Database: Creating](/img/quick-start-guide/cloud/db_creating.png)
+![Figure 6. New Database: PROVISIONING](/img/quick-start-guide/cloud/db_creating.png)
 
 
 ![Figure 7. New Database: Running](/img/quick-start-guide/cloud/db_running.png)
 
 
-After about 10 minutes, the database status will progress to ```RUNNING```, and you can check the ```Tables``` section of the application to see the two tables that have been restored into the database. One table is called ```cseg```, short for customer segmentation, and the other is called ```skills```. A description of each table is also listed. In the next section, we will perform a variety of common analytical queries on both datasets.
+After about 10 minutes, the database status will progress to ```RUNNING```, and you can click on the database name and check the ```Tables``` tab to see the two tables that have been created in the database. One table is called ```cseg```, short for customer segmentation, and the other is called ```skills```. In the next section, we will perform a variety of common analytical queries on both datasets.
 
 ![Figure 8. Demo Data restored into tables from backup](/img/quick-start-guide/cloud/tables_page_with_cseg.png)
 
 
 ### Data Exploration of Customer Segmentation Feature Table
 
-It’s always a good idea to understand what the dataset you’re working with contains before you get started. To do this, click on the ```Tables``` section in the application to display the names of the tables in your database.
+It’s always a good idea to understand what the dataset you’re working with contains before you get started. To do this, click on the ```Databases``` section in the application, click the database you just created, and click the ```Tables``` tab  to display the names of the tables in your database.
 
-Click on a table to show its contents. FeatureBase can ingest and represent a wide range of data types. One that may not be familiar is the ```SET``` type. ```SET``` types are multi-valued and allow FeatureBase to collapse traditional data models, like the star schema, by efficiently storing multiple values for a single column.
+Click on a table to show its contents. FeatureBase can ingest and represent a wide range of data types. Two that may not be familiar are the ```IDSET``` and ```STRINGSET``` types. ```SET``` types are multi-valued and allow FeatureBase to collapse traditional data models, like the star schema, by efficiently storing multiple values for a single column.
 
 ![Figure 9. Customer Segmentation (cseg) table details](/img/quick-start-guide/cloud/cseg_cols.png)
 
@@ -79,7 +79,7 @@ Let’s start by running a simple SQL statement to extract 10 records to explore
 SELECT TOP(10) * FROM cseg;
 ```
 
-Viewing this tabular output we can see each record contains several columns (attributes) and data types. Scroll left and right in the application to explore the full list of columns. For example, ```names``` and ```cities``` are captured in ```STRING``` columns. ```Income``` is captured in an ```INT``` column that will allow for range queries. You can also see that ```education``` is a ```SET``` column with multiple values in a single column.
+Viewing this tabular output we can see each record contains several columns (attributes) and data types. Scroll left and right in the application to explore the full list of columns. For example, ```names``` and ```cities``` are captured in ```STRINGSET``` columns. ```income``` is captured in an ```INT``` column that will allow for range queries. You can also see that ```education``` is a ```STRINGSET``` column with multiple values in a single column.
 
 ![Figure 10. Select top ten items from table](/img/quick-start-guide/cloud/query_select_cseg_limit10.png)
 
@@ -95,7 +95,7 @@ This query will return the ```COUNT``` of records in the entire table and demons
 
 ### Performing Large Aggregations
 
-Aggregation workflows often require the ability to ```SUM``` large amounts of individual ```INT``` elements. This could be transaction amounts such as dollars (decimals), whole integers (counts, bandwidth), or any variation requiring a ```SUM``` across many records. In this example, we will ```SUM``` the ```income``` column across all 1 billion records.
+Aggregation workflows often require the ability to ```SUM``` large amounts of individual ```INT``` or ```DECIMAL``` elements. This could be transaction amounts such as dollars (decimals), whole integers (counts, bandwidth), or any variation requiring a ```SUM``` across many records. In this example, we will ```SUM``` the ```income``` column across all 1 billion records.
 
 ```sql
 SELECT SUM(income) FROM cseg;
@@ -109,7 +109,8 @@ It is unlikely to need to ```SUM``` in this manner across all records. It is muc
 Here we introduce comparative and logical operators including ```GREATER THAN```, ```AND```, and ```OR```. 
 
 ```sql
-SELECT SUM(income) FROM cseg WHERE income > 5000 AND age = 45 AND (SETCONTAINSANY(skills,['Ms Office','Excel']));
+SELECT SUM(income) FROM cseg 
+WHERE income > 5000 AND age = 45 AND (SETCONTAINSANY(skills,['Ms Office','Excel']));
 ```
 
 As you can see, the latency is in the sub-second time frame even when using complex searching criteria through 1 billion records.
@@ -126,7 +127,7 @@ Additionally, aggregations may include the ```AVERAGE``` argument.
 SELECT AVG(income) FROM cseg;
 ```
 
->Note that we don’t currently support full SQL, but are working toward expanding SQL functionality. For example, the ```AVERAGE``` function is not currently supported in ```GROUP BY``` queries and will be added soon.
+>Note that we don’t currently support full SQL, but are working toward expanding SQL functionality.
 
 ![Figure 14. AVERAGE Query](/img/quick-start-guide/cloud/query_avg_income.png)
 
@@ -156,10 +157,10 @@ Distinct(Row(bools='available_for_hire'), field= id, index=skills)))
 
 Ranking queries are notorious for being computationally intensive - aka slow. Some solutions will use statistics to speed up a ranking query by approximating the true results, but that’s not always a desirable option. In PQL, [```TopK```](/pql-guide/read/topk) queries can be run to return exact results in milliseconds. 
 
-This query returns the top five hobbies across all customers from the cseg table, sifting through a billion records in 117.2ms.
+This query returns the top five hobbies across all customers from the cseg table, sifting through a billion records in milliseconds.
 
 ```
-[cseg]TopK(hobbies, k=5);
+[cseg]TopK(hobbies, k=5)
 ```
 ![Figure 16. TOP K Query](/img/quick-start-guide/cloud/query_topk.png)
 
@@ -167,27 +168,27 @@ This query returns the top five hobbies across all customers from the cseg table
 More complex, the next query returns the top ten hobbies among females who also like scuba diving from the ```cseg``` table in milliseconds. Even when adding complex filtering, the ```TopK``` queries can be run for exact results at scale without impacting query latency.
 
 ```
-[cseg]TopK(hobbies, k=10, filter=Intersect(Row(sex=Female),Row(hobbies='Scuba Diving')));
+[cseg]TopK(hobbies, k=10, filter=Intersect(Row(sex=Female),Row(hobbies='Scuba Diving')))
 ```
 
 ![Figure 17. TOP K Query with Filters](/img/quick-start-guide/cloud/query_topk_filter.png)
 
 ### Grouping with Complex Conditions and Aggregating
 
-Another query commonly seen in aggregation-related use cases is the ```GROUP BY```. For example, let’s group by the hobbies counting only those with ultimate ```COUNT``` above 200,000,000. We'll execute this query in [PQL](/pql-guide/pql-introduction).
+Another query commonly seen in aggregation-related use cases is the ```GROUP BY```. For example, let’s group by the hobbies counting only those with ultimate ```COUNT``` above 200,000,000.
 
-```
-[cseg]GroupBy(
-Rows(hobbies),
-sort="count desc",
-having=CONDITION(count > 200000000)
-);
+```sql
+SELECT  hobbies, COUNT(*) as cnt
+FROM cseg
+GROUP BY hobbies
+HAVING COUNT(*) > 200000000
+ORDER BY cnt DESC;
 ```
 ![Figure 18. GROUP BY Query](/img/quick-start-guide/cloud/cseg_groupby_having.png)
 
 
 
-Another useful facet of ```GROUP BY``` is the ability to add an aggregate argument and utilize the low-latency aggregation in another capacity. We'll execute this query in SQL.
+Another useful facet of ```GROUP BY``` is the ability to add an aggregate argument and utilize the low-latency aggregation in another capacity.
 
 ```sql
 SELECT education, SUM(income)
@@ -198,15 +199,16 @@ GROUP BY education;
 ![Figure 19. GROUP BY Query with Filters](/img/quick-start-guide/cloud/cseg_groupby_filter.png)
 
 
->NOTE: At this point, we encourage you to mix and match segmentation criteria to experience low-latency queries even as complex conditions are added. If you encounter an error stating "Network Error", that means you have hit our safety boundaries for queries in the trial. We limit queries to 30 seconds of execution time and/or 6MB of data returned.
-
-
+>NOTE: At this point, we encourage you to mix and match segmentation criteria to experience low-latency queries even as complex conditions are added.
 
 If you have issues with your queries, please contact your FeatureBase representative or email [se@featurebase.com](mailto:se@featurebase.com) to translate your SQL queries to get the desired results
 
 ## What’s Next?
 
-We hope that this hands-on experience has further demonstrated the power of FeatureBase to power real-time analytics workflows at scale. While this example focused on a customer segmentation use case, the same type of workflows are often used in anomaly detection or business process optimization use cases and continues to perform as workloads grow to trillions of records. Additionally, FeatureBase excels at combining streaming and historical data in real-time, allowing you to analyze data as soon at is available in FeatureBase with no need for time-consuming preprocessing or preaggregation. From here, partner with your FeatureBase representative to better understand how FeatureBase will work for your organization’s specific needs. If you'd like to continue exploring, you can start learning how to [INGEST YOUR DATA](/cloud/cloud-data-ingestion/streaming-https-endpoint/cloud-streaming-quickstart).
+We hope that this hands-on experience has further demonstrated the power of FeatureBase to power real-time analytics workflows at scale. While this example focused on a customer segmentation use case, the same type of workflows are often used in anomaly detection or business process optimization use cases and continues to perform as workloads grow to trillions of records. Additionally, FeatureBase excels at combining streaming and historical data in real-time, allowing you to analyze data as soon at is available in FeatureBase with no need for time-consuming preprocessing or preaggregation. From here, partner with your FeatureBase representative to better understand how FeatureBase will work for your organization’s specific needs. If you'd like to continue exploring, you can start learning how to:
+
+* [INGEST DATA OVERVIEW](/cloud/cloud-data-ingestion/ingest-data-overview)
+{% include /cloud/sql-insert-examples.md %}
 
 ## Queries
 
@@ -223,7 +225,8 @@ SELECT COUNT(*) FROM cseg;
 ### Complex Segmentation 
 
 ```sql
-SELECT SUM(income) FROM cseg WHERE income > 5000 AND age = 45 AND (SETCONTAINSANY(skills,['Ms Office','Excel']));
+SELECT SUM(income) FROM cseg 
+WHERE income > 5000 AND age = 45 AND (SETCONTAINSANY(skills,['Ms Office','Excel']));
 ```
 
 ### Aggregations
@@ -242,7 +245,7 @@ SELECT AVG(income) FROM cseg;
 
 ### JOINS
 
-```sql
+```
 [cseg]Count(Intersect(
 Row(hobbies="Teaching"),
 Distinct(Row(bools='available_for_hire'), field= id, index=skills)))
@@ -250,39 +253,45 @@ Distinct(Row(bools='available_for_hire'), field= id, index=skills)))
 
 ### Grouping with Complex Conditions
 
+```sql
+SELECT  hobbies, COUNT(*) as cnt
+FROM cseg
+GROUP BY hobbies
+HAVING COUNT(*) > 200000000
+ORDER BY cnt DESC;
 ```
-[cseg]GroupBy(
-Rows(hobbies),
-sort="count desc",
-having=CONDITION(count > 200000000)
-);
+
+```sql
+SELECT education, SUM(income)
+FROM cseg
+WHERE age=18
+GROUP BY education;
 ```
 
 ### Top K 
 
 ```
-[cseg]TopK(hobbies, k=5);
+[cseg]TopK(hobbies, k=5)
 ```
 
 ```
-[cseg]TopK(hobbies, k=10, filter=Intersect(Row(sex=Female),Row(hobbies='Scuba Diving')));
+[cseg]TopK(hobbies, k=10, filter=Intersect(Row(sex=Female),Row(hobbies='Scuba Diving')))
 ```
 
-## Spinning Down a Database
+## Spinning Down Your Resources
 
-When you have completed the trial, please take a few minutes to spin down your database. If you do not spin it down, it will be done after 21 days by the FeatureBase team.
+When you have completed the trial, please take a few minutes to drop your tables and spin down your database. If you do not spin it down, it will be spun down after 21 days by the FeatureBase team.
 
-First, drop the tables in the database in the ```Tables``` tab. Click the three dots and select ```Drop table```
+You can delete the database directly in the ```Databases``` section, which will drop all of the tables within it. Click the three dots and select ```Delete```. 
 
-![Figure 20. Delete Table](/img/quick-start-guide/cloud/delete_table.png)
+![Figure 20. Delete Database](/img/quick-start-guide/cloud/delete_database.png)
 
-Confirm the table drop by typing ```DELETE``` into the interface. Repeat for each table in the database.
+Confirm dropping the database by typing ```DELETE``` into the interface. It takes a minute or two to delete a database.
 
-![Figure 21. Confirm Delete Table](/img/quick-start-guide/cloud/delete_table_confirm.png)
+![Figure 21. Confirm Delete Database](/img/quick-start-guide/cloud/delete_database_confirm.png)
 
-Repeat the process in the ```Databases``` screen for each database that you want to spin down. It may take a few minutes longer to delete a database than a typical table.
+Alternatively, you can drop individual tables in the ```Databases``` section within a database in the ```Tables``` tab. This follows a similar process to dropping a database. Table deletion time is a function of the amount of data being deleted.
 
-![Figure 22. Delete Database](/img/quick-start-guide/cloud/delete_database.png)
+![Figure 22. Delete Table](/img/quick-start-guide/cloud/delete_table.png)
 
-
-![Figure 23. Confirm Delete Database](/img/quick-start-guide/cloud/delete_database_confirm.png)
+![Figure 23. Confirm Delete Table](/img/quick-start-guide/cloud/delete_table_confirm.png)

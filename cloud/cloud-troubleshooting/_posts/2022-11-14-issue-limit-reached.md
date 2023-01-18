@@ -9,11 +9,10 @@ This error may occur when running FeatureBase Cloud on a trial account.
 A FeatureBase Cloud trial account allows you to create:
 
 * One database
-* One data-source to ingest data to the database
 
 ## Solution
 
-You can delete an existing database/data-source, or upgrade to a paid account.
+You can delete an existing database, or upgrade to a paid account.
 
 ## Further information
 

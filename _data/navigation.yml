@@ -16,9 +16,6 @@ nav:
         category: cloud-tables
       - title: Data ingestion
         category: cloud-data-ingestion
-        subnav:
-          - title: Streaming HTTPS endpoint
-            category: streaming-https-endpoint
       - title: Query data
         category: query-cloud-data
       - title: Configuration

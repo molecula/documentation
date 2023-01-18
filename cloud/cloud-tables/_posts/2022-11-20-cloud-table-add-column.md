@@ -35,5 +35,4 @@ NOTE: Table columns cannot be edited once created.
 
 ## Further information
 
-* [Create table column API reference](https://api-docs-featurebase-cloud.redoc.ly/v2#operation/createTableColumn)
 * [Learn how to delete a table column](/cloud/cloud-tables/cloud-table-delete-column)
