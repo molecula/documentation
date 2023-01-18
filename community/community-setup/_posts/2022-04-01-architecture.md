@@ -4,7 +4,7 @@ title: Architecture
 sidebar_label: Architecture
 ---
 
-![FeatureBase Network Architecture Diagram](/img/molecula-architecture-diagram.png "FeatureBase Network Architecture Diagram")
+![FeatureBase Network Architecture Diagram](/img/community/community-setup/featurebase-architecture-diagram.png "FeatureBase Network Architecture Diagram")
 
 
 ## Components
