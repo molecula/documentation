@@ -21,12 +21,10 @@ There are a number of reasons why you may choose to drop a table, including:
 * [Create a database](/cloud/cloud-databases/cloud-db-create)
 * [Create a table](/cloud/cloud-tables/cloud-table-create)
 
-## Step 1: View table list
+## Drop the selected table
 
-{% include /cloud/cloud-view-table-list.md %}
-
-## Step 2: Drop the selected table
-
-1. {% include /cloud-icons/icon-edit-unicode.md %} > **Drop table**
-2. Enter "DELETE" in the confirmation dialog.
-3. Click **Drop table**.
+* Click Databases then the database that contains the table.
+* Click **Tables** if it is not already selected.
+* {% include /cloud-icons/icon-edit-unicode.md %} > **Drop table**
+* Enter "DELETE" in the confirmation dialog.
+* Click **Drop table**.
