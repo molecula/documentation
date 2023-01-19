@@ -15,17 +15,14 @@ You may need to delete a column if:
 * [Create a table](/cloud/cloud-tables/cloud-table-create)
 * [Create a table column](/cloud/cloud-tables/cloud-table-add-column)
 
-## Step 1: View all tables
-
-{% include /cloud/cloud-view-table-list.md %}
-
-## Step 2: Delete the selected column
+## Delete the selected column
 
 WARNING: Deletion is permanent.
 
-1. Click the table name.
-2. Click **Columns**.
-3. {% include /cloud-icons/icon-edit-unicode.md %} on the column > **Delete**.
-5. Enter "DELETE" in the confirmation dialog.
-6. Click **Delete**.
-
+* Click Databases then the database that contains the table.
+* Click **Tables** if it is not already selected.
+* Click the table name.
+* Click **Columns**.
+* {% include /cloud-icons/icon-edit-unicode.md %} on the column > **Delete**.
+* Enter "DELETE" in the confirmation dialog.
+* Click **Delete**.
