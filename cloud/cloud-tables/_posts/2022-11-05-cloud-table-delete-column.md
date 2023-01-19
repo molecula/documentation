@@ -19,7 +19,7 @@ You may need to delete a column if:
 
 WARNING: Deletion is permanent.
 
-* Click Databases then the database that contains the table.
+* Click **Databases** then the database that contains the table.
 * Click **Tables** if it is not already selected.
 * Click the table name.
 * Click **Columns**.
