@@ -23,7 +23,7 @@ title: How do I add a column to an existing table in FeatureBase Cloud?
 
 NOTE: Table columns cannot be edited once created.
 
-* Click Databases then the database that contains the table.
+* Click **Databases** then the database that contains the table.
 * Click **Tables** if it is not already selected.
 * Click the table name.
 * Click **Columns** > **Add column**.
