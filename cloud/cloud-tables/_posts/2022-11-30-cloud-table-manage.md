@@ -41,7 +41,8 @@ Manage tables with FeatureBase Cloud
 
 Manage tables with SQL statements
 * [CREATE TABLE statement](/sql-preview/sql-create-table)
-* [DROP TABLE statement]
+
+<!--* [DROP TABLE statement](/sql-preview/sql-drop-table) -- page does not yet exist -->
 
 ## Manage table columns
 
