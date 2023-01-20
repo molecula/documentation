@@ -18,7 +18,7 @@ title: How do I change a user role?
 ## Change user role
 
 * Click **Configuration** > **Manage users**
-* {% include /cloud-icons/icon-edit-unicode.md %} on the user > **Edit**.
+* Click <span class="material-icons">more_vert</span> on the user > **Edit**.
 * Change the role as required.
 * Click **Update**.
 

@@ -23,6 +23,6 @@ WARNING: Deletion is permanent.
 * Click **Tables** if it is not already selected.
 * Click the table name.
 * Click **Columns**.
-* {% include /cloud-icons/icon-edit-unicode.md %} on the column > **Delete**.
+* Click <span class="material-icons">more_vert</span> on the column > **Delete**.
 * Enter "DELETE" in the confirmation dialog.
 * Click **Delete**.
