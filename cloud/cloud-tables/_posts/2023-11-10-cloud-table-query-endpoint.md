@@ -15,4 +15,4 @@ The table query endpoint is used to query a FeatureBase Cloud database.
 * Click **Databases** then the database that contains the table.
 * Click **Tables** if it is not already selected.
 * {% include /cloud-icons/icon-edit-unicode.md %} for the table to query.
-* Choose **Copy query endpoint**
+* Choose **Copy query endpoint**.
