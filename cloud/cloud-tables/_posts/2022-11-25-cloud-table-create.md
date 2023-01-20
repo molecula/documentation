@@ -31,8 +31,8 @@ title: How do I create a table in FeatureBase Cloud?
 
 {% include /cloud/cloud-pk-table.md %}
 
-1. Select the ID type.
-2. Click **Create**.
+* Select the ID type.
+* Click **Create**.
 
 ## Next step
 
