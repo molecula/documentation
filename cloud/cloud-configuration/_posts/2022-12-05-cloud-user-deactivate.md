@@ -22,12 +22,12 @@ NOTE: {% include contact-support.md%} to delete user accounts.
 NOTE: You may choose to [change the user role](/cloud/cloud-configuration/cloud-user-edit-role) rather than deactivating the account.
 
 * Click **Configuration** > **Manage users**
-* {% include /cloud-icons/icon-edit-unicode.md %} on the **Active** user > **Deactivate user**.
+* Click <span class="material-icons">more_vert</span> on the **Active** user > **Deactivate user**.
 
 ## Reactivate a user
 
 * Click **Configuration** > **Manage users**
-* {% include /cloud-icons/icon-edit-unicode.md %} on the **Deactivated** user > **Reactivate User**.
+* Click <span class="material-icons">more_vert</span> on the **Deactivated** user > **Reactivate User**.
 
 ## Further information
 
