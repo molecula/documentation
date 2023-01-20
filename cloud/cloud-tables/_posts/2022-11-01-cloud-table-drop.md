@@ -13,8 +13,6 @@ There are a number of reasons why you may choose to drop a table, including:
 * Tables cannot be recovered once dropped
 * Dropping tables will affect running queries
 
-{% include /cloud/cloud-table-create-sql.md %}
-
 ## Before you begin
 
 {% include /cloud/cloud-before-begin.md %}
