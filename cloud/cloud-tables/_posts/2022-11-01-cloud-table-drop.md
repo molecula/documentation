@@ -23,6 +23,6 @@ There are a number of reasons why you may choose to drop a table, including:
 
 * Click **Databases** then the database that contains the table.
 * Click **Tables** if it is not already selected.
-* {% include /cloud-icons/icon-edit-unicode.md %} > **Drop table**.
+* Click <span class="material-icons md-18">more_vert</span> > **Drop table**.
 * Enter "DELETE" in the confirmation dialog.
 * Click **Drop table**.
