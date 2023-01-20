@@ -37,7 +37,7 @@ IMPORTANT: Perform data modeling **before** creating tables to avoid issues.
 
 Manage tables with FeatureBase Cloud
 * [Create a table](/cloud/cloud-tables/cloud-table-create)
-* [Delete a table](/cloud/cloud-tables/cloud-table-drop)
+* [Drop a table](/cloud/cloud-tables/cloud-table-drop)
 
 Manage tables with SQL statements
 * [CREATE TABLE statement](/sql-preview/sql-create-table)
