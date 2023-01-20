@@ -16,10 +16,13 @@ title: How do I create a table in FeatureBase Cloud?
 {% include /cloud/object-naming-standard.md%}
 {% include /cloud/cloud-table-naming-standard.md %}
 
-## Create table
+## Step 1 - view tables
 
 * Click **Databases** then the database that contains the table.
 * Click **Tables** if it is not already selected.
+
+## Step 2 - create table
+
 * Click **Create table**.
 * Select the destination database.
 * Enter a table name and an optional description.
