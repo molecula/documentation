@@ -97,3 +97,4 @@ The SQL preview contains different types of queries that are discussed further i
 - [Bulk Insert](/sql-preview/sql-bulk-insert){:target="_blank"} Inserts data into a FeatureBase table.
 - [Create Table](/sql-preview/sql-create-table){:target="_blank"} Creates a FeatureBase table.
 - [Alter Table](/sql-preview/sql-alter-table){:target="_blank"} Alters a FeatureBase table.
+- [Drop Table](/sql-preview/sql-drop-table){:target="_blank"} Drops a FeatureBase table.

@@ -2,7 +2,7 @@
 title:  DROP TABLE
 ---
 
-Irrevocably drop a table from the database.
+Irrevocably drop a table and all of its data from the database.
 
 ## Syntax
 
