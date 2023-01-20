@@ -33,24 +33,25 @@ IMPORTANT: Perform data modeling **before** creating tables to avoid issues.
 {% include /cloud/cloud-table-naming-standard.md %}
 {% include /cloud/cloud-column-naming-standard.md%}
 
-## Managing tables in FeatureBase Cloud
+## Manage tables
 
-* Create table
-    * [UI](/cloud/cloud-tables/cloud-table-create)
-    * [SQL](/sql-preview/sql-create-table)
-* Add table columns
-    * [UI](/cloud/cloud-tables/cloud-table-add-column)
-    * [SQL](/sql-preview/sql-alter-table#add_column)
-* Drop table columns
-    * [UI](/cloud/cloud-tables/cloud-table-delete-column)
-    * [SQL](/sql-preview/sql-alter-table#drop_column)
-* Drop table
-    * [UI](/cloud/cloud-tables/cloud-table-drop)
-    * [SQL](/sql-preview/sql-alter-table#drop_column)
+Manage tables with FeatureBase Cloud
+* [Create a table](/cloud/cloud-tables/cloud-table-create)
+* [Delete a table](/cloud/cloud-tables/cloud-table-drop)
 
-<!--
-DROP TABLE SQL PAGE NEEDS TO BE CREATED AND REPLACED ABOVE
--->
+Manage tables with SQL statements
+* [CREATE TABLE statement](/sql-preview/sql-create-table)
+* [DROP TABLE statement]
+
+## Manage table columns
+
+Manage table columns with FeatureBase Cloud
+* [Add table column](/cloud/cloud-tables/cloud-table-add-column)
+* [Delete table column](/cloud/cloud-tables/cloud-table-delete-column)
+
+Manage table columns with the ALTER TABLE statement
+* [ALTER TABLE statement with ADD COLUMN argument](/sql-preview/sql-alter-table#add_column)
+* [ALTER TABLE statement with DROP COLUMN argument](/sql-preview/sql-alter-table#drop_column)
 
 ## Next step
 
@@ -58,6 +59,7 @@ DROP TABLE SQL PAGE NEEDS TO BE CREATED AND REPLACED ABOVE
 
 ## Further information
 
-* [SQL - SHOW TABLES](/sql-preview/sql-show-tables)
-* [SQL - SHOW COLUMNS](/sql-preview/sql-show-columns)
-* [SQL - SHOW CREATE TABLE](/sql-preview/sql-show-create-table)
+Additional SQL statements are available for use:
+* [SHOW TABLES statement](/sql-preview/sql-show-tables)
+* [SHOW COLUMNS statement](/sql-preview/sql-show-columns)
+* [SHOW CREATE TABLE statement](/sql-preview/sql-show-create-table)
