@@ -3,7 +3,7 @@ id: sql-replicate
 title: REPLICATE
 ---
 
-`Replicate()` function splits a string into multiple substrings based on a specified separator.
+`Replicate()` function repeats the given input string a specified number of times.
 
 ## Syntax
 
