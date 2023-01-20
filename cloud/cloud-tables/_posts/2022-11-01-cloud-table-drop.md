@@ -10,8 +10,8 @@ There are a number of reasons why you may choose to drop a table, including:
 
 ## Warnings
 
-* Tables cannot be recovered once deleted
-* Deleting tables will affect running queries
+* Tables cannot be recovered once dropped
+* Dropping tables will affect running queries
 
 {% include /cloud/cloud-table-create-sql.md %}
 
@@ -25,6 +25,6 @@ There are a number of reasons why you may choose to drop a table, including:
 
 * Click **Databases** then the database that contains the table.
 * Click **Tables** if it is not already selected.
-* {% include /cloud-icons/icon-edit-unicode.md %} > **Drop table**
+* {% include /cloud-icons/icon-edit-unicode.md %} > **Drop table**.
 * Enter "DELETE" in the confirmation dialog.
 * Click **Drop table**.
