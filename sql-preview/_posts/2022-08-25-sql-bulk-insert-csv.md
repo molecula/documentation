@@ -21,7 +21,7 @@ CREATE TABLE age (
     death_year INT min -32767 max 32767,
     death_manner STRING,
     birth_age INT min -32767 max 32767
-) keypartitions 12 shardwidth 65536;
+);
 ```
 
 ## Step 2: ingest data
