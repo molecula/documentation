@@ -28,7 +28,11 @@ Next, you'll be asked to verify your account using the code sent to the email ad
 
 
 
-Now that you are signed up, you will have access to FeatureBase for 21 days. After 21 days, your resources will be shutdown, and you will no longer be able to create more. If you encounter any problems during this process or would like to reactivate your account, contact [se@featurebase.com](mailto:se@featurebase.com).
+### Trial Accounts
+
+{% include /cloud/trial-account-limits.md %}
+
+If you encounter any problems during this process or would like to reactivate your account, contact [se@featurebase.com](mailto:se@featurebase.com).
 
 Navigate back to FeatureBase using [cloud.featurebase.com](https://cloud.featurebase.com/)
 
@@ -280,7 +284,7 @@ GROUP BY education;
 
 ## Spinning Down Your Resources
 
-When you have completed the trial, please take a few minutes to drop your tables and spin down your database. If you do not spin it down, it will be spun down after 21 days by the FeatureBase team.
+When you have completed this guide, please take a few minutes to drop your tables and spin down your database. If you do not, it will continue to create charges on your account.
 
 You can delete the database directly in the ```Databases``` section, which will drop all of the tables within it. Click the three dots and select ```Delete```. 
 
