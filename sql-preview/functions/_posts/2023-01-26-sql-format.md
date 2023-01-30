@@ -28,6 +28,7 @@ The FORMAT function supports the following format specifiers:
 - `%b`: Boolean value.
 - `%x`: Hexadecimal value.
 - `%o`: Octal value.
+- `%v`:	Value in a default format
 
 ## Return Type
 `string`
@@ -46,7 +47,7 @@ create table segments
     (_id id, segment string, value int);
 
 insert into segments(_id, segment, value)
-    values (1,'white', 16777215)
+    values (1,'white', 16777215);
 
 select _id, format("%s -> #%x", segment, value) as segment from segments;
 +-----+-----------------+
@@ -54,4 +55,20 @@ select _id, format("%s -> #%x", segment, value) as segment from segments;
 +-----+-----------------+
 |   1 | white -> #ffffff|
 +-----+-----------------+
+```
+
+B. Format with default values and sets.
+```sql
+create table segments
+    (_id id, time timestamp timeunit 'ms' epoch '2022-01-01T00:00:00Z', ids idset, strings stringset);
+
+insert into segments(_id, time, ids, strings)
+    values (1, '2023-01-01', [6 , 1, 9], ['red', 'blue', 'green']);
+
+select format('id = %d , time = %v , ids = %d, strings = %s', _id, time, ids, strings) as description from segments;
++-------------------------------------------------------------------------------------------+
+| description                                                                               |
++-------------------------------------------------------------------------------------------+
+| id = 1 , time = 2023-01-01 00:00:00 +0000 UTC , ids = [1 6 9], strings = [blue green red] |
++-------------------------------------------------------------------------------------------+
 ```
