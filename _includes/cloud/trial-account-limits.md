@@ -1,1 +1,1 @@
-Trial accounts are limited to one database.
+Trial accounts are given $300, which is consumed based on usage in the product. Once this credit is exhausted, users will no longer be able to create new resources and existing resources will be spun down.

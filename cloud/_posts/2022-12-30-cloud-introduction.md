@@ -14,11 +14,11 @@ FeatureBase Cloud is fully managed and intended for users that don't want to hav
 
 ## Cloud trial
 
-You can test FeatureBase cloud free for 21 days. After this time your account will be limited to login only.
-
 {% include /cloud/trial-account-limits.md %}
 
-* {% include contact-support.md%} to license your account.
+When you have no credits, your account will be limited to login only.
+
+* {% include contact-support.md%} to upgrade your account.
 
 ## Frequently asked questions
 
