@@ -2,13 +2,13 @@
 title: BULK INSERT
 ---
 
-| | |
-|-|-|
+|           |                                                                                                                                                                                                                               |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **ℹ️NOTE** | This page contains information that only applies to SQL Preview functionality (more information [here](/sql-preview/sql-preview)). Additionally, this page represents a work in progress that is subject to frequent changes. |
 
 ---
 
-Bulk inserts data into a FeatureBase table. Using bulk insert you can insert multiple rows of data from a file, URL or an inline blob, using CSV or NDJSON formats. Additionally bulk insert allows for lightweight data transformation all within one request.
+Bulk inserts data into a FeatureBase table. Using bulk insert you can insert multiple rows of data from a file, URL or an inline blob, using CSV, PARQUET, or NDJSON formats. Additionally bulk insert allows for lightweight data transformation all within one request.
 
 FeatureBase bulk insert uses an update/insert semantic. If the row exists, the values in each column will be updated to the new values.
 
@@ -60,6 +60,14 @@ If NDJSON is specified as the source, the map expression should be a string [Jso
 `MAP ('$.idpath' id, '$.int.path.' int, '$.path.to.string' string)`
 
  The expression is evaluated on the data and an attempt is made to convert it to the specified data type. An error occurs if the data cannot be converted to the type specified.
+
+#### MAP clause for Parquet data
+
+If Parquet is specified as the source, the map expression should be a string label matching precisely the column name from the schema present in the parquet file: 
+
+`MAP ('id' id, 'intval' int, 'decval' decimal(4), 'stringval' string)`
+
+ The expression is evaluated on the name and an attempt is made to convert it to the specified data type. An error occurs if the data cannot be converted to the type specified.
 
 ### TRANSFORM clause
 
@@ -147,7 +155,7 @@ Correct inline STREAM example:
 ![expr](/img/sql/bulk_insert_option.svg)
 
 The WITH clause allows you to pass statement level options
-
+1G
 #### BATCHSIZE
 
 Bulk insert commits row in batches. Use the `BATCHSIZE` option to specfify the batch size. The default is 1000.
@@ -158,11 +166,11 @@ Bulk insert allows you you limit the number of rows processed. Setting the `ROWS
 
 #### INPUT
 
-The `INPUT` option sets the type of input. Valid values are `'FILE'`, `'URL'` or `'STREAM'`
+The `INPUT` option sets the type of input. Valid values are `'FILE'`, `'URL'` or `'STREAM'`. 
 
 #### FORMAT
 
-The `FORMAT` option sets the format of the source data. Valid values are `'CSV'` and `'NDJSON'`
+The `FORMAT` option sets the format of the source data. Valid values are `'CSV'`, `'NDJSON'` and `'PARQUET'`.  Note `'PARQUET'` does not currently support the `'STREAM'` input option.
 
 #### NDJSON Options
 
