@@ -19,7 +19,7 @@ A character or string whose position needs to be identified in the given input s
 _expr_ 
 The input string where substring needs to be searched. The argument `expr` is any expression of type `string`.
 
-_position_ *(optional)* (Default value : 1)
+_position_ *(optional)* (Default value : 0)
 Position from where search needs to be started in the input string. `position` can be any expression of type `int`. 
 
 ## Return Type
@@ -43,7 +43,7 @@ select _id, charindex('is',segment) as charindex from segments;
 +-----+----------+
 | _id | charindex|
 +-----+----------+
-|   1 | 3        |
+|   1 | 2        |
 +-----+----------+
 ```
 B. Identify charindex of substring in string starting from position
@@ -58,6 +58,6 @@ select _id, charindex('is',segment,3) as charindex from segments;
 +-----+----------+
 | _id | charindex|
 +-----+----------+
-|   1 | 6        |
+|   1 | 5        |
 +-----+----------+
 ```
