@@ -33,13 +33,13 @@ None
 A. Char index of the substring in the string
 
 ```sql
-create table segments
+create table customers
     (_id id, segment string);
 
-insert into segments(_id,segment)
+insert into customers(_id,segment)
     values (1,'this is great')
 
-select _id, charindex('is',segment) as charindex from segments;
+select _id, charindex('is',segment) as charindex from customers;
 +-----+----------+
 | _id | charindex|
 +-----+----------+
@@ -48,13 +48,13 @@ select _id, charindex('is',segment) as charindex from segments;
 ```
 B. Identify charindex of substring in string starting from position
 ```sql
-create table segments
+create table customers
     (_id id, segment string);
 
-insert into segments(_id,segment)
+insert into customers(_id,segment)
     values (1,'this is great')
 
-select _id, charindex('is',segment,3) as charindex from segments;
+select _id, charindex('is',segment,3) as charindex from customers;
 +-----+----------+
 | _id | charindex|
 +-----+----------+
