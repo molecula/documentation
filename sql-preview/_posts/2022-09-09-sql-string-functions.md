@@ -34,3 +34,8 @@ title: SQL String Functions
 [CHAR()](/sql-preview/functions/sql-char#char){:target="_blank"}
 
 [FORMAT()](/sql-preview/functions/sql-format#format){:target="_blank"}
+
+[CHARINDEX()](/sql-preview/functions/sql-charindex#charindex){:target="_blank"}
+
+[REPLICATE()](/sql-preview/functions/sql-replicate#replicate){:target="_blank"}
+
