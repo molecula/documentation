@@ -26,6 +26,36 @@ with
     input 'FILE';
 ```
 
+Here is an example of a bulk insert statement that reads from a PARQUET file:
+```sql
+bulk insert
+   into sample(_id,x,y )
+   map(
+   'id' id,
+   'intval' int,
+   'decval' decimal(4) )
+   from
+    '/mnt/data/Projects/bulkparquet/cmd/wpq/sample.parquet'
+    WITH FORMAT 'PARQUET'
+   INPUT 'FILE';
+```
+
+Loading the same file from a URL
+
+```sql
+bulk insert
+   into sample(_id,x,y )
+   map(
+   'id' id,
+   'intval' int,
+   'decval' decimal(4) )
+   from
+    'http://gruben.dev/sample.parquet'
+    WITH FORMAT 'PARQUET'
+   INPUT 'URL';
+```
+
+
 ## Syntax
 
 ![expr](/img/sql/bulk_insert_stmt.svg)
@@ -67,7 +97,7 @@ If Parquet is specified as the source, the map expression should be a string lab
 
 `MAP ('id' id, 'intval' int, 'decval' decimal(4), 'stringval' string)`
 
- The expression is evaluated on the name and an attempt is made to convert it to the specified data type. An error occurs if the data cannot be converted to the type specified.
+ The expression is evaluated on the name and an attempt is made to convert it to the specified data type. An error occurs if the data cannot be converted to the type specified. The schema can be examined using `featurebase parquet-info` command which provides the column name that the expression is matched against.
 
 ### TRANSFORM clause
 
@@ -155,7 +185,6 @@ Correct inline STREAM example:
 ![expr](/img/sql/bulk_insert_option.svg)
 
 The WITH clause allows you to pass statement level options
-1G
 #### BATCHSIZE
 
 Bulk insert commits row in batches. Use the `BATCHSIZE` option to specfify the batch size. The default is 1000.
