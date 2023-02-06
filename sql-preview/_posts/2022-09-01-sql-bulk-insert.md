@@ -11,7 +11,7 @@ title: BULK INSERT
 Bulk inserts data into a FeatureBase table. Using bulk insert you can insert multiple rows of data from a file, URL or an inline blob, using CSV, PARQUET, or NDJSON formats. Additionally bulk insert allows for lightweight data transformation all within one request.
 
 FeatureBase bulk insert uses an update/insert semantic. If the row exists, the values in each column will be updated to the new values.
-
+## Examples
 Here is an example of a bulk insert statement that reads from a CSV file and does some lightweight transformations:
 
 ```sql
