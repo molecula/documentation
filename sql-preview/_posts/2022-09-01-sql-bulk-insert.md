@@ -61,7 +61,7 @@ If NDJSON is specified as the source, the map expression should be a string [Jso
 
  The expression is evaluated on the data and an attempt is made to convert it to the specified data type. An error occurs if the data cannot be converted to the type specified.
 
-#### MAP clause for Parquet data
+#### MAP Clause for Parquet Data
 
 If Parquet is specified as the source, the map expression should be a string label matching precisely the column name from the schema present in the parquet file: 
 
