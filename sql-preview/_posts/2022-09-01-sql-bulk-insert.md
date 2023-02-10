@@ -11,50 +11,6 @@ title: BULK INSERT
 Bulk inserts data into a FeatureBase table. Using bulk insert you can insert multiple rows of data from a file, URL or an inline blob, using CSV, PARQUET, or NDJSON formats. Additionally bulk insert allows for lightweight data transformation all within one request.
 
 FeatureBase bulk insert uses an update/insert semantic. If the row exists, the values in each column will be updated to the new values.
-## Examples
-Here is an example of a bulk insert statement that reads from a CSV file and does some lightweight transformations:
-
-```sql
-bulk replace
-    into insert_test (_id, int1, string1, timestamp1) 
-    map (0 id, 1 int, 2 string)
-    transform (@0, @1, @2, current_timestamp) 
-from 
-    '/dev/queries/insert_test.csv' 
-with
-    format 'CSV'
-    input 'FILE';
-```
-
-Here is an example of a bulk insert statement that reads from a PARQUET file:
-```sql
-bulk insert
-   into sample(_id,x,y )
-   map(
-   'id' id,
-   'intval' int,
-   'decval' decimal(4) )
-   from
-    '/mnt/data/Projects/bulkparquet/cmd/wpq/sample.parquet'
-    WITH FORMAT 'PARQUET'
-   INPUT 'FILE';
-```
-
-Loading the same file from a URL
-
-```sql
-bulk insert
-   into sample(_id,x,y )
-   map(
-   'id' id,
-   'intval' int,
-   'decval' decimal(4) )
-   from
-    'http://gruben.dev/sample.parquet'
-    WITH FORMAT 'PARQUET'
-   INPUT 'URL';
-```
-
 
 ## Syntax
 
@@ -216,3 +172,47 @@ The following options are only valid when `FORMAT` is `'CSV'`
 ##### HEADER_ROW
 
 If `HEADER_ROW` is specified, the first row in the CSV is skipped.
+
+## Examples
+Here is an example of a bulk insert statement that reads from a CSV file and does some lightweight transformations:
+
+```sql
+bulk replace
+    into insert_test (_id, int1, string1, timestamp1) 
+    map (0 id, 1 int, 2 string)
+    transform (@0, @1, @2, current_timestamp) 
+from 
+    '/dev/queries/insert_test.csv' 
+with
+    format 'CSV'
+    input 'FILE';
+```
+
+Here is an example of a bulk insert statement that reads from a PARQUET file:
+```sql
+bulk insert
+   into sample(_id,x,y )
+   map(
+   'id' id,
+   'intval' int,
+   'decval' decimal(4) )
+   from
+    '/mnt/data/Projects/bulkparquet/cmd/wpq/sample.parquet'
+    WITH FORMAT 'PARQUET'
+   INPUT 'FILE';
+```
+
+Loading the same file from a URL
+
+```sql
+bulk insert
+   into sample(_id,x,y )
+   map(
+   'id' id,
+   'intval' int,
+   'decval' decimal(4) )
+   from
+    'http://gruben.dev/sample.parquet'
+    WITH FORMAT 'PARQUET'
+   INPUT 'URL';
+```
