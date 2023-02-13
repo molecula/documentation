@@ -39,3 +39,5 @@ title: SQL String Functions
 
 [REPLICATE()](/sql-preview/functions/sql-replicate#replicate){:target="_blank"}
 
+[STR()](/sql-preview/functions/sql-str#str){:target="_blank"}
+
