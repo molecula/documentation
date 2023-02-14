@@ -56,7 +56,7 @@ These tables provided a side-by-side comparison of Cloud and Community functiona
 
 | Feature | Cloud  | Community  | Notes  |
 | ------ | ----- | ----------- | ----------- |
-| Backup + Restore |  No | Yes |   |
+| Backup + Restore |  Yes | Yes |   |
 | Data Replication |  Yes | Yes |  |
 | Metrics & Monitoring |  No | Yes |   |
 | Editable FeatureBase Config File |  No | Yes |   |
