@@ -1,4 +1,8 @@
-# FeatureBase documentation
+# This FeatureBase documentation repository is no longer maintained
+
+Find regularly updated documentation on [docs.featurebase.com](https://docs.featurebase.com/)
+
+<!--
 
 Updated documentation for Featurebase doco following alterations documented in https://molecula.atlassian.net/wiki/spaces/DOCS/pages/1007747427/Featurebase+doc+review%3A+summary+of+findings
 
@@ -215,3 +219,5 @@ git merge --ff-only origin/main
 git push
 ```
 If you don't do this then some commits seem to be lost or overwritten and that'll make authors sad :(
+
+-->
